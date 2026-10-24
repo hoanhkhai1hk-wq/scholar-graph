@@ -1,0 +1,17 @@
+# Scaffold only. Application images do not exist yet; no service was started.
+services:
+  frontend:
+    # TODO: WorkBuddy will define the frontend image, ports and runtime configuration.
+    image: scholar-graph/frontend:placeholder
+    profiles: [scaffold]
+
+  backend:
+    # TODO: Define the backend image, ports and runtime configuration in a later task.
+    image: scholar-graph/backend:placeholder
+    profiles: [scaffold]
+
+  grobid:
+    # Official image repository: https://grobid.readthedocs.io/en/latest/getting_started/
+    # TODO: Confirm image variant/version/digest and resources before implementation.
+    image: grobid/grobid:0.9.1-full
+    profiles: [scaffold]
