@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "scholar-graph-backend"
+version = "0.1.0"
+requires-python = ">=3.12,<3.13"
+description = "ScholarGraph module one: validated local PDF parsing and version comparison"
+dependencies = [
+  "jsonschema==4.26.0",
+  "pypdf==6.21.2",
+  "httpx==0.28.1",
+  "defusedxml==0.7.1",
+  "mineru==4.0.12",
+]
+
+[project.optional-dependencies]
+ocr = ["paddleocr==3.7.0", "paddlepaddle==3.3.1"]
+test = ["pytest==9.1.1", "reportlab==5.1.0", "PyYAML==6.0.3"]
+
+[project.scripts]
+scholar-graph = "scholar_graph.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["scholar_graph*"]
