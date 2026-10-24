@@ -84,7 +84,8 @@ class Pipeline:
                 if self.grobid is not None:
                     bundle = self.grobid.enrich(bundle, raw)
                 self.gate.bundle(bundle)
-                prior = self.store.previous_version(bundle["paper_meta"])
+                already_present = (self.store.root / "papers" / pid).exists()
+                prior = self.store.previous_version(bundle["paper_meta"]) if not already_present else None
                 comparison = compare(prior, bundle, self.gate) if prior is not None else None
                 job.move("indexing", "Schema 与外键校验通过", progress=95)
                 target = self.store.paper(bundle)

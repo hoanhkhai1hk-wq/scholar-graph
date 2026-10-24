@@ -8,8 +8,8 @@ from reportlab.pdfgen import canvas
 def make_pdf(path: Path, *, version="v1", samples=12, scan=False, blank_cover=False):
     path.parent.mkdir(parents=True, exist_ok=True)
     document = canvas.Canvas(str(path), pagesize=(612, 792), invariant=1)
-    document.setTitle("Synthetic ScholarGraph Study")
-    document.setAuthor("Demo Author")
+    document.setTitle("Synthetic Scanned Page" if scan else "Synthetic ScholarGraph Study")
+    document.setAuthor("Synthetic OCR Fixture" if scan else "Demo Author")
     if blank_cover:
         document.showPage()
     if scan:

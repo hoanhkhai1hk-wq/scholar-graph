@@ -101,6 +101,10 @@ def test_actual_v1_to_v7_parse_compare_and_publish(tmp_path):
     assert any("additional controls" in item["text"] for item in diff["key_sentences"])
     assert (target / "diff-summary.json").exists()
     pipeline.gate.comparison(decision, diff, [old, new])
+    count_before = len(list((pipeline.store.root / "comparisons").iterdir()))
+    pipeline.parse(tmp_path / "v1.pdf")
+    assert pipeline.last_comparison is None
+    assert len(list((pipeline.store.root / "comparisons").iterdir())) == count_before
 
 
 def test_conflicting_dois_do_not_auto_pair_same_titles(tmp_path):
