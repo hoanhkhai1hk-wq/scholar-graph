@@ -251,21 +251,22 @@ export default function ReaderPane({
                 ? `所属分块 p.${selectionChunk.page_number} · ${selectionChunk.chunk_id}`
                 : "—"}
             </p>
-            <div className="sg-note">
-              <span className="sg-tag sg-tag--warning">
-                翻译功能待后端模型接入
-              </span>
-              <p className="sg-note__text">
-                后端目前没有翻译端点，本页只展示原文与所属 Chunk 锚点，
-                不生成、不伪造任何译文。
-              </p>
-            </div>
           </div>
         ) : (
           <p className="sg-mono">
             用鼠标选中正文即可查看原文与所属分块锚点。
           </p>
         )}
+
+        <div className="sg-note">
+          <span className="sg-tag sg-tag--warning">
+            翻译功能待后端模型接入
+          </span>
+          <p className="sg-note__text">
+            后端目前没有翻译端点，划词只展示原文与所属 Chunk 锚点，
+            不生成、不伪造任何译文。
+          </p>
+        </div>
 
         <h2 className="sg-section__title">引用对应关系</h2>
         {links.length === 0 ? (
