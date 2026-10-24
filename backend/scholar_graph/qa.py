@@ -5,6 +5,9 @@ from copy import deepcopy
 from .errors import PipelineError
 from .qa_evidence import facets, measured_samples, neutral_question, numbers, numeric_question, retrieve
 
+MISSING = "拒答：本文本无相关证据，未检索到足以回答该问题的原文或所需数值；不能据此断言全文未报告。"
+PREMISE = "拒绝按题设作肯定回答：保守摘录模式不能确认该前提；以下原文供纠错核对。"
+
 
 def aggregate(checks):
     states = {item["status"] for item in checks}
@@ -17,6 +20,8 @@ def quote_blocks(evidence):
 
 def validate_answer(record, bundle, evidence, gate, *, prefix=""):
     gate.record("QAAnswer", record)
+    if prefix not in ("", MISSING, PREMISE) or record["refused"] != bool(prefix):
+        raise PipelineError("VALIDATION_ERROR", "拒答状态与固定原因不一致。")
     expected = [item["anchor"] for item in evidence]
     # One evidence row per Chunk; every returned fact is an exact source quotation.
     if record["anchors"] != expected or len({a["chunk_id"] for a in expected}) != len(expected):
@@ -77,9 +82,9 @@ class QuestionAnswerer:
         prefix = ""
         if refused:
             if not selected or missing_numeric:
-                prefix = "拒答：本文本无相关证据，未检索到足以回答该问题的原文或所需数值；不能据此断言全文未报告。"
+                prefix = MISSING
             else:
-                prefix = "拒绝按题设作肯定回答：保守摘录模式不能确认该前提；以下原文供纠错核对。"
+                prefix = PREMISE
             if numeric:
                 actual = set().union(*(measured_samples(item["quote"]) for item in evidence)) if evidence else set()
                 claimed = measured_samples(question)
