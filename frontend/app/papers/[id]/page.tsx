@@ -7,6 +7,7 @@ import {
   fetchPaper,
   fetchParseStatus,
   fetchReferences,
+  MAX_PAGE_SIZE,
 } from "@/lib/api";
 import type {
   Chunk,
@@ -20,7 +21,7 @@ import type {
 } from "@/lib/types";
 import ErrorState from "@/components/ErrorState";
 import ParseStatusLive from "@/components/ParseStatusLive";
-import UnavailablePanel from "@/components/UnavailablePanel";
+import PaperExtensions from "@/components/PaperExtensions";
 
 type Result<T> =
   | { kind: "ok"; value: T }
@@ -34,14 +35,65 @@ async function settle<T>(promise: Promise<T>): Promise<Result<T>> {
   }
 }
 
-const STATUS_TAG: Record<string, string> = {
-  queued: "sg-tag sg-tag--muted",
-  parsing: "sg-tag sg-tag--info",
-  ocr: "sg-tag sg-tag--info",
-  indexing: "sg-tag sg-tag--info",
-  completed: "sg-tag sg-tag--success",
-  failed: "sg-tag sg-tag--error",
-};
+const SUB_PAGE_SIZE = 20;
+
+function parsePositiveInt(raw: string | undefined, fallback: number): number {
+  const value = Number(raw);
+  if (!Number.isInteger(value) || value < 1) return fallback;
+  return value;
+}
+
+/**
+ * 子资源分页控件。翻页按后端返回的 total_pages 与 has_next 控制，
+ * 其余子资源的当前页码通过查询参数保留，避免翻一个区丢掉另外两个区的位置。
+ */
+function SubPagination({
+  param,
+  page,
+  paged,
+  current,
+}: {
+  param: string;
+  page: number;
+  paged: Paged<unknown>;
+  current: Record<string, number>;
+}) {
+  const href = (target: number) => {
+    const params = new URLSearchParams();
+    for (const [key, value] of Object.entries(current)) {
+      params.set(key, String(key === param ? target : value));
+    }
+    params.set(param, String(target));
+    return `?${params.toString()}`;
+  };
+
+  return (
+    <div className="sg-pagination">
+      {page > 1 ? (
+        <Link className="sg-pagination__link" href={href(page - 1)}>
+          上一页
+        </Link>
+      ) : (
+        <span className="sg-pagination__link sg-pagination__link--disabled">
+          上一页
+        </span>
+      )}
+      <span>
+        第 {paged.page} / {paged.total_pages} 页 · total {paged.total} ·
+        has_next {String(paged.has_next)}
+      </span>
+      {paged.has_next ? (
+        <Link className="sg-pagination__link" href={href(page + 1)}>
+          下一页
+        </Link>
+      ) : (
+        <span className="sg-pagination__link sg-pagination__link--disabled">
+          下一页
+        </span>
+      )}
+    </div>
+  );
+}
 
 function sectionPathText(chunk: Chunk): string {
   return chunk.section_path.length > 0
@@ -51,10 +103,26 @@ function sectionPathText(chunk: Chunk): string {
 
 export default async function PaperDetailPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ id: string }>;
+  searchParams: Promise<{
+    chunks_page?: string;
+    refs_page?: string;
+    links_page?: string;
+  }>;
 }) {
   const { id } = await params;
+  const query = await searchParams;
+
+  const chunksPage = parsePositiveInt(query.chunks_page, 1);
+  const refsPage = parsePositiveInt(query.refs_page, 1);
+  const linksPage = parsePositiveInt(query.links_page, 1);
+  const current = {
+    chunks_page: chunksPage,
+    refs_page: refsPage,
+    links_page: linksPage,
+  };
 
   const paperResult = await settle(fetchPaper(id));
 
@@ -83,17 +151,27 @@ export default async function PaperDetailPage({
 
   const [chunksResult, refsResult, linksResult, statusResult, dedupResult, diffResult] =
     await Promise.all([
-      settle<Paged<Chunk>>(fetchChunks(id)),
-      settle<Paged<ReferenceEntry>>(fetchReferences(id)),
-      settle<Paged<CitationLink>>(fetchCitationLinks(id)),
+      settle<Paged<Chunk>>(
+        fetchChunks(id, { page: chunksPage, pageSize: SUB_PAGE_SIZE }),
+      ),
+      settle<Paged<ReferenceEntry>>(
+        fetchReferences(id, { page: refsPage, pageSize: SUB_PAGE_SIZE }),
+      ),
+      settle<Paged<CitationLink>>(
+        fetchCitationLinks(id, { page: linksPage, pageSize: SUB_PAGE_SIZE }),
+      ),
       settle<ParseStatus>(fetchParseStatus(id)),
       settle<DedupDecision | null>(fetchDedupDecision(id)),
       settle<DiffSummary | null>(fetchDiffSummary(id)),
     ]);
 
-  const chunks = chunksResult.kind === "ok" ? chunksResult.value.items : [];
-  const refs = refsResult.kind === "ok" ? refsResult.value.items : [];
-  const links = linksResult.kind === "ok" ? linksResult.value.items : [];
+  // 引用对应表需要显示正文片段，额外取当页引用所在的分块
+  let chunkMap = new Map<string, Chunk>();
+  if (linksResult.kind === "ok" && chunksResult.kind === "ok") {
+    for (const chunk of chunksResult.value.items) {
+      chunkMap.set(chunk.chunk_id, chunk);
+    }
+  }
 
   return (
     <main className="sg-shell">
@@ -105,6 +183,9 @@ export default async function PaperDetailPage({
         <p className="sg-eyebrow">GET /api/v1/papers/{id}</p>
         <h1 className="sg-title">{paper.title ?? "（标题未提取）"}</h1>
         <p className="sg-lede">{paper.abstract ?? "（摘要未提供）"}</p>
+        <p className="sg-back">
+          <Link href={`/read/${id}`}>打开阅读器（章节导航与引用跳转）→</Link>
+        </p>
       </div>
 
       {/* 解析状态：非终态时前端轮询，到达终态即停 */}
@@ -127,77 +208,74 @@ export default async function PaperDetailPage({
         <div className="sg-section__head">
           <h2 className="sg-section__title">分块列表 · Chunk</h2>
           <span className="sg-section__hint">
-            GET /papers/{id}/chunks · 分页
+            GET /papers/{id}/chunks · 每页 {SUB_PAGE_SIZE} 条（上限{" "}
+            {MAX_PAGE_SIZE}）
           </span>
         </div>
         {chunksResult.kind === "error" ? (
           <ErrorState title="分块列表取数失败" error={chunksResult.error} />
         ) : chunksResult.value.items.length === 0 ? (
-          <p>后端返回 0 条分块（total={chunksResult.value.total}）。</p>
+          <p>本页无分块（total={chunksResult.value.total}）。</p>
         ) : (
-          <>
-            <table className="sg-table">
-              <thead>
-                <tr>
-                  <th className="sg-num">页码</th>
-                  <th>章节路径</th>
-                  <th>正文</th>
-                  <th>类型</th>
-                  <th className="sg-num">bbox</th>
-                  <th className="sg-num">chunk_id</th>
+          <table className="sg-table">
+            <thead>
+              <tr>
+                <th className="sg-num">页码</th>
+                <th>章节路径</th>
+                <th>正文</th>
+                <th>类型</th>
+                <th className="sg-num">bbox</th>
+                <th className="sg-num">chunk_id</th>
+              </tr>
+            </thead>
+            <tbody>
+              {chunksResult.value.items.map((chunk) => (
+                <tr key={chunk.chunk_id}>
+                  <td className="sg-num">{chunk.page_number}</td>
+                  <td>
+                    <div>{sectionPathText(chunk)}</div>
+                    <div className="sg-mono">
+                      H1 {chunk.heading_1 ?? "—"} / H2 {chunk.heading_2 ?? "—"} /
+                      H3 {chunk.heading_3 ?? "—"}
+                    </div>
+                  </td>
+                  <td>
+                    <p className="sg-prose">{chunk.text}</p>
+                  </td>
+                  <td>
+                    <span className="sg-tag">{chunk.type}</span>
+                  </td>
+                  <td className="sg-num">
+                    {chunk.bbox ? chunk.bbox.join(", ") : "null"}
+                  </td>
+                  <td className="sg-mono">{chunk.chunk_id}</td>
                 </tr>
-              </thead>
-              <tbody>
-                {chunksResult.value.items.map((chunk) => (
-                  <tr key={chunk.chunk_id}>
-                    <td className="sg-num">{chunk.page_number}</td>
-                    <td>
-                      <div>{sectionPathText(chunk)}</div>
-                      <div className="sg-mono">
-                        H1 {chunk.heading_1 ?? "—"} / H2 {chunk.heading_2 ?? "—"}{" "}
-                        / H3 {chunk.heading_3 ?? "—"}
-                      </div>
-                    </td>
-                    <td>
-                      <p className="sg-prose">{chunk.text}</p>
-                    </td>
-                    <td>
-                      <span className="sg-tag">{chunk.type}</span>
-                    </td>
-                    <td className="sg-num">
-                      {chunk.bbox ? chunk.bbox.join(", ") : "null"}
-                    </td>
-                    <td className="sg-mono">{chunk.chunk_id}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            <p className="sg-mono">
-              本页 {chunksResult.value.items.length} 条，后端 total{" "}
-              {chunksResult.value.total}
-              {chunksResult.value.has_next
-                ? "（仍有后续页，本页只取第一页）"
-                : ""}
-            </p>
-          </>
+              ))}
+            </tbody>
+          </table>
         )}
+        {chunksResult.kind === "ok" ? (
+          <SubPagination
+            param="chunks_page"
+            page={chunksPage}
+            paged={chunksResult.value}
+            current={current}
+          />
+        ) : null}
       </section>
 
-      {/* 参考文献与引用对应 */}
+      {/* 参考文献 */}
       <section className="sg-section">
         <div className="sg-section__head">
-          <h2 className="sg-section__title">
-            参考文献与引用对应 · ReferenceEntry / CitationLink
-          </h2>
+          <h2 className="sg-section__title">参考文献 · ReferenceEntry</h2>
           <span className="sg-section__hint">
-            GET /references 与 /citation-links · 分页
+            GET /papers/{id}/references · 每页 {SUB_PAGE_SIZE} 条
           </span>
         </div>
-
         {refsResult.kind === "error" ? (
           <ErrorState title="参考文献取数失败" error={refsResult.error} />
-        ) : refs.length === 0 ? (
-          <p>后端返回 0 条参考文献条目。</p>
+        ) : refsResult.value.items.length === 0 ? (
+          <p>本页无参考文献条目（total={refsResult.value.total}）。</p>
         ) : (
           <table className="sg-table">
             <thead>
@@ -212,7 +290,7 @@ export default async function PaperDetailPage({
               </tr>
             </thead>
             <tbody>
-              {refs.map((ref) => (
+              {refsResult.value.items.map((ref) => (
                 <tr key={ref.ref_id}>
                   <td className="sg-num">[{ref.number}]</td>
                   <td>{ref.authors.join("; ")}</td>
@@ -226,12 +304,30 @@ export default async function PaperDetailPage({
             </tbody>
           </table>
         )}
+        {refsResult.kind === "ok" ? (
+          <SubPagination
+            param="refs_page"
+            page={refsPage}
+            paged={refsResult.value}
+            current={current}
+          />
+        ) : null}
+      </section>
 
-        <h3 className="sg-subhead">正文 ↔ 文末 对应关系</h3>
+      {/* 引用对应 */}
+      <section className="sg-section">
+        <div className="sg-section__head">
+          <h2 className="sg-section__title">
+            正文 ↔ 文末 对应关系 · CitationLink
+          </h2>
+          <span className="sg-section__hint">
+            GET /papers/{id}/citation-links · 每页 {SUB_PAGE_SIZE} 条
+          </span>
+        </div>
         {linksResult.kind === "error" ? (
           <ErrorState title="引用对应取数失败" error={linksResult.error} />
-        ) : links.length === 0 ? (
-          <p>后端返回 0 条引用对应关系。</p>
+        ) : linksResult.value.items.length === 0 ? (
+          <p>本页无引用对应关系（total={linksResult.value.total}）。</p>
         ) : (
           <table className="sg-table">
             <thead>
@@ -244,11 +340,8 @@ export default async function PaperDetailPage({
               </tr>
             </thead>
             <tbody>
-              {links.map((link) => {
-                const chunk = chunks.find(
-                  (item) => item.chunk_id === link.chunk_id,
-                );
-                const target = refs.find((item) => item.ref_id === link.ref_id);
+              {linksResult.value.items.map((link) => {
+                const chunk = chunkMap.get(link.chunk_id);
                 return (
                   <tr
                     key={`${link.citation_number}-${link.page_number}-${link.chunk_id}`}
@@ -256,16 +349,15 @@ export default async function PaperDetailPage({
                     <td className="sg-num">[{link.citation_number}]</td>
                     <td className="sg-num">{link.page_number}</td>
                     <td className="sg-mono">{link.chunk_id}</td>
-                    <td className="sg-mono">
-                      {link.ref_id}
-                      {target ? (
-                        <div className="sg-tag sg-tag--muted">
-                          → {target.title ?? "—"}
-                        </div>
-                      ) : null}
-                    </td>
+                    <td className="sg-mono">{link.ref_id}</td>
                     <td>
-                      <p className="sg-prose">{chunk?.text ?? "—"}</p>
+                      {chunk ? (
+                        <p className="sg-prose">{chunk.text}</p>
+                      ) : (
+                        <span className="sg-mono">
+                          该分块不在当前分块页，请翻到对应分块页查看
+                        </span>
+                      )}
                     </td>
                   </tr>
                 );
@@ -273,6 +365,20 @@ export default async function PaperDetailPage({
             </tbody>
           </table>
         )}
+        {linksResult.kind === "ok" ? (
+          <>
+            <SubPagination
+              param="links_page"
+              page={linksPage}
+              paged={linksResult.value}
+              current={current}
+            />
+            <p className="sg-mono">
+              说明：正文片段取自当前分块页，若引用所在分块不在本页，
+              请翻到对应分块页；完整阅读请用阅读器。
+            </p>
+          </>
+        ) : null}
       </section>
 
       {/* 去重与差异：无记录时后端 404，页面显示暂无，不编造假记录 */}
@@ -385,7 +491,7 @@ export default async function PaperDetailPage({
         )}
       </section>
 
-      <UnavailablePanel area="paper" />
+      <PaperExtensions paperId={id} />
     </main>
   );
 }

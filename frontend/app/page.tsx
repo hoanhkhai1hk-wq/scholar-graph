@@ -2,7 +2,7 @@ import Link from "next/link";
 import { fetchPapers, MAX_PAGE_SIZE } from "@/lib/api";
 import type { Paged, PaperMeta } from "@/lib/types";
 import ErrorState from "@/components/ErrorState";
-import UnavailablePanel from "@/components/UnavailablePanel";
+import CapabilityIndex from "@/components/CapabilityIndex";
 
 type Loaded =
   | { kind: "ok"; data: Paged<PaperMeta>; page: number }
@@ -88,6 +88,9 @@ export default async function HomePage({
                         {paper.title ?? "（标题未提取）"}
                       </Link>
                       <div className="sg-mono">{paper.id}</div>
+                      <Link className="sg-rowlink" href={`/read/${paper.id}`}>
+                        阅读器
+                      </Link>
                     </td>
                     <td>
                       {paper.authors.join("; ")}
@@ -154,7 +157,7 @@ export default async function HomePage({
           </div>
         </section>
 
-        <UnavailablePanel area="library" />
+        <CapabilityIndex />
       </main>
     );
   }

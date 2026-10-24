@@ -1,101 +1,50 @@
 /**
- * 后端未落地端点清单。
- * 来源：docs/api-draft-v1.md「端点清单」与 tests/reports/module-one-api-report.md
- * 「端点实施清单」——19 条中落地 10 条、未落地 9 条。
+ * 后端端点清单。
+ * 来源：docs/api-draft-v1.md「端点清单」与 backend/README.md。
  *
- * 这些端点页面只保留占位并明标不可用，不伪造数据，不写成已接通。
+ * 模块六完成后后端 **19/19 条端点已全部落地，未落地清单为 0**，
+ * 因此本文件不再维护「未落地清单」，页面也不再出现
+ * 「后端接口未落地，暂不可用」的占位。
  */
 
-export type EndpointArea = "library" | "paper";
+export type EndpointArea =
+  | "library"
+  | "paper"
+  | "qa"
+  | "graph"
+  | "retrieval"
+  | "writing";
 
 export interface EndpointSpec {
   method: "GET" | "POST";
   path: string;
   area: EndpointArea;
   label: string;
-  reason: string;
+  page: string;
 }
 
-export const UNLANDED_ENDPOINTS: EndpointSpec[] = [
-  {
-    method: "POST",
-    path: "/papers/{paper_id}/qa",
-    area: "paper",
-    label: "单篇问答",
-    reason: "模块二问答，不在模块一",
-  },
-  {
-    method: "POST",
-    path: "/compare",
-    area: "paper",
-    label: "跨篇对比",
-    reason: "跨篇问答，不是版本差异；模块二",
-  },
-  {
-    method: "POST",
-    path: "/reviews",
-    area: "paper",
-    label: "综述生成",
-    reason: "综述与写作，结构留待 v1.2",
-  },
-  {
-    method: "POST",
-    path: "/frameworks",
-    area: "paper",
-    label: "框架生成",
-    reason: "写作辅助，框架结构留待 v1.2",
-  },
-  {
-    method: "POST",
-    path: "/charts/csv",
-    area: "paper",
-    label: "CSV 图表",
-    reason: "模块六，只有 v1.1 契约已定义，接口未实现",
-  },
-  {
-    method: "GET",
-    path: "/graph",
-    area: "library",
-    label: "引用图谱",
-    reason: "模块五，图谱结构留待 v1.2",
-  },
-  {
-    method: "POST",
-    path: "/retrieval/search",
-    area: "library",
-    label: "论文检索",
-    reason: "检索推荐，不在模块一",
-  },
-  {
-    method: "POST",
-    path: "/retrieval/fetch",
-    area: "library",
-    label: "论文抓取",
-    reason: "抓取任务专用失败结构仍待裁定",
-  },
-  {
-    method: "GET",
-    path: "/recommendations",
-    area: "library",
-    label: "智能推荐",
-    reason: "检索推荐，分数与理由未定义",
-  },
+export const LANDED_ENDPOINTS: EndpointSpec[] = [
+  { method: "POST", path: "/papers", area: "library", label: "单篇上传", page: "/upload" },
+  { method: "POST", path: "/papers/batch", area: "library", label: "批量上传", page: "/upload" },
+  { method: "GET", path: "/papers", area: "library", label: "论文列表", page: "/" },
+  { method: "GET", path: "/papers/{paper_id}", area: "paper", label: "论文详情", page: "/papers/{id}" },
+  { method: "GET", path: "/papers/{paper_id}/parse-status", area: "paper", label: "解析状态", page: "/papers/{id}" },
+  { method: "GET", path: "/papers/{paper_id}/chunks", area: "paper", label: "分块列表", page: "/papers/{id}" },
+  { method: "GET", path: "/papers/{paper_id}/references", area: "paper", label: "参考文献", page: "/papers/{id}" },
+  { method: "GET", path: "/papers/{paper_id}/citation-links", area: "paper", label: "引用对应", page: "/papers/{id}" },
+  { method: "GET", path: "/papers/{paper_id}/dedup-decision", area: "paper", label: "去重裁决", page: "/papers/{id}" },
+  { method: "GET", path: "/papers/{paper_id}/diff-summary", area: "paper", label: "版本差异", page: "/papers/{id}" },
+  { method: "POST", path: "/papers/{paper_id}/qa", area: "qa", label: "单篇问答", page: "/qa" },
+  { method: "POST", path: "/compare", area: "qa", label: "跨篇对比", page: "/qa" },
+  { method: "GET", path: "/graph", area: "graph", label: "引用图谱", page: "/graph" },
+  { method: "POST", path: "/retrieval/search", area: "retrieval", label: "检索", page: "/retrieval" },
+  { method: "POST", path: "/retrieval/fetch", area: "retrieval", label: "公开抓取", page: "/retrieval" },
+  { method: "GET", path: "/recommendations", area: "retrieval", label: "智能推荐", page: "/retrieval" },
+  { method: "POST", path: "/frameworks", area: "writing", label: "综述框架", page: "/writing" },
+  { method: "POST", path: "/reviews", area: "writing", label: "摘录草稿", page: "/writing" },
+  { method: "POST", path: "/charts/csv", area: "writing", label: "CSV 图表", page: "/writing" },
 ];
 
-export function unlandedByArea(area: EndpointArea): EndpointSpec[] {
-  return UNLANDED_ENDPOINTS.filter((item) => item.area === area);
+export function landedByArea(area: EndpointArea): EndpointSpec[] {
+  return LANDED_ENDPOINTS.filter((item) => item.area === area);
 }
-
-/** 已落地并已接通的 10 条端点，用于说明页面取数范围 */
-export const LANDED_ENDPOINTS: { method: string; path: string }[] = [
-  { method: "POST", path: "/papers" },
-  { method: "POST", path: "/papers/batch" },
-  { method: "GET", path: "/papers" },
-  { method: "GET", path: "/papers/{paper_id}" },
-  { method: "GET", path: "/papers/{paper_id}/parse-status" },
-  { method: "GET", path: "/papers/{paper_id}/chunks" },
-  { method: "GET", path: "/papers/{paper_id}/references" },
-  { method: "GET", path: "/papers/{paper_id}/citation-links" },
-  { method: "GET", path: "/papers/{paper_id}/dedup-decision" },
-  { method: "GET", path: "/papers/{paper_id}/diff-summary" },
-];
