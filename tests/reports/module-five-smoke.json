@@ -1,0 +1,559 @@
+{
+  "scope": "自制多篇落盘契约记录、非官方 pdf/ 用例；未调用解析器，不声称真实论文或官方三用例通过。",
+  "run_utc": "2026-10-24T14:22:59.015081+00:00",
+  "baseline_commit": "de74511f9f579af910bd683820b409698a301020",
+  "source_commit": "e4f1174554967137e9323e11ef29d561246cdae0",
+  "real_model_calls": 0,
+  "vector_database_used": false,
+  "cases": [
+    {
+      "case": "chain-and-isolate",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/graph",
+        "paper_ids": [
+          "paper-graph-a",
+          "paper-graph-b",
+          "paper-graph-c",
+          "paper-graph-d"
+        ]
+      },
+      "http_status": 200,
+      "input_record_sha256": {
+        "data/module-five-release/chain-and-isolate/papers/paper-graph-a/chunks.json": "cb3b52d59148d2152a30c8604223d03cfe2ae08fd2ccdca8d404e6ddeb2c3709",
+        "data/module-five-release/chain-and-isolate/papers/paper-graph-a/citation-links.json": "a0a28d6db9aa3d6c2df9bcfe45eb056b0618928c13254ec793dff71ec2677a3e",
+        "data/module-five-release/chain-and-isolate/papers/paper-graph-a/paper-meta.json": "34a05ebef04a99f66602ce3bf11d7ca00148ceb92cf1c8d9b9928c2e9e95d7dc",
+        "data/module-five-release/chain-and-isolate/papers/paper-graph-a/reference-entries.json": "7ef57ecad0bfcee790377551d6962ede9362c94017749374c6b8a7a083f5c82a",
+        "data/module-five-release/chain-and-isolate/papers/paper-graph-b/chunks.json": "a712c95cd64afb928c332e2b5dcf8cf7b9735ee374db1307e3e03142a8f04ee1",
+        "data/module-five-release/chain-and-isolate/papers/paper-graph-b/citation-links.json": "2041da90822726ae8797e4be1223d3741098dc3455c4e7a94604cb9596fba1bf",
+        "data/module-five-release/chain-and-isolate/papers/paper-graph-b/paper-meta.json": "3af410e023d9bcfbcade0cb7d9cc55edf64c2c32b2428397fd15a57e1ad15bbd",
+        "data/module-five-release/chain-and-isolate/papers/paper-graph-b/reference-entries.json": "112345c120e051b81dcf091384484fbd74a6fca9adc98231e324c8f8ef546dc8",
+        "data/module-five-release/chain-and-isolate/papers/paper-graph-c/chunks.json": "1c7091795c37d6680dbbd263680f8e7320dcabda345049bf3bab069be885e731",
+        "data/module-five-release/chain-and-isolate/papers/paper-graph-c/citation-links.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "data/module-five-release/chain-and-isolate/papers/paper-graph-c/paper-meta.json": "6e404d1e90d5daf20542137e2cdce16caf3a92a20de037d2824160d91acf4be3",
+        "data/module-five-release/chain-and-isolate/papers/paper-graph-c/reference-entries.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "data/module-five-release/chain-and-isolate/papers/paper-graph-d/chunks.json": "a6c53f5fa51be03d3231e7abab16b04104cc7bdc5742cceea23c58b1576a7b1a",
+        "data/module-five-release/chain-and-isolate/papers/paper-graph-d/citation-links.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "data/module-five-release/chain-and-isolate/papers/paper-graph-d/paper-meta.json": "4376cf49d4528e55ce459b5264fa3a1050f5ace440e1794ded545f4a51cf9e84",
+        "data/module-five-release/chain-and-isolate/papers/paper-graph-d/reference-entries.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+      },
+      "summary": {
+        "nodes": 4,
+        "edges": 2,
+        "verified_edges": 2,
+        "cornerstones": [
+          "paper-graph-c",
+          "paper-graph-b"
+        ],
+        "future_before": 3,
+        "future_after": 2,
+        "excluded": 1,
+        "unverifiable": 0
+      },
+      "response": {
+        "nodes": [
+          {
+            "schema_version": "1.2.0",
+            "paper_id": "paper-graph-a",
+            "title": "Synthetic Graph Study A",
+            "year": 2024,
+            "pagerank": 0.15570260801873576,
+            "level": "derived"
+          },
+          {
+            "schema_version": "1.2.0",
+            "paper_id": "paper-graph-b",
+            "title": "Synthetic Graph Study B",
+            "year": 2020,
+            "pagerank": 0.2880498248345452,
+            "level": "cornerstone"
+          },
+          {
+            "schema_version": "1.2.0",
+            "paper_id": "paper-graph-c",
+            "title": "Synthetic Graph Study C",
+            "year": 2018,
+            "pagerank": 0.40054495912798327,
+            "level": "cornerstone"
+          },
+          {
+            "schema_version": "1.2.0",
+            "paper_id": "paper-graph-d",
+            "title": "Synthetic Graph Study D",
+            "year": 2025,
+            "pagerank": 0.15570260801873576,
+            "level": "isolated"
+          }
+        ],
+        "edges": [
+          {
+            "schema_version": "1.2.0",
+            "from_paper_id": "paper-graph-a",
+            "to_paper_id": "paper-graph-b",
+            "anchor": {
+              "paper_id": "paper-graph-a",
+              "page_number": 1,
+              "section": [
+                "Main"
+              ],
+              "chunk_id": "chunk-graph-a"
+            },
+            "status": "verified"
+          },
+          {
+            "schema_version": "1.2.0",
+            "from_paper_id": "paper-graph-b",
+            "to_paper_id": "paper-graph-c",
+            "anchor": {
+              "paper_id": "paper-graph-b",
+              "page_number": 1,
+              "section": [
+                "Main"
+              ],
+              "chunk_id": "chunk-graph-b"
+            },
+            "status": "verified"
+          }
+        ],
+        "layers": {
+          "cornerstone": [
+            "paper-graph-c",
+            "paper-graph-b"
+          ],
+          "derived": [
+            "paper-graph-a"
+          ],
+          "isolated": [
+            "paper-graph-d"
+          ]
+        },
+        "future_work": {
+          "worth_exploring": [
+            {
+              "direction_id": "direction-c1dd51bb14fe323e795b",
+              "topic": "document-level extraction",
+              "source": {
+                "schema_version": "1.0.0",
+                "answer": "【证据 A】\nFuture work: document-level extraction.",
+                "anchors": [
+                  {
+                    "paper_id": "paper-graph-c",
+                    "page_number": 1,
+                    "section": [
+                      "Future Work"
+                    ],
+                    "chunk_id": "chunk-graph-c"
+                  }
+                ],
+                "numeric_fact_check": {
+                  "status": "not_applicable",
+                  "checks": []
+                },
+                "refused": false
+              },
+              "resolutions": []
+            },
+            {
+              "direction_id": "direction-212ee78d8f7bca21ff18",
+              "topic": "robust noisy labels",
+              "source": {
+                "schema_version": "1.0.0",
+                "answer": "【证据 A】\nFuture work: robust noisy labels.",
+                "anchors": [
+                  {
+                    "paper_id": "paper-graph-c",
+                    "page_number": 1,
+                    "section": [
+                      "Future Work"
+                    ],
+                    "chunk_id": "chunk-graph-c"
+                  }
+                ],
+                "numeric_fact_check": {
+                  "status": "not_applicable",
+                  "checks": []
+                },
+                "refused": false
+              },
+              "resolutions": []
+            }
+          ],
+          "excluded": [
+            {
+              "direction_id": "direction-ae20628f18023e350ae1",
+              "topic": "cross-lingual transfer",
+              "source": {
+                "schema_version": "1.0.0",
+                "answer": "【证据 A】\nFuture work: cross-lingual transfer.",
+                "anchors": [
+                  {
+                    "paper_id": "paper-graph-c",
+                    "page_number": 1,
+                    "section": [
+                      "Future Work"
+                    ],
+                    "chunk_id": "chunk-graph-c"
+                  }
+                ],
+                "numeric_fact_check": {
+                  "status": "not_applicable",
+                  "checks": []
+                },
+                "refused": false
+              },
+              "resolutions": [
+                {
+                  "schema_version": "1.0.0",
+                  "answer": "【证据 A】\nResolved future direction: cross-lingual transfer.",
+                  "anchors": [
+                    {
+                      "paper_id": "paper-graph-b",
+                      "page_number": 1,
+                      "section": [
+                        "Main"
+                      ],
+                      "chunk_id": "chunk-graph-b"
+                    }
+                  ],
+                  "numeric_fact_check": {
+                    "status": "not_applicable",
+                    "checks": []
+                  },
+                  "refused": false
+                }
+              ]
+            }
+          ],
+          "unverifiable": [],
+          "checks": [
+            {
+              "direction_id": "direction-ae20628f18023e350ae1",
+              "candidate_paper_id": "paper-graph-b",
+              "decision": "accepted",
+              "reason": "explicit_same_topic_later_citing_evidence"
+            }
+          ]
+        },
+        "diagnostics": {
+          "unresolved_references": [],
+          "pagerank": {
+            "damping": 0.85,
+            "tolerance": 1e-12,
+            "max_iterations": 1000,
+            "iterations": 33,
+            "residual": 8.182898802999716e-13,
+            "verified_pair_count": 2,
+            "uniform_baseline": 0.25
+          }
+        }
+      },
+      "inputs_unchanged": true
+    },
+    {
+      "case": "missing-anchor",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/graph",
+        "paper_ids": [
+          "paper-graph-a",
+          "paper-graph-b",
+          "paper-graph-c",
+          "paper-graph-d"
+        ]
+      },
+      "http_status": 200,
+      "input_record_sha256": {
+        "data/module-five-release/missing-anchor/papers/paper-graph-a/chunks.json": "cb3b52d59148d2152a30c8604223d03cfe2ae08fd2ccdca8d404e6ddeb2c3709",
+        "data/module-five-release/missing-anchor/papers/paper-graph-a/citation-links.json": "a0a28d6db9aa3d6c2df9bcfe45eb056b0618928c13254ec793dff71ec2677a3e",
+        "data/module-five-release/missing-anchor/papers/paper-graph-a/paper-meta.json": "34a05ebef04a99f66602ce3bf11d7ca00148ceb92cf1c8d9b9928c2e9e95d7dc",
+        "data/module-five-release/missing-anchor/papers/paper-graph-a/reference-entries.json": "7ef57ecad0bfcee790377551d6962ede9362c94017749374c6b8a7a083f5c82a",
+        "data/module-five-release/missing-anchor/papers/paper-graph-b/chunks.json": "a712c95cd64afb928c332e2b5dcf8cf7b9735ee374db1307e3e03142a8f04ee1",
+        "data/module-five-release/missing-anchor/papers/paper-graph-b/citation-links.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "data/module-five-release/missing-anchor/papers/paper-graph-b/paper-meta.json": "3af410e023d9bcfbcade0cb7d9cc55edf64c2c32b2428397fd15a57e1ad15bbd",
+        "data/module-five-release/missing-anchor/papers/paper-graph-b/reference-entries.json": "112345c120e051b81dcf091384484fbd74a6fca9adc98231e324c8f8ef546dc8",
+        "data/module-five-release/missing-anchor/papers/paper-graph-c/chunks.json": "1c7091795c37d6680dbbd263680f8e7320dcabda345049bf3bab069be885e731",
+        "data/module-five-release/missing-anchor/papers/paper-graph-c/citation-links.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "data/module-five-release/missing-anchor/papers/paper-graph-c/paper-meta.json": "6e404d1e90d5daf20542137e2cdce16caf3a92a20de037d2824160d91acf4be3",
+        "data/module-five-release/missing-anchor/papers/paper-graph-c/reference-entries.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "data/module-five-release/missing-anchor/papers/paper-graph-d/chunks.json": "a6c53f5fa51be03d3231e7abab16b04104cc7bdc5742cceea23c58b1576a7b1a",
+        "data/module-five-release/missing-anchor/papers/paper-graph-d/citation-links.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "data/module-five-release/missing-anchor/papers/paper-graph-d/paper-meta.json": "4376cf49d4528e55ce459b5264fa3a1050f5ace440e1794ded545f4a51cf9e84",
+        "data/module-five-release/missing-anchor/papers/paper-graph-d/reference-entries.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+      },
+      "summary": {
+        "nodes": 4,
+        "edges": 2,
+        "verified_edges": 1,
+        "cornerstones": [
+          "paper-graph-b"
+        ],
+        "future_before": 3,
+        "future_after": 3,
+        "excluded": 0,
+        "unverifiable": 0
+      },
+      "response": {
+        "nodes": [
+          {
+            "schema_version": "1.2.0",
+            "paper_id": "paper-graph-a",
+            "title": "Synthetic Graph Study A",
+            "year": 2024,
+            "pagerank": 0.206185567010302,
+            "level": "derived"
+          },
+          {
+            "schema_version": "1.2.0",
+            "paper_id": "paper-graph-b",
+            "title": "Synthetic Graph Study B",
+            "year": 2020,
+            "pagerank": 0.3814432989690939,
+            "level": "cornerstone"
+          },
+          {
+            "schema_version": "1.2.0",
+            "paper_id": "paper-graph-c",
+            "title": "Synthetic Graph Study C",
+            "year": 2018,
+            "pagerank": 0.206185567010302,
+            "level": "isolated"
+          },
+          {
+            "schema_version": "1.2.0",
+            "paper_id": "paper-graph-d",
+            "title": "Synthetic Graph Study D",
+            "year": 2025,
+            "pagerank": 0.206185567010302,
+            "level": "isolated"
+          }
+        ],
+        "edges": [
+          {
+            "schema_version": "1.2.0",
+            "from_paper_id": "paper-graph-a",
+            "to_paper_id": "paper-graph-b",
+            "anchor": {
+              "paper_id": "paper-graph-a",
+              "page_number": 1,
+              "section": [
+                "Main"
+              ],
+              "chunk_id": "chunk-graph-a"
+            },
+            "status": "verified"
+          },
+          {
+            "schema_version": "1.2.0",
+            "from_paper_id": "paper-graph-b",
+            "to_paper_id": "paper-graph-c",
+            "anchor": null,
+            "status": "unverified"
+          }
+        ],
+        "layers": {
+          "cornerstone": [
+            "paper-graph-b"
+          ],
+          "derived": [
+            "paper-graph-a"
+          ],
+          "isolated": [
+            "paper-graph-c",
+            "paper-graph-d"
+          ]
+        },
+        "future_work": {
+          "worth_exploring": [
+            {
+              "direction_id": "direction-ae20628f18023e350ae1",
+              "topic": "cross-lingual transfer",
+              "source": {
+                "schema_version": "1.0.0",
+                "answer": "【证据 A】\nFuture work: cross-lingual transfer.",
+                "anchors": [
+                  {
+                    "paper_id": "paper-graph-c",
+                    "page_number": 1,
+                    "section": [
+                      "Future Work"
+                    ],
+                    "chunk_id": "chunk-graph-c"
+                  }
+                ],
+                "numeric_fact_check": {
+                  "status": "not_applicable",
+                  "checks": []
+                },
+                "refused": false
+              },
+              "resolutions": []
+            },
+            {
+              "direction_id": "direction-c1dd51bb14fe323e795b",
+              "topic": "document-level extraction",
+              "source": {
+                "schema_version": "1.0.0",
+                "answer": "【证据 A】\nFuture work: document-level extraction.",
+                "anchors": [
+                  {
+                    "paper_id": "paper-graph-c",
+                    "page_number": 1,
+                    "section": [
+                      "Future Work"
+                    ],
+                    "chunk_id": "chunk-graph-c"
+                  }
+                ],
+                "numeric_fact_check": {
+                  "status": "not_applicable",
+                  "checks": []
+                },
+                "refused": false
+              },
+              "resolutions": []
+            },
+            {
+              "direction_id": "direction-212ee78d8f7bca21ff18",
+              "topic": "robust noisy labels",
+              "source": {
+                "schema_version": "1.0.0",
+                "answer": "【证据 A】\nFuture work: robust noisy labels.",
+                "anchors": [
+                  {
+                    "paper_id": "paper-graph-c",
+                    "page_number": 1,
+                    "section": [
+                      "Future Work"
+                    ],
+                    "chunk_id": "chunk-graph-c"
+                  }
+                ],
+                "numeric_fact_check": {
+                  "status": "not_applicable",
+                  "checks": []
+                },
+                "refused": false
+              },
+              "resolutions": []
+            }
+          ],
+          "excluded": [],
+          "unverifiable": [],
+          "checks": [
+            {
+              "direction_id": "direction-ae20628f18023e350ae1",
+              "candidate_paper_id": "paper-graph-b",
+              "decision": "rejected",
+              "reason": "no_verified_citation_in_resolution_chunk"
+            }
+          ]
+        },
+        "diagnostics": {
+          "unresolved_references": [],
+          "pagerank": {
+            "damping": 0.85,
+            "tolerance": 1e-12,
+            "max_iterations": 1000,
+            "iterations": 19,
+            "residual": 2.487454686672663e-13,
+            "verified_pair_count": 1,
+            "uniform_baseline": 0.25
+          }
+        }
+      },
+      "inputs_unchanged": true
+    }
+  ],
+  "frozen_contracts": [
+    {
+      "file": "contracts/chart-output.v1.1.example.json",
+      "git_blob": "f34c9130ecb750cf583a9cf5cb802fbe95a28bb7",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/chart-output.v1.1.schema.json",
+      "git_blob": "7b5b196ecc88d31d7a13b0f560f02c9feb0814dd",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/chunk.v1.example.json",
+      "git_blob": "330a0845a9569aa85053dbfa1dc643363b45f2c3",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/chunk.v1.schema.json",
+      "git_blob": "d577c91c27b33e360da8cdfbacbbf2da33ac1bcf",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/citation-link.v1.example.json",
+      "git_blob": "1df93d863fd88272ea4b3ec71d7fde77916c84f6",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/citation-link.v1.schema.json",
+      "git_blob": "1c26cb51d10256635af9cd43881a0219316408f8",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/dedup-decision.v1.1.example.json",
+      "git_blob": "d47edb3181b70f7fe0bed872d50a5178a1e3baaa",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/dedup-decision.v1.1.schema.json",
+      "git_blob": "a0679f1dd466fe247f2f8d9a77f05a669aa622bb",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/diff-summary.v1.1.example.json",
+      "git_blob": "947217164499f39932b9b4e88013828f5c1a9cdf",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/diff-summary.v1.1.schema.json",
+      "git_blob": "6df5e7753e629277068dd7c023938b2df0b122d8",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/paper-meta.v1.example.json",
+      "git_blob": "141f90fe6d68cbfb7f4770aace62c190100f7f8f",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/paper-meta.v1.schema.json",
+      "git_blob": "a8d65964a698823b165c7369d9912e0956081995",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/parse-status.v1.1.example.json",
+      "git_blob": "9dcae28d3c0605d1e3ca625d884125662ef105b3",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/parse-status.v1.1.schema.json",
+      "git_blob": "0821189d573e9b489bc3c900a97b3128f30bd132",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/qa-answer.v1.example.json",
+      "git_blob": "29dcf10a680b880f6559f6ab0a840195f90e0f89",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/qa-answer.v1.schema.json",
+      "git_blob": "9afbdd2b5fd1eafaddbf34bcd1377d333c0f3b1e",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/reference-entry.v1.example.json",
+      "git_blob": "35c676e8fbbe6ae4bc9e6d3622c1c9ba2e491965",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/reference-entry.v1.schema.json",
+      "git_blob": "e26db67f190041c4ea42f6e0729536e9babd6926",
+      "unchanged": true
+    }
+  ]
+}
