@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:scholar-graph:contract:chart-output:1.1.0",
+  "title": "ChartOutput",
+  "description": "Independent ChartOutput v1.1.0 record; never serialize it into QAAnswer.answer. Every caption number requires a matching verified numeric_checks entry; semantic validation is required.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.1.0"
+    },
+    "chart_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+    },
+    "chart_type": {
+      "type": "string",
+      "enum": [
+        "line",
+        "bar",
+        "scatter",
+        "histogram"
+      ]
+    },
+    "series": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "values": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "required": [
+          "name",
+          "values"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "image_ref": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "caption": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "numeric_checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "number"
+          },
+          "csv_anchor": {
+            "type": "object",
+            "properties": {
+              "csv_ref": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "row_number": {
+                "type": "integer",
+                "minimum": 2
+              },
+              "column_name": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              }
+            },
+            "required": [
+              "csv_ref",
+              "row_number",
+              "column_name"
+            ],
+            "additionalProperties": false
+          },
+          "verified": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "value",
+          "csv_anchor",
+          "verified"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "schema_version",
+    "chart_id",
+    "chart_type",
+    "series",
+    "image_ref",
+    "caption",
+    "numeric_checks"
+  ],
+  "additionalProperties": false
+}
