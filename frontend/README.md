@@ -1,14 +1,67 @@
 # frontend — ScholarGraph（研枢）前端说明
 
-建立日期：2026-10-24。维护方：WorkBuddy（前端主力）。本目录为**演示假数据壳**，不接后端、不含任何真实业务能力。
+建立日期：2026-10-24。接真接口日期：2026-10-24。维护方：WorkBuddy（前端主力）。
+
+本目录为 ScholarGraph（研枢）前端。**已接后端模块一 HTTP API**，数据取自真实端点，不再使用假数据。
 
 ## 0. 本单范围与红线
 
-- 只写 `frontend/` 下的文件。不碰 `backend/`、`contracts/`、`services/`、`docker-compose.yml`、`Dockerfile`、`tests/`、`experiments/`。
-- 假数据全部来自 `contracts/` 下 v1 与 v1.1 九份记录的 example，**字段与契约一一对应，不新增、不改名、不臆造字段**。
-- 页面顶部明标「演示假数据，未接后端」。
-- 本单不产生任何「已验证」「测试通过」表述，不修改 `test-records/`，不把任何用例标为通过。
-- 图表图片位只用占位框，不贴假造的实测图。
+- 只写 `frontend/` 下的文件。不碰 `backend/`、`contracts/`、`services/`、`docker-compose.yml`、`Dockerfile`、`tests/`、`experiments/`；例外只改本文件 `frontend/README.md`。
+- 页面**不再引用任何假数据**。原 `frontend/mock/` 已从工作区移除（仍保留在 Git 历史中），页面禁止 import 它。
+- **禁止静默回落**：接口不通时显示明确的错误态（接口地址、状态码、错误码、原因），不悄悄切回任何替代数据冒充真数据。
+- 后端未落地的 9 条端点，页面保留占位并明标「后端接口未落地，暂不可用」，不伪造数据、不写成已接通。
+- Key 只进本地 `.env`，不进 Git、不进代码、不进日志（本单无需任何 Key）。
+- 样式沿用已确认配色 token（深松绿 + 暖纸 + 赭石），不擅自换色：不用默认企业蓝、不用廉价渐变、不堆圆角阴影卡片、不用 emoji 当图标。
+
+## 0.1 取数基地址与后端启动
+
+默认基地址 `http://127.0.0.1:8000`，取自后端启动说明（`backend/README.md` 与
+`tests/reports/module-one-api-report.md` 的 uvicorn 命令），不是猜测。API 前缀 `/api/v1`。
+
+用环境变量覆盖，写在 `frontend/.env.local`（该文件不进 Git）：
+
+```bash
+NEXT_PUBLIC_API_BASE_URL=http://127.0.0.1:8000
+```
+
+后端启动（PowerShell，仓库根目录）：
+
+```powershell
+backend/.venv/Scripts/python.exe -m uvicorn scholar_graph.api:create_app --factory --host 127.0.0.1 --port 8000 --no-access-log
+```
+
+后端未开启 CORS，浏览器无法直连不同源地址。因此浏览器侧的轮询与上传走同源转发
+`frontend/app/api/backend/[...path]/route.ts`，原样透传到 `/api/v1/*`，只补两个诊断响应头
+`x-sg-upstream-url` 与 `x-sg-upstream-status`，不加工业务数据。服务端组件直连后端，不经代理。
+
+## 0.2 已接通端点（10 条）
+
+| 方法 | 端点 | 页面位置 |
+| --- | --- | --- |
+| POST | /papers | 上传页单篇 |
+| POST | /papers/batch | 上传页批量 |
+| GET | /papers | 列表页（分页壳） |
+| GET | /papers/{paper_id} | 详情页 |
+| GET | /papers/{paper_id}/parse-status | 详情页，非终态轮询 |
+| GET | /papers/{paper_id}/chunks | 详情页分块 |
+| GET | /papers/{paper_id}/references | 详情页文末条目 |
+| GET | /papers/{paper_id}/citation-links | 详情页正文↔文末对应 |
+| GET | /papers/{paper_id}/dedup-decision | 详情页去重裁决（404 显示暂无） |
+| GET | /papers/{paper_id}/diff-summary | 详情页版本差异（404 显示暂无） |
+
+列表使用统一分页壳 `{items, page, page_size, total, total_pages, has_next}`，默认
+`page_size=20`、上限 100；翻页完全按后端 `total_pages` 与 `has_next` 控制，前端不推算总数。
+去重与差异的路径参数为**新版 paper_id**，无记录时后端返回 404 / PAPER_NOT_FOUND，
+页面显示「暂无去重 / 差异记录」，不崩、不编造假记录。
+解析状态在 queued / parsing / ocr / indexing 时每 2 秒轮询一次，最多 60 次，
+到达 completed / failed 即停，达到上限也停并在页面上说明停止原因。
+
+## 0.3 未落地端点（9 条，仅占位）
+
+问答 `/papers/{id}/qa`、跨篇对比 `/compare`、综述 `/reviews`、框架 `/frameworks`、
+CSV 图表 `/charts/csv`、图谱 `/graph`、检索 `/retrieval/search`、抓取 `/retrieval/fetch`、
+推荐 `/recommendations`。清单维护在 `frontend/lib/endpoints.ts`，页面以
+`UnavailablePanel` 明确标注「后端接口未落地，暂不可用」。
 
 ## 1. 开源 UI skill / 设计系统调研
 
@@ -67,7 +120,7 @@
 
 ---
 
-## 2. 拟议配色 token（待总指挥确认）
+## 2. 配色 token（已由总指挥确认，本单沿用不改）
 
 > **本套 token 为 provisional（拟议中）。** 壳已按它搭建，但它尚未获总指挥确认。若总指挥确认或驳回，**下一单只改本节的 token 值，不重建页面结构**。
 
@@ -151,36 +204,54 @@
 
 ```text
 frontend/
-  README.md              本文件：调研结论、拟议配色 token、运行说明
-  package.json           依赖与脚本
-  next.config.mjs        Next.js 配置
-  tsconfig.json          TypeScript 配置
-  .gitignore             忽略 .next/ 与 node_modules/
+  README.md                 本文件：调研结论、已确认配色 token、取数与运行说明
+  package.json              依赖与脚本
+  next.config.mjs           Next.js 配置
+  tsconfig.json             TypeScript 配置
+  .gitignore                忽略 .next/、node_modules/、next-env.d.ts、.env*
+  .env.example              取数基址变量样例（无真实密钥）
   app/
-    layout.tsx           根布局，引入全局样式与演示横幅
-    globals.css          拟议配色 token 与基础排版
-    page.tsx             论文列表页
-    papers/[id]/page.tsx 论文详情页（解析状态、分块、引用、问答、去重、图表占位）
+    layout.tsx              根布局：顶部状态条显示真实取数后端
+    globals.css             已确认配色 token 与基础排版
+    page.tsx                列表页：GET /papers + 分页壳
+    papers/[id]/page.tsx    详情页：详情、解析状态、分块、引用、去重与差异
+    upload/page.tsx         上传页：单篇与批量
+    api/backend/[...path]/route.ts  同源转发（后端未开 CORS）
+    papers/[id]/
   components/
-    DemoBanner.tsx       「演示假数据，未接后端」横幅
-  mock/
-    *.mock.ts            与契约 example 字段一一对应的假数据
-    index.ts             汇总导出
+    ApiStatusBar.tsx        顶部状态条，显示数据后端地址
+    ErrorState.tsx          错误态：接口地址、状态码、错误码、原因
+    UnavailablePanel.tsx    未落地端点占位说明
+    ParseStatusLive.tsx     解析状态轮询（终态即停、有上限）
+    UploadForm.tsx          单篇与批量上传表单
+  lib/
+    types.ts                与契约一致的记录类型
+    api.ts                  取数客户端、错误类型、分页与上传
+    endpoints.ts            已接通 10 条与未落地 9 条端点清单
 ```
+
+`frontend/mock/` 已移除：假数据阶段结束，页面不再引用。文件仍保留在 Git 历史中。
 
 ## 4. 本地运行
 
-在本目录（`D:\AI_Workspace\Tasks\scholar-graph\frontend`）执行：
+先按第 0.1 节启动后端，再在本目录（`D:\AI_Workspace\Tasks\scholar-graph\frontend`）执行：
 
 ```bash
 npm install          # 安装依赖
-npm run dev          # 启动开发服务器，默认 http://localhost:3000
 npm run build        # 生产构建
-npm run start        # 启动生产服务（需先 build），端口 3000
+npm run start        # 启动服务，http://localhost:3000
+npm run dev          # 开发模式（本沙箱内曾因 .next 清理被安全策略拦截，见第 5 节）
 ```
 
-自定义端口：`npm run dev -- -p 3100`。
+自定义端口：`npm run start -- -p 3100`。
 
-## 5. 假数据说明
+## 5. 已知限制（如实记录，不谎报）
 
-`mock/` 下每个文件头部均标注 `MOCK DATA`，说明对应哪一份契约 example。页面只渲染与契约字段一致的数据；**任何字段对不上契约的内容不上页面**。这些数据由契约合成示例得来，不是真实论文，也不是后端实跑产物。后端已真实跑通的记录格式见 `tests/reports/module-one-report.md`，壳的数据结构按它对齐，但壳当前不消费其数据。
+- `npm run dev` 在本机沙箱内启动失败过：Next 清理 `.next` 时触发批量删除保护
+  （`SAFE_DELETE_BULK_CONFIRM_REQUIRED`）。这是环境问题，不是代码问题；本单验证走
+  `npm run build` + `npm run start`。
+- 后端未开 CORS，浏览器侧调用依赖同源转发路由；服务端组件直连后端不经代理。
+- 子资源（分块、参考文献、引用对应）当前只取第一页并回显后端 total；
+  有多页时页面注明「仍有后续页」，未做子资源翻页控件。
+- 上传为同步等待后端解析，扫描件实测约 35 秒，页面在此期间显示「上传中…」。
+- 9 条未落地端点只有占位，没有伪实现。
