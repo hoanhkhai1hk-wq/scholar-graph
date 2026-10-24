@@ -1,0 +1,88 @@
+/**
+ * MOCK DATA — 演示假数据，未接后端。
+ * 字段与 contracts/chunk.v1.example.json 一致。
+ *
+ * 第 1 条为契约 example 原样复制；其余条目按同一字段集构造，用于展示多页、多类型分块。
+ */
+export const chunkMock = [
+  {
+    schema_version: "1.0.0",
+    chunk_id: "chunk-demo-001-p1-001",
+    paper_id: "paper-demo-001",
+    page_number: 1,
+    section_path: ["1 Introduction", "1.1 Setup"],
+    heading_1: "1 Introduction",
+    heading_2: "1.1 Setup",
+    heading_3: null,
+    text: "The synthetic study contains 12 samples and cites [1].",
+    bbox: [0.1, 0.2, 0.9, 0.4],
+    type: "text",
+  },
+  {
+    schema_version: "1.0.0",
+    chunk_id: "chunk-demo-001-p1-002",
+    paper_id: "paper-demo-001",
+    page_number: 1,
+    section_path: ["1 Introduction", "1.1 Setup"],
+    heading_1: "1 Introduction",
+    heading_2: "1.1 Setup",
+    heading_3: null,
+    text: "Table 1 lists the 12 samples by group.",
+    bbox: [0.1, 0.45, 0.9, 0.72],
+    type: "table",
+  },
+  {
+    schema_version: "1.0.0",
+    chunk_id: "chunk-demo-001-p2-001",
+    paper_id: "paper-demo-001",
+    page_number: 2,
+    section_path: ["2 Method", "2.1 Protocol"],
+    heading_1: "2 Method",
+    heading_2: "2.1 Protocol",
+    heading_3: null,
+    text: "The protocol follows the setup described in section 1.1.",
+    bbox: [0.1, 0.15, 0.9, 0.35],
+    type: "text",
+  },
+  {
+    schema_version: "1.0.0",
+    chunk_id: "chunk-demo-001-p2-002",
+    paper_id: "paper-demo-001",
+    page_number: 2,
+    section_path: ["3 Results"],
+    heading_1: "3 Results",
+    heading_2: null,
+    heading_3: null,
+    text: "Equation (1) summarizes the model objective.",
+    bbox: [0.1, 0.4, 0.9, 0.55],
+    type: "formula",
+  },
+  {
+    schema_version: "1.0.0",
+    chunk_id: "chunk-demo-002-p1-001",
+    paper_id: "paper-demo-002",
+    page_number: 1,
+    section_path: ["1 Introduction", "1.1 Setup"],
+    heading_1: "1 Introduction",
+    heading_2: "1.1 Setup",
+    heading_3: null,
+    text: "The synthetic study contains 18 samples and uses a corrected protocol.",
+    bbox: [0.1, 0.2, 0.9, 0.4],
+    type: "text",
+  },
+  {
+    schema_version: "1.0.0",
+    chunk_id: "chunk-demo-003-p1-001",
+    paper_id: "paper-demo-003",
+    page_number: 1,
+    section_path: [],
+    heading_1: null,
+    heading_2: null,
+    heading_3: null,
+    text: "Scanned synthetic page recognized by the OCR branch.",
+    bbox: null,
+    type: "text",
+  },
+] as const;
+
+export default chunkMock;
