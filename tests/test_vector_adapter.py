@@ -29,13 +29,15 @@ def test_dense_and_sparse_protocol_and_worker_secret_isolation(tmp_path, monkeyp
     assert service.search([{"chunk_id": "a"}, {"chunk_id": "b"}], "question")[0][0] == "b"
 
 
-@pytest.mark.parametrize("mode", ["timeout", "exit", "garbage", "stale_ids"])
+@pytest.mark.parametrize("mode", ["timeout", "exit", "garbage", "stale_ids", "scalar", "nan"])
 def test_worker_failure_and_stale_index_never_fake_success(tmp_path, monkeypatch, mode):
     service = configured(tmp_path)
     def run(*args, **kwargs):
         if mode == "timeout":
             raise subprocess.TimeoutExpired("worker", 240)
-        output = "garbage" if mode == "garbage" else json.dumps({"dense": {"stale": 1}, "sparse": {"stale": 1}})
+        output = "garbage" if mode == "garbage" else "1" if mode == "scalar" else json.dumps(
+            {"dense": {"a": float("nan")}, "sparse": {"a": 1}} if mode == "nan" else
+            {"dense": {"stale": 1}, "sparse": {"stale": 1}})
         return SimpleNamespace(returncode=1 if mode == "exit" else 0, stdout=output)
     monkeypatch.setattr(subprocess, "run", run)
     with pytest.raises(VectorUnavailable):

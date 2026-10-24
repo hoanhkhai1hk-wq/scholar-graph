@@ -1,6 +1,7 @@
 """Optional actual BGE-M3 dense+sparse retrieval using an isolated local worker."""
 
 import json
+import math
 import os
 import subprocess
 import threading
@@ -19,6 +20,7 @@ class BgeChromaSearch:
         self.lock, self.last_evidence = threading.Lock(), None
 
     def search(self, chunks, question):
+        self.last_evidence = None
         if not self.python.is_file() or not (self.model_path / "config.json").is_file():
             raise VectorUnavailable
         payload = {"model_path": str(self.model_path), "index_path": str(self.index_path),
@@ -37,11 +39,16 @@ class BgeChromaSearch:
                 raise VectorUnavailable
             evidence = json.loads(result.stdout)
             ids = {chunk["chunk_id"] for chunk in chunks}
-            if set(evidence["dense"]) != ids or set(evidence["sparse"]) != ids:
+            if (not isinstance(evidence, dict) or
+                    any(not isinstance(evidence.get(kind), dict) or set(evidence[kind]) != ids
+                        for kind in ("dense", "sparse"))):
+                raise VectorUnavailable
+            values = [*evidence["dense"].values(), *evidence["sparse"].values()]
+            if any(type(value) not in (int, float) or not math.isfinite(value) for value in values):
                 raise VectorUnavailable
             self.last_evidence = evidence
             return fuse_ranks(evidence["dense"], evidence["sparse"])
-        except (OSError, subprocess.TimeoutExpired, ValueError, KeyError):
+        except (OSError, subprocess.TimeoutExpired, ValueError, KeyError, TypeError):
             raise VectorUnavailable from None
 
 
