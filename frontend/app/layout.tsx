@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import DemoBanner from "@/components/DemoBanner";
+import ApiStatusBar from "@/components/ApiStatusBar";
 
 export const metadata: Metadata = {
-  title: "ScholarGraph · 研枢（演示壳）",
-  description: "科研助手 Agent 系统前端演示壳，使用契约示例假数据，未接后端。",
+  title: "ScholarGraph · 研枢",
+  description: "科研助手 Agent 系统前端，数据取自模块一已落地的 HTTP API。",
 };
 
 export default function RootLayout({
@@ -27,7 +27,7 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <DemoBanner />
+        <ApiStatusBar />
         {children}
       </body>
     </html>

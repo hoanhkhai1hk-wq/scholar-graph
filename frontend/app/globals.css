@@ -357,3 +357,154 @@ a:hover {
   font-size: 13px;
   color: var(--sg-text-secondary);
 }
+
+/* 顶部状态条：替代原演示横幅，显示真实取数后端地址 */
+.sg-statusbar {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sg-space-4);
+  padding: var(--sg-space-3) var(--sg-space-5);
+  background: var(--sg-bg-surface);
+  border-bottom: 1px solid var(--sg-border-strong);
+}
+
+.sg-statusbar__brand {
+  font-family: var(--sg-font-serif);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.sg-statusbar__nav {
+  display: flex;
+  gap: var(--sg-space-4);
+  font-size: 13px;
+}
+
+.sg-statusbar__api {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--sg-text-secondary);
+}
+
+.sg-statusbar__api code {
+  font-family: var(--sg-font-mono);
+  color: var(--sg-primary);
+}
+
+/* 错误态：左侧色条 + 明细，不静默回落 */
+.sg-error {
+  border: 1px solid var(--sg-border);
+  border-left: 3px solid var(--sg-error);
+  background: var(--sg-error-subtle);
+  border-radius: var(--sg-radius-md);
+  padding: var(--sg-space-4);
+  margin-top: var(--sg-space-3);
+}
+
+.sg-error__title {
+  font-weight: 600;
+  color: var(--sg-error);
+  margin-bottom: var(--sg-space-2);
+}
+
+.sg-error__hint {
+  margin: var(--sg-space-3) 0 0;
+  font-size: 12px;
+  color: var(--sg-text-secondary);
+}
+
+/* 未落地端点占位说明 */
+.sg-note {
+  border: 1px dashed var(--sg-border-strong);
+  border-radius: var(--sg-radius-md);
+  background: var(--sg-warning-subtle);
+  padding: var(--sg-space-3) var(--sg-space-4);
+  margin-bottom: var(--sg-space-4);
+}
+
+.sg-note__text {
+  margin: var(--sg-space-2) 0 0;
+  font-size: 13px;
+  color: var(--sg-text-secondary);
+}
+
+/* 分页 */
+.sg-pagination {
+  display: flex;
+  align-items: center;
+  gap: var(--sg-space-3);
+  margin-top: var(--sg-space-4);
+  font-size: 13px;
+  color: var(--sg-text-secondary);
+}
+
+.sg-pagination__link {
+  border: 1px solid var(--sg-border-strong);
+  border-radius: var(--sg-radius-sm);
+  padding: 2px var(--sg-space-3);
+  background: var(--sg-bg-surface);
+}
+
+.sg-pagination__link--disabled {
+  color: var(--sg-text-muted);
+  border-color: var(--sg-border);
+  background: var(--sg-bg-subtle);
+  cursor: not-allowed;
+}
+
+/* 表单与按钮 */
+.sg-form {
+  display: flex;
+  align-items: center;
+  gap: var(--sg-space-3);
+  flex-wrap: wrap;
+}
+
+.sg-input {
+  font-family: var(--sg-font-ui);
+  font-size: 13px;
+  color: var(--sg-text-primary);
+  background: var(--sg-bg-surface);
+  border: 1px solid var(--sg-border-strong);
+  border-radius: var(--sg-radius-sm);
+  padding: var(--sg-space-2);
+}
+
+.sg-btn {
+  font-family: var(--sg-font-ui);
+  font-size: 13px;
+  color: #ffffff;
+  background: var(--sg-primary);
+  border: 1px solid var(--sg-primary);
+  border-radius: var(--sg-radius-sm);
+  padding: var(--sg-space-2) var(--sg-space-4);
+  cursor: pointer;
+}
+
+.sg-btn:hover:not(:disabled) {
+  background: var(--sg-primary-hover);
+  border-color: var(--sg-primary-hover);
+}
+
+.sg-btn:disabled {
+  background: var(--sg-bg-subtle);
+  border-color: var(--sg-border);
+  color: var(--sg-text-muted);
+  cursor: not-allowed;
+}
+
+/* 结果行 */
+.sg-result-line {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sg-space-2);
+  flex-wrap: wrap;
+  font-size: 13px;
+  margin-top: var(--sg-space-3);
+}
+
+/* 轮询提示 */
+.sg-poll {
+  margin: var(--sg-space-3) 0 0;
+  font-size: 12px;
+}
