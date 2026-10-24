@@ -1,4 +1,4 @@
-import type { ApiFetchError } from "@/lib/api";
+import { ApiFetchError } from "@/lib/api";
 
 /**
  * 明确的错误态：显示接口地址、状态码、原因。
