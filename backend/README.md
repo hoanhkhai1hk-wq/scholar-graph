@@ -1,6 +1,6 @@
-# ScholarGraph 模块一、二、五后端
+# ScholarGraph 模块一、二、四、五后端
 
-本后端实现本地 PDF 解析、状态机、去重与版本差异，模块二问答/对比，以及模块五局域引用图谱，共 13 条 HTTP 端点。Python 包为 `scholar_graph`。没有外部检索、推荐、框架、图表或写作接口。
+本后端实现本地 PDF 解析、状态机、去重与版本差异，模块二问答/对比、模块四检索/公开抓取/推荐，以及模块五局域引用图谱，共16条 HTTP 端点。Python 包为 `scholar_graph`。框架、图表和综述写作接口仍未落地。
 
 ## Windows 本地安装
 
@@ -15,7 +15,7 @@ backend/.venv/Scripts/python.exe -m pip install -e 'backend[ocr,test]'
 
 ## 启动 HTTP API
 
-本地开发 CORS 核实（模块二开工）：原后端缺少 CORSMiddleware，已在 scholar_graph/api.py 的 create_app 中补齐。仅允许 http://localhost:3000 与 http://127.0.0.1:3000；方法 GET/POST（中间件处理 OPTIONS 预检），允许 Content-Type 及 CORS 标准安全请求头，暴露 Location/Link，不启用跨源凭据。依据前端现有 GET JSON、POST multipart 及本轮 POST JSON 的需要配置，不放行任意来源。前端同源代理仍按原格式透传到 /api/v1，不需要 Origin 的服务端请求不受 CORS 限制；本轮不修改前端。
+本地开发 CORS 核实（模块二开工）：原后端缺少 CORSMiddleware，已在 scholar_graph/api.py 的 create_app 中补齐。仅允许 http://localhost:3000 与 http://127.0.0.1:3000；方法 GET/POST（中间件处理 OPTIONS 预检），允许 Content-Type 及 CORS 标准安全请求头，暴露 Location/Link，并在模块四增加 X-ScholarGraph-Search-Mode / Vector-Status / Search-Reason / Recommendation-Reason 四个响应头（均为完整 X-ScholarGraph- 前缀），不启用跨源凭据。前端同源代理仍按原格式透传到 /api/v1，不需要 Origin 的服务端请求不受 CORS 限制；本轮不修改前端。
 
 ```powershell
 backend/.venv/Scripts/python.exe -m uvicorn scholar_graph.api:create_app --factory --host 127.0.0.1 --port 8000 --no-access-log
@@ -52,7 +52,7 @@ backend/.venv/Scripts/python.exe tests/run_module_two_smoke.py --output-root dat
 
 GET `/api/v1/graph?paper_ids=paper-a&paper_ids=paper-b` 用 1–100 个不同已入库 id 生成视图；先按真实 CitationLink/ReferenceEntry/Chunk 关联，再运行显式 PageRank，返回 nodes、edges、layers、future_work 和 diagnostics。GraphNode/GraphEdge 使用 v1.2，原九份记录和示例不变。没有锚点的边为 unverified，不参与排名或未来方向排除；身份无法唯一匹配不猜边。接口形状与全部规则见 API 草案。
 
-PageRank 阻尼 0.85、悬挂质量均匀回流、L1 容差1e-12；基石是有入边且高于所选图 1/N 均匀基线的节点，孤立节点保留。分层不是论文质量评价。未来方向仅按明确标记行摘录；主题完全一致、严格更晚、解决声明所在 Chunk 有真实引用时才排除，并保留两侧 QAAnswer 证据与核验原因。未满足条件只表示所选语料尚未证明已解决；不推断全球科研状态。没有向量检索或真实模型调用，也未对接前端图谱页面。
+PageRank 阻尼 0.85、悬挂质量均匀回流、L1 容差1e-12；基石是有入边且高于所选图 1/N 均匀基线的节点，孤立节点保留。分层不是论文质量评价。未来方向仅按明确标记行摘录；主题完全一致、严格更晚、解决声明所在 Chunk 有真实引用时才排除，并保留两侧 QAAnswer 证据与核验原因。未满足条件只表示所选语料尚未证明已解决；不推断全球科研状态。模块五自身不调用向量检索或真实大模型，也未对接前端图谱页面。
 
 本轮先处理上一单 WinError 5：修复前10轮未能自然复现，未定位历史占用者；受控真实共享锁出现 WinError 32，释放句柄后退避成功。原子发布/清理只对 Windows 5/32/33 有限重试，永久错误仍抛出；保留校验后原子发布，不复制半成品、不改权限。诊断与第0项148项全量通过证据见 [存储报告](../tests/reports/graph-storage-report.md)，本轮最终图谱实跑和完整回归见 [模块五报告](../tests/reports/module-five-report.md)。
 
@@ -61,6 +61,47 @@ backend/.venv/Scripts/python.exe tests/run_module_five_smoke.py --output-root da
 ```
 
 该脚本以自制落盘契约记录构造引用链及孤立节点，不是官方 pdf/ 用例，也不伪称真实论文解析质量评测。运行数据仍位于被忽略的 data/，不需要任何 Key。
+
+## 模块四：检索、公开抓取与推荐
+
+POST /api/v1/retrieval/search 接收 `{question,paper_ids?,page?,page_size?,min_relevance?}`，返回固定六字段分页壳，每项含原样 Chunk、真实四字段 anchor、relevance 和 retrieval_method。默认词法 IDF 加权余弦；模式/向量状态/空结果原因在 X-ScholarGraph-* 响应头。页大小超过100按100计，越界页保持 total 且空 items。模块二 QA 仍是原词法取证，本次没有替换 QA 的检索器或联调真实生成模型。
+
+**向量已实装并本地跑通。** Chroma 1.5.9、FlagEmbedding 1.4.2、torch 2.14.1+cpu、transformers 5.20.2；模型 BAAI/bge-m3 快照5617a9f61b028005a4858fdac845db406aefb181。实际验证4个自制 Chunk 的1024维 dense和模型 sparse权重，持久索引后子集检索复用已有向量。稠密余弦与稀疏权重点积各排序，再按等权RRF（k=60）融合，具体公式见 API 草案。CPU float32、batch1、2线程、512token截断；每次请求独立worker加载模型，实测约15–17秒，不作吞吐量或真实语料精度承诺。索引增量按原文/元数据/模型快照指纹更新，输出仅来自本次指定的真实 Chunk 集合。
+
+安装到 D盘被忽略的隔离环境，不影响解析/OCR依赖；约2.2GB模型下载不需要Key。先安装backend，再执行：
+
+```powershell
+backend/.venv/Scripts/python.exe -m venv data/module-four-runtime/.venv
+data/module-four-runtime/.venv/Scripts/python.exe -m pip install --index-url https://download.pytorch.org/whl/cpu torch==2.14.1+cpu
+data/module-four-runtime/.venv/Scripts/python.exe -m pip install -r backend/requirements-retrieval.txt
+data/module-four-runtime/.venv/Scripts/python.exe backend/download_bge_m3.py
+$env:SCHOLAR_GRAPH_RETRIEVAL_MODE='bge_m3_hybrid'
+$env:SCHOLAR_GRAPH_VECTOR_PYTHON='D:\AI_Workspace\Tasks\scholar-graph\data\module-four-runtime\.venv\Scripts\python.exe'
+$env:SCHOLAR_GRAPH_BGE_M3_PATH='D:\AI_Workspace\Tasks\scholar-graph\data\module-four-models\bge-m3'
+backend/.venv/Scripts/python.exe -m uvicorn scholar_graph.api:create_app --factory --host 127.0.0.1 --port 8000 --no-access-log
+```
+
+运行期模型完全离线，不隐式下载或使用远程Embedding接口；worker不继承API_KEY/TOKEN/SECRET/PASSWORD类环境变量。未启用为lexical/NOT_ENABLED；模型缺失、依赖错误、worker失败或240秒超时为lexical/UNAVAILABLE，不伪报向量成功。Chroma持久数据位于当前 SCHOLAR_GRAPH_DATA_DIR/chroma-bge-m3；启动使用单worker，单实例向量操作串行，上传和抓取复用同一写锁。本实现面向本机开发，不声称分布式索引或异步队列。
+
+POST /api/v1/retrieval/fetch 接收 `{title}` 或 `{reference:完整ReferenceEntry}`。通过公开 arXiv API 唯一匹配标题/标识/裸DOI，先保存真实元数据，再下载PDF并复用模块一Pipeline、ParseJob和所有校验/发布/去重逻辑。固定HTTP200操作封装 `{succeeded,metadata,paper,initial_parse_status,parse_status,error}`；失败保留真实原因，下载前未拿到PDF不伪建queued。metadata的arxiv-id与paper的PDF哈希id明确分开，catalog里的未解析元数据不混入/papers。请求非法仍为422三字段统一错误。无真实Key、无另起解析管线，GROBID仍待验证。
+
+真实公开探针已获取1706.03762v7《Attention Is All You Need》，复用MinerU解析15页，得到1 PaperMeta /175 Chunk /40 ReferenceEntry /69 CitationLink。它是一次公开论文连通性验证，不能替代真实论文解析质量评测或官方比赛用例。自制Atom+PDF测试另得到1/6/1/1。
+
+GET /api/v1/recommendations?paper_id=种子id&as_of_year=2026 使用本地已解析集合，返回分页PaperMeta+理由，不新定义业务记录。评分原文：
+
+```text
+score = 100 * (0.40*G + 0.35*P + 0.15*T + 0.10*C); missing terms contribute 0, without reweighting
+```
+
+G=与种子任一方向有模块五verified边；P=模块五PR/本地图最大PR；T=max(0,1-(as_of_year-year)/10)；C=真实PaperMeta.abstract/source带精确GitHub仓库链接。缺年份、未来年份或未发现链接标missing_signals并贡献0，不重分权重。无GitHub信号不写有代码；有链接只说明元数据含仓库链接，未核许可证，不断言开源。PR不是全网引文数，公式没有虚构引用数；理由给原边/锚点、节点与PR来源、年份或原始链接。默认as_of_year为当前UTC年并回显。完整权重/来源和传输字段见 [API草案](../docs/api-draft-v1.md)。
+
+复现本轮HTTP验收（选择尚不存在的output-root）：
+
+```powershell
+backend/.venv/Scripts/python.exe tests/run_module_four_smoke.py --output-root data/module-four-reproduce --report data/module-four-reproduce.json --vector-python data/module-four-runtime/.venv/Scripts/python.exe --model-path data/module-four-models/bge-m3 --live-arxiv
+```
+
+默认测试无网络、无Docker、无真实Key。该脚本显式参数才运行本地真实BGE/Chroma与公开arXiv探针，结果保留 native_evidence 和失败原因；实际交付证据见 [模块四报告](../tests/reports/module-four-report.md)。输入是自制样例、非官方 pdf/ 用例；未运行官方三用例，未验收前端接入。
 
 ## 第一步：解析一个 PDF
 

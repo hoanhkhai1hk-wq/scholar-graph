@@ -1,6 +1,6 @@
 # API 契约草案 v1
 
-日期：2026-10-24。端点前缀 `/api/v1`。数据结构的唯一依据为 [CONTRACTS.md](../contracts/CONTRACTS.md)：原五类 1.0.0、原四类 1.1.0 保持不变，本轮仅新增图谱两类 1.2.0。本文件记录 HTTP 传输封装与真实实现范围，不修改原九份业务 Schema。
+日期：2026-10-24。端点前缀 `/api/v1`。数据结构的唯一依据为 [CONTRACTS.md](../contracts/CONTRACTS.md)：五类 1.0.0、四类 1.1.0、两类图谱 1.2.0。模块四保持十一份 Schema 和 example 全部不变，仅定义本单授权的检索/抓取/推荐传输封装。
 
 ## 五份契约引用
 
@@ -16,7 +16,7 @@
 
 ## 端点清单
 
-核对结果：初版实际为 **17** 条业务端点，并非早期任务文字所称 16 条。模块一增加去重、差异两个 GET 后共 19 条；模块五完成后落地 13 条、未落地 6 条。OpenAPI/Swagger 基础设施不计入业务端点。以下“后续单号待总指挥分配”表示尚无正式单号，不代替威龙排单。
+核对结果：初版实际为 **17** 条业务端点，并非早期任务文字所称 16 条。模块一增加去重、差异两个 GET 后共 19 条；模块四完成后落地 16 条、未落地 3 条。OpenAPI/Swagger 基础设施不计入业务端点。以下“后续单号待总指挥分配”表示尚无正式单号，不代替威龙排单。
 
 | 方法 | 端点（均加 /api/v1） | 请求 | 响应契约与 HTTP | 实施状态、原因及后续归属 |
 | --- | --- | --- | --- | --- |
@@ -32,9 +32,9 @@
 | POST | /compare | JSON {paper_ids, question}，详见模块二定义 | 200 {evidence_table, per_paper, synthesis}，per_paper 每项是 QAAnswer | 模块二已落地；先证据表再综合，新增传输封装经本单授权 |
 | GET | /graph | 重复查询参数 paper_ids，1–100 个不同 PaperMeta.id | 200 图谱视图：GraphNode[]、GraphEdge[]、分层、未来方向与诊断，详见模块五 | 模块五已落地，v1.2 图谱部分已定义；只读本地已落盘记录 |
 | POST | /reviews | PaperMeta.id 列表、写作要求 | 带证据文字可引用 QAAnswer；综述结构不在本轮 v1.2 图谱部分 | 未落地：综述/写作留待后续单，单号待总指挥分配 |
-| POST | /retrieval/search | 查询词 | 分页 PaperMeta；无 PDF 时可空文件信息 | 未落地：检索推荐，不在模块一；后续单号待总指挥分配 |
-| POST | /retrieval/fetch | PaperMeta[] | 列表结果使用统一分页；抓取任务与失败结构仍待裁定 | 未落地：检索抓取，不在模块一；后续单号待总指挥分配 |
-| GET | /recommendations | PaperMeta.id 列表、查询词 | 分页 PaperMeta；分数与理由未定义 | 未落地：检索推荐，不在模块一；后续单号待总指挥分配 |
+| POST | /retrieval/search | JSON {question, paper_ids?, page?, page_size?, min_relevance?} | 200 分页 {chunk:Chunk, anchor, relevance, retrieval_method}；模式/空结果原因见响应头 | 模块四已落地：Chroma+BGE-M3 稠密/稀疏混合已实装；未启用或不可用时明确词法兜底 |
+| POST | /retrieval/fetch | JSON {title} 或 {reference:ReferenceEntry}，二选一 | 200 单次抓取结果，含真实 PaperMeta、初始/最新 ParseStatus 与统一 error，详见模块四 | 模块四已落地：公开 arXiv Atom/PDF，同步复用模块一 Pipeline；不使用 Key |
+| GET | /recommendations | paper_id 种子；as_of_year?；page、page_size | 200 分页 {paper:PaperMeta, score, signals, reasons, missing_signals, scoring_version, as_of_year} | 模块四已落地：复用模块五真实边与 PageRank，公式与来源见下文 |
 | POST | /frameworks | PaperMeta.id 列表、目标文本 | 框架结构不在本轮 v1.2 图谱部分 | 未落地：写作辅助留待后续单，单号待总指挥分配 |
 | POST | /charts/csv | multipart CSV、列名与绘图要求 | ChartOutput；不得塞进 QAAnswer.answer | 未落地：模块六，只有 v1.1 契约已定义；后续单号待总指挥分配 |
 | GET | /papers/{paper_id}/dedup-decision | paper_id **就是 new_paper_id** | 200 DedupDecision；无记录 404 PAPER_NOT_FOUND | 本单已落地；人工裁决优先，保留原系统记录 |
@@ -104,6 +104,47 @@ evidence_table 一行一个 Chunk，当前每行 quotes 恰好一个原文摘录
 
 模型实际方式：默认 extractive 为本地确定性摘录，无模型名、无外部调用。显式配置环境变量 SCHOLAR_GRAPH_QA_MODE=deepseek、DEEPSEEK_MODEL、DEEPSEEK_API_KEY 时，httpx 调 DeepSeek /chat/completions，仅选已校验候选下标，不采信自由生成事实；坏下标/输出未过门禁不返回答案。真实模型调用尚未验证，Mock 只证明协议及门禁。Key 仅来自本地环境变量，不进入请求参数、业务记录、测试证据或日志；不得提交 .env。
 
+### 模块四检索、公开抓取与推荐：已定义并落地
+
+本单对草案原来未裁定的三项传输形状作如下明确裁定，不新增业务记录、不改十一份契约。`/retrieval/search` 返回真实 Chunk 证据，替代旧草案的 PaperMeta 搜索占位；`/retrieval/fetch` 是一次抓取操作，不是论文列表；推荐是 PaperMeta 加可复核理由的分页传输封装。模块二问答当前仍保留其原词法取证方式，本单没有改变其检索器或调用真实大模型。
+
+**搜索请求与空结果。** question 为去首尾空白后 1–2000 字符；paper_ids 可省略（全部已解析落盘论文），指定时为 1–100 个不同 id；缺失论文整包 404 PAPER_NOT_FOUND。page 默认1、page_size 默认20且上限100，放在 JSON 中；min_relevance 默认0，范围0–1。成功返回固定六字段分页壳，每项 `{chunk: Chunk, anchor: {paper_id, page_number, section, chunk_id}, relevance, retrieval_method}`，relevance 是排序分值，不是正确性概率。锚点 section 为 Chunk.section_path，四字段必须与落盘 Chunk 一致。返回前再次过 Schema/锚点门禁。
+
+响应头 `X-ScholarGraph-Search-Mode` 为 lexical 或 bge_m3_hybrid；`X-ScholarGraph-Vector-Status` 为 NOT_ENABLED、READY 或 UNAVAILABLE；`X-ScholarGraph-Search-Reason` 为 OK、EMPTY_CORPUS、NO_MATCHING_CHUNKS 或 PAGE_OUT_OF_RANGE。空结果返回空 items 与实际 total，不编造证据；后者为分页越界的空页。上述头允许两个本地开发 Origin 的浏览器读取，不改变同源代理。
+
+**实际检索方式。** Chroma 1.5.9 + FlagEmbedding 1.4.2 + torch 2.14.1+cpu + transformers 5.20.2，BAAI/bge-m3 固定快照 `5617a9f61b028005a4858fdac845db406aefb181`。本地 CPU 实际编码/索引已实装并验证，不使用远程 Embedding API。Chroma 保存 1024 维 dense、文本、来源 id、指纹和模型 lexical_weights；稀疏分数为 BGE-M3 真实 token 权重的点积，不把词法或 BM25 冒充模型稀疏编码。稠密分数为余弦相似度，分别降序取名次后融合：
+
+```text
+relevance = 0.5 * 61/(60 + dense_rank) + 0.5 * 61/(60 + sparse_rank)
+```
+
+名次从1开始，稀疏点积≤0时该项贡献0；同分按 chunk_id 升序。仅查询本次实际论文集合的 id，过期索引行不能返回。实测4个自制 Chunk、1024维；第二次子集检索复用既存向量。编码 batch=1、float32、CPU2线程、最多512 tokens，长块尾部会截断；此限制明确存在，不声称覆盖8192 tokens或完成真实语料质量评测。每请求独立 worker、240秒上限，索引按指纹增量更新。默认 lexical，显式设置 SCHOLAR_GRAPH_RETRIEVAL_MODE=bge_m3_hybrid 及本地 Python/模型路径启用；依赖、模型、超时或 worker 失败明确标 UNAVAILABLE 并词法回退。词法使用本地 token 集合的 IDF 加权余弦，不调用向量库。语义检索即使词面无交集也可能返回真实 Chunk，需 min_relevance 过滤；分值不能替代回答所需的事实核验。
+
+**arXiv 抓取。** POST JSON `{title}` 或 `{reference: ReferenceEntry}` 严格二选一；reference 必须是完整冻结记录。优先按参考文献 arxiv_id 精确查公开 Atom API；其次裸 DOI；否则标题归一后完全匹配，只接受唯一结果，拒绝用相似标题冒充。只允许 HTTPS arxiv.org/export.arxiv.org，跨域重定向拒绝；连续请求至少间隔3秒，不使用 Key。Atom 上限1MiB，PDF 上限50MiB；年份用 published，未提供的信息保持 null/空列表。
+
+一次操作固定 HTTP200 `{succeeded, metadata, paper, initial_parse_status, parse_status, error}`。metadata 是公开接口真实 PaperMeta，id 为 arxiv-基号及版本，文件信息尚未取得时为 null，先原子保存到本地 catalog/；paper 为成功通过模块一 Pipeline 的 PaperMeta，id 为实际 PDF SHA-256 派生 id，不把两个身份混淆。已解析论文通过既有 /papers 与子资源端点读取；catalog 元数据不冒充已解析论文列表。抓取和解析同步等待，初始状态确为既有 ParseJob 的 queued/0，随后使用同一 MinerU/PaddleOCR、状态机、门禁、原子发布和去重路径，成功保留真实文件身份与页数。相同字节已有不可变记录且元数据冲突时会明确失败，不覆盖旧记录。
+
+无匹配、公开接口失败、PDF 下载失败或解析失败时 succeeded=false，error 为 `{error_code,message,details}`（编码沿用 v1.1），paper=null；metadata 仅在真实获取后保留。未拿到 PDF 字节时 initial_parse_status/parse_status 为 null，不虚构排队；解析已启动失败则返回实际 queued 与 failed 快照。error 内不塞业务记录，metadata/paper 在外层。请求本身非法使用HTTP422三字段统一错误。GROBID 仍待验证，本单不声称已联调。
+
+**推荐输入与评分。** GET paper_id 为种子且必须已落盘；as_of_year 可设1–9999，默认当前UTC年份，并逐项回显用于重现；page/page_size 与统一分页一致。候选仅为本地已解析且非种子的论文，不冒充全网推荐。每项固定含 paper、score、signals、reasons（每项 signal/text/evidence）、missing_signals、scoring_version=module-four-v1、as_of_year；不新增业务 Schema。无候选返回空表，响应头 `X-ScholarGraph-Recommendation-Reason=NO_CANDIDATES`；其他为 OK/PAGE_OUT_OF_RANGE。
+
+含金量评分公式原文：
+
+```text
+score = 100 * (0.40*G + 0.35*P + 0.15*T + 0.10*C); missing terms contribute 0, without reweighting
+```
+
+| 项 | 权重 | 定义与真实数据来源 | 缺失口径 |
+| --- | ---: | --- | --- |
+| G / graph_neighbor | 0.40 | 候选与种子在本地已解析集合中存在任一方向 verified 引用边为1，否则0；复用模块五 CitationLink/ReferenceEntry 匹配，理由保留 GraphEdge 与真实 Chunk 锚点 | 无 verified 邻接为已知本地图无此信号，不推断全球无关系；unverified 边不计分 |
+| P / pagerank_normalized | 0.35 | 复用模块五同一算法/参数，所有本地已解析论文构图（含种子与孤立节点），候选PR/该图最大PR；理由给节点、scope_size、max_pagerank | 已解析节点均参与，孤立节点仍有真实PR；不是全球引文数 |
+| T / recency | 0.15 | max(0,1-(as_of_year-PaperMeta.year)/10)；发表时间取真实 PaperMeta.year | 年份未知或晚于as_of_year为null并记 missing_signals，不给虚构时间分 |
+| C / github_link | 0.10 | PaperMeta.abstract/source 中真实出现的 https://github.com/owner/repo 链接为1；理由附元数据字段与原链接 | 未发现为null并记缺失；仅确认元数据带代码仓链接，未核仓可访问性或开源许可证，不能断言开源 |
+
+缺失项按0贡献，不重新分配权重。按score降序、paper_id升序。所有证据来自当前落盘快照；arXiv不提供引用计数，公式完全没有引用计数。权重是本单显式可复核的启发式排序，未以用户数据训练或完成推荐质量评估。
+
+参考：[BGE-M3 官方模型](https://huggingface.co/BAAI/bge-m3)、[Chroma 官方客户端](https://docs.trychroma.com/reference/python/client)、[arXiv 公共 API](https://info.arxiv.org/help/api/user-manual.html)。
+
 ### 分页封装：已定义
 
 所有列表类端点统一响应 `{items, page, page_size, total, total_pages, has_next}`。items 内保留业务记录原形。page 默认 1，page_size 默认 20；两者必须为正整数，否则 422 VALIDATION_ERROR。page_size 超过 100 按 100 计，响应回显实际值；total 是筛选后的总条数，total_pages = ceil(total / page_size)，has_next = page < total_pages。空集合 total_pages 为 0；越界页返回空 items，保留请求 page。列表按 paper_id 稳定排序，子资源保留落盘顺序。详情、状态、裁决和摘要直接返回记录，不套分页壳。未来未落地列表亦须遵循此封装，未声称其已实现。
@@ -122,7 +163,7 @@ evidence_table 一行一个 Chunk，当前每行 quotes 恰好一个原文摘录
 
 ## 交给总指挥的契约缺口
 
-本栏登记截至 v1.2 图谱部分的契约及已授权传输裁定。原九份 Schema 零修改；两份新增图谱 Schema 及 /graph 已落地；其余实现状态以上表为准。
+本栏登记截至 v1.2 图谱部分的契约及已授权传输裁定。模块四保持全部十一份 Schema 零修改；/retrieval/search、/retrieval/fetch、/recommendations 传输封装已定义并落地；其余实现状态以上表为准。未落地仅 /reviews（综述/写作）、/frameworks（写作框架）、/charts/csv（模块六），后续单号均待总指挥分配。
 
 | 缺口 | 状态 | 契约引用与边界 |
 | --- | --- | --- |
