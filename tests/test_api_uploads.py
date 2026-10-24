@@ -61,3 +61,34 @@ def test_batch_empty_and_bad_fields(tmp_path):
     assert response.json()["failed"][0]["error_code"] == "VALIDATION_ERROR"
     assert_error(client.post("/api/v1/papers"), 422, "VALIDATION_ERROR")
     assert_error(client.post("/api/v1/papers", files={"file": ("bad.txt", b"bad")}), 415, "UNSUPPORTED_FILE_TYPE")
+
+
+def test_size_limit_and_batch_keeps_all_rejected_files(tmp_path, monkeypatch):
+    monkeypatch.setattr("scholar_graph.api_uploads.MAX_BYTES", 3)
+    client = TestClient(create_app(data_dir=tmp_path))
+    assert_error(client.post("/api/v1/papers", files={"file": ("large.pdf", b"1234")}), 413, "FILE_TOO_LARGE")
+    response = client.post("/api/v1/papers/batch", files=[
+        ("files", ("one.pdf", b"1234")), ("files", ("two.pdf", b"5678"))])
+    value = response.json()
+    assert response.status_code == 200 and value["failed_count"] == 2
+    assert [item["filename"] for item in value["failed"]] == ["one.pdf", "two.pdf"]
+    assert all(item["error_code"] == "FILE_TOO_LARGE" for item in value["failed"])
+    assert not list((tmp_path / ".uploads").iterdir())
+
+
+@pytest.mark.ocr
+def test_http_real_paddleocr_fallback(tmp_path):
+    source = make_pdf(tmp_path / "selfmade-scan.pdf", scan=True)
+    app = create_app(data_dir=tmp_path / "records")
+    client = TestClient(app)
+    response = client.post("/api/v1/papers", files={"file": (source.name, source.read_bytes(), "application/pdf")})
+    assert response.status_code == 201, response.text
+    meta = response.json()
+    assert meta["has_text_layer"] is False
+    pid = meta["id"]
+    assert client.get(f"/api/v1/papers/{pid}/chunks").json()["total"] >= 1
+    paths = list((tmp_path / "records" / "jobs").glob("*/parse-status.json"))
+    import json
+    history = json.loads(paths[0].read_text(encoding="utf-8"))
+    assert "ocr" in [item["status"] for item in history]
+    assert history[-1]["status"] == "completed"

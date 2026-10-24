@@ -68,3 +68,25 @@ def test_unexpected_exception_is_redacted(api, monkeypatch):
     response = api[0].get("/api/v1/papers")
     assert_error(response, 500, "INTERNAL_ERROR")
     assert "private" not in response.text
+
+
+def test_http_pagination_across_101_contract_examples(tmp_path):
+    app = create_app(data_dir=tmp_path)
+    original = example_bundle()
+    for index in range(101):
+        bundle = copy.deepcopy(original)
+        pid = f"paper-pagination-{index:03}"
+        bundle["paper_meta"].update(id=pid, title=f"Synthetic {index}", year=2026)
+        for key in ("chunks", "reference_entries", "citation_links"):
+            for item in bundle[key]:
+                item["paper_id"] = pid
+        app.state.repository.store.paper(bundle)
+    client = TestClient(app)
+    first = client.get("/api/v1/papers?page_size=999").json()
+    assert len(first["items"]) == 100 and first["page_size"] == 100
+    assert first["total"] == 101 and first["total_pages"] == 2 and first["has_next"] is True
+    second = client.get("/api/v1/papers?page=2&page_size=999").json()
+    assert len(second["items"]) == 1 and second["has_next"] is False
+    assert second["items"][0]["id"] not in {item["id"] for item in first["items"]}
+    filtered = client.get("/api/v1/papers?title=Synthetic%20100").json()
+    assert filtered["total"] == filtered["total_pages"] == 1
