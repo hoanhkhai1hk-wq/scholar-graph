@@ -31,11 +31,11 @@
 | POST | /papers/{paper_id}/qa | 路径 paper_id；JSON {question}，详见模块二定义 | 200 QAAnswer；无论文 404，坏请求 422 | 模块二已落地；默认词法兜底与原文摘录，真实模型未联调 |
 | POST | /compare | JSON {paper_ids, question}，详见模块二定义 | 200 {evidence_table, per_paper, synthesis}，per_paper 每项是 QAAnswer | 模块二已落地；先证据表再综合，新增传输封装经本单授权 |
 | GET | /graph | 重复查询参数 paper_ids，1–100 个不同 PaperMeta.id | 200 图谱视图：GraphNode[]、GraphEdge[]、分层、未来方向与诊断，详见模块五 | 模块五已落地，v1.2 图谱部分已定义；只读本地已落盘记录 |
-| POST | /reviews | PaperMeta.id 列表、写作要求 | 带证据文字可引用 QAAnswer；综述结构留待 v1.2 | 未落地：综述/写作，依赖 v1.2；后续单号待总指挥分配 |
+| POST | /reviews | PaperMeta.id 列表、写作要求 | 带证据文字可引用 QAAnswer；综述结构不在本轮 v1.2 图谱部分 | 未落地：综述/写作留待后续单，单号待总指挥分配 |
 | POST | /retrieval/search | 查询词 | 分页 PaperMeta；无 PDF 时可空文件信息 | 未落地：检索推荐，不在模块一；后续单号待总指挥分配 |
 | POST | /retrieval/fetch | PaperMeta[] | 列表结果使用统一分页；抓取任务与失败结构仍待裁定 | 未落地：检索抓取，不在模块一；后续单号待总指挥分配 |
 | GET | /recommendations | PaperMeta.id 列表、查询词 | 分页 PaperMeta；分数与理由未定义 | 未落地：检索推荐，不在模块一；后续单号待总指挥分配 |
-| POST | /frameworks | PaperMeta.id 列表、目标文本 | 框架结构留待 v1.2 | 未落地：写作辅助，依赖 v1.2；后续单号待总指挥分配 |
+| POST | /frameworks | PaperMeta.id 列表、目标文本 | 框架结构不在本轮 v1.2 图谱部分 | 未落地：写作辅助留待后续单，单号待总指挥分配 |
 | POST | /charts/csv | multipart CSV、列名与绘图要求 | ChartOutput；不得塞进 QAAnswer.answer | 未落地：模块六，只有 v1.1 契约已定义；后续单号待总指挥分配 |
 | GET | /papers/{paper_id}/dedup-decision | paper_id **就是 new_paper_id** | 200 DedupDecision；无记录 404 PAPER_NOT_FOUND | 本单已落地；人工裁决优先，保留原系统记录 |
 | GET | /papers/{paper_id}/diff-summary | paper_id **就是 new_paper_id** | 200 DiffSummary；无记录 404 PAPER_NOT_FOUND | 本单已落地；与选中裁决取自同一比较记录组 |
@@ -133,7 +133,7 @@ evidence_table 一行一个 Chunk，当前每行 quotes 恰好一个原文摘录
 | 分页封装 | 已定义 | 本轮授权固定六字段传输壳，见“已定义的传输裁定”；不增加业务字段 |
 | 批量上传部分失败 | 已定义 | 本轮授权固定四字段传输壳，逐文件记录成功或失败；同步处理，见上文 |
 | 图谱结构 | v1.2 已定义，/graph 已落地 | GraphNode、GraphEdge；节点/边均对应落盘记录，未知锚点显式 unverified；形状见模块五，不返回图形库专用对象 |
-| 综述框架结构 | 不在 v1.1，留待 v1.2 | 本单不定义结构化综述章节、独立框架或导出结构；QAAnswer 的带证据文字不替代这些结构 |
+| 综述框架结构 | 不在本轮 v1.2 图谱部分，留待后续单 | 本单不定义结构化综述章节、独立框架或导出结构；QAAnswer 的带证据文字不替代这些结构 |
 
 异步任务队列与标识、推荐分数与理由、抓取任务专用失败结构仍未定义；后续范围由总指挥另行拆单。分页和 PDF 批量部分失败已由本轮明确授权定义，不据此扩展到未裁定业务字段。
 
