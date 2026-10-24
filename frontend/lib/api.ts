@@ -209,6 +209,34 @@ export interface PagedQuery {
   pageSize?: number;
 }
 
+/**
+ * 翻完一个分页端点的所有页。用于阅读器这类需要完整材料的页面。
+ * 达到 maxPages 时停止并标记 truncated，页面须如实说明材料不完整。
+ */
+export async function fetchAllPages<T>(
+  fetchPage: (page: number) => Promise<Paged<T>>,
+  options: { maxPages?: number } = {},
+): Promise<{ items: T[]; total: number; truncated: boolean }> {
+  const maxPages = options.maxPages ?? 20;
+  let current = await fetchPage(1);
+  const items = [...current.items];
+  const total = current.total;
+  let page = 1;
+  let truncated = false;
+
+  while (current.has_next) {
+    if (page >= maxPages) {
+      truncated = true;
+      break;
+    }
+    page += 1;
+    current = await fetchPage(page);
+    items.push(...current.items);
+  }
+
+  return { items, total, truncated };
+}
+
 export async function fetchPapers(
   query: PagedQuery & { title?: string; year?: string; source?: string } = {},
 ): Promise<Paged<PaperMeta>> {
