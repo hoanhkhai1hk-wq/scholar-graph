@@ -1,0 +1,229 @@
+{
+  "scope": "公开等价物、非官方 pdf/ 文件；未运行或宣称官方三用例通过。",
+  "case": "public-v1-full-raster-ocr",
+  "baseline": "7ac617a4ff818cc3840069098fc3477ca614b0e8",
+  "source_commit": "3b49fe56649d6ef9d845f7e720f05271d3855be8",
+  "run_utc": "2026-10-24T17:54:43.989144+00:00",
+  "versions": {
+    "mineru": "4.0.12",
+    "pypdf": "6.21.2",
+    "psutil": "7.2.2",
+    "fastapi": "0.162.0"
+  },
+  "real_llm_calls": 0,
+  "real_api_keys_used": false,
+  "engine_timeout_seconds": 900.0,
+  "default_api_configuration": false,
+  "source": {
+    "file": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\public-equivalents\\dedup-release\\inputs\\attention-v1.pdf",
+    "bytes": 2128686,
+    "sha256": "0a9bff1be3575cf9fe26a4a3d3a9175bc791ecec90de8b9deba4cff75d2b9476",
+    "physical_pages": 15,
+    "pdf_title": null,
+    "url": "https://arxiv.org/pdf/1706.03762v1"
+  },
+  "rasterization": {
+    "method": "pypdfium2逐页RGB光栅化；ReportLab逐页drawImage，仅图片，无文本层；没有抽页或删页。",
+    "dpi": 150,
+    "pages": [
+      {
+        "physical_page": 1,
+        "pixel_width": 1275,
+        "pixel_height": 1651
+      },
+      {
+        "physical_page": 2,
+        "pixel_width": 1275,
+        "pixel_height": 1651
+      },
+      {
+        "physical_page": 3,
+        "pixel_width": 1275,
+        "pixel_height": 1651
+      },
+      {
+        "physical_page": 4,
+        "pixel_width": 1275,
+        "pixel_height": 1651
+      },
+      {
+        "physical_page": 5,
+        "pixel_width": 1275,
+        "pixel_height": 1651
+      },
+      {
+        "physical_page": 6,
+        "pixel_width": 1275,
+        "pixel_height": 1651
+      },
+      {
+        "physical_page": 7,
+        "pixel_width": 1275,
+        "pixel_height": 1651
+      },
+      {
+        "physical_page": 8,
+        "pixel_width": 1275,
+        "pixel_height": 1651
+      },
+      {
+        "physical_page": 9,
+        "pixel_width": 1275,
+        "pixel_height": 1651
+      },
+      {
+        "physical_page": 10,
+        "pixel_width": 1275,
+        "pixel_height": 1651
+      },
+      {
+        "physical_page": 11,
+        "pixel_width": 1275,
+        "pixel_height": 1651
+      },
+      {
+        "physical_page": 12,
+        "pixel_width": 1275,
+        "pixel_height": 1651
+      },
+      {
+        "physical_page": 13,
+        "pixel_width": 1275,
+        "pixel_height": 1651
+      },
+      {
+        "physical_page": 14,
+        "pixel_width": 1275,
+        "pixel_height": 1651
+      },
+      {
+        "physical_page": 15,
+        "pixel_width": 1275,
+        "pixel_height": 1651
+      }
+    ],
+    "text_layer_chars_by_page": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "elapsed_seconds": 1.263448,
+    "tools": {
+      "pypdfium2": "5.14.0",
+      "reportlab": "5.1.0",
+      "pypdf": "6.21.2"
+    }
+  },
+  "scan": {
+    "file": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\public-equivalents\\ocr-extended-release\\rasterized-attention-v1.pdf",
+    "bytes": 5210401,
+    "sha256": "51bc393630fc62cd866604ae5297bf901a268469c00975df972947c2feb39264",
+    "physical_pages": 15,
+    "pdf_title": "Rasterized public arXiv v1 - not an official competition scan"
+  },
+  "model_cache": {
+    "preseeded_from": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\module-one\\models\\paddlex",
+    "files": 28,
+    "note": "复用本机既有模型缓存；没有修改模型、解析器或OCR阈值；实际引擎时限见engine_timeout_seconds。"
+  },
+  "ocr_versions": {
+    "paddleocr": "3.7.0",
+    "paddlepaddle": "3.3.1"
+  },
+  "upload": {
+    "request": {
+      "method": "POST",
+      "path": "/api/v1/papers",
+      "file_sha256": "51bc393630fc62cd866604ae5297bf901a268469c00975df972947c2feb39264"
+    },
+    "http_status": 422,
+    "response": {
+      "error_code": "OCR_FAILED",
+      "message": "本地 OCR 未完成，请检查依赖、模型与运行时限。",
+      "details": null
+    },
+    "measurement": {
+      "sample_interval_seconds": 0.05,
+      "rss_peak_bytes": 1302269952,
+      "private_peak_bytes": 1996214272,
+      "sample_count": 13549,
+      "includes_descendant_processes": true,
+      "rss_start_bytes": 84336640,
+      "elapsed_seconds": 904.776897,
+      "scope": "整个测试进程及全部子进程的采样合计，不是精确瞬时峰值；不含下载阶段。"
+    }
+  },
+  "parsed": {
+    "published_chunks": 0,
+    "indexing_seconds": null,
+    "reason": "Upload did not publish a paper."
+  },
+  "all_status_histories": [
+    [
+      {
+        "schema_version": "1.1.0",
+        "paper_id": "paper-51bc393630fc62cd866604ae5297bf901a268469c00975df972947c2feb39264",
+        "status": "queued",
+        "progress": 0,
+        "current_stage": "等待解析",
+        "error_code": null,
+        "error_message": null
+      },
+      {
+        "schema_version": "1.1.0",
+        "paper_id": "paper-51bc393630fc62cd866604ae5297bf901a268469c00975df972947c2feb39264",
+        "status": "parsing",
+        "progress": 5,
+        "current_stage": "检查 PDF 与文本层",
+        "error_code": null,
+        "error_message": null
+      },
+      {
+        "schema_version": "1.1.0",
+        "paper_id": "paper-51bc393630fc62cd866604ae5297bf901a268469c00975df972947c2feb39264",
+        "status": "parsing",
+        "progress": 30,
+        "current_stage": "MinerU 本地文本解析完成",
+        "error_code": null,
+        "error_message": null
+      },
+      {
+        "schema_version": "1.1.0",
+        "paper_id": "paper-51bc393630fc62cd866604ae5297bf901a268469c00975df972947c2feb39264",
+        "status": "ocr",
+        "progress": 40,
+        "current_stage": "扫描页 OCR",
+        "error_code": null,
+        "error_message": null
+      },
+      {
+        "schema_version": "1.1.0",
+        "paper_id": "paper-51bc393630fc62cd866604ae5297bf901a268469c00975df972947c2feb39264",
+        "status": "failed",
+        "progress": 40,
+        "current_stage": "解析未完成",
+        "error_code": "OCR_FAILED",
+        "error_message": "本地 OCR 未完成，请检查依赖、模型与运行时限。"
+      }
+    ]
+  ],
+  "ocr_branch_entered": true,
+  "ocr_text": {
+    "chunk_count": 0,
+    "total_chars": 0,
+    "note": "未发布；不能将中间可能识别文本冒充有效产出。"
+  },
+  "conclusion": "失败：原始错误和状态见upload/all_status_histories，未发布有效Chunk。"
+}
