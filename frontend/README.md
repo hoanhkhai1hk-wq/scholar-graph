@@ -9,8 +9,10 @@
 - 只写 `frontend/` 下的文件。不碰 `backend/`、`contracts/`、`services/`、`docker-compose.yml`、`Dockerfile`、`tests/`、`experiments/`；例外只改本文件 `frontend/README.md`。
 - 页面**不再引用任何假数据**。原 `frontend/mock/` 已从工作区移除（仍保留在 Git 历史中），页面禁止 import 它。
 - **禁止静默回落**：接口不通时显示明确的错误态（接口地址、状态码、错误码、原因），不悄悄切回任何替代数据冒充真数据。
-- 后端未落地的 9 条端点，页面保留占位并明标「后端接口未落地，暂不可用」，不伪造数据、不写成已接通。
-- Key 只进本地 `.env`，不进 Git、不进代码、不进日志（本单无需任何 Key）。
+- 后端 **19/19 条端点已全部落地**，页面不再出现「后端接口未落地」的占位文案。
+  但落地不等于能力已完成：翻译端点、PDF 原文件端点、真实大模型写作**均不存在**，
+  对应区域一律明标「待后端…」，不伪造功能。
+- Key 只进本地 `.env`，不进 Git、不进前端代码、不进日志（本单无需任何 Key）。
 - 样式沿用已确认配色 token（深松绿 + 暖纸 + 赭石），不擅自换色：不用默认企业蓝、不用廉价渐变、不堆圆角阴影卡片、不用 emoji 当图标。
 
 ## 0.1 取数基地址与后端启动
@@ -30,38 +32,41 @@ NEXT_PUBLIC_API_BASE_URL=http://127.0.0.1:8000
 backend/.venv/Scripts/python.exe -m uvicorn scholar_graph.api:create_app --factory --host 127.0.0.1 --port 8000 --no-access-log
 ```
 
-后端未开启 CORS，浏览器无法直连不同源地址。因此浏览器侧的轮询与上传走同源转发
-`frontend/app/api/backend/[...path]/route.ts`，原样透传到 `/api/v1/*`，只补两个诊断响应头
-`x-sg-upstream-url` 与 `x-sg-upstream-status`，不加工业务数据。服务端组件直连后端，不经代理。
+后端已为 `http://localhost:3000` 与 `http://127.0.0.1:3000` 开放 CORS 并暴露
+`X-ScholarGraph-*` 响应头。前端仍统一走同源转发
+`frontend/app/api/backend/[...path]/route.ts`，原样透传到 `/api/v1/*`，不加工业务数据；
+补充 `x-sg-upstream-url`、`x-sg-upstream-status` 两个诊断头，并原样带回上游的
+`X-ScholarGraph-Search-Mode / Vector-Status / Search-Reason / Recommendation-Reason`。
+服务端组件直连后端，不经代理。这样开发端口变化时取数路径不受影响。
 
-## 0.2 已接通端点（10 条）
+## 0.2 页面与端点对照（19 条全部落地）
 
-| 方法 | 端点 | 页面位置 |
+| 页面 | 路径 | 对应端点 |
 | --- | --- | --- |
-| POST | /papers | 上传页单篇 |
-| POST | /papers/batch | 上传页批量 |
-| GET | /papers | 列表页（分页壳） |
-| GET | /papers/{paper_id} | 详情页 |
-| GET | /papers/{paper_id}/parse-status | 详情页，非终态轮询 |
-| GET | /papers/{paper_id}/chunks | 详情页分块 |
-| GET | /papers/{paper_id}/references | 详情页文末条目 |
-| GET | /papers/{paper_id}/citation-links | 详情页正文↔文末对应 |
-| GET | /papers/{paper_id}/dedup-decision | 详情页去重裁决（404 显示暂无） |
-| GET | /papers/{paper_id}/diff-summary | 详情页版本差异（404 显示暂无） |
+| 论文库 | `/` | GET /papers（分页壳） |
+| 论文详情 | `/papers/{id}` | GET /papers/{id}、/parse-status、/chunks、/references、/citation-links、/dedup-decision、/diff-summary |
+| 阅读器 | `/read/{id}` | 同上三个子资源取全量，做章节导航与引用双向跳转 |
+| 上传 | `/upload` | POST /papers、POST /papers/batch |
+| 问答与对比 | `/qa` | POST /papers/{id}/qa、POST /compare |
+| 图谱 | `/graph` | GET /graph |
+| 检索与推荐 | `/retrieval` | POST /retrieval/search、POST /retrieval/fetch、GET /recommendations |
+| 综述与图表 | `/writing` | POST /frameworks、POST /reviews、POST /charts/csv |
 
-列表使用统一分页壳 `{items, page, page_size, total, total_pages, has_next}`，默认
+列表与子资源使用统一分页壳 `{items, page, page_size, total, total_pages, has_next}`，默认
 `page_size=20`、上限 100；翻页完全按后端 `total_pages` 与 `has_next` 控制，前端不推算总数。
+详情页三个子资源各自独立翻页，页码通过 `chunks_page` / `refs_page` / `links_page` 保留。
 去重与差异的路径参数为**新版 paper_id**，无记录时后端返回 404 / PAPER_NOT_FOUND，
 页面显示「暂无去重 / 差异记录」，不崩、不编造假记录。
 解析状态在 queued / parsing / ocr / indexing 时每 2 秒轮询一次，最多 60 次，
 到达 completed / failed 即停，达到上限也停并在页面上说明停止原因。
 
-## 0.3 未落地端点（9 条，仅占位）
+## 0.3 不存在的能力（明标，不伪造）
 
-问答 `/papers/{id}/qa`、跨篇对比 `/compare`、综述 `/reviews`、框架 `/frameworks`、
-CSV 图表 `/charts/csv`、图谱 `/graph`、检索 `/retrieval/search`、抓取 `/retrieval/fetch`、
-推荐 `/recommendations`。清单维护在 `frontend/lib/endpoints.ts`，页面以
-`UnavailablePanel` 明确标注「后端接口未落地，暂不可用」。
+| 区域 | 页面标注 | 原因 |
+| --- | --- | --- |
+| 版式原文渲染 | 「版式原文渲染待后端文件端点」 | 后端没有 PDF 原文件下载端点，前端不凭空构造；阅读 pane 用 Chunk 正文 |
+| 划词翻译 | 「翻译功能待后端模型接入」 | 后端没有翻译端点，划词只展示原文与所属 Chunk 锚点，不生成译文 |
+| 真实模型写作 | 草稿标注 `mode: extractive` | 后端为本地确定性摘录，不调用大模型；成文由用户完成 |
 
 ## 1. 开源 UI skill / 设计系统调研
 
@@ -213,21 +218,34 @@ frontend/
   app/
     layout.tsx              根布局：顶部状态条显示真实取数后端
     globals.css             已确认配色 token 与基础排版
-    page.tsx                列表页：GET /papers + 分页壳
-    papers/[id]/page.tsx    详情页：详情、解析状态、分块、引用、去重与差异
-    upload/page.tsx         上传页：单篇与批量
-    api/backend/[...path]/route.ts  同源转发（后端未开 CORS）
-    papers/[id]/
+    page.tsx                列表页：GET /papers + 分页壳 + 能力索引
+    papers/[id]/page.tsx    详情页：详情、解析状态、三个子资源（各自翻页）、去重与差异
+    upload/page.tsx         上传页：单篇与批量，带真实等待时长提示
+    read/[id]/page.tsx      阅读器：章节导航、引用双向跳转、划词
+    qa/page.tsx             问答页：/qa 与 /compare
+    graph/page.tsx          图谱页：节点、边、分层、未来方向、诊断
+    retrieval/page.tsx      检索页：检索、公开抓取、推荐
+    writing/page.tsx        写作页：框架、摘录草稿、CSV 图表
+    api/backend/[...path]/route.ts  同源转发（透传 X-ScholarGraph-* 头）
   components/
     ApiStatusBar.tsx        顶部状态条，显示数据后端地址
     ErrorState.tsx          错误态：接口地址、状态码、错误码、原因
-    UnavailablePanel.tsx    未落地端点占位说明
+    CapabilityIndex.tsx     能力索引（链接到各能力页）
+    PaperExtensions.tsx     详情页延伸能力入口
+    PaperPicker.tsx         论文选择器（单/复选，可过滤）
+    AnchorTag.tsx           四字段锚点展示，无锚点明确标注
+    QaAnswerView.tsx        QAAnswer 展示，拒答原样呈现
+    QaWorkspace.tsx         问答与跨篇对比交互
+    GraphWorkspace.tsx      图谱交互与分组展示
+    RetrievalWorkspace.tsx  检索、抓取、推荐交互
+    WritingWorkspace.tsx    框架、草稿、CSV 图表交互
+    ReaderPane.tsx          阅读器三栏 pane
     ParseStatusLive.tsx     解析状态轮询（终态即停、有上限）
     UploadForm.tsx          单篇与批量上传表单
   lib/
-    types.ts                与契约一致的记录类型
-    api.ts                  取数客户端、错误类型、分页与上传
-    endpoints.ts            已接通 10 条与未落地 9 条端点清单
+    types.ts                与契约一致的记录类型（含 v1.2 图谱与框架）
+    api.ts                  取数客户端、错误类型、分页、上传与全量翻页
+    endpoints.ts            19 条已落地端点清单与页面归属
 ```
 
 `frontend/mock/` 已移除：假数据阶段结束，页面不再引用。文件仍保留在 Git 历史中。
@@ -243,15 +261,24 @@ npm run start        # 启动服务，http://localhost:3000
 npm run dev          # 开发模式（本沙箱内曾因 .next 清理被安全策略拦截，见第 5 节）
 ```
 
-自定义端口：`npm run start -- -p 3100`。
+自定义端口：`npm run start -- -p 3100`。切换端口后需同步后端 CORS 允许的 Origin
+（当前仅 `localhost:3000` 与 `127.0.0.1:3000`）。
 
 ## 5. 已知限制（如实记录，不谎报）
 
 - `npm run dev` 在本机沙箱内启动失败过：Next 清理 `.next` 时触发批量删除保护
   （`SAFE_DELETE_BULK_CONFIRM_REQUIRED`）。这是环境问题，不是代码问题；本单验证走
   `npm run build` + `npm run start`。
-- 后端未开 CORS，浏览器侧调用依赖同源转发路由；服务端组件直连后端不经代理。
-- 子资源（分块、参考文献、引用对应）当前只取第一页并回显后端 total；
-  有多页时页面注明「仍有后续页」，未做子资源翻页控件。
-- 上传为同步等待后端解析，扫描件实测约 35 秒，页面在此期间显示「上传中…」。
-- 9 条未落地端点只有占位，没有伪实现。
+- 浏览器侧调用走同源转发路由；服务端组件直连后端不经代理。
+- 上传为同步等待后端解析，没有进度事件。页面只展示**真实可知**的信息：已等待秒数与文件总数，
+  不伪造百分比进度。扫描件实测约 35 秒。
+- 阅读器取子资源全量时单次上限 20 页、每页 100 条；超出会标记「材料可能不完整」。
+- 阅读器只做「正文引用 ↔ 文末条目」的双向跳转与阅读定位，**不做 PDF 版式原文渲染**。
+- 划词翻译、真实模型写作、PDF 原文件端点均不存在，页面按第 0.3 节明标，没有伪实现。
+- 图谱为表格化展示，未引入 Cytoscape.js 等图形库；可视化形态待总指挥确认后再定。
+
+## 6. 冒烟记录
+
+本单九条新接线端点的真实请求结果、页面渲染核对与断后端错误态验证，见
+[../test-records/frontend-module-three-smoke.md](../test-records/frontend-module-three-smoke.md)。
+所有输入为自制样例 PDF，不代表真实论文质量，也不代表官方三用例已运行。
