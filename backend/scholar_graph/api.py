@@ -1,4 +1,4 @@
-"""Module-one HTTP routes. No background queue or other-module placeholders."""
+"""Module-one and module-two HTTP routes; no background job queue."""
 
 import os
 from pathlib import Path
@@ -18,6 +18,7 @@ from .validation import ContractGate
 from .qa_routes import question_routes
 
 PREFIX = "/api/v1"
+LOCAL_ORIGINS = ["http://localhost:3000", "http://127.0.0.1:3000"]
 ERROR_STATUS = {"PAPER_NOT_FOUND": 404, "UNSUPPORTED_FILE_TYPE": 415,
                 "FILE_TOO_LARGE": 413, "VALIDATION_ERROR": 422,
                 "PARSE_FAILED": 422, "OCR_FAILED": 422, "UPSTREAM_ERROR": 502}
@@ -28,10 +29,10 @@ def create_app(*, data_dir=None, pipeline_factory=None):
                 Path(__file__).resolve().parents[2] / "data" / "module-one").resolve()
     gate = ContractGate()
     repository = ApiRepository(root, gate)
-    app = FastAPI(title="ScholarGraph module one", version="1.1.0")
+    app = FastAPI(title="ScholarGraph modules one and two", version="1.1.0")
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],
+        allow_origins=LOCAL_ORIGINS,
         allow_methods=["GET", "POST"],
         allow_headers=["Content-Type"],
         expose_headers=["Location", "Link"],
@@ -62,7 +63,13 @@ def create_app(*, data_dir=None, pipeline_factory=None):
 
     @app.exception_handler(Exception)
     async def unexpected_error(request, error):
-        return error_response("INTERNAL_ERROR", "服务内部错误。", 500)
+        response = error_response("INTERNAL_ERROR", "服务内部错误。", 500)
+        # ServerErrorMiddleware sits outside user middleware. Preserve CORS on its fallback.
+        origin = request.headers.get("origin")
+        if origin in LOCAL_ORIGINS:
+            response.headers["Access-Control-Allow-Origin"] = origin
+            response.headers["Vary"] = "Origin"
+        return response
 
     @app.get(PREFIX + "/papers")
     def papers(page: int = Query(1, ge=1), page_size: int = Query(20, ge=1),

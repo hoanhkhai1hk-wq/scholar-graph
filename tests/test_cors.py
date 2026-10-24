@@ -25,3 +25,16 @@ def test_disallowed_origins_and_proxy_upstream_without_origin(tmp_path):
     assert response.status_code == 400 and "access-control-allow-origin" not in response.headers
     response = client.get("/api/v1/papers")  # Same-origin Next server proxy makes this upstream request.
     assert response.status_code == 200 and response.json()["items"] == []
+
+
+def test_unexpected_error_keeps_local_cors_without_exposing_exception(tmp_path, monkeypatch):
+    app = create_app(data_dir=tmp_path)
+    def broken(**kwargs):
+        raise RuntimeError("private upstream diagnostic")
+    monkeypatch.setattr(app.state.repository, "papers", broken)
+    client = TestClient(app, raise_server_exceptions=False)
+    for origin in ("http://localhost:3000", "https://unlisted.invalid"):
+        response = client.get("/api/v1/papers", headers={"Origin": origin})
+        assert response.status_code == 500 and "private" not in response.text
+        assert set(response.json()) == {"error_code", "message", "details"}
+        assert ("access-control-allow-origin" in response.headers) == (origin == "http://localhost:3000")
