@@ -48,8 +48,9 @@ def main():
     repo = app.state.repository
     paths = client.get("/openapi.json").json()["paths"]
     report["implemented_endpoints"] = [f"{method.upper()} {path}" for path, methods in paths.items()
-        if path not in {"/api/v1/compare", "/api/v1/graph"} and not path.endswith("/qa") for method in methods]
-    report["endpoint_scope"] = "仅计模块一的十条端点；模块二新增路由不计入本旧脚本。"
+        if path not in {"/api/v1/compare", "/api/v1/graph", "/api/v1/retrieval/search", "/api/v1/retrieval/fetch", "/api/v1/recommendations"}
+        and not path.endswith("/qa") for method in methods]
+    report["endpoint_scope"] = "仅计模块一的十条端点；模块二、四、五新增路由不计入本旧脚本。"
     check(len(report["implemented_endpoints"]) == 10, "Unexpected business endpoint count")
     bundles = []
 
