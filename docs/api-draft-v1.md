@@ -16,7 +16,7 @@
 
 ## 端点清单
 
-核对结果：开工基线实际为 **17** 条业务端点，并非任务文字所称 16 条。本单保留全部原端点，增加明确授权的去重、差异两个 GET，共 19 条；其中落地 10 条、未落地 9 条。OpenAPI/Swagger 基础设施不计入业务端点。以下“后续单号待总指挥分配”表示尚无正式单号，不代替威龙排单。
+核对结果：初版实际为 **17** 条业务端点，并非早期任务文字所称 16 条。模块一增加去重、差异两个 GET 后共 19 条；模块二完成后落地 12 条、未落地 7 条。OpenAPI/Swagger 基础设施不计入业务端点。以下“后续单号待总指挥分配”表示尚无正式单号，不代替威龙排单。
 
 | 方法 | 端点（均加 /api/v1） | 请求 | 响应契约与 HTTP | 实施状态、原因及后续归属 |
 | --- | --- | --- | --- | --- |
@@ -28,8 +28,8 @@
 | GET | /papers/{paper_id}/chunks | paper_id；page、page_size | 200 分页 Chunk | 本单已落地 |
 | GET | /papers/{paper_id}/references | paper_id；page、page_size | 200 分页 ReferenceEntry | 本单已落地 |
 | GET | /papers/{paper_id}/citation-links | paper_id；page、page_size；可按 ref_id、chunk_id 精确筛选 | 200 分页 CitationLink | 本单已落地 |
-| POST | /papers/{paper_id}/qa | paper_id、问题文本；证据引用既有契约 | QAAnswer | 未落地：超出模块一；模块二，后续单号待总指挥分配 |
-| POST | /compare | PaperMeta.id 列表、问题文本 | QAAnswer，anchors 可跨论文 | 未落地：跨篇问答，不是版本差异；模块二/跨篇对比，后续单号待总指挥分配 |
+| POST | /papers/{paper_id}/qa | 路径 paper_id；JSON {question}，详见模块二定义 | 200 QAAnswer；无论文 404，坏请求 422 | 模块二已落地；默认词法兜底与原文摘录，真实模型未联调 |
+| POST | /compare | JSON {paper_ids, question}，详见模块二定义 | 200 {evidence_table, per_paper, synthesis}，per_paper 每项是 QAAnswer | 模块二已落地；先证据表再综合，新增传输封装经本单授权 |
 | GET | /graph | PaperMeta.id 列表 | 基础数据引用 PaperMeta、ReferenceEntry、CitationLink；图谱结构留待 v1.2 | 未落地：模块五，依赖 v1.2 裁定；后续单号待总指挥分配 |
 | POST | /reviews | PaperMeta.id 列表、写作要求 | 带证据文字可引用 QAAnswer；综述结构留待 v1.2 | 未落地：综述/写作，依赖 v1.2；后续单号待总指挥分配 |
 | POST | /retrieval/search | 查询词 | 分页 PaperMeta；无 PDF 时可空文件信息 | 未落地：检索推荐，不在模块一；后续单号待总指挥分配 |
@@ -41,6 +41,35 @@
 | GET | /papers/{paper_id}/diff-summary | paper_id **就是 new_paper_id** | 200 DiffSummary；无记录 404 PAPER_NOT_FOUND | 本单已落地；与选中裁决取自同一比较记录组 |
 
 ## 已定义的传输裁定
+
+### 模块二问答与跨篇对比：已定义
+
+单篇请求为 JSON `{"question":"本文样本量是多少？"}`，只允许 question 字段；去两端空白后长度 1–2000，必须是字符串。论文 id 引用 PaperMeta.id。响应直接为冻结 v1 QAAnswer，不套分页。保留 schema_version=1.0.0，refused 仍为布尔；错问纠错和无依据拒答都为 true，不引入实验报告建议的三态字段。
+
+本单检索为词法兜底、向量检索待后续单。只读该论文已经落盘、通过校验的 Chunk；按中英文有限别名、关键词覆盖与长度归一得分排序，最多候选 8 句，最多返回 4 个不同 Chunk 的证据。每句为同一个 Chunk 中不超过 600 字符的连续原文；超长句跳过，不跨块拼接。该模式是保守摘录，不承诺任意问法或语义推理召回。非中性陈述、带数值前提、why/为什么、因果/颠倒式问题拒绝作肯定回答；有合适原文时附纠错依据。无法判断是否成立也拒答，不把检索未命中写成“全文未报告”。
+
+answer 的每个事实块固定为 `【证据 A】\n原文`，按顺序一一对应 anchors 中的四字段对象；不得把 chunk_id 字符串冒充锚点。锚点必须属于本次检索集合，paper_id、物理 page_number、section 对应 section_path、chunk_id 必须与真实记录匹配。返回前校验 QAAnswer Schema、原文子串、锚点与数字。numeric_fact_check 的 passed 只说明该数字连同上下文逐字回溯到证据，不证明实验真实性、计算结论或不同指标可比性；每项 passed 有 evidence，且它们属于顶层 anchors。缺失所需数值为 unverifiable，明确同项样本数冲突为 failed；没有数字事实为 not_applicable。无依据时 HTTP 200、refused=true；无论文仍为 404 PAPER_NOT_FOUND。
+
+跨篇请求为 JSON `{"paper_ids":["paper-a","paper-b"],"question":"样本量分别是多少？"}`，只允许这两个字段。paper_ids 为 2–10 个不同 PaperMeta.id，保留请求顺序。任何论文不存在则整个请求 404，不返回部分结果；重复、数量越界、空问题或额外字段为 422 VALIDATION_ERROR。
+
+旧草案只写 QAAnswer，没有 per_paper/综合的可执行封装。本单按用户明确授权定义以下 HTTP 传输结构，未新增业务记录或修改九份 Schema：
+
+```text
+{
+  evidence_table: [
+    {evidence_id: "E1", per_paper_index: 0,
+     anchor: {paper_id, page_number, section, chunk_id}, quotes: ["连续原文"]}
+  ],
+  per_paper: [QAAnswer, QAAnswer],
+  synthesis: "原文并列：连续原文 [E1]\n不可验证：……"
+}
+```
+
+evidence_table 一行一个 Chunk，当前每行 quotes 恰好一个原文摘录；evidence_id 按行连续 E1、E2……，per_paper_index 为从 0 开始的请求顺序。per_paper 每篇恰好一个完整 QAAnswer，无额外包装或新增字段；即使拒答也保留该位置。每行 anchor 必须出现在该 per_paper 的 anchors 中，quote 必须出现在对应 answer，拒答原因保留在原记录中。
+
+执行顺序为：逐篇生成并校验 → 构建去重证据表 → 综合 → 再次校验整包。综合中的论文事实仅并列复制已校验 quote，每条末尾 `[E编号]` 回指证据表及 per_paper 锚点，不生成跨指标优劣或因果推断。缺少证据/部分拒答时，综合明确标“不可验证”；不以缺席证据断言论文没做某事。最终键顺序也为 evidence_table、per_paper、synthesis，但程序顺序及引用校验才是证据先行的保证。
+
+模型实际方式：默认 extractive 为本地确定性摘录，无模型名、无外部调用。显式配置环境变量 SCHOLAR_GRAPH_QA_MODE=deepseek、DEEPSEEK_MODEL、DEEPSEEK_API_KEY 时，httpx 调 DeepSeek /chat/completions，仅选已校验候选下标，不采信自由生成事实；坏下标/输出未过门禁不返回答案。真实模型调用尚未验证，Mock 只证明协议及门禁。Key 仅来自本地环境变量，不进入请求参数、业务记录、测试证据或日志；不得提交 .env。
 
 ### 分页封装：已定义
 

@@ -1,6 +1,6 @@
-# ScholarGraph 模块一后端
+# ScholarGraph 模块一与模块二后端
 
-本后端实现本地 PDF 解析、状态机、去重与版本差异，以及对应的 10 条模块一 HTTP 端点。Python 包为 `scholar_graph`。没有问答、图谱、检索、推荐或写作模块。
+本后端实现本地 PDF 解析、状态机、去重与版本差异，以及模块二单篇问答和跨篇对比，共 12 条 HTTP 端点。Python 包为 `scholar_graph`。没有图谱、外部检索、推荐、框架、图表或写作模块。
 
 ## Windows 本地安装
 
@@ -13,7 +13,7 @@ backend/.venv/Scripts/python.exe -m pip install -e 'backend[ocr,test]'
 
 本机 Python 启动器的 3.12 标签为 Astral/CPython3.12.15，上面的命令已按该标签配置；其他机器先用 `py -0p` 查已有 Python 3.12 标签。已有 backend/.venv 时跳过创建步骤。仅解析文本 PDF 时可安装 `backend[test]`，扫描件需要额外的 ocr 依赖及首次模型下载。实际锁定的引擎为 MinerU 4.0.12、PaddleOCR 3.7.0、PaddlePaddle 3.3.1；使用 CPU OCR，不要求 CUDA 或 Docker。backend/pyproject.toml 固定直接依赖，完整本轮环境版本见 tests/reports/module-one-environment.json。不要把虚拟环境、模型、PDF、data/ 或 .env 提交到 Git。
 
-## 启动模块一 HTTP API
+## 启动 HTTP API
 
 本地开发 CORS 核实（模块二开工）：原后端缺少 CORSMiddleware，已在 scholar_graph/api.py 的 create_app 中补齐。仅允许 http://localhost:3000 与 http://127.0.0.1:3000；方法 GET/POST（中间件处理 OPTIONS 预检），允许 Content-Type 及 CORS 标准安全请求头，暴露 Location/Link，不启用跨源凭据。依据前端现有 GET JSON、POST multipart 及本轮 POST JSON 的需要配置，不放行任意来源。前端同源代理仍按原格式透传到 /api/v1，不需要 Origin 的服务端请求不受 CORS 限制；本轮不修改前端。
 
@@ -26,6 +26,27 @@ backend/.venv/Scripts/python.exe -m uvicorn scholar_graph.api:create_app --facto
 OpenAPI 为 `http://127.0.0.1:8000/openapi.json`，Swagger 为 `/docs`。上传单文件字段为 file，批量为重复 files 字段；文献详情中的 Link 头给出 chunks、references、citation-links 的真实取数路径。详情/状态/去重/差异返回裸记录；列表统一分页，page_size 超过 100 按 100 计。去重、差异的路径参数为 **new_paper_id**，没有记录时 404，不返回空记录。
 
 完整请求、响应及 19 条草案端点的实施清单见 [API 草案](../docs/api-draft-v1.md)；HTTP 实测及可复现命令见 [本轮报告](../tests/reports/module-one-api-report.md)。新增响应只是本轮获批的传输封装，九份业务 Schema 未改。HTTP 默认工厂不启用 GROBID，GROBID 真实联调仍为待验证。没有验证前端接通。
+
+## 模块二：单篇问答与跨篇对比
+
+POST /api/v1/papers/{paper_id}/qa 的 JSON 为 `{ "question": "本文样本量是多少？" }`，返回完整 QAAnswer。POST /api/v1/compare 的 JSON 为 `{ "paper_ids": ["paper-a", "paper-b"], "question": "样本量分别是多少？" }`，返回 evidence_table、逐篇 QAAnswer 数组 per_paper、综合文本 synthesis。用真实已入库 paper id 替换示例 id。比较不是版本差异，也不更改去重记录。
+
+本单检索为词法兜底、向量检索待后续单。本机未安装 Chroma/sentence-transformers，未下载或运行 BGE-M3；不声称接通向量库。有限中英文别名、关键词覆盖及长度归一得分选原文，候选最多 8 句，最多输出 4 个不同 Chunk 的证据。超过 600 字符的单句跳过；不做跨块拼句、语义改写或任意问法推理。关键词覆盖和保守问法规则会漏答正常问题，这不是通用模型问答质量验收。
+
+默认 SCHOLAR_GRAPH_QA_MODE=extractive：本地确定性原文摘录，**没有真实模型调用或模型名**，不需要 Key，也不读取 .env。事实按“证据 A/B……”与 anchors 顺序对应；锚点四字段、原文子串、数字和 QAAnswer Schema 都通过后才返回。数字 passed 是原文回溯通过；不可回溯为 unverifiable，明确样本数矛盾为 failed。故意错前提、超纲、无依据都 refused=true，必要时附原文纠错，不凭检索未命中说全文没报告。
+
+可选模型接口位于 scholar_graph/qa_model.py，调用方是后端 httpx → DeepSeek /chat/completions，只允许选择已校验候选下标，不接受模型生成的新事实。模型名必须由 DEEPSEEK_MODEL 环境变量显式指定，DEEPSEEK_API_KEY 从本地环境读取；可用 DEEPSEEK_BASE_URL 指定可信 HTTPS 服务地址。模式改为 SCHOLAR_GRAPH_QA_MODE=deepseek 才会读取这些配置；默认不会因环境里存在 Key 而自动联网。Key 只保存在被忽略的本地 .env，由开发环境注入进程，不自动加载、不输出、不写代码。测试使用 MockTransport 和无效占位凭据；**真实 DeepSeek 模型尚未联调**。调用元数据（服务商、模型名、提示词版本、耗时、token）仅在选择器内存保留，不记正文或凭据。上游失败返回脱敏 UPSTREAM_ERROR，不静默改成模型成功。
+
+对比先校验各篇 QAAnswer，再建一行一个 Chunk 的证据表，最后综合。每条综合事实为原文并列，并带 E 行引用，行内锚点必须回指 per_paper；不作跨指标大小排名或因果判断。不支持的综合论断标“不可验证”。完整传输形状、请求边界和限制见 API 草案，不改冻结 Schema。
+
+同源代理兼容性测试实际在内存编译执行仓内原 route.ts，转发 GET 列表、POST 问答 JSON 和 POST multipart 到临时真实 uvicorn 后端；分别验证 200、200、415 及原错误码。既没有修改/构建前端，也没有声称浏览器页面已接问答。开发 CORS 预检另有 TestClient 验证。
+
+模块二独立实跑及测试证据见 [module-two-report.md](../tests/reports/module-two-report.md)。所有输入为自制样例、非官方 pdf/ 用例，不使用真实 Key。运行：
+
+```powershell
+backend/.venv/Scripts/python.exe -m pytest tests -q --run-ocr --basetemp data/module-two-tests
+backend/.venv/Scripts/python.exe tests/run_module_two_smoke.py --output-root data/module-two-reproduce --report data/module-two-reproduce.json
+```
 
 ## 第一步：解析一个 PDF
 
