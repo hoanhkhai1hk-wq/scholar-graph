@@ -15,6 +15,7 @@ from .api_transport import paginate
 from .api_uploads import UploadService
 from .errors import PipelineError
 from .validation import ContractGate
+from .qa_routes import question_routes
 
 PREFIX = "/api/v1"
 ERROR_STATUS = {"PAPER_NOT_FOUND": 404, "UNSUPPORTED_FILE_TYPE": 415,
@@ -130,4 +131,5 @@ def create_app(*, data_dir=None, pipeline_factory=None):
                   and (chunk_id is None or item["chunk_id"] == chunk_id)]
         return paginate(values, page, page_size)
 
+    app.include_router(question_routes(repository))
     return app
