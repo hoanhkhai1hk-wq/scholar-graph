@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:scholar-graph:contract:citation-link:1.0.0",
+  "title": "CitationLink",
+  "description": "CitationLink contract v1.0.0; see CONTRACTS.md for semantic constraints.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "paper_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+    },
+    "citation_number": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "page_number": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "chunk_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+    },
+    "ref_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+    }
+  },
+  "required": [
+    "schema_version",
+    "paper_id",
+    "citation_number",
+    "page_number",
+    "chunk_id",
+    "ref_id"
+  ],
+  "additionalProperties": false
+}

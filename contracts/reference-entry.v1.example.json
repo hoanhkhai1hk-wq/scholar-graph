@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0.0",
+  "ref_id": "ref-demo-001-1",
+  "paper_id": "paper-demo-001",
+  "number": 1,
+  "authors": [
+    "Example Author"
+  ],
+  "year": 2025,
+  "title": "Synthetic Prior Study",
+  "venue": "Synthetic Proceedings",
+  "doi": null,
+  "arxiv_id": null
+}

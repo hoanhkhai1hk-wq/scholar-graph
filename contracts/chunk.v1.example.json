@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0.0",
+  "chunk_id": "chunk-demo-001-p1-001",
+  "paper_id": "paper-demo-001",
+  "page_number": 1,
+  "section_path": [
+    "1 Introduction",
+    "1.1 Setup"
+  ],
+  "heading_1": "1 Introduction",
+  "heading_2": "1.1 Setup",
+  "heading_3": null,
+  "text": "The synthetic study contains 12 samples and cites [1].",
+  "bbox": [
+    0.1,
+    0.2,
+    0.9,
+    0.4
+  ],
+  "type": "text"
+}

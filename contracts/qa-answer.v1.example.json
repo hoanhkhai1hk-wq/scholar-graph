@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "answer": "The synthetic study contains 12 samples.",
+  "anchors": [
+    {
+      "paper_id": "paper-demo-001",
+      "page_number": 1,
+      "section": [
+        "1 Introduction",
+        "1.1 Setup"
+      ],
+      "chunk_id": "chunk-demo-001-p1-001"
+    }
+  ],
+  "numeric_fact_check": {
+    "status": "passed",
+    "checks": [
+      {
+        "claim": "The study contains 12 samples.",
+        "status": "passed",
+        "evidence": [
+          {
+            "paper_id": "paper-demo-001",
+            "page_number": 1,
+            "section": [
+              "1 Introduction",
+              "1.1 Setup"
+            ],
+            "chunk_id": "chunk-demo-001-p1-001"
+          }
+        ],
+        "reason": "The synthetic chunk explicitly states 12 samples; this is not a real experiment."
+      }
+    ]
+  },
+  "refused": false
+}

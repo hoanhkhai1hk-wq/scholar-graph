@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "id": "paper-demo-001",
+  "title": "Synthetic Research Example",
+  "authors": [
+    "Demo Author"
+  ],
+  "institutions": [
+    "Demo Institute"
+  ],
+  "abstract": "Synthetic metadata for contract validation only.",
+  "year": 2026,
+  "source": "synthetic-fixture",
+  "arxiv_id": null,
+  "doi": null,
+  "version": "v1",
+  "file_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+  "page_count": 2,
+  "has_text_layer": true
+}
