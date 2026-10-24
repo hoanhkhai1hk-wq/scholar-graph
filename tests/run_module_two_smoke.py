@@ -95,6 +95,8 @@ def main():
             "allow_headers": response.headers["access-control-allow-headers"]})
     report["proxy"] = verify_proxy(root / "proxy-records")
     for path in sorted((ROOT / "contracts").glob("*.json")):
+        if ".v1.2." in path.name:
+            continue
         relative = path.relative_to(ROOT).as_posix()
         before = subprocess.check_output(["git", "rev-parse", f"{BASELINE}:{relative}"], cwd=ROOT, text=True).strip()
         after = subprocess.check_output(["git", "hash-object", relative], cwd=ROOT, text=True).strip()

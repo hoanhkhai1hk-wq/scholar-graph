@@ -16,6 +16,7 @@ from .api_uploads import UploadService
 from .errors import PipelineError
 from .validation import ContractGate
 from .qa_routes import question_routes
+from .graph_routes import graph_routes
 
 PREFIX = "/api/v1"
 LOCAL_ORIGINS = ["http://localhost:3000", "http://127.0.0.1:3000"]
@@ -139,4 +140,5 @@ def create_app(*, data_dir=None, pipeline_factory=None):
         return paginate(values, page, page_size)
 
     app.include_router(question_routes(repository))
+    app.include_router(graph_routes(repository))
     return app

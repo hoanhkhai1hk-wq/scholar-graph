@@ -26,6 +26,8 @@ def run() -> dict:
     validators, examples, definitions = {}, {}, {}
     inputs = {}
     for path in sorted((ROOT / "contracts").glob("*.schema.json")):
+        if ".v1.2." in path.name:
+            continue  # Historical 722-case v1/v1.1 evidence; v1.2 has separate graph tests.
         schema = json.loads(path.read_text(encoding="utf-8"))
         example_path = path.with_name(path.name.replace(".schema.", ".example."))
         example = json.loads(example_path.read_text(encoding="utf-8"))

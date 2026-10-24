@@ -48,7 +48,7 @@ def main():
     repo = app.state.repository
     paths = client.get("/openapi.json").json()["paths"]
     report["implemented_endpoints"] = [f"{method.upper()} {path}" for path, methods in paths.items()
-        if path != "/api/v1/compare" and not path.endswith("/qa") for method in methods]
+        if path not in {"/api/v1/compare", "/api/v1/graph"} and not path.endswith("/qa") for method in methods]
     report["endpoint_scope"] = "仅计模块一的十条端点；模块二新增路由不计入本旧脚本。"
     check(len(report["implemented_endpoints"]) == 10, "Unexpected business endpoint count")
     bundles = []
@@ -161,6 +161,8 @@ def main():
 
     report["frozen_contracts"] = []
     for path in sorted((ROOT / "contracts").glob("*.json")):
+        if ".v1.2." in path.name:
+            continue
         rel = path.relative_to(ROOT).as_posix()
         baseline = subprocess.check_output(["git", "rev-parse", f"{BASELINE}:{rel}"], cwd=ROOT, text=True).strip()
         actual = subprocess.check_output(["git", "hash-object", str(path)], cwd=ROOT, text=True).strip()
