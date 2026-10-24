@@ -1,0 +1,69 @@
+{
+  "source_commit": "de74511f9f579af910bd683820b409698a301020",
+  "run_utc": "2026-10-24T14:08:28.913034+00:00",
+  "rounds": [
+    {
+      "round": 1,
+      "exit_code": 0,
+      "stdout": ".....                                                                    [100%]\n5 passed in 3.39s\n",
+      "stderr": ""
+    },
+    {
+      "round": 2,
+      "exit_code": 0,
+      "stdout": ".....                                                                    [100%]\n5 passed in 3.37s\n",
+      "stderr": ""
+    },
+    {
+      "round": 3,
+      "exit_code": 0,
+      "stdout": ".....                                                                    [100%]\n5 passed in 3.40s\n",
+      "stderr": ""
+    },
+    {
+      "round": 4,
+      "exit_code": 0,
+      "stdout": ".....                                                                    [100%]\n5 passed in 3.23s\n",
+      "stderr": ""
+    },
+    {
+      "round": 5,
+      "exit_code": 0,
+      "stdout": ".....                                                                    [100%]\n5 passed in 3.23s\n",
+      "stderr": ""
+    },
+    {
+      "round": 6,
+      "exit_code": 0,
+      "stdout": ".....                                                                    [100%]\n5 passed in 3.16s\n",
+      "stderr": ""
+    },
+    {
+      "round": 7,
+      "exit_code": 0,
+      "stdout": ".....                                                                    [100%]\n5 passed in 3.18s\n",
+      "stderr": ""
+    },
+    {
+      "round": 8,
+      "exit_code": 0,
+      "stdout": ".....                                                                    [100%]\n5 passed in 3.24s\n",
+      "stderr": ""
+    },
+    {
+      "round": 9,
+      "exit_code": 0,
+      "stdout": ".....                                                                    [100%]\n5 passed in 3.29s\n",
+      "stderr": ""
+    },
+    {
+      "round": 10,
+      "exit_code": 0,
+      "stdout": ".....                                                                    [100%]\n5 passed in 3.20s\n",
+      "stderr": ""
+    }
+  ],
+  "scope": "重复旧四项去重取数测试及一项101条分页测试，不重试单个测试、不改权限。",
+  "passed_rounds": 10,
+  "failed_rounds": 0
+}
