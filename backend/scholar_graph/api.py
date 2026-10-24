@@ -3,13 +3,15 @@
 import os
 from pathlib import Path
 
-from fastapi import FastAPI, Query, Response
+from fastapi import FastAPI, Query, Response, Request, UploadFile, File
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from starlette.exceptions import HTTPException
+from starlette.concurrency import run_in_threadpool
 
 from .api_repository import ApiRepository
 from .api_transport import paginate
+from .api_uploads import UploadService
 from .errors import PipelineError
 from .validation import ContractGate
 
@@ -26,6 +28,8 @@ def create_app(*, data_dir=None, pipeline_factory=None):
     repository = ApiRepository(root, gate)
     app = FastAPI(title="ScholarGraph module one", version="1.1.0")
     app.state.repository = repository
+    uploads = UploadService(root, gate, pipeline_factory)
+    app.state.uploads = uploads
 
     def error_response(code, message, status):
         value = {"error_code": code, "message": message, "details": None}
@@ -54,6 +58,32 @@ def create_app(*, data_dir=None, pipeline_factory=None):
     def papers(page: int = Query(1, ge=1), page_size: int = Query(20, ge=1),
                title: str | None = None, year: int | None = None, source: str | None = None):
         return paginate(repository.papers(title=title, year=year, source=source), page, page_size)
+
+    @app.post(PREFIX + "/papers", status_code=201)
+    def upload(response: Response, file: UploadFile = File(...)):
+        try:
+            meta = uploads.single(file)
+            response.headers["Location"] = f'{PREFIX}/papers/{meta["id"]}'
+            return meta
+        finally:
+            file.file.close()
+
+    @app.post(PREFIX + "/papers/batch", openapi_extra={"requestBody": {
+        "required": True, "content": {"multipart/form-data": {"schema": {
+            "type": "object", "properties": {"files": {"type": "array", "items": {
+                "type": "string", "format": "binary"}}}, "required": ["files"]}}}}})
+    async def batch(request: Request):
+        # Awaited to completion: a worker thread prevents blocking status reads, not a job queue.
+        try:
+            form = await request.form(max_files=float("inf"), max_fields=float("inf"))
+        except Exception:
+            return {"succeeded": [], "failed": [{"filename": "(request)",
+                    "error_code": "VALIDATION_ERROR", "error_message": "无法读取 multipart 文件列表。"}],
+                    "succeeded_count": 0, "failed_count": 1}
+        try:
+            return await run_in_threadpool(uploads.batch, list(form.multi_items()))
+        finally:
+            await form.close()
 
     @app.get(PREFIX + "/papers/{paper_id}")
     def paper(paper_id: str, response: Response):
