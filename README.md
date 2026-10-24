@@ -1,8 +1,52 @@
 # ScholarGraph（研枢）
 
+> **研枢 ScholarGraph：每一句回答，都能点回原文的那一页。**
+
 科研助手 Agent 系统：面向论文 PDF 的解析、问答、图谱、综述与写作辅助的全栈 Web 应用。
 
-当前仅完成仓库骨架、五份数据契约与 API 草案；没有业务实现、解析调用、模型调用、页面或可启动应用。仓库名：`scholar-graph`；后续 Python 包名：`scholar_graph`。所有路径和文件名使用英文。
+当前状态：后端 19 条 HTTP 端点与前端界面已实现并可本地运行；问答与综述草稿为**摘录式**（不调用大模型），官方三用例未运行，GROBID 未联调。仓库名：`scholar-graph`；Python 包名：`scholar_graph`。所有路径和文件名使用英文。
+
+## 快速开始
+
+三分钟演示的逐步操作与每一步的预期画面见 [docs/demo-guide.md](docs/demo-guide.md)。
+
+后端（仓库根目录 PowerShell，一条命令）：
+
+```powershell
+backend/.venv/Scripts/python.exe -m uvicorn scholar_graph.api:create_app --factory --host 127.0.0.1 --port 8000 --no-access-log
+```
+
+前端（另开一个终端，两条命令）：
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+浏览器打开 <http://127.0.0.1:3000>，点顶部「上传」传一篇 PDF，回列表点进详情即可看到分块与引用对应。
+
+### 界面截图
+
+以下均为本机真实运行截图（存于 [docs/images/](docs/images/)，由 Chrome 无头浏览器对当前代码页面截取，未修饰）：
+
+![论文库列表](docs/images/01-paper-list.png)
+
+![论文详情：解析状态与分块](docs/images/02-paper-detail.png)
+
+![上传页](docs/images/03-upload.png)
+
+![问答：带锚点的摘录式回答](docs/images/04-qa-answer.png)
+
+![局域引用图谱](docs/images/05-graph.png)
+
+### 已知限制
+
+- **官方三用例未运行**：所有演示数据来自自制样例 PDF 与真实请求，不代表真实论文质量。
+- **GROBID 待验证**：仅有 Mock 客户端测试，未调用真实服务，未拉取镜像。
+- **问答为摘录式**：本地确定性原文摘录，不调用大模型；问法偏离会拒答并原样展示原因，
+  锚点只保证「能点回原文那一页」，不保证语义正确性。
+- 版式原文渲染与划词翻译未实现（分别待后端文件端点与模型接入），页面在对应位置明标。
 
 ## 架构图占位
 
