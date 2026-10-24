@@ -21,6 +21,7 @@ from .retrieval import SearchService
 from .retrieval_routes import retrieval_routes, SEARCH_HEADERS
 from .vector_search import vector_from_environment
 from .arxiv_fetch import ArxivFetcher
+from .writing_routes import writing_routes
 
 PREFIX = "/api/v1"
 LOCAL_ORIGINS = ["http://localhost:3000", "http://127.0.0.1:3000"]
@@ -148,4 +149,5 @@ def create_app(*, data_dir=None, pipeline_factory=None):
     app.include_router(question_routes(repository))
     app.include_router(graph_routes(repository))
     app.include_router(retrieval_routes())
+    app.include_router(writing_routes())
     return app
