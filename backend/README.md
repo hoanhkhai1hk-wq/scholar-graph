@@ -66,7 +66,7 @@ backend/.venv/Scripts/python.exe tests/run_module_five_smoke.py --output-root da
 
 POST /api/v1/retrieval/search 接收 `{question,paper_ids?,page?,page_size?,min_relevance?}`，返回固定六字段分页壳，每项含原样 Chunk、真实四字段 anchor、relevance 和 retrieval_method。默认词法 IDF 加权余弦；模式/向量状态/空结果原因在 X-ScholarGraph-* 响应头。页大小超过100按100计，越界页保持 total 且空 items。模块二 QA 仍是原词法取证，本次没有替换 QA 的检索器或联调真实生成模型。
 
-**向量已实装并本地跑通。** Chroma 1.5.9、FlagEmbedding 1.4.2、torch 2.14.1+cpu、transformers 5.20.2；模型 BAAI/bge-m3 快照5617a9f61b028005a4858fdac845db406aefb181。实际验证4个自制 Chunk 的1024维 dense和模型 sparse权重，持久索引后子集检索复用已有向量。稠密余弦与稀疏权重点积各排序，再按等权RRF（k=60）融合，具体公式见 API 草案。CPU float32、batch1、2线程、512token截断；每次请求独立worker加载模型，实测约15–17秒，不作吞吐量或真实语料精度承诺。索引增量按原文/元数据/模型快照指纹更新，输出仅来自本次指定的真实 Chunk 集合。
+**向量已实装并本地跑通。** Chroma 1.5.9、FlagEmbedding 1.4.2、torch 2.14.1+cpu、transformers 5.20.2；模型 BAAI/bge-m3 快照5617a9f61b028005a4858fdac845db406aefb181。实际验证4个自制 Chunk 的1024维 dense和模型 sparse权重，持久索引后子集检索复用已有向量。稠密余弦与稀疏权重点积各排序，再按等权RRF（k=60）融合，具体公式见 API 草案。CPU float32、batch1、2线程、512token截断；每次请求独立worker加载模型，实测约15–20秒，不作吞吐量或真实语料精度承诺。索引增量按原文/元数据/模型快照指纹更新，输出仅来自本次指定的真实 Chunk 集合。
 
 安装到 D盘被忽略的隔离环境，不影响解析/OCR依赖；约2.2GB模型下载不需要Key。先安装backend，再执行：
 

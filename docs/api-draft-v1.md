@@ -147,7 +147,7 @@ score = 100 * (0.40*G + 0.35*P + 0.15*T + 0.10*C); missing terms contribute 0, w
 
 ### 分页封装：已定义
 
-所有列表类端点统一响应 `{items, page, page_size, total, total_pages, has_next}`。items 内保留业务记录原形。page 默认 1，page_size 默认 20；两者必须为正整数，否则 422 VALIDATION_ERROR。page_size 超过 100 按 100 计，响应回显实际值；total 是筛选后的总条数，total_pages = ceil(total / page_size)，has_next = page < total_pages。空集合 total_pages 为 0；越界页返回空 items，保留请求 page。列表按 paper_id 稳定排序，子资源保留落盘顺序。详情、状态、裁决和摘要直接返回记录，不套分页壳。未来未落地列表亦须遵循此封装，未声称其已实现。
+所有列表类端点统一响应 `{items, page, page_size, total, total_pages, has_next}`。items 内的业务记录字段保持原形，搜索/推荐项仅在外层增加本单授权的传输信息。page 默认 1，page_size 默认 20；两者必须为正整数，否则 422 VALIDATION_ERROR。page_size 超过 100 按 100 计，响应回显实际值；total 是筛选后的总条数，total_pages = ceil(total / page_size)，has_next = page < total_pages。空集合 total_pages 为 0；越界页返回空 items，保留请求 page。论文列表按 paper_id 稳定排序，子资源保留落盘顺序；搜索按相关度降序/chunk_id升序，推荐按分数降序/paper_id升序。详情、状态、裁决和摘要直接返回记录，不套分页壳。未来未落地列表亦须遵循此封装，未声称其已实现。
 
 ### 批量上传部分失败：已定义
 
@@ -176,6 +176,6 @@ score = 100 * (0.40*G + 0.35*P + 0.15*T + 0.10*C); missing terms contribute 0, w
 | 图谱结构 | v1.2 已定义，/graph 已落地 | GraphNode、GraphEdge；节点/边均对应落盘记录，未知锚点显式 unverified；形状见模块五，不返回图形库专用对象 |
 | 综述框架结构 | 不在本轮 v1.2 图谱部分，留待后续单 | 本单不定义结构化综述章节、独立框架或导出结构；QAAnswer 的带证据文字不替代这些结构 |
 
-异步任务队列与标识、推荐分数与理由、抓取任务专用失败结构仍未定义；后续范围由总指挥另行拆单。分页和 PDF 批量部分失败已由本轮明确授权定义，不据此扩展到未裁定业务字段。
+异步任务队列与标识仍未定义；后续范围由总指挥另行拆单。推荐分数与理由、同步抓取操作及失败结构已由模块四授权定义，见上文；它们不代表异步任务契约。分页和 PDF 批量部分失败继续沿用已定义封装，不据此扩展未裁定业务字段。
 
 WorkBuddy 的前端、其他文档和跑测、DeepSeek Harness 的 Prompt 实验由总指挥另行拆单，协作与变更请求通过用户中转，不直接联系其他工具。本轮没有验证前端与这些 API 的对接。
