@@ -1,13 +1,23 @@
 import type {
   BatchResult,
+  ChartOutput,
   Chunk,
   CitationLink,
+  CompareResult,
   DedupDecision,
   DiffSummary,
+  FetchResult,
+  FrameworkOutline,
+  GraphView,
   Paged,
   PaperMeta,
   ParseStatus,
+  QAAnswer,
+  RecommendationItem,
   ReferenceEntry,
+  ReviewDraft,
+  SearchHit,
+  SearchMeta,
 } from "./types";
 
 /**
@@ -99,6 +109,64 @@ async function requestJson<T>(
 
   try {
     return JSON.parse(text) as T;
+  } catch {
+    throw new ApiFetchError({
+      url: reportedUrl,
+      status: response.status,
+      errorCode: "INVALID_JSON",
+      detail: "后端返回的不是合法 JSON。",
+    });
+  }
+}
+
+/**
+ * 需要读取响应头的调用（检索模式、向量状态、推荐原因）。
+ * 头由同源代理原样带回，前端按后端原值展示，不改写语义。
+ */
+export async function requestJsonWithHeaders<T>(
+  url: string,
+  init?: RequestInit,
+): Promise<{ data: T; headers: Headers }> {
+  let response: Response;
+  try {
+    response = await fetch(url, { cache: "no-store", ...init });
+  } catch (cause) {
+    const reason = cause instanceof Error ? cause.message : String(cause);
+    throw new ApiFetchError({
+      url,
+      status: 0,
+      errorCode: "NETWORK_ERROR",
+      detail: `无法连接后端：${reason}`,
+    });
+  }
+
+  const text = await response.text();
+  const reportedUrl =
+    response.headers.get("x-sg-upstream-url") ?? url;
+
+  if (!response.ok) {
+    let errorCode = "HTTP_ERROR";
+    let detail = text;
+    try {
+      const parsed = JSON.parse(text) as {
+        error_code?: string;
+        message?: string;
+      };
+      if (parsed.error_code) errorCode = parsed.error_code;
+      if (parsed.message) detail = parsed.message;
+    } catch {
+      // 非 JSON 错误体，保留原文
+    }
+    throw new ApiFetchError({
+      url: reportedUrl,
+      status: response.status,
+      errorCode,
+      detail,
+    });
+  }
+
+  try {
+    return { data: JSON.parse(text) as T, headers: response.headers };
   } catch {
     throw new ApiFetchError({
       url: reportedUrl,
@@ -260,6 +328,146 @@ export async function uploadBatch(files: File[]): Promise<BatchResult> {
     form.append("files", file);
   }
   return requestJson<BatchResult>(clientUrl("/papers/batch"), {
+    method: "POST",
+    body: form,
+  });
+}
+
+// ------------------------------------------------------- 模块二：问答与对比
+
+function postJsonClient<T>(endpointPath: string, payload: unknown): Promise<T> {
+  return requestJson<T>(clientUrl(endpointPath), {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function askQuestion(
+  paperId: string,
+  question: string,
+): Promise<QAAnswer> {
+  return postJsonClient<QAAnswer>(`/papers/${paperId}/qa`, { question });
+}
+
+export async function comparePapers(
+  paperIds: string[],
+  question: string,
+): Promise<CompareResult> {
+  return postJsonClient<CompareResult>("/compare", {
+    paper_ids: paperIds,
+    question,
+  });
+}
+
+// --------------------------------------------------------- 模块五：引用图谱
+
+export async function fetchGraph(paperIds: string[]): Promise<GraphView> {
+  const params = new URLSearchParams();
+  for (const id of paperIds) {
+    params.append("paper_ids", id);
+  }
+  return requestJson<GraphView>(serverUrl(`/graph?${params.toString()}`));
+}
+
+// ------------------------------------------------ 模块四：检索、抓取与推荐
+
+export interface SearchResponse {
+  data: Paged<SearchHit>;
+  meta: SearchMeta;
+}
+
+export async function searchRetrieval(payload: {
+  question: string;
+  paper_ids?: string[];
+  page?: number;
+  page_size?: number;
+  min_relevance?: number;
+}): Promise<SearchResponse> {
+  const { data, headers } = await requestJsonWithHeaders<Paged<SearchHit>>(
+    clientUrl("/retrieval/search"),
+    {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(payload),
+    },
+  );
+  return {
+    data,
+    meta: {
+      mode: headers.get("x-scholargraph-search-mode"),
+      vectorStatus: headers.get("x-scholargraph-vector-status"),
+      reason: headers.get("x-scholargraph-search-reason"),
+    },
+  };
+}
+
+export async function fetchArxiv(payload: {
+  title?: string;
+  reference?: ReferenceEntry;
+}): Promise<FetchResult> {
+  return postJsonClient<FetchResult>("/retrieval/fetch", payload);
+}
+
+export interface RecommendationResponse {
+  data: Paged<RecommendationItem>;
+  reason: string | null;
+}
+
+export async function fetchRecommendations(params: {
+  paperId: string;
+  asOfYear?: number;
+  page?: number;
+  pageSize?: number;
+}): Promise<RecommendationResponse> {
+  const qs = buildQuery({
+    paper_id: params.paperId,
+    as_of_year: params.asOfYear,
+    page: params.page ?? 1,
+    page_size: clampPageSize(params.pageSize ?? DEFAULT_PAGE_SIZE),
+  });
+  const { data, headers } =
+    await requestJsonWithHeaders<Paged<RecommendationItem>>(
+      clientUrl(`/recommendations${qs}`),
+    );
+  return {
+    data,
+    reason: headers.get("x-scholargraph-recommendation-reason"),
+  };
+}
+
+// -------------------------------------------------- 模块六：框架、草稿与图表
+
+export async function generateFramework(
+  paperIds: string[],
+): Promise<FrameworkOutline> {
+  return postJsonClient<FrameworkOutline>("/frameworks", {
+    paper_ids: paperIds,
+  });
+}
+
+export async function generateReview(payload: {
+  paper_ids: string[];
+  framework: FrameworkOutline;
+  requirements?: string[];
+}): Promise<ReviewDraft> {
+  return postJsonClient<ReviewDraft>("/reviews", payload);
+}
+
+export async function uploadCsvChart(payload: {
+  file: File;
+  value_columns: string[];
+  chart_type?: string;
+  x_column?: string;
+  caption?: string;
+}): Promise<ChartOutput> {
+  const form = new FormData();
+  form.append("file", payload.file);
+  form.append("value_columns", JSON.stringify(payload.value_columns));
+  if (payload.chart_type) form.append("chart_type", payload.chart_type);
+  if (payload.x_column) form.append("x_column", payload.x_column);
+  if (payload.caption) form.append("caption", payload.caption);
+  return requestJson<ChartOutput>(clientUrl("/charts/csv"), {
     method: "POST",
     body: form,
   });

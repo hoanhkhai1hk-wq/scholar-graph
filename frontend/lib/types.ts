@@ -113,6 +113,220 @@ export interface DiffSummary {
   key_sentences: KeySentence[];
 }
 
+// ---------------------------------------------------------- 模块二：问答与对比
+
+export interface NumericCheck {
+  claim: string;
+  status: "passed" | "failed" | "unverifiable";
+  evidence: Anchor[];
+  reason: string;
+}
+
+export interface NumericFactCheck {
+  status: "passed" | "failed" | "unverifiable" | "not_applicable";
+  checks: NumericCheck[];
+}
+
+export interface QAAnswer {
+  schema_version: string;
+  answer: string;
+  anchors: Anchor[];
+  numeric_fact_check: NumericFactCheck;
+  refused: boolean;
+}
+
+export interface EvidenceRow {
+  evidence_id: string;
+  per_paper_index: number;
+  anchor: Anchor;
+  quotes: string[];
+}
+
+export interface CompareResult {
+  evidence_table: EvidenceRow[];
+  per_paper: QAAnswer[];
+  synthesis: string;
+}
+
+// ------------------------------------------------------------ 模块五：引用图谱
+
+export interface GraphNode {
+  schema_version: string;
+  paper_id: string;
+  title: string | null;
+  year: number | null;
+  pagerank: number;
+  level: "cornerstone" | "derived" | "isolated";
+}
+
+export interface GraphEdge {
+  schema_version: string;
+  from_paper_id: string;
+  to_paper_id: string;
+  anchor: Anchor | null;
+  status: "verified" | "unverified";
+}
+
+export interface FutureWorkDirection {
+  direction_id: string;
+  topic: string;
+  source: QAAnswer;
+  resolutions: QAAnswer[];
+}
+
+export interface FutureWorkCheck {
+  direction_id: string;
+  candidate_paper_id: string;
+  decision: string;
+  reason: string;
+}
+
+export interface GraphDiagnostics {
+  unresolved_references: { paper_id: string; ref_id: string; reason: string }[];
+  pagerank: {
+    damping: number;
+    tolerance: number;
+    max_iterations: number;
+    iterations: number;
+    residual: number;
+    verified_pair_count: number;
+    uniform_baseline: number;
+  };
+}
+
+export interface GraphView {
+  nodes: GraphNode[];
+  edges: GraphEdge[];
+  layers: {
+    cornerstone: string[];
+    derived: string[];
+    isolated: string[];
+  };
+  future_work: {
+    worth_exploring: FutureWorkDirection[];
+    excluded: FutureWorkDirection[];
+    unverifiable: FutureWorkDirection[];
+    checks: FutureWorkCheck[];
+  };
+  diagnostics: GraphDiagnostics;
+}
+
+// ---------------------------------------------- 模块四：检索、抓取与推荐
+
+export interface SearchHit {
+  chunk: Chunk;
+  anchor: Anchor;
+  relevance: number;
+  retrieval_method: string;
+}
+
+/** 检索响应头原样回显，不得把词法说成向量 */
+export interface SearchMeta {
+  mode: string | null;
+  vectorStatus: string | null;
+  reason: string | null;
+}
+
+export interface FetchResult {
+  succeeded: boolean;
+  metadata: PaperMeta | null;
+  paper: PaperMeta | null;
+  initial_parse_status: ParseStatus | null;
+  parse_status: ParseStatus | null;
+  error: { error_code: string; message: string; details: unknown } | null;
+}
+
+export interface RecommendationSignals {
+  graph_neighbor: number | null;
+  pagerank_normalized: number | null;
+  recency: number | null;
+  github_link: number | null;
+}
+
+export interface RecommendationReason {
+  signal: string;
+  text: string;
+  evidence: string[];
+}
+
+export interface RecommendationItem {
+  paper: PaperMeta;
+  score: number;
+  signals: RecommendationSignals;
+  reasons: RecommendationReason[];
+  missing_signals: string[];
+  scoring_version: string;
+  as_of_year: number;
+}
+
+// -------------------------------------------------- 模块六：框架、草稿与图表
+
+export interface WritingPoint {
+  text: string;
+  anchor: Anchor | null;
+}
+
+export interface FrameworkChapter {
+  chapter_id: string;
+  kind: string;
+  title: string;
+  paper_ids: string[];
+  anchors: Anchor[];
+  writing_points: WritingPoint[];
+}
+
+export interface FrameworkOutline {
+  schema_version: string;
+  paper_ids: string[];
+  chapters: FrameworkChapter[];
+}
+
+export interface ReviewPoint {
+  text: string;
+  status: "verified" | "unverifiable";
+  anchors: Anchor[];
+  numeric_fact_check: NumericFactCheck;
+  requirement: string | null;
+}
+
+export interface ReviewChapter {
+  chapter_id: string;
+  title: string;
+  points: ReviewPoint[];
+}
+
+export interface ReviewDraft {
+  framework: FrameworkOutline;
+  chapters: ReviewChapter[];
+  mode: string;
+  unverifiable_count: number;
+}
+
+export interface ChartSeries {
+  name: string;
+  values: number[];
+}
+
+export interface ChartNumericCheck {
+  value: number;
+  csv_anchor: {
+    csv_ref: string;
+    row_number: number;
+    column_name: string;
+  };
+  verified: boolean;
+}
+
+export interface ChartOutput {
+  schema_version: string;
+  chart_id: string;
+  chart_type: string;
+  series: ChartSeries[];
+  image_ref: string;
+  caption: string;
+  numeric_checks: ChartNumericCheck[];
+}
+
 /** 列表端点统一分页壳（六字段，docs/api-draft-v1.md 已定义） */
 export interface Paged<T> {
   items: T[];
