@@ -40,7 +40,7 @@ def create_app(*, data_dir=None, pipeline_factory=None):
         allow_origins=LOCAL_ORIGINS,
         allow_methods=["GET", "POST"],
         allow_headers=["Content-Type"],
-        expose_headers=["Location", "Link", *SEARCH_HEADERS],
+        expose_headers=["Location", "Link", *SEARCH_HEADERS, "X-ScholarGraph-Recommendation-Reason"],
         allow_credentials=False,
     )
     app.state.repository = repository

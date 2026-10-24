@@ -1,11 +1,13 @@
 """Module-four transport envelopes; frozen business records stay intact."""
 
-from fastapi import APIRouter, Request, Response
+from datetime import datetime, timezone
+from fastapi import APIRouter, Query, Request, Response
 from pydantic import BaseModel, ConfigDict, Field, StringConstraints, model_validator
 from typing import Annotated
 
 from .api_transport import paginate
 from .qa_routes import QuestionRequest
+from .recommendations import recommendations
 
 SEARCH_HEADERS = ["X-ScholarGraph-Search-Mode", "X-ScholarGraph-Vector-Status", "X-ScholarGraph-Search-Reason"]
 
@@ -45,5 +47,16 @@ def retrieval_routes():
     @router.post("/retrieval/fetch")
     def fetch(body: FetchRequest, request: Request):
         return request.app.state.arxiv_fetcher.fetch(body.title, body.reference)
+
+    @router.get("/recommendations")
+    def recommend(request: Request, response: Response, paper_id: str = Query(..., min_length=1),
+                  as_of_year: int | None = Query(None, ge=1, le=9999),
+                  page: int = Query(1, ge=1), page_size: int = Query(20, ge=1)):
+        year = as_of_year if as_of_year is not None else datetime.now(timezone.utc).year
+        items = recommendations(request.app.state.repository, paper_id, year)
+        result = paginate(items, page, page_size)
+        response.headers["X-ScholarGraph-Recommendation-Reason"] = (
+            "NO_CANDIDATES" if not items else "PAGE_OUT_OF_RANGE" if not result["items"] else "OK")
+        return result
 
     return router
