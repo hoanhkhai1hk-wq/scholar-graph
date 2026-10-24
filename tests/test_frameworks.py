@@ -54,6 +54,17 @@ def test_single_paper_without_citations_is_an_isolated_chapter():
     assert generate_outline(bundles, ContractGate())["chapters"][0]["kind"] == "isolated"
 
 
+def test_uniform_citation_cycle_has_derivative_chapters_without_inventing_cornerstones():
+    bundles = graph_bundles()[:2]
+    target = bundles[0]["paper_meta"]
+    bundles[1]["reference_entries"][0].update(title=target["title"], year=target["year"],
+                                             authors=target["authors"], doi=target["doi"])
+    outline = generate_outline(bundles, ContractGate())
+    assert len(outline["chapters"]) == 2
+    assert all(chapter["kind"] == "derived" for chapter in outline["chapters"])
+    assert all(len(chapter["paper_ids"]) == 1 for chapter in outline["chapters"])
+
+
 def test_framework_endpoint_and_uniform_selection_errors(tmp_path):
     app = create_app(data_dir=tmp_path)
     bundles = graph_bundles()
