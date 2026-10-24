@@ -1,6 +1,6 @@
-# ScholarGraph 模块一与模块二后端
+# ScholarGraph 模块一、二、五后端
 
-本后端实现本地 PDF 解析、状态机、去重与版本差异，以及模块二单篇问答和跨篇对比，共 12 条 HTTP 端点。Python 包为 `scholar_graph`。没有图谱、外部检索、推荐、框架、图表或写作模块。
+本后端实现本地 PDF 解析、状态机、去重与版本差异，模块二问答/对比，以及模块五局域引用图谱，共 13 条 HTTP 端点。Python 包为 `scholar_graph`。没有外部检索、推荐、框架、图表或写作接口。
 
 ## Windows 本地安装
 
@@ -47,6 +47,20 @@ POST /api/v1/papers/{paper_id}/qa 的 JSON 为 `{ "question": "本文样本量�
 backend/.venv/Scripts/python.exe -m pytest tests -q --run-ocr --basetemp data/module-two-tests
 backend/.venv/Scripts/python.exe tests/run_module_two_smoke.py --output-root data/module-two-reproduce --report data/module-two-reproduce.json
 ```
+
+## 模块五：局域引用图谱
+
+GET `/api/v1/graph?paper_ids=paper-a&paper_ids=paper-b` 用 1–100 个不同已入库 id 生成视图；先按真实 CitationLink/ReferenceEntry/Chunk 关联，再运行显式 PageRank，返回 nodes、edges、layers、future_work 和 diagnostics。GraphNode/GraphEdge 使用 v1.2，原九份记录和示例不变。没有锚点的边为 unverified，不参与排名或未来方向排除；身份无法唯一匹配不猜边。接口形状与全部规则见 API 草案。
+
+PageRank 阻尼 0.85、悬挂质量均匀回流、L1 容差1e-12；基石是有入边且高于所选图 1/N 均匀基线的节点，孤立节点保留。分层不是论文质量评价。未来方向仅按明确标记行摘录；主题完全一致、严格更晚、解决声明所在 Chunk 有真实引用时才排除，并保留两侧 QAAnswer 证据与核验原因。未满足条件只表示所选语料尚未证明已解决；不推断全球科研状态。没有向量检索或真实模型调用，也未对接前端图谱页面。
+
+本轮先处理上一单 WinError 5：修复前10轮未能自然复现，未定位历史占用者；受控真实共享锁出现 WinError 32，释放句柄后退避成功。原子发布/清理只对 Windows 5/32/33 有限重试，永久错误仍抛出；保留校验后原子发布，不复制半成品、不改权限。诊断与第0项148项全量通过证据见 [存储报告](../tests/reports/graph-storage-report.md)，本轮最终图谱实跑和完整回归见 [模块五报告](../tests/reports/module-five-report.md)。
+
+```powershell
+backend/.venv/Scripts/python.exe tests/run_module_five_smoke.py --output-root data/module-five-reproduce --report data/module-five-reproduce.json
+```
+
+该脚本以自制落盘契约记录构造引用链及孤立节点，不是官方 pdf/ 用例，也不伪称真实论文解析质量评测。运行数据仍位于被忽略的 data/，不需要任何 Key。
 
 ## 第一步：解析一个 PDF
 

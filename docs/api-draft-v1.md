@@ -1,6 +1,6 @@
 # API 契约草案 v1
 
-日期：2026-10-24。端点前缀 `/api/v1`。数据结构的唯一依据为 [CONTRACTS.md](../contracts/CONTRACTS.md)：原五类记录使用 `schema_version=1.0.0`，新增四类记录使用 `1.1.0`。本文件记录 HTTP 传输封装与真实实现范围，不修改九份业务 Schema。
+日期：2026-10-24。端点前缀 `/api/v1`。数据结构的唯一依据为 [CONTRACTS.md](../contracts/CONTRACTS.md)：原五类 1.0.0、原四类 1.1.0 保持不变，本轮仅新增图谱两类 1.2.0。本文件记录 HTTP 传输封装与真实实现范围，不修改原九份业务 Schema。
 
 ## 五份契约引用
 
@@ -16,7 +16,7 @@
 
 ## 端点清单
 
-核对结果：初版实际为 **17** 条业务端点，并非早期任务文字所称 16 条。模块一增加去重、差异两个 GET 后共 19 条；模块二完成后落地 12 条、未落地 7 条。OpenAPI/Swagger 基础设施不计入业务端点。以下“后续单号待总指挥分配”表示尚无正式单号，不代替威龙排单。
+核对结果：初版实际为 **17** 条业务端点，并非早期任务文字所称 16 条。模块一增加去重、差异两个 GET 后共 19 条；模块五完成后落地 13 条、未落地 6 条。OpenAPI/Swagger 基础设施不计入业务端点。以下“后续单号待总指挥分配”表示尚无正式单号，不代替威龙排单。
 
 | 方法 | 端点（均加 /api/v1） | 请求 | 响应契约与 HTTP | 实施状态、原因及后续归属 |
 | --- | --- | --- | --- | --- |
@@ -30,7 +30,7 @@
 | GET | /papers/{paper_id}/citation-links | paper_id；page、page_size；可按 ref_id、chunk_id 精确筛选 | 200 分页 CitationLink | 本单已落地 |
 | POST | /papers/{paper_id}/qa | 路径 paper_id；JSON {question}，详见模块二定义 | 200 QAAnswer；无论文 404，坏请求 422 | 模块二已落地；默认词法兜底与原文摘录，真实模型未联调 |
 | POST | /compare | JSON {paper_ids, question}，详见模块二定义 | 200 {evidence_table, per_paper, synthesis}，per_paper 每项是 QAAnswer | 模块二已落地；先证据表再综合，新增传输封装经本单授权 |
-| GET | /graph | PaperMeta.id 列表 | 基础数据引用 PaperMeta、ReferenceEntry、CitationLink；图谱结构留待 v1.2 | 未落地：模块五，依赖 v1.2 裁定；后续单号待总指挥分配 |
+| GET | /graph | 重复查询参数 paper_ids，1–100 个不同 PaperMeta.id | 200 图谱视图：GraphNode[]、GraphEdge[]、分层、未来方向与诊断，详见模块五 | 模块五已落地，v1.2 图谱部分已定义；只读本地已落盘记录 |
 | POST | /reviews | PaperMeta.id 列表、写作要求 | 带证据文字可引用 QAAnswer；综述结构留待 v1.2 | 未落地：综述/写作，依赖 v1.2；后续单号待总指挥分配 |
 | POST | /retrieval/search | 查询词 | 分页 PaperMeta；无 PDF 时可空文件信息 | 未落地：检索推荐，不在模块一；后续单号待总指挥分配 |
 | POST | /retrieval/fetch | PaperMeta[] | 列表结果使用统一分页；抓取任务与失败结构仍待裁定 | 未落地：检索抓取，不在模块一；后续单号待总指挥分配 |
@@ -41,6 +41,39 @@
 | GET | /papers/{paper_id}/diff-summary | paper_id **就是 new_paper_id** | 200 DiffSummary；无记录 404 PAPER_NOT_FOUND | 本单已落地；与选中裁决取自同一比较记录组 |
 
 ## 已定义的传输裁定
+
+### 模块五图谱：v1.2 已定义并落地
+
+请求 `GET /api/v1/graph?paper_ids=paper-a&paper_ids=paper-b`，1–100 个不同 id；缺少参数、超过数量、重复 id 为 422 VALIDATION_ERROR，任一论文不存在为整包 404 PAPER_NOT_FOUND，不丢弃该 id。返回一个所选集合的派生图资源，不是论文列表分页；上限以显式参数校验为准，不截断节点/边。形状：
+
+```text
+{
+  nodes: GraphNode[],
+  edges: GraphEdge[],
+  layers: {cornerstone: paper_id[], derived: paper_id[], isolated: paper_id[]},
+  future_work: {
+    worth_exploring: [{direction_id, topic, source: QAAnswer, resolutions: QAAnswer[]}],
+    excluded: [同形状条目],
+    unverifiable: [同形状条目],
+    checks: [{direction_id, candidate_paper_id, decision, reason}]
+  },
+  diagnostics: {
+    unresolved_references: [{paper_id, ref_id, reason}],
+    pagerank: {damping, tolerance, max_iterations, iterations, residual,
+               verified_pair_count, uniform_baseline}
+  }
+}
+```
+
+业务记录仅新增 GraphNode/GraphEdge 两类，未来方向 source/resolutions 的事实证据复用原 QAAnswer；分组、诊断与处理状态是本端点传输约定，不新造综述或第三份图谱业务契约。nodes 按 paper_id 排序，分层列表按 PageRank 降序、id 升序；结果不依赖请求排列。
+
+引用方向为“引用方 → 被引方”。ReferenceEntry 按裸 DOI、arXiv 去版本基号、最后才按标题+年份+作者的完整一致来唯一对应所选论文；已有 DOI 但不匹配时不回退标题猜边。目标不在所选集合、身份不足或多版本无法唯一对应均登记 unresolved_references。可对应目标却没有 CitationLink 的边为 anchor=null、status=unverified（不可验证）；有引用的 anchor 四字段须与真实 Chunk 及 CitationLink/ReferenceEntry 一致。多次引用保留不同 Chunk 锚点；PageRank 只对 verified 的去重论文对计单位边权。
+
+PageRank 使用阻尼 0.85、均匀初值与跳转，悬挂节点质量均匀回流，L1 残差≤1e-12 为收敛，最多1000轮；未收敛返回 INDEXING_FAILED，不伪造分数。层级规则：无 verified 入/出边为 isolated；其余节点中有 verified 入边且分值>1/N+1e-12 为 cornerstone；其他为 derived。1/N 是所选图均匀基线，不是论文质量阈值；基石只表示本局域图的相对被引中心性。
+
+未来方向为保守摘录：仅识别独立行 `Future work: 主题`、`Future direction: 主题`、`未来工作：主题`、`未来方向：主题`，每条原文≤600字符；同一论文相同主题去重。更晚论文必须有独立行 `Resolved future direction: 同主题`、`We resolved the previously open direction: 同主题` 或 `已解决的未来方向：同主题`，主题按大小写/空白/末尾句号归一后完全相同，年份严格更晚，且该解决声明所在 Chunk 必须有 verified 引用指向原论文，才能移入 excluded。source 与每个 resolution 都带真实 QAAnswer 锚点，checks 保留接受/拒绝原因。
+
+未发现满足条件的证据时仅保留“在所选论文中尚未证实已解决”的 worth_exploring，不宣称全球未解决。原年份未知或匹配解决声明的时间无法比较时移入 unverifiable，不能当作已解决或确定未解决。同年/更早、计划、否定、仅部分词匹配、无锚点边、借用另一个 Chunk 的引用均不能排除。该规则是对作者明确声明及引用归属的本地核对，不是独立科学复现实验；普通叙述和语义改写会漏提取。未使用向量库、真实大模型或外部检索。
 
 ### 模块二问答与跨篇对比：已定义
 
@@ -89,7 +122,7 @@ evidence_table 一行一个 Chunk，当前每行 quotes 恰好一个原文摘录
 
 ## 交给总指挥的契约缺口
 
-本栏登记截至 v1.1 的业务契约及本轮获批的传输裁定。九份 Schema 零修改；契约定义完成不表示对应端点已实现，实现状态以上表为准。
+本栏登记截至 v1.2 图谱部分的契约及已授权传输裁定。原九份 Schema 零修改；两份新增图谱 Schema 及 /graph 已落地；其余实现状态以上表为准。
 
 | 缺口 | 状态 | 契约引用与边界 |
 | --- | --- | --- |
@@ -99,7 +132,7 @@ evidence_table 一行一个 Chunk，当前每行 quotes 恰好一个原文摘录
 | CSV 图表输出 | v1.1 已定义 | [ChartOutput](../contracts/chart-output.v1.1.schema.json)；`/charts/csv` 的图表业务响应引用 ChartOutput，严禁塞进 QAAnswer.answer，图注数字必须通过 CSV 回溯检查 |
 | 分页封装 | 已定义 | 本轮授权固定六字段传输壳，见“已定义的传输裁定”；不增加业务字段 |
 | 批量上传部分失败 | 已定义 | 本轮授权固定四字段传输壳，逐文件记录成功或失败；同步处理，见上文 |
-| 图谱结构 | 不在 v1.1，留待 v1.2 | 本单不定义多集合封装、节点或边结构，不返回某个图形库的专用对象作为契约 |
+| 图谱结构 | v1.2 已定义，/graph 已落地 | GraphNode、GraphEdge；节点/边均对应落盘记录，未知锚点显式 unverified；形状见模块五，不返回图形库专用对象 |
 | 综述框架结构 | 不在 v1.1，留待 v1.2 | 本单不定义结构化综述章节、独立框架或导出结构；QAAnswer 的带证据文字不替代这些结构 |
 
 异步任务队列与标识、推荐分数与理由、抓取任务专用失败结构仍未定义；后续范围由总指挥另行拆单。分页和 PDF 批量部分失败已由本轮明确授权定义，不据此扩展到未裁定业务字段。
