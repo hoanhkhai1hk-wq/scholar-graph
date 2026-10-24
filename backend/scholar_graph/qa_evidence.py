@@ -58,7 +58,8 @@ def neutral_question(question):
     # Conservative grammar: assertions, why-questions and numerical premises are not endorsed.
     if numbers(question) or re.search(
             r"为什么|为何|既然|因此|所以|替代|不再|只建议|放弃|最差|对吗|证明|忽略|编造|"
-            r"\b(?:why|given|assum\w*|therefore|prove\w*|abandon\w*|replace\w*|confirm|right|correct|ignore|invent)\b",
+            r"不(?:会|能|是|支持|使用|需要|缓解|提升|有效)|没有|未(?:做|能|评估|使用|报告)|"
+            r"\b(?:why|given|assum\w*|therefore|prove\w*|abandon\w*|replace\w*|confirm|right|correct|ignore|invent|not|never|without|worst|only)\b",
             question, re.I):
         return False
     return bool(re.search(r"什么|多少|哪些|如何|是否|有没有|总结|说明|描述|介绍|\b(?:what|which|how|describe|summari[sz]e|explain)\b", question, re.I))
