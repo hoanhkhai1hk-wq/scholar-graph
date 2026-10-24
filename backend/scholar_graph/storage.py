@@ -12,6 +12,7 @@ from uuid import uuid4
 
 from .errors import PipelineError
 from .validation import ContractGate
+from .atomic_io import windows_retry
 
 FILES = {"paper_meta": "paper-meta.json", "chunks": "chunks.json",
          "reference_entries": "reference-entries.json", "citation_links": "citation-links.json"}
@@ -29,7 +30,7 @@ def discard_staging(path: Path, parent: Path):
     resolved, allowed = path.resolve(), parent.resolve()
     if resolved.parent != allowed or not resolved.name.startswith(".pending-"):
         raise PipelineError("VALIDATION_ERROR", "临时目录超出允许清理范围。")
-    shutil.rmtree(resolved)
+    windows_retry(lambda: shutil.rmtree(resolved))
 
 
 class RecordStore:
@@ -44,9 +45,9 @@ class RecordStore:
         temporary = parent / f".status-{uuid4().hex}.tmp"
         try:
             write_json(temporary, history)
-            os.replace(temporary, parent / "parse-status.json")
+            windows_retry(lambda: os.replace(temporary, parent / "parse-status.json"))
         finally:
-            temporary.unlink(missing_ok=True)
+            windows_retry(lambda: temporary.unlink(missing_ok=True))
 
     def paper(self, bundle: dict) -> Path:
         self.gate.bundle(bundle)  # No directory or file is created before this returns.
@@ -62,7 +63,7 @@ class RecordStore:
             for key, filename in FILES.items():
                 write_json(staging / filename, bundle[key])
             # Rename within the same filesystem; incomplete groups are never visible as papers.
-            staging.rename(target)
+            windows_retry(lambda: staging.rename(target))
         finally:
             if staging.exists():
                 discard_staging(staging, parent)
@@ -124,7 +125,7 @@ class RecordStore:
         try:
             write_json(staging / "dedup-decisions.json", [decision] + ([human] if human is not None else []))
             write_json(staging / "diff-summary.json", diff)
-            staging.rename(target)
+            windows_retry(lambda: staging.rename(target))
         finally:
             if staging.exists():
                 discard_staging(staging, parent)

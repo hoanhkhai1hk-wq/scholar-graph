@@ -1,0 +1,14 @@
+{
+  "native_without_retry": {
+    "winerror": 32,
+    "message": "[WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'data\\\\graph-controlled-lock\\\\.pending-controlled' -> 'data\\\\graph-controlled-lock\\\\published'"
+  },
+  "retry_error_codes": [
+    32,
+    32,
+    32
+  ],
+  "released_after_seconds": 0.12,
+  "published_complete": true,
+  "scope": "人为创建真实共享锁，证明机制与缓解；未定位历史错误的占用进程。"
+}
