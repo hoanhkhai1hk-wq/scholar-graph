@@ -1,0 +1,86 @@
+"""Module-one HTTP routes. No background queue or other-module placeholders."""
+
+import os
+from pathlib import Path
+
+from fastapi import FastAPI, Query, Response
+from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse
+from starlette.exceptions import HTTPException
+
+from .api_repository import ApiRepository
+from .api_transport import paginate
+from .errors import PipelineError
+from .validation import ContractGate
+
+PREFIX = "/api/v1"
+ERROR_STATUS = {"PAPER_NOT_FOUND": 404, "UNSUPPORTED_FILE_TYPE": 415,
+                "FILE_TOO_LARGE": 413, "VALIDATION_ERROR": 422,
+                "PARSE_FAILED": 422, "OCR_FAILED": 422, "UPSTREAM_ERROR": 502}
+
+
+def create_app(*, data_dir=None, pipeline_factory=None):
+    root = Path(data_dir or os.environ.get("SCHOLAR_GRAPH_DATA_DIR") or
+                Path(__file__).resolve().parents[2] / "data" / "module-one").resolve()
+    gate = ContractGate()
+    repository = ApiRepository(root, gate)
+    app = FastAPI(title="ScholarGraph module one", version="1.1.0")
+    app.state.repository = repository
+
+    def error_response(code, message, status):
+        value = {"error_code": code, "message": message, "details": None}
+        gate.error(value)
+        return JSONResponse(value, status_code=status)
+
+    @app.exception_handler(PipelineError)
+    async def pipeline_error(request, error):
+        return error_response(error.code, error.message, ERROR_STATUS.get(error.code, 500))
+
+    @app.exception_handler(RequestValidationError)
+    async def invalid_request(request, error):
+        return error_response("VALIDATION_ERROR", "请求参数不合法。", 422)
+
+    @app.exception_handler(HTTPException)
+    async def http_error(request, error):
+        return error_response("PAPER_NOT_FOUND" if error.status_code == 404 else "VALIDATION_ERROR",
+                              "无该资源或端点。" if error.status_code == 404 else "请求无法处理。",
+                              error.status_code)
+
+    @app.exception_handler(Exception)
+    async def unexpected_error(request, error):
+        return error_response("INTERNAL_ERROR", "服务内部错误。", 500)
+
+    @app.get(PREFIX + "/papers")
+    def papers(page: int = Query(1, ge=1), page_size: int = Query(20, ge=1),
+               title: str | None = None, year: int | None = None, source: str | None = None):
+        return paginate(repository.papers(title=title, year=year, source=source), page, page_size)
+
+    @app.get(PREFIX + "/papers/{paper_id}")
+    def paper(paper_id: str, response: Response):
+        value = repository.paper(paper_id)["paper_meta"]
+        response.headers["Link"] = ", ".join(
+            f'<{PREFIX}/papers/{paper_id}/{name}>; rel="{name}"'
+            for name in ("chunks", "references", "citation-links"))
+        return value
+
+    @app.get(PREFIX + "/papers/{paper_id}/parse-status")
+    def status(paper_id: str):
+        return repository.status(paper_id)
+
+    @app.get(PREFIX + "/papers/{paper_id}/chunks")
+    def chunks(paper_id: str, page: int = Query(1, ge=1), page_size: int = Query(20, ge=1)):
+        return paginate(repository.paper(paper_id)["chunks"], page, page_size)
+
+    @app.get(PREFIX + "/papers/{paper_id}/references")
+    def references(paper_id: str, page: int = Query(1, ge=1), page_size: int = Query(20, ge=1)):
+        return paginate(repository.paper(paper_id)["reference_entries"], page, page_size)
+
+    @app.get(PREFIX + "/papers/{paper_id}/citation-links")
+    def citations(paper_id: str, page: int = Query(1, ge=1), page_size: int = Query(20, ge=1),
+                  ref_id: str | None = None, chunk_id: str | None = None):
+        values = repository.paper(paper_id)["citation_links"]
+        values = [item for item in values if (ref_id is None or item["ref_id"] == ref_id)
+                  and (chunk_id is None or item["chunk_id"] == chunk_id)]
+        return paginate(values, page, page_size)
+
+    return app
