@@ -12,6 +12,9 @@ services:
 
   grobid:
     # Official image repository: https://grobid.readthedocs.io/en/latest/getting_started/
-    # TODO: Confirm image variant/version/digest and resources before implementation.
+    # Tag 0.9.1-full is documented in the official quick start (checked 2026-10-24).
+    # TODO: Runtime/digest/resource validation is pending; Docker is unavailable locally.
     image: grobid/grobid:0.9.1-full
-    profiles: [scaffold]
+    ports:
+      - "127.0.0.1:${GROBID_PORT:-8070}:8070"
+    profiles: [grobid]
