@@ -1,0 +1,270 @@
+{
+  "baseline": "aee2853ed9cc8d294860496fef65085046f310aa",
+  "implementation_commits": [
+    {
+      "commit": "312369adc3471d8293f7ed069bcb126b6f132c4f",
+      "subject": "新增v1.2综述框架契约与逐层必填门禁且冻结原十一类记录",
+      "files": [
+        "backend/scholar_graph/validation.py",
+        "contracts/CONTRACTS.md",
+        "contracts/framework-outline.v1.2.example.json",
+        "contracts/framework-outline.v1.2.schema.json",
+        "tests/test_framework_contract.py"
+      ]
+    },
+    {
+      "commit": "c9a47a7c8f71659983e97279f30d18b09182289f",
+      "subject": "落地框架端点并复用图谱分层未来方向与推荐取证规则",
+      "files": [
+        "backend/scholar_graph/api.py",
+        "backend/scholar_graph/frameworks.py",
+        "backend/scholar_graph/writing_routes.py",
+        "tests/test_frameworks.py"
+      ]
+    },
+    {
+      "commit": "da0c439627322c7ac5bfb995a9636302294feb5a",
+      "subject": "落地摘录式综述端点并标注无证据要点及复用数字核验",
+      "files": [
+        "backend/scholar_graph/reviews.py",
+        "backend/scholar_graph/writing_routes.py",
+        "tests/test_reviews.py"
+      ]
+    },
+    {
+      "commit": "e66761a5969259d8c045fa7dd7e7e4ac8ef1ca21",
+      "subject": "落地CSV图表端点与实际PNG及逐单元格图注校验",
+      "files": [
+        "backend/pyproject.toml",
+        "backend/scholar_graph/api.py",
+        "backend/scholar_graph/chart_routes.py",
+        "backend/scholar_graph/charts.py",
+        "tests/test_api_comparison.py",
+        "tests/test_charts.py"
+      ]
+    },
+    {
+      "commit": "89935882aae371626bbbb238be2092ef2a5126ca",
+      "subject": "增加模块六HTTP与CSV实跑证据脚本并保留历史验收范围",
+      "files": [
+        "tests/run_module_four_smoke.py",
+        "tests/run_module_one_api_smoke.py",
+        "tests/run_module_six_smoke.py"
+      ]
+    },
+    {
+      "commit": "949feb55e4e0871028b898cf2200f6fa7f03d8eb",
+      "subject": "修正CSV记录横轴为整数刻度并更新十九端点应用说明",
+      "files": [
+        "backend/scholar_graph/api.py",
+        "backend/scholar_graph/charts.py"
+      ]
+    },
+    {
+      "commit": "60186878184e40130d8a3a414c1214df35073195",
+      "subject": "同步十九端点全部落地及综述框架摘录图表的真实限制",
+      "files": [
+        "backend/README.md",
+        "docs/api-draft-v1.md"
+      ]
+    },
+    {
+      "commit": "0835b6d19196f80d6b9bdac69c53b6039cd6bc0b",
+      "subject": "验证均匀引用循环无基石时衍生论文仍有真实章节归位",
+      "files": [
+        "tests/test_frameworks.py"
+      ]
+    }
+  ],
+  "scope_verified": true,
+  "changed_paths": [
+    "backend/README.md",
+    "backend/pyproject.toml",
+    "backend/scholar_graph/api.py",
+    "backend/scholar_graph/chart_routes.py",
+    "backend/scholar_graph/charts.py",
+    "backend/scholar_graph/frameworks.py",
+    "backend/scholar_graph/reviews.py",
+    "backend/scholar_graph/validation.py",
+    "backend/scholar_graph/writing_routes.py",
+    "contracts/CONTRACTS.md",
+    "contracts/framework-outline.v1.2.example.json",
+    "contracts/framework-outline.v1.2.schema.json",
+    "docs/api-draft-v1.md",
+    "tests/reports/module-six-audit.json",
+    "tests/reports/module-six-pytest.xml",
+    "tests/reports/module-six-report.md",
+    "tests/reports/module-six-smoke.json",
+    "tests/run_module_four_smoke.py",
+    "tests/run_module_one_api_smoke.py",
+    "tests/run_module_six_smoke.py",
+    "tests/test_api_comparison.py",
+    "tests/test_charts.py",
+    "tests/test_framework_contract.py",
+    "tests/test_frameworks.py",
+    "tests/test_reviews.py"
+  ],
+  "frozen_contracts": [
+    {
+      "file": "contracts/chart-output.v1.1.example.json",
+      "git_blob": "f34c9130ecb750cf583a9cf5cb802fbe95a28bb7",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/chart-output.v1.1.schema.json",
+      "git_blob": "7b5b196ecc88d31d7a13b0f560f02c9feb0814dd",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/chunk.v1.example.json",
+      "git_blob": "330a0845a9569aa85053dbfa1dc643363b45f2c3",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/chunk.v1.schema.json",
+      "git_blob": "d577c91c27b33e360da8cdfbacbbf2da33ac1bcf",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/citation-link.v1.example.json",
+      "git_blob": "1df93d863fd88272ea4b3ec71d7fde77916c84f6",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/citation-link.v1.schema.json",
+      "git_blob": "1c26cb51d10256635af9cd43881a0219316408f8",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/dedup-decision.v1.1.example.json",
+      "git_blob": "d47edb3181b70f7fe0bed872d50a5178a1e3baaa",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/dedup-decision.v1.1.schema.json",
+      "git_blob": "a0679f1dd466fe247f2f8d9a77f05a669aa622bb",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/diff-summary.v1.1.example.json",
+      "git_blob": "947217164499f39932b9b4e88013828f5c1a9cdf",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/diff-summary.v1.1.schema.json",
+      "git_blob": "6df5e7753e629277068dd7c023938b2df0b122d8",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/graph-edge.v1.2.example.json",
+      "git_blob": "8a33fb93f0026639d49409134e8b50a99efe4c59",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/graph-edge.v1.2.schema.json",
+      "git_blob": "50194dc973bf38a8c4c7c1a0c31c849f9aa7bcfa",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/graph-node.v1.2.example.json",
+      "git_blob": "60d0d77292e9cb855259be05c14c9a0a3afa5f9a",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/graph-node.v1.2.schema.json",
+      "git_blob": "cf7d452c939aaae8faeafa159ccdfba5ba447163",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/paper-meta.v1.example.json",
+      "git_blob": "141f90fe6d68cbfb7f4770aace62c190100f7f8f",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/paper-meta.v1.schema.json",
+      "git_blob": "a8d65964a698823b165c7369d9912e0956081995",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/parse-status.v1.1.example.json",
+      "git_blob": "9dcae28d3c0605d1e3ca625d884125662ef105b3",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/parse-status.v1.1.schema.json",
+      "git_blob": "0821189d573e9b489bc3c900a97b3128f30bd132",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/qa-answer.v1.example.json",
+      "git_blob": "29dcf10a680b880f6559f6ab0a840195f90e0f89",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/qa-answer.v1.schema.json",
+      "git_blob": "9afbdd2b5fd1eafaddbf34bcd1377d333c0f3b1e",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/reference-entry.v1.example.json",
+      "git_blob": "35c676e8fbbe6ae4bc9e6d3622c1c9ba2e491965",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/reference-entry.v1.schema.json",
+      "git_blob": "e26db67f190041c4ea42f6e0729536e9babd6926",
+      "unchanged": true
+    }
+  ],
+  "secret_pattern_scan": {
+    "files": 25,
+    "matches": 0,
+    "limitations": "常见Key/私钥模式检查，不保证检出所有秘密；未读取.env或使用真实Key。"
+  },
+  "pip_check": "No broken requirements found.",
+  "framework_top_level_fields": 3,
+  "new_test_counts": {
+    "framework_contract": 2,
+    "frameworks": 9,
+    "reviews": 8,
+    "charts": 36
+  },
+  "new_test_total": 55,
+  "final_regression": {
+    "tests": 296,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "test_file_counts": {
+    "test_api_comparison": 4,
+    "test_api_read": 14,
+    "test_api_transport": 10,
+    "test_api_uploads": 5,
+    "test_arxiv_api": 7,
+    "test_arxiv_fetch": 10,
+    "test_atomic_io": 8,
+    "test_charts": 36,
+    "test_citation_graph": 10,
+    "test_cli_adapters": 3,
+    "test_cors": 4,
+    "test_dedup": 14,
+    "test_framework_contract": 2,
+    "test_frameworks": 9,
+    "test_future_work": 16,
+    "test_graph_api": 8,
+    "test_graph_contracts": 4,
+    "test_parsing": 14,
+    "test_proxy_compatibility": 1,
+    "test_qa": 36,
+    "test_qa_compare": 16,
+    "test_recommendations": 6,
+    "test_recommendations_api": 7,
+    "test_retrieval": 8,
+    "test_retrieval_api": 9,
+    "test_reviews": 8,
+    "test_validation_status": 19,
+    "test_vector_adapter": 8
+  },
+  "writing_generation_model_calls": 0
+}

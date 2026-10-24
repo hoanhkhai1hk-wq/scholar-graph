@@ -1,0 +1,1512 @@
+{
+  "scope": "自制样例、非官方 pdf/ 用例；未运行官方三用例。摘录式草稿，不是大模型生成。",
+  "run_utc": "2026-10-24T15:54:55.988301+00:00",
+  "baseline": "aee2853ed9cc8d294860496fef65085046f310aa",
+  "source_commit": "0835b6d19196f80d6b9bdac69c53b6039cd6bc0b",
+  "real_model_calls": 0,
+  "real_api_keys_used": false,
+  "versions": {
+    "matplotlib": "3.11.2",
+    "fastapi": "0.162.0",
+    "jsonschema": "4.26.0"
+  },
+  "cases": [
+    {
+      "name": "framework",
+      "request": {
+        "method": "POST",
+        "path": "/api/v1/frameworks",
+        "body": {
+          "paper_ids": [
+            "paper-graph-a",
+            "paper-graph-b",
+            "paper-graph-c",
+            "paper-graph-d"
+          ]
+        }
+      },
+      "http_status": 200,
+      "response": {
+        "schema_version": "1.2.0",
+        "paper_ids": [
+          "paper-graph-a",
+          "paper-graph-b",
+          "paper-graph-c",
+          "paper-graph-d"
+        ],
+        "chapters": [
+          {
+            "chapter_id": "chapter-cornerstone-paper-graph-c",
+            "kind": "cornerstone",
+            "title": "基石论文：Synthetic Graph Study C",
+            "paper_ids": [
+              "paper-graph-c"
+            ],
+            "anchors": [
+              {
+                "paper_id": "paper-graph-c",
+                "page_number": 1,
+                "section": [
+                  "Future Work"
+                ],
+                "chunk_id": "chunk-graph-c"
+              }
+            ],
+            "writing_points": [
+              {
+                "text": "Future work: cross-lingual transfer.",
+                "anchor": {
+                  "paper_id": "paper-graph-c",
+                  "page_number": 1,
+                  "section": [
+                    "Future Work"
+                  ],
+                  "chunk_id": "chunk-graph-c"
+                }
+              }
+            ]
+          },
+          {
+            "chapter_id": "chapter-cornerstone-paper-graph-b",
+            "kind": "cornerstone",
+            "title": "基石论文：Synthetic Graph Study B",
+            "paper_ids": [
+              "paper-graph-b",
+              "paper-graph-a"
+            ],
+            "anchors": [
+              {
+                "paper_id": "paper-graph-b",
+                "page_number": 1,
+                "section": [
+                  "Main"
+                ],
+                "chunk_id": "chunk-graph-b"
+              },
+              {
+                "paper_id": "paper-graph-a",
+                "page_number": 1,
+                "section": [
+                  "Main"
+                ],
+                "chunk_id": "chunk-graph-a"
+              }
+            ],
+            "writing_points": [
+              {
+                "text": "Resolved future direction: cross-lingual transfer.",
+                "anchor": {
+                  "paper_id": "paper-graph-b",
+                  "page_number": 1,
+                  "section": [
+                    "Main"
+                  ],
+                  "chunk_id": "chunk-graph-b"
+                }
+              },
+              {
+                "text": "We build on the calibration study [1].",
+                "anchor": {
+                  "paper_id": "paper-graph-a",
+                  "page_number": 1,
+                  "section": [
+                    "Main"
+                  ],
+                  "chunk_id": "chunk-graph-a"
+                }
+              }
+            ]
+          },
+          {
+            "chapter_id": "chapter-isolated-paper-graph-d",
+            "kind": "isolated",
+            "title": "独立论文：Synthetic Graph Study D",
+            "paper_ids": [
+              "paper-graph-d"
+            ],
+            "anchors": [
+              {
+                "paper_id": "paper-graph-d",
+                "page_number": 1,
+                "section": [
+                  "Main"
+                ],
+                "chunk_id": "chunk-graph-d"
+              }
+            ],
+            "writing_points": [
+              {
+                "text": "An isolated synthetic paper with no references.",
+                "anchor": {
+                  "paper_id": "paper-graph-d",
+                  "page_number": 1,
+                  "section": [
+                    "Main"
+                  ],
+                  "chunk_id": "chunk-graph-d"
+                }
+              }
+            ]
+          },
+          {
+            "chapter_id": "chapter-future_work-selected",
+            "kind": "future_work",
+            "title": "未来方向（所选语料尚未证实已解决）",
+            "paper_ids": [
+              "paper-graph-c"
+            ],
+            "anchors": [
+              {
+                "paper_id": "paper-graph-c",
+                "page_number": 1,
+                "section": [
+                  "Future Work"
+                ],
+                "chunk_id": "chunk-graph-c"
+              }
+            ],
+            "writing_points": [
+              {
+                "text": "Future work: document-level extraction.",
+                "anchor": {
+                  "paper_id": "paper-graph-c",
+                  "page_number": 1,
+                  "section": [
+                    "Future Work"
+                  ],
+                  "chunk_id": "chunk-graph-c"
+                }
+              },
+              {
+                "text": "Future work: robust noisy labels.",
+                "anchor": {
+                  "paper_id": "paper-graph-c",
+                  "page_number": 1,
+                  "section": [
+                    "Future Work"
+                  ],
+                  "chunk_id": "chunk-graph-c"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "summary": {
+        "chapters": 4,
+        "anchor_occurrences": 5,
+        "unique_anchors": 4,
+        "unverifiable": 0,
+        "future_directions": 2
+      }
+    },
+    {
+      "name": "review-extracts",
+      "request": {
+        "method": "POST",
+        "path": "/api/v1/reviews",
+        "body": {
+          "paper_ids": [
+            "paper-graph-a",
+            "paper-graph-b",
+            "paper-graph-c",
+            "paper-graph-d"
+          ],
+          "framework": {
+            "schema_version": "1.2.0",
+            "paper_ids": [
+              "paper-graph-a",
+              "paper-graph-b",
+              "paper-graph-c",
+              "paper-graph-d"
+            ],
+            "chapters": [
+              {
+                "chapter_id": "chapter-cornerstone-paper-graph-c",
+                "kind": "cornerstone",
+                "title": "基石论文：Synthetic Graph Study C",
+                "paper_ids": [
+                  "paper-graph-c"
+                ],
+                "anchors": [
+                  {
+                    "paper_id": "paper-graph-c",
+                    "page_number": 1,
+                    "section": [
+                      "Future Work"
+                    ],
+                    "chunk_id": "chunk-graph-c"
+                  }
+                ],
+                "writing_points": [
+                  {
+                    "text": "Future work: cross-lingual transfer.",
+                    "anchor": {
+                      "paper_id": "paper-graph-c",
+                      "page_number": 1,
+                      "section": [
+                        "Future Work"
+                      ],
+                      "chunk_id": "chunk-graph-c"
+                    }
+                  }
+                ]
+              },
+              {
+                "chapter_id": "chapter-cornerstone-paper-graph-b",
+                "kind": "cornerstone",
+                "title": "基石论文：Synthetic Graph Study B",
+                "paper_ids": [
+                  "paper-graph-b",
+                  "paper-graph-a"
+                ],
+                "anchors": [
+                  {
+                    "paper_id": "paper-graph-b",
+                    "page_number": 1,
+                    "section": [
+                      "Main"
+                    ],
+                    "chunk_id": "chunk-graph-b"
+                  },
+                  {
+                    "paper_id": "paper-graph-a",
+                    "page_number": 1,
+                    "section": [
+                      "Main"
+                    ],
+                    "chunk_id": "chunk-graph-a"
+                  }
+                ],
+                "writing_points": [
+                  {
+                    "text": "Resolved future direction: cross-lingual transfer.",
+                    "anchor": {
+                      "paper_id": "paper-graph-b",
+                      "page_number": 1,
+                      "section": [
+                        "Main"
+                      ],
+                      "chunk_id": "chunk-graph-b"
+                    }
+                  },
+                  {
+                    "text": "We build on the calibration study [1].",
+                    "anchor": {
+                      "paper_id": "paper-graph-a",
+                      "page_number": 1,
+                      "section": [
+                        "Main"
+                      ],
+                      "chunk_id": "chunk-graph-a"
+                    }
+                  }
+                ]
+              },
+              {
+                "chapter_id": "chapter-isolated-paper-graph-d",
+                "kind": "isolated",
+                "title": "独立论文：Synthetic Graph Study D",
+                "paper_ids": [
+                  "paper-graph-d"
+                ],
+                "anchors": [
+                  {
+                    "paper_id": "paper-graph-d",
+                    "page_number": 1,
+                    "section": [
+                      "Main"
+                    ],
+                    "chunk_id": "chunk-graph-d"
+                  }
+                ],
+                "writing_points": [
+                  {
+                    "text": "An isolated synthetic paper with no references.",
+                    "anchor": {
+                      "paper_id": "paper-graph-d",
+                      "page_number": 1,
+                      "section": [
+                        "Main"
+                      ],
+                      "chunk_id": "chunk-graph-d"
+                    }
+                  }
+                ]
+              },
+              {
+                "chapter_id": "chapter-future_work-selected",
+                "kind": "future_work",
+                "title": "未来方向（所选语料尚未证实已解决）",
+                "paper_ids": [
+                  "paper-graph-c"
+                ],
+                "anchors": [
+                  {
+                    "paper_id": "paper-graph-c",
+                    "page_number": 1,
+                    "section": [
+                      "Future Work"
+                    ],
+                    "chunk_id": "chunk-graph-c"
+                  }
+                ],
+                "writing_points": [
+                  {
+                    "text": "Future work: document-level extraction.",
+                    "anchor": {
+                      "paper_id": "paper-graph-c",
+                      "page_number": 1,
+                      "section": [
+                        "Future Work"
+                      ],
+                      "chunk_id": "chunk-graph-c"
+                    }
+                  },
+                  {
+                    "text": "Future work: robust noisy labels.",
+                    "anchor": {
+                      "paper_id": "paper-graph-c",
+                      "page_number": 1,
+                      "section": [
+                        "Future Work"
+                      ],
+                      "chunk_id": "chunk-graph-c"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "requirements": []
+        }
+      },
+      "http_status": 200,
+      "response": {
+        "framework": {
+          "schema_version": "1.2.0",
+          "paper_ids": [
+            "paper-graph-a",
+            "paper-graph-b",
+            "paper-graph-c",
+            "paper-graph-d"
+          ],
+          "chapters": [
+            {
+              "chapter_id": "chapter-cornerstone-paper-graph-c",
+              "kind": "cornerstone",
+              "title": "基石论文：Synthetic Graph Study C",
+              "paper_ids": [
+                "paper-graph-c"
+              ],
+              "anchors": [
+                {
+                  "paper_id": "paper-graph-c",
+                  "page_number": 1,
+                  "section": [
+                    "Future Work"
+                  ],
+                  "chunk_id": "chunk-graph-c"
+                }
+              ],
+              "writing_points": [
+                {
+                  "text": "Future work: cross-lingual transfer.",
+                  "anchor": {
+                    "paper_id": "paper-graph-c",
+                    "page_number": 1,
+                    "section": [
+                      "Future Work"
+                    ],
+                    "chunk_id": "chunk-graph-c"
+                  }
+                }
+              ]
+            },
+            {
+              "chapter_id": "chapter-cornerstone-paper-graph-b",
+              "kind": "cornerstone",
+              "title": "基石论文：Synthetic Graph Study B",
+              "paper_ids": [
+                "paper-graph-b",
+                "paper-graph-a"
+              ],
+              "anchors": [
+                {
+                  "paper_id": "paper-graph-b",
+                  "page_number": 1,
+                  "section": [
+                    "Main"
+                  ],
+                  "chunk_id": "chunk-graph-b"
+                },
+                {
+                  "paper_id": "paper-graph-a",
+                  "page_number": 1,
+                  "section": [
+                    "Main"
+                  ],
+                  "chunk_id": "chunk-graph-a"
+                }
+              ],
+              "writing_points": [
+                {
+                  "text": "Resolved future direction: cross-lingual transfer.",
+                  "anchor": {
+                    "paper_id": "paper-graph-b",
+                    "page_number": 1,
+                    "section": [
+                      "Main"
+                    ],
+                    "chunk_id": "chunk-graph-b"
+                  }
+                },
+                {
+                  "text": "We build on the calibration study [1].",
+                  "anchor": {
+                    "paper_id": "paper-graph-a",
+                    "page_number": 1,
+                    "section": [
+                      "Main"
+                    ],
+                    "chunk_id": "chunk-graph-a"
+                  }
+                }
+              ]
+            },
+            {
+              "chapter_id": "chapter-isolated-paper-graph-d",
+              "kind": "isolated",
+              "title": "独立论文：Synthetic Graph Study D",
+              "paper_ids": [
+                "paper-graph-d"
+              ],
+              "anchors": [
+                {
+                  "paper_id": "paper-graph-d",
+                  "page_number": 1,
+                  "section": [
+                    "Main"
+                  ],
+                  "chunk_id": "chunk-graph-d"
+                }
+              ],
+              "writing_points": [
+                {
+                  "text": "An isolated synthetic paper with no references.",
+                  "anchor": {
+                    "paper_id": "paper-graph-d",
+                    "page_number": 1,
+                    "section": [
+                      "Main"
+                    ],
+                    "chunk_id": "chunk-graph-d"
+                  }
+                }
+              ]
+            },
+            {
+              "chapter_id": "chapter-future_work-selected",
+              "kind": "future_work",
+              "title": "未来方向（所选语料尚未证实已解决）",
+              "paper_ids": [
+                "paper-graph-c"
+              ],
+              "anchors": [
+                {
+                  "paper_id": "paper-graph-c",
+                  "page_number": 1,
+                  "section": [
+                    "Future Work"
+                  ],
+                  "chunk_id": "chunk-graph-c"
+                }
+              ],
+              "writing_points": [
+                {
+                  "text": "Future work: document-level extraction.",
+                  "anchor": {
+                    "paper_id": "paper-graph-c",
+                    "page_number": 1,
+                    "section": [
+                      "Future Work"
+                    ],
+                    "chunk_id": "chunk-graph-c"
+                  }
+                },
+                {
+                  "text": "Future work: robust noisy labels.",
+                  "anchor": {
+                    "paper_id": "paper-graph-c",
+                    "page_number": 1,
+                    "section": [
+                      "Future Work"
+                    ],
+                    "chunk_id": "chunk-graph-c"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "chapters": [
+          {
+            "chapter_id": "chapter-cornerstone-paper-graph-c",
+            "title": "基石论文：Synthetic Graph Study C",
+            "points": [
+              {
+                "text": "Future work: cross-lingual transfer.",
+                "status": "verified",
+                "anchors": [
+                  {
+                    "paper_id": "paper-graph-c",
+                    "page_number": 1,
+                    "section": [
+                      "Future Work"
+                    ],
+                    "chunk_id": "chunk-graph-c"
+                  }
+                ],
+                "numeric_fact_check": {
+                  "status": "not_applicable",
+                  "checks": []
+                },
+                "requirement": null
+              }
+            ]
+          },
+          {
+            "chapter_id": "chapter-cornerstone-paper-graph-b",
+            "title": "基石论文：Synthetic Graph Study B",
+            "points": [
+              {
+                "text": "Resolved future direction: cross-lingual transfer.",
+                "status": "verified",
+                "anchors": [
+                  {
+                    "paper_id": "paper-graph-b",
+                    "page_number": 1,
+                    "section": [
+                      "Main"
+                    ],
+                    "chunk_id": "chunk-graph-b"
+                  }
+                ],
+                "numeric_fact_check": {
+                  "status": "not_applicable",
+                  "checks": []
+                },
+                "requirement": null
+              },
+              {
+                "text": "We build on the calibration study [1].",
+                "status": "verified",
+                "anchors": [
+                  {
+                    "paper_id": "paper-graph-a",
+                    "page_number": 1,
+                    "section": [
+                      "Main"
+                    ],
+                    "chunk_id": "chunk-graph-a"
+                  }
+                ],
+                "numeric_fact_check": {
+                  "status": "not_applicable",
+                  "checks": []
+                },
+                "requirement": null
+              }
+            ]
+          },
+          {
+            "chapter_id": "chapter-isolated-paper-graph-d",
+            "title": "独立论文：Synthetic Graph Study D",
+            "points": [
+              {
+                "text": "An isolated synthetic paper with no references.",
+                "status": "verified",
+                "anchors": [
+                  {
+                    "paper_id": "paper-graph-d",
+                    "page_number": 1,
+                    "section": [
+                      "Main"
+                    ],
+                    "chunk_id": "chunk-graph-d"
+                  }
+                ],
+                "numeric_fact_check": {
+                  "status": "not_applicable",
+                  "checks": []
+                },
+                "requirement": null
+              }
+            ]
+          },
+          {
+            "chapter_id": "chapter-future_work-selected",
+            "title": "未来方向（所选语料尚未证实已解决）",
+            "points": [
+              {
+                "text": "Future work: document-level extraction.",
+                "status": "verified",
+                "anchors": [
+                  {
+                    "paper_id": "paper-graph-c",
+                    "page_number": 1,
+                    "section": [
+                      "Future Work"
+                    ],
+                    "chunk_id": "chunk-graph-c"
+                  }
+                ],
+                "numeric_fact_check": {
+                  "status": "not_applicable",
+                  "checks": []
+                },
+                "requirement": null
+              },
+              {
+                "text": "Future work: robust noisy labels.",
+                "status": "verified",
+                "anchors": [
+                  {
+                    "paper_id": "paper-graph-c",
+                    "page_number": 1,
+                    "section": [
+                      "Future Work"
+                    ],
+                    "chunk_id": "chunk-graph-c"
+                  }
+                ],
+                "numeric_fact_check": {
+                  "status": "not_applicable",
+                  "checks": []
+                },
+                "requirement": null
+              }
+            ]
+          }
+        ],
+        "mode": "extractive",
+        "unverifiable_count": 0
+      },
+      "summary": {
+        "chapters": 4,
+        "points": 6,
+        "anchor_occurrences": 6,
+        "unique_anchors": 4,
+        "unverifiable": 0,
+        "mode": "extractive"
+      }
+    },
+    {
+      "name": "review-missing",
+      "request": {
+        "method": "POST",
+        "path": "/api/v1/reviews",
+        "body": {
+          "paper_ids": [
+            "paper-graph-a",
+            "paper-graph-b",
+            "paper-graph-c",
+            "paper-graph-d"
+          ],
+          "framework": {
+            "schema_version": "1.2.0",
+            "paper_ids": [
+              "paper-graph-a",
+              "paper-graph-b",
+              "paper-graph-c",
+              "paper-graph-d"
+            ],
+            "chapters": [
+              {
+                "chapter_id": "chapter-cornerstone-paper-graph-c",
+                "kind": "cornerstone",
+                "title": "基石论文：Synthetic Graph Study C",
+                "paper_ids": [
+                  "paper-graph-c"
+                ],
+                "anchors": [
+                  {
+                    "paper_id": "paper-graph-c",
+                    "page_number": 1,
+                    "section": [
+                      "Future Work"
+                    ],
+                    "chunk_id": "chunk-graph-c"
+                  }
+                ],
+                "writing_points": [
+                  {
+                    "text": "Future work: cross-lingual transfer.",
+                    "anchor": {
+                      "paper_id": "paper-graph-c",
+                      "page_number": 1,
+                      "section": [
+                        "Future Work"
+                      ],
+                      "chunk_id": "chunk-graph-c"
+                    }
+                  }
+                ]
+              },
+              {
+                "chapter_id": "chapter-cornerstone-paper-graph-b",
+                "kind": "cornerstone",
+                "title": "基石论文：Synthetic Graph Study B",
+                "paper_ids": [
+                  "paper-graph-b",
+                  "paper-graph-a"
+                ],
+                "anchors": [
+                  {
+                    "paper_id": "paper-graph-b",
+                    "page_number": 1,
+                    "section": [
+                      "Main"
+                    ],
+                    "chunk_id": "chunk-graph-b"
+                  },
+                  {
+                    "paper_id": "paper-graph-a",
+                    "page_number": 1,
+                    "section": [
+                      "Main"
+                    ],
+                    "chunk_id": "chunk-graph-a"
+                  }
+                ],
+                "writing_points": [
+                  {
+                    "text": "Resolved future direction: cross-lingual transfer.",
+                    "anchor": {
+                      "paper_id": "paper-graph-b",
+                      "page_number": 1,
+                      "section": [
+                        "Main"
+                      ],
+                      "chunk_id": "chunk-graph-b"
+                    }
+                  },
+                  {
+                    "text": "We build on the calibration study [1].",
+                    "anchor": {
+                      "paper_id": "paper-graph-a",
+                      "page_number": 1,
+                      "section": [
+                        "Main"
+                      ],
+                      "chunk_id": "chunk-graph-a"
+                    }
+                  }
+                ]
+              },
+              {
+                "chapter_id": "chapter-isolated-paper-graph-d",
+                "kind": "isolated",
+                "title": "独立论文：Synthetic Graph Study D",
+                "paper_ids": [
+                  "paper-graph-d"
+                ],
+                "anchors": [
+                  {
+                    "paper_id": "paper-graph-d",
+                    "page_number": 1,
+                    "section": [
+                      "Main"
+                    ],
+                    "chunk_id": "chunk-graph-d"
+                  }
+                ],
+                "writing_points": [
+                  {
+                    "text": "An isolated synthetic paper with no references.",
+                    "anchor": {
+                      "paper_id": "paper-graph-d",
+                      "page_number": 1,
+                      "section": [
+                        "Main"
+                      ],
+                      "chunk_id": "chunk-graph-d"
+                    }
+                  }
+                ]
+              },
+              {
+                "chapter_id": "chapter-future_work-selected",
+                "kind": "future_work",
+                "title": "未来方向（所选语料尚未证实已解决）",
+                "paper_ids": [
+                  "paper-graph-c"
+                ],
+                "anchors": [
+                  {
+                    "paper_id": "paper-graph-c",
+                    "page_number": 1,
+                    "section": [
+                      "Future Work"
+                    ],
+                    "chunk_id": "chunk-graph-c"
+                  }
+                ],
+                "writing_points": [
+                  {
+                    "text": "Future work: document-level extraction.",
+                    "anchor": {
+                      "paper_id": "paper-graph-c",
+                      "page_number": 1,
+                      "section": [
+                        "Future Work"
+                      ],
+                      "chunk_id": "chunk-graph-c"
+                    }
+                  },
+                  {
+                    "text": "Future work: robust noisy labels.",
+                    "anchor": {
+                      "paper_id": "paper-graph-c",
+                      "page_number": 1,
+                      "section": [
+                        "Future Work"
+                      ],
+                      "chunk_id": "chunk-graph-c"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "requirements": [
+            "zzzzquantumteleportation"
+          ]
+        }
+      },
+      "http_status": 200,
+      "response": {
+        "framework": {
+          "schema_version": "1.2.0",
+          "paper_ids": [
+            "paper-graph-a",
+            "paper-graph-b",
+            "paper-graph-c",
+            "paper-graph-d"
+          ],
+          "chapters": [
+            {
+              "chapter_id": "chapter-cornerstone-paper-graph-c",
+              "kind": "cornerstone",
+              "title": "基石论文：Synthetic Graph Study C",
+              "paper_ids": [
+                "paper-graph-c"
+              ],
+              "anchors": [
+                {
+                  "paper_id": "paper-graph-c",
+                  "page_number": 1,
+                  "section": [
+                    "Future Work"
+                  ],
+                  "chunk_id": "chunk-graph-c"
+                }
+              ],
+              "writing_points": [
+                {
+                  "text": "Future work: cross-lingual transfer.",
+                  "anchor": {
+                    "paper_id": "paper-graph-c",
+                    "page_number": 1,
+                    "section": [
+                      "Future Work"
+                    ],
+                    "chunk_id": "chunk-graph-c"
+                  }
+                }
+              ]
+            },
+            {
+              "chapter_id": "chapter-cornerstone-paper-graph-b",
+              "kind": "cornerstone",
+              "title": "基石论文：Synthetic Graph Study B",
+              "paper_ids": [
+                "paper-graph-b",
+                "paper-graph-a"
+              ],
+              "anchors": [
+                {
+                  "paper_id": "paper-graph-b",
+                  "page_number": 1,
+                  "section": [
+                    "Main"
+                  ],
+                  "chunk_id": "chunk-graph-b"
+                },
+                {
+                  "paper_id": "paper-graph-a",
+                  "page_number": 1,
+                  "section": [
+                    "Main"
+                  ],
+                  "chunk_id": "chunk-graph-a"
+                }
+              ],
+              "writing_points": [
+                {
+                  "text": "Resolved future direction: cross-lingual transfer.",
+                  "anchor": {
+                    "paper_id": "paper-graph-b",
+                    "page_number": 1,
+                    "section": [
+                      "Main"
+                    ],
+                    "chunk_id": "chunk-graph-b"
+                  }
+                },
+                {
+                  "text": "We build on the calibration study [1].",
+                  "anchor": {
+                    "paper_id": "paper-graph-a",
+                    "page_number": 1,
+                    "section": [
+                      "Main"
+                    ],
+                    "chunk_id": "chunk-graph-a"
+                  }
+                }
+              ]
+            },
+            {
+              "chapter_id": "chapter-isolated-paper-graph-d",
+              "kind": "isolated",
+              "title": "独立论文：Synthetic Graph Study D",
+              "paper_ids": [
+                "paper-graph-d"
+              ],
+              "anchors": [
+                {
+                  "paper_id": "paper-graph-d",
+                  "page_number": 1,
+                  "section": [
+                    "Main"
+                  ],
+                  "chunk_id": "chunk-graph-d"
+                }
+              ],
+              "writing_points": [
+                {
+                  "text": "An isolated synthetic paper with no references.",
+                  "anchor": {
+                    "paper_id": "paper-graph-d",
+                    "page_number": 1,
+                    "section": [
+                      "Main"
+                    ],
+                    "chunk_id": "chunk-graph-d"
+                  }
+                }
+              ]
+            },
+            {
+              "chapter_id": "chapter-future_work-selected",
+              "kind": "future_work",
+              "title": "未来方向（所选语料尚未证实已解决）",
+              "paper_ids": [
+                "paper-graph-c"
+              ],
+              "anchors": [
+                {
+                  "paper_id": "paper-graph-c",
+                  "page_number": 1,
+                  "section": [
+                    "Future Work"
+                  ],
+                  "chunk_id": "chunk-graph-c"
+                }
+              ],
+              "writing_points": [
+                {
+                  "text": "Future work: document-level extraction.",
+                  "anchor": {
+                    "paper_id": "paper-graph-c",
+                    "page_number": 1,
+                    "section": [
+                      "Future Work"
+                    ],
+                    "chunk_id": "chunk-graph-c"
+                  }
+                },
+                {
+                  "text": "Future work: robust noisy labels.",
+                  "anchor": {
+                    "paper_id": "paper-graph-c",
+                    "page_number": 1,
+                    "section": [
+                      "Future Work"
+                    ],
+                    "chunk_id": "chunk-graph-c"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "chapters": [
+          {
+            "chapter_id": "chapter-cornerstone-paper-graph-c",
+            "title": "基石论文：Synthetic Graph Study C",
+            "points": [
+              {
+                "text": "Future work: cross-lingual transfer.",
+                "status": "verified",
+                "anchors": [
+                  {
+                    "paper_id": "paper-graph-c",
+                    "page_number": 1,
+                    "section": [
+                      "Future Work"
+                    ],
+                    "chunk_id": "chunk-graph-c"
+                  }
+                ],
+                "numeric_fact_check": {
+                  "status": "not_applicable",
+                  "checks": []
+                },
+                "requirement": null
+              },
+              {
+                "text": "未在本章摘录材料中检出所需要点；不可验证，未补写结论。",
+                "status": "unverifiable",
+                "anchors": [],
+                "numeric_fact_check": {
+                  "status": "unverifiable",
+                  "checks": []
+                },
+                "requirement": "zzzzquantumteleportation"
+              }
+            ]
+          },
+          {
+            "chapter_id": "chapter-cornerstone-paper-graph-b",
+            "title": "基石论文：Synthetic Graph Study B",
+            "points": [
+              {
+                "text": "Resolved future direction: cross-lingual transfer.",
+                "status": "verified",
+                "anchors": [
+                  {
+                    "paper_id": "paper-graph-b",
+                    "page_number": 1,
+                    "section": [
+                      "Main"
+                    ],
+                    "chunk_id": "chunk-graph-b"
+                  }
+                ],
+                "numeric_fact_check": {
+                  "status": "not_applicable",
+                  "checks": []
+                },
+                "requirement": null
+              },
+              {
+                "text": "We build on the calibration study [1].",
+                "status": "verified",
+                "anchors": [
+                  {
+                    "paper_id": "paper-graph-a",
+                    "page_number": 1,
+                    "section": [
+                      "Main"
+                    ],
+                    "chunk_id": "chunk-graph-a"
+                  }
+                ],
+                "numeric_fact_check": {
+                  "status": "not_applicable",
+                  "checks": []
+                },
+                "requirement": null
+              },
+              {
+                "text": "未在本章摘录材料中检出所需要点；不可验证，未补写结论。",
+                "status": "unverifiable",
+                "anchors": [],
+                "numeric_fact_check": {
+                  "status": "unverifiable",
+                  "checks": []
+                },
+                "requirement": "zzzzquantumteleportation"
+              }
+            ]
+          },
+          {
+            "chapter_id": "chapter-isolated-paper-graph-d",
+            "title": "独立论文：Synthetic Graph Study D",
+            "points": [
+              {
+                "text": "An isolated synthetic paper with no references.",
+                "status": "verified",
+                "anchors": [
+                  {
+                    "paper_id": "paper-graph-d",
+                    "page_number": 1,
+                    "section": [
+                      "Main"
+                    ],
+                    "chunk_id": "chunk-graph-d"
+                  }
+                ],
+                "numeric_fact_check": {
+                  "status": "not_applicable",
+                  "checks": []
+                },
+                "requirement": null
+              },
+              {
+                "text": "未在本章摘录材料中检出所需要点；不可验证，未补写结论。",
+                "status": "unverifiable",
+                "anchors": [],
+                "numeric_fact_check": {
+                  "status": "unverifiable",
+                  "checks": []
+                },
+                "requirement": "zzzzquantumteleportation"
+              }
+            ]
+          },
+          {
+            "chapter_id": "chapter-future_work-selected",
+            "title": "未来方向（所选语料尚未证实已解决）",
+            "points": [
+              {
+                "text": "Future work: document-level extraction.",
+                "status": "verified",
+                "anchors": [
+                  {
+                    "paper_id": "paper-graph-c",
+                    "page_number": 1,
+                    "section": [
+                      "Future Work"
+                    ],
+                    "chunk_id": "chunk-graph-c"
+                  }
+                ],
+                "numeric_fact_check": {
+                  "status": "not_applicable",
+                  "checks": []
+                },
+                "requirement": null
+              },
+              {
+                "text": "Future work: robust noisy labels.",
+                "status": "verified",
+                "anchors": [
+                  {
+                    "paper_id": "paper-graph-c",
+                    "page_number": 1,
+                    "section": [
+                      "Future Work"
+                    ],
+                    "chunk_id": "chunk-graph-c"
+                  }
+                ],
+                "numeric_fact_check": {
+                  "status": "not_applicable",
+                  "checks": []
+                },
+                "requirement": null
+              },
+              {
+                "text": "未在本章摘录材料中检出所需要点；不可验证，未补写结论。",
+                "status": "unverifiable",
+                "anchors": [],
+                "numeric_fact_check": {
+                  "status": "unverifiable",
+                  "checks": []
+                },
+                "requirement": "zzzzquantumteleportation"
+              }
+            ]
+          }
+        ],
+        "mode": "extractive",
+        "unverifiable_count": 4
+      },
+      "summary": {
+        "chapters": 4,
+        "points": 10,
+        "anchor_occurrences": 6,
+        "unique_anchors": 4,
+        "unverifiable": 4,
+        "mode": "extractive"
+      }
+    },
+    {
+      "name": "chart",
+      "request": {
+        "path": "/api/v1/charts/csv",
+        "fields": {
+          "chart_type": "bar",
+          "value_columns": "[\"samples\"]"
+        },
+        "input_utf8": "step,samples\n1,12\n2,18\n",
+        "input_sha256": "d957fad585105ca7c817ce4ae5f69dc4147ef0e6bf612833705a9f2e68833af5"
+      },
+      "http_status": 200,
+      "response": {
+        "schema_version": "1.1.0",
+        "chart_id": "chart-d23ecb759723ef123c5c6908d8df7b17efc016f636d4ac56c8ddfff9da2f9b62",
+        "chart_type": "bar",
+        "series": [
+          {
+            "name": "samples",
+            "values": [
+              12.0,
+              18.0
+            ]
+          }
+        ],
+        "image_ref": "data:image/png;base64,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",
+        "caption": "CSV values: 12, 18.",
+        "numeric_checks": [
+          {
+            "value": 12.0,
+            "csv_anchor": {
+              "csv_ref": "csv-d957fad585105ca7c817ce4ae5f69dc4147ef0e6bf612833705a9f2e68833af5",
+              "row_number": 2,
+              "column_name": "samples"
+            },
+            "verified": true
+          },
+          {
+            "value": 18.0,
+            "csv_anchor": {
+              "csv_ref": "csv-d957fad585105ca7c817ce4ae5f69dc4147ef0e6bf612833705a9f2e68833af5",
+              "row_number": 3,
+              "column_name": "samples"
+            },
+            "verified": true
+          }
+        ]
+      },
+      "summary": {
+        "csv_data_rows": 2,
+        "caption": "CSV values: 12, 18.",
+        "caption_source_cells": [
+          {
+            "value": 12.0,
+            "csv_anchor": {
+              "csv_ref": "csv-d957fad585105ca7c817ce4ae5f69dc4147ef0e6bf612833705a9f2e68833af5",
+              "row_number": 2,
+              "column_name": "samples"
+            },
+            "verified": true
+          },
+          {
+            "value": 18.0,
+            "csv_anchor": {
+              "csv_ref": "csv-d957fad585105ca7c817ce4ae5f69dc4147ef0e6bf612833705a9f2e68833af5",
+              "row_number": 3,
+              "column_name": "samples"
+            },
+            "verified": true
+          }
+        ],
+        "png_bytes": 13291,
+        "png_sha256": "7ff8b31d27f8aa0d3399108f8b9b6b588dd2df8a6ded8c85d94499b455366293"
+      }
+    },
+    {
+      "name": "bad-csv",
+      "request": {
+        "path": "/api/v1/charts/csv",
+        "fields": {
+          "chart_type": "bar",
+          "value_columns": "[\"samples\"]"
+        },
+        "input_utf8": "broken",
+        "input_sha256": "f526795c95399cea27c055c842c3d6ab018ed0fa4f66f701c28ab22dec28237b"
+      },
+      "http_status": 422,
+      "response": {
+        "error_code": "CSV_INVALID",
+        "message": "CSV须含表头与1–1000条数据记录。",
+        "details": null
+      }
+    },
+    {
+      "name": "bad-caption",
+      "request": {
+        "path": "/api/v1/charts/csv",
+        "fields": {
+          "chart_type": "bar",
+          "value_columns": "[\"samples\"]",
+          "caption": "CSV values: 999."
+        },
+        "input_utf8": "step,samples\n1,12\n2,18\n",
+        "input_sha256": "d957fad585105ca7c817ce4ae5f69dc4147ef0e6bf612833705a9f2e68833af5"
+      },
+      "http_status": 422,
+      "response": {
+        "error_code": "CHART_VALIDATION_FAILED",
+        "message": "图注数字未回溯到所选源CSV单元格。",
+        "details": null
+      }
+    }
+  ],
+  "frozen_contracts": [
+    {
+      "file": "contracts/chart-output.v1.1.example.json",
+      "git_blob": "f34c9130ecb750cf583a9cf5cb802fbe95a28bb7",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/chart-output.v1.1.schema.json",
+      "git_blob": "7b5b196ecc88d31d7a13b0f560f02c9feb0814dd",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/chunk.v1.example.json",
+      "git_blob": "330a0845a9569aa85053dbfa1dc643363b45f2c3",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/chunk.v1.schema.json",
+      "git_blob": "d577c91c27b33e360da8cdfbacbbf2da33ac1bcf",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/citation-link.v1.example.json",
+      "git_blob": "1df93d863fd88272ea4b3ec71d7fde77916c84f6",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/citation-link.v1.schema.json",
+      "git_blob": "1c26cb51d10256635af9cd43881a0219316408f8",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/dedup-decision.v1.1.example.json",
+      "git_blob": "d47edb3181b70f7fe0bed872d50a5178a1e3baaa",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/dedup-decision.v1.1.schema.json",
+      "git_blob": "a0679f1dd466fe247f2f8d9a77f05a669aa622bb",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/diff-summary.v1.1.example.json",
+      "git_blob": "947217164499f39932b9b4e88013828f5c1a9cdf",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/diff-summary.v1.1.schema.json",
+      "git_blob": "6df5e7753e629277068dd7c023938b2df0b122d8",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/graph-edge.v1.2.example.json",
+      "git_blob": "8a33fb93f0026639d49409134e8b50a99efe4c59",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/graph-edge.v1.2.schema.json",
+      "git_blob": "50194dc973bf38a8c4c7c1a0c31c849f9aa7bcfa",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/graph-node.v1.2.example.json",
+      "git_blob": "60d0d77292e9cb855259be05c14c9a0a3afa5f9a",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/graph-node.v1.2.schema.json",
+      "git_blob": "cf7d452c939aaae8faeafa159ccdfba5ba447163",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/paper-meta.v1.example.json",
+      "git_blob": "141f90fe6d68cbfb7f4770aace62c190100f7f8f",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/paper-meta.v1.schema.json",
+      "git_blob": "a8d65964a698823b165c7369d9912e0956081995",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/parse-status.v1.1.example.json",
+      "git_blob": "9dcae28d3c0605d1e3ca625d884125662ef105b3",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/parse-status.v1.1.schema.json",
+      "git_blob": "0821189d573e9b489bc3c900a97b3128f30bd132",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/qa-answer.v1.example.json",
+      "git_blob": "29dcf10a680b880f6559f6ab0a840195f90e0f89",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/qa-answer.v1.schema.json",
+      "git_blob": "9afbdd2b5fd1eafaddbf34bcd1377d333c0f3b1e",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/reference-entry.v1.example.json",
+      "git_blob": "35c676e8fbbe6ae4bc9e6d3622c1c9ba2e491965",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/reference-entry.v1.schema.json",
+      "git_blob": "e26db67f190041c4ea42f6e0729536e9babd6926",
+      "unchanged": true
+    }
+  ],
+  "implemented_endpoints": [
+    "GET /api/v1/papers",
+    "POST /api/v1/papers",
+    "POST /api/v1/papers/batch",
+    "GET /api/v1/papers/{paper_id}",
+    "GET /api/v1/papers/{paper_id}/parse-status",
+    "GET /api/v1/papers/{paper_id}/dedup-decision",
+    "GET /api/v1/papers/{paper_id}/diff-summary",
+    "GET /api/v1/papers/{paper_id}/chunks",
+    "GET /api/v1/papers/{paper_id}/references",
+    "GET /api/v1/papers/{paper_id}/citation-links",
+    "POST /api/v1/papers/{paper_id}/qa",
+    "POST /api/v1/compare",
+    "GET /api/v1/graph",
+    "POST /api/v1/retrieval/search",
+    "POST /api/v1/retrieval/fetch",
+    "GET /api/v1/recommendations",
+    "POST /api/v1/frameworks",
+    "POST /api/v1/reviews",
+    "POST /api/v1/charts/csv"
+  ],
+  "input_record_sha256": {
+    "records/papers/paper-graph-a/chunks.json": "cb3b52d59148d2152a30c8604223d03cfe2ae08fd2ccdca8d404e6ddeb2c3709",
+    "records/papers/paper-graph-a/citation-links.json": "a0a28d6db9aa3d6c2df9bcfe45eb056b0618928c13254ec793dff71ec2677a3e",
+    "records/papers/paper-graph-a/paper-meta.json": "34a05ebef04a99f66602ce3bf11d7ca00148ceb92cf1c8d9b9928c2e9e95d7dc",
+    "records/papers/paper-graph-a/reference-entries.json": "7ef57ecad0bfcee790377551d6962ede9362c94017749374c6b8a7a083f5c82a",
+    "records/papers/paper-graph-b/chunks.json": "a712c95cd64afb928c332e2b5dcf8cf7b9735ee374db1307e3e03142a8f04ee1",
+    "records/papers/paper-graph-b/citation-links.json": "2041da90822726ae8797e4be1223d3741098dc3455c4e7a94604cb9596fba1bf",
+    "records/papers/paper-graph-b/paper-meta.json": "3af410e023d9bcfbcade0cb7d9cc55edf64c2c32b2428397fd15a57e1ad15bbd",
+    "records/papers/paper-graph-b/reference-entries.json": "112345c120e051b81dcf091384484fbd74a6fca9adc98231e324c8f8ef546dc8",
+    "records/papers/paper-graph-c/chunks.json": "1c7091795c37d6680dbbd263680f8e7320dcabda345049bf3bab069be885e731",
+    "records/papers/paper-graph-c/citation-links.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "records/papers/paper-graph-c/paper-meta.json": "6e404d1e90d5daf20542137e2cdce16caf3a92a20de037d2824160d91acf4be3",
+    "records/papers/paper-graph-c/reference-entries.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "records/papers/paper-graph-d/chunks.json": "a6c53f5fa51be03d3231e7abab16b04104cc7bdc5742cceea23c58b1576a7b1a",
+    "records/papers/paper-graph-d/citation-links.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "records/papers/paper-graph-d/paper-meta.json": "4376cf49d4528e55ce459b5264fa3a1050f5ace440e1794ded545f4a51cf9e84",
+    "records/papers/paper-graph-d/reference-entries.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+  },
+  "inputs_unchanged": true
+}
