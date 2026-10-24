@@ -34,3 +34,13 @@ def test_graph_edge_missing_anchor_must_be_unverified():
     gate.record("GraphEdge", {**edge, "anchor": None, "status": "unverified"})
     with pytest.raises(PipelineError):
         gate.record("GraphEdge", {**edge, "status": "unverified"})
+
+
+def test_new_examples_align_with_existing_paper_and_chunk_examples():
+    def read(name):
+        return json.loads((ROOT / "contracts" / name).read_text(encoding="utf-8"))
+    paper, chunk = read("paper-meta.v1.example.json"), read("chunk.v1.example.json")
+    node, edge = read("graph-node.v1.2.example.json"), read("graph-edge.v1.2.example.json")
+    assert (node["paper_id"], node["title"], node["year"]) == (paper["id"], paper["title"], paper["year"])
+    assert edge["anchor"] == {"paper_id": chunk["paper_id"], "page_number": chunk["page_number"],
+                              "section": chunk["section_path"], "chunk_id": chunk["chunk_id"]}
