@@ -22,7 +22,7 @@
 | POST | /papers/batch | 批量上传 | multipart PDF 文件列表；如附元数据只接受 PaperMeta[] | PaperMeta[]；部分失败及任务状态封装待裁定 |
 | GET | /papers | 文献列表 | 无请求体；筛选参数仅引用 PaperMeta 已有字段 | PaperMeta[]；分页封装待裁定 |
 | GET | /papers/{paper_id} | 文献详情 | paper_id 引用 PaperMeta.id | PaperMeta |
-| GET | /papers/{paper_id}/parse-status | 解析状态 | paper_id 引用 PaperMeta.id | 待裁定：五份契约均无解析阶段、进度或错误字段；不得通过 null 元数据猜状态 |
+| GET | /papers/{paper_id}/parse-status | 解析状态 | paper_id 引用 PaperMeta.id | v1.1 已定义，返回 ParseStatus |
 | GET | /papers/{paper_id}/chunks | 分块列表 | paper_id 引用 PaperMeta.id | Chunk[] |
 | GET | /papers/{paper_id}/references | 参考文献条目 | paper_id 引用 PaperMeta.id | ReferenceEntry[] |
 | GET | /papers/{paper_id}/citation-links | 正文与参考文献跳转数据 | paper_id 引用 PaperMeta.id；可按 CitationLink.ref_id 或 chunk_id 筛选 | CitationLink[]；以 ref_id 与 chunk_id 关联前两项列表 |
