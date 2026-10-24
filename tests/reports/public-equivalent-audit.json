@@ -1,0 +1,193 @@
+{
+  "scope": "公开等价物、非官方 pdf/ 文件；未运行或宣称官方三用例通过。",
+  "baseline": "7ac617a4ff818cc3840069098fc3477ca614b0e8",
+  "evidence_consistency_checks_passed": true,
+  "business_acceptance_all_passed": false,
+  "scope_tests_only": true,
+  "frozen_contract_files": [
+    {
+      "file": "contracts/CONTRACTS.md",
+      "git_blob": "e4292d4ebf99c3b700c3e48c657b60938d05fb14",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/README.md",
+      "git_blob": "85b7a5d1b43407df09733194dc141ca7297a839f",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/chart-output.v1.1.example.json",
+      "git_blob": "f34c9130ecb750cf583a9cf5cb802fbe95a28bb7",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/chart-output.v1.1.schema.json",
+      "git_blob": "7b5b196ecc88d31d7a13b0f560f02c9feb0814dd",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/chunk.v1.example.json",
+      "git_blob": "330a0845a9569aa85053dbfa1dc643363b45f2c3",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/chunk.v1.schema.json",
+      "git_blob": "d577c91c27b33e360da8cdfbacbbf2da33ac1bcf",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/citation-link.v1.example.json",
+      "git_blob": "1df93d863fd88272ea4b3ec71d7fde77916c84f6",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/citation-link.v1.schema.json",
+      "git_blob": "1c26cb51d10256635af9cd43881a0219316408f8",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/dedup-decision.v1.1.example.json",
+      "git_blob": "d47edb3181b70f7fe0bed872d50a5178a1e3baaa",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/dedup-decision.v1.1.schema.json",
+      "git_blob": "a0679f1dd466fe247f2f8d9a77f05a669aa622bb",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/diff-summary.v1.1.example.json",
+      "git_blob": "947217164499f39932b9b4e88013828f5c1a9cdf",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/diff-summary.v1.1.schema.json",
+      "git_blob": "6df5e7753e629277068dd7c023938b2df0b122d8",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/framework-outline.v1.2.example.json",
+      "git_blob": "fe04eb4ea3b10663225a3a0bf23667e0154859ba",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/framework-outline.v1.2.schema.json",
+      "git_blob": "c1400597c95b685746e6ee714e516fd26d102762",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/graph-edge.v1.2.example.json",
+      "git_blob": "8a33fb93f0026639d49409134e8b50a99efe4c59",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/graph-edge.v1.2.schema.json",
+      "git_blob": "50194dc973bf38a8c4c7c1a0c31c849f9aa7bcfa",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/graph-node.v1.2.example.json",
+      "git_blob": "60d0d77292e9cb855259be05c14c9a0a3afa5f9a",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/graph-node.v1.2.schema.json",
+      "git_blob": "cf7d452c939aaae8faeafa159ccdfba5ba447163",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/paper-meta.v1.example.json",
+      "git_blob": "141f90fe6d68cbfb7f4770aace62c190100f7f8f",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/paper-meta.v1.schema.json",
+      "git_blob": "a8d65964a698823b165c7369d9912e0956081995",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/parse-status.v1.1.example.json",
+      "git_blob": "9dcae28d3c0605d1e3ca625d884125662ef105b3",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/parse-status.v1.1.schema.json",
+      "git_blob": "0821189d573e9b489bc3c900a97b3128f30bd132",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/qa-answer.v1.example.json",
+      "git_blob": "29dcf10a680b880f6559f6ab0a840195f90e0f89",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/qa-answer.v1.schema.json",
+      "git_blob": "9afbdd2b5fd1eafaddbf34bcd1377d333c0f3b1e",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/reference-entry.v1.example.json",
+      "git_blob": "35c676e8fbbe6ae4bc9e6d3622c1c9ba2e491965",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/reference-entry.v1.schema.json",
+      "git_blob": "e26db67f190041c4ea42f6e0729536e9babd6926",
+      "unchanged": true
+    }
+  ],
+  "changed_paths": [
+    "tests/audit_public_equivalents.py",
+    "tests/public_pdf_support.py",
+    "tests/reports/public-equivalent-acceptance.md",
+    "tests/reports/public-equivalent-audit.json",
+    "tests/reports/public-equivalent-dedup.json",
+    "tests/reports/public-equivalent-dedup.md",
+    "tests/reports/public-equivalent-longbook.json",
+    "tests/reports/public-equivalent-longbook.md",
+    "tests/reports/public-equivalent-ocr-extended.json",
+    "tests/reports/public-equivalent-ocr.json",
+    "tests/reports/public-equivalent-ocr.md",
+    "tests/reports/public-equivalent-pytest.xml",
+    "tests/run_public_dedup.py",
+    "tests/run_public_longbook.py",
+    "tests/run_public_ocr.py"
+  ],
+  "secret_pattern_matches": 0,
+  "secret_scan_limits": "常见模式检查，不保证覆盖所有秘密；未读取.env或使用真实API Key。",
+  "notes": "校验报告与真实数据文件一致，不把证据一致性或pytest通过混同于业务验收通过。",
+  "regression": {
+    "tests": 296,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "case_commits": [
+    {
+      "commit": "3b49fe56649d6ef9d845f7e720f05271d3855be8",
+      "files": [
+        "tests/public_pdf_support.py",
+        "tests/reports/public-equivalent-dedup.json",
+        "tests/reports/public-equivalent-dedup.md",
+        "tests/run_public_dedup.py"
+      ]
+    },
+    {
+      "commit": "3e5a44b31fd62189b1cbce0e8261f871a9dd679e",
+      "files": [
+        "tests/reports/public-equivalent-longbook.json",
+        "tests/reports/public-equivalent-longbook.md",
+        "tests/run_public_longbook.py"
+      ]
+    },
+    {
+      "commit": "dfb60865f5e995a2ea03ce3c443f5cd20f2ceddb",
+      "files": [
+        "tests/reports/public-equivalent-ocr-extended.json",
+        "tests/reports/public-equivalent-ocr.json",
+        "tests/reports/public-equivalent-ocr.md",
+        "tests/run_public_ocr.py"
+      ]
+    }
+  ]
+}
