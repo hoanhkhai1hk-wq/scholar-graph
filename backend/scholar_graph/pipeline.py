@@ -22,11 +22,12 @@ from .validation import ContractGate
 
 
 class Pipeline:
-    def __init__(self, root: Path, *, engines=None, grobid=None, gate=None):
+    def __init__(self, root: Path, *, engines=None, grobid=None, gate=None, metadata_enricher=None):
         self.gate = gate or ContractGate()
         self.store = RecordStore(root, self.gate)
         self.engines = engines or LocalEngines(cache_dir=root / "models")
         self.grobid = grobid
+        self.metadata_enricher = metadata_enricher
         self.last_job = None
         self.last_output = None
         self.last_comparison = None
@@ -83,6 +84,13 @@ class Pipeline:
                 bundle = normalize(native, ocr, paper, ocr_pages)
                 if self.grobid is not None:
                     bundle = self.grobid.enrich(bundle, raw)
+                if self.metadata_enricher is not None:
+                    original = bundle["paper_meta"]
+                    enriched = self.metadata_enricher(dict(original))
+                    protected = ("id", "schema_version", "file_hash", "page_count", "has_text_layer")
+                    if any(enriched.get(key) != original[key] for key in protected):
+                        raise PipelineError("VALIDATION_ERROR", "元数据补充不得改变实际文件身份、页数或文本层。")
+                    bundle["paper_meta"] = enriched
                 self.gate.bundle(bundle)
                 already_present = (self.store.root / "papers" / pid).exists()
                 prior = self.store.previous_version(bundle["paper_meta"]) if not already_present else None
