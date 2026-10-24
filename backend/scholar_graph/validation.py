@@ -26,8 +26,9 @@ class ContractGate:
             self.validators[schema["title"]] = Draft202012Validator(schema)
         legacy = {"PaperMeta", "Chunk", "ReferenceEntry", "CitationLink", "QAAnswer",
                   "DedupDecision", "DiffSummary", "ParseStatus", "ChartOutput"}
-        if set(self.validators) not in (legacy, legacy | {"GraphNode", "GraphEdge"}):
-            raise PipelineError("VALIDATION_ERROR", "需要完整的原九类契约，v1.2 图谱契约必须成对提供。")
+        graph = legacy | {"GraphNode", "GraphEdge"}
+        if set(self.validators) not in (legacy, graph, graph | {"FrameworkOutline"}):
+            raise PipelineError("VALIDATION_ERROR", "需要完整原九类契约；图谱须成对提供，框架依赖完整图谱契约。")
 
     def record(self, kind: str, value: dict) -> None:
         try:

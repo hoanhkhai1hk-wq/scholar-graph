@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.2.0",
+  "paper_ids": [
+    "paper-demo-001"
+  ],
+  "chapters": [
+    {
+      "chapter_id": "chapter-isolated-paper-demo-001",
+      "kind": "isolated",
+      "title": "独立论文：Synthetic Research Example",
+      "paper_ids": [
+        "paper-demo-001"
+      ],
+      "anchors": [
+        {
+          "paper_id": "paper-demo-001",
+          "page_number": 1,
+          "section": [
+            "1 Introduction",
+            "1.1 Setup"
+          ],
+          "chunk_id": "chunk-demo-001-p1-001"
+        }
+      ],
+      "writing_points": [
+        {
+          "text": "The synthetic study contains 12 samples and cites [1].",
+          "anchor": {
+            "paper_id": "paper-demo-001",
+            "page_number": 1,
+            "section": [
+              "1 Introduction",
+              "1.1 Setup"
+            ],
+            "chunk_id": "chunk-demo-001-p1-001"
+          }
+        }
+      ]
+    }
+  ]
+}
