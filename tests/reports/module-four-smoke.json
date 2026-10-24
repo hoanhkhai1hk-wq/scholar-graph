@@ -1,0 +1,994 @@
+{
+  "scope": "自制样例、非官方 pdf/ 用例；无官方三用例、前端或真实大模型验收。公开 arXiv 探针另记，不冒充自制或官方用例。",
+  "run_utc": "2026-10-24T15:23:59.944643+00:00",
+  "baseline": "5e3e0dce8dbc51b441bbebe7fa88c785e10ccb04",
+  "source_commit": "b596d57d6215a983ce473af26a64976747eb0a45",
+  "formula": "score = 100 * (0.40*G + 0.35*P + 0.15*T + 0.10*C); missing terms contribute 0, without reweighting",
+  "cases": [
+    {
+      "name": "lexical",
+      "request": {
+        "method": "POST",
+        "path": "/api/v1/retrieval/search",
+        "body": {
+          "question": "cross-lingual transfer",
+          "page_size": 999
+        },
+        "params": null
+      },
+      "http_status": 200,
+      "elapsed_seconds": 0.016,
+      "headers": {
+        "x-scholargraph-search-mode": "lexical",
+        "x-scholargraph-vector-status": "NOT_ENABLED",
+        "x-scholargraph-search-reason": "OK"
+      },
+      "response": {
+        "items": [
+          {
+            "chunk": {
+              "schema_version": "1.0.0",
+              "chunk_id": "chunk-graph-c",
+              "paper_id": "paper-graph-c",
+              "page_number": 1,
+              "section_path": [
+                "Future Work"
+              ],
+              "heading_1": "Future Work",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "Future work: cross-lingual transfer.\nFuture work: document-level extraction.\nFuture work: robust noisy labels.",
+              "bbox": [
+                0.1,
+                0.2,
+                0.9,
+                0.4
+              ],
+              "type": "text"
+            },
+            "anchor": {
+              "paper_id": "paper-graph-c",
+              "page_number": 1,
+              "section": [
+                "Future Work"
+              ],
+              "chunk_id": "chunk-graph-c"
+            },
+            "relevance": 0.4377912310861148,
+            "retrieval_method": "lexical"
+          },
+          {
+            "chunk": {
+              "schema_version": "1.0.0",
+              "chunk_id": "chunk-graph-b",
+              "paper_id": "paper-graph-b",
+              "page_number": 1,
+              "section_path": [
+                "Main"
+              ],
+              "heading_1": "Main",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "Resolved future direction: cross-lingual transfer.\nWe did not resolve document-level extraction.\nWe cite the original directions [1].",
+              "bbox": [
+                0.1,
+                0.2,
+                0.9,
+                0.4
+              ],
+              "type": "text"
+            },
+            "anchor": {
+              "paper_id": "paper-graph-b",
+              "page_number": 1,
+              "section": [
+                "Main"
+              ],
+              "chunk_id": "chunk-graph-b"
+            },
+            "relevance": 0.3345420558013899,
+            "retrieval_method": "lexical"
+          }
+        ],
+        "page": 1,
+        "page_size": 100,
+        "total": 2,
+        "total_pages": 1,
+        "has_next": false
+      }
+    },
+    {
+      "name": "empty-lexical",
+      "request": {
+        "method": "POST",
+        "path": "/api/v1/retrieval/search",
+        "body": {
+          "question": "zzzznonexistent"
+        },
+        "params": null
+      },
+      "http_status": 200,
+      "elapsed_seconds": 0.016,
+      "headers": {
+        "x-scholargraph-search-mode": "lexical",
+        "x-scholargraph-vector-status": "NOT_ENABLED",
+        "x-scholargraph-search-reason": "NO_MATCHING_CHUNKS"
+      },
+      "response": {
+        "items": [],
+        "page": 1,
+        "page_size": 20,
+        "total": 0,
+        "total_pages": 0,
+        "has_next": false
+      }
+    },
+    {
+      "name": "out-of-range",
+      "request": {
+        "method": "POST",
+        "path": "/api/v1/retrieval/search",
+        "body": {
+          "question": "cross-lingual transfer",
+          "page_size": 999,
+          "page": 999
+        },
+        "params": null
+      },
+      "http_status": 200,
+      "elapsed_seconds": 0.015,
+      "headers": {
+        "x-scholargraph-search-mode": "lexical",
+        "x-scholargraph-vector-status": "NOT_ENABLED",
+        "x-scholargraph-search-reason": "PAGE_OUT_OF_RANGE"
+      },
+      "response": {
+        "items": [],
+        "page": 999,
+        "page_size": 100,
+        "total": 2,
+        "total_pages": 1,
+        "has_next": false
+      }
+    },
+    {
+      "name": "real-bge-m3-hybrid",
+      "request": {
+        "method": "POST",
+        "path": "/api/v1/retrieval/search",
+        "body": {
+          "question": "cross-lingual transfer",
+          "page_size": 999
+        },
+        "params": null
+      },
+      "http_status": 200,
+      "elapsed_seconds": 19.141,
+      "headers": {
+        "x-scholargraph-search-mode": "bge_m3_hybrid",
+        "x-scholargraph-vector-status": "READY",
+        "x-scholargraph-search-reason": "OK"
+      },
+      "response": {
+        "items": [
+          {
+            "chunk": {
+              "schema_version": "1.0.0",
+              "chunk_id": "chunk-graph-b",
+              "paper_id": "paper-graph-b",
+              "page_number": 1,
+              "section_path": [
+                "Main"
+              ],
+              "heading_1": "Main",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "Resolved future direction: cross-lingual transfer.\nWe did not resolve document-level extraction.\nWe cite the original directions [1].",
+              "bbox": [
+                0.1,
+                0.2,
+                0.9,
+                0.4
+              ],
+              "type": "text"
+            },
+            "anchor": {
+              "paper_id": "paper-graph-b",
+              "page_number": 1,
+              "section": [
+                "Main"
+              ],
+              "chunk_id": "chunk-graph-b"
+            },
+            "relevance": 0.9919354838709677,
+            "retrieval_method": "bge_m3_hybrid"
+          },
+          {
+            "chunk": {
+              "schema_version": "1.0.0",
+              "chunk_id": "chunk-graph-c",
+              "paper_id": "paper-graph-c",
+              "page_number": 1,
+              "section_path": [
+                "Future Work"
+              ],
+              "heading_1": "Future Work",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "Future work: cross-lingual transfer.\nFuture work: document-level extraction.\nFuture work: robust noisy labels.",
+              "bbox": [
+                0.1,
+                0.2,
+                0.9,
+                0.4
+              ],
+              "type": "text"
+            },
+            "anchor": {
+              "paper_id": "paper-graph-c",
+              "page_number": 1,
+              "section": [
+                "Future Work"
+              ],
+              "chunk_id": "chunk-graph-c"
+            },
+            "relevance": 0.9919354838709677,
+            "retrieval_method": "bge_m3_hybrid"
+          },
+          {
+            "chunk": {
+              "schema_version": "1.0.0",
+              "chunk_id": "chunk-graph-a",
+              "paper_id": "paper-graph-a",
+              "page_number": 1,
+              "section_path": [
+                "Main"
+              ],
+              "heading_1": "Main",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "We build on the calibration study [1].",
+              "bbox": [
+                0.1,
+                0.2,
+                0.9,
+                0.4
+              ],
+              "type": "text"
+            },
+            "anchor": {
+              "paper_id": "paper-graph-a",
+              "page_number": 1,
+              "section": [
+                "Main"
+              ],
+              "chunk_id": "chunk-graph-a"
+            },
+            "relevance": 0.48412698412698413,
+            "retrieval_method": "bge_m3_hybrid"
+          },
+          {
+            "chunk": {
+              "schema_version": "1.0.0",
+              "chunk_id": "chunk-graph-d",
+              "paper_id": "paper-graph-d",
+              "page_number": 1,
+              "section_path": [
+                "Main"
+              ],
+              "heading_1": "Main",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "An isolated synthetic paper with no references.",
+              "bbox": [
+                0.1,
+                0.2,
+                0.9,
+                0.4
+              ],
+              "type": "text"
+            },
+            "anchor": {
+              "paper_id": "paper-graph-d",
+              "page_number": 1,
+              "section": [
+                "Main"
+              ],
+              "chunk_id": "chunk-graph-d"
+            },
+            "relevance": 0.4765625,
+            "retrieval_method": "bge_m3_hybrid"
+          }
+        ],
+        "page": 1,
+        "page_size": 100,
+        "total": 4,
+        "total_pages": 1,
+        "has_next": false
+      },
+      "native_evidence": {
+        "dense": {
+          "chunk-graph-b": 0.5804516077041626,
+          "chunk-graph-c": 0.5793206095695496,
+          "chunk-graph-a": 0.4832015037536621,
+          "chunk-graph-d": 0.3797173500061035
+        },
+        "sparse": {
+          "chunk-graph-a": 0.0,
+          "chunk-graph-b": 0.13775109683700948,
+          "chunk-graph-c": 0.14957611095253276,
+          "chunk-graph-d": 0.0
+        },
+        "indexed_chunks": 4,
+        "updated_chunks": 4,
+        "stored_vectors": 4,
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181",
+        "dimension": 1024,
+        "versions": {
+          "chromadb": "1.5.9",
+          "FlagEmbedding": "1.4.2",
+          "torch": "2.14.1+cpu",
+          "transformers": "5.20.2"
+        }
+      }
+    },
+    {
+      "name": "persistent-vector-subset",
+      "request": {
+        "method": "POST",
+        "path": "/api/v1/retrieval/search",
+        "body": {
+          "question": "cross-lingual transfer",
+          "page_size": 999,
+          "paper_ids": [
+            "paper-graph-c"
+          ]
+        },
+        "params": null
+      },
+      "http_status": 200,
+      "elapsed_seconds": 19.5,
+      "headers": {
+        "x-scholargraph-search-mode": "bge_m3_hybrid",
+        "x-scholargraph-vector-status": "READY",
+        "x-scholargraph-search-reason": "OK"
+      },
+      "response": {
+        "items": [
+          {
+            "chunk": {
+              "schema_version": "1.0.0",
+              "chunk_id": "chunk-graph-c",
+              "paper_id": "paper-graph-c",
+              "page_number": 1,
+              "section_path": [
+                "Future Work"
+              ],
+              "heading_1": "Future Work",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "Future work: cross-lingual transfer.\nFuture work: document-level extraction.\nFuture work: robust noisy labels.",
+              "bbox": [
+                0.1,
+                0.2,
+                0.9,
+                0.4
+              ],
+              "type": "text"
+            },
+            "anchor": {
+              "paper_id": "paper-graph-c",
+              "page_number": 1,
+              "section": [
+                "Future Work"
+              ],
+              "chunk_id": "chunk-graph-c"
+            },
+            "relevance": 1.0,
+            "retrieval_method": "bge_m3_hybrid"
+          }
+        ],
+        "page": 1,
+        "page_size": 100,
+        "total": 1,
+        "total_pages": 1,
+        "has_next": false
+      },
+      "native_evidence": {
+        "dense": {
+          "chunk-graph-c": 0.5793206095695496
+        },
+        "sparse": {
+          "chunk-graph-c": 0.14957611095253276
+        },
+        "indexed_chunks": 1,
+        "updated_chunks": 0,
+        "stored_vectors": 4,
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181",
+        "dimension": 1024,
+        "versions": {
+          "chromadb": "1.5.9",
+          "FlagEmbedding": "1.4.2",
+          "torch": "2.14.1+cpu",
+          "transformers": "5.20.2"
+        }
+      }
+    },
+    {
+      "name": "recommendations",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/recommendations",
+        "body": null,
+        "params": {
+          "paper_id": "paper-graph-a",
+          "as_of_year": 2026
+        }
+      },
+      "http_status": 200,
+      "elapsed_seconds": 0.047,
+      "headers": {
+        "x-scholargraph-recommendation-reason": "OK"
+      },
+      "response": {
+        "items": [
+          {
+            "paper": {
+              "schema_version": "1.0.0",
+              "id": "paper-graph-b",
+              "title": "Synthetic Graph Study B",
+              "authors": [
+                "Demo Author"
+              ],
+              "institutions": [
+                "Demo Institute"
+              ],
+              "abstract": "Synthetic metadata for contract validation only.",
+              "year": 2020,
+              "source": "synthetic-graph-fixture",
+              "arxiv_id": null,
+              "doi": "10.5555/graph-b",
+              "version": "v1",
+              "file_hash": "3d4c829937aca3efb6e62d6dcc385fb4e4ffc949c48ca7d6fc2d22ec2f14e47c",
+              "page_count": 1,
+              "has_text_layer": true
+            },
+            "score": 71.17006802721424,
+            "signals": {
+              "graph_neighbor": 1,
+              "pagerank_normalized": 0.7191448007775495,
+              "recency": 0.4,
+              "github_link": null
+            },
+            "reasons": [
+              {
+                "signal": "pagerank_normalized",
+                "text": "复用模块五在当前本地论文集合计算的 PageRank，不是全网引用数或科研质量。",
+                "evidence": {
+                  "graph_node": {
+                    "schema_version": "1.2.0",
+                    "paper_id": "paper-graph-b",
+                    "title": "Synthetic Graph Study B",
+                    "year": 2020,
+                    "pagerank": 0.2880498248345452,
+                    "level": "cornerstone"
+                  },
+                  "scope_size": 4,
+                  "maximum_pagerank": 0.40054495912798327
+                }
+              },
+              {
+                "signal": "graph_neighbor",
+                "text": "与种子论文存在直接、已核验的局域引用边。",
+                "evidence": {
+                  "edges": [
+                    {
+                      "schema_version": "1.2.0",
+                      "from_paper_id": "paper-graph-a",
+                      "to_paper_id": "paper-graph-b",
+                      "anchor": {
+                        "paper_id": "paper-graph-a",
+                        "page_number": 1,
+                        "section": [
+                          "Main"
+                        ],
+                        "chunk_id": "chunk-graph-a"
+                      },
+                      "status": "verified"
+                    }
+                  ]
+                }
+              },
+              {
+                "signal": "recency",
+                "text": "使用元数据发表年份与指定评分年份计算十年线性时效项。",
+                "evidence": {
+                  "metadata_field": "year",
+                  "year": 2020,
+                  "as_of_year": 2026
+                }
+              }
+            ],
+            "missing_signals": [
+              "github_link"
+            ],
+            "scoring_version": "module-four-v1",
+            "as_of_year": 2026
+          },
+          {
+            "paper": {
+              "schema_version": "1.0.0",
+              "id": "paper-graph-c",
+              "title": "Synthetic Graph Study C",
+              "authors": [
+                "Demo Author"
+              ],
+              "institutions": [
+                "Demo Institute"
+              ],
+              "abstract": "Synthetic metadata for contract validation only.",
+              "year": 2018,
+              "source": "synthetic-graph-fixture",
+              "arxiv_id": null,
+              "doi": "10.5555/graph-c",
+              "version": "v1",
+              "file_hash": "74605fd174e11c25cb03bebdb7fd0fa6b64a6c05b32ceea0ee60d190007bccbd",
+              "page_count": 1,
+              "has_text_layer": true
+            },
+            "score": 37.99999999999999,
+            "signals": {
+              "graph_neighbor": 0,
+              "pagerank_normalized": 1.0,
+              "recency": 0.19999999999999996,
+              "github_link": null
+            },
+            "reasons": [
+              {
+                "signal": "pagerank_normalized",
+                "text": "复用模块五在当前本地论文集合计算的 PageRank，不是全网引用数或科研质量。",
+                "evidence": {
+                  "graph_node": {
+                    "schema_version": "1.2.0",
+                    "paper_id": "paper-graph-c",
+                    "title": "Synthetic Graph Study C",
+                    "year": 2018,
+                    "pagerank": 0.40054495912798327,
+                    "level": "cornerstone"
+                  },
+                  "scope_size": 4,
+                  "maximum_pagerank": 0.40054495912798327
+                }
+              },
+              {
+                "signal": "recency",
+                "text": "使用元数据发表年份与指定评分年份计算十年线性时效项。",
+                "evidence": {
+                  "metadata_field": "year",
+                  "year": 2018,
+                  "as_of_year": 2026
+                }
+              }
+            ],
+            "missing_signals": [
+              "github_link"
+            ],
+            "scoring_version": "module-four-v1",
+            "as_of_year": 2026
+          },
+          {
+            "paper": {
+              "schema_version": "1.0.0",
+              "id": "paper-graph-d",
+              "title": "Synthetic Graph Study D",
+              "authors": [
+                "Demo Author"
+              ],
+              "institutions": [
+                "Demo Institute"
+              ],
+              "abstract": "Synthetic metadata for contract validation only.",
+              "year": 2025,
+              "source": "synthetic-graph-fixture",
+              "arxiv_id": null,
+              "doi": "10.5555/graph-d",
+              "version": "v1",
+              "file_hash": "4d787a61b4fd49b31b3f9992be889a9d35a0ac81710b749160d2d4a57e345a5b",
+              "page_count": 1,
+              "has_text_layer": true
+            },
+            "score": 27.105442176878036,
+            "signals": {
+              "graph_neighbor": 0,
+              "pagerank_normalized": 0.38872691933937237,
+              "recency": 0.9,
+              "github_link": null
+            },
+            "reasons": [
+              {
+                "signal": "pagerank_normalized",
+                "text": "复用模块五在当前本地论文集合计算的 PageRank，不是全网引用数或科研质量。",
+                "evidence": {
+                  "graph_node": {
+                    "schema_version": "1.2.0",
+                    "paper_id": "paper-graph-d",
+                    "title": "Synthetic Graph Study D",
+                    "year": 2025,
+                    "pagerank": 0.15570260801873576,
+                    "level": "isolated"
+                  },
+                  "scope_size": 4,
+                  "maximum_pagerank": 0.40054495912798327
+                }
+              },
+              {
+                "signal": "recency",
+                "text": "使用元数据发表年份与指定评分年份计算十年线性时效项。",
+                "evidence": {
+                  "metadata_field": "year",
+                  "year": 2025,
+                  "as_of_year": 2026
+                }
+              }
+            ],
+            "missing_signals": [
+              "github_link"
+            ],
+            "scoring_version": "module-four-v1",
+            "as_of_year": 2026
+          }
+        ],
+        "page": 1,
+        "page_size": 20,
+        "total": 3,
+        "total_pages": 1,
+        "has_next": false
+      }
+    },
+    {
+      "name": "synthetic-atom-real-mineru",
+      "request": {
+        "method": "POST",
+        "path": "/api/v1/retrieval/fetch",
+        "body": {
+          "title": "Synthetic ScholarGraph Study"
+        },
+        "params": null
+      },
+      "http_status": 200,
+      "elapsed_seconds": 2.25,
+      "headers": {},
+      "response": {
+        "succeeded": true,
+        "metadata": {
+          "schema_version": "1.0.0",
+          "id": "arxiv-2601.00001v1",
+          "title": "Synthetic ScholarGraph Study",
+          "authors": [
+            "Demo Author"
+          ],
+          "institutions": [
+            "Synthetic Institute"
+          ],
+          "abstract": "Synthetic test metadata, not a real arXiv entry.",
+          "year": 2026,
+          "source": "https://arxiv.org/abs/2601.00001v1",
+          "arxiv_id": "2601.00001v1",
+          "doi": "10.5555/scholar-synthetic",
+          "version": "v1",
+          "file_hash": null,
+          "page_count": null,
+          "has_text_layer": null
+        },
+        "paper": {
+          "schema_version": "1.0.0",
+          "id": "paper-cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20",
+          "title": "Synthetic ScholarGraph Study",
+          "authors": [
+            "Demo Author"
+          ],
+          "institutions": [
+            "Synthetic Institute"
+          ],
+          "abstract": "Synthetic test metadata, not a real arXiv entry.",
+          "year": 2026,
+          "source": "https://arxiv.org/abs/2601.00001v1",
+          "arxiv_id": "2601.00001v1",
+          "doi": "10.5555/scholar-synthetic",
+          "version": "v1",
+          "file_hash": "cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20",
+          "page_count": 2,
+          "has_text_layer": true
+        },
+        "initial_parse_status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20",
+          "status": "queued",
+          "progress": 0,
+          "current_stage": "等待解析",
+          "error_code": null,
+          "error_message": null
+        },
+        "parse_status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20",
+          "status": "completed",
+          "progress": 100,
+          "current_stage": "四类记录已通过校验并原子发布",
+          "error_code": null,
+          "error_message": null
+        },
+        "error": null
+      },
+      "record_counts": {
+        "paper_meta": 1,
+        "chunks": 6,
+        "reference_entries": 1,
+        "citation_links": 1
+      },
+      "input_pdf_sha256": "cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20"
+    },
+    {
+      "name": "public-interface-failure-injection",
+      "request": {
+        "method": "POST",
+        "path": "/api/v1/retrieval/fetch",
+        "body": {
+          "title": "Synthetic ScholarGraph Study"
+        },
+        "params": null
+      },
+      "http_status": 200,
+      "elapsed_seconds": 0.015,
+      "headers": {},
+      "response": {
+        "succeeded": false,
+        "metadata": null,
+        "paper": null,
+        "initial_parse_status": null,
+        "parse_status": null,
+        "error": {
+          "error_code": "UPSTREAM_ERROR",
+          "message": "arXiv 公共接口返回 HTTP 503，未取得所需记录或文件。",
+          "details": null
+        }
+      }
+    },
+    {
+      "name": "LIVE-public-arxiv-reference",
+      "request": {
+        "method": "POST",
+        "path": "/api/v1/retrieval/fetch",
+        "body": {
+          "reference": {
+            "schema_version": "1.0.0",
+            "ref_id": "ref-demo-001-1",
+            "paper_id": "paper-demo-001",
+            "number": 1,
+            "authors": [
+              "Example Author"
+            ],
+            "year": 2025,
+            "title": "Synthetic Prior Study",
+            "venue": "Synthetic Proceedings",
+            "doi": null,
+            "arxiv_id": "1706.03762"
+          }
+        },
+        "params": null
+      },
+      "http_status": 200,
+      "elapsed_seconds": 12.125,
+      "headers": {},
+      "response": {
+        "succeeded": true,
+        "metadata": {
+          "schema_version": "1.0.0",
+          "id": "arxiv-1706.03762v7",
+          "title": "Attention Is All You Need",
+          "authors": [
+            "Ashish Vaswani",
+            "Noam Shazeer",
+            "Niki Parmar",
+            "Jakob Uszkoreit",
+            "Llion Jones",
+            "Aidan N. Gomez",
+            "Lukasz Kaiser",
+            "Illia Polosukhin"
+          ],
+          "institutions": [],
+          "abstract": "The dominant sequence transduction models are based on complex recurrent or convolutional neural networks in an encoder-decoder configuration. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely. Experiments on two machine translation tasks show these models to be superior in quality while being more parallelizable and requiring significantly less time to train. Our model achieves 28.4 BLEU on the WMT 2014 English-to-German translation task, improving over the existing best results, including ensembles by over 2 BLEU. On the WMT 2014 English-to-French translation task, our model establishes a new single-model state-of-the-art BLEU score of 41.8 after training for 3.5 days on eight GPUs, a small fraction of the training costs of the best models from the literature. We show that the Transformer generalizes well to other tasks by applying it successfully to English constituency parsing both with large and limited training data.",
+          "year": 2017,
+          "source": "https://arxiv.org/abs/1706.03762v7",
+          "arxiv_id": "1706.03762v7",
+          "doi": null,
+          "version": "v7",
+          "file_hash": null,
+          "page_count": null,
+          "has_text_layer": null
+        },
+        "paper": {
+          "schema_version": "1.0.0",
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "title": "Attention Is All You Need",
+          "authors": [
+            "Ashish Vaswani",
+            "Noam Shazeer",
+            "Niki Parmar",
+            "Jakob Uszkoreit",
+            "Llion Jones",
+            "Aidan N. Gomez",
+            "Lukasz Kaiser",
+            "Illia Polosukhin"
+          ],
+          "institutions": [],
+          "abstract": "The dominant sequence transduction models are based on complex recurrent or convolutional neural networks in an encoder-decoder configuration. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely. Experiments on two machine translation tasks show these models to be superior in quality while being more parallelizable and requiring significantly less time to train. Our model achieves 28.4 BLEU on the WMT 2014 English-to-German translation task, improving over the existing best results, including ensembles by over 2 BLEU. On the WMT 2014 English-to-French translation task, our model establishes a new single-model state-of-the-art BLEU score of 41.8 after training for 3.5 days on eight GPUs, a small fraction of the training costs of the best models from the literature. We show that the Transformer generalizes well to other tasks by applying it successfully to English constituency parsing both with large and limited training data.",
+          "year": 2017,
+          "source": "https://arxiv.org/abs/1706.03762v7",
+          "arxiv_id": "1706.03762v7",
+          "doi": null,
+          "version": "v7",
+          "file_hash": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_count": 15,
+          "has_text_layer": true
+        },
+        "initial_parse_status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "status": "queued",
+          "progress": 0,
+          "current_stage": "等待解析",
+          "error_code": null,
+          "error_message": null
+        },
+        "parse_status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "status": "completed",
+          "progress": 100,
+          "current_stage": "四类记录已通过校验并原子发布",
+          "error_code": null,
+          "error_message": null
+        },
+        "error": null
+      },
+      "scope": "真实公开接口探针；不是官方 pdf/ 用例。失败保留真实错误，不计为成功。",
+      "record_counts": {
+        "paper_meta": 1,
+        "chunks": 175,
+        "reference_entries": 40,
+        "citation_links": 69
+      }
+    }
+  ],
+  "frozen_contracts": [
+    {
+      "file": "contracts/chart-output.v1.1.example.json",
+      "git_blob": "f34c9130ecb750cf583a9cf5cb802fbe95a28bb7",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/chart-output.v1.1.schema.json",
+      "git_blob": "7b5b196ecc88d31d7a13b0f560f02c9feb0814dd",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/chunk.v1.example.json",
+      "git_blob": "330a0845a9569aa85053dbfa1dc643363b45f2c3",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/chunk.v1.schema.json",
+      "git_blob": "d577c91c27b33e360da8cdfbacbbf2da33ac1bcf",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/citation-link.v1.example.json",
+      "git_blob": "1df93d863fd88272ea4b3ec71d7fde77916c84f6",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/citation-link.v1.schema.json",
+      "git_blob": "1c26cb51d10256635af9cd43881a0219316408f8",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/dedup-decision.v1.1.example.json",
+      "git_blob": "d47edb3181b70f7fe0bed872d50a5178a1e3baaa",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/dedup-decision.v1.1.schema.json",
+      "git_blob": "a0679f1dd466fe247f2f8d9a77f05a669aa622bb",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/diff-summary.v1.1.example.json",
+      "git_blob": "947217164499f39932b9b4e88013828f5c1a9cdf",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/diff-summary.v1.1.schema.json",
+      "git_blob": "6df5e7753e629277068dd7c023938b2df0b122d8",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/graph-edge.v1.2.example.json",
+      "git_blob": "8a33fb93f0026639d49409134e8b50a99efe4c59",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/graph-edge.v1.2.schema.json",
+      "git_blob": "50194dc973bf38a8c4c7c1a0c31c849f9aa7bcfa",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/graph-node.v1.2.example.json",
+      "git_blob": "60d0d77292e9cb855259be05c14c9a0a3afa5f9a",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/graph-node.v1.2.schema.json",
+      "git_blob": "cf7d452c939aaae8faeafa159ccdfba5ba447163",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/paper-meta.v1.example.json",
+      "git_blob": "141f90fe6d68cbfb7f4770aace62c190100f7f8f",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/paper-meta.v1.schema.json",
+      "git_blob": "a8d65964a698823b165c7369d9912e0956081995",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/parse-status.v1.1.example.json",
+      "git_blob": "9dcae28d3c0605d1e3ca625d884125662ef105b3",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/parse-status.v1.1.schema.json",
+      "git_blob": "0821189d573e9b489bc3c900a97b3128f30bd132",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/qa-answer.v1.example.json",
+      "git_blob": "29dcf10a680b880f6559f6ab0a840195f90e0f89",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/qa-answer.v1.schema.json",
+      "git_blob": "9afbdd2b5fd1eafaddbf34bcd1377d333c0f3b1e",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/reference-entry.v1.example.json",
+      "git_blob": "35c676e8fbbe6ae4bc9e6d3622c1c9ba2e491965",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/reference-entry.v1.schema.json",
+      "git_blob": "e26db67f190041c4ea42f6e0729536e9babd6926",
+      "unchanged": true
+    }
+  ],
+  "implemented_endpoints": [
+    "GET /api/v1/papers",
+    "POST /api/v1/papers",
+    "POST /api/v1/papers/batch",
+    "GET /api/v1/papers/{paper_id}",
+    "GET /api/v1/papers/{paper_id}/parse-status",
+    "GET /api/v1/papers/{paper_id}/dedup-decision",
+    "GET /api/v1/papers/{paper_id}/diff-summary",
+    "GET /api/v1/papers/{paper_id}/chunks",
+    "GET /api/v1/papers/{paper_id}/references",
+    "GET /api/v1/papers/{paper_id}/citation-links",
+    "POST /api/v1/papers/{paper_id}/qa",
+    "POST /api/v1/compare",
+    "GET /api/v1/graph",
+    "POST /api/v1/retrieval/search",
+    "POST /api/v1/retrieval/fetch",
+    "GET /api/v1/recommendations"
+  ]
+}
