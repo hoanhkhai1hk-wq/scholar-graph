@@ -1,4 +1,4 @@
-"""Module-one, two, four and five HTTP routes; no background job queue."""
+"""All nineteen approved HTTP routes; no background job queue."""
 
 import os
 from pathlib import Path
@@ -37,7 +37,7 @@ def create_app(*, data_dir=None, pipeline_factory=None):
                 Path(__file__).resolve().parents[2] / "data" / "module-one").resolve()
     gate = ContractGate()
     repository = ApiRepository(root, gate)
-    app = FastAPI(title="ScholarGraph modules one, two, four and five", version="1.2.0")
+    app = FastAPI(title="ScholarGraph modules one, two, four, five and six", version="1.2.0")
     app.add_middleware(
         CORSMiddleware,
         allow_origins=LOCAL_ORIGINS,

@@ -120,6 +120,11 @@ def render_png(series, chart_type, x_column):
             else:
                 axes.hist(item["values"], bins=min(10, len(item["values"])), label=item["name"])
         axes.set_xlabel("Value" if chart_type == "histogram" else x_column or "CSV record (header = 1)")
+        if x_column is None and chart_type in {"line", "bar"}:
+            from matplotlib.ticker import MaxNLocator
+            axes.xaxis.set_major_locator(MaxNLocator(integer=True))
+            if len(x) <= 20:
+                axes.set_xticks(x)
         axes.set_ylabel("Frequency" if chart_type == "histogram" else "Value")
         axes.legend()
         output = io.BytesIO()
