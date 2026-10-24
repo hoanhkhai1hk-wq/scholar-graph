@@ -1,6 +1,6 @@
 # 模块六：综述框架、摘录草稿与CSV图表
 
-执行日期2026-10-24（Asia/Shanghai），在2026-10-30目标前完成。工作目录D:\AI_Workspace\Tasks\scholar-graph，分支main。开工前git pull --ff-only原文 `Already up to date.`，工作区干净，主干完整哈希 **aee2853ed9cc8d294860496fef65085046f310aa**。
+执行与交付日期2026-10-24至2026-10-25（Asia/Shanghai），在2026-10-30目标前完成。实跑与回归于24日晚完成，证据提交于25日00:00推送。工作目录D:\AI_Workspace\Tasks\scholar-graph，分支main。开工前git pull --ff-only原文 `Already up to date.`，工作区干净，主干完整哈希 **aee2853ed9cc8d294860496fef65085046f310aa**。
 
 新增POST /api/v1/frameworks、POST /api/v1/reviews、POST /api/v1/charts/csv，OpenAPI核对共 **19/19条业务端点已落地**，未落地端点清单为0。异步队列、真实模型自由写作、导出、GROBID联调仍是明确后续能力，不能用19/19暗示这些已完成。没有修改前端、prompts/、experiments/、test-records/、compose或其他docs；只改授权的backend/、contracts/、tests/及docs/api-draft-v1.md。
 
