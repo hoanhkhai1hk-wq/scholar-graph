@@ -1,0 +1,169 @@
+{
+  "scope": "公开等价物、非官方 pdf/ 文件；未运行或宣称官方三用例通过。",
+  "case": "full-public-udl-longbook",
+  "baseline": "7ac617a4ff818cc3840069098fc3477ca614b0e8",
+  "source_commit": "3b49fe56649d6ef9d845f7e720f05271d3855be8",
+  "run_utc": "2026-10-24T17:51:13.710398+00:00",
+  "versions": {
+    "mineru": "4.0.12",
+    "pypdf": "6.21.2",
+    "psutil": "7.2.2",
+    "fastapi": "0.162.0"
+  },
+  "real_llm_calls": 0,
+  "real_api_keys_used": false,
+  "download": {
+    "scope": "公开等价物、非官方 pdf/ 文件；未宣称官方三用例通过。",
+    "official_release": {
+      "api_url": "https://api.github.com/repos/udlbook/udlbook/releases/latest",
+      "tag": "v5.0.3",
+      "published_at": "2026-02-09T20:00:36Z",
+      "html_url": "https://github.com/udlbook/udlbook/releases/tag/v5.0.3",
+      "assets": [
+        {
+          "name": "UnderstandingDeepLearning_02_09_26_C.pdf",
+          "size": 22344992,
+          "url": "https://github.com/udlbook/udlbook/releases/download/v5.0.3/UnderstandingDeepLearning_02_09_26_C.pdf"
+        }
+      ]
+    },
+    "attempts": [
+      {
+        "url": "https://github.com/udlbook/udlbook/releases/download/v5.0.3/UnderstandingDeepLearning_02_09_26_C.pdf",
+        "http_status": 200,
+        "final_url": "https://release-assets.githubusercontent.com/github-production-release-asset/520128820/db8b6446-9cf5-47c4-8377-3bc77bb77971",
+        "bytes": 22344992,
+        "elapsed_seconds": 4.487,
+        "file": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\public-equivalents\\understanding-deep-learning.pdf",
+        "physical_pages": 541,
+        "title": null,
+        "sha256": "f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32",
+        "redirect_query_omitted": true
+      }
+    ]
+  },
+  "source": {
+    "file": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\public-equivalents\\understanding-deep-learning.pdf",
+    "bytes": 22344992,
+    "sha256": "f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32",
+    "physical_pages": 541,
+    "pdf_title": null
+  },
+  "identity_check": {
+    "first_page_excerpt": "Understanding\nDeep Learning\nSimon\nJ.D. Prince\nFebruary 8, 2026\nThe most recent version of this document can be found at http://udlbook.com.\nCopyright in this wo",
+    "full_book_not_page_subset": true,
+    "request_pdf_page_subset_used": false
+  },
+  "upload": {
+    "request": {
+      "method": "POST",
+      "path": "/api/v1/papers",
+      "file_sha256": "f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32"
+    },
+    "http_status": 422,
+    "response": {
+      "error_code": "PARSE_FAILED",
+      "message": "PDF 页数必须在 1 到 200 之间。",
+      "details": null
+    },
+    "measurement": {
+      "sample_interval_seconds": 0.05,
+      "rss_peak_bytes": 161959936,
+      "private_peak_bytes": 146825216,
+      "sample_count": 6,
+      "includes_descendant_processes": true,
+      "rss_start_bytes": 93491200,
+      "elapsed_seconds": 0.386671,
+      "scope": "整个测试进程及全部子进程的采样合计，不是精确瞬时峰值；不含下载阶段。"
+    }
+  },
+  "parsed": {
+    "published_chunks": 0,
+    "indexing_seconds": null,
+    "reason": "Upload did not publish a paper."
+  },
+  "status": {
+    "path": "/api/v1/papers/paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32/parse-status",
+    "http_status": 200,
+    "response": {
+      "schema_version": "1.1.0",
+      "paper_id": "paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32",
+      "status": "failed",
+      "progress": 5,
+      "current_stage": "解析未完成",
+      "error_code": "PARSE_FAILED",
+      "error_message": "PDF 页数必须在 1 到 200 之间。"
+    }
+  },
+  "status_histories": [
+    [
+      {
+        "schema_version": "1.1.0",
+        "paper_id": "paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32",
+        "status": "queued",
+        "progress": 0,
+        "current_stage": "等待解析",
+        "error_code": null,
+        "error_message": null
+      },
+      {
+        "schema_version": "1.1.0",
+        "paper_id": "paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32",
+        "status": "parsing",
+        "progress": 5,
+        "current_stage": "检查 PDF 与文本层",
+        "error_code": null,
+        "error_message": null
+      },
+      {
+        "schema_version": "1.1.0",
+        "paper_id": "paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32",
+        "status": "failed",
+        "progress": 5,
+        "current_stage": "解析未完成",
+        "error_code": "PARSE_FAILED",
+        "error_message": "PDF 页数必须在 1 到 200 之间。"
+      }
+    ]
+  ],
+  "indexing": {
+    "entered": false,
+    "elapsed_seconds": null,
+    "note": "未进入indexing，不能把null写成索引耗时0秒或宣称索引完成。",
+    "vector_index_called": false
+  },
+  "pagination": {
+    "paper_list": {
+      "path": "/api/v1/papers?page=1&page_size=100",
+      "http_status": 200,
+      "response": {
+        "items": [],
+        "page": 1,
+        "page_size": 100,
+        "total": 0,
+        "total_pages": 0,
+        "has_next": false
+      }
+    },
+    "chunks_first": {
+      "path": "/api/v1/papers/paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32/chunks?page=1&page_size=100",
+      "http_status": 404,
+      "response": {
+        "error_code": "PAPER_NOT_FOUND",
+        "message": "无该论文记录。",
+        "details": null
+      }
+    },
+    "chunks_overflow": {
+      "path": "/api/v1/papers/paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32/chunks?page=999&page_size=100",
+      "http_status": 404,
+      "response": {
+        "error_code": "PAPER_NOT_FOUND",
+        "message": "无该论文记录。",
+        "details": null
+      }
+    }
+  },
+  "published_chunk_count": 0,
+  "conclusion": "失败：541页原书在当前管线200页上限被拒绝；没有切块/索引或长书分页成功。不修改上限、不拆小冒充。"
+}
