@@ -370,6 +370,17 @@ export async function fetchGraph(paperIds: string[]): Promise<GraphView> {
   return requestJson<GraphView>(serverUrl(`/graph?${params.toString()}`));
 }
 
+/** 客户端版本：经同源代理，用于用户在页面上勾选论文后即时生成 */
+export async function clientFetchGraph(
+  paperIds: string[],
+): Promise<GraphView> {
+  const params = new URLSearchParams();
+  for (const id of paperIds) {
+    params.append("paper_ids", id);
+  }
+  return requestJson<GraphView>(clientUrl(`/graph?${params.toString()}`));
+}
+
 // ------------------------------------------------ 模块四：检索、抓取与推荐
 
 export interface SearchResponse {
