@@ -1,6 +1,6 @@
 # API 契约草案 v1
 
-日期：2026-10-24。端点前缀 `/api/v1`。数据结构的唯一依据为 [CONTRACTS.md](../contracts/CONTRACTS.md)：五类 1.0.0、四类 1.1.0、两类图谱 1.2.0。模块四保持十一份 Schema 和 example 全部不变，仅定义本单授权的检索/抓取/推荐传输封装。
+日期：2026-10-24。端点前缀 `/api/v1`。数据结构的唯一依据为 [CONTRACTS.md](../contracts/CONTRACTS.md)：五类 1.0.0、四类 1.1.0、两类图谱及一类综述框架 1.2.0。模块六仅新增FrameworkOutline，原十一份Schema及example零改动。
 
 ## 五份契约引用
 
@@ -16,7 +16,7 @@
 
 ## 端点清单
 
-核对结果：初版实际为 **17** 条业务端点，并非早期任务文字所称 16 条。模块一增加去重、差异两个 GET 后共 19 条；模块四完成后落地 16 条、未落地 3 条。OpenAPI/Swagger 基础设施不计入业务端点。以下“后续单号待总指挥分配”表示尚无正式单号，不代替威龙排单。
+核对结果：初版实际为 **17** 条业务端点，并非早期任务文字所称 16 条。模块一增加去重、差异两个 GET 后共 19 条；模块六完成后 **19/19条已落地，未落地清单为0**。OpenAPI/Swagger 基础设施不计入业务端点。以下“后续单号待总指挥分配”表示尚无正式单号，不代替威龙排单。
 
 | 方法 | 端点（均加 /api/v1） | 请求 | 响应契约与 HTTP | 实施状态、原因及后续归属 |
 | --- | --- | --- | --- | --- |
@@ -31,12 +31,12 @@
 | POST | /papers/{paper_id}/qa | 路径 paper_id；JSON {question}，详见模块二定义 | 200 QAAnswer；无论文 404，坏请求 422 | 模块二已落地；默认词法兜底与原文摘录，真实模型未联调 |
 | POST | /compare | JSON {paper_ids, question}，详见模块二定义 | 200 {evidence_table, per_paper, synthesis}，per_paper 每项是 QAAnswer | 模块二已落地；先证据表再综合，新增传输封装经本单授权 |
 | GET | /graph | 重复查询参数 paper_ids，1–100 个不同 PaperMeta.id | 200 图谱视图：GraphNode[]、GraphEdge[]、分层、未来方向与诊断，详见模块五 | 模块五已落地，v1.2 图谱部分已定义；只读本地已落盘记录 |
-| POST | /reviews | PaperMeta.id 列表、写作要求 | 带证据文字可引用 QAAnswer；综述结构不在本轮 v1.2 图谱部分 | 未落地：综述/写作留待后续单，单号待总指挥分配 |
+| POST | /reviews | JSON {paper_ids, framework:FrameworkOutline, requirements?} | 200结构化摘录草稿：{framework,chapters,mode,unverifiable_count} | 模块六已落地；原文摘录/四字段锚点/数字回溯，无证据标unverifiable，不调用大模型 |
 | POST | /retrieval/search | JSON {question, paper_ids?, page?, page_size?, min_relevance?} | 200 分页 {chunk:Chunk, anchor, relevance, retrieval_method}；模式/空结果原因见响应头 | 模块四已落地：Chroma+BGE-M3 稠密/稀疏混合已实装；未启用或不可用时明确词法兜底 |
 | POST | /retrieval/fetch | JSON {title} 或 {reference:ReferenceEntry}，二选一 | 200 单次抓取结果，含真实 PaperMeta、初始/最新 ParseStatus 与统一 error，详见模块四 | 模块四已落地：公开 arXiv Atom/PDF，同步复用模块一 Pipeline；不使用 Key |
 | GET | /recommendations | paper_id 种子；as_of_year?；page、page_size | 200 分页 {paper:PaperMeta, score, signals, reasons, missing_signals, scoring_version, as_of_year} | 模块四已落地：复用模块五真实边与 PageRank，公式与来源见下文 |
-| POST | /frameworks | PaperMeta.id 列表、目标文本 | 框架结构不在本轮 v1.2 图谱部分 | 未落地：写作辅助留待后续单，单号待总指挥分配 |
-| POST | /charts/csv | multipart CSV、列名与绘图要求 | ChartOutput；不得塞进 QAAnswer.answer | 未落地：模块六，只有 v1.1 契约已定义；后续单号待总指挥分配 |
+| POST | /frameworks | JSON {paper_ids}，1–100个不同PaperMeta.id | 200 FrameworkOutline v1.2，结构与有依据的待写要点 | 模块六已落地；图谱分层、模块四取证与推荐信号、过滤后的未来方向 |
+| POST | /charts/csv | multipart file、value_columns、chart_type?、x_column?、caption? | 200 ChartOutput v1.1，含真实PNG数据URI；CSV_INVALID / CHART_VALIDATION_FAILED为422 | 模块六已落地；逐源单元格校验，受限图注数字均来自CSV，不塞QAAnswer.answer |
 | GET | /papers/{paper_id}/dedup-decision | paper_id **就是 new_paper_id** | 200 DedupDecision；无记录 404 PAPER_NOT_FOUND | 本单已落地；人工裁决优先，保留原系统记录 |
 | GET | /papers/{paper_id}/diff-summary | paper_id **就是 new_paper_id** | 200 DiffSummary；无记录 404 PAPER_NOT_FOUND | 本单已落地；与选中裁决取自同一比较记录组 |
 
@@ -145,6 +145,34 @@ score = 100 * (0.40*G + 0.35*P + 0.15*T + 0.10*C); missing terms contribute 0, w
 
 参考：[BGE-M3 官方模型](https://huggingface.co/BAAI/bge-m3)、[Chroma 官方客户端](https://docs.trychroma.com/reference/python/client)、[arXiv 公共 API](https://info.arxiv.org/help/api/user-manual.html)。
 
+### 模块六：综述框架、摘录草稿与CSV图表
+
+本单正式补齐FrameworkOutline业务记录，新增schema/example详见CONTRACTS.md；原十一份记录全冻结。/frameworks与/reviews返回的是所选论文派生资源，不套论文列表分页壳；端点内章节/要点是该资源的组成部分。以下传输形状由本单授权定义，不扩充原QAAnswer、GraphNode、GraphEdge或ChartOutput字段。
+
+**POST /frameworks。** JSON `{paper_ids}`，1–100个不同id，全部必须已解析落盘；缺失论文404 PAPER_NOT_FOUND、空/重复集合422 VALIDATION_ERROR。返回原样FrameworkOutline（schema_version、paper_ids、chapters）。每章chapter_id、kind、title、paper_ids、anchors、writing_points全必填，writing_points每项为{text,anchor}，text是同一真实Chunk最多600字符的原文摘录，供用户后续展开。每章均有真实依据，不强行补无证据章节。
+
+复用模块五已核验图谱：每篇cornerstone单独成章；derived沿verified边的无向最短距离归入最近基石，多个基石并列时用模块四推荐分数降序、基石id升序裁定；章内衍生顺序也按该推荐分数。推荐视图严格限制在本次所选论文集合，评分年取集合最大已知发表年，无年份用1，公式/权重沿用模块四，不引入全网引用数。无基石可达的derived和isolated分别单独成章，不伪造关系。材料选择复用模块四词法IDF排序，以本篇标题查询本篇真实Chunk，无词面匹配时取物理页/块id最前块的首条非空原文；它是材料组织，不宣称标题查询找到科研结论。
+
+模块五worth_exploring中有锚点的方向形成独立future_work章；excluded和unverifiable不放入该章，未检出方向则不造章。历史论文正文摘录可保留作者当年的未来方向原文，不改写成当前尚未解决断言。所有章节、归位、标题、原文、四字段锚点与当前输入重新核对后才返回；框架是结构，不是成文。
+
+**POST /reviews。** JSON `{paper_ids,framework,requirements?}`，framework必须为/frameworks生成且与当前同集合证据完全一致的FrameworkOutline；不接受被任意改写的无依据标题/要点/锚点，过期或篡改返回422 VALIDATION_ERROR。requirements默认[]，最多10项，每项去首尾空白后1–500字符。当前不处理自由编辑框架；该限制明确存在。
+
+返回 `{framework,chapters,mode:"extractive",unverifiable_count}`。chapters每项 `{chapter_id,title,points}`，points每项 `{text,status,anchors,numeric_fact_check,requirement}`。默认要点逐字取框架原文；每条status=verified只表示摘录/数字已回溯，不表示独立科学核实或回答了要求。anchors为完整四字段，数字核验复用模块二/五的QAAnswer取证门禁，passed必带同一原文锚点。requirement为原用户要求或null，不作为论文事实。
+
+额外requirements仅在本章已核验摘录中用模块四词法排序取材料，不能从共享Chunk把已排除方向重新放回未来章；未命中时status=unverifiable、anchors=[]，text固定“未在本章摘录材料中检出所需要点；不可验证，未补写结论。”，numeric_fact_check={status:"unverifiable",checks:[]}。这只说明当前有限摘录未找到，不能断言全文没有。unverifiable_count为此类占位总数。返回前重建证据草稿逐字段核对，不调用真实大模型、不使用Key、不把摘录草稿称为模型生成；最终成文由用户完成。
+
+**POST /charts/csv。** multipart表单：file（CSV字节）、value_columns（必填JSON字符串列名数组，例如 `["samples"]`）、chart_type（默认bar；line/bar/scatter/histogram）、x_column（可选数值横轴列）、caption（可选受限图注）。CSV为UTF-8（可BOM）逗号分隔，表头非空且唯一、不得有首尾空白，1–20列、1–1000条数据记录、≤1MiB；不允许空数据记录或列数不齐。未选文本列可以保留；所选数值必须是可无损转为有限float的十进制/科学计数值，不猜缺失、不换算百分比/货币或默默舍入。原始单位/高精度数据需先由用户明确整理，本端点不自动转换。
+
+line/bar可选1–10个数值列；指定x_column时它独立于value_columns且为数值列，series中先放横轴再放数值系列；不指定时图片横轴使用CSV记录序号（表头=1），不虚造一列CSV数值。scatter必须指定独立x_column与恰好一个数值列，histogram只接一个数值列且无x_column，分箱数固定min(10,数据行数)。分类横轴、自由图注和单位换算未实现，不能声称任意CSV都可画。
+
+返回固定七字段ChartOutput v1.1。series保持源列名和原始逐行数值；numeric_checks逐所选列/记录完整列出value、csv_anchor、verified=true，csv_ref=csv-原始字节SHA256、row_number按CSV逻辑记录从2起、column_name为原表头。源CSV由上传者保留供复核，本接口不新增资源服务路径。image_ref为Matplotlib 3.11.2/Agg实际生成PNG的data:image/png;base64数据URI，不给不存在的图片路径，不新增第二十条下载端点。
+
+默认caption为前最多6个所选源单元格的 `CSV values: 12, 18.` 格式；自定义caption也只接受同一受限语法（逗号空格分隔十进制/科学计数值，末尾句点），每个数字必须与所选源单元格数值完全一致。自由中文/英文数量叙述、百分比单位或任意额外论断直接拒绝，不能靠未识别的中文数词绕过校验。相同数值的不同源单元格仍各有numeric_checks。系列/锚点/布尔值/图注/PNG与数据不一致，不返回输出。
+
+CSV解析/编码/空值/非有限或无法无损表示等输入错误为HTTP422 CSV_INVALID；图表类型/列选择/受限图注/Schema/渲染及图表一致性失败为HTTP422 CHART_VALIDATION_FAILED。错误均固定 `{error_code,message,details:null}` 并沿用v1.1稳定码表；没有另造错误编码。图表独立返回，严禁塞QAAnswer.answer。Matplotlib采用无GUI Agg，PNG实际复核依据[官方CanvasAgg示例](https://matplotlib.org/stable/gallery/user_interfaces/canvasagg.html)。
+
+本地CORS仍只允许两个开发Origin，GET/POST与Content-Type继续适用，既有同源代理不改。十九条端点已落地不代表前端已对接、GROBID已联调或真实模型写作已完成。
+
 ### 分页封装：已定义
 
 所有列表类端点统一响应 `{items, page, page_size, total, total_pages, has_next}`。items 内的业务记录字段保持原形，搜索/推荐项仅在外层增加本单授权的传输信息。page 默认 1，page_size 默认 20；两者必须为正整数，否则 422 VALIDATION_ERROR。page_size 超过 100 按 100 计，响应回显实际值；total 是筛选后的总条数，total_pages = ceil(total / page_size)，has_next = page < total_pages。空集合 total_pages 为 0；越界页返回空 items，保留请求 page。论文列表按 paper_id 稳定排序，子资源保留落盘顺序；搜索按相关度降序/chunk_id升序，推荐按分数降序/paper_id升序。详情、状态、裁决和摘要直接返回记录，不套分页壳。未来未落地列表亦须遵循此封装，未声称其已实现。
@@ -163,7 +191,7 @@ score = 100 * (0.40*G + 0.35*P + 0.15*T + 0.10*C); missing terms contribute 0, w
 
 ## 交给总指挥的契约缺口
 
-本栏登记截至 v1.2 图谱部分的契约及已授权传输裁定。模块四保持全部十一份 Schema 零修改；/retrieval/search、/retrieval/fetch、/recommendations 传输封装已定义并落地；其余实现状态以上表为准。未落地仅 /reviews（综述/写作）、/frameworks（写作框架）、/charts/csv（模块六），后续单号均待总指挥分配。
+本栏登记截至v1.2图谱与综述框架部分的契约及已授权传输裁定。模块六只新增FrameworkOutline，原十一份Schema/example零改动。十九条端点全部已落地，未落地清单清零；明确后续项仅包括异步队列、自由成文/导出、真实生成模型及GROBID联调，不计为这十九条端点已实现的能力。
 
 | 缺口 | 状态 | 契约引用与边界 |
 | --- | --- | --- |
@@ -174,7 +202,7 @@ score = 100 * (0.40*G + 0.35*P + 0.15*T + 0.10*C); missing terms contribute 0, w
 | 分页封装 | 已定义 | 本轮授权固定六字段传输壳，见“已定义的传输裁定”；不增加业务字段 |
 | 批量上传部分失败 | 已定义 | 本轮授权固定四字段传输壳，逐文件记录成功或失败；同步处理，见上文 |
 | 图谱结构 | v1.2 已定义，/graph 已落地 | GraphNode、GraphEdge；节点/边均对应落盘记录，未知锚点显式 unverified；形状见模块五，不返回图形库专用对象 |
-| 综述框架结构 | 不在本轮 v1.2 图谱部分，留待后续单 | 本单不定义结构化综述章节、独立框架或导出结构；QAAnswer 的带证据文字不替代这些结构 |
+| 综述框架结构 | v1.2已定义，/frameworks与/reviews已落地 | FrameworkOutline全字段必填且禁额外字段；草稿为摘录传输封装，成文由用户完成；不代表导出或模型自由写作已实现 |
 
 异步任务队列与标识仍未定义；后续范围由总指挥另行拆单。推荐分数与理由、同步抓取操作及失败结构已由模块四授权定义，见上文；它们不代表异步任务契约。分页和 PDF 批量部分失败继续沿用已定义封装，不据此扩展未裁定业务字段。
 

@@ -1,6 +1,6 @@
-# ScholarGraph 模块一、二、四、五后端
+# ScholarGraph 模块一、二、四、五、六后端
 
-本后端实现本地 PDF 解析、状态机、去重与版本差异，模块二问答/对比、模块四检索/公开抓取/推荐，以及模块五局域引用图谱，共16条 HTTP 端点。Python 包为 `scholar_graph`。框架、图表和综述写作接口仍未落地。
+本后端实现本地 PDF 解析、状态机、去重与版本差异，模块二问答/对比、模块四检索/公开抓取/推荐，模块五局域引用图谱，以及模块六综述框架、摘录草稿与CSV图表，共19/19条 HTTP 端点。Python 包为 `scholar_graph`。自由成文、文档导出、异步队列仍未实现。
 
 ## Windows 本地安装
 
@@ -102,6 +102,24 @@ backend/.venv/Scripts/python.exe tests/run_module_four_smoke.py --output-root da
 ```
 
 默认测试无网络、无Docker、无真实Key。该脚本显式参数才运行本地真实BGE/Chroma与公开arXiv探针，结果保留 native_evidence 和失败原因；实际交付证据见 [模块四报告](../tests/reports/module-four-report.md)。输入是自制样例、非官方 pdf/ 用例；未运行官方三用例，未验收前端接入。
+
+## 模块六：框架、摘录草稿与CSV图表
+
+新增FrameworkOutline v1.2，原十一份Schema/example零改动。POST /api/v1/frameworks 接收 `{paper_ids}`，返回图谱分层和已过滤未来方向组成的有证据大纲。基石分别成章，衍生沿verified边归入最近基石，距离相同时复用模块四所选集合内的推荐分数；孤立/无基石可达的论文单独归位。每章带真实论文id、四字段Chunk锚点及最多600字符的原文待写材料；无未来方向证据不造章。
+
+POST /api/v1/reviews 接收 `{paper_ids,framework,requirements?}`，framework须为当前集合生成且未被无依据篡改的FrameworkOutline；返回章节标题、逐字摘录、锚点与数字核验。额外requirements在本章已有摘录中词法取证，无结果用unverifiable+空anchors明确占位，不补写结论。只说明有限材料未找到，不能断言全文缺失。没有真实模型调用或Key，mode=extractive，不把摘录式草稿称为大模型生成，成文由用户完成。
+
+POST /api/v1/charts/csv 接收multipart file、value_columns（JSON列名数组字符串）、chart_type（默认bar）、可选x_column和caption，直接返回原样七字段ChartOutput。支持line/bar/scatter/histogram；返回实际Matplotlib 3.11.2/Agg PNG的数据URI，不给不存在图片路径，也不新增下载端点。逐所选源单元格生成numeric_checks，行号按逻辑CSV记录计（表头=1）。图注默认 `CSV values: 12, 18.`，自定义也仅接受同样数值枚举格式；每个数字必须能回溯到原CSV，拒绝自由叙述及百分比等单位换算以免漏验。
+
+CSV须UTF-8/BOM、≤1MiB、1–1000行数据、1–20列、唯一非空表头、整齐记录；所选列为有限且可无损float表示的纯数字。line/bar可选1–10数值列；scatter须一个独立数值x列+一个y列，histogram只一列；不支持分类x轴。CSV非法422 CSV_INVALID，配置/图注/Schema/PNG失败422 CHART_VALIDATION_FAILED，均是既有v1.1三字段错误；不把图表塞QAAnswer。
+
+自制四篇样例：框架4章、5处锚点引用（4个唯一锚点），未来章只保留2条过滤后方向；草稿默认6条摘录、0处unverifiable，额外无证据要求产生4处占位。两行CSV samples=12/18分别回溯到第2/3行，PNG已实际生成和检查。测试为自制样例、非官方pdf/用例，不声称官方三用例通过或前端接通。完整字段/限制见[API草案](../docs/api-draft-v1.md)，原始证据与回归见[模块六报告](../tests/reports/module-six-report.md)。
+
+```powershell
+backend/.venv/Scripts/python.exe tests/run_module_six_smoke.py --output-root data/module-six-reproduce --report data/module-six-reproduce.json
+```
+
+选择尚不存在的输出目录；全部输入/PNG留在被忽略的data/，脚本无网络、无Docker、无模型和Key依赖。Matplotlib已列入backend/pyproject.toml直接依赖，安装backend后无需另启服务。CORS与同源代理沿用已有配置，前端零改动。
 
 ## 第一步：解析一个 PDF
 
