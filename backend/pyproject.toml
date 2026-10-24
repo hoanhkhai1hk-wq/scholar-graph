@@ -17,7 +17,7 @@ dependencies = [
 
 [project.optional-dependencies]
 ocr = ["paddleocr==3.7.0", "paddlepaddle==3.3.1"]
-test = ["pytest==9.1.1", "reportlab==5.1.0", "PyYAML==6.0.3"]
+test = ["pytest==9.1.1", "reportlab==5.1.0", "PyYAML==6.0.2"]
 
 [project.scripts]
 scholar-graph = "scholar_graph.cli:main"

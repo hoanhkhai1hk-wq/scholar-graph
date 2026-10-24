@@ -1,0 +1,93 @@
+"""Validated, atomic publication and immutable paper/comparison directories."""
+
+from __future__ import annotations
+
+import json
+import os
+import shutil
+import tempfile
+from pathlib import Path
+from uuid import uuid4
+
+from .errors import PipelineError
+from .validation import ContractGate
+
+FILES = {"paper_meta": "paper-meta.json", "chunks": "chunks.json",
+         "reference_entries": "reference-entries.json", "citation_links": "citation-links.json"}
+
+
+def write_json(path: Path, value):
+    with path.open("w", encoding="utf-8", newline="\n") as handle:
+        json.dump(value, handle, ensure_ascii=False, indent=2, allow_nan=False)
+        handle.write("\n")
+        handle.flush()
+        os.fsync(handle.fileno())
+
+
+class RecordStore:
+    def __init__(self, root: Path, gate: ContractGate):
+        self.root, self.gate = root.resolve(), gate
+
+    def statuses(self, job_id: str, history: list[dict]):
+        for record in history:
+            self.gate.record("ParseStatus", record)
+        parent = self.root / "jobs" / job_id
+        parent.mkdir(parents=True, exist_ok=True)
+        temporary = parent / f".status-{uuid4().hex}.tmp"
+        try:
+            write_json(temporary, history)
+            os.replace(temporary, parent / "parse-status.json")
+        finally:
+            temporary.unlink(missing_ok=True)
+
+    def paper(self, bundle: dict) -> Path:
+        self.gate.bundle(bundle)  # No directory or file is created before this returns.
+        parent = self.root / "papers"
+        target = parent / bundle["paper_meta"]["id"]
+        if target.exists():
+            if self.load(target) != bundle:
+                raise PipelineError("VALIDATION_ERROR", "已有论文记录不可覆盖。")
+            return target
+        parent.mkdir(parents=True, exist_ok=True)
+        staging = Path(tempfile.mkdtemp(prefix=".pending-", dir=parent))
+        try:
+            for key, filename in FILES.items():
+                write_json(staging / filename, bundle[key])
+            # Rename within the same filesystem; incomplete groups are never visible as papers.
+            staging.rename(target)
+        finally:
+            if staging.exists():
+                shutil.rmtree(staging)
+        return target
+
+    def load(self, directory: Path) -> dict:
+        try:
+            bundle = {key: json.loads((directory / filename).read_text(encoding="utf-8"))
+                      for key, filename in FILES.items()}
+            self.gate.bundle(bundle)
+            return bundle
+        except PipelineError:
+            raise
+        except (OSError, ValueError):
+            raise PipelineError("VALIDATION_ERROR", "不能读取完整、合法的论文记录组。") from None
+
+    def comparison(self, decision, diff, bundles, *, human=None) -> Path:
+        self.gate.comparison(decision, diff, bundles)
+        if decision["human_override"]:
+            raise PipelineError("VALIDATION_ERROR", "必须先保留未覆盖的系统裁决。")
+        if human is not None:
+            self.gate.comparison(human, diff, bundles)
+            if not human["human_override"]:
+                raise PipelineError("VALIDATION_ERROR", "人工裁决必须显式标记。")
+        parent = self.root / "comparisons"
+        parent.mkdir(parents=True, exist_ok=True)
+        target = parent / ("comparison-" + uuid4().hex)
+        staging = Path(tempfile.mkdtemp(prefix=".pending-", dir=parent))
+        try:
+            write_json(staging / "dedup-decisions.json", [decision] + ([human] if human is not None else []))
+            write_json(staging / "diff-summary.json", diff)
+            staging.rename(target)
+        finally:
+            if staging.exists():
+                shutil.rmtree(staging)
+        return target
