@@ -1,12 +1,12 @@
-# 数据契约 v1.1
+# 数据契约 v1.2（图谱部分）
 
-契约集合版本：`1.1.0`。首次建立及本次更新日期：2026-10-24。仓库名为 `scholar-graph`，后续 Python 包名为 `scholar_graph`。
+契约集合版本：`1.2.0`（本轮仅图谱）。首次建立及本次更新日期：2026-10-24。仓库名为 `scholar-graph`，Python 包名为 `scholar_graph`。
 
-本目录是模块间业务数据交换的唯一口径。v1 五类记录为 PaperMeta（论文元数据）、Chunk（分块）、ReferenceEntry（参考文献条目）、CitationLink（正文引用对应）和 QAAnswer（问答输出），其 Schema 与示例保持零改动。v1.1 仅新增 DedupDecision（去重裁决）、DiffSummary（版本差异摘要）、ParseStatus（解析状态）、ChartOutput（CSV 图表输出）四类记录。统一错误封装属于 HTTP 传输定义，附在 ParseStatus Schema 内，不新增第五类业务记录。本单只定义结构，不包含生产、解析、校验服务或页面实现。
+本目录是模块间业务数据交换的唯一口径。原 v1/v1.1 九类记录及示例保持零改动。v1.2 本轮只新增 GraphNode（论文节点）、GraphEdge（引用边）；综述框架结构仍未定义，留待后续单。统一错误封装继续引用 ParseStatus 的 $defs；图谱响应集合与未来方向取证结果的 HTTP 组合见 API 草案，事实证据复用 QAAnswer，不新增第三类 v1.2 业务记录。
 
 ## 版本与通用约定
 
-- 使用 JSON Schema Draft 2020-12；每类记录有独立 Schema 和一个合成示例。v1 的五类记录文件名保留 `.v1.`，记录的 `schema_version` 与 Schema 的 `$id` 保持 `1.0.0`；本次四类新增记录文件名使用 `.v1.1.`，记录的 `schema_version` 与 Schema 的 `$id` 使用 `1.1.0`。集合版本升级不修改已发布的 v1 记录。
+- 使用 JSON Schema Draft 2020-12；每类记录有独立 Schema 和一个合成示例。原五类 `.v1.` 保留 1.0.0，原四类 `.v1.1.` 保留 1.1.0，新图谱两类 `.v1.2.` 使用 1.2.0。集合升级不修改已发布记录。
 - 每个对象的字段全部列入 `required`；可空字段仍须出现并使用 `null`。未知列表使用 `[]`，不得把未知年份写成 0、未知布尔值写成 false 或把未知文本写成空字符串。未知列表不代表已确认没有作者或机构。
 - 所有对象禁止额外字段（`additionalProperties: false`）。字段增加、删除、重命名、类型、必填性、枚举或语义调整均必须升版本号并在本文变更记录登记，经总指挥验收后采用。不得由单个模块扩展字段或自行约定隐藏结构。
 - 首版字段规则不是其他工具已接受的证明。协作中的变更需求由用户中转给总指挥（威龙）裁定；本仓库不直接联系其他工具。
@@ -14,7 +14,7 @@
 - 所有 `page_number` 都是 PDF 物理页码，从 1 开始，封面也计入；不使用论文印刷页码。`year` 为整数 1–9999 或 null。
 - 作者为按原文顺序排列的姓名字符串数组；机构为去重字符串数组。v1 不表达作者与机构的对应关系，不自行把字符串换成对象。
 - DOI 如已知，保存裸 DOI，不加 `https://doi.org/` 或 `doi:` 前缀。`arxiv_id` 不加 URL 或 `arXiv:` 前缀，可保留原文版本后缀（例如 v2）；未确认则为 null。
-- 单记录按对应 Schema 校验。列表表示同一类记录的 JSON 数组，不新增记录类型。HTTP 查询参数、文件上传、内容类型与统一错误封装属于传输约定；业务内容只能使用本文登记的九类记录。未覆盖的异步任务、图谱节点/边、综述框架等结构不得自行新增。图谱结构与综述框架结构不在 v1.1，留待 v1.2。
+- 单记录按对应 Schema 校验。列表表示同一类记录的 JSON 数组，不新增记录类型。HTTP 查询参数、集合封装与错误封装属于传输约定；业务记录只使用本文登记的十一类。图谱节点/边本轮已定义，综述框架及未裁定异步任务仍不得自行新增。
 
 ## 文件与字段数
 
@@ -212,9 +212,25 @@ Schema 校验字段、枚举、布尔类型及源单元格结构，不能完成�
 
 ChartOutput 示例的 CSV 与图像引用同样是假定资源，未在 fixtures 或其他目录创建文件。verified=true 仅演示字段表达，源数值一致性可用内存合成单元格检查；不构成真实 CSV 回溯成果。Schema 也不能独立证明新版优于旧版、跨快照进度合法或人工裁决历史未被覆盖；必须结合实际来源和保留的历史记录核验。
 
+## v1.2 图谱记录
+
+| 契约 | Schema / example | 顶层字段数（含版本） |
+| --- | --- | ---: |
+| GraphNode | graph-node.v1.2.schema.json / graph-node.v1.2.example.json | 6 |
+| GraphEdge | graph-edge.v1.2.schema.json / graph-edge.v1.2.example.json | 5 |
+
+GraphNode 六项全必填：schema_version=1.2.0、paper_id（引用 PaperMeta.id）、title、year、pagerank、level。title/year 必须与对应 PaperMeta 原值一致，未知仍 null；pagerank 是 [0,1] 数值；level 为 cornerstone / derived / isolated。PageRank 和层级仅对本次所选局域图成立，不表示论文质量或全球影响力。
+
+GraphEdge 五项全必填：schema_version=1.2.0、from_paper_id（引用方）、to_paper_id（被引方）、anchor、status。两端都引用所选 PaperMeta。anchor 复用原 QAAnswer 四字段 Chunk 锚点。status=verified 时必须有非空合法 anchor，且 paper_id 必须为 from_paper_id，必须与该论文真实 CitationLink、ReferenceEntry、Chunk 及目标身份一致；没有正文 CitationLink、但参考文献可唯一对应目标时，anchor=null、status=unverified，不可伪造锚点。这种不可验证边仍展示，但不参与 PageRank、分层或未来方向解决证据。
+
+每个对象全字段必填、additionalProperties=false；嵌套锚点同口径。多次正文引用可以形成多个带不同 anchor 的 GraphEdge；排名只使用去重后的 verified 论文对，不按引用标记次数加权。相同 DOI 多版本或同名目标无法唯一对应时，登记 unresolved_references，不猜连边。原九类记录字段数仍为 14/11/10/6/5/7/6/7/7，必填、类型与 Schema/example 字节均不改变。
+
+两个 example 为合成记录，不是声称已经落盘；GraphNode 示例分值只表达字段，不能单独证明一组 PageRank 总和为一。图谱生成者须结合整组记录检查节点归属、边锚点、概率归一和算法收敛。
+
 ## 变更记录
 
 | 版本 | 日期 | 变更 |
 | --- | --- | --- |
+| 1.2.0 | 2026-10-24 | 本轮只新增 GraphNode、GraphEdge 的 Schema/example；原九类记录与示例零改动。锚点复用 v1，GraphEdge 用 status/可空 anchor 显式表达不可验证边。综述框架未定义，留待后续单。 |
 | 1.1.0 | 2026-10-24 | 只新增 DedupDecision、DiffSummary、ParseStatus、ChartOutput 四类记录及各自示例；v1 五份记录的字段数、必填、类型、Schema 与示例全部零改动。统一错误封装与稳定编码表附在 ParseStatus 的 $defs 内，不新增业务记录。图谱节点/边与综述框架结构不在 v1.1，留待 v1.2。 |
 | 1.0.0 | 2026-10-24 | 首次建立五份契约及合成示例；明确物理页码、归一化坐标、引用双向定位、问答证据与数字校验口径。未增加解析状态、图谱节点边、综述、推荐、框架或 CSV 图表的专用结构；这些结构需求在 API 草案登记并由用户转达总指挥。 |

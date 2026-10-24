@@ -24,8 +24,10 @@ class ContractGate:
             schema = json.loads(path.read_text(encoding="utf-8"))
             Draft202012Validator.check_schema(schema)
             self.validators[schema["title"]] = Draft202012Validator(schema)
-        if len(self.validators) != 9:
-            raise PipelineError("VALIDATION_ERROR", "需要仓库中完整的九类已发布契约。")
+        legacy = {"PaperMeta", "Chunk", "ReferenceEntry", "CitationLink", "QAAnswer",
+                  "DedupDecision", "DiffSummary", "ParseStatus", "ChartOutput"}
+        if set(self.validators) not in (legacy, legacy | {"GraphNode", "GraphEdge"}):
+            raise PipelineError("VALIDATION_ERROR", "需要完整的原九类契约，v1.2 图谱契约必须成对提供。")
 
     def record(self, kind: str, value: dict) -> None:
         try:

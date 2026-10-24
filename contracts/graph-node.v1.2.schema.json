@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:scholar-graph:contract:graph-node:1.2.0",
+  "title": "GraphNode",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.2.0"
+    },
+    "paper_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+    },
+    "title": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "year": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1,
+      "maximum": 9999
+    },
+    "pagerank": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "level": {
+      "type": "string",
+      "enum": [
+        "cornerstone",
+        "derived",
+        "isolated"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "paper_id",
+    "title",
+    "year",
+    "pagerank",
+    "level"
+  ],
+  "additionalProperties": false
+}

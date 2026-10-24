@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.2.0",
+  "from_paper_id": "paper-demo-001",
+  "to_paper_id": "paper-demo-002",
+  "anchor": {
+    "paper_id": "paper-demo-001",
+    "page_number": 1,
+    "section": [
+      "1 Introduction"
+    ],
+    "chunk_id": "chunk-demo-001-p1-001"
+  },
+  "status": "verified"
+}

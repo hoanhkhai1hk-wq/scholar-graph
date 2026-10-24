@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:scholar-graph:contract:graph-edge:1.2.0",
+  "title": "GraphEdge",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.2.0"
+    },
+    "from_paper_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+    },
+    "to_paper_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+    },
+    "anchor": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/chunk_anchor"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "verified",
+        "unverified"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "from_paper_id",
+    "to_paper_id",
+    "anchor",
+    "status"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "chunk_anchor": {
+      "type": "object",
+      "properties": {
+        "paper_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+        },
+        "page_number": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "section": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "chunk_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+        }
+      },
+      "required": [
+        "paper_id",
+        "page_number",
+        "section",
+        "chunk_id"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "verified"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "anchor": {
+            "type": "object"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "anchor": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ]
+}
