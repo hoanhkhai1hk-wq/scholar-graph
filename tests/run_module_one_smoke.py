@@ -4,6 +4,7 @@ import argparse
 import hashlib
 import json
 import platform
+import shutil
 import subprocess
 import sys
 import time
@@ -38,7 +39,8 @@ def main():
               "source_commit": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(),
               "python": platform.python_version(),
               "engines": {name: version(name) for name in ["mineru", "paddleocr", "paddlepaddle"]},
-              "grobid": {"status": "待验证", "reason": "无 Docker Desktop/CLI；仅测试 Mock HTTP/TEI，未调用真实 GROBID。"},
+              "grobid": {"status": "待验证", "docker_cli_found": shutil.which("docker") is not None,
+                         "reason": "本实跑未调用真实 GROBID。客户端测试为 Mock HTTP/TEI，不是联调证据。"},
               "ocr": {"status": "待验证"}, "parses": []}
     bundles = []
     for label, kwargs in [("selfmade-v1", {}), ("selfmade-v7", {"version": "v7", "samples": 18}),
