@@ -2,6 +2,9 @@
 .next/
 out/
 
+# Next.js auto-generated type declarations
+next-env.d.ts
+
 # Dependencies
 node_modules/
 
