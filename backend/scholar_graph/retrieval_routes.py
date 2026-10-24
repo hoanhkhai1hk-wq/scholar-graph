@@ -1,7 +1,8 @@
 """Module-four transport envelopes; frozen business records stay intact."""
 
 from fastapi import APIRouter, Request, Response
-from pydantic import ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, StringConstraints, model_validator
+from typing import Annotated
 
 from .api_transport import paginate
 from .qa_routes import QuestionRequest
@@ -17,6 +18,18 @@ class SearchRequest(QuestionRequest):
     min_relevance: float = Field(0, ge=0, le=1, allow_inf_nan=False)
 
 
+class FetchRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    title: Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=500, strict=True)] | None = None
+    reference: dict | None = None
+
+    @model_validator(mode="after")
+    def one_lookup(self):
+        if (self.title is None) == (self.reference is None):
+            raise ValueError("exactly one lookup is required")
+        return self
+
+
 def retrieval_routes():
     router = APIRouter(prefix="/api/v1")
 
@@ -28,5 +41,9 @@ def retrieval_routes():
         for header, value in zip(SEARCH_HEADERS, [info["method"], info["vector_status"], reason], strict=True):
             response.headers[header] = value
         return result
+
+    @router.post("/retrieval/fetch")
+    def fetch(body: FetchRequest, request: Request):
+        return request.app.state.arxiv_fetcher.fetch(body.title, body.reference)
 
     return router

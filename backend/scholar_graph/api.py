@@ -20,6 +20,7 @@ from .graph_routes import graph_routes
 from .retrieval import SearchService
 from .retrieval_routes import retrieval_routes, SEARCH_HEADERS
 from .vector_search import vector_from_environment
+from .arxiv_fetch import ArxivFetcher
 
 PREFIX = "/api/v1"
 LOCAL_ORIGINS = ["http://localhost:3000", "http://127.0.0.1:3000"]
@@ -46,6 +47,7 @@ def create_app(*, data_dir=None, pipeline_factory=None):
     uploads = UploadService(root, gate, pipeline_factory)
     app.state.uploads = uploads
     app.state.search = SearchService(repository, vector_from_environment(root))
+    app.state.arxiv_fetcher = ArxivFetcher(repository, lock=uploads.lock)
 
     def error_response(code, message, status):
         value = {"error_code": code, "message": message, "details": None}
