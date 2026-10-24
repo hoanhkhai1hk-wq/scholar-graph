@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.1.0",
+  "paper_id": "paper-demo-001",
+  "status": "failed",
+  "progress": 35,
+  "current_stage": "Synthetic OCR failure example; no parsing service was run.",
+  "error_code": "OCR_FAILED",
+  "error_message": "Synthetic example: OCR could not extract usable text."
+}
