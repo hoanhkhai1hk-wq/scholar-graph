@@ -1,0 +1,456 @@
+{
+  "scope": "自制样例、非官方 pdf/ 用例；未运行官方三用例。",
+  "run_utc": "2026-10-24T09:41:24.704900+00:00",
+  "source_commit": "57a4812b68987e117ae80e8c00d1795d10e74ce3",
+  "python": "3.12.15",
+  "engines": {
+    "mineru": "4.0.12",
+    "paddleocr": "3.7.0",
+    "paddlepaddle": "3.3.1"
+  },
+  "grobid": {
+    "status": "待验证",
+    "docker_cli_found": false,
+    "reason": "本实跑未调用真实 GROBID。客户端测试为 Mock HTTP/TEI，不是联调证据。"
+  },
+  "ocr": {
+    "status": "已接通",
+    "engine": "PaddleOCR 3.7.0 / PaddlePaddle 3.3.1 / PP-OCRv5 / CPU",
+    "recognized_texts": [
+      "Synthetic scanned page",
+      "1 Introduction",
+      "The synthetic study uses 12 samples."
+    ]
+  },
+  "parses": [
+    {
+      "input": "data/module-one-smoke-reviewed/inputs/selfmade-v1.pdf",
+      "input_sha256": "cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20",
+      "output_directory": "data/module-one-smoke-reviewed/output/papers/paper-cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20",
+      "elapsed_seconds": 2.157,
+      "counts": {
+        "PaperMeta": 1,
+        "Chunk": 6,
+        "ReferenceEntry": 1,
+        "CitationLink": 1
+      },
+      "paper_meta": {
+        "schema_version": "1.0.0",
+        "id": "paper-cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20",
+        "title": "Synthetic ScholarGraph Study",
+        "authors": [
+          "Demo Author"
+        ],
+        "institutions": [],
+        "abstract": null,
+        "year": 2026,
+        "source": "local-upload",
+        "arxiv_id": null,
+        "doi": "10.5555/scholar-synthetic",
+        "version": "v1",
+        "file_hash": "cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20",
+        "page_count": 2,
+        "has_text_layer": true
+      },
+      "status_history": [
+        {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20",
+          "status": "queued",
+          "progress": 0,
+          "current_stage": "等待解析",
+          "error_code": null,
+          "error_message": null
+        },
+        {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20",
+          "status": "parsing",
+          "progress": 5,
+          "current_stage": "检查 PDF 与文本层",
+          "error_code": null,
+          "error_message": null
+        },
+        {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20",
+          "status": "parsing",
+          "progress": 30,
+          "current_stage": "MinerU 本地文本解析完成",
+          "error_code": null,
+          "error_message": null
+        },
+        {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20",
+          "status": "indexing",
+          "progress": 80,
+          "current_stage": "生成契约记录与锚点索引",
+          "error_code": null,
+          "error_message": null
+        },
+        {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20",
+          "status": "indexing",
+          "progress": 95,
+          "current_stage": "Schema 与外键校验通过",
+          "error_code": null,
+          "error_message": null
+        },
+        {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20",
+          "status": "completed",
+          "progress": 100,
+          "current_stage": "四类记录已通过校验并原子发布",
+          "error_code": null,
+          "error_message": null
+        }
+      ],
+      "record_sha256": {
+        "chunks.json": "0df3e598c8c32fc1451f2164516ad4b73a50b034d4ed361d7b0037306b573a61",
+        "citation-links.json": "fe4f64d32ad657b150d2fb0884f1997b65cceaae3a917048016d06e692745169",
+        "paper-meta.json": "2355322f31631987969eb0812f3cdc54bff5ff7d6da50685dc4d318a73b83257",
+        "reference-entries.json": "078126cb8e100d5146f8fe91e687e99b0684d342a1e74aa53f6e6ec9c7c1e1b5"
+      }
+    },
+    {
+      "input": "data/module-one-smoke-reviewed/inputs/selfmade-v7.pdf",
+      "input_sha256": "5d99397e9a37ee758723e7e845f5630ac8c5c88d9b60888946340fa4fa93a7d2",
+      "output_directory": "data/module-one-smoke-reviewed/output/papers/paper-5d99397e9a37ee758723e7e845f5630ac8c5c88d9b60888946340fa4fa93a7d2",
+      "elapsed_seconds": 2.132,
+      "counts": {
+        "PaperMeta": 1,
+        "Chunk": 8,
+        "ReferenceEntry": 1,
+        "CitationLink": 1
+      },
+      "paper_meta": {
+        "schema_version": "1.0.0",
+        "id": "paper-5d99397e9a37ee758723e7e845f5630ac8c5c88d9b60888946340fa4fa93a7d2",
+        "title": "Synthetic ScholarGraph Study",
+        "authors": [
+          "Demo Author"
+        ],
+        "institutions": [],
+        "abstract": null,
+        "year": 2026,
+        "source": "local-upload",
+        "arxiv_id": null,
+        "doi": "10.5555/scholar-synthetic",
+        "version": "v7",
+        "file_hash": "5d99397e9a37ee758723e7e845f5630ac8c5c88d9b60888946340fa4fa93a7d2",
+        "page_count": 2,
+        "has_text_layer": true
+      },
+      "status_history": [
+        {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-5d99397e9a37ee758723e7e845f5630ac8c5c88d9b60888946340fa4fa93a7d2",
+          "status": "queued",
+          "progress": 0,
+          "current_stage": "等待解析",
+          "error_code": null,
+          "error_message": null
+        },
+        {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-5d99397e9a37ee758723e7e845f5630ac8c5c88d9b60888946340fa4fa93a7d2",
+          "status": "parsing",
+          "progress": 5,
+          "current_stage": "检查 PDF 与文本层",
+          "error_code": null,
+          "error_message": null
+        },
+        {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-5d99397e9a37ee758723e7e845f5630ac8c5c88d9b60888946340fa4fa93a7d2",
+          "status": "parsing",
+          "progress": 30,
+          "current_stage": "MinerU 本地文本解析完成",
+          "error_code": null,
+          "error_message": null
+        },
+        {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-5d99397e9a37ee758723e7e845f5630ac8c5c88d9b60888946340fa4fa93a7d2",
+          "status": "indexing",
+          "progress": 80,
+          "current_stage": "生成契约记录与锚点索引",
+          "error_code": null,
+          "error_message": null
+        },
+        {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-5d99397e9a37ee758723e7e845f5630ac8c5c88d9b60888946340fa4fa93a7d2",
+          "status": "indexing",
+          "progress": 95,
+          "current_stage": "Schema 与外键校验通过",
+          "error_code": null,
+          "error_message": null
+        },
+        {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-5d99397e9a37ee758723e7e845f5630ac8c5c88d9b60888946340fa4fa93a7d2",
+          "status": "completed",
+          "progress": 100,
+          "current_stage": "四类记录已通过校验并原子发布",
+          "error_code": null,
+          "error_message": null
+        }
+      ],
+      "record_sha256": {
+        "chunks.json": "b5dbc4600457034b87afa71a70cd330f693f7d5cc3cb4e47744e69928a49e3a4",
+        "citation-links.json": "e93742d0f66bfc2efb1c37fcd35fb993850654e1eb5338fffe365b7ac410d3e6",
+        "paper-meta.json": "fcb712f17a7029c298c515e3d29ac837a334d97bc38d375d68038662a5b9d17e",
+        "reference-entries.json": "14c960b29a0b10e89c7f0a2c0c39045126a1ac1b3a570a21074b1fc40fe530f7"
+      }
+    },
+    {
+      "input": "data/module-one-smoke-reviewed/inputs/selfmade-scan.pdf",
+      "input_sha256": "d689f7d5d830b4058931b1cdf6a09381f9ef7e6e03f5177986008f756ffca347",
+      "output_directory": "data/module-one-smoke-reviewed/output/papers/paper-d689f7d5d830b4058931b1cdf6a09381f9ef7e6e03f5177986008f756ffca347",
+      "elapsed_seconds": 32.79,
+      "counts": {
+        "PaperMeta": 1,
+        "Chunk": 3,
+        "ReferenceEntry": 0,
+        "CitationLink": 0
+      },
+      "paper_meta": {
+        "schema_version": "1.0.0",
+        "id": "paper-d689f7d5d830b4058931b1cdf6a09381f9ef7e6e03f5177986008f756ffca347",
+        "title": "Synthetic ScholarGraph Study",
+        "authors": [
+          "Demo Author"
+        ],
+        "institutions": [],
+        "abstract": null,
+        "year": null,
+        "source": "local-upload",
+        "arxiv_id": null,
+        "doi": null,
+        "version": null,
+        "file_hash": "d689f7d5d830b4058931b1cdf6a09381f9ef7e6e03f5177986008f756ffca347",
+        "page_count": 1,
+        "has_text_layer": false
+      },
+      "status_history": [
+        {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-d689f7d5d830b4058931b1cdf6a09381f9ef7e6e03f5177986008f756ffca347",
+          "status": "queued",
+          "progress": 0,
+          "current_stage": "等待解析",
+          "error_code": null,
+          "error_message": null
+        },
+        {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-d689f7d5d830b4058931b1cdf6a09381f9ef7e6e03f5177986008f756ffca347",
+          "status": "parsing",
+          "progress": 5,
+          "current_stage": "检查 PDF 与文本层",
+          "error_code": null,
+          "error_message": null
+        },
+        {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-d689f7d5d830b4058931b1cdf6a09381f9ef7e6e03f5177986008f756ffca347",
+          "status": "parsing",
+          "progress": 30,
+          "current_stage": "MinerU 本地文本解析完成",
+          "error_code": null,
+          "error_message": null
+        },
+        {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-d689f7d5d830b4058931b1cdf6a09381f9ef7e6e03f5177986008f756ffca347",
+          "status": "ocr",
+          "progress": 40,
+          "current_stage": "扫描页 OCR",
+          "error_code": null,
+          "error_message": null
+        },
+        {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-d689f7d5d830b4058931b1cdf6a09381f9ef7e6e03f5177986008f756ffca347",
+          "status": "ocr",
+          "progress": 70,
+          "current_stage": "扫描页 OCR 完成",
+          "error_code": null,
+          "error_message": null
+        },
+        {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-d689f7d5d830b4058931b1cdf6a09381f9ef7e6e03f5177986008f756ffca347",
+          "status": "indexing",
+          "progress": 80,
+          "current_stage": "生成契约记录与锚点索引",
+          "error_code": null,
+          "error_message": null
+        },
+        {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-d689f7d5d830b4058931b1cdf6a09381f9ef7e6e03f5177986008f756ffca347",
+          "status": "indexing",
+          "progress": 95,
+          "current_stage": "Schema 与外键校验通过",
+          "error_code": null,
+          "error_message": null
+        },
+        {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-d689f7d5d830b4058931b1cdf6a09381f9ef7e6e03f5177986008f756ffca347",
+          "status": "completed",
+          "progress": 100,
+          "current_stage": "四类记录已通过校验并原子发布",
+          "error_code": null,
+          "error_message": null
+        }
+      ],
+      "record_sha256": {
+        "chunks.json": "63559c8ddcc779a72752a80762935f01b2d988c5a93bb36445bbacd1f726d648",
+        "citation-links.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "paper-meta.json": "d64f9923ed47ef39f12ab07b7e7a64ce8f3f473b3a924219888d971b30071b51",
+        "reference-entries.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+      }
+    }
+  ],
+  "comparison": {
+    "output_directory": "data/module-one-smoke-reviewed/output/comparisons/comparison-7db9d8af2f754237a48ea9a270d936ed",
+    "system_decision": {
+      "schema_version": "1.1.0",
+      "old_paper_id": "paper-cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20",
+      "new_paper_id": "paper-5d99397e9a37ee758723e7e845f5630ac8c5c88d9b60888946340fa4fa93a7d2",
+      "similarity": 0.850575,
+      "evidence": [
+        {
+          "anchor": {
+            "paper_id": "paper-cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20",
+            "page_number": 1,
+            "section": [
+              "1 Introduction"
+            ],
+            "chunk_id": "paper-cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20-p0001-c00004"
+          },
+          "reason": "已检出文本变化，但文本相似度和版本序号不能证明新版质量更高；需人工核对差异。"
+        },
+        {
+          "anchor": {
+            "paper_id": "paper-5d99397e9a37ee758723e7e845f5630ac8c5c88d9b60888946340fa4fa93a7d2",
+            "page_number": 1,
+            "section": [
+              "1 Introduction"
+            ],
+            "chunk_id": "paper-5d99397e9a37ee758723e7e845f5630ac8c5c88d9b60888946340fa4fa93a7d2-p0001-c00004"
+          },
+          "reason": "已检出文本变化，但文本相似度和版本序号不能证明新版质量更高；需人工核对差异。"
+        }
+      ],
+      "recommendation": "manual_review",
+      "human_override": false
+    },
+    "human_decision": {
+      "schema_version": "1.1.0",
+      "old_paper_id": "paper-cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20",
+      "new_paper_id": "paper-5d99397e9a37ee758723e7e845f5630ac8c5c88d9b60888946340fa4fa93a7d2",
+      "similarity": 0.850575,
+      "evidence": [
+        {
+          "anchor": {
+            "paper_id": "paper-cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20",
+            "page_number": 1,
+            "section": [
+              "1 Introduction"
+            ],
+            "chunk_id": "paper-cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20-p0001-c00004"
+          },
+          "reason": "人工意见：自制验收：保留两个版本用于比较。；原系统依据：已检出文本变化，但文本相似度和版本序号不能证明新版质量更高；需人工核对差异。"
+        },
+        {
+          "anchor": {
+            "paper_id": "paper-5d99397e9a37ee758723e7e845f5630ac8c5c88d9b60888946340fa4fa93a7d2",
+            "page_number": 1,
+            "section": [
+              "1 Introduction"
+            ],
+            "chunk_id": "paper-5d99397e9a37ee758723e7e845f5630ac8c5c88d9b60888946340fa4fa93a7d2-p0001-c00004"
+          },
+          "reason": "人工意见：自制验收：保留两个版本用于比较。；原系统依据：已检出文本变化，但文本相似度和版本序号不能证明新版质量更高；需人工核对差异。"
+        }
+      ],
+      "recommendation": "keep_both",
+      "human_override": true
+    },
+    "diff_summary": {
+      "schema_version": "1.1.0",
+      "old_paper_id": "paper-cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20",
+      "new_paper_id": "paper-5d99397e9a37ee758723e7e845f5630ac8c5c88d9b60888946340fa4fa93a7d2",
+      "changed_sections": [
+        "Unsectioned",
+        "1 Introduction",
+        "2 Protocol"
+      ],
+      "summary_text": "检出章节文本差异：Unsectioned；1 Introduction；2 Protocol。关键句为对应版本的原文摘录，不代表质量排名。",
+      "key_sentences": [
+        {
+          "text": "Version: v7 DOI: https://doi.org/10.5555/scholar-syntheticYear: 2026",
+          "anchor": {
+            "paper_id": "paper-5d99397e9a37ee758723e7e845f5630ac8c5c88d9b60888946340fa4fa93a7d2",
+            "page_number": 1,
+            "section": [],
+            "chunk_id": "paper-5d99397e9a37ee758723e7e845f5630ac8c5c88d9b60888946340fa4fa93a7d2-p0001-c00002"
+          },
+          "status": "verified"
+        },
+        {
+          "text": "The synthetic study uses 18 samples and cites [1].",
+          "anchor": {
+            "paper_id": "paper-5d99397e9a37ee758723e7e845f5630ac8c5c88d9b60888946340fa4fa93a7d2",
+            "page_number": 1,
+            "section": [
+              "1 Introduction"
+            ],
+            "chunk_id": "paper-5d99397e9a37ee758723e7e845f5630ac8c5c88d9b60888946340fa4fa93a7d2-p0001-c00004"
+          },
+          "status": "verified"
+        },
+        {
+          "text": "The revised synthetic protocol records additional controls.",
+          "anchor": {
+            "paper_id": "paper-5d99397e9a37ee758723e7e845f5630ac8c5c88d9b60888946340fa4fa93a7d2",
+            "page_number": 1,
+            "section": [
+              "2 Protocol"
+            ],
+            "chunk_id": "paper-5d99397e9a37ee758723e7e845f5630ac8c5c88d9b60888946340fa4fa93a7d2-p0001-c00006"
+          },
+          "status": "verified"
+        }
+      ]
+    },
+    "system_record_preserved": true
+  },
+  "contracts_sha256": {
+    "contracts/chart-output.v1.1.example.json": "d87546429a5685171823183c6595bf5612f58424d84a12dcdf3dee0f7cc855c7",
+    "contracts/chart-output.v1.1.schema.json": "8bcd6e632f5aae8b3ed03b7d271e22981e1f624421ce9cc8cecef7f952ceb393",
+    "contracts/chunk.v1.example.json": "99e81d826ed5cf26a70cb8a80e13626f6abee732f1dd8998744698ac4bc8517c",
+    "contracts/chunk.v1.schema.json": "63fe2adcd5d8eb9ce7a5ae085a629ed0b5ceb167a1ff32c0c972dfb4e88076da",
+    "contracts/citation-link.v1.example.json": "4ab7a54234acb461fb5e7bc14c88b0b2d2db22bd07aabe1978ca6570e03c8a6a",
+    "contracts/citation-link.v1.schema.json": "444e3551dfde65a764bbac4b74df4f4d659b0b52e8c110ac82a3ed1052471031",
+    "contracts/dedup-decision.v1.1.example.json": "2133dc61c277a2924164ba597bf9d4eac1ad41de4c66b2db0fbe75e020cc4e9c",
+    "contracts/dedup-decision.v1.1.schema.json": "3aa41afad95c4af8e526f56cc58f8b2fe172a3881fe4e37a08b3a5331fdab479",
+    "contracts/diff-summary.v1.1.example.json": "a065b291653af32857063acd80adb43abd79bb9a7555787154fdc15d62599554",
+    "contracts/diff-summary.v1.1.schema.json": "2b1bc940fd728e6e7243b6f9e096022eaf9a284911dac1f692f7529bf3bf65e0",
+    "contracts/paper-meta.v1.example.json": "90426cedff28155156df02ef10204cd9ee9bcfd8027632562228fd96ffb525d5",
+    "contracts/paper-meta.v1.schema.json": "abfdde0967cd184fe4ba305ce78638f4d254226a7706836604d8ae95380869e1",
+    "contracts/parse-status.v1.1.example.json": "af160330e705fed79a3c5833dd3c579185cd7887e53e8537420d722a77a7663a",
+    "contracts/parse-status.v1.1.schema.json": "51dafa2aa9409933d841e5bd857704a66e3c19fad4406619d8004ae1b0d634a7",
+    "contracts/qa-answer.v1.example.json": "cda412273e6b2cdb40a8a10b25e6bde0a71034f2ea787f707eabe2a96b36d2f4",
+    "contracts/qa-answer.v1.schema.json": "afc96cd530690b19a0476d7dd7bfe862dadc0b98f3e4fbd04b12ee351b95b330",
+    "contracts/reference-entry.v1.example.json": "ceb8526f0dad72817d8f5242bb1dc503d888359a9d20cf908f5461216fdf1139",
+    "contracts/reference-entry.v1.schema.json": "c331c886feb75782ffb454ca7a82957ba81a225dfbaf9844332a58cf5a7987fd"
+  }
+}

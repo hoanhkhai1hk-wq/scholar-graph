@@ -1,0 +1,225 @@
+{
+  "baseline_commit": "0a285b2686e9e0638d8545e5ad44fe4be7e447c9",
+  "source_commit": "57a4812b68987e117ae80e8c00d1795d10e74ce3",
+  "frozen_contract_files": {
+    "contracts/chart-output.v1.1.example.json": {
+      "baseline_git_blob": "f34c9130ecb750cf583a9cf5cb802fbe95a28bb7",
+      "current_git_blob": "f34c9130ecb750cf583a9cf5cb802fbe95a28bb7"
+    },
+    "contracts/chart-output.v1.1.schema.json": {
+      "baseline_git_blob": "7b5b196ecc88d31d7a13b0f560f02c9feb0814dd",
+      "current_git_blob": "7b5b196ecc88d31d7a13b0f560f02c9feb0814dd"
+    },
+    "contracts/chunk.v1.example.json": {
+      "baseline_git_blob": "330a0845a9569aa85053dbfa1dc643363b45f2c3",
+      "current_git_blob": "330a0845a9569aa85053dbfa1dc643363b45f2c3"
+    },
+    "contracts/chunk.v1.schema.json": {
+      "baseline_git_blob": "d577c91c27b33e360da8cdfbacbbf2da33ac1bcf",
+      "current_git_blob": "d577c91c27b33e360da8cdfbacbbf2da33ac1bcf"
+    },
+    "contracts/citation-link.v1.example.json": {
+      "baseline_git_blob": "1df93d863fd88272ea4b3ec71d7fde77916c84f6",
+      "current_git_blob": "1df93d863fd88272ea4b3ec71d7fde77916c84f6"
+    },
+    "contracts/citation-link.v1.schema.json": {
+      "baseline_git_blob": "1c26cb51d10256635af9cd43881a0219316408f8",
+      "current_git_blob": "1c26cb51d10256635af9cd43881a0219316408f8"
+    },
+    "contracts/dedup-decision.v1.1.example.json": {
+      "baseline_git_blob": "d47edb3181b70f7fe0bed872d50a5178a1e3baaa",
+      "current_git_blob": "d47edb3181b70f7fe0bed872d50a5178a1e3baaa"
+    },
+    "contracts/dedup-decision.v1.1.schema.json": {
+      "baseline_git_blob": "a0679f1dd466fe247f2f8d9a77f05a669aa622bb",
+      "current_git_blob": "a0679f1dd466fe247f2f8d9a77f05a669aa622bb"
+    },
+    "contracts/diff-summary.v1.1.example.json": {
+      "baseline_git_blob": "947217164499f39932b9b4e88013828f5c1a9cdf",
+      "current_git_blob": "947217164499f39932b9b4e88013828f5c1a9cdf"
+    },
+    "contracts/diff-summary.v1.1.schema.json": {
+      "baseline_git_blob": "6df5e7753e629277068dd7c023938b2df0b122d8",
+      "current_git_blob": "6df5e7753e629277068dd7c023938b2df0b122d8"
+    },
+    "contracts/paper-meta.v1.example.json": {
+      "baseline_git_blob": "141f90fe6d68cbfb7f4770aace62c190100f7f8f",
+      "current_git_blob": "141f90fe6d68cbfb7f4770aace62c190100f7f8f"
+    },
+    "contracts/paper-meta.v1.schema.json": {
+      "baseline_git_blob": "a8d65964a698823b165c7369d9912e0956081995",
+      "current_git_blob": "a8d65964a698823b165c7369d9912e0956081995"
+    },
+    "contracts/parse-status.v1.1.example.json": {
+      "baseline_git_blob": "9dcae28d3c0605d1e3ca625d884125662ef105b3",
+      "current_git_blob": "9dcae28d3c0605d1e3ca625d884125662ef105b3"
+    },
+    "contracts/parse-status.v1.1.schema.json": {
+      "baseline_git_blob": "0821189d573e9b489bc3c900a97b3128f30bd132",
+      "current_git_blob": "0821189d573e9b489bc3c900a97b3128f30bd132"
+    },
+    "contracts/qa-answer.v1.example.json": {
+      "baseline_git_blob": "29dcf10a680b880f6559f6ab0a840195f90e0f89",
+      "current_git_blob": "29dcf10a680b880f6559f6ab0a840195f90e0f89"
+    },
+    "contracts/qa-answer.v1.schema.json": {
+      "baseline_git_blob": "9afbdd2b5fd1eafaddbf34bcd1377d333c0f3b1e",
+      "current_git_blob": "9afbdd2b5fd1eafaddbf34bcd1377d333c0f3b1e"
+    },
+    "contracts/reference-entry.v1.example.json": {
+      "baseline_git_blob": "35c676e8fbbe6ae4bc9e6d3622c1c9ba2e491965",
+      "current_git_blob": "35c676e8fbbe6ae4bc9e6d3622c1c9ba2e491965"
+    },
+    "contracts/reference-entry.v1.schema.json": {
+      "baseline_git_blob": "e26db67f190041c4ea42f6e0729536e9babd6926",
+      "current_git_blob": "e26db67f190041c4ea42f6e0729536e9babd6926"
+    }
+  },
+  "api_only_parse_status_row_changed": true,
+  "owned_scope_verified": true,
+  "pytest": {
+    "tests": 49,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "pytest_categories": {
+    "tests.test_cli_adapters": 3,
+    "tests.test_dedup": 13,
+    "tests.test_parsing": 14,
+    "tests.test_validation_status": 19
+  },
+  "commits_before_evidence_commit": [
+    {
+      "sha": "de356d567c6b7b358843a9882d65e77a65cf4c7f",
+      "title": "补入可复现的契约边界验证脚本与依赖",
+      "files": [
+        "tests/requirements.txt",
+        "tests/verify_contract_boundaries.py"
+      ]
+    },
+    {
+      "sha": "3b6db0bf018ba1a06d913a29c0487d9c90a4120b",
+      "title": "记录契约边界用例实际运行数量分类与逐项结果",
+      "files": [
+        "tests/reports/contract-boundaries.json",
+        "tests/reports/contract-boundaries.md"
+      ]
+    },
+    {
+      "sha": "e98dd914812685cc9406bed7947de65cb362c201",
+      "title": "修正解析状态端点行以返回v1.1 ParseStatus",
+      "files": [
+        "docs/api-draft-v1.md"
+      ]
+    },
+    {
+      "sha": "dff23636388c579067ffb303cbf19cae872efef9",
+      "title": "实现契约及锚点校验门禁与解析状态机并验证边界",
+      "files": [
+        "backend/pyproject.toml",
+        "backend/scholar_graph/__init__.py",
+        "backend/scholar_graph/errors.py",
+        "backend/scholar_graph/status.py",
+        "backend/scholar_graph/validation.py",
+        "tests/conftest.py",
+        "tests/test_validation_status.py"
+      ]
+    },
+    {
+      "sha": "544c545a14721baff400d7a82a587e39818ba7e0",
+      "title": "实现MinerU本地解析和PaddleOCR兜底及校验后原子落盘",
+      "files": [
+        "backend/pyproject.toml",
+        "backend/scholar_graph/_engine_worker.py",
+        "backend/scholar_graph/adapters.py",
+        "backend/scholar_graph/grobid.py",
+        "backend/scholar_graph/normalize.py",
+        "backend/scholar_graph/pipeline.py",
+        "backend/scholar_graph/storage.py",
+        "backend/scholar_graph/validation.py",
+        "tests/conftest.py",
+        "tests/sample_pdfs.py",
+        "tests/test_parsing.py"
+      ]
+    },
+    {
+      "sha": "c3cbd2f7309f3a091f62f033279ae7e95df88fa5",
+      "title": "实现保守去重与版本差异及保留系统意见的人工裁决",
+      "files": [
+        "backend/scholar_graph/dedup.py",
+        "tests/test_dedup.py"
+      ]
+    },
+    {
+      "sha": "d9181e30d3d0d623e4e7ce65d55061b3f0b67655",
+      "title": "添加本地命令行入口复现步骤及实跑证据生成脚本",
+      "files": [
+        "backend/.gitignore",
+        "backend/README.md",
+        "backend/scholar_graph/__main__.py",
+        "backend/scholar_graph/cli.py",
+        "backend/scholar_graph/validation.py",
+        "tests/run_module_one_smoke.py",
+        "tests/test_cli_adapters.py",
+        "tests/test_validation_status.py"
+      ]
+    },
+    {
+      "sha": "8df8bdebf4228ef0ec58fe9358413a48f46143a7",
+      "title": "配置可选GROBID本机服务并明确Docker联调待验证",
+      "files": [
+        "docker-compose.yml",
+        "services/README.md"
+      ]
+    },
+    {
+      "sha": "09f6c3bfafcd90f84e62ed0f99aa09c8b58d5670",
+      "title": "补强解析完整页检查与失败清理范围防止截断结果被发布",
+      "files": [
+        "backend/scholar_graph/dedup.py",
+        "backend/scholar_graph/pipeline.py",
+        "backend/scholar_graph/storage.py",
+        "tests/test_parsing.py"
+      ]
+    },
+    {
+      "sha": "2d12139ed1c16650deec0b569cb92f83945ee10a",
+      "title": "按实际环境检测Docker可用性避免复现报告写死结论",
+      "files": [
+        "tests/run_module_one_smoke.py"
+      ]
+    },
+    {
+      "sha": "57a4812b68987e117ae80e8c00d1795d10e74ce3",
+      "title": "使去重证据与差异关键句优先指向实际变化正文",
+      "files": [
+        "backend/scholar_graph/dedup.py",
+        "tests/test_dedup.py"
+      ]
+    }
+  ],
+  "source_sha256": {
+    "backend/scholar_graph/__init__.py": "db7e5af5beb7eb99ea5b83ff0979c4b5d68e9b5ac6a38bd5b7e1d7d2348cd6ff",
+    "backend/scholar_graph/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "backend/scholar_graph/_engine_worker.py": "460e7fc5631a36c57ca2a1df3990862b17639857891b7bcd1c59a5b2d1492b09",
+    "backend/scholar_graph/adapters.py": "b602e6ccd9e94e27d451ab47a1904b8c39371ad32ffdbc28bd76242e29ebc8d7",
+    "backend/scholar_graph/cli.py": "9594e2b59aa5973446a911b273b284de001dcbbe8596bba62bead77756590b4d",
+    "backend/scholar_graph/dedup.py": "456e981fe5213d9787d9d4a4278ffd8fbef93c3c8d2cfac5ddd305e51157ed62",
+    "backend/scholar_graph/errors.py": "f9bda8ef6a89ce5224072a3f624df268354f3a512235796e97b5c8c80772841c",
+    "backend/scholar_graph/grobid.py": "eb1a8f0ecdc216feb07f83f0666edc4a82382ad9bad72aad83eb3d677e998b3a",
+    "backend/scholar_graph/normalize.py": "31ded58dcef6694130a61c0e45a9c34af26bc70c7baadb2efb628c2478c85180",
+    "backend/scholar_graph/pipeline.py": "1301b18e73c03bebe318ab13d7e93d10f2172485d063a59e5cc467b64da654d5",
+    "backend/scholar_graph/status.py": "613853b776237aa9b38db1db4e0b2a17ed0eed9e3921b9235a328da6ca92dc49",
+    "backend/scholar_graph/storage.py": "1754a07a47d98901ea255a8ca389e4d29fa7960c5a080daa29b226000c185468",
+    "backend/scholar_graph/validation.py": "d216eea18d5cd6cf18454a7f74880cf8eca3cdb0f99d7e704a9cefb9ccd65e34",
+    "tests/conftest.py": "c39893faa24d7f27bcd3ee6a354390daecdf5ce99d843d06919f0d45cacea003",
+    "tests/run_module_one_smoke.py": "580cf1b68894e7935420732025f94ee290f8cfbb9c5d5cb0a7003137288d6880",
+    "tests/sample_pdfs.py": "1fae71de48078b8cce1cac073de40aa2e04549010848de317dd7da3c7252a989",
+    "tests/test_cli_adapters.py": "7c953af92651edf349c11e549c69cc36d6a93ebed5419af453d7c6a96e1898a1",
+    "tests/test_dedup.py": "267263d7d4baba7acdfccd16d90b5f9d0bedae222fb93e9318ee25ccf016a025",
+    "tests/test_parsing.py": "2efb2c9c927731cbb4bb215ecf15f3463fa5b514a27a52f451fd3f2e1eeb4137",
+    "tests/test_validation_status.py": "4a5050c966a39ee6c9748ed8c8c3d0b1f5425cf99f8c60e52b2a349051ea937e",
+    "tests/verify_contract_boundaries.py": "707fd2930f010d932650263e42d526e9eb4c6943774be8ccf76e567ef897dd4e"
+  }
+}
