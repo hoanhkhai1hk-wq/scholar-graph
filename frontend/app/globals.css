@@ -508,3 +508,319 @@ a:hover {
   margin: var(--sg-space-3) 0 0;
   font-size: 12px;
 }
+
+/* 三栏阅读器 */
+.sg-shell--wide {
+  max-width: 1400px;
+}
+
+.sg-reader {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr) 300px;
+  gap: var(--sg-space-5);
+  align-items: start;
+}
+
+@media (max-width: 1100px) {
+  .sg-reader {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sg-reader__nav,
+.sg-reader__side {
+  position: sticky;
+  top: var(--sg-space-3);
+  max-height: calc(100vh - 80px);
+  overflow: auto;
+  border: 1px solid var(--sg-border);
+  border-radius: var(--sg-radius-md);
+  background: var(--sg-bg-surface);
+  padding: var(--sg-space-4);
+}
+
+.sg-reader__main {
+  min-width: 0;
+}
+
+.sg-nav-list {
+  list-style: none;
+  margin: var(--sg-space-2) 0 var(--sg-space-4);
+  padding: 0;
+}
+
+.sg-nav-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  border-left: 3px solid transparent;
+  border-bottom: 1px solid var(--sg-border);
+  padding: var(--sg-space-2) var(--sg-space-2);
+  cursor: pointer;
+  font-family: var(--sg-font-ui);
+  font-size: 13px;
+  color: var(--sg-text-primary);
+}
+
+.sg-nav-item:hover {
+  background: var(--sg-bg-subtle);
+}
+
+.sg-nav-item--active {
+  border-left-color: var(--sg-accent);
+  background: var(--sg-accent-subtle);
+}
+
+.sg-nav-item__title {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.sg-nav-item .sg-mono {
+  color: var(--sg-text-muted);
+}
+
+/* 阅读区块 */
+.sg-chunk {
+  border-left: 3px solid transparent;
+  border-bottom: 1px solid var(--sg-border);
+  padding: var(--sg-space-3) var(--sg-space-4);
+  scroll-margin-top: var(--sg-space-5);
+}
+
+.sg-chunk--active {
+  border-left-color: var(--sg-accent);
+  background: var(--sg-accent-subtle);
+}
+
+.sg-chunk__head {
+  display: flex;
+  gap: var(--sg-space-3);
+  align-items: baseline;
+  color: var(--sg-text-muted);
+  margin-bottom: var(--sg-space-1);
+}
+
+/* 正文中的引用标记 */
+.sg-cite {
+  font-family: var(--sg-font-mono);
+  font-size: 12px;
+  color: var(--sg-primary);
+  background: var(--sg-primary-subtle);
+  border: 0;
+  border-bottom: 1px solid var(--sg-primary);
+  padding: 0 3px;
+  cursor: pointer;
+}
+
+.sg-cite:hover {
+  background: var(--sg-primary);
+  color: #ffffff;
+}
+
+.sg-linklike {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: var(--sg-text-link);
+  cursor: pointer;
+  text-align: left;
+}
+
+.sg-linklike:hover {
+  text-decoration: underline;
+}
+
+.sg-selection {
+  border: 1px solid var(--sg-border);
+  border-left: 3px solid var(--sg-accent);
+  background: var(--sg-bg-subtle);
+  border-radius: var(--sg-radius-md);
+  padding: var(--sg-space-3);
+}
+
+/* 论文选择器 */
+.sg-picker {
+  border: 1px solid var(--sg-border);
+  border-radius: var(--sg-radius-md);
+  padding: var(--sg-space-3);
+  margin-bottom: var(--sg-space-3);
+}
+
+.sg-picker__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sg-space-3);
+  margin-bottom: var(--sg-space-2);
+}
+
+.sg-picker__label {
+  font-size: 13px;
+  color: var(--sg-text-secondary);
+}
+
+.sg-picker__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 260px;
+  overflow: auto;
+}
+
+.sg-picker__item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas: "check title" "check meta" "check id";
+  gap: 0 var(--sg-space-2);
+  padding: var(--sg-space-2);
+  border-bottom: 1px solid var(--sg-border);
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.sg-picker__item input {
+  grid-area: check;
+  margin-top: 3px;
+}
+
+.sg-picker__title {
+  grid-area: title;
+  font-weight: 600;
+}
+
+.sg-picker__item .sg-mono:nth-of-type(1) {
+  grid-area: meta;
+  color: var(--sg-text-secondary);
+}
+
+.sg-picker__item .sg-mono:nth-of-type(2) {
+  grid-area: id;
+  color: var(--sg-text-muted);
+}
+
+.sg-picker__item:hover {
+  background: var(--sg-bg-subtle);
+}
+
+/* 表单项与输入 */
+.sg-field {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 12px;
+  color: var(--sg-text-secondary);
+}
+
+.sg-input--area {
+  min-width: 320px;
+  min-height: 68px;
+  font-family: var(--sg-font-ui);
+}
+
+.sg-input--narrow {
+  width: 110px;
+}
+
+/* 响应头回显 */
+.sg-response-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sg-space-2);
+  margin: var(--sg-space-3) 0 var(--sg-space-2);
+}
+
+/* 问答结果块 */
+.sg-qa {
+  border-top: 1px solid var(--sg-border);
+  padding-top: var(--sg-space-3);
+  margin-top: var(--sg-space-3);
+}
+
+.sg-qa__status {
+  margin-bottom: var(--sg-space-2);
+}
+
+.sg-qa__refused-label {
+  font-size: 12px;
+  color: var(--sg-warning);
+  margin: 0 0 var(--sg-space-1);
+}
+
+.sg-qa__sub {
+  font-size: 13px;
+  font-weight: 600;
+  margin: var(--sg-space-4) 0 var(--sg-space-2);
+}
+
+.sg-anchor-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sg-anchor-list li {
+  border-bottom: 1px solid var(--sg-border);
+  padding: var(--sg-space-2) 0;
+}
+
+.sg-anchor-inline {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: var(--sg-space-2);
+  color: var(--sg-text-secondary);
+}
+
+.sg-synthesis {
+  white-space: pre-wrap;
+  font-family: var(--sg-font-serif);
+  font-size: 14px;
+  line-height: 1.6;
+  background: var(--sg-bg-subtle);
+  border: 1px solid var(--sg-border);
+  border-radius: var(--sg-radius-md);
+  padding: var(--sg-space-3);
+  margin: 0;
+}
+
+.sg-chapter {
+  border-bottom: 1px solid var(--sg-border);
+  padding-bottom: var(--sg-space-4);
+  margin-bottom: var(--sg-space-4);
+}
+
+.sg-chapter .sg-subhead {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sg-space-2);
+  flex-wrap: wrap;
+}
+
+.sg-chart-image {
+  max-width: 100%;
+  border: 1px solid var(--sg-border);
+  border-radius: var(--sg-radius-md);
+  background: var(--sg-bg-surface);
+  margin: var(--sg-space-3) 0;
+}
+
+.sg-progress-note {
+  border: 1px solid var(--sg-border);
+  border-left: 3px solid var(--sg-primary);
+  background: var(--sg-primary-subtle);
+  border-radius: var(--sg-radius-md);
+  padding: var(--sg-space-3);
+  margin-top: var(--sg-space-3);
+}
+
+.sg-progress-note p {
+  margin: var(--sg-space-2) 0 0;
+}
+
+.sg-rowlink {
+  font-size: 12px;
+}
