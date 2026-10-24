@@ -1,0 +1,23 @@
+# Local credentials and environment
+.env
+.env.*
+!.env.example
+
+# Local data and PDF samples
+/data/
+*.pdf
+
+# Dependencies and Python caches
+node_modules/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Generated output and local tooling
+/dist/
+/build/
+.pytest_cache/
+.coverage
+.DS_Store
+Thumbs.db
