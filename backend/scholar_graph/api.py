@@ -1,4 +1,4 @@
-"""Module-one, two and five HTTP routes; no background job queue."""
+"""Module-one, two, four and five HTTP routes; no background job queue."""
 
 import os
 from pathlib import Path
@@ -17,6 +17,9 @@ from .errors import PipelineError
 from .validation import ContractGate
 from .qa_routes import question_routes
 from .graph_routes import graph_routes
+from .retrieval import SearchService
+from .retrieval_routes import retrieval_routes, SEARCH_HEADERS
+from .vector_search import vector_from_environment
 
 PREFIX = "/api/v1"
 LOCAL_ORIGINS = ["http://localhost:3000", "http://127.0.0.1:3000"]
@@ -30,18 +33,19 @@ def create_app(*, data_dir=None, pipeline_factory=None):
                 Path(__file__).resolve().parents[2] / "data" / "module-one").resolve()
     gate = ContractGate()
     repository = ApiRepository(root, gate)
-    app = FastAPI(title="ScholarGraph modules one, two and five", version="1.2.0")
+    app = FastAPI(title="ScholarGraph modules one, two, four and five", version="1.2.0")
     app.add_middleware(
         CORSMiddleware,
         allow_origins=LOCAL_ORIGINS,
         allow_methods=["GET", "POST"],
         allow_headers=["Content-Type"],
-        expose_headers=["Location", "Link"],
+        expose_headers=["Location", "Link", *SEARCH_HEADERS],
         allow_credentials=False,
     )
     app.state.repository = repository
     uploads = UploadService(root, gate, pipeline_factory)
     app.state.uploads = uploads
+    app.state.search = SearchService(repository, vector_from_environment(root))
 
     def error_response(code, message, status):
         value = {"error_code": code, "message": message, "details": None}
@@ -141,4 +145,5 @@ def create_app(*, data_dir=None, pipeline_factory=None):
 
     app.include_router(question_routes(repository))
     app.include_router(graph_routes(repository))
+    app.include_router(retrieval_routes())
     return app
