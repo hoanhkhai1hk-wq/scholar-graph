@@ -86,7 +86,12 @@ def test_unanchored_unverified_sentence_is_not_claimed_verified():
 def test_actual_v1_to_v7_parse_compare_and_publish(tmp_path):
     pipeline = Pipeline(tmp_path / "output")
     old = pipeline.parse(make_pdf(tmp_path / "v1.pdf"))
+    assert pipeline.last_comparison is None
     new = pipeline.parse(make_pdf(tmp_path / "v7.pdf", version="v7", samples=18))
+    assert pipeline.last_comparison is not None
+    automatic = json.loads((pipeline.last_comparison / "dedup-decisions.json").read_text(encoding="utf-8"))
+    assert automatic[0]["old_paper_id"] == old["paper_meta"]["id"]
+    assert automatic[0]["new_paper_id"] == new["paper_meta"]["id"]
     decision, diff = compare(old, new, pipeline.gate)
     target = pipeline.store.comparison(decision, diff, [old, new])
     assert "2 Protocol" in diff["changed_sections"]
@@ -96,3 +101,12 @@ def test_actual_v1_to_v7_parse_compare_and_publish(tmp_path):
     assert any("additional controls" in item["text"] for item in diff["key_sentences"])
     assert (target / "diff-summary.json").exists()
     pipeline.gate.comparison(decision, diff, [old, new])
+
+
+def test_conflicting_dois_do_not_auto_pair_same_titles(tmp_path):
+    old, new = versions()
+    old["paper_meta"]["doi"] = "10.5555/old-paper"
+    new["paper_meta"]["doi"] = "10.5555/another-paper"
+    store = RecordStore(tmp_path / "output", ContractGate())
+    store.paper(old)
+    assert store.previous_version(new["paper_meta"]) is None

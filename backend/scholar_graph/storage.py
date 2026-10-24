@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import shutil
 import tempfile
 from pathlib import Path
@@ -77,6 +78,36 @@ class RecordStore:
             raise
         except (OSError, ValueError):
             raise PipelineError("VALIDATION_ERROR", "不能读取完整、合法的论文记录组。") from None
+
+    def previous_version(self, paper: dict) -> dict | None:
+        """Exact local identity lookup for uploads, not semantic retrieval or recommendation."""
+        self.gate.record("PaperMeta", paper)
+        parent = self.root / "papers"
+        if not parent.exists():
+            return None
+        matches = []
+        def title_authors(record):
+            return (" ".join((record["title"] or "").casefold().split()),
+                    tuple(" ".join(name.casefold().split()) for name in record["authors"]))
+        for directory in parent.iterdir():
+            if not directory.is_dir() or not directory.name.startswith("paper-"):
+                continue
+            other = self.load(directory)
+            metadata = other["paper_meta"]
+            if metadata["id"] == paper["id"]:
+                continue
+            # Explicit conflicting persistent identifiers take precedence over title similarity.
+            if paper["doi"] and metadata["doi"]:
+                same = paper["doi"].casefold() == metadata["doi"].casefold()
+            elif paper["arxiv_id"] and metadata["arxiv_id"]:
+                same = re.sub(r"v\d+$", "", paper["arxiv_id"]) == re.sub(r"v\d+$", "", metadata["arxiv_id"])
+            else:
+                title, names = title_authors(paper)
+                same = bool(title and names and (title, names) == title_authors(metadata))
+            if same:
+                matches.append((directory.stat().st_mtime_ns, directory.name, other))
+        # This is local ingestion order only, never a publication date or quality ranking.
+        return max(matches, key=lambda item: item[:2])[2] if matches else None
 
     def comparison(self, decision, diff, bundles, *, human=None) -> Path:
         self.gate.comparison(decision, diff, bundles)

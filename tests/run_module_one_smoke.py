@@ -60,6 +60,12 @@ def main():
                                             "ReferenceEntry": len(bundle["reference_entries"]), "CitationLink": len(bundle["citation_links"])},
                                  "paper_meta": bundle["paper_meta"], "status_history": pipeline.last_job.history,
                                  "record_sha256": record_files})
+        if pipeline.last_comparison is not None:
+            target = pipeline.last_comparison
+            report["parses"][-1]["automatic_comparison"] = {
+                "output_directory": relative(target),
+                "decisions": json.loads((target / "dedup-decisions.json").read_text(encoding="utf-8")),
+                "diff_summary": json.loads((target / "diff-summary.json").read_text(encoding="utf-8"))}
         if label == "selfmade-scan":
             if not any("12 samples" in c["text"] for c in bundle["chunks"]):
                 raise RuntimeError("Self-made scan did not recover the expected source text")

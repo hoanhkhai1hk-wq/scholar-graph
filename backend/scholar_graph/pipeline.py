@@ -12,6 +12,7 @@ from uuid import uuid4
 from pypdf import PdfReader
 
 from .adapters import LocalEngines
+from .dedup import compare
 from .errors import PipelineError
 from .grobid import GrobidClient
 from .normalize import block_text, doi, normalize
@@ -28,9 +29,11 @@ class Pipeline:
         self.grobid = grobid
         self.last_job = None
         self.last_output = None
+        self.last_comparison = None
 
     def parse(self, source: Path) -> dict:
         self.last_job, self.last_output = None, None
+        self.last_comparison = None
         try:
             if source.suffix.lower() != ".pdf":
                 raise PipelineError("UNSUPPORTED_FILE_TYPE", "输入必须为 PDF 文件。")
@@ -81,10 +84,14 @@ class Pipeline:
                 if self.grobid is not None:
                     bundle = self.grobid.enrich(bundle, raw)
                 self.gate.bundle(bundle)
+                prior = self.store.previous_version(bundle["paper_meta"])
+                comparison = compare(prior, bundle, self.gate) if prior is not None else None
                 job.move("indexing", "Schema 与外键校验通过", progress=95)
                 target = self.store.paper(bundle)
+                comparison_target = self.store.comparison(*comparison, [prior, bundle]) if comparison else None
                 job.move("completed", "四类记录已通过校验并原子发布")
                 self.last_output = target
+                self.last_comparison = comparison_target
                 return bundle
         except PipelineError as error:
             if job.current["status"] not in {"completed", "failed"}:
