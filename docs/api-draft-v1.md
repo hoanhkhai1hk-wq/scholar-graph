@@ -38,9 +38,17 @@
 
 ## 交给总指挥的契约缺口
 
-1. 解析状态、异步任务、批量部分失败、错误与分页封装尚未被五份记录覆盖。
-2. 图谱接口可以引用既有论文、条目和引用记录，但多集合传输封装与专用节点/边格式没有定义；不能直接返回某个图形库的数据对象作为新口径。
-3. QAAnswer 能表示带论文证据的综述或框架文字，不能保证结构化章节、独立框架或导出附件；独立无证据创作也不符合非拒答必须带锚点的 v1 约束。
-4. CSV 图表的输入文件属于传输层，其结构化输出不在五份契约内。不得将图表 JSON、Markdown 数据块或下载地址塞进 answer 字段规避版本管理。
+本栏登记截至 v1.1 的更新，覆盖上方保留的 v1 历史缺口描述；本单只修改本栏，不重写端点表和原有五份契约引用。v1 五份记录继续使用 schema_version=1.0.0，四类新增记录使用 schema_version=1.1.0。定义完成不表示端点已实现。
 
-以上为本单明确报告的接口缺口，不代表已获契约扩展授权。WorkBuddy 的前端、文档和跑测、DeepSeek Harness 的 Prompt 实验由总指挥另行拆单；本单不要求它们采用未验收的响应结构。
+| 缺口 | 状态 | 契约引用与边界 |
+| --- | --- | --- |
+| A：去重裁决 | v1.1 已定义 | [DedupDecision](../contracts/dedup-decision.v1.1.schema.json)；人工意见另存记录，原系统建议原样保留 |
+| B：版本差异摘要 | v1.1 已定义 | [DiffSummary](../contracts/diff-summary.v1.1.schema.json)；无锚点关键句必须标 unverified，空变化章节须写“未检出章节级差异” |
+| C：解析状态与统一错误封装 | v1.1 已定义 | [ParseStatus](../contracts/parse-status.v1.1.schema.json)；`/papers/{id}/parse-status` 返回 ParseStatus，其中 id 即端点表中的 paper_id，引用 PaperMeta.id；全 API 错误响应引用同文件 `#/$defs/api_error`，错误码与 ParseStatus 共用编码表 |
+| CSV 图表输出 | v1.1 已定义 | [ChartOutput](../contracts/chart-output.v1.1.schema.json)；`/charts/csv` 的图表业务响应引用 ChartOutput，严禁塞进 QAAnswer.answer，图注数字必须通过 CSV 回溯检查 |
+| 图谱结构 | 不在 v1.1，留待 v1.2 | 本单不定义多集合封装、节点或边结构，不返回某个图形库的专用对象作为契约 |
+| 综述框架结构 | 不在 v1.1，留待 v1.2 | 本单不定义结构化综述章节、独立框架或导出结构；QAAnswer 的带证据文字不替代这些结构 |
+
+异步任务标识、批量部分成功封装、分页封装、推荐分数与理由等仍未定义，不因 ParseStatus 或统一错误定义完成而自动获得新字段。其后续范围由总指挥另行拆单。
+
+本栏仅登记本单授权新增的四类记录与附属错误封装。WorkBuddy 的前端、文档和跑测、DeepSeek Harness 的 Prompt 实验由总指挥另行拆单，协作与变更请求通过用户中转，不直接联系其他工具。
