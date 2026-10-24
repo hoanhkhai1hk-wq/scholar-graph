@@ -24,6 +24,13 @@ def write_json(path: Path, value):
         os.fsync(handle.fileno())
 
 
+def discard_staging(path: Path, parent: Path):
+    resolved, allowed = path.resolve(), parent.resolve()
+    if resolved.parent != allowed or not resolved.name.startswith(".pending-"):
+        raise PipelineError("VALIDATION_ERROR", "临时目录超出允许清理范围。")
+    shutil.rmtree(resolved)
+
+
 class RecordStore:
     def __init__(self, root: Path, gate: ContractGate):
         self.root, self.gate = root.resolve(), gate
@@ -57,7 +64,7 @@ class RecordStore:
             staging.rename(target)
         finally:
             if staging.exists():
-                shutil.rmtree(staging)
+                discard_staging(staging, parent)
         return target
 
     def load(self, directory: Path) -> dict:
@@ -89,5 +96,5 @@ class RecordStore:
             staging.rename(target)
         finally:
             if staging.exists():
-                shutil.rmtree(staging)
+                discard_staging(staging, parent)
         return target

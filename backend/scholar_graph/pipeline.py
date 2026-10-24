@@ -14,7 +14,7 @@ from pypdf import PdfReader
 from .adapters import LocalEngines
 from .errors import PipelineError
 from .grobid import GrobidClient
-from .normalize import doi, normalize
+from .normalize import block_text, doi, normalize
 from .status import ParseJob
 from .storage import RecordStore
 from .validation import ContractGate
@@ -37,6 +37,8 @@ class Pipeline:
             if source.stat().st_size > 50 * 1024 * 1024:
                 raise PipelineError("FILE_TOO_LARGE", "PDF 超过本地管线的 50 MiB 限制。")
             raw = source.read_bytes()
+            if len(raw) > 50 * 1024 * 1024:
+                raise PipelineError("FILE_TOO_LARGE", "PDF 超过本地管线的 50 MiB 限制。")
         except PipelineError:
             raise
         except OSError:
@@ -55,14 +57,23 @@ class Pipeline:
                 snapshot = Path(temporary) / "source.pdf"
                 snapshot.write_bytes(raw)  # Immutable parser input, not a project contract output.
                 native = self.engines.text(snapshot)
+                indices = [page.get("page_idx") for page in native["pages"]]
+                if (native.get("schema") != "docvortex.middle" or native.get("is_full_document") is not True
+                        or any(type(index) is not int for index in indices)
+                        or len(indices) != paper["page_count"]
+                        or set(indices) != set(range(paper["page_count"]))):
+                    raise PipelineError("PARSE_FAILED", "MinerU 未返回全部 PDF 物理页的完整中间结果。")
                 job.move("parsing", "MinerU 本地文本解析完成", progress=30)
                 ocr = None
                 if ocr_pages:
                     job.move("ocr", "扫描页 OCR", progress=40)
                     ocr = self.engines.ocr(snapshot, ocr_pages)
-                    if set(page["page_idx"] for page in ocr["pages"]) != set(ocr_pages):
+                    ocr_indices = [page.get("page_idx") for page in ocr["pages"]]
+                    if (any(type(index) is not int for index in ocr_indices)
+                            or len(ocr_indices) != len(ocr_pages) or set(ocr_indices) != set(ocr_pages)):
                         raise PipelineError("OCR_FAILED", "OCR 未覆盖全部待识别物理页。")
-                    if any(not page.get("blocks") for page in ocr["pages"]):
+                    if any(not any(block_text(block.get("content")).strip() for block in page.get("blocks", []))
+                           for page in ocr["pages"]):
                         raise PipelineError("OCR_FAILED", "扫描页未识别出可验证文本。")
                     job.move("ocr", "扫描页 OCR 完成", progress=70)
                 job.move("indexing", "生成契约记录与锚点索引", progress=80)

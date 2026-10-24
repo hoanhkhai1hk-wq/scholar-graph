@@ -84,7 +84,7 @@ def test_unreadable_pdf_fails_with_contract_status(tmp_path, kind):
 def test_ocr_failure_is_explicit_and_does_not_publish(tmp_path):
     class Engines:
         def text(self, path):
-            return {"pages": []}
+            return {"schema": "docvortex.middle", "is_full_document": True, "pages": [{"page_idx": 0}]}
         def ocr(self, path, pages):
             assert pages == [0]
             raise PipelineError("OCR_FAILED", "自制 OCR 故障注入")
@@ -93,6 +93,23 @@ def test_ocr_failure_is_explicit_and_does_not_publish(tmp_path):
         pipeline.parse(make_pdf(tmp_path / "scan.pdf", scan=True))
     states = [record["status"] for record in pipeline.last_job.history]
     assert "ocr" in states and states[-1] == "failed"
+    assert not (pipeline.store.root / "papers").exists()
+
+
+@pytest.mark.parametrize("response", [
+    {"schema": "docvortex.middle", "is_full_document": False, "pages": [{"page_idx": 0}, {"page_idx": 1}]},
+    {"schema": "docvortex.middle", "is_full_document": True, "pages": [{"page_idx": 0}]},
+    {"schema": "docvortex.middle", "is_full_document": True, "pages": [{"page_idx": 0}, {"page_idx": 0}]},
+])
+def test_truncated_or_duplicate_physical_pages_are_rejected(tmp_path, response):
+    class Engines:
+        def text(self, path):
+            return response
+    pipeline = Pipeline(tmp_path / "output", engines=Engines())
+    with pytest.raises(PipelineError) as caught:
+        pipeline.parse(make_pdf(tmp_path / "source.pdf"))
+    assert caught.value.code == "PARSE_FAILED"
+    assert pipeline.last_job.current["status"] == "failed"
     assert not (pipeline.store.root / "papers").exists()
 
 

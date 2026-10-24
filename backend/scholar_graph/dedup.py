@@ -15,6 +15,8 @@ def corpus(bundle):
 
 
 def similarity(old, new):
+    if compact(corpus(old)) == compact(corpus(new)):
+        return 1.0
     left = Counter(re.findall(r"\w+", corpus(old).casefold()))
     right = Counter(re.findall(r"\w+", corpus(new).casefold()))
     total = sum(left.values()) + sum(right.values())
