@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:scholar-graph:contract:dedup-decision:1.1.0",
+  "title": "DedupDecision",
+  "description": "DedupDecision contract v1.1.0; see CONTRACTS.md for cross-record and semantic rules.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.1.0"
+    },
+    "old_paper_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+    },
+    "new_paper_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+    },
+    "similarity": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "anchor": {
+            "$ref": "#/$defs/chunk_anchor"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          }
+        },
+        "required": [
+          "anchor",
+          "reason"
+        ],
+        "additionalProperties": false
+      },
+      "description": "Chunk anchors with reasons. keep_new requires evidence explaining why the new paper is superior; textual truth and paper identity require semantic validation."
+    },
+    "recommendation": {
+      "type": "string",
+      "enum": [
+        "keep_new",
+        "keep_old",
+        "keep_both",
+        "manual_review"
+      ]
+    },
+    "human_override": {
+      "type": "boolean",
+      "default": false,
+      "description": "Default false is an annotation, not automatic insertion. When true, recommendation is the human decision; retain the original system record unchanged as a separate record for the same paper pair."
+    }
+  },
+  "required": [
+    "schema_version",
+    "old_paper_id",
+    "new_paper_id",
+    "similarity",
+    "evidence",
+    "recommendation",
+    "human_override"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "chunk_anchor": {
+      "type": "object",
+      "properties": {
+        "paper_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+        },
+        "page_number": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "section": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "chunk_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+        }
+      },
+      "required": [
+        "paper_id",
+        "page_number",
+        "section",
+        "chunk_id"
+      ],
+      "additionalProperties": false
+    }
+  }
+}
