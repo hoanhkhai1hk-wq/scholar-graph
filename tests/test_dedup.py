@@ -90,5 +90,9 @@ def test_actual_v1_to_v7_parse_compare_and_publish(tmp_path):
     decision, diff = compare(old, new, pipeline.gate)
     target = pipeline.store.comparison(decision, diff, [old, new])
     assert "2 Protocol" in diff["changed_sections"]
+    chunks = {c["chunk_id"]: c for bundle in [old, new] for c in bundle["chunks"]}
+    assert "12 samples" in chunks[decision["evidence"][0]["anchor"]["chunk_id"]]["text"]
+    assert "18 samples" in chunks[decision["evidence"][1]["anchor"]["chunk_id"]]["text"]
+    assert any("additional controls" in item["text"] for item in diff["key_sentences"])
     assert (target / "diff-summary.json").exists()
     pipeline.gate.comparison(decision, diff, [old, new])
