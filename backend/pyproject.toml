@@ -16,6 +16,7 @@ dependencies = [
   "httpx==0.28.1",
   "defusedxml==0.7.1",
   "mineru==4.0.12",
+  "matplotlib==3.11.2",
 ]
 
 [project.optional-dependencies]

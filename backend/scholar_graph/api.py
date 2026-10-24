@@ -22,12 +22,14 @@ from .retrieval_routes import retrieval_routes, SEARCH_HEADERS
 from .vector_search import vector_from_environment
 from .arxiv_fetch import ArxivFetcher
 from .writing_routes import writing_routes
+from .chart_routes import chart_routes
 
 PREFIX = "/api/v1"
 LOCAL_ORIGINS = ["http://localhost:3000", "http://127.0.0.1:3000"]
 ERROR_STATUS = {"PAPER_NOT_FOUND": 404, "UNSUPPORTED_FILE_TYPE": 415,
                 "FILE_TOO_LARGE": 413, "VALIDATION_ERROR": 422,
-                "PARSE_FAILED": 422, "OCR_FAILED": 422, "UPSTREAM_ERROR": 502}
+                "PARSE_FAILED": 422, "OCR_FAILED": 422, "UPSTREAM_ERROR": 502,
+                "CSV_INVALID": 422, "CHART_VALIDATION_FAILED": 422}
 
 
 def create_app(*, data_dir=None, pipeline_factory=None):
@@ -150,4 +152,5 @@ def create_app(*, data_dir=None, pipeline_factory=None):
     app.include_router(graph_routes(repository))
     app.include_router(retrieval_routes())
     app.include_router(writing_routes())
+    app.include_router(chart_routes())
     return app
