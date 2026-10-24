@@ -1,6 +1,6 @@
 # ScholarGraph 模块一后端
 
-本单实现本地 PDF 解析、状态机、去重与版本差异。Python 包为 `scholar_graph`。没有问答、图谱、检索、推荐或写作模块；没有 Web 服务端点实现。
+本后端实现本地 PDF 解析、状态机、去重与版本差异，以及对应的 10 条模块一 HTTP 端点。Python 包为 `scholar_graph`。没有问答、图谱、检索、推荐或写作模块。
 
 ## Windows 本地安装
 
@@ -12,6 +12,18 @@ backend/.venv/Scripts/python.exe -m pip install -e 'backend[ocr,test]'
 ```
 
 本机 Python 启动器的 3.12 标签为 Astral/CPython3.12.15，上面的命令已按该标签配置；其他机器先用 `py -0p` 查已有 Python 3.12 标签。已有 backend/.venv 时跳过创建步骤。仅解析文本 PDF 时可安装 `backend[test]`，扫描件需要额外的 ocr 依赖及首次模型下载。实际锁定的引擎为 MinerU 4.0.12、PaddleOCR 3.7.0、PaddlePaddle 3.3.1；使用 CPU OCR，不要求 CUDA 或 Docker。backend/pyproject.toml 固定直接依赖，完整本轮环境版本见 tests/reports/module-one-environment.json。不要把虚拟环境、模型、PDF、data/ 或 .env 提交到 Git。
+
+## 启动模块一 HTTP API
+
+```powershell
+backend/.venv/Scripts/python.exe -m uvicorn scholar_graph.api:create_app --factory --host 127.0.0.1 --port 8000 --no-access-log
+```
+
+安装命令同上，新增直接依赖 FastAPI、python-multipart 和 uvicorn。默认数据目录沿用 `data/module-one`，可用 `SCHOLAR_GRAPH_DATA_DIR` 指定另一个本地目录；不需要 API Key。使用单 worker，上传写操作在进程内串行化，批量请求按文件顺序同步等待完成，不是异步任务队列。状态查询可以在另一个请求中读取已落盘快照。
+
+OpenAPI 为 `http://127.0.0.1:8000/openapi.json`，Swagger 为 `/docs`。上传单文件字段为 file，批量为重复 files 字段；文献详情中的 Link 头给出 chunks、references、citation-links 的真实取数路径。详情/状态/去重/差异返回裸记录；列表统一分页，page_size 超过 100 按 100 计。去重、差异的路径参数为 **new_paper_id**，没有记录时 404，不返回空记录。
+
+完整请求、响应及 19 条草案端点的实施清单见 [API 草案](../docs/api-draft-v1.md)；HTTP 实测及可复现命令见 [本轮报告](../tests/reports/module-one-api-report.md)。新增响应只是本轮获批的传输封装，九份业务 Schema 未改。HTTP 默认工厂不启用 GROBID，GROBID 真实联调仍为待验证。没有验证前端接通。
 
 ## 第一步：解析一个 PDF
 
