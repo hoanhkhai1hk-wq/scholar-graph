@@ -51,7 +51,9 @@ def main():
     for bundle in graph_bundles():
         app.state.repository.store.paper(bundle)
     client = TestClient(app)
-    report["implemented_endpoints"] = [f"{method.upper()} {path}" for path, methods in client.get("/openapi.json").json()["paths"].items() for method in methods]
+    report["implemented_endpoints"] = [f"{method.upper()} {path}" for path, methods in client.get("/openapi.json").json()["paths"].items()
+        if path not in {"/api/v1/frameworks", "/api/v1/reviews", "/api/v1/charts/csv"} for method in methods]
+    report["endpoint_scope"] = "历史模块四交付的16条端点，不计后续模块六。"
     check(len(report["implemented_endpoints"]) == 16, "Expected 16 implemented business endpoints")
     def call(name, method, path, *, body=None, params=None):
         start = time.monotonic()
@@ -109,6 +111,8 @@ def main():
             bundle = repo.paper(live["response"]["paper"]["id"])
             live["record_counts"] = {key: len(value) if isinstance(value, list) else 1 for key, value in bundle.items()}
     for path in sorted((ROOT / "contracts").glob("*.json")):
+        if path.name.startswith("framework-outline."):
+            continue  # Module-six addition is outside this historical eleven-record audit.
         relative = path.relative_to(ROOT).as_posix()
         original = subprocess.check_output(["git", "rev-parse", f"{BASELINE}:{relative}"], cwd=ROOT, text=True).strip()
         current = subprocess.check_output(["git", "hash-object", relative], cwd=ROOT, text=True).strip()
