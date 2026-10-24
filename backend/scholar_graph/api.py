@@ -97,6 +97,14 @@ def create_app(*, data_dir=None, pipeline_factory=None):
     def status(paper_id: str):
         return repository.status(paper_id)
 
+    @app.get(PREFIX + "/papers/{paper_id}/dedup-decision")
+    def decision(paper_id: str):
+        return repository.comparison(paper_id, kind="decision")
+
+    @app.get(PREFIX + "/papers/{paper_id}/diff-summary")
+    def diff(paper_id: str):
+        return repository.comparison(paper_id, kind="diff")
+
     @app.get(PREFIX + "/papers/{paper_id}/chunks")
     def chunks(paper_id: str, page: int = Query(1, ge=1), page_size: int = Query(20, ge=1)):
         return paginate(repository.paper(paper_id)["chunks"], page, page_size)

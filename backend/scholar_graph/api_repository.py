@@ -57,3 +57,33 @@ class ApiRepository:
         if not candidates:
             raise PipelineError("PAPER_NOT_FOUND", "无该论文的解析状态记录。")
         return max(candidates, key=lambda item: item[:2])[2]
+
+    def comparison(self, paper_id, *, kind):
+        candidates = []
+        for directory in (self.root / "comparisons").glob("comparison-*"):
+            if not directory.is_dir():
+                continue
+            try:
+                decisions = json.loads((directory / "dedup-decisions.json").read_text(encoding="utf-8"))
+                diff = json.loads((directory / "diff-summary.json").read_text(encoding="utf-8"))
+                if not isinstance(decisions, list) or not decisions:
+                    raise ValueError
+                self.gate.record("DiffSummary", diff)
+                for decision in decisions:
+                    self.gate.record("DedupDecision", decision)
+                if diff["new_paper_id"] != paper_id:
+                    continue
+                bundles = [self.paper(diff[key]) for key in ("old_paper_id", "new_paper_id")]
+                for decision in decisions:
+                    self.gate.comparison(decision, diff, bundles)
+                # Any human decision takes precedence over subsequent system-only suggestions.
+                selected = next((item for item in reversed(decisions) if item["human_override"]), decisions[-1])
+                candidates.append((selected["human_override"], directory.stat().st_mtime_ns,
+                                   directory.name, selected, diff))
+            except (ValueError, OSError):
+                raise PipelineError("VALIDATION_ERROR", "去重或差异记录不可读取。") from None
+        if not candidates:
+            message = "无该新版论文的去重记录。" if kind == "decision" else "无该新版论文的差异记录。"
+            raise PipelineError("PAPER_NOT_FOUND", message)
+        selected = max(candidates, key=lambda item: item[:3])
+        return selected[3 if kind == "decision" else 4]
