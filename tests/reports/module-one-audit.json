@@ -1,6 +1,6 @@
 {
   "baseline_commit": "0a285b2686e9e0638d8545e5ad44fe4be7e447c9",
-  "source_commit": "57a4812b68987e117ae80e8c00d1795d10e74ce3",
+  "source_commit": "cd892b4b5bb746fd6b3df87cb15acde8cbb360b6",
   "frozen_contract_files": {
     "contracts/chart-output.v1.1.example.json": {
       "baseline_git_blob": "f34c9130ecb750cf583a9cf5cb802fbe95a28bb7",
@@ -78,17 +78,18 @@
   "api_only_parse_status_row_changed": true,
   "owned_scope_verified": true,
   "pytest": {
-    "tests": 49,
+    "tests": 50,
     "failures": 0,
     "errors": 0,
     "skipped": 0
   },
   "pytest_categories": {
     "tests.test_cli_adapters": 3,
-    "tests.test_dedup": 13,
+    "tests.test_dedup": 14,
     "tests.test_parsing": 14,
     "tests.test_validation_status": 19
   },
+  "automatic_v7_comparison_verified": true,
   "commits_before_evidence_commit": [
     {
       "sha": "de356d567c6b7b358843a9882d65e77a65cf4c7f",
@@ -197,6 +198,37 @@
         "backend/scholar_graph/dedup.py",
         "tests/test_dedup.py"
       ]
+    },
+    {
+      "sha": "cef1fa7a1a19fa777d31b438e4c31da068c19a13",
+      "title": "保存模块一自制PDF实跑与49项测试及契约冻结审计报告",
+      "files": [
+        "tests/reports/module-one-audit.json",
+        "tests/reports/module-one-environment.json",
+        "tests/reports/module-one-pytest.xml",
+        "tests/reports/module-one-report.md",
+        "tests/reports/module-one-smoke.json"
+      ]
+    },
+    {
+      "sha": "546ae4a66fe0f035738a8c4a27388f2923b6edc5",
+      "title": "在第二版上传后按精确元数据自动生成去重与差异记录",
+      "files": [
+        "backend/README.md",
+        "backend/scholar_graph/pipeline.py",
+        "backend/scholar_graph/storage.py",
+        "tests/run_module_one_smoke.py",
+        "tests/test_dedup.py"
+      ]
+    },
+    {
+      "sha": "cd892b4b5bb746fd6b3df87cb15acde8cbb360b6",
+      "title": "避免相同文件重传重复生成版本裁决并区分独立OCR样例",
+      "files": [
+        "backend/scholar_graph/pipeline.py",
+        "tests/sample_pdfs.py",
+        "tests/test_dedup.py"
+      ]
     }
   ],
   "source_sha256": {
@@ -209,15 +241,15 @@
     "backend/scholar_graph/errors.py": "f9bda8ef6a89ce5224072a3f624df268354f3a512235796e97b5c8c80772841c",
     "backend/scholar_graph/grobid.py": "eb1a8f0ecdc216feb07f83f0666edc4a82382ad9bad72aad83eb3d677e998b3a",
     "backend/scholar_graph/normalize.py": "31ded58dcef6694130a61c0e45a9c34af26bc70c7baadb2efb628c2478c85180",
-    "backend/scholar_graph/pipeline.py": "1301b18e73c03bebe318ab13d7e93d10f2172485d063a59e5cc467b64da654d5",
+    "backend/scholar_graph/pipeline.py": "5da4318165cea903cfc0f3ceeeb26a4faf39dc4172c700efcb77a2207b0f53a7",
     "backend/scholar_graph/status.py": "613853b776237aa9b38db1db4e0b2a17ed0eed9e3921b9235a328da6ca92dc49",
-    "backend/scholar_graph/storage.py": "1754a07a47d98901ea255a8ca389e4d29fa7960c5a080daa29b226000c185468",
+    "backend/scholar_graph/storage.py": "fa6e2ea3141b060c543342688b6cfd9c96bb3ac0d61958ade9f6cc7bb1dc4d5a",
     "backend/scholar_graph/validation.py": "d216eea18d5cd6cf18454a7f74880cf8eca3cdb0f99d7e704a9cefb9ccd65e34",
     "tests/conftest.py": "c39893faa24d7f27bcd3ee6a354390daecdf5ce99d843d06919f0d45cacea003",
-    "tests/run_module_one_smoke.py": "580cf1b68894e7935420732025f94ee290f8cfbb9c5d5cb0a7003137288d6880",
-    "tests/sample_pdfs.py": "1fae71de48078b8cce1cac073de40aa2e04549010848de317dd7da3c7252a989",
+    "tests/run_module_one_smoke.py": "61476a8f48323b1e4933a83b4adf1929f0a7ab010692c32236685d89a9f9537a",
+    "tests/sample_pdfs.py": "ba1d0b4e4e5ca9f1c8085f492702d50186e851a0303440cb173e319b2c8a9d4b",
     "tests/test_cli_adapters.py": "7c953af92651edf349c11e549c69cc36d6a93ebed5419af453d7c6a96e1898a1",
-    "tests/test_dedup.py": "267263d7d4baba7acdfccd16d90b5f9d0bedae222fb93e9318ee25ccf016a025",
+    "tests/test_dedup.py": "023cfdd93800d5b988f8948e7c1a86e114af4c62ca951ccf7ad08e04afde71da",
     "tests/test_parsing.py": "2efb2c9c927731cbb4bb215ecf15f3463fa5b514a27a52f451fd3f2e1eeb4137",
     "tests/test_validation_status.py": "4a5050c966a39ee6c9748ed8c8c3d0b1f5425cf99f8c60e52b2a349051ea937e",
     "tests/verify_contract_boundaries.py": "707fd2930f010d932650263e42d526e9eb4c6943774be8ccf76e567ef897dd4e"

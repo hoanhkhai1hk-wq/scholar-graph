@@ -3,7 +3,7 @@
 日期：2026-10-24（Asia/Shanghai）。所有输入为自制样例、非官方 pdf/ 用例；未运行官方三用例。
 
 开工前拉取主干：`0a285b2686e9e0638d8545e5ad44fe4be7e447c9`；git pull --ff-only 返回 Already up to date.。
-独立实跑对应源码提交：`57a4812b68987e117ae80e8c00d1795d10e74ce3`。十八份契约 Schema/example 的 Git 文件哈希与开工基线一致，未更改任何字段。
+独立实跑对应源码提交：`cd892b4b5bb746fd6b3df87cb15acde8cbb360b6`。十八份契约 Schema/example 的 Git 文件哈希与开工基线一致，未更改任何字段。
 
 ## 先完成的前置项
 
@@ -15,13 +15,13 @@
 
 | 输入 | 页数 | PaperMeta | Chunk | ReferenceEntry | CitationLink |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| data/module-one-smoke-reviewed/inputs/selfmade-v1.pdf | 2 | 1 | 6 | 1 | 1 |
-| data/module-one-smoke-reviewed/inputs/selfmade-v7.pdf | 2 | 1 | 8 | 1 | 1 |
-| data/module-one-smoke-reviewed/inputs/selfmade-scan.pdf | 1 | 1 | 3 | 0 | 0 |
+| data/module-one-release/inputs/selfmade-v1.pdf | 2 | 1 | 6 | 1 | 1 |
+| data/module-one-release/inputs/selfmade-v7.pdf | 2 | 1 | 8 | 1 | 1 |
+| data/module-one-release/inputs/selfmade-scan.pdf | 1 | 1 | 3 | 0 | 0 |
 
 v1 和 v7 的 SHA-256、输出目录、每个 JSON 的 SHA-256、完整 ParseStatus 历史见 module-one-smoke.json。四类记录落盘后重新加载并经过 Schema 与外键校验。
 
-版本比较产生 1 条系统 DedupDecision、1 条模拟人工 DedupDecision、1 条 DiffSummary。词频 Dice 相似度为 0.850575，系统建议 manual_review。
+v7 上传时已自动生成 1 条系统 DedupDecision 和 1 条 DiffSummary；依据已有裸 DOI 的精确匹配，无需额外比较命令。扫描样例使用独立标题与作者，没有误配到这两版。另行验证人工覆盖路径，生成 1 条系统 DedupDecision、1 条模拟人工 DedupDecision、1 条 DiffSummary。词频 Dice 相似度为 0.850575，系统建议 manual_review。
 系统建议原样保留；模拟人工意见另存为 human_override=true / keep_both。模拟意见由测试脚本显式指定，不是用户或专家实际审核。
 去重证据分别指向含 12 samples 与 18 samples 的真实正文 Chunk；差异摘要引用新版协议正文。全部关键句四字段锚点匹配，verified 文本是目标 Chunk 的原文子串。
 
@@ -34,12 +34,12 @@ v1 和 v7 的 SHA-256、输出目录、每个 JSON 的 SHA-256、完整 ParseSta
 
 ## 测试结果
 
-最终 pytest：49 通过、0 失败、0 错误、0 跳过，包含真实 MinerU 与真实 PaddleOCR。JUnit 明细见 module-one-pytest.xml。
+最终 pytest：50 通过、0 失败、0 错误、0 跳过，包含真实 MinerU 与真实 PaddleOCR。JUnit 明细见 module-one-pytest.xml。
 
 | 测试文件分类 | 实际数量 |
 | --- | ---: |
 | tests.test_cli_adapters | 3 |
-| tests.test_dedup | 13 |
+| tests.test_dedup | 14 |
 | tests.test_parsing | 14 |
 | tests.test_validation_status | 19 |
 
@@ -83,12 +83,12 @@ smoke 命令拒绝覆盖已存在的输出根目录，重现时使用新的英�
 
 没有实现问答、图谱、检索推荐、写作辅助或 Web API；没有修改 frontend、prompts、experiments、test-records、提纲或其他 docs 内容。未读取或配置真实 API Key，没有调用 DeepSeek。
 Guardrails 本单落实结构校验、锚点真实归属、关键句原文子串及长度上限；没有把实验报告建议的 QA 三态等内容写入冻结契约。
-本地参考文献回退仅支持编号条目与可确认的简单格式；作者年份引用、复杂表格/公式、跨栏、中文 OCR 和真实论文精度未验证。没有自动全库候选检索；比较对象由调用方明确提供。
+本地参考文献回退仅支持编号条目与可确认的简单格式；作者年份引用、复杂表格/公式、跨栏、中文 OCR 和真实论文精度未验证。自动版本对应仅使用本地裸 DOI、arXiv 基号或标题加作者完全相同；显式 DOI 冲突不自动配对。没有语义检索或推荐；无精确对应时可手动指定两条记录。相同文件重传不重复生成版本裁决。
 截图仅用于检查自制 PDF 的可读性，没有将其当真实论文或前端验收。输出路径在被忽略的 data/ 中；原始 PDF、模型和虚拟环境没有入 Git。
 
 ## 已执行提交与对应文件
 
-下表为本报告证据提交之前的全部实施提交；本报告自身的提交哈希由最终回报另列，避免自引用。
+下表为最终证据提交之前的全部实施提交（含前一轮证据及后续补强）；本报告最新提交哈希由最终回报另列，避免自引用。
 
 | 完整哈希 | 内容 | 对应文件 |
 | --- | --- | --- |
@@ -103,3 +103,6 @@ Guardrails 本单落实结构校验、锚点真实归属、关键句原文子串
 | `09f6c3bfafcd90f84e62ed0f99aa09c8b58d5670` | 补强解析完整页检查与失败清理范围防止截断结果被发布 | `backend/scholar_graph/dedup.py`；`backend/scholar_graph/pipeline.py`；`backend/scholar_graph/storage.py`；`tests/test_parsing.py` |
 | `2d12139ed1c16650deec0b569cb92f83945ee10a` | 按实际环境检测Docker可用性避免复现报告写死结论 | `tests/run_module_one_smoke.py` |
 | `57a4812b68987e117ae80e8c00d1795d10e74ce3` | 使去重证据与差异关键句优先指向实际变化正文 | `backend/scholar_graph/dedup.py`；`tests/test_dedup.py` |
+| `cef1fa7a1a19fa777d31b438e4c31da068c19a13` | 保存模块一自制PDF实跑与49项测试及契约冻结审计报告 | `tests/reports/module-one-audit.json`；`tests/reports/module-one-environment.json`；`tests/reports/module-one-pytest.xml`；`tests/reports/module-one-report.md`；`tests/reports/module-one-smoke.json` |
+| `546ae4a66fe0f035738a8c4a27388f2923b6edc5` | 在第二版上传后按精确元数据自动生成去重与差异记录 | `backend/README.md`；`backend/scholar_graph/pipeline.py`；`backend/scholar_graph/storage.py`；`tests/run_module_one_smoke.py`；`tests/test_dedup.py` |
+| `cd892b4b5bb746fd6b3df87cb15acde8cbb360b6` | 避免相同文件重传重复生成版本裁决并区分独立OCR样例 | `backend/scholar_graph/pipeline.py`；`tests/sample_pdfs.py`；`tests/test_dedup.py` |
