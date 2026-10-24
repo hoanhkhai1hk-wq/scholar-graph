@@ -1,0 +1,15 @@
+# Next.js build output
+.next/
+out/
+
+# Dependencies
+node_modules/
+
+# Local env: keys must never enter Git
+.env
+.env.*
+!.env.example
+
+# Debug and editor
+*.log
+.DS_Store
