@@ -38,6 +38,13 @@ def test_valid_anchor_and_exact_quote():
         gate.anchor(anchor, [bundle], quote="18 samples")
 
 
+def test_verified_quote_has_explicit_length_limit():
+    bundle = example_bundle()
+    bundle["chunks"][0]["text"] = "a" * 601
+    with pytest.raises(PipelineError):
+        ContractGate().anchor(chunk_anchor(bundle["chunks"][0]), [bundle], quote="a" * 601)
+
+
 @pytest.mark.parametrize("damage", ["heading", "bbox", "link", "duplicate", "doi", "nan"])
 def test_bundle_semantic_gate(damage):
     bundle = example_bundle()

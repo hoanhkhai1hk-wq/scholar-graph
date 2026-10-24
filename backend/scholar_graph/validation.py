@@ -107,7 +107,7 @@ class ContractGate:
                 or value["page_number"] != chunk["page_number"]
                 or value["section"] != chunk["section_path"]):
             raise PipelineError("VALIDATION_ERROR", "锚点论文、物理页码或章节不匹配。")
-        if quote is not None and (not compact(quote) or compact(quote) not in compact(chunk["text"])):
+        if quote is not None and (len(quote) > 600 or not compact(quote) or compact(quote) not in compact(chunk["text"])):
             raise PipelineError("VALIDATION_ERROR", "已验证关键句不是目标 Chunk 的原文子串。")
 
     def comparison(self, decision: dict, diff: dict, bundles: list[dict]) -> None:
