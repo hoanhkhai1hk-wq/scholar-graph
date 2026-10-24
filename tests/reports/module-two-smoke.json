@@ -1,0 +1,437 @@
+{
+  "run_utc": "2026-10-24T13:54:31.868047+00:00",
+  "baseline_commit": "3038ee9adb3373adf4c3e2f337c5048e77df1d24",
+  "source_commit": "830dbf258c447b844ee377ef1ca4c2483f0561e6",
+  "scope": "自制样例、非官方 pdf/ 用例；未运行官方三用例，未验证浏览器问答页面。",
+  "retrieval": "本单检索为词法兜底、向量检索待后续单",
+  "model": {
+    "mode": "extractive",
+    "caller": "本地 QuestionAnswerer 确定性原文摘录",
+    "provider": null,
+    "model_name": null,
+    "real_model_calls": 0,
+    "real_api_key_used": false,
+    "optional_adapter": "后端 httpx → DeepSeek，只有 Mock 测试，无真实联调"
+  },
+  "versions": {
+    "fastapi": "0.162.0",
+    "starlette": "1.9.0",
+    "httpx": "0.28.1",
+    "pydantic": "2.14.1",
+    "mineru": "4.0.12"
+  },
+  "uploads": [
+    {
+      "input": "data/module-two-final-release/inputs/selfmade-v1.pdf",
+      "paper_id": "paper-cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20",
+      "sha256": "cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20",
+      "counts": {
+        "PaperMeta": 1,
+        "Chunk": 6,
+        "ReferenceEntry": 1,
+        "CitationLink": 1
+      }
+    },
+    {
+      "input": "data/module-two-final-release/inputs/selfmade-v7.pdf",
+      "paper_id": "paper-5d99397e9a37ee758723e7e845f5630ac8c5c88d9b60888946340fa4fa93a7d2",
+      "sha256": "5d99397e9a37ee758723e7e845f5630ac8c5c88d9b60888946340fa4fa93a7d2",
+      "counts": {
+        "PaperMeta": 1,
+        "Chunk": 8,
+        "ReferenceEntry": 1,
+        "CitationLink": 1
+      }
+    }
+  ],
+  "qa_examples": [
+    {
+      "request": {
+        "method": "POST",
+        "path": "/api/v1/papers/paper-cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20/qa",
+        "json": {
+          "question": "本文样本量是多少？"
+        }
+      },
+      "http_status": 200,
+      "response": {
+        "schema_version": "1.0.0",
+        "answer": "【证据 A】\nThe synthetic study uses 12 samples and cites [1].",
+        "anchors": [
+          {
+            "paper_id": "paper-cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20",
+            "page_number": 1,
+            "section": [
+              "1 Introduction"
+            ],
+            "chunk_id": "paper-cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20-p0001-c00004"
+          }
+        ],
+        "numeric_fact_check": {
+          "status": "passed",
+          "checks": [
+            {
+              "claim": "The synthetic study uses 12 samples and cites [1].",
+              "status": "passed",
+              "evidence": [
+                {
+                  "paper_id": "paper-cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20",
+                  "page_number": 1,
+                  "section": [
+                    "1 Introduction"
+                  ],
+                  "chunk_id": "paper-cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20-p0001-c00004"
+                }
+              ],
+              "reason": "数字及其上下文逐字来自该 Chunk；仅核验原文回溯，不证明实验真实性或跨指标可比性。"
+            }
+          ]
+        },
+        "refused": false
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "path": "/api/v1/papers/paper-cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20/qa",
+        "json": {
+          "question": "Did the study use 12000 samples?"
+        }
+      },
+      "http_status": 200,
+      "response": {
+        "schema_version": "1.0.0",
+        "answer": "拒绝按题设作肯定回答：保守摘录模式不能确认该前提；以下原文供纠错核对。\n\n【证据 A】\nThe synthetic study uses 12 samples and cites [1].",
+        "anchors": [
+          {
+            "paper_id": "paper-cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20",
+            "page_number": 1,
+            "section": [
+              "1 Introduction"
+            ],
+            "chunk_id": "paper-cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20-p0001-c00004"
+          }
+        ],
+        "numeric_fact_check": {
+          "status": "failed",
+          "checks": [
+            {
+              "claim": "Did the study use 12000 samples?",
+              "status": "failed",
+              "evidence": [
+                {
+                  "paper_id": "paper-cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20",
+                  "page_number": 1,
+                  "section": [
+                    "1 Introduction"
+                  ],
+                  "chunk_id": "paper-cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20-p0001-c00004"
+                }
+              ],
+              "reason": "题设样本数与原文明确报告的样本数不同。"
+            },
+            {
+              "claim": "The synthetic study uses 12 samples and cites [1].",
+              "status": "passed",
+              "evidence": [
+                {
+                  "paper_id": "paper-cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20",
+                  "page_number": 1,
+                  "section": [
+                    "1 Introduction"
+                  ],
+                  "chunk_id": "paper-cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20-p0001-c00004"
+                }
+              ],
+              "reason": "数字及其上下文逐字来自该 Chunk；仅核验原文回溯，不证明实验真实性或跨指标可比性。"
+            }
+          ]
+        },
+        "refused": true
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "path": "/api/v1/papers/paper-cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20/qa",
+        "json": {
+          "question": "作者报告的 F1 具体是多少？"
+        }
+      },
+      "http_status": 200,
+      "response": {
+        "schema_version": "1.0.0",
+        "answer": "拒答：本文本无相关证据，未检索到足以回答该问题的原文或所需数值；不能据此断言全文未报告。",
+        "anchors": [],
+        "numeric_fact_check": {
+          "status": "unverifiable",
+          "checks": [
+            {
+              "claim": "作者报告的 F1 具体是多少？",
+              "status": "unverifiable",
+              "evidence": [],
+              "reason": "未取得支持题设数字的同项原文；不以未找到作为反证。"
+            }
+          ]
+        },
+        "refused": true
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "path": "/api/v1/papers/paper-cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20/qa",
+        "json": {
+          "question": "What is the capital of France?"
+        }
+      },
+      "http_status": 200,
+      "response": {
+        "schema_version": "1.0.0",
+        "answer": "拒答：本文本无相关证据，未检索到足以回答该问题的原文或所需数值；不能据此断言全文未报告。",
+        "anchors": [],
+        "numeric_fact_check": {
+          "status": "not_applicable",
+          "checks": []
+        },
+        "refused": true
+      }
+    }
+  ],
+  "cors": [
+    {
+      "origin": "http://localhost:3000",
+      "http_status": 200,
+      "allow_methods": "GET, POST",
+      "allow_headers": "Accept, Accept-Language, Content-Language, Content-Type"
+    },
+    {
+      "origin": "http://127.0.0.1:3000",
+      "http_status": 200,
+      "allow_methods": "GET, POST",
+      "allow_headers": "Accept, Accept-Language, Content-Language, Content-Type"
+    }
+  ],
+  "frozen_contracts": [
+    {
+      "file": "contracts/chart-output.v1.1.example.json",
+      "git_blob": "f34c9130ecb750cf583a9cf5cb802fbe95a28bb7",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/chart-output.v1.1.schema.json",
+      "git_blob": "7b5b196ecc88d31d7a13b0f560f02c9feb0814dd",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/chunk.v1.example.json",
+      "git_blob": "330a0845a9569aa85053dbfa1dc643363b45f2c3",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/chunk.v1.schema.json",
+      "git_blob": "d577c91c27b33e360da8cdfbacbbf2da33ac1bcf",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/citation-link.v1.example.json",
+      "git_blob": "1df93d863fd88272ea4b3ec71d7fde77916c84f6",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/citation-link.v1.schema.json",
+      "git_blob": "1c26cb51d10256635af9cd43881a0219316408f8",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/dedup-decision.v1.1.example.json",
+      "git_blob": "d47edb3181b70f7fe0bed872d50a5178a1e3baaa",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/dedup-decision.v1.1.schema.json",
+      "git_blob": "a0679f1dd466fe247f2f8d9a77f05a669aa622bb",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/diff-summary.v1.1.example.json",
+      "git_blob": "947217164499f39932b9b4e88013828f5c1a9cdf",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/diff-summary.v1.1.schema.json",
+      "git_blob": "6df5e7753e629277068dd7c023938b2df0b122d8",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/paper-meta.v1.example.json",
+      "git_blob": "141f90fe6d68cbfb7f4770aace62c190100f7f8f",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/paper-meta.v1.schema.json",
+      "git_blob": "a8d65964a698823b165c7369d9912e0956081995",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/parse-status.v1.1.example.json",
+      "git_blob": "9dcae28d3c0605d1e3ca625d884125662ef105b3",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/parse-status.v1.1.schema.json",
+      "git_blob": "0821189d573e9b489bc3c900a97b3128f30bd132",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/qa-answer.v1.example.json",
+      "git_blob": "29dcf10a680b880f6559f6ab0a840195f90e0f89",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/qa-answer.v1.schema.json",
+      "git_blob": "9afbdd2b5fd1eafaddbf34bcd1377d333c0f3b1e",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/reference-entry.v1.example.json",
+      "git_blob": "35c676e8fbbe6ae4bc9e6d3622c1c9ba2e491965",
+      "unchanged": true
+    },
+    {
+      "file": "contracts/reference-entry.v1.schema.json",
+      "git_blob": "e26db67f190041c4ea42f6e0729536e9babd6926",
+      "unchanged": true
+    }
+  ],
+  "comparison": {
+    "request": {
+      "method": "POST",
+      "path": "/api/v1/compare",
+      "json": {
+        "paper_ids": [
+          "paper-cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20",
+          "paper-5d99397e9a37ee758723e7e845f5630ac8c5c88d9b60888946340fa4fa93a7d2"
+        ],
+        "question": "How many samples?"
+      }
+    },
+    "http_status": 200,
+    "response": {
+      "evidence_table": [
+        {
+          "evidence_id": "E1",
+          "per_paper_index": 0,
+          "anchor": {
+            "paper_id": "paper-cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20",
+            "page_number": 1,
+            "section": [
+              "1 Introduction"
+            ],
+            "chunk_id": "paper-cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20-p0001-c00004"
+          },
+          "quotes": [
+            "The synthetic study uses 12 samples and cites [1]."
+          ]
+        },
+        {
+          "evidence_id": "E2",
+          "per_paper_index": 1,
+          "anchor": {
+            "paper_id": "paper-5d99397e9a37ee758723e7e845f5630ac8c5c88d9b60888946340fa4fa93a7d2",
+            "page_number": 1,
+            "section": [
+              "1 Introduction"
+            ],
+            "chunk_id": "paper-5d99397e9a37ee758723e7e845f5630ac8c5c88d9b60888946340fa4fa93a7d2-p0001-c00004"
+          },
+          "quotes": [
+            "The synthetic study uses 18 samples and cites [1]."
+          ]
+        }
+      ],
+      "per_paper": [
+        {
+          "schema_version": "1.0.0",
+          "answer": "【证据 A】\nThe synthetic study uses 12 samples and cites [1].",
+          "anchors": [
+            {
+              "paper_id": "paper-cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20",
+              "page_number": 1,
+              "section": [
+                "1 Introduction"
+              ],
+              "chunk_id": "paper-cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20-p0001-c00004"
+            }
+          ],
+          "numeric_fact_check": {
+            "status": "passed",
+            "checks": [
+              {
+                "claim": "The synthetic study uses 12 samples and cites [1].",
+                "status": "passed",
+                "evidence": [
+                  {
+                    "paper_id": "paper-cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20",
+                    "page_number": 1,
+                    "section": [
+                      "1 Introduction"
+                    ],
+                    "chunk_id": "paper-cb43a78f6a004b6e2d2e44a52823f59c180d97b1ef7c418d6e22d1840d3c3c20-p0001-c00004"
+                  }
+                ],
+                "reason": "数字及其上下文逐字来自该 Chunk；仅核验原文回溯，不证明实验真实性或跨指标可比性。"
+              }
+            ]
+          },
+          "refused": false
+        },
+        {
+          "schema_version": "1.0.0",
+          "answer": "【证据 A】\nThe synthetic study uses 18 samples and cites [1].",
+          "anchors": [
+            {
+              "paper_id": "paper-5d99397e9a37ee758723e7e845f5630ac8c5c88d9b60888946340fa4fa93a7d2",
+              "page_number": 1,
+              "section": [
+                "1 Introduction"
+              ],
+              "chunk_id": "paper-5d99397e9a37ee758723e7e845f5630ac8c5c88d9b60888946340fa4fa93a7d2-p0001-c00004"
+            }
+          ],
+          "numeric_fact_check": {
+            "status": "passed",
+            "checks": [
+              {
+                "claim": "The synthetic study uses 18 samples and cites [1].",
+                "status": "passed",
+                "evidence": [
+                  {
+                    "paper_id": "paper-5d99397e9a37ee758723e7e845f5630ac8c5c88d9b60888946340fa4fa93a7d2",
+                    "page_number": 1,
+                    "section": [
+                      "1 Introduction"
+                    ],
+                    "chunk_id": "paper-5d99397e9a37ee758723e7e845f5630ac8c5c88d9b60888946340fa4fa93a7d2-p0001-c00004"
+                  }
+                ],
+                "reason": "数字及其上下文逐字来自该 Chunk；仅核验原文回溯，不证明实验真实性或跨指标可比性。"
+              }
+            ]
+          },
+          "refused": false
+        }
+      ],
+      "synthesis": "原文并列：The synthetic study uses 12 samples and cites [1]. [E1]\n原文并列：The synthetic study uses 18 samples and cites [1]. [E2]\n不可验证：这些摘录不证明跨篇因果关系，也不支持不同指标之间的优劣排名。"
+    },
+    "execution_order": "逐篇 QAAnswer 校验 → 去重证据表 → 原文并列综合 → 整包校验"
+  },
+  "proxy": {
+    "route_source_sha256": "e1e1f417a80c539ac4f7c709d1c68eedb6c4a7a6bb39d38d001e06a5bfc34eac",
+    "proxy_get_status": 200,
+    "proxy_qa_post_status": 200,
+    "proxy_multipart_status": 415,
+    "upstream_origin_header": "代理源代码不转发 Origin，服务端请求无需 CORS",
+    "scope": "实际代理函数内存执行；未构建前端，未验证浏览器页面"
+  }
+}
