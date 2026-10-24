@@ -15,6 +15,8 @@ backend/.venv/Scripts/python.exe -m pip install -e 'backend[ocr,test]'
 
 ## 启动模块一 HTTP API
 
+本地开发 CORS 核实（模块二开工）：原后端缺少 CORSMiddleware，已在 scholar_graph/api.py 的 create_app 中补齐。仅允许 http://localhost:3000 与 http://127.0.0.1:3000；方法 GET/POST（中间件处理 OPTIONS 预检），允许 Content-Type 及 CORS 标准安全请求头，暴露 Location/Link，不启用跨源凭据。依据前端现有 GET JSON、POST multipart 及本轮 POST JSON 的需要配置，不放行任意来源。前端同源代理仍按原格式透传到 /api/v1，不需要 Origin 的服务端请求不受 CORS 限制；本轮不修改前端。
+
 ```powershell
 backend/.venv/Scripts/python.exe -m uvicorn scholar_graph.api:create_app --factory --host 127.0.0.1 --port 8000 --no-access-log
 ```

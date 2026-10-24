@@ -8,6 +8,7 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from starlette.exceptions import HTTPException
 from starlette.concurrency import run_in_threadpool
+from starlette.middleware.cors import CORSMiddleware
 
 from .api_repository import ApiRepository
 from .api_transport import paginate
@@ -27,6 +28,14 @@ def create_app(*, data_dir=None, pipeline_factory=None):
     gate = ContractGate()
     repository = ApiRepository(root, gate)
     app = FastAPI(title="ScholarGraph module one", version="1.1.0")
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],
+        allow_methods=["GET", "POST"],
+        allow_headers=["Content-Type"],
+        expose_headers=["Location", "Link"],
+        allow_credentials=False,
+    )
     app.state.repository = repository
     uploads = UploadService(root, gate, pipeline_factory)
     app.state.uploads = uploads
