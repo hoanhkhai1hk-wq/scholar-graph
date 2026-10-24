@@ -47,7 +47,9 @@ def main():
     client = TestClient(app)
     repo = app.state.repository
     paths = client.get("/openapi.json").json()["paths"]
-    report["implemented_endpoints"] = [f"{method.upper()} {path}" for path, methods in paths.items() for method in methods]
+    report["implemented_endpoints"] = [f"{method.upper()} {path}" for path, methods in paths.items()
+        if path != "/api/v1/compare" and not path.endswith("/qa") for method in methods]
+    report["endpoint_scope"] = "仅计模块一的十条端点；模块二新增路由不计入本旧脚本。"
     check(len(report["implemented_endpoints"]) == 10, "Unexpected business endpoint count")
     bundles = []
 

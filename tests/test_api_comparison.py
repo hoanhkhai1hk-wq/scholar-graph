@@ -49,9 +49,9 @@ def test_human_override_survives_later_system_and_reads_are_immutable(tmp_path):
     assert json.loads(before)[0] == decision
 
 
-def test_only_ten_module_one_business_routes(tmp_path):
+def test_only_twelve_module_one_and_two_business_routes(tmp_path):
     client = TestClient(create_app(data_dir=tmp_path))
     paths = client.get("/openapi.json").json()["paths"]
-    assert sum(len(methods) for methods in paths.values()) == 10
-    for path in ("/graph", "/compare", "/reviews", "/recommendations", "/charts/csv", "/frameworks"):
+    assert sum(len(methods) for methods in paths.values()) == 12
+    for path in ("/graph", "/reviews", "/recommendations", "/charts/csv", "/frameworks"):
         assert_error(client.get("/api/v1" + path), 404, "PAPER_NOT_FOUND")
