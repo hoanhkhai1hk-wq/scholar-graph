@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:scholar-graph:contract:diff-summary:1.1.0",
+  "title": "DiffSummary",
+  "description": "DiffSummary contract v1.1.0; see CONTRACTS.md for anchor and comparison semantics.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.1.0"
+    },
+    "old_paper_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+    },
+    "new_paper_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+    },
+    "changed_sections": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      },
+      "uniqueItems": true
+    },
+    "summary_text": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "key_sentences": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "anchor": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/chunk_anchor"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "verified",
+              "unverified"
+            ]
+          }
+        },
+        "required": [
+          "text",
+          "anchor",
+          "status"
+        ],
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "anchor": {
+                  "type": "null"
+                }
+              },
+              "required": [
+                "anchor"
+              ]
+            },
+            "then": {
+              "properties": {
+                "status": {
+                  "const": "unverified"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "old_paper_id",
+    "new_paper_id",
+    "changed_sections",
+    "summary_text",
+    "key_sentences"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "chunk_anchor": {
+      "type": "object",
+      "properties": {
+        "paper_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+        },
+        "page_number": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "section": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "chunk_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+        }
+      },
+      "required": [
+        "paper_id",
+        "page_number",
+        "section",
+        "chunk_id"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "changed_sections": {
+            "maxItems": 0
+          }
+        },
+        "required": [
+          "changed_sections"
+        ]
+      },
+      "then": {
+        "properties": {
+          "summary_text": {
+            "pattern": "未检出章节级差异"
+          }
+        }
+      }
+    }
+  ]
+}
