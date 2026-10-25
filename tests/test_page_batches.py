@@ -173,3 +173,14 @@ def test_crash_after_batch_rename_rebuilds_index_and_resumes(tmp_path, monkeypat
     assert len(value['chunks']) == 3
     assert pipeline.last_metrics['resumed_pages'] == 1
     assert ChunkIndex(root, pid).page(1, 100)['total'] == 3
+
+
+def test_invalid_ocr_physical_index_names_page_and_never_publishes(tmp_path):
+    engine = Pages(tmp_path / 'records')
+    engine.ocr = lambda *a, **kw: {'pages': [{'page_idx': False, 'blocks': [{'content': 'Invalid index'}]}]}
+    pipeline = Pipeline(tmp_path / 'records', engines=engine)
+    with pytest.raises(PipelineError) as error:
+        pipeline.parse(make_pdf(tmp_path / 'scan.pdf', scan=True))
+    assert error.value.details['failed_pages'] == '1'
+    pipeline.gate.error(error.value.envelope())
+    assert pipeline.last_metrics['published_chunks'] == 0

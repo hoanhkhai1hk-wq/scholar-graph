@@ -104,9 +104,10 @@ def parse_batches(pipeline, snapshot, paper, ocr_pages):
             job.move('ocr', 'MinerU批次未完成，逐页PaddleOCR兜底')
         try:
             value = engines.ocr(snapshot, [page_index], timeout=timeout(limits.page_timeout))
-            pages = value['pages']
-            if len(pages) != 1 or pages[0].get('page_idx') != page_index or not any(
-                    block_text(b.get('content')).strip() for b in pages[0].get('blocks', [])):
+            pages = value.get('pages')
+            if (not isinstance(pages, list) or len(pages) != 1 or not isinstance(pages[0], dict)
+                    or type(pages[0].get('page_idx')) is not int or pages[0]['page_idx'] != page_index or not any(
+                    block_text(b.get('content')).strip() for b in pages[0].get('blocks', []))):
                 raise PipelineError('OCR_FAILED', '页面未返回可验证OCR文本。')
         except PipelineError as error:
             failures.append({'page_number': page_index + 1, 'error_code': error.code, 'message': error.message})
