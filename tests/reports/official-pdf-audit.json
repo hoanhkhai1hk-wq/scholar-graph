@@ -1,0 +1,527 @@
+{
+  "scope": "官方 pdf/ 真文件",
+  "baseline": "17ed94939b01285ee96c7708cf177d669f48739b",
+  "audit_source_commit": "bcc3cce5b0a724378be17310f0c57b947d065763",
+  "evidence_consistency_checks_passed": true,
+  "business_cases_passed": 0,
+  "business_cases_failed": 3,
+  "checks": [
+    {
+      "check": "dedup:官方语料与基线标记",
+      "passed": true
+    },
+    {
+      "check": "dedup:无真实模型API调用",
+      "passed": true
+    },
+    {
+      "check": "dedup:直接读取官方pdf目录",
+      "passed": true
+    },
+    {
+      "check": "1706.03762v7.pdf:运行前后及审计时哈希一致",
+      "passed": true
+    },
+    {
+      "check": "dedup:直接读取官方pdf目录",
+      "passed": true
+    },
+    {
+      "check": "1706.03762v1.pdf:运行前后及审计时哈希一致",
+      "passed": true
+    },
+    {
+      "check": "ocr:官方语料与基线标记",
+      "passed": true
+    },
+    {
+      "check": "ocr:无真实模型API调用",
+      "passed": true
+    },
+    {
+      "check": "ocr:直接读取官方pdf目录",
+      "passed": true
+    },
+    {
+      "check": "1706.03762v1_img.pdf:运行前后及审计时哈希一致",
+      "passed": true
+    },
+    {
+      "check": "longbook:官方语料与基线标记",
+      "passed": true
+    },
+    {
+      "check": "longbook:无真实模型API调用",
+      "passed": true
+    },
+    {
+      "check": "longbook:直接读取官方pdf目录",
+      "passed": true
+    },
+    {
+      "check": "UnderstandingDeepLearning_02_09_26_C.pdf:运行前后及审计时哈希一致",
+      "passed": true
+    },
+    {
+      "check": "上传顺序v7然后v1",
+      "passed": true
+    },
+    {
+      "check": "真实上传201",
+      "passed": true
+    },
+    {
+      "check": "Chunk:发布记录与接口总数一致",
+      "passed": true
+    },
+    {
+      "check": "ReferenceEntry:发布记录与接口总数一致",
+      "passed": true
+    },
+    {
+      "check": "CitationLink:发布记录与接口总数一致",
+      "passed": true
+    },
+    {
+      "check": "decision:实际无记录404",
+      "passed": true
+    },
+    {
+      "check": "diff:实际无记录404",
+      "passed": true
+    },
+    {
+      "check": "完成状态合法",
+      "passed": true
+    },
+    {
+      "check": "真实上传201",
+      "passed": true
+    },
+    {
+      "check": "Chunk:发布记录与接口总数一致",
+      "passed": true
+    },
+    {
+      "check": "ReferenceEntry:发布记录与接口总数一致",
+      "passed": true
+    },
+    {
+      "check": "CitationLink:发布记录与接口总数一致",
+      "passed": true
+    },
+    {
+      "check": "decision:实际无记录404",
+      "passed": true
+    },
+    {
+      "check": "diff:实际无记录404",
+      "passed": true
+    },
+    {
+      "check": "完成状态合法",
+      "passed": true
+    },
+    {
+      "check": "身份查找真实未命中",
+      "passed": true
+    },
+    {
+      "check": "Dice仅离线诊断",
+      "passed": true
+    },
+    {
+      "check": "无上传预警",
+      "passed": true
+    },
+    {
+      "check": "未发布比较记录",
+      "passed": true
+    },
+    {
+      "check": "官方扫描件15页无文本层",
+      "passed": true
+    },
+    {
+      "check": "OCR使用默认300秒且进入分支",
+      "passed": true
+    },
+    {
+      "check": "OCR实际调用已记录",
+      "passed": true
+    },
+    {
+      "check": "ocr:记录失败而非通过",
+      "passed": true
+    },
+    {
+      "check": "ocr:未发布Chunk",
+      "passed": true
+    },
+    {
+      "check": "ocr:报告与实际失败历史一致",
+      "passed": true
+    },
+    {
+      "check": "longbook:记录失败而非通过",
+      "passed": true
+    },
+    {
+      "check": "longbook:未发布Chunk",
+      "passed": true
+    },
+    {
+      "check": "longbook:报告与实际失败历史一致",
+      "passed": true
+    },
+    {
+      "check": "扫描件真实错误OCR_FAILED",
+      "passed": true
+    },
+    {
+      "check": "长书完整541页22344992字节",
+      "passed": true
+    },
+    {
+      "check": "长书未进入索引且被200页拒绝",
+      "passed": true
+    },
+    {
+      "check": "无长书分页成功伪报",
+      "passed": true
+    },
+    {
+      "check": "contracts/CONTRACTS.md:契约零改动",
+      "passed": true
+    },
+    {
+      "check": "contracts/README.md:契约零改动",
+      "passed": true
+    },
+    {
+      "check": "contracts/chart-output.v1.1.example.json:契约零改动",
+      "passed": true
+    },
+    {
+      "check": "contracts/chart-output.v1.1.schema.json:契约零改动",
+      "passed": true
+    },
+    {
+      "check": "contracts/chunk.v1.example.json:契约零改动",
+      "passed": true
+    },
+    {
+      "check": "contracts/chunk.v1.schema.json:契约零改动",
+      "passed": true
+    },
+    {
+      "check": "contracts/citation-link.v1.example.json:契约零改动",
+      "passed": true
+    },
+    {
+      "check": "contracts/citation-link.v1.schema.json:契约零改动",
+      "passed": true
+    },
+    {
+      "check": "contracts/dedup-decision.v1.1.example.json:契约零改动",
+      "passed": true
+    },
+    {
+      "check": "contracts/dedup-decision.v1.1.schema.json:契约零改动",
+      "passed": true
+    },
+    {
+      "check": "contracts/diff-summary.v1.1.example.json:契约零改动",
+      "passed": true
+    },
+    {
+      "check": "contracts/diff-summary.v1.1.schema.json:契约零改动",
+      "passed": true
+    },
+    {
+      "check": "contracts/framework-outline.v1.2.example.json:契约零改动",
+      "passed": true
+    },
+    {
+      "check": "contracts/framework-outline.v1.2.schema.json:契约零改动",
+      "passed": true
+    },
+    {
+      "check": "contracts/graph-edge.v1.2.example.json:契约零改动",
+      "passed": true
+    },
+    {
+      "check": "contracts/graph-edge.v1.2.schema.json:契约零改动",
+      "passed": true
+    },
+    {
+      "check": "contracts/graph-node.v1.2.example.json:契约零改动",
+      "passed": true
+    },
+    {
+      "check": "contracts/graph-node.v1.2.schema.json:契约零改动",
+      "passed": true
+    },
+    {
+      "check": "contracts/paper-meta.v1.example.json:契约零改动",
+      "passed": true
+    },
+    {
+      "check": "contracts/paper-meta.v1.schema.json:契约零改动",
+      "passed": true
+    },
+    {
+      "check": "contracts/parse-status.v1.1.example.json:契约零改动",
+      "passed": true
+    },
+    {
+      "check": "contracts/parse-status.v1.1.schema.json:契约零改动",
+      "passed": true
+    },
+    {
+      "check": "contracts/qa-answer.v1.example.json:契约零改动",
+      "passed": true
+    },
+    {
+      "check": "contracts/qa-answer.v1.schema.json:契约零改动",
+      "passed": true
+    },
+    {
+      "check": "contracts/reference-entry.v1.example.json:契约零改动",
+      "passed": true
+    },
+    {
+      "check": "contracts/reference-entry.v1.schema.json:契约零改动",
+      "passed": true
+    },
+    {
+      "check": "官方语料未被跟踪",
+      "passed": true
+    },
+    {
+      "check": "pdf目录整体被忽略",
+      "passed": true
+    },
+    {
+      "check": "只新增tests与忽略规则",
+      "passed": true
+    },
+    {
+      "check": "新增文件无常见密钥格式",
+      "passed": true
+    },
+    {
+      "check": "全量既有296项回归无失败无跳过",
+      "passed": true
+    },
+    {
+      "check": "official-pdf-pytest.xml:官方验证标识",
+      "passed": true
+    },
+    {
+      "check": "official-pdf-acceptance.md:官方验证标识",
+      "passed": true
+    },
+    {
+      "check": "总报告无未填占位",
+      "passed": true
+    },
+    {
+      "check": "总报告关键数字与原始JSON一致",
+      "passed": true
+    }
+  ],
+  "frozen_contract_files": [
+    {
+      "file": "contracts/CONTRACTS.md",
+      "git_blob": "e4292d4ebf99c3b700c3e48c657b60938d05fb14"
+    },
+    {
+      "file": "contracts/README.md",
+      "git_blob": "85b7a5d1b43407df09733194dc141ca7297a839f"
+    },
+    {
+      "file": "contracts/chart-output.v1.1.example.json",
+      "git_blob": "f34c9130ecb750cf583a9cf5cb802fbe95a28bb7"
+    },
+    {
+      "file": "contracts/chart-output.v1.1.schema.json",
+      "git_blob": "7b5b196ecc88d31d7a13b0f560f02c9feb0814dd"
+    },
+    {
+      "file": "contracts/chunk.v1.example.json",
+      "git_blob": "330a0845a9569aa85053dbfa1dc643363b45f2c3"
+    },
+    {
+      "file": "contracts/chunk.v1.schema.json",
+      "git_blob": "d577c91c27b33e360da8cdfbacbbf2da33ac1bcf"
+    },
+    {
+      "file": "contracts/citation-link.v1.example.json",
+      "git_blob": "1df93d863fd88272ea4b3ec71d7fde77916c84f6"
+    },
+    {
+      "file": "contracts/citation-link.v1.schema.json",
+      "git_blob": "1c26cb51d10256635af9cd43881a0219316408f8"
+    },
+    {
+      "file": "contracts/dedup-decision.v1.1.example.json",
+      "git_blob": "d47edb3181b70f7fe0bed872d50a5178a1e3baaa"
+    },
+    {
+      "file": "contracts/dedup-decision.v1.1.schema.json",
+      "git_blob": "a0679f1dd466fe247f2f8d9a77f05a669aa622bb"
+    },
+    {
+      "file": "contracts/diff-summary.v1.1.example.json",
+      "git_blob": "947217164499f39932b9b4e88013828f5c1a9cdf"
+    },
+    {
+      "file": "contracts/diff-summary.v1.1.schema.json",
+      "git_blob": "6df5e7753e629277068dd7c023938b2df0b122d8"
+    },
+    {
+      "file": "contracts/framework-outline.v1.2.example.json",
+      "git_blob": "fe04eb4ea3b10663225a3a0bf23667e0154859ba"
+    },
+    {
+      "file": "contracts/framework-outline.v1.2.schema.json",
+      "git_blob": "c1400597c95b685746e6ee714e516fd26d102762"
+    },
+    {
+      "file": "contracts/graph-edge.v1.2.example.json",
+      "git_blob": "8a33fb93f0026639d49409134e8b50a99efe4c59"
+    },
+    {
+      "file": "contracts/graph-edge.v1.2.schema.json",
+      "git_blob": "50194dc973bf38a8c4c7c1a0c31c849f9aa7bcfa"
+    },
+    {
+      "file": "contracts/graph-node.v1.2.example.json",
+      "git_blob": "60d0d77292e9cb855259be05c14c9a0a3afa5f9a"
+    },
+    {
+      "file": "contracts/graph-node.v1.2.schema.json",
+      "git_blob": "cf7d452c939aaae8faeafa159ccdfba5ba447163"
+    },
+    {
+      "file": "contracts/paper-meta.v1.example.json",
+      "git_blob": "141f90fe6d68cbfb7f4770aace62c190100f7f8f"
+    },
+    {
+      "file": "contracts/paper-meta.v1.schema.json",
+      "git_blob": "a8d65964a698823b165c7369d9912e0956081995"
+    },
+    {
+      "file": "contracts/parse-status.v1.1.example.json",
+      "git_blob": "9dcae28d3c0605d1e3ca625d884125662ef105b3"
+    },
+    {
+      "file": "contracts/parse-status.v1.1.schema.json",
+      "git_blob": "0821189d573e9b489bc3c900a97b3128f30bd132"
+    },
+    {
+      "file": "contracts/qa-answer.v1.example.json",
+      "git_blob": "29dcf10a680b880f6559f6ab0a840195f90e0f89"
+    },
+    {
+      "file": "contracts/qa-answer.v1.schema.json",
+      "git_blob": "9afbdd2b5fd1eafaddbf34bcd1377d333c0f3b1e"
+    },
+    {
+      "file": "contracts/reference-entry.v1.example.json",
+      "git_blob": "35c676e8fbbe6ae4bc9e6d3622c1c9ba2e491965"
+    },
+    {
+      "file": "contracts/reference-entry.v1.schema.json",
+      "git_blob": "e26db67f190041c4ea42f6e0729536e9babd6926"
+    }
+  ],
+  "sources": [
+    {
+      "file": "D:\\AI_Workspace\\Tasks\\scholar-graph\\pdf\\1706.03762v7.pdf",
+      "bytes": 2215244,
+      "sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "physical_pages": 15,
+      "pdf_title": null
+    },
+    {
+      "file": "D:\\AI_Workspace\\Tasks\\scholar-graph\\pdf\\1706.03762v1.pdf",
+      "bytes": 2128686,
+      "sha256": "0a9bff1be3575cf9fe26a4a3d3a9175bc791ecec90de8b9deba4cff75d2b9476",
+      "physical_pages": 15,
+      "pdf_title": null
+    },
+    {
+      "file": "D:\\AI_Workspace\\Tasks\\scholar-graph\\pdf\\1706.03762v1_img.pdf",
+      "bytes": 4672118,
+      "sha256": "64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+      "physical_pages": 15,
+      "pdf_title": null
+    },
+    {
+      "file": "D:\\AI_Workspace\\Tasks\\scholar-graph\\pdf\\UnderstandingDeepLearning_02_09_26_C.pdf",
+      "bytes": 22344992,
+      "sha256": "f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32",
+      "physical_pages": 541,
+      "pdf_title": null
+    }
+  ],
+  "changed_paths": [
+    ".gitignore",
+    "tests/audit_official_pdfs.py",
+    "tests/official_pdf_support.py",
+    "tests/reports/official-pdf-acceptance.md",
+    "tests/reports/official-pdf-audit.json",
+    "tests/reports/official-pdf-dedup.json",
+    "tests/reports/official-pdf-longbook.json",
+    "tests/reports/official-pdf-ocr.json",
+    "tests/reports/official-pdf-pytest.xml",
+    "tests/run_official_dedup.py",
+    "tests/run_official_longbook.py",
+    "tests/run_official_ocr.py",
+    "tests/run_official_regression.py"
+  ],
+  "regression": {
+    "tests": 296,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": 296
+  },
+  "comparison": {
+    "dedup_chunks": {
+      "previous": [
+        175,
+        162
+      ],
+      "official": [
+        175,
+        162
+      ]
+    },
+    "dice": {
+      "previous": 0.933224,
+      "official_offline_only": 0.933224,
+      "note": "上一单Dice来自另一次带arXiv身份抓取控制，本单Dice为离线诊断；两者都不能当作本单上传预警。"
+    },
+    "ocr_seconds": {
+      "previous": [
+        304.962881,
+        904.776897
+      ],
+      "official": 307.664604
+    },
+    "ocr_input_same_sha256": false,
+    "book_rss_peak_mib": {
+      "previous": 154.45703125,
+      "official": 143.453125
+    },
+    "text_and_book_sha256_same_as_previous": [
+      true,
+      true,
+      true
+    ]
+  },
+  "limits": "审计核对失败证据不代表业务通过；RSS为50ms采样的进程树合计；常见密钥模式检查不覆盖所有秘密，未读取.env。"
+}
