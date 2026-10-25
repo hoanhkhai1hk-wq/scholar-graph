@@ -1,0 +1,62 @@
+{
+  "status": "passed",
+  "checks": {
+    "last_live_run_passed": true,
+    "three_live_scopes": true,
+    "official_pdf_hash_matches": true,
+    "live_implementation_hash_matches": true,
+    "abstract_http_200_and_passed": true,
+    "abstract_manifest_matches_local_response": true,
+    "abstract_exact_stored_anchors": true,
+    "abstract_code_formula_structure_preserved": true,
+    "abstract_numbers_source_backed": true,
+    "abstract_model_metadata_safe": true,
+    "section_http_200_and_passed": true,
+    "section_manifest_matches_local_response": true,
+    "section_exact_stored_anchors": true,
+    "section_code_formula_structure_preserved": true,
+    "section_numbers_source_backed": true,
+    "section_model_metadata_safe": true,
+    "full_http_200_and_passed": true,
+    "full_manifest_matches_local_response": true,
+    "full_exact_stored_anchors": true,
+    "full_code_formula_structure_preserved": true,
+    "full_numbers_source_backed": true,
+    "full_model_metadata_safe": true,
+    "full_all_175_chunks": true,
+    "full_all_markdown_anchors_once": true,
+    "full_regression_all_passed": true,
+    "no_key_live_skipped_only": true,
+    "only_backend_and_tests_changed": true,
+    "frontend_contracts_docs_unchanged": true,
+    "pdf_directory_ignored": true,
+    "no_pdf_tracked": true,
+    "key_absent_from_all_task_files": true
+  },
+  "check_count": 31,
+  "baseline": "349369388b31033dc624ace815b9189a0569b4e4",
+  "regression": {
+    "tests": 384,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 276.782
+  },
+  "no_key": {
+    "tests": 42,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 1,
+    "seconds": 8.446
+  },
+  "live_counts": {
+    "abstract": 6,
+    "section": 5,
+    "full": 175
+  },
+  "implementation_sha256": {
+    "backend/scholar_graph/translation.py": "5f1c22aa699ad09e1a14fd396bc885b07b563216d4db67527b8cf902bf1db206",
+    "backend/scholar_graph/translation_routes.py": "786cf9790d02c0da00b8973b7c9057dd59938435dd29fa1c68ef1a83344ceff8",
+    "backend/scholar_graph/deepseek_client.py": "19839b13c85c1851fd55749e12d8c4d302b233d40f8068a4258cd157f02ec39e"
+  }
+}
