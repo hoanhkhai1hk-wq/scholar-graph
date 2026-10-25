@@ -31,11 +31,11 @@ OpenAPI 为 `http://127.0.0.1:8000/openapi.json`，Swagger 为 `/docs`。上传�
 
 POST /api/v1/papers/{paper_id}/qa 的 JSON 为 `{ "question": "本文样本量是多少？" }`，返回完整 QAAnswer。POST /api/v1/compare 的 JSON 为 `{ "paper_ids": ["paper-a", "paper-b"], "question": "样本量分别是多少？" }`，返回 evidence_table、逐篇 QAAnswer 数组 per_paper、综合文本 synthesis。用真实已入库 paper id 替换示例 id。比较不是版本差异，也不更改去重记录。
 
-本单检索为词法兜底、向量检索待后续单。本机未安装 Chroma/sentence-transformers，未下载或运行 BGE-M3；不声称接通向量库。有限中英文别名、关键词覆盖及长度归一得分选原文，候选最多 8 句，最多输出 4 个不同 Chunk 的证据。超过 600 字符的单句跳过；不做跨块拼句、语义改写或任意问法推理。关键词覆盖和保守问法规则会漏答正常问题，这不是通用模型问答质量验收。
+模块二默认摘录模式的检索为词法兜底；模块四已有独立 BGE-M3/Chroma 检索端点，但本轮问答与 Agent 的 search 工具仍采用词法排序，不冒充向量问答。默认摘录模式用有限中英文别名、关键词覆盖及长度归一得分选原文，候选最多 8 句，最多输出 4 个不同 Chunk 的证据。超过 600 字符的单句跳过；不做跨块拼句、语义改写或任意问法推理。关键词覆盖和保守问法规则会漏答正常问题，这不是通用模型问答质量验收。
 
 默认 SCHOLAR_GRAPH_QA_MODE=extractive：本地确定性原文摘录，**没有真实模型调用或模型名**，不需要 Key，也不读取 .env。事实按“证据 A/B……”与 anchors 顺序对应；锚点四字段、原文子串、数字和 QAAnswer Schema 都通过后才返回。数字 passed 是原文回溯通过；不可回溯为 unverifiable，明确样本数矛盾为 failed。故意错前提、超纲、无依据都 refused=true，必要时附原文纠错，不凭检索未命中说全文没报告。
 
-可选模型接口位于 scholar_graph/qa_model.py，调用方是后端 httpx → DeepSeek /chat/completions，只允许选择已校验候选下标，不接受模型生成的新事实。模型名必须由 DEEPSEEK_MODEL 环境变量显式指定，DEEPSEEK_API_KEY 从本地环境读取；可用 DEEPSEEK_BASE_URL 指定可信 HTTPS 服务地址。模式改为 SCHOLAR_GRAPH_QA_MODE=deepseek 才会读取这些配置；默认不会因环境里存在 Key 而自动联网。Key 只保存在被忽略的本地 .env，由开发环境注入进程，不自动加载、不输出、不写代码。测试使用 MockTransport 和无效占位凭据；**真实 DeepSeek 模型尚未联调**。调用元数据（服务商、模型名、提示词版本、耗时、token）仅在选择器内存保留，不记正文或凭据。上游失败返回脱敏 UPSTREAM_ERROR，不静默改成模型成功。
+当前 deepseek 模式由 scholar_graph/deepseek_client.py 与 grounded_model.py 调用真实 DeepSeek /chat/completions，让模型从实际 Chunk 中选择连续原文；旧 qa_model.py 选择器保留兼容。请求模型名来自 DEEPSEEK_MODEL，仅允许官方 HTTPS api.deepseek.com，DEEPSEEK_API_KEY 只从已注入进程环境读取，不加载 .env、不将 Key 写入任何文件。本轮已完成真实联调，详见文末新验收节。默认 extractive 不因 Key 存在而联网；默认 deepseek 上游异常明确返回502 UPSTREAM_ERROR，不伪造答案。
 
 对比先校验各篇 QAAnswer，再建一行一个 Chunk 的证据表，最后综合。每条综合事实为原文并列，并带 E 行引用，行内锚点必须回指 per_paper；不作跨指标大小排名或因果判断。不支持的综合论断标“不可验证”。完整传输形状、请求边界和限制见 API 草案，不改冻结 Schema。
 
@@ -204,3 +204,25 @@ backend/.venv/Scripts/python.exe tests/run_module_one_smoke.py --output-root dat
 | SCHOLAR_GRAPH_TOTAL_TIMEOUT | 1800 | 分批处理整篇最长秒数，1–7200；每次worker等待同时受剩余总时限约束 |
 
 修复验收使用本地官方 pdf/ 真文件；结果在 tests/reports/official-pdf-repair-acceptance.md。GROBID接通状态未因本次修复改变，仍待验证；本次没有调用真实大模型或真实API Key。
+
+
+## 真模型、LangGraph 与 Function Calling（2026-10-25）
+
+已使用官方 pdf/ 真文件 Attention v7（175 Chunk）和 BERT N19-1423（277 Chunk）完成 DeepSeek 实连，请求模型名 deepseek-chat；不推测服务商别名背后的模型版本。六道命题例题及故意错问的结果、失败轮次、真实工具轨迹和调用元数据见 [本轮验收报告](../tests/reports/real-model-orchestration-acceptance.md)。本节更新问答现状，不改变先前解析/写作报告的历史结论。
+
+启动进程须已设置 SCHOLAR_GRAPH_QA_MODE、DEEPSEEK_MODEL、DEEPSEEK_API_KEY；环境只报告“已设置/未设置”。本轮不创建或读取任何 Key 文件。现有启动方式和19个端点保留。deepseek 单篇请求仍返回原 QAAnswer；跨篇仍按证据表、逐篇 QAAnswer、综合文本顺序返回三个字段。模型负责证据选择，输出只能是同一真实 Chunk 内≤600字符的连续原文；代码验证字面一致、四字段锚点与数字回溯后构造答案。数字通过只证明源文本可回溯，BLEU 的2.04差值是报告中的代码派生计算，未伪装成原文。作者顺序辅助只处理有坐标/联系信息的版面，不承诺任意论文作者网格都能恢复。
+
+LangGraph 1.2.17 编排为 plan（规划）→ retrieve（检索）→ qa（问答）→ validate（代码校验）。deepseek 的 /compare 默认使用联合规划；两条问答端点都可显式加 ?agent=true 启用有回落的图。状态只在内存保留论文集合、证据与锚点；校验失败返回检索，最多三轮，超限拒答。显式 Agent 在模型未配置/上游不可用时调用已有摘录器，元数据 fallback_reason 明确原因；默认 deepseek 调用失败仍返回上游错误。未启用检查点，强制关闭 LangSmith 追踪，不保存原始消息、思考内容或协议正文。
+
+已定义 search（本地词法证据检索）、graph_query（复用真实局域图谱）和 arxiv_fetch（复用原抓取与解析服务）三个工具，参数禁止额外字段、检索/图谱只访问用户指定论文。arxiv_fetch 还要求显式 allow_fetch=True 与传入现有 fetcher；当前 HTTP 比较任务不授权增补论文，故该工具在该场景返回明确错误。本轮真实 Function Calling 演示的是模型发出 search 调用，执行后以匹配的 tool_call_id 回传结果再问答；图谱/抓取分派只做模拟服务测试，不声称本轮三种工具都已真实调用。
+
+调用元数据在 X-ScholarGraph-QA-Meta / X-ScholarGraph-Agent-Meta 响应头，UTF-8百分号编码JSON；前者为模型调用统计，后者另含节点耗时、证据数量、校验状态、回落原因与工具参数/结果摘要。两个头已加入现有 CORS expose_headers。QAAnswer 与比较体形状不变，所有现有契约零改动；前端没有修改，需由用户转达前端读取元数据的方式，未声称前端已接通。
+
+```powershell
+backend/.venv/Scripts/python.exe tests/run_real_model_acceptance.py
+backend/.venv/Scripts/python.exe tests/run_real_model_acceptance.py --author-guard-only
+backend/.venv/Scripts/python.exe -m pytest tests -q --run-ocr --run-real-model --basetemp data/real-model/reproduce-tests --junitxml data/real-model/reproduce-junit.xml
+backend/.venv/Scripts/python.exe tests/audit_real_model_acceptance.py
+```
+
+实连测试须 --run-real-model 且有 Key 和模型变量，无 Key 标记跳过；普通测试自动将模式设为 extractive，模拟协议测试不计为实连。验收脚本会覆盖本轮结果JSON，重现实验应先自行保存已验收记录。本轮检索仍是词法，未把模块四向量实验自动接入 Agent。协议依据：[DeepSeek工具调用](https://api-docs.deepseek.com/guides/tool_calls/)、[聊天API](https://api-docs.deepseek.com/api/create-chat-completion/)、[LangGraph图API](https://docs.langchain.com/oss/python/langgraph/graph-api)。

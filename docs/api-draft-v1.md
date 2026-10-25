@@ -28,7 +28,7 @@
 | GET | /papers/{paper_id}/chunks | paper_id；page、page_size | 200 分页 Chunk | 本单已落地 |
 | GET | /papers/{paper_id}/references | paper_id；page、page_size | 200 分页 ReferenceEntry | 本单已落地 |
 | GET | /papers/{paper_id}/citation-links | paper_id；page、page_size；可按 ref_id、chunk_id 精确筛选 | 200 分页 CitationLink | 本单已落地 |
-| POST | /papers/{paper_id}/qa | 路径 paper_id；JSON {question}，详见模块二定义 | 200 QAAnswer；无论文 404，坏请求 422 | 模块二已落地；默认词法兜底与原文摘录，真实模型未联调 |
+| POST | /papers/{paper_id}/qa | 路径 paper_id；JSON {question}，详见模块二定义 | 200 QAAnswer；无论文 404，坏请求 422 | 模块二已落地；默认摘录，可显式 deepseek 真模型；词法取证，原文/锚点校验 |
 | POST | /compare | JSON {paper_ids, question}，详见模块二定义 | 200 {evidence_table, per_paper, synthesis}，per_paper 每项是 QAAnswer | 模块二已落地；先证据表再综合，新增传输封装经本单授权 |
 | GET | /graph | 重复查询参数 paper_ids，1–100 个不同 PaperMeta.id | 200 图谱视图：GraphNode[]、GraphEdge[]、分层、未来方向与诊断，详见模块五 | 模块五已落地，v1.2 图谱部分已定义；只读本地已落盘记录 |
 | POST | /reviews | JSON {paper_ids, framework:FrameworkOutline, requirements?} | 200结构化摘录草稿：{framework,chapters,mode,unverifiable_count} | 模块六已落地；原文摘录/四字段锚点/数字回溯，无证据标unverifiable，不调用大模型 |
@@ -102,7 +102,11 @@ evidence_table 一行一个 Chunk，当前每行 quotes 恰好一个原文摘录
 
 执行顺序为：逐篇生成并校验 → 构建去重证据表 → 综合 → 再次校验整包。综合中的论文事实仅并列复制已校验 quote，每条末尾 `[E编号]` 回指证据表及 per_paper 锚点，不生成跨指标优劣或因果推断。缺少证据/部分拒答时，综合明确标“不可验证”；不以缺席证据断言论文没做某事。最终键顺序也为 evidence_table、per_paper、synthesis，但程序顺序及引用校验才是证据先行的保证。
 
-模型实际方式：默认 extractive 为本地确定性摘录，无模型名、无外部调用。显式配置环境变量 SCHOLAR_GRAPH_QA_MODE=deepseek、DEEPSEEK_MODEL、DEEPSEEK_API_KEY 时，httpx 调 DeepSeek /chat/completions，仅选已校验候选下标，不采信自由生成事实；坏下标/输出未过门禁不返回答案。真实模型调用尚未验证，Mock 只证明协议及门禁。Key 仅来自本地环境变量，不进入请求参数、业务记录、测试证据或日志；不得提交 .env。
+模型实际方式：默认 extractive 为本地确定性摘录，无外部调用；显式 SCHOLAR_GRAPH_QA_MODE=deepseek、DEEPSEEK_MODEL、DEEPSEEK_API_KEY 时由后端 httpx 调官方 DeepSeek /chat/completions，模型选择真实 Chunk 的连续原文而非自由生成事实，字面/锚点/数字/Schema 门禁通过才返回。已用官方 Attention/BERT 真文件完成六题实连验收；失败轮次保留在新验收报告。Key只来自进程环境，不写任何文件，不进入请求参数、业务记录或日志。默认 deepseek 上游失败502 UPSTREAM_ERROR。
+
+真模型编排补充：deepseek 的 /compare 联合调用 LangGraph 1.2.17；/qa 与 /compare 均可加可选查询参数 agent=true，显式启用模型不可用时可回落旧摘录器的模式。状态含论文/证据/锚点，规划与问答走模型，校验用代码；失败回到检索，最多3轮，超限拒答。search 为实际词法检索，graph_query 复用图谱；arxiv_fetch 需显式授权与注入现有抓取器，本比较路由不自动抓新论文。实际 Function Calling 来自模型 tool_calls，工具执行结果以同一 tool_call_id 返回，非直接调接口冒充。
+
+响应体与全部业务Schema保持原样；只增可选 X-ScholarGraph-QA-Meta / X-ScholarGraph-Agent-Meta 头，UTF-8百分号编码JSON，已加入CORS暴露头。元数据仅保留服务商/请求模型名/耗时/token及节点和工具参数、返回摘要；fallback_reason 非空明确回落原因。不持久化图状态/检查点，关闭外部追踪，不留原始模型协议正文或思考内容。未修改前端，元数据展示由前端后续接入。
 
 ### 模块四检索、公开抓取与推荐：已定义并落地
 
