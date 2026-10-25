@@ -17,6 +17,7 @@ from .atomic_io import windows_retry
 from .errors import PipelineError
 from .pipeline import Pipeline
 from .storage import write_json
+from .tracking_state import TrackingState, operation_lock
 
 ATOM = "{http://www.w3.org/2005/Atom}"
 ARXIV = "{http://arxiv.org/schemas/atom}"
@@ -36,6 +37,10 @@ def arxiv_identity(value):
     if not isinstance(value, str) or not IDENTITY.fullmatch(value):
         raise PipelineError("VALIDATION_ERROR", "arXiv 标识格式不合法。")
     return value
+
+
+def base_identity(value):
+    return re.sub(r"v\d+$", "", arxiv_identity(value))
 
 
 def entry_metadata(entry, gate):
@@ -146,6 +151,22 @@ class ArxivClient:
         identity = arxiv_identity(paper["arxiv_id"])
         return self._bytes("https://arxiv.org/pdf/" + identity, maximum=MAX_PDF)
 
+    def search(self, query, limit=5):
+        if not isinstance(query, str) or not 1 <= len(query) <= 1500 or not 1 <= limit <= 20:
+            raise PipelineError("VALIDATION_ERROR", "arXiv 追踪查询或候选上限不合法。")
+        raw = self._bytes("https://export.arxiv.org/api/query", params={"search_query": query,
+            "start": 0, "max_results": limit, "sortBy": "submittedDate", "sortOrder": "descending"}, maximum=2 * 1024 * 1024)
+        try:
+            root = ET.fromstring(raw)
+            if root.tag != ATOM + "feed":
+                raise ValueError("not an Atom feed")
+            entries = root.findall(ATOM + "entry")
+            return [entry_metadata(entry, self.gate) for entry in entries[:limit]]
+        except PipelineError:
+            raise
+        except Exception:
+            raise PipelineError("UPSTREAM_ERROR", "arXiv 追踪结果不是合法安全的 Atom，未编造候选。") from None
+
 
 class ArxivFetcher:
     def __init__(self, repository, *, client=None, pipeline_factory=None, lock=None):
@@ -153,6 +174,7 @@ class ArxivFetcher:
         self.client = client or ArxivClient(repository.gate)
         self.factory = pipeline_factory or self._pipeline
         self.lock = lock or threading.Lock()
+        self.state = TrackingState(repository.root)
 
     def _pipeline(self, metadata):
         def enrich(paper):
@@ -173,13 +195,46 @@ class ArxivFetcher:
             windows_retry(lambda: temporary.unlink(missing_ok=True))
 
     def fetch(self, title=None, reference=None):
-        metadata, pipeline = None, None
         try:
             if reference is not None:
                 self.repository.gate.record("ReferenceEntry", reference)
             metadata = self.client.metadata(title, reference)
+        except Exception as error:
+            return self._failure(error)
+        return self.fetch_metadata(metadata)
+
+    def _failure(self, error, metadata=None, pipeline=None):
+        if not isinstance(error, PipelineError):
+            error = PipelineError("INTERNAL_ERROR", "抓取或入库失败，未返回伪造解析结果。")
+        self.repository.gate.error(error.envelope())
+        job = pipeline.last_job if pipeline is not None else None
+        return {"succeeded": False, "metadata": metadata, "paper": None,
+                "initial_parse_status": job.history[0] if job else None,
+                "parse_status": job.current if job else None, "error": error.envelope()}
+
+    def fetch_metadata(self, metadata):
+        """Import verified public metadata; versions of an existing arXiv identity are not reimported."""
+        pipeline = None
+        try:
+            self.repository.gate.record("PaperMeta", metadata)
+            identity = base_identity(metadata["arxiv_id"])
             self._catalog(metadata)  # Actual API metadata is published before PDF/parse work.
-            with self.lock:
+            with self.lock, operation_lock(self.repository.root, "ingestion", timeout=30):
+                for paper in self.repository.papers():
+                    same_arxiv = paper["arxiv_id"] and base_identity(paper["arxiv_id"]) == identity
+                    same_doi = metadata["doi"] and paper["doi"] and metadata["doi"].casefold() == paper["doi"].casefold()
+                    if not (same_arxiv or same_doi):
+                        continue
+                    dedup = self.state.duplicate(identity, paper["id"], "ARXIV_ID" if same_arxiv else "DOI_EXACT")
+                    try:
+                        status = self.repository.status(paper["id"])
+                    except PipelineError as error:
+                        if error.code != "PAPER_NOT_FOUND":
+                            raise
+                        status = None  # Older imported bundles may have no parse job history.
+                    return {"succeeded": True, "metadata": metadata, "paper": paper,
+                        "initial_parse_status": None, "parse_status": status, "error": None,
+                        "already_present": True, "dedup": dedup}
                 raw = self.client.pdf(metadata)
                 scratch = self.repository.root / ".fetch"
                 scratch.mkdir(parents=True, exist_ok=True)
@@ -188,13 +243,13 @@ class ArxivFetcher:
                     source.write_bytes(raw)
                     pipeline = self.factory(metadata)
                     bundle = pipeline.parse(source)
+                dedup = None
+                if getattr(pipeline, "last_comparison", None):
+                    decision = self.repository.comparison(bundle["paper_meta"]["id"], kind="decision")
+                    dedup = self.state.duplicate(identity, decision["old_paper_id"], "DOI_OR_TOKEN_DICE",
+                                                 score=decision["similarity"])
             return {"succeeded": True, "metadata": metadata, "paper": bundle["paper_meta"],
-                "initial_parse_status": pipeline.last_job.history[0], "parse_status": pipeline.last_job.current, "error": None}
+                "initial_parse_status": pipeline.last_job.history[0], "parse_status": pipeline.last_job.current, "error": None,
+                "already_present": False, "dedup": dedup}
         except Exception as error:
-            if not isinstance(error, PipelineError):
-                error = PipelineError("INTERNAL_ERROR", "抓取或入库失败，未返回伪造解析结果。")
-            self.repository.gate.error(error.envelope())
-            job = pipeline.last_job if pipeline is not None else None
-            return {"succeeded": False, "metadata": metadata, "paper": None,
-                "initial_parse_status": job.history[0] if job else None,
-                "parse_status": job.current if job else None, "error": error.envelope()}
+            return self._failure(error, metadata, pipeline)

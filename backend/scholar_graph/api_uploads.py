@@ -7,6 +7,7 @@ from urllib.parse import quote
 
 from .errors import PipelineError
 from .pipeline import Pipeline
+from .tracking_state import operation_lock
 
 MAX_BYTES = 50 * 1024 * 1024
 
@@ -40,7 +41,7 @@ class UploadService:
             return bundle["paper_meta"], initial, getattr(pipeline, 'last_warning', None)
 
     def single(self, upload, response=None):
-        with self.lock:
+        with self.lock, operation_lock(self.root, "ingestion", timeout=30):
             meta, _, warning = self._one(upload)
             if warning and response is not None:
                 response.headers['X-ScholarGraph-Dedup-Warning'] = quote(warning, safe='')
@@ -50,7 +51,7 @@ class UploadService:
 
     def batch(self, parts):
         succeeded, failed = [], []
-        with self.lock:
+        with self.lock, operation_lock(self.root, "ingestion", timeout=30):
             for field, upload in parts:
                 filename = getattr(upload, "filename", None) or "(unnamed)"
                 try:
