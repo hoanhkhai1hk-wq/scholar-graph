@@ -1,6 +1,6 @@
 # ScholarGraph 模块一、二、四、五、六后端
 
-本后端实现本地 PDF 解析、状态机、去重与版本差异，模块二问答/对比、模块四检索/公开抓取/推荐，模块五局域引用图谱，以及模块六综述框架、摘录草稿与CSV图表，原19条 HTTP 端点保持，另增1条问答SSE端点，共20条。Python 包为 `scholar_graph`。自由成文、文档导出、异步队列仍未实现。
+本后端实现本地 PDF 解析、状态机、去重与版本差异，模块二问答/对比、模块四检索/公开抓取/推荐，模块五局域引用图谱，以及模块六综述框架、摘录草稿与CSV图表，原19条 HTTP 端点保持，另增问答SSE与模块三英→中翻译端点，共21条。Python 包为 `scholar_graph`。自由成文、文档导出、异步队列仍未实现。
 
 ## Windows 本地安装
 
@@ -261,3 +261,33 @@ deepseek模式的qa节点设置上游stream=true，读取真实分块后即发to
 转达WorkBuddy：当前前端同源代理先调用upstream.text()，会缓冲SSE；前端单需专门透传upstream.body、保留SSE头，fetch POST逐事件读取，处理草稿、final、error、done和断开。现有CORS已允许本地3000的POST/Content-Type，本单无前端源码或契约改动。现有Docker容器不会自动加载新源码；使用容器时须重建镜像后才有本端点，本轮验收使用临时真实TCP后端，不冒充已部署进旧容器。
 
 新增离线协议/回落测试不需要Key，真实模型SSE测试标记real_model，仅--run-real-model且Key/模型变量可用才执行，无Key跳过。真实TCP的deepseek与无Key回落日志、全量回归及事件接入约定见[本轮报告](../tests/reports/qa-sse-acceptance.md)。参考：[DeepSeek流式聊天协议](https://api-docs.deepseek.com/api/create-chat-completion/)、[Starlette StreamingResponse](https://starlette.dev/responses/)、[HTTPX流式读取](https://www.python-httpx.org/quickstart/#streaming-responses)。
+
+
+## 模块三：英→中翻译与Chunk对齐
+
+`POST /api/v1/papers/{paper_id}/translate` 接受JSON，返回传输封装，不新增或修改contracts业务记录。本单只支持target=zh；中→英全文翻译与前端同步滚动均未实现。当前已有端点加本端点合计21条。
+
+四种请求：
+
+```json
+{"scope":"abstract","target":"zh"}
+{"scope":"section","target":"zh","section_path":["1 Introduction"]}
+{"scope":"selection","target":"zh","chunk_ids":["<stored_chunk_id>"]}
+{"scope":"full","target":"zh"}
+```
+
+section_path是落盘Chunk的完整章节路径前缀，包含子章节；selection只接受该论文已有chunk_id，按原文顺序返回，不接受任意未锚定字符串，也不支持Chunk内字符选区。section/selection分别必须提供section_path/chunk_ids，其余scope不接受这两项；重复或未知chunk_id、未知范围、target=en及额外字段均422。
+
+响应：`{paper_id,scope,target,segments,markdown,metadata}`。segments每项固定包含source_chunk_id、source_text、translated_text、paper_id、page_number（PDF物理页）、section_path、type。一条源Chunk对应一条译文；Chunk过长时仅内部拆分再拼回，不新增Chunk或伪造id。摘要按Abstract/摘要章节识别；无该章节时只接受与PaperMeta.abstract完全对应的真实Chunk，不用元数据生成虚拟锚点。当前官方Attention源解析把脚注等也归入Abstract，该scope沿用已落盘边界，报告如实列数。
+
+full的markdown为整篇Markdown字符串，其他scope为null。Markdown保持原Chunk顺序，按section_path层级生成标题，为每段加入`<a id="source_chunk_id"></a>`，因此段级滚动使用segments中的source_chunk_id即可双向对应。表格保留原HTML/Markdown行列标记，公式块、代码块与行内代码、美元符/括号LaTeX均不发送给模型，由代码按原位置拼回；链接及结构标记也由代码保留；数字保留并核对源值，支持4.5 million与450万等确定性的单位换算，以及英文月份/计数的阿拉伯数字表示。这里只保留原解析已有的结构和表格/公式位置，不重新识别PDF版面，也不补造Chunk中没有的图片或数学语义；原解析误分的标题、公式仍会继承。
+
+每次请求的术语表从固定NLP词表开始，已知术语先由代码统一替换为本次中文词表用语，模型提出的新术语须有源文和译文依据，且与已完成段落兼容后才能加入；后续批次复用同一词表。metadata.terminology列出本次词表，不持久化全局词表。术语、结构、中文正文和数字增改校验失败时最多重试一次，仍失败返回原三字段UPSTREAM_ERROR，绝不返回部分成功译文。语义质量仍需抽查，结构校验不等于全部翻译逐句无误。
+
+翻译始终使用DeepSeek，独立于SCHOLAR_GRAPH_QA_MODE；只从进程环境读取DEEPSEEK_API_KEY与DEEPSEEK_MODEL，不读写Key文件，不提供无Key摘录假译文。缺配置返回502/UPSTREAM_ERROR及“环境变量未设置，未调用模型”；上游HTTP/连接/超时失败也返回明确统一错误，不包含上游原始正文。metadata仅含服务商、模型名、耗时、token用量、词表与对齐说明，不含Key、请求消息或思考内容。非持久化同步端点，无后台队列或翻译缓存。
+
+原文上限600000字符，超过时422并要求按章节/选区调用；内部每个单元约3000字符、批次最多4000字符或32单元，翻译调用max_tokens=8192，旧问答默认2400不变。批次间检查900秒总预算，单次上游调用沿用60秒网络超时；不承诺HTTP读取持续有数据时绝对900秒中断。
+
+前端协作（由用户转达WorkBuddy）：通过原同源代理POST本端点，按segments的source_chunk_id匹配阅读器已落盘Chunk，page_number与section_path用于定位校验；full.markdown用于整篇版式视图，原文/译文段级滚动不依赖译文字符长度。本单没有改前端，没有声称同步滚动已接通；现有Docker镜像需要重建才含本端点。
+
+实连测试标记real_model，需`--run-real-model`与模型/Key变量，无Key跳过；离线协议和未配置错误测试仍执行。官方Attention的摘要、章节和全文实测、对照样本及回归证据见[翻译验收报告](../tests/reports/translation-acceptance.md)。调用依据：[DeepSeek聊天与JSON输出协议](https://api-docs.deepseek.com/api/create-chat-completion/)。
