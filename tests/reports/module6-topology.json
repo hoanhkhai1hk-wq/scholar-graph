@@ -1,0 +1,1276 @@
+{
+  "request": {
+    "paper_ids": [
+      "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+    ],
+    "logic": {
+      "nodes": [
+        {
+          "id": "inputs",
+          "label": "Input tokens",
+          "column": 0,
+          "row": 0,
+          "source_chunk_ids": [
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+          ]
+        },
+        {
+          "id": "embenc",
+          "label": "Input embedding + position",
+          "column": 0,
+          "row": 1,
+          "source_chunk_ids": [
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064",
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00068"
+          ]
+        },
+        {
+          "id": "encatt",
+          "label": "Encoder self-attention",
+          "column": 0,
+          "row": 2,
+          "source_chunk_ids": [
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031"
+          ]
+        },
+        {
+          "id": "encnorm",
+          "label": "Encoder Add & Norm",
+          "column": 0,
+          "row": 3,
+          "source_chunk_ids": [
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031"
+          ]
+        },
+        {
+          "id": "encff",
+          "label": "Encoder feed-forward",
+          "column": 0,
+          "row": 4,
+          "source_chunk_ids": [
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031"
+          ]
+        },
+        {
+          "id": "encout",
+          "label": "Encoder Add & Norm / memory",
+          "column": 0,
+          "row": 5,
+          "source_chunk_ids": [
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031"
+          ]
+        },
+        {
+          "id": "shifted",
+          "label": "Shifted output tokens",
+          "column": 1,
+          "row": 0,
+          "source_chunk_ids": [
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+          ]
+        },
+        {
+          "id": "embdec",
+          "label": "Output embedding + position",
+          "column": 1,
+          "row": 1,
+          "source_chunk_ids": [
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064",
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00068"
+          ]
+        },
+        {
+          "id": "masked",
+          "label": "Masked self-attention",
+          "column": 1,
+          "row": 2,
+          "source_chunk_ids": [
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+          ]
+        },
+        {
+          "id": "decnorm",
+          "label": "Decoder Add & Norm",
+          "column": 1,
+          "row": 3,
+          "source_chunk_ids": [
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+          ]
+        },
+        {
+          "id": "cross",
+          "label": "Encoder-decoder attention",
+          "column": 1,
+          "row": 4,
+          "source_chunk_ids": [
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00057"
+          ]
+        },
+        {
+          "id": "crossnorm",
+          "label": "Cross-attention Add & Norm",
+          "column": 1,
+          "row": 5,
+          "source_chunk_ids": [
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+          ]
+        },
+        {
+          "id": "decff",
+          "label": "Decoder feed-forward",
+          "column": 1,
+          "row": 6,
+          "source_chunk_ids": [
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031",
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+          ]
+        },
+        {
+          "id": "decfinal",
+          "label": "Decoder Add & Norm",
+          "column": 1,
+          "row": 7,
+          "source_chunk_ids": [
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+          ]
+        },
+        {
+          "id": "linear",
+          "label": "Linear + Softmax",
+          "column": 1,
+          "row": 8,
+          "source_chunk_ids": [
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+          ]
+        },
+        {
+          "id": "prob",
+          "label": "Next-token probabilities",
+          "column": 1,
+          "row": 9,
+          "source_chunk_ids": [
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+          ]
+        }
+      ],
+      "edges": [
+        {
+          "from_id": "inputs",
+          "to_id": "embenc",
+          "label": "flow",
+          "source_chunk_ids": [
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031",
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+          ]
+        },
+        {
+          "from_id": "embenc",
+          "to_id": "encatt",
+          "label": "flow",
+          "source_chunk_ids": [
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031",
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+          ]
+        },
+        {
+          "from_id": "encatt",
+          "to_id": "encnorm",
+          "label": "flow",
+          "source_chunk_ids": [
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031",
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+          ]
+        },
+        {
+          "from_id": "encnorm",
+          "to_id": "encff",
+          "label": "flow",
+          "source_chunk_ids": [
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031",
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+          ]
+        },
+        {
+          "from_id": "encff",
+          "to_id": "encout",
+          "label": "flow",
+          "source_chunk_ids": [
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031",
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+          ]
+        },
+        {
+          "from_id": "shifted",
+          "to_id": "embdec",
+          "label": "flow",
+          "source_chunk_ids": [
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032",
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+          ]
+        },
+        {
+          "from_id": "embdec",
+          "to_id": "masked",
+          "label": "flow",
+          "source_chunk_ids": [
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032",
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+          ]
+        },
+        {
+          "from_id": "masked",
+          "to_id": "decnorm",
+          "label": "flow",
+          "source_chunk_ids": [
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032",
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+          ]
+        },
+        {
+          "from_id": "decnorm",
+          "to_id": "cross",
+          "label": "flow",
+          "source_chunk_ids": [
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032",
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+          ]
+        },
+        {
+          "from_id": "cross",
+          "to_id": "crossnorm",
+          "label": "flow",
+          "source_chunk_ids": [
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032",
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+          ]
+        },
+        {
+          "from_id": "crossnorm",
+          "to_id": "decff",
+          "label": "flow",
+          "source_chunk_ids": [
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032",
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+          ]
+        },
+        {
+          "from_id": "decff",
+          "to_id": "decfinal",
+          "label": "flow",
+          "source_chunk_ids": [
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032",
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+          ]
+        },
+        {
+          "from_id": "decfinal",
+          "to_id": "linear",
+          "label": "flow",
+          "source_chunk_ids": [
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032",
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+          ]
+        },
+        {
+          "from_id": "linear",
+          "to_id": "prob",
+          "label": "flow",
+          "source_chunk_ids": [
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032",
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+          ]
+        },
+        {
+          "from_id": "encout",
+          "to_id": "cross",
+          "label": "keys and values",
+          "source_chunk_ids": [
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00057"
+          ]
+        },
+        {
+          "from_id": "embenc",
+          "to_id": "encnorm",
+          "label": "residual",
+          "source_chunk_ids": [
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031"
+          ]
+        },
+        {
+          "from_id": "encnorm",
+          "to_id": "encout",
+          "label": "residual",
+          "source_chunk_ids": [
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031"
+          ]
+        },
+        {
+          "from_id": "embdec",
+          "to_id": "decnorm",
+          "label": "residual",
+          "source_chunk_ids": [
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+          ]
+        },
+        {
+          "from_id": "decnorm",
+          "to_id": "crossnorm",
+          "label": "residual",
+          "source_chunk_ids": [
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+          ]
+        },
+        {
+          "from_id": "crossnorm",
+          "to_id": "decfinal",
+          "label": "residual",
+          "source_chunk_ids": [
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+          ]
+        }
+      ]
+    },
+    "formats": [
+      "tikz",
+      "dot",
+      "mermaid"
+    ]
+  },
+  "response": {
+    "nodes": [
+      {
+        "id": "inputs",
+        "label": "Input tokens",
+        "source_chunk_ids": [
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+        ],
+        "column": 0,
+        "row": 0,
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 5,
+            "section": [
+              "MultiHead(Q, K, V ) = Concat(head 1 , ..., head h )W O",
+              "3.4 Embeddings and Softmax"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+          }
+        ]
+      },
+      {
+        "id": "embenc",
+        "label": "Input embedding + position",
+        "source_chunk_ids": [
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064",
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00068"
+        ],
+        "column": 0,
+        "row": 1,
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 5,
+            "section": [
+              "MultiHead(Q, K, V ) = Concat(head 1 , ..., head h )W O",
+              "3.4 Embeddings and Softmax"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+          },
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 6,
+            "section": [
+              "MultiHead(Q, K, V ) = Concat(head 1 , ..., head h )W O",
+              "3.5 Positional Encoding"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00068"
+          }
+        ]
+      },
+      {
+        "id": "encatt",
+        "label": "Encoder self-attention",
+        "source_chunk_ids": [
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031"
+        ],
+        "column": 0,
+        "row": 2,
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 3,
+            "section": [
+              "3 Model Architecture",
+              "3.1 Encoder and Decoder Stacks"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031"
+          }
+        ]
+      },
+      {
+        "id": "encnorm",
+        "label": "Encoder Add & Norm",
+        "source_chunk_ids": [
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031"
+        ],
+        "column": 0,
+        "row": 3,
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 3,
+            "section": [
+              "3 Model Architecture",
+              "3.1 Encoder and Decoder Stacks"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031"
+          }
+        ]
+      },
+      {
+        "id": "encff",
+        "label": "Encoder feed-forward",
+        "source_chunk_ids": [
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031"
+        ],
+        "column": 0,
+        "row": 4,
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 3,
+            "section": [
+              "3 Model Architecture",
+              "3.1 Encoder and Decoder Stacks"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031"
+          }
+        ]
+      },
+      {
+        "id": "encout",
+        "label": "Encoder Add & Norm / memory",
+        "source_chunk_ids": [
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031"
+        ],
+        "column": 0,
+        "row": 5,
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 3,
+            "section": [
+              "3 Model Architecture",
+              "3.1 Encoder and Decoder Stacks"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031"
+          }
+        ]
+      },
+      {
+        "id": "shifted",
+        "label": "Shifted output tokens",
+        "source_chunk_ids": [
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+        ],
+        "column": 1,
+        "row": 0,
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 3,
+            "section": [
+              "3 Model Architecture",
+              "3.1 Encoder and Decoder Stacks"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+          }
+        ]
+      },
+      {
+        "id": "embdec",
+        "label": "Output embedding + position",
+        "source_chunk_ids": [
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064",
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00068"
+        ],
+        "column": 1,
+        "row": 1,
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 5,
+            "section": [
+              "MultiHead(Q, K, V ) = Concat(head 1 , ..., head h )W O",
+              "3.4 Embeddings and Softmax"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+          },
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 6,
+            "section": [
+              "MultiHead(Q, K, V ) = Concat(head 1 , ..., head h )W O",
+              "3.5 Positional Encoding"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00068"
+          }
+        ]
+      },
+      {
+        "id": "masked",
+        "label": "Masked self-attention",
+        "source_chunk_ids": [
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+        ],
+        "column": 1,
+        "row": 2,
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 3,
+            "section": [
+              "3 Model Architecture",
+              "3.1 Encoder and Decoder Stacks"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+          }
+        ]
+      },
+      {
+        "id": "decnorm",
+        "label": "Decoder Add & Norm",
+        "source_chunk_ids": [
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+        ],
+        "column": 1,
+        "row": 3,
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 3,
+            "section": [
+              "3 Model Architecture",
+              "3.1 Encoder and Decoder Stacks"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+          }
+        ]
+      },
+      {
+        "id": "cross",
+        "label": "Encoder-decoder attention",
+        "source_chunk_ids": [
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00057"
+        ],
+        "column": 1,
+        "row": 4,
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 5,
+            "section": [
+              "MultiHead(Q, K, V ) = Concat(head 1 , ..., head h )W O",
+              "3.2.3 Applications of Attention in our Model"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00057"
+          }
+        ]
+      },
+      {
+        "id": "crossnorm",
+        "label": "Cross-attention Add & Norm",
+        "source_chunk_ids": [
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+        ],
+        "column": 1,
+        "row": 5,
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 3,
+            "section": [
+              "3 Model Architecture",
+              "3.1 Encoder and Decoder Stacks"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+          }
+        ]
+      },
+      {
+        "id": "decff",
+        "label": "Decoder feed-forward",
+        "source_chunk_ids": [
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031",
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+        ],
+        "column": 1,
+        "row": 6,
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 3,
+            "section": [
+              "3 Model Architecture",
+              "3.1 Encoder and Decoder Stacks"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031"
+          },
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 3,
+            "section": [
+              "3 Model Architecture",
+              "3.1 Encoder and Decoder Stacks"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+          }
+        ]
+      },
+      {
+        "id": "decfinal",
+        "label": "Decoder Add & Norm",
+        "source_chunk_ids": [
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+        ],
+        "column": 1,
+        "row": 7,
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 3,
+            "section": [
+              "3 Model Architecture",
+              "3.1 Encoder and Decoder Stacks"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+          }
+        ]
+      },
+      {
+        "id": "linear",
+        "label": "Linear + Softmax",
+        "source_chunk_ids": [
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+        ],
+        "column": 1,
+        "row": 8,
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 5,
+            "section": [
+              "MultiHead(Q, K, V ) = Concat(head 1 , ..., head h )W O",
+              "3.4 Embeddings and Softmax"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+          }
+        ]
+      },
+      {
+        "id": "prob",
+        "label": "Next-token probabilities",
+        "source_chunk_ids": [
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+        ],
+        "column": 1,
+        "row": 9,
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 5,
+            "section": [
+              "MultiHead(Q, K, V ) = Concat(head 1 , ..., head h )W O",
+              "3.4 Embeddings and Softmax"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+          }
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "from_id": "inputs",
+        "to_id": "embenc",
+        "label": "flow",
+        "source_chunk_ids": [
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031",
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+        ],
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 3,
+            "section": [
+              "3 Model Architecture",
+              "3.1 Encoder and Decoder Stacks"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031"
+          },
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 5,
+            "section": [
+              "MultiHead(Q, K, V ) = Concat(head 1 , ..., head h )W O",
+              "3.4 Embeddings and Softmax"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+          }
+        ]
+      },
+      {
+        "from_id": "embenc",
+        "to_id": "encatt",
+        "label": "flow",
+        "source_chunk_ids": [
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031",
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+        ],
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 3,
+            "section": [
+              "3 Model Architecture",
+              "3.1 Encoder and Decoder Stacks"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031"
+          },
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 5,
+            "section": [
+              "MultiHead(Q, K, V ) = Concat(head 1 , ..., head h )W O",
+              "3.4 Embeddings and Softmax"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+          }
+        ]
+      },
+      {
+        "from_id": "encatt",
+        "to_id": "encnorm",
+        "label": "flow",
+        "source_chunk_ids": [
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031",
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+        ],
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 3,
+            "section": [
+              "3 Model Architecture",
+              "3.1 Encoder and Decoder Stacks"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031"
+          },
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 5,
+            "section": [
+              "MultiHead(Q, K, V ) = Concat(head 1 , ..., head h )W O",
+              "3.4 Embeddings and Softmax"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+          }
+        ]
+      },
+      {
+        "from_id": "encnorm",
+        "to_id": "encff",
+        "label": "flow",
+        "source_chunk_ids": [
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031",
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+        ],
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 3,
+            "section": [
+              "3 Model Architecture",
+              "3.1 Encoder and Decoder Stacks"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031"
+          },
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 5,
+            "section": [
+              "MultiHead(Q, K, V ) = Concat(head 1 , ..., head h )W O",
+              "3.4 Embeddings and Softmax"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+          }
+        ]
+      },
+      {
+        "from_id": "encff",
+        "to_id": "encout",
+        "label": "flow",
+        "source_chunk_ids": [
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031",
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+        ],
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 3,
+            "section": [
+              "3 Model Architecture",
+              "3.1 Encoder and Decoder Stacks"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031"
+          },
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 5,
+            "section": [
+              "MultiHead(Q, K, V ) = Concat(head 1 , ..., head h )W O",
+              "3.4 Embeddings and Softmax"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+          }
+        ]
+      },
+      {
+        "from_id": "shifted",
+        "to_id": "embdec",
+        "label": "flow",
+        "source_chunk_ids": [
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032",
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+        ],
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 3,
+            "section": [
+              "3 Model Architecture",
+              "3.1 Encoder and Decoder Stacks"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+          },
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 5,
+            "section": [
+              "MultiHead(Q, K, V ) = Concat(head 1 , ..., head h )W O",
+              "3.4 Embeddings and Softmax"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+          }
+        ]
+      },
+      {
+        "from_id": "embdec",
+        "to_id": "masked",
+        "label": "flow",
+        "source_chunk_ids": [
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032",
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+        ],
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 3,
+            "section": [
+              "3 Model Architecture",
+              "3.1 Encoder and Decoder Stacks"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+          },
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 5,
+            "section": [
+              "MultiHead(Q, K, V ) = Concat(head 1 , ..., head h )W O",
+              "3.4 Embeddings and Softmax"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+          }
+        ]
+      },
+      {
+        "from_id": "masked",
+        "to_id": "decnorm",
+        "label": "flow",
+        "source_chunk_ids": [
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032",
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+        ],
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 3,
+            "section": [
+              "3 Model Architecture",
+              "3.1 Encoder and Decoder Stacks"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+          },
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 5,
+            "section": [
+              "MultiHead(Q, K, V ) = Concat(head 1 , ..., head h )W O",
+              "3.4 Embeddings and Softmax"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+          }
+        ]
+      },
+      {
+        "from_id": "decnorm",
+        "to_id": "cross",
+        "label": "flow",
+        "source_chunk_ids": [
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032",
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+        ],
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 3,
+            "section": [
+              "3 Model Architecture",
+              "3.1 Encoder and Decoder Stacks"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+          },
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 5,
+            "section": [
+              "MultiHead(Q, K, V ) = Concat(head 1 , ..., head h )W O",
+              "3.4 Embeddings and Softmax"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+          }
+        ]
+      },
+      {
+        "from_id": "cross",
+        "to_id": "crossnorm",
+        "label": "flow",
+        "source_chunk_ids": [
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032",
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+        ],
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 3,
+            "section": [
+              "3 Model Architecture",
+              "3.1 Encoder and Decoder Stacks"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+          },
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 5,
+            "section": [
+              "MultiHead(Q, K, V ) = Concat(head 1 , ..., head h )W O",
+              "3.4 Embeddings and Softmax"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+          }
+        ]
+      },
+      {
+        "from_id": "crossnorm",
+        "to_id": "decff",
+        "label": "flow",
+        "source_chunk_ids": [
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032",
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+        ],
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 3,
+            "section": [
+              "3 Model Architecture",
+              "3.1 Encoder and Decoder Stacks"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+          },
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 5,
+            "section": [
+              "MultiHead(Q, K, V ) = Concat(head 1 , ..., head h )W O",
+              "3.4 Embeddings and Softmax"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+          }
+        ]
+      },
+      {
+        "from_id": "decff",
+        "to_id": "decfinal",
+        "label": "flow",
+        "source_chunk_ids": [
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032",
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+        ],
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 3,
+            "section": [
+              "3 Model Architecture",
+              "3.1 Encoder and Decoder Stacks"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+          },
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 5,
+            "section": [
+              "MultiHead(Q, K, V ) = Concat(head 1 , ..., head h )W O",
+              "3.4 Embeddings and Softmax"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+          }
+        ]
+      },
+      {
+        "from_id": "decfinal",
+        "to_id": "linear",
+        "label": "flow",
+        "source_chunk_ids": [
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032",
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+        ],
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 3,
+            "section": [
+              "3 Model Architecture",
+              "3.1 Encoder and Decoder Stacks"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+          },
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 5,
+            "section": [
+              "MultiHead(Q, K, V ) = Concat(head 1 , ..., head h )W O",
+              "3.4 Embeddings and Softmax"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+          }
+        ]
+      },
+      {
+        "from_id": "linear",
+        "to_id": "prob",
+        "label": "flow",
+        "source_chunk_ids": [
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032",
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+        ],
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 3,
+            "section": [
+              "3 Model Architecture",
+              "3.1 Encoder and Decoder Stacks"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+          },
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 5,
+            "section": [
+              "MultiHead(Q, K, V ) = Concat(head 1 , ..., head h )W O",
+              "3.4 Embeddings and Softmax"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064"
+          }
+        ]
+      },
+      {
+        "from_id": "encout",
+        "to_id": "cross",
+        "label": "keys and values",
+        "source_chunk_ids": [
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00057"
+        ],
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 5,
+            "section": [
+              "MultiHead(Q, K, V ) = Concat(head 1 , ..., head h )W O",
+              "3.2.3 Applications of Attention in our Model"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00057"
+          }
+        ]
+      },
+      {
+        "from_id": "embenc",
+        "to_id": "encnorm",
+        "label": "residual",
+        "source_chunk_ids": [
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031"
+        ],
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 3,
+            "section": [
+              "3 Model Architecture",
+              "3.1 Encoder and Decoder Stacks"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031"
+          }
+        ]
+      },
+      {
+        "from_id": "encnorm",
+        "to_id": "encout",
+        "label": "residual",
+        "source_chunk_ids": [
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031"
+        ],
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 3,
+            "section": [
+              "3 Model Architecture",
+              "3.1 Encoder and Decoder Stacks"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031"
+          }
+        ]
+      },
+      {
+        "from_id": "embdec",
+        "to_id": "decnorm",
+        "label": "residual",
+        "source_chunk_ids": [
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+        ],
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 3,
+            "section": [
+              "3 Model Architecture",
+              "3.1 Encoder and Decoder Stacks"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+          }
+        ]
+      },
+      {
+        "from_id": "decnorm",
+        "to_id": "crossnorm",
+        "label": "residual",
+        "source_chunk_ids": [
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+        ],
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 3,
+            "section": [
+              "3 Model Architecture",
+              "3.1 Encoder and Decoder Stacks"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+          }
+        ]
+      },
+      {
+        "from_id": "crossnorm",
+        "to_id": "decfinal",
+        "label": "residual",
+        "source_chunk_ids": [
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+        ],
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 3,
+            "section": [
+              "3 Model Architecture",
+              "3.1 Encoder and Decoder Stacks"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+          }
+        ]
+      }
+    ],
+    "scripts": [
+      {
+        "format": "tikz",
+        "script": "\\documentclass{ctexart}\n\\usepackage{tikz}\n\\begin{document}\n\\begin{tikzpicture}[every node/.style={draw,rounded corners,align=center,text width=42mm}]\n\\node (n0) at (0,0) {Input tokens};\n\\node (n1) at (0,-2) {Input embedding + position};\n\\node (n2) at (0,-4) {Encoder self-attention};\n\\node (n3) at (0,-6) {Encoder Add \\& Norm};\n\\node (n4) at (0,-8) {Encoder feed-forward};\n\\node (n5) at (0,-10) {Encoder Add \\& Norm / memory};\n\\node (n6) at (6,0) {Shifted output tokens};\n\\node (n7) at (6,-2) {Output embedding + position};\n\\node (n8) at (6,-4) {Masked self-attention};\n\\node (n9) at (6,-6) {Decoder Add \\& Norm};\n\\node (n10) at (6,-8) {Encoder-decoder attention};\n\\node (n11) at (6,-10) {Cross-attention Add \\& Norm};\n\\node (n12) at (6,-12) {Decoder feed-forward};\n\\node (n13) at (6,-14) {Decoder Add \\& Norm};\n\\node (n14) at (6,-16) {Linear + Softmax};\n\\node (n15) at (6,-18) {Next-token probabilities};\n\\draw[->] (n0) -- node[above,draw=none] {flow} (n1);\n\\draw[->] (n1) -- node[above,draw=none] {flow} (n2);\n\\draw[->] (n2) -- node[above,draw=none] {flow} (n3);\n\\draw[->] (n3) -- node[above,draw=none] {flow} (n4);\n\\draw[->] (n4) -- node[above,draw=none] {flow} (n5);\n\\draw[->] (n6) -- node[above,draw=none] {flow} (n7);\n\\draw[->] (n7) -- node[above,draw=none] {flow} (n8);\n\\draw[->] (n8) -- node[above,draw=none] {flow} (n9);\n\\draw[->] (n9) -- node[above,draw=none] {flow} (n10);\n\\draw[->] (n10) -- node[above,draw=none] {flow} (n11);\n\\draw[->] (n11) -- node[above,draw=none] {flow} (n12);\n\\draw[->] (n12) -- node[above,draw=none] {flow} (n13);\n\\draw[->] (n13) -- node[above,draw=none] {flow} (n14);\n\\draw[->] (n14) -- node[above,draw=none] {flow} (n15);\n\\draw[->] (n5) -- node[above,draw=none] {keys and values} (n10);\n\\draw[->] (n1) -- node[above,draw=none] {residual} (n3);\n\\draw[->] (n3) -- node[above,draw=none] {residual} (n5);\n\\draw[->] (n7) -- node[above,draw=none] {residual} (n9);\n\\draw[->] (n9) -- node[above,draw=none] {residual} (n11);\n\\draw[->] (n11) -- node[above,draw=none] {residual} (n13);\n\\end{tikzpicture}\n\\end{document}\n",
+        "validation": {
+          "passed": true,
+          "parser": "generated_subset_v1",
+          "balanced": true,
+          "node_count": 16,
+          "edge_count": 20,
+          "compiler_executed": false
+        }
+      },
+      {
+        "format": "dot",
+        "script": "digraph ScholarGraph {\n  rankdir=TB;\n  n0 [label=\"Input tokens\"];\n  n1 [label=\"Input embedding + position\"];\n  n2 [label=\"Encoder self-attention\"];\n  n3 [label=\"Encoder Add & Norm\"];\n  n4 [label=\"Encoder feed-forward\"];\n  n5 [label=\"Encoder Add & Norm / memory\"];\n  n6 [label=\"Shifted output tokens\"];\n  n7 [label=\"Output embedding + position\"];\n  n8 [label=\"Masked self-attention\"];\n  n9 [label=\"Decoder Add & Norm\"];\n  n10 [label=\"Encoder-decoder attention\"];\n  n11 [label=\"Cross-attention Add & Norm\"];\n  n12 [label=\"Decoder feed-forward\"];\n  n13 [label=\"Decoder Add & Norm\"];\n  n14 [label=\"Linear + Softmax\"];\n  n15 [label=\"Next-token probabilities\"];\n  n0 -> n1 [label=\"flow\"];\n  n1 -> n2 [label=\"flow\"];\n  n2 -> n3 [label=\"flow\"];\n  n3 -> n4 [label=\"flow\"];\n  n4 -> n5 [label=\"flow\"];\n  n6 -> n7 [label=\"flow\"];\n  n7 -> n8 [label=\"flow\"];\n  n8 -> n9 [label=\"flow\"];\n  n9 -> n10 [label=\"flow\"];\n  n10 -> n11 [label=\"flow\"];\n  n11 -> n12 [label=\"flow\"];\n  n12 -> n13 [label=\"flow\"];\n  n13 -> n14 [label=\"flow\"];\n  n14 -> n15 [label=\"flow\"];\n  n5 -> n10 [label=\"keys and values\"];\n  n1 -> n3 [label=\"residual\"];\n  n3 -> n5 [label=\"residual\"];\n  n7 -> n9 [label=\"residual\"];\n  n9 -> n11 [label=\"residual\"];\n  n11 -> n13 [label=\"residual\"];\n}\n",
+        "validation": {
+          "passed": true,
+          "parser": "generated_subset_v1",
+          "balanced": true,
+          "node_count": 16,
+          "edge_count": 20,
+          "compiler_executed": false
+        }
+      },
+      {
+        "format": "mermaid",
+        "script": "flowchart TD\n  n0[\"Input tokens\"]\n  n1[\"Input embedding + position\"]\n  n2[\"Encoder self-attention\"]\n  n3[\"Encoder Add #38; Norm\"]\n  n4[\"Encoder feed-forward\"]\n  n5[\"Encoder Add #38; Norm / memory\"]\n  n6[\"Shifted output tokens\"]\n  n7[\"Output embedding + position\"]\n  n8[\"Masked self-attention\"]\n  n9[\"Decoder Add #38; Norm\"]\n  n10[\"Encoder-decoder attention\"]\n  n11[\"Cross-attention Add #38; Norm\"]\n  n12[\"Decoder feed-forward\"]\n  n13[\"Decoder Add #38; Norm\"]\n  n14[\"Linear + Softmax\"]\n  n15[\"Next-token probabilities\"]\n  n0 -->|\"flow\"| n1\n  n1 -->|\"flow\"| n2\n  n2 -->|\"flow\"| n3\n  n3 -->|\"flow\"| n4\n  n4 -->|\"flow\"| n5\n  n6 -->|\"flow\"| n7\n  n7 -->|\"flow\"| n8\n  n8 -->|\"flow\"| n9\n  n9 -->|\"flow\"| n10\n  n10 -->|\"flow\"| n11\n  n11 -->|\"flow\"| n12\n  n12 -->|\"flow\"| n13\n  n13 -->|\"flow\"| n14\n  n14 -->|\"flow\"| n15\n  n5 -->|\"keys and values\"| n10\n  n1 -->|\"residual\"| n3\n  n3 -->|\"residual\"| n5\n  n7 -->|\"residual\"| n9\n  n9 -->|\"residual\"| n11\n  n11 -->|\"residual\"| n13\n",
+        "validation": {
+          "passed": true,
+          "parser": "generated_subset_v1",
+          "balanced": true,
+          "node_count": 16,
+          "edge_count": 20,
+          "compiler_executed": false
+        }
+      }
+    ],
+    "metadata": {
+      "generator": "deterministic_renderers",
+      "source": "user_anchored_logic",
+      "script_ids": {
+        "inputs": "n0",
+        "embenc": "n1",
+        "encatt": "n2",
+        "encnorm": "n3",
+        "encff": "n4",
+        "encout": "n5",
+        "shifted": "n6",
+        "embdec": "n7",
+        "masked": "n8",
+        "decnorm": "n9",
+        "cross": "n10",
+        "crossnorm": "n11",
+        "decff": "n12",
+        "decfinal": "n13",
+        "linear": "n14",
+        "prob": "n15"
+      },
+      "validation_scope": "supported_generated_grammar_not_general_compilation"
+    }
+  }
+}

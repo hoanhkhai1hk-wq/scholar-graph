@@ -1,0 +1,2336 @@
+{
+  "baseline": "0d81daf0aac3c6fa10f5d418e1026fcf4dbb7f64",
+  "runs": [
+    {
+      "status": "failed",
+      "environment": {
+        "DEEPSEEK_API_KEY": "已设置",
+        "DEEPSEEK_MODEL": "已设置"
+      },
+      "cases": [
+        {
+          "name": "topology",
+          "http_status": 200,
+          "elapsed_seconds": 0.061079,
+          "status": "passed",
+          "nodes": 16,
+          "edges": 20,
+          "validation": [
+            {
+              "passed": true,
+              "parser": "generated_subset_v1",
+              "balanced": true,
+              "node_count": 16,
+              "edge_count": 20,
+              "compiler_executed": false,
+              "format": "tikz"
+            },
+            {
+              "passed": true,
+              "parser": "generated_subset_v1",
+              "balanced": true,
+              "node_count": 16,
+              "edge_count": 20,
+              "compiler_executed": false,
+              "format": "dot"
+            },
+            {
+              "passed": true,
+              "parser": "generated_subset_v1",
+              "balanced": true,
+              "node_count": 16,
+              "edge_count": 20,
+              "compiler_executed": false,
+              "format": "mermaid"
+            }
+          ]
+        },
+        {
+          "name": "chart_3d",
+          "http_status": 200,
+          "status": "passed",
+          "elapsed_seconds": 1.677809,
+          "data_origin": "自制演示CSV，非论文实验值",
+          "data_table": {
+            "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+            "columns": [
+              "epoch",
+              "Base",
+              "Big"
+            ],
+            "rows": [
+              {
+                "row_number": 2,
+                "values": {
+                  "epoch": 1.0,
+                  "Base": 12.0,
+                  "Big": 20.0
+                }
+              },
+              {
+                "row_number": 3,
+                "values": {
+                  "epoch": 2.0,
+                  "Base": 18.0,
+                  "Big": 24.0
+                }
+              },
+              {
+                "row_number": 4,
+                "values": {
+                  "epoch": 3.0,
+                  "Base": 21.0,
+                  "Big": 26.0
+                }
+              },
+              {
+                "row_number": 5,
+                "values": {
+                  "epoch": 4.0,
+                  "Base": 22.5,
+                  "Big": 27.0
+                }
+              }
+            ]
+          },
+          "caption": "Base在所给数据中呈单调上升趋势，且变化速率的绝对值逐步减小，变化正在放缓。\nBig在所给数据中呈单调上升趋势，且变化速率的绝对值逐步减小，变化正在放缓。",
+          "conclusions": [
+            {
+              "series_name": "Base",
+              "trend": "increasing",
+              "shape": "decelerating",
+              "row_numbers": [
+                2,
+                3,
+                4,
+                5
+              ],
+              "text": "Base在所给数据中呈单调上升趋势，且变化速率的绝对值逐步减小，变化正在放缓。",
+              "csv_anchors": [
+                {
+                  "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                  "row_number": 2,
+                  "column_name": "Base"
+                },
+                {
+                  "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                  "row_number": 3,
+                  "column_name": "Base"
+                },
+                {
+                  "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                  "row_number": 4,
+                  "column_name": "Base"
+                },
+                {
+                  "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                  "row_number": 5,
+                  "column_name": "Base"
+                }
+              ]
+            },
+            {
+              "series_name": "Big",
+              "trend": "increasing",
+              "shape": "decelerating",
+              "row_numbers": [
+                2,
+                3,
+                4,
+                5
+              ],
+              "text": "Big在所给数据中呈单调上升趋势，且变化速率的绝对值逐步减小，变化正在放缓。",
+              "csv_anchors": [
+                {
+                  "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                  "row_number": 2,
+                  "column_name": "Big"
+                },
+                {
+                  "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                  "row_number": 3,
+                  "column_name": "Big"
+                },
+                {
+                  "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                  "row_number": 4,
+                  "column_name": "Big"
+                },
+                {
+                  "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                  "row_number": 5,
+                  "column_name": "Big"
+                }
+              ]
+            }
+          ],
+          "numeric_checks": [
+            {
+              "value": 1.0,
+              "csv_anchor": {
+                "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                "row_number": 2,
+                "column_name": "epoch"
+              },
+              "verified": true
+            },
+            {
+              "value": 2.0,
+              "csv_anchor": {
+                "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                "row_number": 3,
+                "column_name": "epoch"
+              },
+              "verified": true
+            },
+            {
+              "value": 3.0,
+              "csv_anchor": {
+                "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                "row_number": 4,
+                "column_name": "epoch"
+              },
+              "verified": true
+            },
+            {
+              "value": 4.0,
+              "csv_anchor": {
+                "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                "row_number": 5,
+                "column_name": "epoch"
+              },
+              "verified": true
+            },
+            {
+              "value": 12.0,
+              "csv_anchor": {
+                "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                "row_number": 2,
+                "column_name": "Base"
+              },
+              "verified": true
+            },
+            {
+              "value": 18.0,
+              "csv_anchor": {
+                "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                "row_number": 3,
+                "column_name": "Base"
+              },
+              "verified": true
+            },
+            {
+              "value": 21.0,
+              "csv_anchor": {
+                "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                "row_number": 4,
+                "column_name": "Base"
+              },
+              "verified": true
+            },
+            {
+              "value": 22.5,
+              "csv_anchor": {
+                "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                "row_number": 5,
+                "column_name": "Base"
+              },
+              "verified": true
+            },
+            {
+              "value": 20.0,
+              "csv_anchor": {
+                "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                "row_number": 2,
+                "column_name": "Big"
+              },
+              "verified": true
+            },
+            {
+              "value": 24.0,
+              "csv_anchor": {
+                "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                "row_number": 3,
+                "column_name": "Big"
+              },
+              "verified": true
+            },
+            {
+              "value": 26.0,
+              "csv_anchor": {
+                "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                "row_number": 4,
+                "column_name": "Big"
+              },
+              "verified": true
+            },
+            {
+              "value": 27.0,
+              "csv_anchor": {
+                "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                "row_number": 5,
+                "column_name": "Big"
+              },
+              "verified": true
+            }
+          ],
+          "metadata": {
+            "caption_method": "deepseek_grounded_selection",
+            "model_calls": [
+              {
+                "provider": "deepseek",
+                "model": "deepseek-chat",
+                "phase": "chart_3d_caption_attempt_1",
+                "elapsed_seconds": 1.163064,
+                "prompt_tokens": 642,
+                "completion_tokens": 114,
+                "total_tokens": 756,
+                "http_status": 200,
+                "status": "succeeded"
+              }
+            ],
+            "trend_basis": "strictly_increasing_x",
+            "png_width": 800,
+            "png_height": 600
+          },
+          "png": {
+            "sha256": "048ac365fb98041d6b2679e69f6b79021e1a33b144aaa177b9cead311f56af8c",
+            "bytes": 63146,
+            "width": 800,
+            "height": 600,
+            "path": "tests/reports/module6-3d-bar.png"
+          }
+        },
+        {
+          "name": "back_translation_abstract",
+          "http_status": 200,
+          "status": "passed",
+          "elapsed_seconds": 3.207383,
+          "chinese_input_proof": {
+            "path": "data/translation-acceptance/abstract-response.json",
+            "response_sha256": "a71e6be217237c32990cebe8c237e9750babd20b689f54f3a1202415938c0dbf",
+            "previous_manifest_matched": true,
+            "segments": 6
+          },
+          "segments": 6,
+          "metadata": {
+            "provider": "deepseek",
+            "model": "deepseek-chat",
+            "elapsed_seconds": 3.188,
+            "model_calls": [
+              {
+                "provider": "deepseek",
+                "model": "deepseek-chat",
+                "phase": "translate_batch_1_attempt_1",
+                "elapsed_seconds": 3.158346,
+                "prompt_tokens": 1439,
+                "completion_tokens": 652,
+                "total_tokens": 2091,
+                "http_status": 200,
+                "status": "succeeded"
+              }
+            ],
+            "terminology": {
+              "自注意力": "self-attention",
+              "多头注意力": "multi-head attention",
+              "注意力": "attention",
+              "编码器": "encoder",
+              "解码器": "decoder",
+              "层归一化": "layer normalization",
+              "位置编码": "positional encoding",
+              "嵌入": "embedding",
+              "前馈": "feed-forward",
+              "循环": "recurrent",
+              "卷积": "convolutional",
+              "序列转导": "sequence transduction",
+              "转导": "transduction",
+              "最先进水平": "state of the art",
+              "缩放点积注意力": "scaled dot-product attention",
+              "无参数位置表示": "parameter-free position representation",
+              "成分句法分析": "constituency parsing"
+            },
+            "alignment": "one_source_chunk_one_segment",
+            "layout_source": "stored_chunks",
+            "source_language": "zh",
+            "source_translation_sha256": "04d310fd62d8971b1065fd893a58b218e3be2216792523d1110a432b2b43b85a",
+            "source_input": "client_prior_zh_response_validated_against_original_chunks"
+          },
+          "manifest": [
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00009",
+              "source_sha256": "21c04b2eeeb431f7722c4c144f95567e3bae94de9c743472072c84745d24367a",
+              "translation_sha256": "d21b4a64a2d8656a0fdf7ab2e89a49164ac504686cfa2a3d442e87c209286330"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00010",
+              "source_sha256": "ba5bedefea72c58b86c82a16da43ac7d4320b3deb79181f765d8681b444ada33",
+              "translation_sha256": "4e873413a989a6feed75ae6b1ac70e01a42acf78ff852b3185b83ee5587f7f88"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00011",
+              "source_sha256": "c1d5a8d5ea5e0dc3a1f6c4c0f1309e99153ef09e67d28ba7dc5cfe8101586e54",
+              "translation_sha256": "b3a1b6bc4f86cfe0e8b605c1b30a5ff589d552320b1c9e5468f5522fada4877e"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00012",
+              "source_sha256": "6665a1d598ce0d9d0a6901df11e7ee2ae7869da47ac853d0347b62abe7b05f63",
+              "translation_sha256": "0c13d69d738fb24bdfc02acc2bb8236fd57a99c0870c84ce9b96fcd6dbd039d8"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00013",
+              "source_sha256": "d463e1c4137d0fc1f99366fb2b6349153e1741749dddcc36761df5ef2cf755e3",
+              "translation_sha256": "f94d40023ba94fb2c38e2a5c800ed1a4ec5078fd9dec900cd25ad3498f97c82c"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00014",
+              "source_sha256": "4825aff85d1e0a4dad8fd2d827066e186f5f61fc28eb7ef458636ed83e4540de",
+              "translation_sha256": "139e38b53e60a76084a722ac1300e096bd02bbfb21c66a311f33178a7f45b635"
+            }
+          ],
+          "markdown_characters": 0,
+          "sample": {
+            "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00010",
+            "source_text": "主流的序列转导模型基于复杂的循环或卷积神经网络，其中包含一个编码器和一个解码器。性能最好的模型还通过注意力机制将编码器和解码器连接起来。我们提出了一种新的简单网络架构——Transformer，它完全基于注意力机制，完全摒弃了循环和卷积。在两个机器翻译任务上的实验表明，这些模型在质量上更优，同时具有更强的并行性，且训练所需时间显著更少。我们的模型在 WMT 2014 英德翻译任务上达到 28.4 BLEU，比现有最佳结果（包括集成模型）高出 2 BLEU 以上。在 WMT 2014 英法翻译任务上，我们的模型在八块 GPU 上训练 3.5 天后，建立了新的单模型最先进水平 BLEU 分数 41.8，这只是文献中最佳模型训练成本的一小部分。我们通过将 Transformer 成功应用于英语成分句法分析（无论训练数据充足还是有限），表明它能很好地泛化到其他任务。",
+            "translated_text": "The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely. Experiments on two machine translation tasks show these models to be superior in quality while being more parallelizable and requiring significantly less time to train. Our model achieves 28.4 BLEU on the WMT 2014 English-to-German translation task, improving over the existing best results, including ensembles, by over 2 BLEU. On the WMT 2014 English-to-French translation task, our model establishes a new single-model state-of-the-art BLEU score of 41.8 after training for 3.5 days on eight GPUs, a small fraction of the training costs of the best models from the literature. We show that the Transformer generalizes well to other tasks by applying it successfully to English constituency parsing both with large and limited training data.",
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 1,
+            "section_path": [
+              "Abstract"
+            ],
+            "type": "text"
+          }
+        },
+        {
+          "name": "back_translation_full",
+          "http_status": 502,
+          "status": "failed",
+          "elapsed_seconds": 25.428904,
+          "chinese_input_proof": {
+            "path": "data/translation-acceptance/full-response.json",
+            "response_sha256": "8a4e19a1f54827f8ffe8140d48e61dba3bfadc44aba616db365af77a4332ce74",
+            "previous_manifest_matched": true,
+            "segments": 175
+          },
+          "error": {
+            "error_code": "UPSTREAM_ERROR",
+            "message": "翻译结果校验失败，未返回不完整译文。",
+            "details": {
+              "reason": "术语未按本次词表统一：注意力",
+              "source_chunk_id": null
+            }
+          }
+        }
+      ],
+      "implementation_sha256": {
+        "backend/scholar_graph/topology.py": "6c2ef45f12af6729597239c708a00e4235f86536d04a8201df01a2eca1d611c0",
+        "backend/scholar_graph/charts_3d.py": "d0d1a0e76ff44ae07ea0c4b514353c9d16384ad755c61627d1539e80f4979dc1",
+        "backend/scholar_graph/translation.py": "d4859c0a4ae3f3fb0b77e4956d21b683a7e47c5bee6dcc2b7daaf48408c86a92"
+      },
+      "source": "官方 pdf/ 真文件Attention v7已解析记录；未重新解析PDF",
+      "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "pdf_sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+    },
+    {
+      "status": "failed",
+      "environment": {
+        "DEEPSEEK_API_KEY": "已设置",
+        "DEEPSEEK_MODEL": "已设置"
+      },
+      "cases": [
+        {
+          "name": "topology",
+          "http_status": 200,
+          "elapsed_seconds": 0.058802,
+          "status": "passed",
+          "nodes": 16,
+          "edges": 20,
+          "validation": [
+            {
+              "passed": true,
+              "parser": "generated_subset_v1",
+              "balanced": true,
+              "node_count": 16,
+              "edge_count": 20,
+              "compiler_executed": false,
+              "format": "tikz"
+            },
+            {
+              "passed": true,
+              "parser": "generated_subset_v1",
+              "balanced": true,
+              "node_count": 16,
+              "edge_count": 20,
+              "compiler_executed": false,
+              "format": "dot"
+            },
+            {
+              "passed": true,
+              "parser": "generated_subset_v1",
+              "balanced": true,
+              "node_count": 16,
+              "edge_count": 20,
+              "compiler_executed": false,
+              "format": "mermaid"
+            }
+          ]
+        },
+        {
+          "name": "chart_3d",
+          "http_status": 200,
+          "status": "passed",
+          "elapsed_seconds": 1.458651,
+          "data_origin": "自制演示CSV，非论文实验值",
+          "data_table": {
+            "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+            "columns": [
+              "epoch",
+              "Base",
+              "Big"
+            ],
+            "rows": [
+              {
+                "row_number": 2,
+                "values": {
+                  "epoch": 1.0,
+                  "Base": 12.0,
+                  "Big": 20.0
+                }
+              },
+              {
+                "row_number": 3,
+                "values": {
+                  "epoch": 2.0,
+                  "Base": 18.0,
+                  "Big": 24.0
+                }
+              },
+              {
+                "row_number": 4,
+                "values": {
+                  "epoch": 3.0,
+                  "Base": 21.0,
+                  "Big": 26.0
+                }
+              },
+              {
+                "row_number": 5,
+                "values": {
+                  "epoch": 4.0,
+                  "Base": 22.5,
+                  "Big": 27.0
+                }
+              }
+            ]
+          },
+          "caption": "Base在所给数据中呈单调上升趋势，且变化速率的绝对值逐步减小，变化正在放缓。\nBig在所给数据中呈单调上升趋势，且变化速率的绝对值逐步减小，变化正在放缓。",
+          "conclusions": [
+            {
+              "series_name": "Base",
+              "trend": "increasing",
+              "shape": "decelerating",
+              "row_numbers": [
+                2,
+                3,
+                4,
+                5
+              ],
+              "text": "Base在所给数据中呈单调上升趋势，且变化速率的绝对值逐步减小，变化正在放缓。",
+              "csv_anchors": [
+                {
+                  "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                  "row_number": 2,
+                  "column_name": "Base"
+                },
+                {
+                  "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                  "row_number": 3,
+                  "column_name": "Base"
+                },
+                {
+                  "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                  "row_number": 4,
+                  "column_name": "Base"
+                },
+                {
+                  "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                  "row_number": 5,
+                  "column_name": "Base"
+                }
+              ]
+            },
+            {
+              "series_name": "Big",
+              "trend": "increasing",
+              "shape": "decelerating",
+              "row_numbers": [
+                2,
+                3,
+                4,
+                5
+              ],
+              "text": "Big在所给数据中呈单调上升趋势，且变化速率的绝对值逐步减小，变化正在放缓。",
+              "csv_anchors": [
+                {
+                  "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                  "row_number": 2,
+                  "column_name": "Big"
+                },
+                {
+                  "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                  "row_number": 3,
+                  "column_name": "Big"
+                },
+                {
+                  "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                  "row_number": 4,
+                  "column_name": "Big"
+                },
+                {
+                  "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                  "row_number": 5,
+                  "column_name": "Big"
+                }
+              ]
+            }
+          ],
+          "numeric_checks": [
+            {
+              "value": 1.0,
+              "csv_anchor": {
+                "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                "row_number": 2,
+                "column_name": "epoch"
+              },
+              "verified": true
+            },
+            {
+              "value": 2.0,
+              "csv_anchor": {
+                "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                "row_number": 3,
+                "column_name": "epoch"
+              },
+              "verified": true
+            },
+            {
+              "value": 3.0,
+              "csv_anchor": {
+                "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                "row_number": 4,
+                "column_name": "epoch"
+              },
+              "verified": true
+            },
+            {
+              "value": 4.0,
+              "csv_anchor": {
+                "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                "row_number": 5,
+                "column_name": "epoch"
+              },
+              "verified": true
+            },
+            {
+              "value": 12.0,
+              "csv_anchor": {
+                "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                "row_number": 2,
+                "column_name": "Base"
+              },
+              "verified": true
+            },
+            {
+              "value": 18.0,
+              "csv_anchor": {
+                "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                "row_number": 3,
+                "column_name": "Base"
+              },
+              "verified": true
+            },
+            {
+              "value": 21.0,
+              "csv_anchor": {
+                "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                "row_number": 4,
+                "column_name": "Base"
+              },
+              "verified": true
+            },
+            {
+              "value": 22.5,
+              "csv_anchor": {
+                "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                "row_number": 5,
+                "column_name": "Base"
+              },
+              "verified": true
+            },
+            {
+              "value": 20.0,
+              "csv_anchor": {
+                "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                "row_number": 2,
+                "column_name": "Big"
+              },
+              "verified": true
+            },
+            {
+              "value": 24.0,
+              "csv_anchor": {
+                "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                "row_number": 3,
+                "column_name": "Big"
+              },
+              "verified": true
+            },
+            {
+              "value": 26.0,
+              "csv_anchor": {
+                "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                "row_number": 4,
+                "column_name": "Big"
+              },
+              "verified": true
+            },
+            {
+              "value": 27.0,
+              "csv_anchor": {
+                "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                "row_number": 5,
+                "column_name": "Big"
+              },
+              "verified": true
+            }
+          ],
+          "metadata": {
+            "caption_method": "deepseek_grounded_selection",
+            "model_calls": [
+              {
+                "provider": "deepseek",
+                "model": "deepseek-chat",
+                "phase": "chart_3d_caption_attempt_1",
+                "elapsed_seconds": 0.971861,
+                "prompt_tokens": 642,
+                "completion_tokens": 114,
+                "total_tokens": 756,
+                "http_status": 200,
+                "status": "succeeded"
+              }
+            ],
+            "trend_basis": "strictly_increasing_x",
+            "png_width": 800,
+            "png_height": 600
+          },
+          "png": {
+            "sha256": "048ac365fb98041d6b2679e69f6b79021e1a33b144aaa177b9cead311f56af8c",
+            "bytes": 63146,
+            "width": 800,
+            "height": 600,
+            "path": "tests/reports/module6-3d-bar.png"
+          }
+        },
+        {
+          "name": "back_translation_abstract",
+          "http_status": 200,
+          "status": "passed",
+          "elapsed_seconds": 3.82643,
+          "chinese_input_proof": {
+            "path": "data/translation-acceptance/abstract-response.json",
+            "response_sha256": "a71e6be217237c32990cebe8c237e9750babd20b689f54f3a1202415938c0dbf",
+            "previous_manifest_matched": true,
+            "segments": 6
+          },
+          "segments": 6,
+          "metadata": {
+            "provider": "deepseek",
+            "model": "deepseek-chat",
+            "elapsed_seconds": 3.812,
+            "model_calls": [
+              {
+                "provider": "deepseek",
+                "model": "deepseek-chat",
+                "phase": "translate_batch_1_attempt_1",
+                "elapsed_seconds": 3.782209,
+                "prompt_tokens": 1439,
+                "completion_tokens": 652,
+                "total_tokens": 2091,
+                "http_status": 200,
+                "status": "succeeded"
+              }
+            ],
+            "terminology": {
+              "自注意力": "self-attention",
+              "多头注意力": "multi-head attention",
+              "注意力": "attention",
+              "编码器": "encoder",
+              "解码器": "decoder",
+              "层归一化": "layer normalization",
+              "位置编码": "positional encoding",
+              "嵌入": "embedding",
+              "前馈": "feed-forward",
+              "循环": "recurrent",
+              "卷积": "convolutional",
+              "序列转导": "sequence transduction",
+              "转导": "transduction",
+              "最先进水平": "state of the art",
+              "缩放点积注意力": "scaled dot-product attention",
+              "无参数位置表示": "parameter-free position representation",
+              "成分句法分析": "constituency parsing"
+            },
+            "alignment": "one_source_chunk_one_segment",
+            "layout_source": "stored_chunks",
+            "source_language": "zh",
+            "source_translation_sha256": "04d310fd62d8971b1065fd893a58b218e3be2216792523d1110a432b2b43b85a",
+            "source_input": "client_prior_zh_response_validated_against_original_chunks"
+          },
+          "manifest": [
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00009",
+              "source_sha256": "21c04b2eeeb431f7722c4c144f95567e3bae94de9c743472072c84745d24367a",
+              "translation_sha256": "d21b4a64a2d8656a0fdf7ab2e89a49164ac504686cfa2a3d442e87c209286330"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00010",
+              "source_sha256": "ba5bedefea72c58b86c82a16da43ac7d4320b3deb79181f765d8681b444ada33",
+              "translation_sha256": "4e873413a989a6feed75ae6b1ac70e01a42acf78ff852b3185b83ee5587f7f88"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00011",
+              "source_sha256": "c1d5a8d5ea5e0dc3a1f6c4c0f1309e99153ef09e67d28ba7dc5cfe8101586e54",
+              "translation_sha256": "b3a1b6bc4f86cfe0e8b605c1b30a5ff589d552320b1c9e5468f5522fada4877e"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00012",
+              "source_sha256": "6665a1d598ce0d9d0a6901df11e7ee2ae7869da47ac853d0347b62abe7b05f63",
+              "translation_sha256": "0c13d69d738fb24bdfc02acc2bb8236fd57a99c0870c84ce9b96fcd6dbd039d8"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00013",
+              "source_sha256": "d463e1c4137d0fc1f99366fb2b6349153e1741749dddcc36761df5ef2cf755e3",
+              "translation_sha256": "f94d40023ba94fb2c38e2a5c800ed1a4ec5078fd9dec900cd25ad3498f97c82c"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00014",
+              "source_sha256": "4825aff85d1e0a4dad8fd2d827066e186f5f61fc28eb7ef458636ed83e4540de",
+              "translation_sha256": "139e38b53e60a76084a722ac1300e096bd02bbfb21c66a311f33178a7f45b635"
+            }
+          ],
+          "markdown_characters": 0,
+          "sample": {
+            "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00010",
+            "source_text": "主流的序列转导模型基于复杂的循环或卷积神经网络，其中包含一个编码器和一个解码器。性能最好的模型还通过注意力机制将编码器和解码器连接起来。我们提出了一种新的简单网络架构——Transformer，它完全基于注意力机制，完全摒弃了循环和卷积。在两个机器翻译任务上的实验表明，这些模型在质量上更优，同时具有更强的并行性，且训练所需时间显著更少。我们的模型在 WMT 2014 英德翻译任务上达到 28.4 BLEU，比现有最佳结果（包括集成模型）高出 2 BLEU 以上。在 WMT 2014 英法翻译任务上，我们的模型在八块 GPU 上训练 3.5 天后，建立了新的单模型最先进水平 BLEU 分数 41.8，这只是文献中最佳模型训练成本的一小部分。我们通过将 Transformer 成功应用于英语成分句法分析（无论训练数据充足还是有限），表明它能很好地泛化到其他任务。",
+            "translated_text": "The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely. Experiments on two machine translation tasks show these models to be superior in quality while being more parallelizable and requiring significantly less time to train. Our model achieves 28.4 BLEU on the WMT 2014 English-to-German translation task, improving over the existing best results, including ensembles, by over 2 BLEU. On the WMT 2014 English-to-French translation task, our model establishes a new single-model state-of-the-art BLEU score of 41.8 after training for 3.5 days on eight GPUs, a small fraction of the training costs of the best models from the literature. We show that the Transformer generalizes well to other tasks by applying it successfully to English constituency parsing both with large and limited training data.",
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 1,
+            "section_path": [
+              "Abstract"
+            ],
+            "type": "text"
+          }
+        },
+        {
+          "name": "back_translation_full",
+          "http_status": 502,
+          "status": "failed",
+          "elapsed_seconds": 48.322478,
+          "chinese_input_proof": {
+            "path": "data/translation-acceptance/full-response.json",
+            "response_sha256": "8a4e19a1f54827f8ffe8140d48e61dba3bfadc44aba616db365af77a4332ce74",
+            "previous_manifest_matched": true,
+            "segments": 175
+          },
+          "error": {
+            "error_code": "UPSTREAM_ERROR",
+            "message": "翻译结果校验失败，未返回不完整译文。",
+            "details": {
+              "reason": "术语未按本次词表统一：困惑度",
+              "source_chunk_id": null
+            }
+          }
+        }
+      ],
+      "implementation_sha256": {
+        "backend/scholar_graph/topology.py": "6c2ef45f12af6729597239c708a00e4235f86536d04a8201df01a2eca1d611c0",
+        "backend/scholar_graph/charts_3d.py": "d0d1a0e76ff44ae07ea0c4b514353c9d16384ad755c61627d1539e80f4979dc1",
+        "backend/scholar_graph/translation.py": "fd3b3246ac6cd5ce3688c37fc76e36cd422cb1a457ef66cb9e4224d06d30362c"
+      },
+      "source": "官方 pdf/ 真文件Attention v7已解析记录；未重新解析PDF",
+      "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "pdf_sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+    },
+    {
+      "status": "passed",
+      "environment": {
+        "DEEPSEEK_API_KEY": "已设置",
+        "DEEPSEEK_MODEL": "已设置"
+      },
+      "cases": [
+        {
+          "name": "topology",
+          "http_status": 200,
+          "elapsed_seconds": 0.055782,
+          "status": "passed",
+          "nodes": 16,
+          "edges": 20,
+          "validation": [
+            {
+              "passed": true,
+              "parser": "generated_subset_v1",
+              "balanced": true,
+              "node_count": 16,
+              "edge_count": 20,
+              "compiler_executed": false,
+              "format": "tikz"
+            },
+            {
+              "passed": true,
+              "parser": "generated_subset_v1",
+              "balanced": true,
+              "node_count": 16,
+              "edge_count": 20,
+              "compiler_executed": false,
+              "format": "dot"
+            },
+            {
+              "passed": true,
+              "parser": "generated_subset_v1",
+              "balanced": true,
+              "node_count": 16,
+              "edge_count": 20,
+              "compiler_executed": false,
+              "format": "mermaid"
+            }
+          ]
+        },
+        {
+          "name": "chart_3d",
+          "http_status": 200,
+          "status": "passed",
+          "elapsed_seconds": 1.324083,
+          "data_origin": "自制演示CSV，非论文实验值",
+          "data_table": {
+            "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+            "columns": [
+              "epoch",
+              "Base",
+              "Big"
+            ],
+            "rows": [
+              {
+                "row_number": 2,
+                "values": {
+                  "epoch": 1.0,
+                  "Base": 12.0,
+                  "Big": 20.0
+                }
+              },
+              {
+                "row_number": 3,
+                "values": {
+                  "epoch": 2.0,
+                  "Base": 18.0,
+                  "Big": 24.0
+                }
+              },
+              {
+                "row_number": 4,
+                "values": {
+                  "epoch": 3.0,
+                  "Base": 21.0,
+                  "Big": 26.0
+                }
+              },
+              {
+                "row_number": 5,
+                "values": {
+                  "epoch": 4.0,
+                  "Base": 22.5,
+                  "Big": 27.0
+                }
+              }
+            ]
+          },
+          "caption": "Base在所给数据中呈单调上升趋势，且变化速率的绝对值逐步减小，变化正在放缓。\nBig在所给数据中呈单调上升趋势，且变化速率的绝对值逐步减小，变化正在放缓。",
+          "conclusions": [
+            {
+              "series_name": "Base",
+              "trend": "increasing",
+              "shape": "decelerating",
+              "row_numbers": [
+                2,
+                3,
+                4,
+                5
+              ],
+              "text": "Base在所给数据中呈单调上升趋势，且变化速率的绝对值逐步减小，变化正在放缓。",
+              "csv_anchors": [
+                {
+                  "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                  "row_number": 2,
+                  "column_name": "Base"
+                },
+                {
+                  "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                  "row_number": 3,
+                  "column_name": "Base"
+                },
+                {
+                  "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                  "row_number": 4,
+                  "column_name": "Base"
+                },
+                {
+                  "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                  "row_number": 5,
+                  "column_name": "Base"
+                }
+              ]
+            },
+            {
+              "series_name": "Big",
+              "trend": "increasing",
+              "shape": "decelerating",
+              "row_numbers": [
+                2,
+                3,
+                4,
+                5
+              ],
+              "text": "Big在所给数据中呈单调上升趋势，且变化速率的绝对值逐步减小，变化正在放缓。",
+              "csv_anchors": [
+                {
+                  "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                  "row_number": 2,
+                  "column_name": "Big"
+                },
+                {
+                  "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                  "row_number": 3,
+                  "column_name": "Big"
+                },
+                {
+                  "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                  "row_number": 4,
+                  "column_name": "Big"
+                },
+                {
+                  "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                  "row_number": 5,
+                  "column_name": "Big"
+                }
+              ]
+            }
+          ],
+          "numeric_checks": [
+            {
+              "value": 1.0,
+              "csv_anchor": {
+                "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                "row_number": 2,
+                "column_name": "epoch"
+              },
+              "verified": true
+            },
+            {
+              "value": 2.0,
+              "csv_anchor": {
+                "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                "row_number": 3,
+                "column_name": "epoch"
+              },
+              "verified": true
+            },
+            {
+              "value": 3.0,
+              "csv_anchor": {
+                "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                "row_number": 4,
+                "column_name": "epoch"
+              },
+              "verified": true
+            },
+            {
+              "value": 4.0,
+              "csv_anchor": {
+                "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                "row_number": 5,
+                "column_name": "epoch"
+              },
+              "verified": true
+            },
+            {
+              "value": 12.0,
+              "csv_anchor": {
+                "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                "row_number": 2,
+                "column_name": "Base"
+              },
+              "verified": true
+            },
+            {
+              "value": 18.0,
+              "csv_anchor": {
+                "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                "row_number": 3,
+                "column_name": "Base"
+              },
+              "verified": true
+            },
+            {
+              "value": 21.0,
+              "csv_anchor": {
+                "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                "row_number": 4,
+                "column_name": "Base"
+              },
+              "verified": true
+            },
+            {
+              "value": 22.5,
+              "csv_anchor": {
+                "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                "row_number": 5,
+                "column_name": "Base"
+              },
+              "verified": true
+            },
+            {
+              "value": 20.0,
+              "csv_anchor": {
+                "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                "row_number": 2,
+                "column_name": "Big"
+              },
+              "verified": true
+            },
+            {
+              "value": 24.0,
+              "csv_anchor": {
+                "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                "row_number": 3,
+                "column_name": "Big"
+              },
+              "verified": true
+            },
+            {
+              "value": 26.0,
+              "csv_anchor": {
+                "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                "row_number": 4,
+                "column_name": "Big"
+              },
+              "verified": true
+            },
+            {
+              "value": 27.0,
+              "csv_anchor": {
+                "csv_ref": "csv-563e8a9139153c72b12e5f0903ac25263b1190b59e1dbacb9e149147e1ba5326",
+                "row_number": 5,
+                "column_name": "Big"
+              },
+              "verified": true
+            }
+          ],
+          "metadata": {
+            "caption_method": "deepseek_grounded_selection",
+            "model_calls": [
+              {
+                "provider": "deepseek",
+                "model": "deepseek-chat",
+                "phase": "chart_3d_caption_attempt_1",
+                "elapsed_seconds": 0.835101,
+                "prompt_tokens": 642,
+                "completion_tokens": 114,
+                "total_tokens": 756,
+                "http_status": 200,
+                "status": "succeeded"
+              }
+            ],
+            "trend_basis": "strictly_increasing_x",
+            "png_width": 800,
+            "png_height": 600
+          },
+          "png": {
+            "sha256": "048ac365fb98041d6b2679e69f6b79021e1a33b144aaa177b9cead311f56af8c",
+            "bytes": 63146,
+            "width": 800,
+            "height": 600,
+            "path": "tests/reports/module6-3d-bar.png"
+          }
+        },
+        {
+          "name": "back_translation_abstract",
+          "http_status": 200,
+          "status": "passed",
+          "elapsed_seconds": 3.721659,
+          "chinese_input_proof": {
+            "path": "data/translation-acceptance/abstract-response.json",
+            "response_sha256": "a71e6be217237c32990cebe8c237e9750babd20b689f54f3a1202415938c0dbf",
+            "previous_manifest_matched": true,
+            "segments": 6
+          },
+          "segments": 6,
+          "metadata": {
+            "provider": "deepseek",
+            "model": "deepseek-chat",
+            "elapsed_seconds": 3.718,
+            "model_calls": [
+              {
+                "provider": "deepseek",
+                "model": "deepseek-chat",
+                "phase": "translate_batch_1_attempt_1",
+                "elapsed_seconds": 3.678169,
+                "prompt_tokens": 1439,
+                "completion_tokens": 659,
+                "total_tokens": 2098,
+                "http_status": 200,
+                "status": "succeeded"
+              }
+            ],
+            "terminology": {
+              "自注意力": "self-attention",
+              "多头注意力": "multi-head attention",
+              "注意力": "attention",
+              "编码器": "encoder",
+              "解码器": "decoder",
+              "层归一化": "layer normalization",
+              "位置编码": "positional encoding",
+              "嵌入": "embedding",
+              "前馈": "feed-forward",
+              "循环": "recurrent",
+              "卷积": "convolutional",
+              "序列转导": "sequence transduction",
+              "转导": "transduction",
+              "最先进水平": "state of the art",
+              "缩放点积注意力": "scaled dot-product attention",
+              "位置表示": "position representation",
+              "成分句法分析": "constituency parsing"
+            },
+            "alignment": "one_source_chunk_one_segment",
+            "layout_source": "stored_chunks",
+            "source_language": "zh",
+            "source_translation_sha256": "04d310fd62d8971b1065fd893a58b218e3be2216792523d1110a432b2b43b85a",
+            "source_input": "client_prior_zh_response_validated_against_original_chunks"
+          },
+          "manifest": [
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00009",
+              "source_sha256": "21c04b2eeeb431f7722c4c144f95567e3bae94de9c743472072c84745d24367a",
+              "translation_sha256": "d21b4a64a2d8656a0fdf7ab2e89a49164ac504686cfa2a3d442e87c209286330"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00010",
+              "source_sha256": "ba5bedefea72c58b86c82a16da43ac7d4320b3deb79181f765d8681b444ada33",
+              "translation_sha256": "4e873413a989a6feed75ae6b1ac70e01a42acf78ff852b3185b83ee5587f7f88"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00011",
+              "source_sha256": "c1d5a8d5ea5e0dc3a1f6c4c0f1309e99153ef09e67d28ba7dc5cfe8101586e54",
+              "translation_sha256": "b3a1b6bc4f86cfe0e8b605c1b30a5ff589d552320b1c9e5468f5522fada4877e"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00012",
+              "source_sha256": "6665a1d598ce0d9d0a6901df11e7ee2ae7869da47ac853d0347b62abe7b05f63",
+              "translation_sha256": "0c13d69d738fb24bdfc02acc2bb8236fd57a99c0870c84ce9b96fcd6dbd039d8"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00013",
+              "source_sha256": "d463e1c4137d0fc1f99366fb2b6349153e1741749dddcc36761df5ef2cf755e3",
+              "translation_sha256": "f94d40023ba94fb2c38e2a5c800ed1a4ec5078fd9dec900cd25ad3498f97c82c"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00014",
+              "source_sha256": "4825aff85d1e0a4dad8fd2d827066e186f5f61fc28eb7ef458636ed83e4540de",
+              "translation_sha256": "139e38b53e60a76084a722ac1300e096bd02bbfb21c66a311f33178a7f45b635"
+            }
+          ],
+          "markdown_characters": 0,
+          "sample": {
+            "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00010",
+            "source_text": "主流的序列转导模型基于复杂的循环或卷积神经网络，其中包含一个编码器和一个解码器。性能最好的模型还通过注意力机制将编码器和解码器连接起来。我们提出了一种新的简单网络架构——Transformer，它完全基于注意力机制，完全摒弃了循环和卷积。在两个机器翻译任务上的实验表明，这些模型在质量上更优，同时具有更强的并行性，且训练所需时间显著更少。我们的模型在 WMT 2014 英德翻译任务上达到 28.4 BLEU，比现有最佳结果（包括集成模型）高出 2 BLEU 以上。在 WMT 2014 英法翻译任务上，我们的模型在八块 GPU 上训练 3.5 天后，建立了新的单模型最先进水平 BLEU 分数 41.8，这只是文献中最佳模型训练成本的一小部分。我们通过将 Transformer 成功应用于英语成分句法分析（无论训练数据充足还是有限），表明它能很好地泛化到其他任务。",
+            "translated_text": "The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely. Experiments on two machine translation tasks show these models to be superior in quality while being more parallelizable and requiring significantly less time to train. Our model achieves 28.4 BLEU on the WMT 2014 English-to-German translation task, improving over the existing best results, including ensembles, by over 2 BLEU. On the WMT 2014 English-to-French translation task, our model establishes a new single-model state-of-the-art BLEU score of 41.8 after training for 3.5 days on eight GPUs, a small fraction of the training costs of the best models from the literature. We show that the Transformer generalizes well to other tasks by applying it successfully to English constituency parsing both with large and limited training data.",
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 1,
+            "section_path": [
+              "Abstract"
+            ],
+            "type": "text"
+          }
+        },
+        {
+          "name": "back_translation_full",
+          "http_status": 200,
+          "status": "passed",
+          "elapsed_seconds": 56.239113,
+          "chinese_input_proof": {
+            "path": "data/translation-acceptance/full-response.json",
+            "response_sha256": "8a4e19a1f54827f8ffe8140d48e61dba3bfadc44aba616db365af77a4332ce74",
+            "previous_manifest_matched": true,
+            "segments": 175
+          },
+          "segments": 175,
+          "metadata": {
+            "provider": "deepseek",
+            "model": "deepseek-chat",
+            "elapsed_seconds": 56.234,
+            "model_calls": [
+              {
+                "provider": "deepseek",
+                "model": "deepseek-chat",
+                "phase": "translate_batch_1_attempt_1",
+                "elapsed_seconds": 10.866719,
+                "prompt_tokens": 4631,
+                "completion_tokens": 2294,
+                "total_tokens": 6925,
+                "http_status": 200,
+                "status": "succeeded"
+              },
+              {
+                "provider": "deepseek",
+                "model": "deepseek-chat",
+                "phase": "translate_batch_2_attempt_1",
+                "elapsed_seconds": 7.774424,
+                "prompt_tokens": 3518,
+                "completion_tokens": 1742,
+                "total_tokens": 5260,
+                "http_status": 200,
+                "status": "succeeded"
+              },
+              {
+                "provider": "deepseek",
+                "model": "deepseek-chat",
+                "phase": "translate_batch_3_attempt_1",
+                "elapsed_seconds": 9.571257,
+                "prompt_tokens": 4478,
+                "completion_tokens": 2121,
+                "total_tokens": 6599,
+                "http_status": 200,
+                "status": "succeeded"
+              },
+              {
+                "provider": "deepseek",
+                "model": "deepseek-chat",
+                "phase": "translate_batch_3_attempt_2",
+                "elapsed_seconds": 8.509208,
+                "prompt_tokens": 4652,
+                "completion_tokens": 2096,
+                "total_tokens": 6748,
+                "http_status": 200,
+                "status": "succeeded"
+              },
+              {
+                "provider": "deepseek",
+                "model": "deepseek-chat",
+                "phase": "translate_batch_4_attempt_1",
+                "elapsed_seconds": 6.416373,
+                "prompt_tokens": 3337,
+                "completion_tokens": 1310,
+                "total_tokens": 4647,
+                "http_status": 200,
+                "status": "succeeded"
+              },
+              {
+                "provider": "deepseek",
+                "model": "deepseek-chat",
+                "phase": "translate_batch_5_attempt_1",
+                "elapsed_seconds": 6.748416,
+                "prompt_tokens": 4248,
+                "completion_tokens": 1687,
+                "total_tokens": 5935,
+                "http_status": 200,
+                "status": "succeeded"
+              },
+              {
+                "provider": "deepseek",
+                "model": "deepseek-chat",
+                "phase": "translate_batch_6_attempt_1",
+                "elapsed_seconds": 6.109425,
+                "prompt_tokens": 3873,
+                "completion_tokens": 1506,
+                "total_tokens": 5379,
+                "http_status": 200,
+                "status": "succeeded"
+              }
+            ],
+            "terminology": {
+              "自注意力": "self-attention",
+              "多头注意力": "multi-head attention",
+              "注意力": "attention",
+              "编码器": "encoder",
+              "解码器": "decoder",
+              "层归一化": "layer normalization",
+              "位置编码": "positional encoding",
+              "嵌入": "embedding",
+              "前馈": "feed-forward",
+              "循环": "recurrent",
+              "卷积": "convolutional",
+              "序列转导": "sequence transduction",
+              "转导": "transduction",
+              "最先进水平": "state of the art",
+              "内部注意力": "intra-attention",
+              "残差连接": "residual connection",
+              "逐位置全连接前馈网络": "position-wise fully connected feed-forward network",
+              "自回归": "auto-regressive",
+              "掩码": "masking",
+              "兼容性函数": "compatibility function",
+              "隐藏状态": "hidden state",
+              "条件计算": "conditional computation",
+              "成分句法分析": "constituency parsing",
+              "抽象式摘要": "abstractive summarization",
+              "文本蕴含": "textual entailment",
+              "加性注意力": "additive attention",
+              "点积（乘性）注意力": "dot-product (multiplicative) attention",
+              "缩放因子": "scaling factor",
+              "矩阵乘法": "matrix multiplication",
+              "正弦波": "sinusoid",
+              "波长": "wavelength",
+              "几何级数": "geometric progression",
+              "相对位置": "relative position",
+              "绝对位置": "absolute position",
+              "词元": "token",
+              "表示子空间": "representation subspace",
+              "记忆键": "memory key",
+              "序列到序列模型": "sequence-to-sequence model",
+              "核大小": "kernel size",
+              "受限自注意力": "restricted self-attention",
+              "邻域": "neighborhood",
+              "可学习的位置嵌入": "learned positional embeddings",
+              "正弦版本": "sinusoidal version",
+              "外推": "extrapolate",
+              "期望目标": "desiderata",
+              "长距离依赖": "long-range dependencies",
+              "路径长度": "path length",
+              "word-piece": "word-piece",
+              "byte-pair": "byte-pair",
+              "膨胀卷积": "dilated convolutions",
+              "dropout": "dropout",
+              "标签平滑": "label smoothing",
+              "困惑度": "perplexity",
+              "束搜索": "beam search",
+              "长度惩罚": "length penalty",
+              "检查点": "checkpoint",
+              "集成模型": "ensemble",
+              "开发集": "development set",
+              "浮点运算": "floating point operations",
+              "可分离卷积": "separable convolutions",
+              "训练方案": "training regime",
+              "批处理": "batching",
+              "学习率": "learning rate",
+              "基础模型": "base model",
+              "big 模型": "big model",
+              "束大小": "beam size",
+              "推理": "inference",
+              "检查点平均": "checkpoint averaging",
+              "位置嵌入": "positional embedding",
+              "正弦波位置编码": "sinusoidal positional encoding",
+              "判别式": "discriminative",
+              "词表": "vocabulary",
+              "门控循环神经网络": "gated recurrent neural network",
+              "深度可分离卷积": "depthwise separable convolutions",
+              "潜在标注": "latent annotations",
+              "指代消解": "anaphora resolution",
+              "移进-归约": "shift-reduce",
+              "子词单元": "subword units",
+              "专家混合层": "mixture-of-experts layer",
+              "稀疏门控": "sparsely-gated",
+              "树标注": "tree annotation"
+            },
+            "alignment": "one_source_chunk_one_segment",
+            "layout_source": "stored_chunks",
+            "source_language": "zh",
+            "source_translation_sha256": "b6ba60ebf9d2ba5964ebebd241a8d5246b354055417fb353c04181d0a067ba98",
+            "source_input": "client_prior_zh_response_validated_against_original_chunks"
+          },
+          "manifest": [
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00001",
+              "source_sha256": "87506591bad92968defbd6f5a066b67213f8f6540b2bf95d96c32ba6b505cef7",
+              "translation_sha256": "d5034a88a177064f37817cb8589777b271661fa564d5edf484fa9682d6c369d7"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00002",
+              "source_sha256": "6fbb6727ffd04f9ca31ca080724a176fa100308c7f2c22f1f537ec7d5e2767d8",
+              "translation_sha256": "4a1c934d3d98f3cefede93ebb74d0c4c2bac7ac9cc4f467d253ef8f87a2d6aad"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00003",
+              "source_sha256": "cbad36042e27452166debff2f416d8bef577cd48494b7b3630aed886f5ed2b30",
+              "translation_sha256": "cbad36042e27452166debff2f416d8bef577cd48494b7b3630aed886f5ed2b30"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00004",
+              "source_sha256": "7ecb3a2f8cada846fdff6f3032d70e294d4833885baf41bf0969c42ed5547ed1",
+              "translation_sha256": "7ecb3a2f8cada846fdff6f3032d70e294d4833885baf41bf0969c42ed5547ed1"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00005",
+              "source_sha256": "f6bd93646209d244a6accece856b83e885013d6a6d836e7eaa4f731072de7ab5",
+              "translation_sha256": "f6bd93646209d244a6accece856b83e885013d6a6d836e7eaa4f731072de7ab5"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00006",
+              "source_sha256": "326e631d22f84f8c6a0250de1158db9d85c8ed6c2f9536c189ebbdfc44a649e3",
+              "translation_sha256": "326e631d22f84f8c6a0250de1158db9d85c8ed6c2f9536c189ebbdfc44a649e3"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00007",
+              "source_sha256": "81e7cfadaf5ff243b9cca257139c2da85916313e9d5e20fd6d837ee9e454742c",
+              "translation_sha256": "81e7cfadaf5ff243b9cca257139c2da85916313e9d5e20fd6d837ee9e454742c"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00008",
+              "source_sha256": "f2b4a94ae86d87ed314a584f6806547b2b3cd0d2d9d375293780d508b40b44ee",
+              "translation_sha256": "f2b4a94ae86d87ed314a584f6806547b2b3cd0d2d9d375293780d508b40b44ee"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00009",
+              "source_sha256": "21c04b2eeeb431f7722c4c144f95567e3bae94de9c743472072c84745d24367a",
+              "translation_sha256": "d21b4a64a2d8656a0fdf7ab2e89a49164ac504686cfa2a3d442e87c209286330"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00010",
+              "source_sha256": "1827ab8e8b0a2945d7ba9737a76b620bb753ad9a65e6ac2bc7e6db66ccecc461",
+              "translation_sha256": "d71f73750419bdfda7f5369287c9219ce506ec723e6ce8711665dc7875f9c204"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00011",
+              "source_sha256": "c1d5a8d5ea5e0dc3a1f6c4c0f1309e99153ef09e67d28ba7dc5cfe8101586e54",
+              "translation_sha256": "bd4686878258fc51bca1cc5a8de4b0d75bb159bf23c0b7c8a040a55d4832100c"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00012",
+              "source_sha256": "b603e807809a01f539768e6cbdd5886fe955a87c4be073386a3746737f46ba5e",
+              "translation_sha256": "0c13d69d738fb24bdfc02acc2bb8236fd57a99c0870c84ce9b96fcd6dbd039d8"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00013",
+              "source_sha256": "5cdd207c56fb186b4a755cda6b6f2b02341e7d2799bed24995d2fef234f077f4",
+              "translation_sha256": "f94d40023ba94fb2c38e2a5c800ed1a4ec5078fd9dec900cd25ad3498f97c82c"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00014",
+              "source_sha256": "4825aff85d1e0a4dad8fd2d827066e186f5f61fc28eb7ef458636ed83e4540de",
+              "translation_sha256": "139e38b53e60a76084a722ac1300e096bd02bbfb21c66a311f33178a7f45b635"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00015",
+              "source_sha256": "76958d09e702c69e16621898d46d11240e5c899ee0969a5dec97552c2e7bd574",
+              "translation_sha256": "c9234967b670c32478644b4236ec8fd2f351225696cacbcd0fad1f1838b95170"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00016",
+              "source_sha256": "18c924746c1383a0027a92cf4513bf71ffb3ad7b6787e8861625909273558cfb",
+              "translation_sha256": "2ce06fd8b1281c69103914b4bbb234529d85bdda797b10e44ff41000571c0fa0"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00017",
+              "source_sha256": "36f8b393af2bcd062ef1ad0e8aa2bfd3287e0349b3093ed9592de47328d005c0",
+              "translation_sha256": "ed4004d67a3ae19d0f956c7a102afa25b2eb74e6b87d74f852b04cbcfe75558e"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00018",
+              "source_sha256": "5373b2c0de0a5bf8030c4fc57f4f982ca82be7aa676d41d7ce86496e42395990",
+              "translation_sha256": "3383f719286f420021a5b32d092e99b0615b8c4ac9e7355398da6d3b4fba0412"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00019",
+              "source_sha256": "3f1404f186533c6aa7e44027bbe4adc300cee679e4cde46858ee6489f7cb2cbd",
+              "translation_sha256": "ea07473b48f37e4eeb4f615ef9e50958919bac1de2e0979f9402771589979fa9"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00020",
+              "source_sha256": "2ae321452976c4fd6b983fd064093fb8464261691008befb84a4651970b55bc0",
+              "translation_sha256": "b9cecd7cdf8e46c955bd793d1c2118df2e93b68fc2048da987e06cbd735e0efa"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00021",
+              "source_sha256": "cb5cdde81e3af65dc4bb6a02d35016e2a308301ba1de4388d12af0b4e292da54",
+              "translation_sha256": "444dca1ba45132039b2902945d421931b66acb3d61f087c30d2c1dac3fbb4c05"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00022",
+              "source_sha256": "b32785057195e5850fa6209aa3e0a19bde4844c110c3727f930f2e700c01be81",
+              "translation_sha256": "c3033fffceb6f53e83bf51997506f298768cf659138bf90bb764f03d0a510696"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00023",
+              "source_sha256": "860911598d42db85fe577a6e35eba2efe988216a95b364b455bb8a37b23f04e7",
+              "translation_sha256": "c0ee8987103fae49d8e8b0bcb65870f15794b361cd01198c83934b232a241fa1"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00024",
+              "source_sha256": "580eeb35854ef20df30e7da1d824b17a8e66c4e94a5928548a2e2c95835993d9",
+              "translation_sha256": "f3542193052073cf60c05ba02167b3349fa6f18f959bcf6e2c69b92c360e6fcd"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00025",
+              "source_sha256": "820122ea5b793e0f0060782dff7dcd10e40de17b0789a61202cf59f03259a5ec",
+              "translation_sha256": "e9bb00d1f8142f50855d0ae1260627e5fbf96bbad33fb5b35ba6eea276349138"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00026",
+              "source_sha256": "7a6e234a94f5f86674aba9127926da87e078d0532735d13ed7d7db528fc44ce6",
+              "translation_sha256": "711c985b9e6952c23a38c3d1e452777026be2a73d0b2ebca8efd2d446db739bc"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00027",
+              "source_sha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+              "translation_sha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00028",
+              "source_sha256": "28903d3f99ae4cf1f3ab76592cf2b1dc747ea8a69e4124b7af14d1335c5ef502",
+              "translation_sha256": "b450df34723662e913831fdb0f3e00b1c7be41228490ce8ce272cf6d4d2dc6ae"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00029",
+              "source_sha256": "1ee501a7e3b234831b98f20f7c26dacf11558339c6144be26ca83130b1795b73",
+              "translation_sha256": "ceb6081456e63bceb6616578fe27f926c0f1fd1e19bc9e5994b2c3175db22c2b"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00030",
+              "source_sha256": "d7b64297566a0a861dfd8d2ed2e4c50b71a2a661736774264c658fcf5b349c9e",
+              "translation_sha256": "00fdcac2bc8eb428c6c0d5da4372960413f9d6b85012570bbf4d063183835e5c"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031",
+              "source_sha256": "0c806a3b332493d075ef4c528bcf3056588a22b273d4c170f13813ed1c7bddfc",
+              "translation_sha256": "dff44e69322b7dba529671ed178fa521f40253dd24473e1af9235f58c946ac8e"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032",
+              "source_sha256": "0279b13e4b39e1e056bbfe98fc55055ee0943c57bfe71334df01906813b44c3e",
+              "translation_sha256": "3a8b00964dfa8afa6cebb315d2fb6846dda4e48e7401163806c49c497442b99b"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00033",
+              "source_sha256": "9563036a70f38e0c08c1ef5e5afabdf533a8deeaf16d6ce65763336019cd6e45",
+              "translation_sha256": "989afe5c3c2f03760aa3e941a117169a6d6cf055feecc059e010da26869d405f"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00034",
+              "source_sha256": "5bb3a6cba76cd5167e06548595d25037f962a8f4e5d9cae6c1e789138690fc0a",
+              "translation_sha256": "a51e6aac2422e80f4705ba7bc96c6bbbb12cd497aaf6ad15a7bc1f4d79b814e5"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00035",
+              "source_sha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
+              "translation_sha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0004-c00036",
+              "source_sha256": "f738ad4cfd292ae900a348a63c0194ef0d7e3b06b67b6c0939511880a21f426a",
+              "translation_sha256": "aaea961bad860ebf010b2655ae6d477e7cc4acce2300cb5874c7a754a14cd8fd"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0004-c00037",
+              "source_sha256": "ae1f2c71affa6c2e9a8bb2b2344576ac34b80a78945730d160b3b3d1c71000c8",
+              "translation_sha256": "3bcfe4149d0ef080ba5f10608c358fd30eec9b020c557eeb99b283f6b41c96af"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0004-c00038",
+              "source_sha256": "5f1b6dc297010a0632b79e5c49e0a1ed4e96e93b3e4c9f7c264d83f921d9de1f",
+              "translation_sha256": "679b616db609c012ad32f81767b12bc39d4a34f15468f8fe5454fd22d6b7f94c"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0004-c00039",
+              "source_sha256": "eac71f4f50474bba2038e8bdef7e876682f7bcd421263c2d300b7e8ec42f909e",
+              "translation_sha256": "2da8c887dd8fc3599ed319b3129f25c8125acb467f2fbc82db9a31ed09456940"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0004-c00040",
+              "source_sha256": "beecc30c1e6df7a127f5a8496ab23765dd65542caa701497d702a01c2b1cd9c6",
+              "translation_sha256": "1fecb6ec48f0067a6d388ff21f38eab8de72018de10b511fb59abd958ebdf3c9"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0004-c00041",
+              "source_sha256": "e0aba944acc418a1b098c981c27e1fb113045bb0ebe74639169c0e2948589d6b",
+              "translation_sha256": "68fde7e5ed8e7364d6d1adab66e6f1c4eaf5b3a294ddca66b03a6546fb5aa90e"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0004-c00042",
+              "source_sha256": "1140db5e09f780065ee545c4e26dc42ca95047b374917818076456db37373d93",
+              "translation_sha256": "bad8f4a8df663f4826813069ab73cb46a5ed2f95ead6dfe741046d3b583d3fdb"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0004-c00043",
+              "source_sha256": "f4f16a595d90950f3b623b8d7ec908c67035688763671a3de22506922e867ac9",
+              "translation_sha256": "8a176ed7b2625b3f7b1456039a7e3669303ac9a336bdd2e0d4ff426738d3dc0f"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0004-c00044",
+              "source_sha256": "8342cc75b95fe9daa5661615bcbc0dc5f257525c3a7eafd493e931fbfb59e779",
+              "translation_sha256": "08e000a15c0379ad667e33884ab00d0a58d322dee9a117157af17c7b218ee4b4"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0004-c00045",
+              "source_sha256": "b384da23722022c8c23e37d67f0b7efbb223081d52631beab0fd7d1f6e2afd37",
+              "translation_sha256": "424f1b31dc5f8dc77213b9c9c187af0481beaa3a6f54ee1f74eda967639e0c9c"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0004-c00046",
+              "source_sha256": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
+              "translation_sha256": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00047",
+              "source_sha256": "1b306ab954f943ec10911063e06cfc851743112e44683e02dcd308792641951a",
+              "translation_sha256": "259298f61f4d6456eb95121be01c03dc707ebdb0612c5bc79f1aea1d9a0b4d6c"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00048",
+              "source_sha256": "a9b6243f4791d33cdaa6f00d3e6f5bf5434fb71f823163ce1e8962986b6a5a11",
+              "translation_sha256": "4304167dbfb77ff7cf93235917c95d4b5179fd5561b2bddc9f88662c13e1c61d"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00049",
+              "source_sha256": "1e49a3640ffb3be19ed2d993f418fa77e8f003054fb59a248f90172923125551",
+              "translation_sha256": "1e49a3640ffb3be19ed2d993f418fa77e8f003054fb59a248f90172923125551"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00050",
+              "source_sha256": "b660a1378ab2b15a00b9321e1e2a7b3eaf55e2a153d36d71679a06055052248c",
+              "translation_sha256": "32436a109336a35447dc20eda56ab085c81871ba26b5236e9d8679bd6f36fefd"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00051",
+              "source_sha256": "c3a800cafce18223e5e90c2ec57bb27f141e4d01893325a6a56883ed97b9d99c",
+              "translation_sha256": "c3a800cafce18223e5e90c2ec57bb27f141e4d01893325a6a56883ed97b9d99c"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00052",
+              "source_sha256": "f6d789d2d6d8e3882a5c9985762df42a9c98d1216753008a1e49065924bb0fc6",
+              "translation_sha256": "f6d789d2d6d8e3882a5c9985762df42a9c98d1216753008a1e49065924bb0fc6"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00053",
+              "source_sha256": "accfd5998875a89c8cdf2bd9c74bff26c4a56fcf9ddf0d20bfc53061d98c5740",
+              "translation_sha256": "accfd5998875a89c8cdf2bd9c74bff26c4a56fcf9ddf0d20bfc53061d98c5740"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00054",
+              "source_sha256": "324b41608c73afd5029ab2e84d67428737599ea69205c8dce224bc23828b3308",
+              "translation_sha256": "cd0793a501fd7aa66db8ec03f533836a0bccb7cc8faf7d4684d0c78816015afa"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00055",
+              "source_sha256": "eb909d539b7fdf1b35228628fa923a6104d5182d75a4e8a8867229d1dd153908",
+              "translation_sha256": "e506a9ff68285a3cba4ceee7c083d7abc04fb3313ec49cf6c20166fcef46398e"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00056",
+              "source_sha256": "8246a1d631a6d4f3270c780bb1d463996ca459afe411fcf7e9e49d3e35c13afd",
+              "translation_sha256": "3a881c92f819fd398474f23105de039f92ea66dfe61272945c0cc13b6dc192ef"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00057",
+              "source_sha256": "de3d10b7a2f3df610feeb9e8d6272ec0d78e0e09b94ac361f42f5d09f4fce46f",
+              "translation_sha256": "e765bc35cb42dc33b5a13663d6174b2a1c22ee9d7f1471a147917ab5179d0ff1"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00058",
+              "source_sha256": "704fd9429f32a23309a5432a240b9b5563721c2606875fa955e255c9aaee3efb",
+              "translation_sha256": "bd00582c13047fd4d28864e329837be52b994df549f1ad4409d210d2df4fe88f"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00059",
+              "source_sha256": "c5211a6ce2a32f017c97973d50bc32f052f5b56fd9a053606fdf3f460cde8a47",
+              "translation_sha256": "b4729448fb87b6c19cc2bed12cee19676d7c615f9b33ccdfc724b8c31cfef498"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00060",
+              "source_sha256": "997a1f93754930a29078dd2453f6e46728ae5f9c1e423157f2622e352c13d29d",
+              "translation_sha256": "780326e4db14810d8eb7d0e23537b4d6f9d9d7bf216818dec628c1ca3b7b086e"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00061",
+              "source_sha256": "0755a1778fa9c9f9412e47b24b342d32fbf118a2c2247fb05eab58e7393c3bb7",
+              "translation_sha256": "d25fe7951542a7487ea748861d01d8e8fc79a22f3a1602c14e84cec7439e7b93"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00062",
+              "source_sha256": "fd9bf6704129374a63b26a9f9b1af772df282b487b35417b0d986cf81d9dc40d",
+              "translation_sha256": "68f45c6d9f12377737eef78250d378255fad96e4d8282aa229850bf4677322f0"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00063",
+              "source_sha256": "94dd8f3a20f159ab93638fd23770dc5512b4c23faffdd1b8abf3b822a6d0a119",
+              "translation_sha256": "ee3bb63cce2f927a9195c1cf7ac06417a284a1be9df02ed4fe40c8f7ffcfc14d"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064",
+              "source_sha256": "6db8832bb8152af4f8d64063ab846a95089946be3fd03d764d589bd4d772e0d7",
+              "translation_sha256": "6d4843acd9a9d49126389fb9a26e0ec972a388096aec6f9fd912aedf63fd6d4f"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00065",
+              "source_sha256": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d",
+              "translation_sha256": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00066",
+              "source_sha256": "8d94f9d63c19253b88dbc5ec861ace23bf2d7fddfcfdafbfef760dd779fe59a0",
+              "translation_sha256": "09cf20b5a7006a778b004f0d5f3f3837d62d9f695b7596cb299243da4565d7ed"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00067",
+              "source_sha256": "a9806e080bf60401da9d61a5f76a1d36bf17d6b782ddacdedd8b3294a4c0cc90",
+              "translation_sha256": "e80426b426283d07fb27ccb1f2f3fbec81650b65f91ac70232d0f8b5b3de42d9"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00068",
+              "source_sha256": "158b833eb3b7c4c1f5cad49ca8a704c53afc4a73d337e609ede58d808ff25da2",
+              "translation_sha256": "42f09d0d2cf3cf53eb88c2128b12f97f402c9f70439f173d81a1d282c5c2a322"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00069",
+              "source_sha256": "a8b8f744e0db72b0cd10753953c0342874dac74330b145015a6dc9ad722262fe",
+              "translation_sha256": "842bda1add649e63e6de03012e505b208617435d234ef0f29e09894f5ea8a8bd"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00070",
+              "source_sha256": "14e94984214f3c73dce362badcdcb3e13b02bf3cedbc43e4c54efec67c7fa091",
+              "translation_sha256": "4954916b3a9bc7a0dece43b44d7984408d3049c9eadfcf217a1acd21a77481bd"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00071",
+              "source_sha256": "f976defd18817bf726b2fd90ce4a5a588d0f22921fed26f401e47694bc4613e0",
+              "translation_sha256": "cf41f42e0cd56e308afe32a55276ab2e3f1d99d6e59f11739e78807c3ef02ec9"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00072",
+              "source_sha256": "e6ac3807f9a2bb12b7189995da5ffd04648fdbc72aa2df24ac34b203a4dd9ae6",
+              "translation_sha256": "33303def5142cb24c62a190342d0c3410082ffe4db03325039fd715d4ce45738"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00073",
+              "source_sha256": "65c73d41372e12e30cb86fc2d4081a1bc5df963c041dfb080609e354227d63a4",
+              "translation_sha256": "c4bebea3df6aeab6b97b76d002e2356ce71ef9fc0937d0fd5b86107a0ceb3d08"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00074",
+              "source_sha256": "bf3012df7232fa1afbb1b21e7a93de7b60e9644982ef98b0136438e9b9af536e",
+              "translation_sha256": "bfb4d802976ac5f9f8b242f5a25a8d00fe06748d57c6f937fccbb90bff633555"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00075",
+              "source_sha256": "31a7d4f0c6ed4f80e2ba3dbeb6314c0badef98a416995f62a3d9ee9a3cbb2f5e",
+              "translation_sha256": "58d549c90103e27a4503eccad6847b1730d7e19f0ae50d9fc7c41948858ee410"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00076",
+              "source_sha256": "ae1883914af8c67ad84efe20b9e7b4569dd7d82f69e0d8e96739e345fc2d509a",
+              "translation_sha256": "beb21fe1ba2e7d64add3032abd779b239d4cc8fc50149d670ef1b5740fffc7e3"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00077",
+              "source_sha256": "e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683",
+              "translation_sha256": "e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00078",
+              "source_sha256": "c10cd88260bb644339b22e2fa1a3faecaecbe2ae0f1cfab7cd573eb039aba05f",
+              "translation_sha256": "c2e0de3117664ca9db692e0c8b733998b510fc1e3805f8a18352967919ee5591"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00079",
+              "source_sha256": "149f7b485849a891460e1304e805f25ab60e3b6bb9e8264aeefba627dc398b4c",
+              "translation_sha256": "7a322c9713ba85d2cc27416baa36abe2f23180b200643d219c1bcf89abe4b996"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00080",
+              "source_sha256": "d7a6430dd0eb9d9a466b8895122f243481a58f816fcbc3e12901ff6c0c6f0ece",
+              "translation_sha256": "89d22a123f7c13fb2adad6052c1e296834274fd829463354fef94bdcf4906c97"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00081",
+              "source_sha256": "488b9236157a54ff8254bb2c6c475e5b3fce66aa2248338363e48ecb0a86bd10",
+              "translation_sha256": "2296be7dbffd512d16ebf4eec600ab476826adb9e67a05f5ee6e776b3d9d3024"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00082",
+              "source_sha256": "f821aa46167e4fdb7db75145242e67a2074c387541bab41e1cafd3ecfb4ae6b6",
+              "translation_sha256": "681eb69e47bc49c42a15f49084ab9b87f5467f44dd3f02e43f7c5c02c38230ba"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00083",
+              "source_sha256": "e2acadf3bf06e52fecad0fcbeed2c27b3aa7a1e9d72694a4e75a3cc8285b4786",
+              "translation_sha256": "4f2dcfa2d4e3ae596d6c22948221e9d75178ee612e8479276fc4a06a39828ee3"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00084",
+              "source_sha256": "43a372fdedcf11dfb5a1a976141ee17206eb0dd32bdcdd79c7626c0dd0d81663",
+              "translation_sha256": "1d260ead029a0c41a25f1c7865966314b74f59280e246258175d5eba7861b862"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00085",
+              "source_sha256": "4dc204ef5c7f59c71ca951197f022b5c1196fdaa6ebb14968605f882527baa1f",
+              "translation_sha256": "e36d34d0e5e195c340fc3d7c047472a310749298c9bec02c6cce81e8331be557"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00086",
+              "source_sha256": "ffd852e1f3577e2b562c6641a0772d127bb581951616ef4e71b3526548c5a1e9",
+              "translation_sha256": "9e028d5569e7c5cb85e77d652485952358119c02b05c7d38631343be1caf82aa"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00087",
+              "source_sha256": "81c0bc6b65fc3d1e15cff03c71e675b7262d3c187f8bdeec036bc05d3f516aff",
+              "translation_sha256": "10b333eef88f36cd9aedf0923092d2afb83d4c8cef3486d1dc8770e1b9bb230d"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00088",
+              "source_sha256": "f8fb24d33e6fecc0f10fe2de7aa4e146f7114aaa10a868880c8c5920cb24ed5e",
+              "translation_sha256": "5f350718fc11456fbefb3d0975fdf2f44d768e7231334d51fcaa2ab862b8ed7c"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00089",
+              "source_sha256": "50e8b3e5d486ab6e1a6cb63cc96485789acb1afd30b95269855503395056b98d",
+              "translation_sha256": "ad01379ace3975e26f2dc5815ca8f43291b904d99fb09821c57bb2280e04d2d1"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00090",
+              "source_sha256": "ba3abc52b353c0521cc3b8782fe7cfc06dc4b14fbbb59425f19a819975537b84",
+              "translation_sha256": "24cc518b8b91ab8c3293ad79375f104e3656a674819bbe64cacf31cd7509bcaa"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00091",
+              "source_sha256": "e63a096065fb3c78a29dad372d667afc098673fd6c1fd86a90708dfbf35059c7",
+              "translation_sha256": "65fbe841a1885880023b7ed2baad27d696b3a0d6874fe220eeead5ee540e74fe"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00092",
+              "source_sha256": "7902699be42c8a8e46fbbb4501726517e86b22c56a189f7625a6da49081b2451",
+              "translation_sha256": "7902699be42c8a8e46fbbb4501726517e86b22c56a189f7625a6da49081b2451"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00093",
+              "source_sha256": "84e92f57798b8ed92789de18adabdff28d01cc6b48245c6fa14dff899588b4a7",
+              "translation_sha256": "97ed5bcfb83d963b174d46f2ac7f33e7c271db46369950a5b810cce487a237c7"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00094",
+              "source_sha256": "24f852676df7f0816f616ef97e9331c47db74b53e96f52acca4ede85befeda08",
+              "translation_sha256": "fd8dc23c86fc3a32704a844efda64f7b70d11d915b991e2aa24cd6a2e855aab9"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00095",
+              "source_sha256": "01756943172c6e4b30a2ab1972d742d6e6c61aa78f81ce4e701b27ced1715f3a",
+              "translation_sha256": "a8aa053fa3a322a57f3b4c65135eaf4dd0864901fe5665fb520d05ea95afab77"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00096",
+              "source_sha256": "b5a8ded77956ca8c2d7816f1a0acadb5d24a7667837e21e171255cfef7a9fd1b",
+              "translation_sha256": "c556d559e095d9d78d46593193e194538fbf9691c2493c331de82ea09845360e"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00097",
+              "source_sha256": "e1bd1cc3731ce89976e14813664e3d27658217d5d45068133f10abef171b0009",
+              "translation_sha256": "5e75d0de77b6f2857f60d58d6b9d90e4b8f59ce4153d9c2b750686d4fa58da73"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00098",
+              "source_sha256": "48c24b4f5b47be364fab07a70e46440b119773e7cec185254eb730c20493f03d",
+              "translation_sha256": "0130df2ce4e5f5358a8ebe00b523e1ac561789c68435d4286d59b3dbbde351ad"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00099",
+              "source_sha256": "5ab6786678abdada7fa5f977933d8a6824230c706885be712c2de13bb15ddebf",
+              "translation_sha256": "702a97d498668b6d76263febb32bd8cc5f9f466f21d5dd4e340e0ef7737046aa"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00100",
+              "source_sha256": "5a833cfdca1c1473ab42d74e9ea8dfc43089667a43e02b77546b322743fa5ce3",
+              "translation_sha256": "3f8bba9abc56ca0afa33b5efc7ec90f4d594c71f39659b5ca7f24411d843feae"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00101",
+              "source_sha256": "d844c449d87493cf5c9a4d1719e5b17f4a3761e99ef66832d6aa5f771da14f6e",
+              "translation_sha256": "f1262f8a92f68719fbf75f665d749c1922e74162d86c017b1192c77159c4565a"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00102",
+              "source_sha256": "5abd14f269abb2c34b2c9754249d950fad43699e62cb0ed35ed10b1a5e0a6e92",
+              "translation_sha256": "428f3a12f0379422aa4ca993907d64303627e056c8405da7d145167e6b78c7dd"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00103",
+              "source_sha256": "5353fa435eb9668ebf31aa4c0d9b6590d5cd6f9f7efeba73d2a91f17f88df785",
+              "translation_sha256": "c58f8ff59993d81aba402dd76429682ac5d0c3fa7c45d48fcc6d505117429f6d"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00104",
+              "source_sha256": "87440a339b25eaa776ec649eebdde34465ad06f9bbdac4fa0752cc4c5d5d8ee1",
+              "translation_sha256": "cd4779a3178a954ed3e6c3953db7fd4c7b43ffe9386f8a988eea1b12b725a63e"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00105",
+              "source_sha256": "2c624232cdd221771294dfbb310aca000a0df6ac8b66b696d90ef06fdefb64a3",
+              "translation_sha256": "2c624232cdd221771294dfbb310aca000a0df6ac8b66b696d90ef06fdefb64a3"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00106",
+              "source_sha256": "caf264599552d30172b891fdf122f1cb095fa2bed011da798625f6990cee2fc1",
+              "translation_sha256": "0adbac77017288959913b9affa6274bf1bee5482cfe68d5f686612346d2e1c5d"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00107",
+              "source_sha256": "993725e65690f208d43e1470aebc1ecc3e35093c405400051efdad60196f45a8",
+              "translation_sha256": "82157abcbcf17f466b19d74af26d81b1149a05357edda5a7d4f0a6f4af24c561"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00108",
+              "source_sha256": "453a24a936c6837684f2cb7a1a81ae13084180e32c4ff75d528a9f15f16f0be9",
+              "translation_sha256": "6b7a8c08a79833fe5e59e66ac23e03f1968f5e758a748377f26b148a1698fde1"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00109",
+              "source_sha256": "5df39af2ac1058f29461d7136c6c94c80679bbb82a5018a19d4847f8cc6b2922",
+              "translation_sha256": "e5283b02e036b0518456c7614d260720703d3914b711bedcf1adbf553e748fe9"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00110",
+              "source_sha256": "76f9d66c36449ccc6158f8e271792b91bb5d9d193ca6b1a40f7eb82a5349e57a",
+              "translation_sha256": "a4549429a3546c4ce6561ac577881a8c3a58806b414fa6ff5c90bda5e3dfc1d7"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00111",
+              "source_sha256": "0b66258d834f58121bd790dd80d8e32d1b852572a81304ed99e1f54f4bdcacc2",
+              "translation_sha256": "bf284f7fff8cb88cb869b07a5dc7834c469092479d97a3fcbc5358816bca765f"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00112",
+              "source_sha256": "1cd4e39832b1db1d996920c060d28c0ac47a31f5cb9402d52a8020f5a1efde46",
+              "translation_sha256": "621ef01a556d9e2fdb0eedf2e091eb2ac8df37d063bb7c69cd7a6c925d21b9e7"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00113",
+              "source_sha256": "da0dd10f5a047c4a5dfab6977f88b53e49d62e07fdd4284796ead8c8e6881d11",
+              "translation_sha256": "402db68b9d4a06ff6fc4e1565bea6fc2b04744aa83e75506c582b19e1736e73c"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00114",
+              "source_sha256": "19581e27de7ced00ff1ce50b2047e7a567c76b1cbaebabe5ef03f7c3017bb5b7",
+              "translation_sha256": "19581e27de7ced00ff1ce50b2047e7a567c76b1cbaebabe5ef03f7c3017bb5b7"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00115",
+              "source_sha256": "3f83b33ea808ef77a91d4c69b9dbe96dffb9645d016638295cb67385cf2b16f3",
+              "translation_sha256": "ead575cf39614d4584facf4a24b3ec8b28b3a6b9f7646dd214937ca4f9b69201"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00116",
+              "source_sha256": "bbbd6117395e785002a3c8eb5043d3727d3c7a76eaf8bc8e6131cd5c539a0f72",
+              "translation_sha256": "d9326ad193029f6635027e762e7e8b04ff03851c14a9d2bc1b745228c0d036d5"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00117",
+              "source_sha256": "68684256d7f48fcb9f5d8c1508f35b3d104af99a8ff526af627a285b2884a2fa",
+              "translation_sha256": "b1b68cb453cc2d5fc95ffc0b771bbe36b3d463c25d53f1d7e6f4cf0941b0a7f5"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00118",
+              "source_sha256": "20207f1a9c7cf7f3f0c4e2a5538e9fae31cd2182dd91aee5ee421c0354702b60",
+              "translation_sha256": "77b987493fb8359ad925b6f06e6c25458283cabf36634db7b5d1a6070fbb99be"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00119",
+              "source_sha256": "4a1fe993ca69ab93edac9093d3fea2e12e24bfe6043e8be21756730cd8fe0518",
+              "translation_sha256": "a5e6fd6a5ad77cd6b11dc679ee3543c1e09b2af85fb19c2a5af082e629a61ecd"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00120",
+              "source_sha256": "7149b823e9c8b6d614e03db6d77cfbd27735360f09edb266422a607f3fdd23bd",
+              "translation_sha256": "096873ff6bc16db011ad5ed726151c9dc408e5e62527335c1a4f0a2ad179a851"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00121",
+              "source_sha256": "8ae7814be38d315827f0be9a4f98df14366ab2e7d5f4c714498251c4a8744c44",
+              "translation_sha256": "af7beb828b9b7ef8ec8bfec88523fd1c76bb11edb047de87f12f724a5428e52e"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00122",
+              "source_sha256": "41eff732af8ad0fa616d6aad56ae8bc540f079d07a3340ff96c966ba6fb8d31b",
+              "translation_sha256": "147edf2a2289048369b5803e234026aa2d18138fe83079a30dc983a112210c10"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00123",
+              "source_sha256": "f24545534d2330736180f7bc8926abee9cdde3b132d9b94842f811fd602d7a77",
+              "translation_sha256": "65cb940befd16824de29c43eac7b3990d7f04d9622883715b26eeaec5dd5f0fb"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00124",
+              "source_sha256": "962703f361a94e600cf27abc3ca66eb5174e8aaf898f32ca2afbfe0fa702ccae",
+              "translation_sha256": "711c9002abdb93522acaaa8765900bbe3050212b0c7955920368bd64c3094d86"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00125",
+              "source_sha256": "2eb694272491ca396e8622c007918ff13eefe5572238ff2fc9504567521aafa3",
+              "translation_sha256": "b1721cb5f65b97551f2f3593bf9abaa7214c7e8c83a4dd684a9ba4d09c8ea25f"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00126",
+              "source_sha256": "edc3efb149a25b9613ce36ac49d50fa08fbda9e7b7120a27b83d2c9a69b24a3f",
+              "translation_sha256": "69824d3b0e70ca6aaa0da1613b65fd914c442bf1f7ad1bb22bcdfbdfe1a05e39"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00127",
+              "source_sha256": "f2f1b568bcd2cf7d7ec8f7da17acb0d06669b958109aade842b42278bc6fc104",
+              "translation_sha256": "51eaceee57e9f8a1ea330f1b9baab61a216962341102c548c7030a94a0361fc7"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00128",
+              "source_sha256": "a6c0782cf13440ca26f68d418ac44b0943bd52d3e773b852e19e632c803e0195",
+              "translation_sha256": "d3c4b96dbf57502ece6467523e7acb6d89992054475d6f1a3b15a7f8f2dc6a1b"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00129",
+              "source_sha256": "fc98f5abacfd9c5f86e5fcfdcb9c9e04f98b167208f9e4d46aa86470dc3aa7a7",
+              "translation_sha256": "65c43ef6e61f6c852b2bcd719221964b2f675a6f57eae21e81ce291c9d0429f9"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00130",
+              "source_sha256": "78f79e71d72b91822993a0e4d28716f77f1e6d41516d05b6d60f4df50e2c6a6d",
+              "translation_sha256": "6ce7ab4ca7ce2871f57ee5136ce8d956b57791af9cfc14f23ede22524bfbb8ae"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00131",
+              "source_sha256": "4a44dc15364204a80fe80e9039455cc1608281820fe2b24f1e5233ade6af1dd5",
+              "translation_sha256": "4a44dc15364204a80fe80e9039455cc1608281820fe2b24f1e5233ade6af1dd5"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00132",
+              "source_sha256": "951df3b2eeb461ab7e42c599845ba8c3a398d526e1c99c04cded6c87fda246ac",
+              "translation_sha256": "aab4daf7404e855cda537c160ffcc4de2076ff08c6fb8f0780eb7d845fac945b"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00133",
+              "source_sha256": "6bbd8d321a9cbf934f4305e83ab4602789268ee107a4da0e9925a687fdb3d8df",
+              "translation_sha256": "85f7beee02e84700ea2c094298c9e0168ad18a265226285b43106b71235174cc"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00134",
+              "source_sha256": "b30179a0e1d8a21025a782695f78a3e5f31b5f58485b79e602fea76d4b239e9d",
+              "translation_sha256": "ae23ede180ce3d2d0c6bc189c781230de804a385456b681c47e06883d810c9dc"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00135",
+              "source_sha256": "c48f56f4a9856facffc9a4bd4e6c98ad0ff8ef36513f95e160d8bb3376e6baaf",
+              "translation_sha256": "368523a32b999a08bca7b0f942570b7e0fd186fc861842d57a4c33b4418aa0ea"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00136",
+              "source_sha256": "40a2d00b2b11dd792f02bae7eca8fe799936152b24dda55e597a0e8b40f2791f",
+              "translation_sha256": "45152dec37085824ac8fd3fa1f9a71d2f30958a34dbca9bd61e5acac18cfce70"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00137",
+              "source_sha256": "f0506009496847fce43e4a613f0f3cdae9ba0ae9dbc05c3ba6f5c2b3434d006d",
+              "translation_sha256": "65860da430382a6c72eba4e8c2c36679351977a7e8dd02158d1f9bbbad2fecdf"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00138",
+              "source_sha256": "ae5582868eed13cac876c68dbfd04562bcfcbe989b4fb1c01c190007a0d42f32",
+              "translation_sha256": "0ffc5a8a3b27fb59109db59b2045ebc6a4f9305889cf1bf22160652bc382d85c"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00139",
+              "source_sha256": "98649d7a15ba82144b316b19d78436900ec2786fd003fb24fb255a38ebf153cc",
+              "translation_sha256": "de265fa82bff652ba8061805b06c4be6c3618c080bc7f70952bb795f1feff599"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00140",
+              "source_sha256": "57c5a6323da5efe0ed05498f451cd8ef7d29e305e1387e4b097c7418ab9c4493",
+              "translation_sha256": "4d42e5970c394d6f077eecc6d03441308b2e40c2ad6fa3b01f03992a57260f7c"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00141",
+              "source_sha256": "17e7bc713213bd73b8962a5bdba3d1d1988f2b3ac888cc2ac23b23935dc5714a",
+              "translation_sha256": "813a040481bea6cec3dfae91514115ca30ffbedb0954cebbb27c3a98df1fd986"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00142",
+              "source_sha256": "b2f0caa35fa6e807a6249917fb8bdf0d850e0d78bab51351c10b3e5cb345aaf6",
+              "translation_sha256": "e282cdcb212d9e6dafac99425c428c3b332e51427b1613993df87ba7fd725ae3"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00143",
+              "source_sha256": "f1bf1561c0b59da6839331afeb9d6f04629c42aac939570837cb313675ce5fc7",
+              "translation_sha256": "a59c17c9881ee5b3260944f5bd65e93b04939b257ee139834bfd855b1b34a734"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00144",
+              "source_sha256": "efcff92b3ec2e13b983ef85114baa12bc0df22b207c7daf74697d3379bac196e",
+              "translation_sha256": "c23059c0922f29c5e708f93760d4680ff7f92c403f61a4c4d60be583445789ce"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00145",
+              "source_sha256": "ff5e742c6d1eff54d962eef6c62bf6dcbdd33c467e7bc25d45848b1586cc5667",
+              "translation_sha256": "79d9faade9db8e0b2e130445b1d842c612400e1cdd9982e925b00aba623f69e0"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00146",
+              "source_sha256": "cccad1ca6ef87f5a9b28338a150140f37595f93ff8b5e4e352691d7a9d356c21",
+              "translation_sha256": "58e691c0a581e55da111700d820ffb0f17a141f76f0a411b797fb58746288a84"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00147",
+              "source_sha256": "0d2bbee942a58bb9b5dac3069ce24adfe6f9495b17369d81cbe2308a0e9bdccb",
+              "translation_sha256": "d9c468deab0ccdbcbf4be951a61dcab91391a6bf05e5669d47cfcebb4a636799"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00148",
+              "source_sha256": "4f7031ec33519f908e872be03432654ad6777bcb0fb9231703ae1eb98f934194",
+              "translation_sha256": "d7de2c3c3747312626c2d0ab2d906f62933ab0b3fdd09fd768b1b3865c20d15d"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00149",
+              "source_sha256": "a533c92363c9f067acb6f6938fbf2d5c93e8996f4e896f835f1d66825a1a3940",
+              "translation_sha256": "ab198a08af998381a75827a5619d405a0518a32b87a9f230c04c6161e8e97c35"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00150",
+              "source_sha256": "e2cdd6b660caf10117ed19307f20068ba896494c76f6184de23cc55556a9dcb5",
+              "translation_sha256": "9f55c9fd72b1e856b679589c8ef74cca3dad913ad6bcc3e0fabde63eb356fcb6"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00151",
+              "source_sha256": "2a71784406536353c93b253c6d259622cb024d10e07da7f3400cd2c2ce689d99",
+              "translation_sha256": "81a5c350debc213a3fad7f1c99f89a4c7593fd189ab414379f133c61bb92f022"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00152",
+              "source_sha256": "4fc82b26aecb47d2868c4efbe3581732a3e7cbcc6c2efb32062c08170a05eeb8",
+              "translation_sha256": "4fc82b26aecb47d2868c4efbe3581732a3e7cbcc6c2efb32062c08170a05eeb8"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00153",
+              "source_sha256": "f99e25c0568882e1b92e8a1e3a40757d28b98ff5b85a566608543fa703540c8a",
+              "translation_sha256": "98e57a9a9c58610f9e73a37112af5732e02e0854dfa29adc3ce0128ab719ce38"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00154",
+              "source_sha256": "8feaef0054ed36eab5029085bc21a3168610623c2fa07ccf8afc9f94f306056c",
+              "translation_sha256": "8b5301cdbca1162146b17800f6f4a0334b676dae7e0ad1f2b32127b1579b32ca"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00155",
+              "source_sha256": "9dbb41ee44aecfa9be60fef09675c580464241a0161b05a4e500a333310817f9",
+              "translation_sha256": "ce7fa223c014cf831af74acea3ae97a6e97a07f99aaa1e99fb3ae2a7eee64ac5"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00156",
+              "source_sha256": "59df84861ae13892e653aba0cdff7d26ece3e3d907b562cb1babb4939920d8f8",
+              "translation_sha256": "3c6e711547735066f6689e707ce39cf2fec63af2a9de3e84e1283a515c81b574"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00157",
+              "source_sha256": "8a5be1b4f8c564b1be47b006c80d45697725cb9c39e3ed71d2e1eb44dc48519c",
+              "translation_sha256": "130c777541a91fe74b20c3cb11ecdc99e188fa6227b3f40ff074387787c7f495"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00158",
+              "source_sha256": "fef273f3a0483f43f48d0381da62201808c7f3bde955013aa2537e3bfe8319ff",
+              "translation_sha256": "12b22feafc65d6fbb0080694503c6dcfedafc4af63fa19be432bf90679ccfa98"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00159",
+              "source_sha256": "1411bdf10882ce1ad250880c07caae4c44e248287e28c541622b1b4349fdc1f8",
+              "translation_sha256": "f6e0fbea0c71c87dfb14d0fb6208916604187ff2d9bbd453689e3f74de510ec6"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00160",
+              "source_sha256": "46cc6190d1a4522703816b8cd7212f54fbed40db4be4994921b329870a77f2ed",
+              "translation_sha256": "ff9db3e730a2241af4f3f351014b982bf641b2cda8203edbf37d22f4b391c821"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00161",
+              "source_sha256": "3a4674e84dcdf0e9dbaed658d73dd8291e93a34ba24519ccb60bf7c04d2101cb",
+              "translation_sha256": "ccac65315ab8c170f483d5bd8cd1814431c29c7566fd6fbc8aeb56a2b127d3c3"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00162",
+              "source_sha256": "53b0bf7f8fcbc082ed1bae95b110354181f35d17ac0c9d9bda07016264c63ee5",
+              "translation_sha256": "76e12c0b4bfde91edc6be6fa678060706bef11668973cb408a49371f24b1b3c2"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00163",
+              "source_sha256": "8db1b3e78636ad35e9495d083581e334fe9f8176cfe4784020bdb6cd027dfc68",
+              "translation_sha256": "650f04bd6a2150cfa9bbb173d59a7f97c3fa0d6d498c014e62119589c76847f2"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00164",
+              "source_sha256": "367c468e3987926e0df2919f07b62abbb294dae02b4c362ade82ab5efebbb7b0",
+              "translation_sha256": "08c978b6e607ad44c6d1950e7972965be87b4fd831b70f8c82f303cbe3c07e29"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00165",
+              "source_sha256": "01e38106e75a6f9f335810044b063529d9a55f9b9e059b70c53671d4ebea1b52",
+              "translation_sha256": "43a3ac6d330f9a5ded2f6dfc1855b2ac65e5e230d46ebe8ad1f8986e7ce25736"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00166",
+              "source_sha256": "9ca9c9844ed54514697058578281b1d1d0653e9baf265d196f6a44b235ef071f",
+              "translation_sha256": "ac5e0a0555f5787bac4bbda818fedc89a68c995a9eea58256e0971023cf557f8"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00167",
+              "source_sha256": "784c3ef010c68bc96c689b1f60b1143396c362135620d0509660225e82a2f854",
+              "translation_sha256": "b82176653e5b1b3c989a1cbdf981febe951f60247af1b1588773f70e8be31496"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00168",
+              "source_sha256": "4954fa3592ab5d159d14f0c3f4fed6e1fcd65fab8bac3cfb62be4aa0a468ff36",
+              "translation_sha256": "a80c606b78ad58b8c873eb96a9aac7208e269dcd39893bd1c923d478ec02d44c"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00169",
+              "source_sha256": "6b51d431df5d7f141cbececcf79edf3dd861c3b4069f0b11661a3eefacbba918",
+              "translation_sha256": "6b51d431df5d7f141cbececcf79edf3dd861c3b4069f0b11661a3eefacbba918"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0013-c00170",
+              "source_sha256": "979078e3ec46b057d97657a17a622b1680daa4835fbdf1f3d3118b0f758baf64",
+              "translation_sha256": "0a59f41971c17fdd220c02cc956301e2f979f11f692e2f67deae9224586a1353"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0013-c00171",
+              "source_sha256": "3fdba35f04dc8c462986c992bcf875546257113072a909c162f7e470e581e278",
+              "translation_sha256": "3fdba35f04dc8c462986c992bcf875546257113072a909c162f7e470e581e278"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0014-c00172",
+              "source_sha256": "131a1ba99859f5e6617fa826d0b97492bb7a3e1fe9eecd2ecc2db2ac324d38eb",
+              "translation_sha256": "d5464bdf7a98e53b9fb36c51f30af6dff310c0c6dedc89a39279042fac728870"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0014-c00173",
+              "source_sha256": "8527a891e224136950ff32ca212b45bc93f69fbb801c3b1ebedac52775f99e61",
+              "translation_sha256": "8527a891e224136950ff32ca212b45bc93f69fbb801c3b1ebedac52775f99e61"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0015-c00174",
+              "source_sha256": "752e01c3820ed64901de539cf29cd067e0ec78678c90d1830958b4b1cdf0be73",
+              "translation_sha256": "b6544b4b340286f743df7d10888365de6864665199d8257aea1a14608ec448fc"
+            },
+            {
+              "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0015-c00175",
+              "source_sha256": "e629fa6598d732768f7c726b4b621285f9c3b85303900aa912017db7617d8bdb",
+              "translation_sha256": "e629fa6598d732768f7c726b4b621285f9c3b85303900aa912017db7617d8bdb"
+            }
+          ],
+          "markdown_characters": 59607,
+          "sample": null
+        }
+      ],
+      "implementation_sha256": {
+        "backend/scholar_graph/topology.py": "6c2ef45f12af6729597239c708a00e4235f86536d04a8201df01a2eca1d611c0",
+        "backend/scholar_graph/charts_3d.py": "d0d1a0e76ff44ae07ea0c4b514353c9d16384ad755c61627d1539e80f4979dc1",
+        "backend/scholar_graph/translation.py": "de0d3c64c99649533d5b473a307d49ed80c302bb3ed6815dac9e40bcffff8bf8"
+      },
+      "source": "官方 pdf/ 真文件Attention v7已解析记录；未重新解析PDF",
+      "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "pdf_sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+    }
+  ]
+}

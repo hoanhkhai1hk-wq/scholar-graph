@@ -1,0 +1,37 @@
+flowchart TD
+  n0["Input tokens"]
+  n1["Input embedding + position"]
+  n2["Encoder self-attention"]
+  n3["Encoder Add #38; Norm"]
+  n4["Encoder feed-forward"]
+  n5["Encoder Add #38; Norm / memory"]
+  n6["Shifted output tokens"]
+  n7["Output embedding + position"]
+  n8["Masked self-attention"]
+  n9["Decoder Add #38; Norm"]
+  n10["Encoder-decoder attention"]
+  n11["Cross-attention Add #38; Norm"]
+  n12["Decoder feed-forward"]
+  n13["Decoder Add #38; Norm"]
+  n14["Linear + Softmax"]
+  n15["Next-token probabilities"]
+  n0 -->|"flow"| n1
+  n1 -->|"flow"| n2
+  n2 -->|"flow"| n3
+  n3 -->|"flow"| n4
+  n4 -->|"flow"| n5
+  n6 -->|"flow"| n7
+  n7 -->|"flow"| n8
+  n8 -->|"flow"| n9
+  n9 -->|"flow"| n10
+  n10 -->|"flow"| n11
+  n11 -->|"flow"| n12
+  n12 -->|"flow"| n13
+  n13 -->|"flow"| n14
+  n14 -->|"flow"| n15
+  n5 -->|"keys and values"| n10
+  n1 -->|"residual"| n3
+  n3 -->|"residual"| n5
+  n7 -->|"residual"| n9
+  n9 -->|"residual"| n11
+  n11 -->|"residual"| n13
