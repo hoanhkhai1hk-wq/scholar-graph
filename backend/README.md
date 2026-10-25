@@ -1,6 +1,6 @@
 # ScholarGraph 模块一、二、四、五、六后端
 
-本后端实现本地 PDF 解析、状态机、去重与版本差异，模块二问答/对比、模块四检索/公开抓取/推荐，模块五局域引用图谱，以及模块六综述框架、摘录草稿与CSV图表，原19条 HTTP 端点保持，另增问答SSE与模块三英→中翻译端点，共21条。Python 包为 `scholar_graph`。自由成文、文档导出、异步队列仍未实现。
+本后端实现本地 PDF 解析、状态机、去重与版本差异，模块二问答/对比、模块四检索/公开抓取/推荐，模块五局域引用图谱，以及模块六综述框架、摘录草稿与CSV图表，原19条 HTTP 端点保持，另增问答SSE、双向翻译、拓扑脚本与三维CSV图表端点，共23条。Python 包为 `scholar_graph`。自由成文、文档导出、异步队列仍未实现。
 
 ## Windows 本地安装
 
@@ -265,7 +265,7 @@ deepseek模式的qa节点设置上游stream=true，读取真实分块后即发to
 
 ## 模块三：英→中翻译与Chunk对齐
 
-`POST /api/v1/papers/{paper_id}/translate` 接受JSON，返回传输封装，不新增或修改contracts业务记录。本单只支持target=zh；中→英全文翻译与前端同步滚动均未实现。当前已有端点加本端点合计21条。
+`POST /api/v1/papers/{paper_id}/translate` 接受JSON，返回传输封装，不新增或修改contracts业务记录。英→中仍支持四种scope；本轮另增target=en的摘要与全文，输入及溯源说明见下方“模块六补齐”。前端同步滚动未由后端实现。当前共23条端点。
 
 四种请求：
 
@@ -276,7 +276,7 @@ deepseek模式的qa节点设置上游stream=true，读取真实分块后即发to
 {"scope":"full","target":"zh"}
 ```
 
-section_path是落盘Chunk的完整章节路径前缀，包含子章节；selection只接受该论文已有chunk_id，按原文顺序返回，不接受任意未锚定字符串，也不支持Chunk内字符选区。section/selection分别必须提供section_path/chunk_ids，其余scope不接受这两项；重复或未知chunk_id、未知范围、target=en及额外字段均422。
+section_path是落盘Chunk的完整章节路径前缀，包含子章节；selection只接受该论文已有chunk_id，按原文顺序返回，不接受任意未锚定字符串，也不支持Chunk内字符选区。section/selection分别必须提供section_path/chunk_ids，其余scope不接受这两项；重复或未知chunk_id、未知范围及额外字段均422；target=en另有下述中文输入约束。
 
 响应：`{paper_id,scope,target,segments,markdown,metadata}`。segments每项固定包含source_chunk_id、source_text、translated_text、paper_id、page_number（PDF物理页）、section_path、type。一条源Chunk对应一条译文；Chunk过长时仅内部拆分再拼回，不新增Chunk或伪造id。摘要按Abstract/摘要章节识别；无该章节时只接受与PaperMeta.abstract完全对应的真实Chunk，不用元数据生成虚拟锚点。当前官方Attention源解析把脚注等也归入Abstract，该scope沿用已落盘边界，报告如实列数。
 
@@ -291,3 +291,44 @@ full的markdown为整篇Markdown字符串，其他scope为null。Markdown保持�
 前端协作（由用户转达WorkBuddy）：通过原同源代理POST本端点，按segments的source_chunk_id匹配阅读器已落盘Chunk，page_number与section_path用于定位校验；full.markdown用于整篇版式视图，原文/译文段级滚动不依赖译文字符长度。本单没有改前端，没有声称同步滚动已接通；现有Docker镜像需要重建才含本端点。
 
 实连测试标记real_model，需`--run-real-model`与模型/Key变量，无Key跳过；离线协议和未配置错误测试仍执行。官方Attention的摘要、章节和全文实测、对照样本及回归证据见[翻译验收报告](../tests/reports/translation-acceptance.md)。调用依据：[DeepSeek聊天与JSON输出协议](https://api-docs.deepseek.com/api/create-chat-completion/)。
+
+
+## 模块六补齐：拓扑脚本、三维图注与中→英（2026-10-26）
+
+新增`POST /api/v1/topologies`与`POST /api/v1/charts/csv/3d`，扩展原翻译端点target=en；共23条端点。前端、docs/API草案与contracts/所有既有schema/example均未修改。本节描述新增传输封装，不增业务记录；原/frameworks、/reviews和二维/charts/csv行为保持。
+
+### 拓扑脚本
+
+JSON输入paper_ids与logic/framework二选一，formats默认[tikz,dot,mermaid]。logic.nodes每项为{id,label,source_chunk_ids,column?,row?}；edges每项为{from_id,to_id,label,source_chunk_ids}。column/row为TikZ网格，缺省纵向排列；最多100节点、200边。每个依据必须属于所选论文的真实Chunk，后端返回原四字段锚点。framework直接接受既有FrameworkOutline，校验Schema、论文集合与要点锚点后按章节顺序连边，明确是章节顺序而非因果/引用推断。
+
+返回nodes、edges、scripts[{format,script,validation}]与metadata。三种脚本均为确定性渲染器根据输入逻辑真实生成，不调用模型、不返回占位代码。格式自检先检查括号/引号，再按生成器支持的严格语法子集解析关键字、节点、边，最后与输入图逐项对照；失败422/VALIDATION_ERROR，不发布无法解析的脚本。节点id映射为n0等，标签按各语言转义，防止标签被当成命令。
+
+运行时自检不是通用TeX/DOT/Mermaid编译器。TikZ为完整ctexart+tikz文档，未安装TeX引擎、未声称已编译PDF；本轮另用Graphviz WASM真实渲染DOT、Mermaid官方包真实解析流程图。外部解析器仅是测试依赖，装在忽略的data/module6-tools/，后端API运行不需要Node包。逻辑来自调用方/框架；锚点存在不等于系统自动证明任意调用方的边语义。
+
+### 三维柱图与趋势图注
+
+`POST /api/v1/charts/csv/3d`接收multipart file、value_columns（JSON数值列数组）、可选x_column。CSV校验复用二维模块；至少两行，最多8个系列、1000根柱。横轴可为严格递增数值列；未指定时按CSV记录顺序，不假称时间。三维坐标为横轴、系列、测量值，Matplotlib真实bar3d渲染800×600 PNG，负值柱向零基线以下延伸。
+
+响应为{chart,projection,data_table,conclusions,series_aliases,metadata}。chart严格符合既有ChartOutput v1.1，chart_type仍为bar；外层projection=3d说明投影，绝不把未批准的bar3d塞进枚举。image_ref为真实PNG数据URI。data_table含所选列、数值、CSV散列与逻辑行号（表头=1）。原二维/charts/csv仍返回原七字段记录，无需Key，受限枚举图注不变。
+
+趋势先由Fraction精确计算单调/波动、变速加快/放缓等事实，再让真DeepSeek读取所选数据行与事实，在已核验的解释性候选中选择图注。返回的图注确实来自模型响应，metadata.caption_method=deepseek_grounded_selection，如实表示受限选择；不是开放式因果推断或未来预测，也不是只枚举数字。代码核对每个系列、趋势、变化率形态、完整数据行集合与结论文本，失败最多重试一次，仍错422/CHART_VALIDATION_FAILED。CSV非法用CSV_INVALID；无模型/Key或上游失败502/UPSTREAM_ERROR，不生成假图注或部分成功图表。
+
+conclusions逐项含series_name、trend、shape、text、row_numbers和csv_anchors，回溯全部涉及的记录；逐单元格numeric_checks仍在chart中。为避免列名中的数字被误当图注事实，含数字的列名在定性图注中改用系列甲/乙等别名，series_aliases给出映射；图与数据表保留源列名。三维雷达图本轮未实现，不计入已交付类型。
+
+### 中→英摘要与全文
+
+原`POST /api/v1/papers/{paper_id}/translate`增加target=en，仅支持scope=abstract/full。已入库原生中文Chunk可直接翻译；英文论文的回译须在请求中增加source_translation，值为该论文上一轮target=zh的完整响应（可覆盖更大范围）。例如先取此前中文摘要响应，再POST {scope:abstract,target:en,source_translation:此前响应}。不从英文源文直接拷贝一遍冒充中文回译。
+
+后端核对source_translation.paper_id/target、唯一Chunk标识、英文source_text与已落盘原文、物理页/章节/类型、中文译文覆盖范围及保留的代码/公式标记。模型只接收实际中文文字片段及术语上下文，不接收上一轮英文source_text作答案。当前source_text表示本次实际中文输入，source_chunk_id仍回指原论文Chunk；这是原论文→中文→英文的对齐链，不声称中文是英文PDF原文的字面引用。
+
+metadata新增source_language、source_translation_sha256和source_input；前者为zh，散列锁定所选中文输入。source_input区分stored_chinese_chunks与客户端提供的前次中文响应。锚点一致性可验证，客户端任意响应的模型来源不是签名认证；本轮验收额外逐段对照第④单已提交的译文manifest，证明使用原真实派生中文文件，未手写样本。
+
+请求参数的source_translation为可选向后兼容加法，传输响应target扩展到en，原有字段保留；既有业务契约未动。中文技术词表反向复用，支持attention/attend和perplexity/perplexities等语法词形，不把漏译术语当正确。代码、公式与结构仍由代码原位保留，数字校验支持日期、中文计数与单位的双向回溯。scope=full仍输出Markdown与逐Chunk对齐。无Key明确502，不回落为假译文。
+
+### 测试与前端协作
+
+真实图注/中→英测试标记real_model，只有--run-real-model及Key/模型变量均已设置才执行，无Key标记跳过；普通离线验证与不需要模型的拓扑测试仍执行。独立解析器可用无敏感变量子进程安装/运行：npm --cache data/module6-tools/npm-cache install --ignore-scripts --no-audit --no-fund --prefix data/module6-tools @viz-js/viz@3.31.0 mermaid@12.2.0 jsdom@30.1.3，然后node tests/validate_topology_scripts.mjs。安装缓存也可指定D盘data/module6-tools/npm-cache，不修改全局npm配置。
+
+用户转达WorkBuddy：拓扑用scripts[*].format/script与validation；三维图用chart.image_ref、data_table和带row_numbers的conclusions，注意外层projection；英文回译用已有中文响应作为source_translation，按同一source_chunk_id衔接定位。前端展示本单未接，旧Docker镜像未重建。真实脚本、PNG、趋势图注、中英样本与回归证据见[模块六补齐验收](../tests/reports/module6-completion-acceptance.md)。
+
+语法/绘图依据：[DOT语法](https://graphviz.org/doc/info/lang.html)、[Mermaid流程图](https://mermaid.js.org/syntax/flowchart.html)、[TikZ节点与边](https://tikz.dev/tikz-shapes)、[Matplotlib三维柱图](https://matplotlib.org/stable/gallery/mplot3d/3d_bars.html)。
