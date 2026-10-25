@@ -13,7 +13,8 @@ Section = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, 
 class TranslationRequest(BaseModel):
     model_config = ConfigDict(extra='forbid')
     scope: Literal['abstract', 'section', 'selection', 'full']
-    target: Literal['zh'] = 'zh'
+    target: Literal['zh','en'] = 'zh'
+    source_translation: 'ChineseSource | None' = None
     section_path: list[Section] | None = Field(default=None, min_length=1, max_length=20)
     chunk_ids: list[Identifier] | None = Field(default=None, min_length=1, max_length=5000)
 
@@ -24,6 +25,10 @@ class TranslationRequest(BaseModel):
             raise ValueError('section仅接受section_path，selection仅接受chunk_ids。')
         if self.chunk_ids is not None and len(set(self.chunk_ids)) != len(self.chunk_ids):
             raise ValueError('选区Chunk不可重复。')
+        if self.target=='en' and self.scope not in ('abstract','full'):
+            raise ValueError('中→英仅支持摘要与全文。')
+        if self.target=='zh' and self.source_translation is not None:
+            raise ValueError('英→中不接受中文源响应。')
         return self
 
 
@@ -42,10 +47,17 @@ class TranslationResponse(BaseModel):
     model_config = ConfigDict(extra='forbid')
     paper_id: str
     scope: Literal['abstract', 'section', 'selection', 'full']
-    target: Literal['zh']
+    target: Literal['zh','en']
     segments: list[TranslatedSegment]
     markdown: str | None
     metadata: dict
+
+
+class ChineseSource(TranslationResponse):
+    target: Literal['zh']
+
+
+TranslationRequest.model_rebuild()
 
 
 def translation_routes(repository):
