@@ -52,9 +52,11 @@ def test_human_override_survives_later_system_and_reads_are_immutable(tmp_path):
 def test_nineteen_business_routes_including_module_six(tmp_path):
     client = TestClient(create_app(data_dir=tmp_path))
     paths = client.get("/openapi.json").json()["paths"]
-    assert sum(len(methods) for methods in paths.values()) == 21
+    assert sum(len(methods) for methods in paths.values()) == 23
     assert 'post' in paths['/api/v1/papers/{paper_id}/qa/stream']
     assert 'post' in paths['/api/v1/papers/{paper_id}/translate']
+    assert 'post' in paths['/api/v1/topologies']
+    assert 'post' in paths['/api/v1/charts/csv/3d']
     for path in ("/reviews", "/charts/csv", "/frameworks"):
         assert "post" in paths["/api/v1" + path]
         assert_error(client.get("/api/v1" + path), 405, "VALIDATION_ERROR")
