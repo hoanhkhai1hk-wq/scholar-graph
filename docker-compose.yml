@@ -1,20 +1,47 @@
-# Scaffold only. Application images do not exist yet; no service was started.
 services:
-  frontend:
-    # TODO: WorkBuddy will define the frontend image, ports and runtime configuration.
-    image: scholar-graph/frontend:placeholder
-    profiles: [scaffold]
-
   backend:
-    # TODO: Define the backend image, ports and runtime configuration in a later task.
-    image: scholar-graph/backend:placeholder
-    profiles: [scaffold]
-
-  grobid:
-    # Official image repository: https://grobid.readthedocs.io/en/latest/getting_started/
-    # Tag 0.9.1-full is documented in the official quick start (checked 2026-10-24).
-    # TODO: Runtime/digest/resource validation is pending; Docker is unavailable locally.
-    image: grobid/grobid:0.9.1-full
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: backend
+    platform: linux/amd64
+    init: true
     ports:
-      - "127.0.0.1:${GROBID_PORT:-8070}:8070"
-    profiles: [grobid]
+      - "127.0.0.1:8000:8000"
+    environment:
+      SCHOLAR_GRAPH_DATA_DIR: /app/data/records
+      SCHOLAR_GRAPH_QA_MODE: extractive
+      SCHOLAR_GRAPH_RETRIEVAL_MODE: lexical
+    volumes:
+      - backend-data:/app/data
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; assert urllib.request.urlopen('http://127.0.0.1:8000/api/v1/papers?page_size=1', timeout=10).status == 200"]
+      interval: 15s
+      timeout: 12s
+      start_period: 30s
+      retries: 8
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: frontend
+    platform: linux/amd64
+    init: true
+    ports:
+      - "127.0.0.1:3000:3000"
+    environment:
+      NEXT_PUBLIC_API_BASE_URL: http://backend:8000
+      NEXT_TELEMETRY_DISABLED: "1"
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/api/backend/papers?page_size=1').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 15s
+      timeout: 12s
+      start_period: 30s
+      retries: 8
+
+volumes:
+  backend-data:

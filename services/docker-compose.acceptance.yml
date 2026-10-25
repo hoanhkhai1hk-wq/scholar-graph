@@ -1,0 +1,10 @@
+# Optional official corpus mount; never a build input.
+services:
+  backend:
+    volumes:
+      - type: bind
+        source: ${SCHOLAR_GRAPH_PDF_DIR:?Set SCHOLAR_GRAPH_PDF_DIR to the existing official pdf directory}
+        target: /corpus
+        read_only: true
+        bind:
+          create_host_path: false
