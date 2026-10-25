@@ -1,0 +1,351 @@
+{
+  "scope": "官方 pdf/ 真文件",
+  "case": "dedup-v7-then-v1",
+  "baseline": "17ed94939b01285ee96c7708cf177d669f48739b",
+  "source_commit": "68d9e7a358b322dd6b17714f221c782b93f78d3d",
+  "run_utc": "2026-10-25T03:54:09.401479+00:00",
+  "versions": {
+    "mineru": "4.0.12",
+    "pypdf": "6.21.2",
+    "psutil": "7.2.2",
+    "fastapi": "0.162.0"
+  },
+  "real_llm_calls": 0,
+  "real_api_keys_used": false,
+  "uploads": [
+    {
+      "source": {
+        "file": "D:\\AI_Workspace\\Tasks\\scholar-graph\\pdf\\1706.03762v7.pdf",
+        "bytes": 2215244,
+        "sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "physical_pages": 15,
+        "pdf_title": null
+      },
+      "request": {
+        "method": "POST",
+        "path": "/api/v1/papers",
+        "file_sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+      },
+      "http_status": 201,
+      "response": {
+        "schema_version": "1.0.0",
+        "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "title": null,
+        "authors": [],
+        "institutions": [],
+        "abstract": null,
+        "year": null,
+        "source": "local-upload",
+        "arxiv_id": null,
+        "doi": null,
+        "version": null,
+        "file_hash": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "page_count": 15,
+        "has_text_layer": true
+      },
+      "measurement": {
+        "sample_interval_seconds": 0.05,
+        "rss_peak_bytes": 410804224,
+        "private_peak_bytes": 1694892032,
+        "sample_count": 118,
+        "includes_descendant_processes": true,
+        "rss_start_bytes": 74051584,
+        "elapsed_seconds": 8.894384,
+        "scope": "整个测试进程及全部子进程的采样合计，不是精确瞬时峰值；不含下载阶段。"
+      },
+      "parsed": {
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "record_counts": {
+          "PaperMeta": 1,
+          "Chunk": 175,
+          "ReferenceEntry": 40,
+          "CitationLink": 69
+        },
+        "latest_status": {
+          "path": "/api/v1/papers/paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697/parse-status",
+          "http_status": 200,
+          "response": {
+            "schema_version": "1.1.0",
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "status": "completed",
+            "progress": 100,
+            "current_stage": "四类记录已通过校验并原子发布",
+            "error_code": null,
+            "error_message": null
+          }
+        },
+        "status_histories": [
+          [
+            {
+              "schema_version": "1.1.0",
+              "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+              "status": "queued",
+              "progress": 0,
+              "current_stage": "等待解析",
+              "error_code": null,
+              "error_message": null
+            },
+            {
+              "schema_version": "1.1.0",
+              "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+              "status": "parsing",
+              "progress": 5,
+              "current_stage": "检查 PDF 与文本层",
+              "error_code": null,
+              "error_message": null
+            },
+            {
+              "schema_version": "1.1.0",
+              "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+              "status": "parsing",
+              "progress": 30,
+              "current_stage": "MinerU 本地文本解析完成",
+              "error_code": null,
+              "error_message": null
+            },
+            {
+              "schema_version": "1.1.0",
+              "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+              "status": "indexing",
+              "progress": 80,
+              "current_stage": "生成契约记录与锚点索引",
+              "error_code": null,
+              "error_message": null
+            },
+            {
+              "schema_version": "1.1.0",
+              "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+              "status": "indexing",
+              "progress": 95,
+              "current_stage": "Schema 与外键校验通过",
+              "error_code": null,
+              "error_message": null
+            },
+            {
+              "schema_version": "1.1.0",
+              "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+              "status": "completed",
+              "progress": 100,
+              "current_stage": "四类记录已通过校验并原子发布",
+              "error_code": null,
+              "error_message": null
+            }
+          ]
+        ]
+      },
+      "decision": {
+        "path": "/api/v1/papers/paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697/dedup-decision",
+        "http_status": 404,
+        "response": {
+          "error_code": "PAPER_NOT_FOUND",
+          "message": "无该新版论文的去重记录。",
+          "details": null
+        }
+      },
+      "diff": {
+        "path": "/api/v1/papers/paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697/diff-summary",
+        "http_status": 404,
+        "response": {
+          "error_code": "PAPER_NOT_FOUND",
+          "message": "无该新版论文的差异记录。",
+          "details": null
+        }
+      },
+      "source_after": {
+        "file": "D:\\AI_Workspace\\Tasks\\scholar-graph\\pdf\\1706.03762v7.pdf",
+        "bytes": 2215244,
+        "sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "physical_pages": 15,
+        "pdf_title": null
+      }
+    },
+    {
+      "source": {
+        "file": "D:\\AI_Workspace\\Tasks\\scholar-graph\\pdf\\1706.03762v1.pdf",
+        "bytes": 2128686,
+        "sha256": "0a9bff1be3575cf9fe26a4a3d3a9175bc791ecec90de8b9deba4cff75d2b9476",
+        "physical_pages": 15,
+        "pdf_title": null
+      },
+      "request": {
+        "method": "POST",
+        "path": "/api/v1/papers",
+        "file_sha256": "0a9bff1be3575cf9fe26a4a3d3a9175bc791ecec90de8b9deba4cff75d2b9476"
+      },
+      "http_status": 201,
+      "response": {
+        "schema_version": "1.0.0",
+        "id": "paper-0a9bff1be3575cf9fe26a4a3d3a9175bc791ecec90de8b9deba4cff75d2b9476",
+        "title": null,
+        "authors": [],
+        "institutions": [],
+        "abstract": null,
+        "year": null,
+        "source": "local-upload",
+        "arxiv_id": null,
+        "doi": null,
+        "version": null,
+        "file_hash": "0a9bff1be3575cf9fe26a4a3d3a9175bc791ecec90de8b9deba4cff75d2b9476",
+        "page_count": 15,
+        "has_text_layer": true
+      },
+      "measurement": {
+        "sample_interval_seconds": 0.05,
+        "rss_peak_bytes": 418676736,
+        "private_peak_bytes": 1708580864,
+        "sample_count": 105,
+        "includes_descendant_processes": true,
+        "rss_start_bytes": 91844608,
+        "elapsed_seconds": 8.017927,
+        "scope": "整个测试进程及全部子进程的采样合计，不是精确瞬时峰值；不含下载阶段。"
+      },
+      "parsed": {
+        "paper_id": "paper-0a9bff1be3575cf9fe26a4a3d3a9175bc791ecec90de8b9deba4cff75d2b9476",
+        "record_counts": {
+          "PaperMeta": 1,
+          "Chunk": 162,
+          "ReferenceEntry": 36,
+          "CitationLink": 64
+        },
+        "latest_status": {
+          "path": "/api/v1/papers/paper-0a9bff1be3575cf9fe26a4a3d3a9175bc791ecec90de8b9deba4cff75d2b9476/parse-status",
+          "http_status": 200,
+          "response": {
+            "schema_version": "1.1.0",
+            "paper_id": "paper-0a9bff1be3575cf9fe26a4a3d3a9175bc791ecec90de8b9deba4cff75d2b9476",
+            "status": "completed",
+            "progress": 100,
+            "current_stage": "四类记录已通过校验并原子发布",
+            "error_code": null,
+            "error_message": null
+          }
+        },
+        "status_histories": [
+          [
+            {
+              "schema_version": "1.1.0",
+              "paper_id": "paper-0a9bff1be3575cf9fe26a4a3d3a9175bc791ecec90de8b9deba4cff75d2b9476",
+              "status": "queued",
+              "progress": 0,
+              "current_stage": "等待解析",
+              "error_code": null,
+              "error_message": null
+            },
+            {
+              "schema_version": "1.1.0",
+              "paper_id": "paper-0a9bff1be3575cf9fe26a4a3d3a9175bc791ecec90de8b9deba4cff75d2b9476",
+              "status": "parsing",
+              "progress": 5,
+              "current_stage": "检查 PDF 与文本层",
+              "error_code": null,
+              "error_message": null
+            },
+            {
+              "schema_version": "1.1.0",
+              "paper_id": "paper-0a9bff1be3575cf9fe26a4a3d3a9175bc791ecec90de8b9deba4cff75d2b9476",
+              "status": "parsing",
+              "progress": 30,
+              "current_stage": "MinerU 本地文本解析完成",
+              "error_code": null,
+              "error_message": null
+            },
+            {
+              "schema_version": "1.1.0",
+              "paper_id": "paper-0a9bff1be3575cf9fe26a4a3d3a9175bc791ecec90de8b9deba4cff75d2b9476",
+              "status": "indexing",
+              "progress": 80,
+              "current_stage": "生成契约记录与锚点索引",
+              "error_code": null,
+              "error_message": null
+            },
+            {
+              "schema_version": "1.1.0",
+              "paper_id": "paper-0a9bff1be3575cf9fe26a4a3d3a9175bc791ecec90de8b9deba4cff75d2b9476",
+              "status": "indexing",
+              "progress": 95,
+              "current_stage": "Schema 与外键校验通过",
+              "error_code": null,
+              "error_message": null
+            },
+            {
+              "schema_version": "1.1.0",
+              "paper_id": "paper-0a9bff1be3575cf9fe26a4a3d3a9175bc791ecec90de8b9deba4cff75d2b9476",
+              "status": "completed",
+              "progress": 100,
+              "current_stage": "四类记录已通过校验并原子发布",
+              "error_code": null,
+              "error_message": null
+            }
+          ]
+        ]
+      },
+      "decision": {
+        "path": "/api/v1/papers/paper-0a9bff1be3575cf9fe26a4a3d3a9175bc791ecec90de8b9deba4cff75d2b9476/dedup-decision",
+        "http_status": 404,
+        "response": {
+          "error_code": "PAPER_NOT_FOUND",
+          "message": "无该新版论文的去重记录。",
+          "details": null
+        }
+      },
+      "diff": {
+        "path": "/api/v1/papers/paper-0a9bff1be3575cf9fe26a4a3d3a9175bc791ecec90de8b9deba4cff75d2b9476/diff-summary",
+        "http_status": 404,
+        "response": {
+          "error_code": "PAPER_NOT_FOUND",
+          "message": "无该新版论文的差异记录。",
+          "details": null
+        }
+      },
+      "source_after": {
+        "file": "D:\\AI_Workspace\\Tasks\\scholar-graph\\pdf\\1706.03762v1.pdf",
+        "bytes": 2128686,
+        "sha256": "0a9bff1be3575cf9fe26a4a3d3a9175bc791ecec90de8b9deba4cff75d2b9476",
+        "physical_pages": 15,
+        "pdf_title": null
+      }
+    }
+  ],
+  "identity_lookups": [
+    {
+      "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "identity": {
+        "title": null,
+        "authors": [],
+        "doi": null,
+        "arxiv_id": null,
+        "version": null
+      },
+      "matched_paper_id": null
+    },
+    {
+      "paper_id": "paper-0a9bff1be3575cf9fe26a4a3d3a9175bc791ecec90de8b9deba4cff75d2b9476",
+      "identity": {
+        "title": null,
+        "authors": [],
+        "doi": null,
+        "arxiv_id": null,
+        "version": null
+      },
+      "matched_paper_id": null
+    }
+  ],
+  "offline_diagnostic": {
+    "published": false,
+    "not_an_upload_warning": true,
+    "dice": 0.933224,
+    "note": "仅在上传结束后对实际落盘Chunk计算词频Dice，未触发/写入裁决，不代表语义向量去重。"
+  },
+  "warning": {
+    "triggered": false,
+    "original_text": null,
+    "reason": "真实响应只有PaperMeta，没有预警字段；裁决与差异GET原始响应逐次保存。"
+  },
+  "diagnosis": {
+    "metadata": "backend/scholar_graph/pipeline.py:139-147",
+    "identity_lookup": "backend/scholar_graph/storage.py:83-111",
+    "missing_step": "backend/scholar_graph/pipeline.py:96-100",
+    "note": "真实previous_version调用返回None，精确DOI/arXiv或完整标题作者身份未匹配；第97行条件跳过compare，第100行未写comparison。未运行全库词频/向量候选查找，也没有版本质量排序。没有去重判定/差异摘要可原文返回，不能拿离线Dice冒充。"
+  },
+  "conclusion": "失败：官方 pdf/ 真文件上传未触发去重预警，未产生保留新版建议或差异摘要。"
+}
