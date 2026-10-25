@@ -136,7 +136,7 @@ docker compose -p scholar-graph-official -f docker-compose.yml -f services/docke
 
 覆盖文件只把指定目录只读挂载到/corpus，路径不存在直接报错，不创建空目录；没有COPY语料。脚本要求真实Linux容器、无模型Key、初始后端论文数为0，依次上传1706.03762v7.pdf→v1.pdf、1706.03762v1_img.pdf、UnderstandingDeepLearning_02_09_26_C.pdf（541页）。不读取历史宿主机解析结果；实时HTTP调用当前后端，同步计时、采样容器内存，保存预警/裁决/差异、OCR文本与Chunk、长书分页/索引状态。OCR首次联网下载也包含在计时内。最后跑无Key摘录式问答。全量回归与三项业务分别统计，失败不写为通过。
 
-若之前已用该项目上传过论文，脚本会拒绝复用；换一个新项目名并先停止旧项目以释放端口。可用`docker compose ... cp backend:/app/data/docker-acceptance ./data/docker-acceptance-export`导出报告；命令中的省略部分须替换为启动时相同的项目名及两个-f参数。不要用宿主机venv运行此容器探针。停止服务用相同项目参数执行`down`，默认保留数据卷，不自动删除用户数据。
+若之前已用该项目上传过论文，脚本会拒绝复用；换一个新项目名并先停止旧项目以释放端口。可用`docker compose ... cp backend:/app/data/docker-acceptance/<run-id>/container-results.json ./tests/reports/docker-export-results.json`逐文件导出报告；JSON/XML逐个复制，不复制pytest临时目录的Linux符号链接，避免Windows符号链接权限错误；命令中的省略部分须替换为启动时相同的项目名及两个-f参数。不要用宿主机venv运行此容器探针。停止服务用相同项目参数执行`down`，默认保留数据卷，不自动删除用户数据。
 
 .dockerignore排除pdf/、所有PDF、.env及其变体、.git、data/、venv、node_modules、.next、__pycache__和旧测试报告。构建使用显式COPY，无Key构建参数或环境透传；后端镜像包含自行安装的Node/TypeScript，供既有真实代理回归测试使用。GROBID、BGE-M3独立模型服务不在本轮两服务中，默认检索为词法。
 
