@@ -135,13 +135,13 @@ class DeepSeekClient:
         return cls(key=os.environ.get('DEEPSEEK_API_KEY', ''), model=os.environ.get('DEEPSEEK_MODEL', ''),
                    base_url=os.environ.get('DEEPSEEK_BASE_URL', 'https://api.deepseek.com'))
 
-    def complete(self, messages, *, phase, tools=None, tool_choice='auto', json_mode=True):
+    def complete(self, messages, *, phase, tools=None, tool_choice='auto', json_mode=True, max_tokens=2400):
         started = time.perf_counter()
         meta = {'provider': 'deepseek', 'model': self.model, 'phase': phase,
                 'elapsed_seconds': None, 'prompt_tokens': None, 'completion_tokens': None,
                 'total_tokens': None, 'http_status': None, 'status': 'failed'}
         try:
-            body = {'model': self.model, 'messages': messages, 'temperature': 0, 'max_tokens': 2400,
+            body = {'model': self.model, 'messages': messages, 'temperature': 0, 'max_tokens': max_tokens,
                     'thinking': {'type': 'disabled'}, 'stream': False}
             if tools:
                 body.update(tools=tools, tool_choice=tool_choice)
