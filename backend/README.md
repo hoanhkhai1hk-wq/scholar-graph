@@ -1,6 +1,6 @@
 # ScholarGraph 模块一、二、四、五、六后端
 
-本后端实现本地 PDF 解析、状态机、去重与版本差异，模块二问答/对比、模块四检索/公开抓取/推荐，模块五局域引用图谱，以及模块六综述框架、摘录草稿与CSV图表，共19/19条 HTTP 端点。Python 包为 `scholar_graph`。自由成文、文档导出、异步队列仍未实现。
+本后端实现本地 PDF 解析、状态机、去重与版本差异，模块二问答/对比、模块四检索/公开抓取/推荐，模块五局域引用图谱，以及模块六综述框架、摘录草稿与CSV图表，原19条 HTTP 端点保持，另增1条问答SSE端点，共20条。Python 包为 `scholar_graph`。自由成文、文档导出、异步队列仍未实现。
 
 ## Windows 本地安装
 
@@ -226,3 +226,38 @@ backend/.venv/Scripts/python.exe tests/audit_real_model_acceptance.py
 ```
 
 实连测试须 --run-real-model 且有 Key 和模型变量，无 Key 标记跳过；普通测试自动将模式设为 extractive，模拟协议测试不计为实连。验收脚本会覆盖本轮结果JSON，重现实验应先自行保存已验收记录。本轮检索仍是词法，未把模块四向量实验自动接入 Agent。协议依据：[DeepSeek工具调用](https://api-docs.deepseek.com/guides/tool_calls/)、[聊天API](https://api-docs.deepseek.com/api/create-chat-completion/)、[LangGraph图API](https://docs.langchain.com/oss/python/langgraph/graph-api)。
+
+
+## 问答SSE流式端点
+
+新增 `POST /api/v1/papers/{paper_id}/qa/stream`，JSON请求仍为 `{ "question": "Which optimizer?" }`，响应 `text/event-stream; charset=utf-8`。无需另造答案记录：`final`事件的data**直接是原QAAnswer**，仍经过原Schema、真实Chunk四字段锚点、字面原文与数字回溯门禁。原同步问答/比较端点保持。该SSE端点始终使用已有Agent编排，最多三轮校验；新的传输事件不写入contracts/。
+
+用支持POST流读取的客户端：
+
+```bash
+curl -N -H "Content-Type: application/json" -H "Accept: text/event-stream" -d '{"question":"Which optimizer?"}' http://127.0.0.1:8000/api/v1/papers/<paper_id>/qa/stream
+```
+
+将paper_id替换为真实已入库id。浏览器原生EventSource只发GET，本端点应使用fetch POST及ReadableStream读取。每个事件都有递增id，JSON data单行编码，空行结束；10秒无业务事件发一条`: keep-alive`注释。当前不支持断线重放，重新POST会重新执行，不把Last-Event-ID当作续跑凭据。
+
+| event | data形状与含义 |
+| --- | --- |
+| mode | mode、token_streaming、fallback_reason、message；无Key/模型变量或extractive模式明确写“回落模式、非 token 流式” |
+| node_start | node(plan/retrieve/qa/validate，超限另有refuse)、attempt、elapsed_seconds=0、evidence_count |
+| node_end | node、attempt、elapsed_seconds、evidence_count、status；validate另含validation和validation_error原文；失败节点另有reason |
+| tool_start | tool_name、origin=model_function_call、tool_call_id、attempt、evidence_count=0（尚未返回） |
+| tool_end | 同一工具ID、真实来源、参数/返回摘要、elapsed_seconds、status、实际返回evidence_count；不发原始参数正文 |
+| token | node=qa、attempt、delta、verified=false、channel=model_json_draft；只转发上游content增量，不发reasoning_content |
+| final | 原QAAnswer本身，没有额外包装；只有验证通过后才发 |
+| error | 既有三字段错误体{error_code,message,details}；不包含上游原始正文/Key |
+| done | status(completed/refused/error)、安全调用/trace元数据及是否token流式；流结束 |
+
+SSE事件attempt从1开始分轮；done.metadata.trace保留既有规划节点执行前的计数口径（第一轮plan为0），前端按SSE节点事件的attempt分组即可。证据数为当前图状态中的检索数量，不等于最终锚点数或节点新增数量。node_end.status=completed表示节点执行完，校验是否通过须看validation，不以completed冒充通过。校验驳回原因是既有代码门禁原文；重试会重新规划、检索和问答，第三轮仍不通过则返回原契约拒答记录。
+
+deepseek模式的qa节点设置上游stream=true，读取真实分块后即发token，不等完整答案再拆字。当前模型输出协议是证据选择JSON，因此delta是**未校验JSON草稿片段**，不是final.answer的逐字拼接；事件条数也不是服务商token数。客户端不得把草稿当作已核验事实，应以最终QAAnswer替换。无Key、缺模型变量或extractive模式不构造模型客户端，不发任何token或虚构模型工具调用，只发真实本地节点轨迹与最终整段记录。模式不合法、坏请求或论文不存在，在SSE开始前保留正常HTTP422/404错误；配置齐全后上游连接/协议失败则发error→done(error)，没有final，不中途静默回落。HTTP头已发出后状态仍200，调用方须读error/done判断结果。
+
+响应设置Cache-Control:no-cache,no-transform及X-Accel-Buffering:no，不设置Content-Length。队列最多32条，慢消费者施加背压；断开后停止后续节点、取消队列等待并关闭活动的上游流。规划阶段的同步HTTP等待仍受现有60秒超时约束，不承诺瞬间中断尚未返回的规划请求。无检查点，不写完整模型请求/响应、思考内容或Key。启动环境的Key仅用于后端到官方DeepSeek的Authorization头，不进入SSE元数据。
+
+转达WorkBuddy：当前前端同源代理先调用upstream.text()，会缓冲SSE；前端单需专门透传upstream.body、保留SSE头，fetch POST逐事件读取，处理草稿、final、error、done和断开。现有CORS已允许本地3000的POST/Content-Type，本单无前端源码或契约改动。现有Docker容器不会自动加载新源码；使用容器时须重建镜像后才有本端点，本轮验收使用临时真实TCP后端，不冒充已部署进旧容器。
+
+新增离线协议/回落测试不需要Key，真实模型SSE测试标记real_model，仅--run-real-model且Key/模型变量可用才执行，无Key跳过。真实TCP的deepseek与无Key回落日志、全量回归及事件接入约定见[本轮报告](../tests/reports/qa-sse-acceptance.md)。参考：[DeepSeek流式聊天协议](https://api-docs.deepseek.com/api/create-chat-completion/)、[Starlette StreamingResponse](https://starlette.dev/responses/)、[HTTPX流式读取](https://www.python-httpx.org/quickstart/#streaming-responses)。
