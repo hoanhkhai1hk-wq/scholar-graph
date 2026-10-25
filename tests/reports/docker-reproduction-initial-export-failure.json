@@ -1,0 +1,454 @@
+{
+  "run_id": "8979c2928f744601a65bc4781b5a8608",
+  "run_utc": "2026-10-25T07:31:25.842671+00:00",
+  "run_root": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\docker-reproduction\\8979c2928f744601a65bc4781b5a8608",
+  "remote": "https://github.com/hoanhkhai1hk-wq/scholar-graph.git",
+  "branch": "main",
+  "project": "sg-clean-8979c2928f",
+  "steps": [
+    {
+      "stage": "clone-main",
+      "command": [
+        "git",
+        "clone",
+        "--branch",
+        "main",
+        "--single-branch",
+        "https://github.com/hoanhkhai1hk-wq/scholar-graph.git",
+        "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\docker-reproduction\\8979c2928f744601a65bc4781b5a8608\\checkout"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 2.681993,
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\docker-reproduction\\8979c2928f744601a65bc4781b5a8608\\clone-main.log",
+      "log_bytes": 121,
+      "log_sha256": "ebdf24b4076bd2ea42e560fa592ac45326f7b35baffd129546971a8c4142dc22",
+      "first_lines": [
+        "Cloning into 'D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\docker-reproduction\\8979c2928f744601a65bc4781b5a8608\\checkout'..."
+      ],
+      "last_lines": [
+        "Cloning into 'D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\docker-reproduction\\8979c2928f744601a65bc4781b5a8608\\checkout'..."
+      ]
+    },
+    {
+      "stage": "clone-head",
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.044339,
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\docker-reproduction\\8979c2928f744601a65bc4781b5a8608\\clone-head.log",
+      "log_bytes": 41,
+      "log_sha256": "3879a825e57d0c3b83c91958b95e83da283eba228a51af2d8c96ee3b846836f2",
+      "first_lines": [
+        "142e01087da3dbfd1ca80adb5d070a36fc03916c"
+      ],
+      "last_lines": [
+        "142e01087da3dbfd1ca80adb5d070a36fc03916c"
+      ]
+    },
+    {
+      "stage": "clone-status",
+      "command": [
+        "git",
+        "status",
+        "--porcelain=v1"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.100804,
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\docker-reproduction\\8979c2928f744601a65bc4781b5a8608\\clone-status.log",
+      "log_bytes": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "first_lines": [],
+      "last_lines": []
+    },
+    {
+      "stage": "compose-config",
+      "command": [
+        "C:\\Users\\1234\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe",
+        "compose",
+        "-p",
+        "sg-clean-8979c2928f",
+        "-f",
+        "docker-compose.yml",
+        "-f",
+        "services/docker-compose.acceptance.yml",
+        "config",
+        "--format",
+        "json"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.364411,
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\docker-reproduction\\8979c2928f744601a65bc4781b5a8608\\compose-config.log",
+      "log_bytes": 3026,
+      "log_sha256": "9b06d88552701aa64598c797431a3c59cd6006eb5981c9f2c461547e480b588f",
+      "first_lines": [
+        "{",
+        "  \"name\": \"sg-clean-8979c2928f\",",
+        "  \"networks\": {",
+        "    \"default\": {",
+        "      \"name\": \"sg-clean-8979c2928f_default\",",
+        "      \"ipam\": {}",
+        "    }",
+        "  },",
+        "  \"services\": {",
+        "    \"backend\": {",
+        "      \"command\": null,",
+        "      \"entrypoint\": null,"
+      ],
+      "last_lines": [
+        "          \"fetch('http://127.0.0.1:3000/api/backend/papers?page_size=1').then(r=\\u003eprocess.exit(r.ok?0:1)).catch(()=\\u003eprocess.exit(1))\"",
+        "        ],",
+        "        \"timeout\": \"12s\",",
+        "        \"interval\": \"15s\",",
+        "        \"retries\": 8,",
+        "        \"start_period\": \"30s\"",
+        "      },",
+        "      \"ports\": [",
+        "        {",
+        "          \"mode\": \"ingress\",",
+        "          \"host_ip\": \"127.0.0.1\",",
+        "          \"target\": 3000,",
+        "          \"published\": \"3000\",",
+        "          \"protocol\": \"tcp\"",
+        "        }",
+        "      ]",
+        "    }",
+        "  },",
+        "  \"volumes\": {",
+        "    \"backend-data\": {",
+        "      \"name\": \"sg-clean-8979c2928f_backend-data\"",
+        "    }",
+        "  }",
+        "}"
+      ]
+    },
+    {
+      "stage": "docker-version",
+      "command": [
+        "C:\\Users\\1234\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe",
+        "version"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.228302,
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\docker-reproduction\\8979c2928f744601a65bc4781b5a8608\\docker-version.log",
+      "log_bytes": 758,
+      "log_sha256": "fa16eb1dd45e805b94b6d1b1bdad209aa6343fbdffb21f1881c7059019d24fed",
+      "first_lines": [
+        "Client:",
+        " Version:           29.9.2",
+        " API version:       1.56",
+        " Go version:        go1.26.10",
+        " Git commit:        a82e528",
+        " Built:             Tue Oct 20 19:44:07 2026",
+        " OS/Arch:           windows/amd64",
+        " Context:           desktop-linux",
+        "",
+        "Server: Docker Desktop 4.96.3 (244472)",
+        " Engine:",
+        "  Version:          29.9.2"
+      ],
+      "last_lines": [
+        " Go version:        go1.26.10",
+        " Git commit:        a82e528",
+        " Built:             Tue Oct 20 19:44:07 2026",
+        " OS/Arch:           windows/amd64",
+        " Context:           desktop-linux",
+        "",
+        "Server: Docker Desktop 4.96.3 (244472)",
+        " Engine:",
+        "  Version:          29.9.2",
+        "  API version:      1.56 (minimum version 1.40)",
+        "  Go version:       go1.26.10",
+        "  Git commit:       0367cbe",
+        "  Built:            Tue Oct 20 18:45:02 2026",
+        "  OS/Arch:          linux/amd64",
+        "  Experimental:     false",
+        " containerd:",
+        "  Version:          v2.4.2",
+        "  GitCommit:        b7a25261e029d68978bbf290df0a62fc819b3c51",
+        " runc:",
+        "  Version:          1.5.2",
+        "  GitCommit:        v1.5.2-0-g29dd3dc2",
+        " docker-init:",
+        "  Version:          0.19.0",
+        "  GitCommit:        de40ad0"
+      ]
+    },
+    {
+      "stage": "build-no-cache",
+      "command": [
+        "C:\\Users\\1234\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe",
+        "compose",
+        "-p",
+        "sg-clean-8979c2928f",
+        "-f",
+        "docker-compose.yml",
+        "-f",
+        "services/docker-compose.acceptance.yml",
+        "build",
+        "--no-cache"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 392.413293,
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\docker-reproduction\\8979c2928f744601a65bc4781b5a8608\\build-no-cache.log",
+      "log_bytes": 100958,
+      "log_sha256": "3081c8bda1f1b1d6ae153fcec0d34ee5298b246ad4867730505282e240835f53",
+      "first_lines": [
+        " Image sg-clean-8979c2928f-frontend Building ",
+        " Image sg-clean-8979c2928f-backend Building ",
+        "#1 [internal] load local bake definitions",
+        "#1 reading from stdin 1.52kB 0.0s done",
+        "#1 DONE 0.0s",
+        "",
+        "#2 [frontend internal] load build definition from Dockerfile",
+        "#2 transferring dockerfile: 2.44kB done",
+        "#2 DONE 0.1s",
+        "",
+        "#3 [frontend] resolve image config for docker-image://docker.io/docker/dockerfile:1",
+        "#3 ..."
+      ],
+      "last_lines": [
+        "#35 DONE 0.1s",
+        "",
+        "#36 [backend backend 11/12] COPY services/docker-compose.acceptance.yml ./services/docker-compose.acceptance.yml",
+        "#36 DONE 0.1s",
+        "",
+        "#37 [backend backend 12/12] RUN useradd --uid 1000 --create-home --home-dir /home/scholar scholar     && mkdir -p /app/data/home /app/tests/reports     && chown -R scholar:scholar /app/data /app/tests/reports",
+        "#37 DONE 0.5s",
+        "",
+        "#38 [backend] exporting to image",
+        "#38 exporting layers",
+        "#38 exporting layers 49.9s done",
+        "#38 exporting manifest sha256:61bbe1ec93f13da838069d6498b28804dd0d78c3082a987073045856cc564863 0.0s done",
+        "#38 exporting config sha256:792fa23209dd14a353faa2aaf4527917895816a2864376f1c167b64ea0802e83 0.0s done",
+        "#38 exporting attestation manifest sha256:473094f6365b486c7606662b1c7d4eba2d54ecd1147be205f57762c2e74d67de 0.0s done",
+        "#38 exporting manifest list sha256:fc4e9126c0cf244248d1b51422d1c28137ec0a01afdc8cc82c6f364ec2697d18 0.0s done",
+        "#38 naming to docker.io/library/sg-clean-8979c2928f-backend:latest done",
+        "#38 unpacking to docker.io/library/sg-clean-8979c2928f-backend:latest",
+        "#38 unpacking to docker.io/library/sg-clean-8979c2928f-backend:latest 26.4s done",
+        "#38 DONE 76.4s",
+        "",
+        "#39 [backend] resolving provenance for metadata file",
+        "#39 DONE 0.2s",
+        " Image sg-clean-8979c2928f-backend Built ",
+        " Image sg-clean-8979c2928f-frontend Built "
+      ]
+    },
+    {
+      "stage": "up-wait",
+      "command": [
+        "C:\\Users\\1234\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe",
+        "compose",
+        "-p",
+        "sg-clean-8979c2928f",
+        "-f",
+        "docker-compose.yml",
+        "-f",
+        "services/docker-compose.acceptance.yml",
+        "up",
+        "-d",
+        "--wait",
+        "--wait-timeout",
+        "300"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 17.069189,
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\docker-reproduction\\8979c2928f744601a65bc4781b5a8608\\up-wait.log",
+      "log_bytes": 1098,
+      "log_sha256": "b7caeb600bb49fea208665f16e9695a52bee34f6d5e875f6f7d28f0814d574c8",
+      "first_lines": [
+        " Network sg-clean-8979c2928f_default Creating ",
+        " Volume sg-clean-8979c2928f_backend-data Creating ",
+        " Network sg-clean-8979c2928f_default Creating ",
+        " Volume sg-clean-8979c2928f_backend-data Creating ",
+        " Network sg-clean-8979c2928f_default Created ",
+        " Network sg-clean-8979c2928f_default Created ",
+        " Volume sg-clean-8979c2928f_backend-data Created ",
+        " Volume sg-clean-8979c2928f_backend-data Created ",
+        " Container sg-clean-8979c2928f-backend-1 Creating ",
+        " Container sg-clean-8979c2928f-backend-1 Created ",
+        " Container sg-clean-8979c2928f-frontend-1 Creating ",
+        " Container sg-clean-8979c2928f-frontend-1 Created "
+      ],
+      "last_lines": [
+        " Network sg-clean-8979c2928f_default Creating ",
+        " Volume sg-clean-8979c2928f_backend-data Creating ",
+        " Network sg-clean-8979c2928f_default Creating ",
+        " Volume sg-clean-8979c2928f_backend-data Creating ",
+        " Network sg-clean-8979c2928f_default Created ",
+        " Network sg-clean-8979c2928f_default Created ",
+        " Volume sg-clean-8979c2928f_backend-data Created ",
+        " Volume sg-clean-8979c2928f_backend-data Created ",
+        " Container sg-clean-8979c2928f-backend-1 Creating ",
+        " Container sg-clean-8979c2928f-backend-1 Created ",
+        " Container sg-clean-8979c2928f-frontend-1 Creating ",
+        " Container sg-clean-8979c2928f-frontend-1 Created ",
+        " Container sg-clean-8979c2928f-backend-1 Starting ",
+        " Container sg-clean-8979c2928f-backend-1 Started ",
+        " Container sg-clean-8979c2928f-backend-1 Waiting ",
+        " Container sg-clean-8979c2928f-backend-1 Healthy ",
+        " Container sg-clean-8979c2928f-frontend-1 Starting ",
+        " Container sg-clean-8979c2928f-frontend-1 Started ",
+        " Container sg-clean-8979c2928f-backend-1 Waiting ",
+        " Container sg-clean-8979c2928f-frontend-1 Waiting ",
+        " Container sg-clean-8979c2928f-backend-1 Healthy ",
+        " Container sg-clean-8979c2928f-frontend-1 Healthy "
+      ]
+    },
+    {
+      "stage": "container-state",
+      "command": [
+        "C:\\Users\\1234\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe",
+        "compose",
+        "-p",
+        "sg-clean-8979c2928f",
+        "-f",
+        "docker-compose.yml",
+        "-f",
+        "services/docker-compose.acceptance.yml",
+        "ps",
+        "--format",
+        "json"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.487472,
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\docker-reproduction\\8979c2928f744601a65bc4781b5a8608\\container-state.log",
+      "log_bytes": 3411,
+      "log_sha256": "ee454281181d3ee548e6d464ca63d592314f0cd3cf3ae5a761ae8463d4af6d06",
+      "first_lines": [
+        "{\"Command\":\"\\\"python -m uvicorn s…\\\"\",\"CreatedAt\":\"2026-10-25 15:38:04 +0800 CST\",\"Engine\":\"\",\"ExitCode\":0,\"Health\":\"healthy\",\"ID\":\"1cb39158ec53\",\"Image\":\"sg-clean-8979c2928f-backend\",\"Labels\":\"com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.project.working_dir=D:\\\\AI_Workspace\\\\Tasks\\\\scholar-graph\\\\data\\\\docker-reproduction\\\\8979c2928f744601a65bc4781b5a8608\\\\checkout,com.docker.compose.service=backend,com.docker.compose.version=5.6.1,desktop.docker.io/mounts/0/SourceKind=hostFile,com.docker.compose.config-hash=4970cf24e7d7a5a05d1c75b6c26e9a3032aa04ddff02b1c046da19a5c44c5c16,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=D:\\\\AI_Workspace\\\\Tasks\\\\scholar-graph\\\\data\\\\docker-reproduction\\\\8979c2928f744601a65bc4781b5a8608\\\\checkout\\\\docker-compose.yml,D:\\\\AI_Workspace\\\\Tasks\\\\scholar-graph\\\\data\\\\docker-reproduction\\\\8979c2928f744601a65bc4781b5a8608\\\\checkout\\\\services\\\\docker-compose.acceptance.yml,com.docker.compose.image=sha256:61bbe1ec93f13da838069d6498b28804dd0d78c3082a987073045856cc564863,desktop.docker.io/ports/8000/tcp=127.0.0.1:8000,com.docker.compose.project=sg-clean-8979c2928f,desktop.docker.io/mounts/0/Source=D:\\\\AI_Workspace\\\\Tasks\\\\scholar-graph\\\\pdf,desktop.docker.io/mounts/0/Target=/corpus,desktop.docker.io/ports.scheme=v2\",\"LocalVolumes\":\"1\",\"Mounts\":\"/run/desktop/m…,sg-clean-8979c…\",\"Name\":\"sg-clean-8979c2928f-backend-1\",\"Names\":\"sg-clean-8979c2928f-backend-1\",\"Networks\":\"sg-clean-8979c2928f_default\",\"Ports\":\"127.0.0.1:8000-\\u003e8000/tcp\",\"Project\":\"sg-clean-8979c2928f\",\"Publishers\":[{\"URL\":\"127.0.0.1\",\"TargetPort\":8000,\"PublishedPort\":8000,\"Protocol\":\"tcp\"}],\"RunningFor\":\"15 seconds ago\",\"Service\":\"backend\",\"Size\":\"0B\",\"State\":\"running\",\"Status\":\"Up 12 seconds (healthy)\"}",
+        "{\"Command\":\"\\\"docker-entrypoint.s…\\\"\",\"CreatedAt\":\"2026-10-25 15:38:05 +0800 CST\",\"Engine\":\"\",\"ExitCode\":0,\"Health\":\"healthy\",\"ID\":\"8eb7f225bcc2\",\"Image\":\"sg-clean-8979c2928f-frontend\",\"Labels\":\"com.docker.compose.config-hash=ad3eeb0388898bbba96be5e1a5fa4fabf572a0be6ca7a4624f1ef628329516b3,com.docker.compose.depends_on=backend:service_healthy:false,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=D:\\\\AI_Workspace\\\\Tasks\\\\scholar-graph\\\\data\\\\docker-reproduction\\\\8979c2928f744601a65bc4781b5a8608\\\\checkout\\\\docker-compose.yml,D:\\\\AI_Workspace\\\\Tasks\\\\scholar-graph\\\\data\\\\docker-reproduction\\\\8979c2928f744601a65bc4781b5a8608\\\\checkout\\\\services\\\\docker-compose.acceptance.yml,com.docker.compose.project.working_dir=D:\\\\AI_Workspace\\\\Tasks\\\\scholar-graph\\\\data\\\\docker-reproduction\\\\8979c2928f744601a65bc4781b5a8608\\\\checkout,com.docker.compose.service=frontend,desktop.docker.io/ports.scheme=v2,com.docker.compose.container-number=1,com.docker.compose.image=sha256:85ff2ea09e720bf785bfd81c85cbc3d33be335aee84037f52c91811a98dabc9b,com.docker.compose.project=sg-clean-8979c2928f,com.docker.compose.version=5.6.1,desktop.docker.io/ports/3000/tcp=127.0.0.1:3000\",\"LocalVolumes\":\"0\",\"Mounts\":\"\",\"Name\":\"sg-clean-8979c2928f-frontend-1\",\"Names\":\"sg-clean-8979c2928f-frontend-1\",\"Networks\":\"sg-clean-8979c2928f_default\",\"Ports\":\"127.0.0.1:3000-\\u003e3000/tcp\",\"Project\":\"sg-clean-8979c2928f\",\"Publishers\":[{\"URL\":\"127.0.0.1\",\"TargetPort\":3000,\"PublishedPort\":3000,\"Protocol\":\"tcp\"}],\"RunningFor\":\"14 seconds ago\",\"Service\":\"frontend\",\"Size\":\"0B\",\"State\":\"running\",\"Status\":\"Up 6 seconds (healthy)\"}"
+      ],
+      "last_lines": [
+        "{\"Command\":\"\\\"python -m uvicorn s…\\\"\",\"CreatedAt\":\"2026-10-25 15:38:04 +0800 CST\",\"Engine\":\"\",\"ExitCode\":0,\"Health\":\"healthy\",\"ID\":\"1cb39158ec53\",\"Image\":\"sg-clean-8979c2928f-backend\",\"Labels\":\"com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.project.working_dir=D:\\\\AI_Workspace\\\\Tasks\\\\scholar-graph\\\\data\\\\docker-reproduction\\\\8979c2928f744601a65bc4781b5a8608\\\\checkout,com.docker.compose.service=backend,com.docker.compose.version=5.6.1,desktop.docker.io/mounts/0/SourceKind=hostFile,com.docker.compose.config-hash=4970cf24e7d7a5a05d1c75b6c26e9a3032aa04ddff02b1c046da19a5c44c5c16,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=D:\\\\AI_Workspace\\\\Tasks\\\\scholar-graph\\\\data\\\\docker-reproduction\\\\8979c2928f744601a65bc4781b5a8608\\\\checkout\\\\docker-compose.yml,D:\\\\AI_Workspace\\\\Tasks\\\\scholar-graph\\\\data\\\\docker-reproduction\\\\8979c2928f744601a65bc4781b5a8608\\\\checkout\\\\services\\\\docker-compose.acceptance.yml,com.docker.compose.image=sha256:61bbe1ec93f13da838069d6498b28804dd0d78c3082a987073045856cc564863,desktop.docker.io/ports/8000/tcp=127.0.0.1:8000,com.docker.compose.project=sg-clean-8979c2928f,desktop.docker.io/mounts/0/Source=D:\\\\AI_Workspace\\\\Tasks\\\\scholar-graph\\\\pdf,desktop.docker.io/mounts/0/Target=/corpus,desktop.docker.io/ports.scheme=v2\",\"LocalVolumes\":\"1\",\"Mounts\":\"/run/desktop/m…,sg-clean-8979c…\",\"Name\":\"sg-clean-8979c2928f-backend-1\",\"Names\":\"sg-clean-8979c2928f-backend-1\",\"Networks\":\"sg-clean-8979c2928f_default\",\"Ports\":\"127.0.0.1:8000-\\u003e8000/tcp\",\"Project\":\"sg-clean-8979c2928f\",\"Publishers\":[{\"URL\":\"127.0.0.1\",\"TargetPort\":8000,\"PublishedPort\":8000,\"Protocol\":\"tcp\"}],\"RunningFor\":\"15 seconds ago\",\"Service\":\"backend\",\"Size\":\"0B\",\"State\":\"running\",\"Status\":\"Up 12 seconds (healthy)\"}",
+        "{\"Command\":\"\\\"docker-entrypoint.s…\\\"\",\"CreatedAt\":\"2026-10-25 15:38:05 +0800 CST\",\"Engine\":\"\",\"ExitCode\":0,\"Health\":\"healthy\",\"ID\":\"8eb7f225bcc2\",\"Image\":\"sg-clean-8979c2928f-frontend\",\"Labels\":\"com.docker.compose.config-hash=ad3eeb0388898bbba96be5e1a5fa4fabf572a0be6ca7a4624f1ef628329516b3,com.docker.compose.depends_on=backend:service_healthy:false,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=D:\\\\AI_Workspace\\\\Tasks\\\\scholar-graph\\\\data\\\\docker-reproduction\\\\8979c2928f744601a65bc4781b5a8608\\\\checkout\\\\docker-compose.yml,D:\\\\AI_Workspace\\\\Tasks\\\\scholar-graph\\\\data\\\\docker-reproduction\\\\8979c2928f744601a65bc4781b5a8608\\\\checkout\\\\services\\\\docker-compose.acceptance.yml,com.docker.compose.project.working_dir=D:\\\\AI_Workspace\\\\Tasks\\\\scholar-graph\\\\data\\\\docker-reproduction\\\\8979c2928f744601a65bc4781b5a8608\\\\checkout,com.docker.compose.service=frontend,desktop.docker.io/ports.scheme=v2,com.docker.compose.container-number=1,com.docker.compose.image=sha256:85ff2ea09e720bf785bfd81c85cbc3d33be335aee84037f52c91811a98dabc9b,com.docker.compose.project=sg-clean-8979c2928f,com.docker.compose.version=5.6.1,desktop.docker.io/ports/3000/tcp=127.0.0.1:3000\",\"LocalVolumes\":\"0\",\"Mounts\":\"\",\"Name\":\"sg-clean-8979c2928f-frontend-1\",\"Names\":\"sg-clean-8979c2928f-frontend-1\",\"Networks\":\"sg-clean-8979c2928f_default\",\"Ports\":\"127.0.0.1:3000-\\u003e3000/tcp\",\"Project\":\"sg-clean-8979c2928f\",\"Publishers\":[{\"URL\":\"127.0.0.1\",\"TargetPort\":3000,\"PublishedPort\":3000,\"Protocol\":\"tcp\"}],\"RunningFor\":\"14 seconds ago\",\"Service\":\"frontend\",\"Size\":\"0B\",\"State\":\"running\",\"Status\":\"Up 6 seconds (healthy)\"}"
+      ]
+    },
+    {
+      "stage": "container-acceptance",
+      "command": [
+        "C:\\Users\\1234\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe",
+        "compose",
+        "-p",
+        "sg-clean-8979c2928f",
+        "-f",
+        "docker-compose.yml",
+        "-f",
+        "services/docker-compose.acceptance.yml",
+        "exec",
+        "-T",
+        "backend",
+        "python",
+        "tests/run_docker_acceptance.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 519.1052,
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\docker-reproduction\\8979c2928f744601a65bc4781b5a8608\\container-acceptance.log",
+      "log_bytes": 1536,
+      "log_sha256": "1ea5e949b386e19582d96ea9471f79f212e8b312f5ed172a3c101ddd3de759a2",
+      "first_lines": [
+        "{\"stage\": \"container_regression\", \"exit_code\": 0, \"elapsed_seconds\": 102.259309, \"junit\": \"/app/data/docker-acceptance/b5cb8b0a984749a4b769d2311d2cf3fc/container-pytest.xml\", \"tests\": 329, \"failures\": 0, \"errors\": 0, \"skipped\": 6, \"skipped_cases\": [{\"name\": \"test_transient_lock_retries_with_backoff[5]\", \"reason\": \"Windows error/backoff semantics\"}, {\"name\": \"test_transient_lock_retries_with_backoff[32]\", \"reason\": \"Windows error/backoff semantics\"}, {\"name\": \"test_transient_lock_retries_with_backoff[33]\", \"reason\": \"Windows error/backoff semantics\"}, {\"name\": \"test_permanent_access_error_is_not_swallowed\", \"reason\": \"Windows error/backoff semantics\"}, {\"name\": \"test_real_directory_lock_blocks_native_rename_then_releases\", \"reason\": \"Real native Windows handle test\"}, {\"name\": \"test_real_deepseek_connectivity_without_body_logging\", \"reason\": \"real model disabled or environment credentials unset; never a fabricated live pass\"}]}",
+        "{\"stage\": \"dedup\", \"file\": \"1706.03762v7.pdf\", \"http\": 201, \"chunks\": 175, \"seconds\": 6.160709, \"passed\": true}",
+        "{\"stage\": \"dedup\", \"file\": \"1706.03762v1.pdf\", \"http\": 201, \"chunks\": 162, \"seconds\": 5.98538, \"passed\": true}",
+        "{\"stage\": \"ocr\", \"file\": \"1706.03762v1_img.pdf\", \"http\": 201, \"chunks\": 989, \"seconds\": 279.175055, \"passed\": true}",
+        "{\"stage\": \"longbook\", \"file\": \"UnderstandingDeepLearning_02_09_26_C.pdf\", \"http\": 201, \"chunks\": 6859, \"seconds\": 119.744032, \"passed\": true}",
+        "{\"passed\": true, \"report\": \"/app/data/docker-acceptance/b5cb8b0a984749a4b769d2311d2cf3fc/container-results.json\"}"
+      ],
+      "last_lines": [
+        "{\"stage\": \"container_regression\", \"exit_code\": 0, \"elapsed_seconds\": 102.259309, \"junit\": \"/app/data/docker-acceptance/b5cb8b0a984749a4b769d2311d2cf3fc/container-pytest.xml\", \"tests\": 329, \"failures\": 0, \"errors\": 0, \"skipped\": 6, \"skipped_cases\": [{\"name\": \"test_transient_lock_retries_with_backoff[5]\", \"reason\": \"Windows error/backoff semantics\"}, {\"name\": \"test_transient_lock_retries_with_backoff[32]\", \"reason\": \"Windows error/backoff semantics\"}, {\"name\": \"test_transient_lock_retries_with_backoff[33]\", \"reason\": \"Windows error/backoff semantics\"}, {\"name\": \"test_permanent_access_error_is_not_swallowed\", \"reason\": \"Windows error/backoff semantics\"}, {\"name\": \"test_real_directory_lock_blocks_native_rename_then_releases\", \"reason\": \"Real native Windows handle test\"}, {\"name\": \"test_real_deepseek_connectivity_without_body_logging\", \"reason\": \"real model disabled or environment credentials unset; never a fabricated live pass\"}]}",
+        "{\"stage\": \"dedup\", \"file\": \"1706.03762v7.pdf\", \"http\": 201, \"chunks\": 175, \"seconds\": 6.160709, \"passed\": true}",
+        "{\"stage\": \"dedup\", \"file\": \"1706.03762v1.pdf\", \"http\": 201, \"chunks\": 162, \"seconds\": 5.98538, \"passed\": true}",
+        "{\"stage\": \"ocr\", \"file\": \"1706.03762v1_img.pdf\", \"http\": 201, \"chunks\": 989, \"seconds\": 279.175055, \"passed\": true}",
+        "{\"stage\": \"longbook\", \"file\": \"UnderstandingDeepLearning_02_09_26_C.pdf\", \"http\": 201, \"chunks\": 6859, \"seconds\": 119.744032, \"passed\": true}",
+        "{\"passed\": true, \"report\": \"/app/data/docker-acceptance/b5cb8b0a984749a4b769d2311d2cf3fc/container-results.json\"}"
+      ]
+    },
+    {
+      "stage": "export-container-results",
+      "command": [
+        "C:\\Users\\1234\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe",
+        "compose",
+        "-p",
+        "sg-clean-8979c2928f",
+        "-f",
+        "docker-compose.yml",
+        "-f",
+        "services/docker-compose.acceptance.yml",
+        "cp",
+        "backend:/app/data/docker-acceptance",
+        "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\docker-reproduction\\8979c2928f744601a65bc4781b5a8608\\container-output"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 0.505122,
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\docker-reproduction\\8979c2928f744601a65bc4781b5a8608\\export-container-results.log",
+      "log_bytes": 449,
+      "log_sha256": "9eb934ae4b558a84379f9edd9eef7e5c5a748e129a9b432d53a2b7cf415f7355",
+      "first_lines": [
+        " sg-clean-8979c2928f-backend-1 Copying sg-clean-8979c2928f-backend-1:/app/data/docker-acceptance to D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\docker-reproduction\\8979c2928f744601a65bc4781b5a8608\\container-output",
+        "symlinkat /app/data/docker-acceptance/b5cb8b0a984749a4b769d2311d2cf3fc/pytest-temp/api-local-engines0 container-output\\b5cb8b0a984749a4b769d2311d2cf3fc\\pytest-temp\\api-local-enginescurrent: A required privilege is not held by the client."
+      ],
+      "last_lines": [
+        " sg-clean-8979c2928f-backend-1 Copying sg-clean-8979c2928f-backend-1:/app/data/docker-acceptance to D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\docker-reproduction\\8979c2928f744601a65bc4781b5a8608\\container-output",
+        "symlinkat /app/data/docker-acceptance/b5cb8b0a984749a4b769d2311d2cf3fc/pytest-temp/api-local-engines0 container-output\\b5cb8b0a984749a4b769d2311d2cf3fc\\pytest-temp\\api-local-enginescurrent: A required privilege is not held by the client."
+      ]
+    },
+    {
+      "stage": "clone-final-status",
+      "command": [
+        "git",
+        "status",
+        "--porcelain=v1"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.224614,
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\docker-reproduction\\8979c2928f744601a65bc4781b5a8608\\clone-final-status.log",
+      "log_bytes": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "first_lines": [],
+      "last_lines": []
+    }
+  ],
+  "credentials_forwarded": false,
+  "host_parsed_records_used": false,
+  "status": "failed",
+  "clone": {
+    "path": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\docker-reproduction\\8979c2928f744601a65bc4781b5a8608\\checkout",
+    "commit": "142e01087da3dbfd1ca80adb5d070a36fc03916c",
+    "clean": true,
+    "host_artifacts_absent": {
+      "backend/.venv": true,
+      "frontend/node_modules": true,
+      "frontend/.next": true,
+      ".env": true,
+      "pdf": true,
+      "data": true
+    },
+    "clean_after_build_and_run": true
+  },
+  "compose_config": {
+    "services": [
+      "backend",
+      "frontend"
+    ],
+    "backend_volumes": [
+      {
+        "type": "volume",
+        "source": "backend-data",
+        "target": "/app/data",
+        "volume": {}
+      },
+      {
+        "type": "bind",
+        "source": "D:\\AI_Workspace\\Tasks\\scholar-graph\\pdf",
+        "target": "/corpus",
+        "read_only": true,
+        "bind": {
+          "create_host_path": false
+        }
+      }
+    ]
+  },
+  "container_state": "{\"Command\":\"\\\"python -m uvicorn s…\\\"\",\"CreatedAt\":\"2026-10-25 15:38:04 +0800 CST\",\"Engine\":\"\",\"ExitCode\":0,\"Health\":\"healthy\",\"ID\":\"1cb39158ec53\",\"Image\":\"sg-clean-8979c2928f-backend\",\"Labels\":\"com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.project.working_dir=D:\\\\AI_Workspace\\\\Tasks\\\\scholar-graph\\\\data\\\\docker-reproduction\\\\8979c2928f744601a65bc4781b5a8608\\\\checkout,com.docker.compose.service=backend,com.docker.compose.version=5.6.1,desktop.docker.io/mounts/0/SourceKind=hostFile,com.docker.compose.config-hash=4970cf24e7d7a5a05d1c75b6c26e9a3032aa04ddff02b1c046da19a5c44c5c16,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=D:\\\\AI_Workspace\\\\Tasks\\\\scholar-graph\\\\data\\\\docker-reproduction\\\\8979c2928f744601a65bc4781b5a8608\\\\checkout\\\\docker-compose.yml,D:\\\\AI_Workspace\\\\Tasks\\\\scholar-graph\\\\data\\\\docker-reproduction\\\\8979c2928f744601a65bc4781b5a8608\\\\checkout\\\\services\\\\docker-compose.acceptance.yml,com.docker.compose.image=sha256:61bbe1ec93f13da838069d6498b28804dd0d78c3082a987073045856cc564863,desktop.docker.io/ports/8000/tcp=127.0.0.1:8000,com.docker.compose.project=sg-clean-8979c2928f,desktop.docker.io/mounts/0/Source=D:\\\\AI_Workspace\\\\Tasks\\\\scholar-graph\\\\pdf,desktop.docker.io/mounts/0/Target=/corpus,desktop.docker.io/ports.scheme=v2\",\"LocalVolumes\":\"1\",\"Mounts\":\"/run/desktop/m…,sg-clean-8979c…\",\"Name\":\"sg-clean-8979c2928f-backend-1\",\"Names\":\"sg-clean-8979c2928f-backend-1\",\"Networks\":\"sg-clean-8979c2928f_default\",\"Ports\":\"127.0.0.1:8000-\\u003e8000/tcp\",\"Project\":\"sg-clean-8979c2928f\",\"Publishers\":[{\"URL\":\"127.0.0.1\",\"TargetPort\":8000,\"PublishedPort\":8000,\"Protocol\":\"tcp\"}],\"RunningFor\":\"15 seconds ago\",\"Service\":\"backend\",\"Size\":\"0B\",\"State\":\"running\",\"Status\":\"Up 12 seconds (healthy)\"}\n{\"Command\":\"\\\"docker-entrypoint.s…\\\"\",\"CreatedAt\":\"2026-10-25 15:38:05 +0800 CST\",\"Engine\":\"\",\"ExitCode\":0,\"Health\":\"healthy\",\"ID\":\"8eb7f225bcc2\",\"Image\":\"sg-clean-8979c2928f-frontend\",\"Labels\":\"com.docker.compose.config-hash=ad3eeb0388898bbba96be5e1a5fa4fabf572a0be6ca7a4624f1ef628329516b3,com.docker.compose.depends_on=backend:service_healthy:false,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=D:\\\\AI_Workspace\\\\Tasks\\\\scholar-graph\\\\data\\\\docker-reproduction\\\\8979c2928f744601a65bc4781b5a8608\\\\checkout\\\\docker-compose.yml,D:\\\\AI_Workspace\\\\Tasks\\\\scholar-graph\\\\data\\\\docker-reproduction\\\\8979c2928f744601a65bc4781b5a8608\\\\checkout\\\\services\\\\docker-compose.acceptance.yml,com.docker.compose.project.working_dir=D:\\\\AI_Workspace\\\\Tasks\\\\scholar-graph\\\\data\\\\docker-reproduction\\\\8979c2928f744601a65bc4781b5a8608\\\\checkout,com.docker.compose.service=frontend,desktop.docker.io/ports.scheme=v2,com.docker.compose.container-number=1,com.docker.compose.image=sha256:85ff2ea09e720bf785bfd81c85cbc3d33be335aee84037f52c91811a98dabc9b,com.docker.compose.project=sg-clean-8979c2928f,com.docker.compose.version=5.6.1,desktop.docker.io/ports/3000/tcp=127.0.0.1:3000\",\"LocalVolumes\":\"0\",\"Mounts\":\"\",\"Name\":\"sg-clean-8979c2928f-frontend-1\",\"Names\":\"sg-clean-8979c2928f-frontend-1\",\"Networks\":\"sg-clean-8979c2928f_default\",\"Ports\":\"127.0.0.1:3000-\\u003e3000/tcp\",\"Project\":\"sg-clean-8979c2928f\",\"Publishers\":[{\"URL\":\"127.0.0.1\",\"TargetPort\":3000,\"PublishedPort\":3000,\"Protocol\":\"tcp\"}],\"RunningFor\":\"14 seconds ago\",\"Service\":\"frontend\",\"Size\":\"0B\",\"State\":\"running\",\"Status\":\"Up 6 seconds (healthy)\"}\n"
+}

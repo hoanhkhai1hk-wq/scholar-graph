@@ -1,0 +1,18 @@
+{
+  "parse-status": {
+    "schema_version": "1.1.0",
+    "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+    "status": "ocr",
+    "progress": 27,
+    "current_stage": "已处理4/15页，已发布244个Chunk；失败页[]",
+    "error_code": null,
+    "error_message": null
+  },
+  "chunks?page_size=1": {
+    "total": 244,
+    "returned_items": 1
+  },
+  "run_id": "8979c2928f744601a65bc4781b5a8608",
+  "project": "sg-clean-8979c2928f",
+  "scope": "本轮容器实际HTTP中途快照；关联run_id后补，未编造采集时间。"
+}

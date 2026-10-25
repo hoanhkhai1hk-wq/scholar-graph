@@ -1,0 +1,95 @@
+{
+  "project": "sg-clean-8979c2928f",
+  "containers": [
+    {
+      "name": "/sg-clean-8979c2928f-backend-1",
+      "id": "1cb39158ec535212bbf1a18b2ecb8787aad47271612e1eb2a18e76e4832992ef",
+      "image_id": "sha256:fc4e9126c0cf244248d1b51422d1c28137ec0a01afdc8cc82c6f364ec2697d18",
+      "health": "healthy",
+      "environment_names": [
+        "SCHOLAR_GRAPH_QA_MODE",
+        "SCHOLAR_GRAPH_RETRIEVAL_MODE",
+        "SCHOLAR_GRAPH_DATA_DIR",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONUNBUFFERED",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONPATH",
+        "PIP_NO_CACHE_DIR",
+        "PIP_DISABLE_PIP_VERSION_CHECK",
+        "MPLCONFIGDIR",
+        "HOME"
+      ],
+      "credential_variables_absent": true,
+      "mounts": [
+        {
+          "type": "bind",
+          "source": "D:\\AI_Workspace\\Tasks\\scholar-graph\\pdf",
+          "destination": "/corpus",
+          "read_only": true
+        },
+        {
+          "type": "volume",
+          "source": "/var/lib/docker/volumes/sg-clean-8979c2928f_backend-data/_data",
+          "destination": "/app/data",
+          "read_only": false
+        }
+      ],
+      "ports": {
+        "8000/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "8000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "/sg-clean-8979c2928f-frontend-1",
+      "id": "8eb7f225bcc21bd3d7a3943763c895900027da4afed7037e8b0319c2446545b5",
+      "image_id": "sha256:d1a4d0807800e8c62673da0a3bed2c40a69bcaa81e84b04530b50a33eb69808b",
+      "health": "healthy",
+      "environment_names": [
+        "NEXT_PUBLIC_API_BASE_URL",
+        "NEXT_TELEMETRY_DISABLED",
+        "PATH",
+        "NODE_VERSION",
+        "YARN_VERSION",
+        "NODE_ENV"
+      ],
+      "credential_variables_absent": true,
+      "mounts": [],
+      "ports": {
+        "3000/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "3000"
+          }
+        ]
+      }
+    }
+  ],
+  "host_http": [
+    {
+      "url": "http://127.0.0.1:8000/api/v1/papers?page_size=1",
+      "status": 200,
+      "bytes": 78,
+      "content_type": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:3000",
+      "status": 200,
+      "bytes": 13254,
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "http://127.0.0.1:3000/api/backend/papers?page_size=1",
+      "status": 200,
+      "bytes": 78,
+      "content_type": "application/json"
+    }
+  ]
+}

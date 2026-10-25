@@ -1,0 +1,211 @@
+{
+  "uploads": [
+    {
+      "file": "1706.03762v1_img.pdf",
+      "sha256": "64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+      "bytes": 4672118,
+      "pages": 15,
+      "http_status": 201,
+      "response": {
+        "schema_version": "1.0.0",
+        "id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+        "title": null,
+        "authors": [],
+        "institutions": [],
+        "abstract": null,
+        "year": null,
+        "source": "local-upload",
+        "arxiv_id": null,
+        "doi": null,
+        "version": null,
+        "file_hash": "64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+        "page_count": 15,
+        "has_text_layer": false
+      },
+      "measurement": {
+        "rss_sampled_peak_bytes": 1512185856,
+        "cgroup_sampled_peak_bytes": 1368772608,
+        "cgroup_lifetime_peak_before_bytes": 1370877952,
+        "interval_seconds": 0.05,
+        "samples": 5525,
+        "elapsed_seconds": 279.175055,
+        "cgroup_lifetime_peak_after_bytes": 1377161216,
+        "memory_scope": "容器内可读进程RSS采样合计；cgroup采样含文件缓存；lifetime峰值非单次上传峰值。"
+      },
+      "status_http": 200,
+      "status": {
+        "schema_version": "1.1.0",
+        "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+        "status": "completed",
+        "progress": 100,
+        "current_stage": "四类记录已通过校验并原子发布",
+        "error_code": null,
+        "error_message": null
+      },
+      "chunks_http": 200,
+      "chunks": 989,
+      "text_samples": [
+        "Attention Is All You Need",
+        "Ashish Vaswani*",
+        "Noam Shazeer*"
+      ],
+      "warning": "",
+      "passed": true,
+      "batch_metrics": {
+        "parser": "MinerU text batches + PaddleOCR page fallback",
+        "limits": {
+          "max_pages": 2000,
+          "text_batch_pages": 32,
+          "page_timeout": 90,
+          "batch_timeout": 120,
+          "total_timeout": 1800
+        },
+        "completed_pages": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "failed_pages": [],
+        "empty_pages": [],
+        "batches": [
+          {
+            "mode": "paddleocr",
+            "pages": [
+              1
+            ],
+            "chunks": 57,
+            "cumulative_chunks": 57
+          },
+          {
+            "mode": "paddleocr",
+            "pages": [
+              2
+            ],
+            "chunks": 57,
+            "cumulative_chunks": 114
+          },
+          {
+            "mode": "paddleocr",
+            "pages": [
+              3
+            ],
+            "chunks": 63,
+            "cumulative_chunks": 177
+          },
+          {
+            "mode": "paddleocr",
+            "pages": [
+              4
+            ],
+            "chunks": 67,
+            "cumulative_chunks": 244
+          },
+          {
+            "mode": "paddleocr",
+            "pages": [
+              5
+            ],
+            "chunks": 48,
+            "cumulative_chunks": 292
+          },
+          {
+            "mode": "paddleocr",
+            "pages": [
+              6
+            ],
+            "chunks": 67,
+            "cumulative_chunks": 359
+          },
+          {
+            "mode": "paddleocr",
+            "pages": [
+              7
+            ],
+            "chunks": 52,
+            "cumulative_chunks": 411
+          },
+          {
+            "mode": "paddleocr",
+            "pages": [
+              8
+            ],
+            "chunks": 100,
+            "cumulative_chunks": 511
+          },
+          {
+            "mode": "paddleocr",
+            "pages": [
+              9
+            ],
+            "chunks": 182,
+            "cumulative_chunks": 693
+          },
+          {
+            "mode": "paddleocr",
+            "pages": [
+              10
+            ],
+            "chunks": 57,
+            "cumulative_chunks": 750
+          },
+          {
+            "mode": "paddleocr",
+            "pages": [
+              11
+            ],
+            "chunks": 57,
+            "cumulative_chunks": 807
+          },
+          {
+            "mode": "paddleocr",
+            "pages": [
+              12
+            ],
+            "chunks": 11,
+            "cumulative_chunks": 818
+          },
+          {
+            "mode": "paddleocr",
+            "pages": [
+              13
+            ],
+            "chunks": 46,
+            "cumulative_chunks": 864
+          },
+          {
+            "mode": "paddleocr",
+            "pages": [
+              14
+            ],
+            "chunks": 61,
+            "cumulative_chunks": 925
+          },
+          {
+            "mode": "paddleocr",
+            "pages": [
+              15
+            ],
+            "chunks": 64,
+            "cumulative_chunks": 989
+          }
+        ],
+        "published_chunks": 989,
+        "indexing_seconds": 1.460875,
+        "resumed_pages": 0
+      }
+    }
+  ],
+  "passed": true
+}
