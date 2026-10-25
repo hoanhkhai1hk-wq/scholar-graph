@@ -103,6 +103,41 @@ GROBID 在 Compose 中使用官方仓库名 `grobid/grobid` 作为占位，镜�
 TODO：业务实现后补充依赖版本、安装、数据准备、启动、验证与结果复现步骤。
 
 - `.env.example` 只有变量名，没有真实值；环境值的配置方式在后续实施单确定。不要提交 `.env`、API 密钥、真实 PDF 或本地数据。
-- `docker-compose.yml` 仅定义 frontend、backend、grobid 三个占位服务，全部放在 `scaffold` profile。前后端镜像尚不存在，无 Dockerfile、构建上下文或启动实现；不应据此宣称应用可运行。
-- 结构验证可使用 `docker compose --profile scaffold config`；无 Docker 时只能对 YAML 语法及占位结构做自查，不能替代 Compose 官方校验或服务运行验证。
+- Docker 两服务构建配置已补齐，取代早期 scaffold 占位；使用方式与实际验收状态见下方“Docker 复现”。GROBID不包含在本轮两服务中，仍待单独联调。
+- 结构验证使用 `docker compose config --quiet`；配置校验不等于镜像构建或运行验收通过。
 - 合成示例只用于契约格式，不是真实论文、实验或功能演示。`.gitignore` 排除 `.env`、`data/`、PDF、node_modules 与 Python 缓存，fixtures 目录只跟踪占位说明。
+
+
+## Docker 复现
+
+前置：Docker Desktop已启动Linux引擎（或Linux Docker Engine）、Compose可用，8000/3000端口空闲；首次需要联网拉基础镜像、PyPI/npm依赖和OCR模型。目标平台为linux/amd64。无需宿主机Python、Node、venv、node_modules或API Key。默认无Key摘录式，真实模型测试无Key跳过。只启动项目可用一条命令：`docker compose up --build -d --wait`。
+
+标准三条命令（仓库根目录）：
+
+```bash
+docker compose build --no-cache
+docker compose up -d --wait
+docker compose exec -T backend python tests/run_docker_acceptance.py --suite-only
+```
+
+预期：构建依照backend/pyproject.toml的ocr/test依赖与frontend/package-lock.json全新安装；启动后backend、frontend均healthy；后端<http://127.0.0.1:8000/api/v1/papers>返回分页JSON，前端<http://127.0.0.1:3000>可打开，其现有同源代理使用容器DNS backend:8000。前端源码不改，NEXT_PUBLIC_API_BASE_URL在Node构建时固定为内部地址。健康检查真实请求后端列表与前端代理，不添加业务端点。后端数据保存在本项目专属backend-data命名卷。
+
+第三条在容器内执行全量回归（含实际OCR），再真实上传自制最小PDF并验证无Key问答带锚点；这是自制样例，不冒充官方三用例。Windows专属锁测试在Linux按原标记跳过；真实模型连通无Key跳过，均逐项报告。结果与JUnit写入/app/data/docker-acceptance/<run-id>/，终端打印报告路径和真实统计；通过为退出码0、passed=true，任何失败保留原因并非零退出。首次OCR模型下载计入容器实际耗时，不挂宿主机模型缓存。预计耗时取决于网络/CPU，本仓库不预报固定成功数字。
+
+### 官方三用例：只读语料挂载
+
+官方pdf/不随Git分发，也不进入镜像。需要全部官方验收时，先在终端设置SCHOLAR_GRAPH_PDF_DIR为现有语料目录（PowerShell例如`$env:SCHOLAR_GRAPH_PDF_DIR='D:/AI_Workspace/Tasks/scholar-graph/pdf'`，这不是Key）。使用**尚无论文数据的新Compose项目名**，执行下面三条命令：
+
+```bash
+docker compose -p scholar-graph-official -f docker-compose.yml -f services/docker-compose.acceptance.yml build --no-cache
+docker compose -p scholar-graph-official -f docker-compose.yml -f services/docker-compose.acceptance.yml up -d --wait
+docker compose -p scholar-graph-official -f docker-compose.yml -f services/docker-compose.acceptance.yml exec -T backend python tests/run_docker_acceptance.py
+```
+
+覆盖文件只把指定目录只读挂载到/corpus，路径不存在直接报错，不创建空目录；没有COPY语料。脚本要求真实Linux容器、无模型Key、初始后端论文数为0，依次上传1706.03762v7.pdf→v1.pdf、1706.03762v1_img.pdf、UnderstandingDeepLearning_02_09_26_C.pdf（541页）。不读取历史宿主机解析结果；实时HTTP调用当前后端，同步计时、采样容器内存，保存预警/裁决/差异、OCR文本与Chunk、长书分页/索引状态。OCR首次联网下载也包含在计时内。最后跑无Key摘录式问答。全量回归与三项业务分别统计，失败不写为通过。
+
+若之前已用该项目上传过论文，脚本会拒绝复用；换一个新项目名并先停止旧项目以释放端口。可用`docker compose ... cp backend:/app/data/docker-acceptance ./data/docker-acceptance-export`导出报告；命令中的省略部分须替换为启动时相同的项目名及两个-f参数。不要用宿主机venv运行此容器探针。停止服务用相同项目参数执行`down`，默认保留数据卷，不自动删除用户数据。
+
+.dockerignore排除pdf/、所有PDF、.env及其变体、.git、data/、venv、node_modules、.next、__pycache__和旧测试报告。构建使用显式COPY，无Key构建参数或环境透传；后端镜像包含自行安装的Node/TypeScript，供既有真实代理回归测试使用。GROBID、BGE-M3独立模型服务不在本轮两服务中，默认检索为词法。
+
+本轮实际结果与干净克隆证明以[Docker验收报告](tests/reports/docker-reproduction-acceptance.md)为准；只有配置校验不能宣称换机复现通过。旧快速开始/限制中的“未运行官方用例、未接模型”为历史文案；宿主机后续官方修复和真模型实测见tests/reports/内对应新报告，容器结果独立登记。
