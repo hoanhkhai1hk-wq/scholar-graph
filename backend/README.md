@@ -332,3 +332,53 @@ metadata新增source_language、source_translation_sha256和source_input；前�
 用户转达WorkBuddy：拓扑用scripts[*].format/script与validation；三维图用chart.image_ref、data_table和带row_numbers的conclusions，注意外层projection；英文回译用已有中文响应作为source_translation，按同一source_chunk_id衔接定位。前端展示本单未接，旧Docker镜像未重建。真实脚本、PNG、趋势图注、中英样本与回归证据见[模块六补齐验收](../tests/reports/module6-completion-acceptance.md)。
 
 语法/绘图依据：[DOT语法](https://graphviz.org/doc/info/lang.html)、[Mermaid流程图](https://mermaid.js.org/syntax/flowchart.html)、[TikZ节点与边](https://tikz.dev/tikz-shapes)、[Matplotlib三维柱图](https://matplotlib.org/stable/gallery/mplot3d/3d_bars.html)。
+
+## arXiv 定期追踪、引用去重与反馈（2026-10-26）
+
+新增以下传输端点，全部使用现有 `/api/v1` 前缀；当前共28条业务端点。既有12份业务契约、前端和docs/API草案均未修改。
+
+| 方法与路径 | 输入和输出 |
+| --- | --- |
+| POST /retrieval/tracking/run | JSON：paper_ids（可选，1–5个库内id）、max_candidates（默认5，1–20）、max_imports（默认2，0–5）、interval_seconds（默认86400，60–2592000）、force（默认true）；同步返回本次完整运行记录 |
+| GET /retrieval/tracking/status | latest_run、dedup_records、scheduler与default_interval_seconds；尚未运行时latest_run=null |
+| POST /retrieval/citations/cleanup | 无请求体；返回扫描论文数、链接前后数量、删除数与每次清理的审计引用 |
+| POST /recommendations/feedback | JSON：paper_id（被推荐论文）、seed_paper_id、vote=like/dislike、profile_id（默认local）、as_of_year（可选）；返回落盘事件号、排序前后、评分和主题词证据 |
+| GET /recommendations/feedback | 查询profile_id（默认local）；返回当前有效投票与完整反馈事件记录 |
+
+原GET /recommendations增加可选profile_id，默认local；空画像保持原排序。profile_id只是本地画像标识，不是账号认证或跨用户权限隔离。点赞/踩每个画像、每篇论文只保留一个有效值，后一次替换前一次，不因重复提交叠加权重；事件历史保留。拒绝给种子自身投票。反馈只由推荐API显式启用，框架与综述复用的纯推荐函数不读写画像目录。
+
+### 周期任务与种子来源
+
+提供可由Windows任务计划程序或cron定期触发的命令，无需API Key。使用与后端相同的数据目录；已安装backend包时，可在仓库根目录执行：
+
+```powershell
+backend/.venv/Scripts/python.exe -m scholar_graph.tracking_cli --data-dir data/module-one --due --interval-seconds 86400 --max-candidates 5 --max-imports 2
+```
+
+Windows任务计划程序的程序填写D盘仓库内Python绝对路径；参数填写`-m scholar_graph.tracking_cli --data-dir D:/AI_Workspace/Tasks/scholar-graph/data/module-one --due --interval-seconds 86400`；起始目录填写D盘仓库根目录，触发器设为每天执行。Linux可用每日cron调用同一模块并指定容器/主机实际数据目录。`--due`在距最近一次运行开始不足间隔时返回`skipped=true,reason=NOT_DUE`，不发网络请求；手动端点force=true可立即运行。命令对partial/failed返回退出码1，正常或未到期返回0。本单提供并实测可触发任务，没有替用户在宿主机注册系统计划，也没有后台常驻调度线程；部署时需配置定时触发器。
+
+默认从库内按id排序的前5篇取种子，可显式指定paper_ids或重复`--paper-id`。每篇最多两条查询：标题主题词查询，以及由真实CitationLink关联的首个可用ReferenceEntry标题查询。旧导入的PaperMeta.title或参考标题为空时，可从真实首屏标题Chunk和可识别的参考文献原文摘取，并附对应锚点；不回填、猜造或修改业务记录。找不到任何可用种子明确失败。主题为英文词法启发式：去停用词、拆连字符、长词去复数s，取排序前4词；不是语义向量检索。中文标题无可识别英文主题且无可用引用时会明确失败。
+
+调用公开Atom API，查询按submittedDate倒序，每条查询最多max_candidates条，默认请求间隔3秒；合并相同基础arXiv ID后按查询顺序最多保留max_candidates个全局候选。相关理由包含库内paper_id、实际重合词、来源类型与可用引用锚点，不声称已证实学术承袭关系。候选是对当前库的新发现，不保证都是近期发表；引用种子可能找到历史文献。未达到导入预算的条目标deferred，未抓到、未解析成功不冒充入库。默认每次最多两次导入尝试（失败和重复也占预算），下一次重新查询，不是持久化候选队列。status为completed/partial/failed/running/interrupted，是运维运行状态，不扩展ParseStatus枚举。
+
+### 幂等与引用维护
+
+抓取前在跨进程入库锁内检查已发布PaperMeta：基础arXiv ID去掉vN后相同，或裸DOI大小写无关相同，则返回`already_present=true`，复用现有paper、不下载、不新建queued状态，initial_parse_status=null。旧记录无job历史时parse_status可为null，绝不伪造完成状态；已存在版本不会被轮询降级覆盖，也不会自动追新版本。真正新论文仍调用原Pipeline，queued→parsing→indexing/completed或failed，保留原DOI精确、身份冲突排除和词频Dice≥0.90机制。Dice只作疑似重复预警：按既有行为保留不同文件记录供人工复核，不把词频高相似武断等同身份，也不改成人工否决。
+
+`retrieval/fetch`响应为原有字段加already_present和dedup（向后兼容传输加法），不改任何schema。`tracking/state.sqlite3`保存运行、去重日志、投票及反馈事件。去重日志以基础arXiv ID唯一，每次重复只更新occurrences与last_seen，不增加第二行；它是抓取运维日志，绝不冒充新业务契约DedupDecision。若新文件确实走到原Pipeline的比较流程，原DedupDecision/DiffSummary照常校验发布，本日志记录其旧论文与真实Dice分值。
+
+每轮追踪先清理已发布论文引用链接，也可手动调用清理端点。只按(paper_id,citation_number,page_number,chunk_id,ref_id)完全一致去重，保留不同页/Chunk中的合法多次引用；校验所有原链接schema与清理后整组外键，非法锚点仍报错。替换前将原链接、前后SHA与操作意图写入tracking/citation-cleanups，之后原子替换citation-links.json并写完成凭据；不改论文元数据、正文、索引、参考条目。失败不吞异常，原件可审计；中途退出可按intent与实际文件SHA核对。上传、抓取、引用清理共享操作系统文件锁；锁随进程退出释放，锁等待超限返回明确错误，不靠删除锁文件解锁。
+
+### 可复核的反馈评分
+
+基础评分仍为`100*(0.40*G+0.35*P+0.15*T+0.10*C)`（局域图邻居、归一化PageRank、十年线性时效、元数据真实GitHub链接；缺失按0，不编引用次数）。新增：
+
+```text
+score = clamp(base_score + 50 * mean(vote * Jaccard(title_topics(candidate), title_topics(voted_paper))), 0, 100); empty profile adds 0
+```
+
+vote点赞为1、踩为-1；Jaccard=主题词交集数/并集数，空并集为0。标题取已发布元数据，主题归一化与追踪一致；不读伪造画像或使用向量。权重50为透明启发式，每条推荐返回base_score、feedback_adjustment和实际共同词、分母词集、投票依据；没有反馈时原响应字段和得分保持。反馈事件在同一SQLite事务写投票与排序前后，进程重启后仍可查询。无模型调用、无Key要求，沿用原三字段错误体和错误码。
+
+两轮真实公开arXiv追踪、额外解析失败原文、引用清理数量、反馈效果与全量回归见[追踪验收报告](../tests/reports/tracking-acceptance.md)。用户转达WorkBuddy：本单只交后端端点与传输封装，前端未接入；docs草案本单未授权修改。已有Docker镜像需重建才包含这些代码，不能把旧容器视为已更新。
+
+协议依据：[arXiv API查询、Atom与排序](https://info.arxiv.org/help/api/user-manual.html)、[arXiv API使用条款](https://info.arxiv.org/help/api/tou.html)。
