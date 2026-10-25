@@ -1,0 +1,137 @@
+{
+  "scope": "官方 pdf/ 真文件",
+  "case": "longbook",
+  "baseline": "17ed94939b01285ee96c7708cf177d669f48739b",
+  "source_commit": "68d9e7a358b322dd6b17714f221c782b93f78d3d",
+  "run_utc": "2026-10-25T03:54:09.283910+00:00",
+  "versions": {
+    "mineru": "4.0.12",
+    "pypdf": "6.21.2",
+    "psutil": "7.2.2",
+    "fastapi": "0.162.0"
+  },
+  "real_llm_calls": 0,
+  "real_api_keys_used": false,
+  "source": {
+    "file": "D:\\AI_Workspace\\Tasks\\scholar-graph\\pdf\\UnderstandingDeepLearning_02_09_26_C.pdf",
+    "bytes": 22344992,
+    "sha256": "f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32",
+    "physical_pages": 541,
+    "pdf_title": null
+  },
+  "upload": {
+    "request": {
+      "method": "POST",
+      "path": "/api/v1/papers",
+      "file_sha256": "f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32"
+    },
+    "http_status": 422,
+    "response": {
+      "error_code": "PARSE_FAILED",
+      "message": "PDF 页数必须在 1 到 200 之间。",
+      "details": null
+    },
+    "measurement": {
+      "sample_interval_seconds": 0.05,
+      "rss_peak_bytes": 150421504,
+      "private_peak_bytes": 135442432,
+      "sample_count": 6,
+      "includes_descendant_processes": true,
+      "rss_start_bytes": 83062784,
+      "elapsed_seconds": 0.345713,
+      "scope": "整个测试进程及全部子进程的采样合计，不是精确瞬时峰值；不含下载阶段。"
+    }
+  },
+  "parsed": {
+    "published_chunks": 0,
+    "indexing_seconds": null,
+    "reason": "Upload did not publish a paper."
+  },
+  "status": {
+    "path": "/api/v1/papers/paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32/parse-status",
+    "http_status": 200,
+    "response": {
+      "schema_version": "1.1.0",
+      "paper_id": "paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32",
+      "status": "failed",
+      "progress": 5,
+      "current_stage": "解析未完成",
+      "error_code": "PARSE_FAILED",
+      "error_message": "PDF 页数必须在 1 到 200 之间。"
+    }
+  },
+  "pagination": {
+    "papers": {
+      "path": "/api/v1/papers?page=1&page_size=100",
+      "http_status": 200,
+      "response": {
+        "items": [],
+        "page": 1,
+        "page_size": 100,
+        "total": 0,
+        "total_pages": 0,
+        "has_next": false
+      }
+    },
+    "chunks": {
+      "path": "/api/v1/papers/paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32/chunks?page=1&page_size=100",
+      "http_status": 404,
+      "response": {
+        "error_code": "PAPER_NOT_FOUND",
+        "message": "无该论文记录。",
+        "details": null
+      }
+    }
+  },
+  "status_histories": [
+    [
+      {
+        "schema_version": "1.1.0",
+        "paper_id": "paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32",
+        "status": "queued",
+        "progress": 0,
+        "current_stage": "等待解析",
+        "error_code": null,
+        "error_message": null
+      },
+      {
+        "schema_version": "1.1.0",
+        "paper_id": "paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32",
+        "status": "parsing",
+        "progress": 5,
+        "current_stage": "检查 PDF 与文本层",
+        "error_code": null,
+        "error_message": null
+      },
+      {
+        "schema_version": "1.1.0",
+        "paper_id": "paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32",
+        "status": "failed",
+        "progress": 5,
+        "current_stage": "解析未完成",
+        "error_code": "PARSE_FAILED",
+        "error_message": "PDF 页数必须在 1 到 200 之间。"
+      }
+    ]
+  ],
+  "indexing": {
+    "entered": false,
+    "elapsed_seconds": null,
+    "reason": "未进入索引，不能将未运行记为0秒。"
+  },
+  "published_chunks": 0,
+  "page_limit_rejected": true,
+  "diagnosis": {
+    "source": "backend/scholar_graph/pipeline.py:124-125",
+    "condition": "if count < 1 or count > 200:",
+    "note": "在_inspect读取物理页数后、MinerU与索引前拒绝；本探针不绕过上限。"
+  },
+  "source_after": {
+    "file": "D:\\AI_Workspace\\Tasks\\scholar-graph\\pdf\\UnderstandingDeepLearning_02_09_26_C.pdf",
+    "bytes": 22344992,
+    "sha256": "f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32",
+    "physical_pages": 541,
+    "pdf_title": null
+  },
+  "conclusion": "失败：官方 pdf/ 真文件541页长书被200页上限拒绝，未产出Chunk或索引。"
+}
