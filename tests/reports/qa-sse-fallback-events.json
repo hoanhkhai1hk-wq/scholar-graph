@@ -1,0 +1,279 @@
+{
+  "mode": "fallback",
+  "scope": "官方Attention v7已落盘Chunk，临时真实TCP后端；非TestClient缓冲样本",
+  "request": {
+    "method": "POST",
+    "path": "/api/v1/papers/paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697/qa/stream",
+    "question": "Which optimizer?"
+  },
+  "environment": {
+    "SCHOLAR_GRAPH_QA_MODE": "已设置",
+    "DEEPSEEK_MODEL": "未设置",
+    "DEEPSEEK_API_KEY": "未设置"
+  },
+  "events": [
+    {
+      "id": 1,
+      "event": "mode",
+      "data": {
+        "mode": "extractive",
+        "token_streaming": false,
+        "fallback_reason": "MODEL_CONFIGURATION_UNAVAILABLE",
+        "message": "回落模式、非 token 流式"
+      },
+      "observed_seconds": 0.131813
+    },
+    {
+      "id": 2,
+      "event": "node_start",
+      "data": {
+        "node": "plan",
+        "attempt": 1,
+        "evidence_count": 0,
+        "elapsed_seconds": 0.0
+      },
+      "observed_seconds": 0.163551
+    },
+    {
+      "id": 3,
+      "event": "node_end",
+      "data": {
+        "node": "plan",
+        "elapsed_seconds": 0.000431,
+        "attempt": 1,
+        "evidence_count": 0,
+        "validation": null,
+        "validation_error": null,
+        "fallback_reason": "MODEL_CONFIGURATION_UNAVAILABLE",
+        "status": "completed"
+      },
+      "observed_seconds": 0.163804
+    },
+    {
+      "id": 4,
+      "event": "node_start",
+      "data": {
+        "node": "retrieve",
+        "attempt": 1,
+        "evidence_count": 0,
+        "elapsed_seconds": 0.0
+      },
+      "observed_seconds": 0.171112
+    },
+    {
+      "id": 5,
+      "event": "node_end",
+      "data": {
+        "node": "retrieve",
+        "elapsed_seconds": 0.006725,
+        "attempt": 1,
+        "evidence_count": 2,
+        "validation": null,
+        "validation_error": null,
+        "fallback_reason": "MODEL_CONFIGURATION_UNAVAILABLE",
+        "status": "completed"
+      },
+      "observed_seconds": 0.171466
+    },
+    {
+      "id": 6,
+      "event": "node_start",
+      "data": {
+        "node": "qa",
+        "attempt": 1,
+        "evidence_count": 2,
+        "elapsed_seconds": 0.0
+      },
+      "observed_seconds": 0.203475
+    },
+    {
+      "id": 7,
+      "event": "node_end",
+      "data": {
+        "node": "qa",
+        "elapsed_seconds": 0.03143,
+        "attempt": 1,
+        "evidence_count": 2,
+        "validation": null,
+        "validation_error": null,
+        "fallback_reason": "MODEL_CONFIGURATION_UNAVAILABLE",
+        "status": "completed"
+      },
+      "observed_seconds": 0.203686
+    },
+    {
+      "id": 8,
+      "event": "node_start",
+      "data": {
+        "node": "validate",
+        "attempt": 1,
+        "evidence_count": 2,
+        "elapsed_seconds": 0.0
+      },
+      "observed_seconds": 0.204285
+    },
+    {
+      "id": 9,
+      "event": "node_end",
+      "data": {
+        "node": "validate",
+        "elapsed_seconds": 0.001757,
+        "attempt": 1,
+        "evidence_count": 2,
+        "validation": true,
+        "validation_error": null,
+        "fallback_reason": "MODEL_CONFIGURATION_UNAVAILABLE",
+        "status": "completed"
+      },
+      "observed_seconds": 0.206158
+    },
+    {
+      "id": 10,
+      "event": "final",
+      "data": {
+        "schema_version": "1.0.0",
+        "answer": "【证据 A】\n5.3 Optimizer\n\n【证据 B】\nWe used the Adam optimizer [20] with β 1  = 0.9, β 2  = 0.98 and ϵ = 10 −9 .",
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 7,
+            "section": [
+              "5 Training",
+              "5.3 Optimizer"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00087"
+          },
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 7,
+            "section": [
+              "5 Training",
+              "5.3 Optimizer"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00088"
+          }
+        ],
+        "numeric_fact_check": {
+          "status": "passed",
+          "checks": [
+            {
+              "claim": "5.3 Optimizer",
+              "status": "passed",
+              "evidence": [
+                {
+                  "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                  "page_number": 7,
+                  "section": [
+                    "5 Training",
+                    "5.3 Optimizer"
+                  ],
+                  "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00087"
+                }
+              ],
+              "reason": "数字及其上下文逐字来自该 Chunk；仅核验原文回溯，不证明实验真实性或跨指标可比性。"
+            },
+            {
+              "claim": "We used the Adam optimizer [20] with β 1  = 0.9, β 2  = 0.98 and ϵ = 10 −9 .",
+              "status": "passed",
+              "evidence": [
+                {
+                  "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                  "page_number": 7,
+                  "section": [
+                    "5 Training",
+                    "5.3 Optimizer"
+                  ],
+                  "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00088"
+                }
+              ],
+              "reason": "数字及其上下文逐字来自该 Chunk；仅核验原文回溯，不证明实验真实性或跨指标可比性。"
+            }
+          ]
+        },
+        "refused": false
+      },
+      "observed_seconds": 0.207221
+    },
+    {
+      "id": 11,
+      "event": "done",
+      "data": {
+        "status": "completed",
+        "metadata": {
+          "engine": "langgraph",
+          "attempts": 1,
+          "max_attempts": 3,
+          "fallback_reason": "MODEL_CONFIGURATION_UNAVAILABLE",
+          "trace": [
+            {
+              "node": "plan",
+              "elapsed_seconds": 0.000431,
+              "attempt": 0,
+              "evidence_count": 0,
+              "validation": null,
+              "validation_error": null,
+              "fallback_reason": "MODEL_CONFIGURATION_UNAVAILABLE"
+            },
+            {
+              "node": "retrieve",
+              "elapsed_seconds": 0.006725,
+              "attempt": 1,
+              "evidence_count": 2,
+              "validation": null,
+              "validation_error": null,
+              "fallback_reason": "MODEL_CONFIGURATION_UNAVAILABLE"
+            },
+            {
+              "node": "qa",
+              "elapsed_seconds": 0.03143,
+              "attempt": 1,
+              "evidence_count": 2,
+              "validation": null,
+              "validation_error": null,
+              "fallback_reason": "MODEL_CONFIGURATION_UNAVAILABLE"
+            },
+            {
+              "node": "validate",
+              "elapsed_seconds": 0.001757,
+              "attempt": 1,
+              "evidence_count": 2,
+              "validation": true,
+              "validation_error": null,
+              "fallback_reason": "MODEL_CONFIGURATION_UNAVAILABLE"
+            }
+          ],
+          "tool_calls": [],
+          "model_calls": [],
+          "checkpointing": false,
+          "external_tracing": false,
+          "validated": true
+        },
+        "token_streaming": false,
+        "fallback_reason": "MODEL_CONFIGURATION_UNAVAILABLE"
+      },
+      "observed_seconds": 0.207646
+    }
+  ],
+  "token_log_policy": "仅保留前8个真实增量原文；其余保留长度与散列，不存完整模型JSON或任何请求/思考正文。",
+  "http_status": 200,
+  "content_type": "text/event-stream; charset=utf-8",
+  "cache_control": "no-cache, no-transform",
+  "buffering": "no",
+  "elapsed_seconds": 0.208275,
+  "token_events": 0,
+  "draft_characters": 0,
+  "draft_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "status": "passed",
+  "checks": {
+    "http_sse": true,
+    "mode_first": true,
+    "done_last": true,
+    "sequence": true,
+    "answer_validated": true,
+    "no_error": true,
+    "four_nodes": true,
+    "mode_correct": true
+  },
+  "qa_end_seconds": 0.203686,
+  "final_seconds": 0.207221
+}

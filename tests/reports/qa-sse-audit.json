@@ -1,0 +1,46 @@
+{
+  "baseline": "99842ae6f8404e33701834bb5a247348a8a3e58a",
+  "checks": {
+    "deepseek:passed": true,
+    "deepseek:sequence": true,
+    "deepseek:terminals": true,
+    "deepseek:lifecycle": true,
+    "deepseek:token_count": true,
+    "deepseek:final_schema_source_numeric": true,
+    "deepseek:validation_before_final": true,
+    "fallback:passed": true,
+    "fallback:sequence": true,
+    "fallback:terminals": true,
+    "fallback:lifecycle": true,
+    "fallback:token_count": true,
+    "fallback:final_schema_source_numeric": true,
+    "fallback:validation_before_final": true,
+    "real_incremental_arrival": true,
+    "fallback_no_fake_stream_or_model_calls": true,
+    "fallback_explicit_label_no_key": true,
+    "real_provider_calls": true,
+    "full_regression": true,
+    "no_key_skip": true,
+    "unchanged:frontend": true,
+    "unchanged:contracts": true,
+    "unchanged:docs": true,
+    "unchanged:prompts": true,
+    "unchanged:experiments": true,
+    "unchanged:test-records": true,
+    "pdf_ignored_untracked": true,
+    "deliverables_no_injected_key": true
+  },
+  "status": "passed",
+  "full_regression": {
+    "tests": 342,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "no_key_stream_tests": {
+    "tests": 13,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 1
+  }
+}
