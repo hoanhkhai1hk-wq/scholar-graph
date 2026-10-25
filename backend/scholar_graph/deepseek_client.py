@@ -3,11 +3,16 @@ import json
 import os
 import re
 import time
+import threading
 from urllib.parse import urlparse
 
 import httpx
 
 from .errors import PipelineError
+
+
+class StreamCancelled(Exception):
+    """Local disconnect signal; never serialized as an upstream failure."""
 
 
 class DeepSeekClient:
@@ -22,6 +27,105 @@ class DeepSeekClient:
         self._key, self.model, self.base_url = key, model, base_url.rstrip('/')
         self.transport, self.timeout = transport, timeout
         self.calls = []
+        self._stopped = threading.Event()
+        self._response = None
+
+    def cancel(self):
+        self._stopped.set()
+        response = self._response
+        if response is not None:
+            try:
+                response.close()
+            except Exception:
+                pass  # Disconnect cleanup only; not suppression of an answer error.
+
+    def stream_complete(self, messages, *, phase, on_delta, tools=None, tool_choice='none'):
+        """Forward real content deltas; retain only assembled JSON in memory for validation."""
+        started = time.perf_counter()
+        meta = {'provider': 'deepseek', 'model': self.model, 'phase': phase,
+                'elapsed_seconds': None, 'prompt_tokens': None, 'completion_tokens': None,
+                'total_tokens': None, 'http_status': None, 'status': 'failed'}
+        content, finished, done, size = [], False, False, 0
+        try:
+            body = {'model': self.model, 'messages': messages, 'temperature': 0, 'max_tokens': 2400,
+                    'thinking': {'type': 'disabled'}, 'stream': True, 'stream_options': {'include_usage': True},
+                    'response_format': {'type': 'json_object'}}
+            if tools:
+                body.update(tools=tools, tool_choice=tool_choice)
+            with httpx.Client(timeout=httpx.Timeout(self.timeout, connect=10), follow_redirects=False,
+                              trust_env=False, transport=self.transport) as client:
+                with client.stream('POST', self.base_url + '/chat/completions', json=body,
+                                   headers={'Authorization': 'Bearer ' + self._key}) as response:
+                    self._response = response
+                    meta['http_status'] = response.status_code
+                    if response.status_code != 200:
+                        raise PipelineError('UPSTREAM_ERROR', f'DeepSeek上游返回HTTP {response.status_code}，未生成答案。')
+                    if not response.headers.get('content-type', '').lower().startswith('text/event-stream'):
+                        raise ValueError
+                    for line in response.iter_lines():
+                        if self._stopped.is_set():
+                            raise StreamCancelled
+                        if time.perf_counter() - started > self.timeout:
+                            raise ValueError
+                        size += len(line.encode('utf-8'))
+                        if size > 2 * 1024 * 1024:
+                            raise ValueError
+                        if not line or line.startswith(':'):
+                            continue
+                        if not line.startswith('data:'):
+                            raise ValueError
+                        data = line[5:].strip()
+                        if data == '[DONE]':
+                            done = True
+                            break
+                        payload = json.loads(data)
+                        if 'error' in payload:
+                            raise ValueError
+                        choices = payload.get('choices', [])
+                        if not isinstance(choices, list) or len(choices) > 1:
+                            raise ValueError
+                        if choices:
+                            choice = choices[0]
+                            if choice.get('index', 0) != 0:
+                                raise ValueError
+                            delta = choice.get('delta', {})
+                            if not isinstance(delta, dict) or delta.get('tool_calls'):
+                                raise ValueError
+                            text = delta.get('content')
+                            if text is not None:
+                                if not isinstance(text, str) or (finished and text):
+                                    raise ValueError
+                                if text:
+                                    content.append(text)
+                                    on_delta(text)
+                            reason = choice.get('finish_reason')
+                            if reason is not None:
+                                if reason != 'stop':
+                                    raise ValueError
+                                finished = True
+                        usage = payload.get('usage')
+                        if isinstance(usage, dict):
+                            for name in ('prompt_tokens', 'completion_tokens', 'total_tokens'):
+                                n = usage.get(name)
+                                meta[name] = n if type(n) is int and n >= 0 else None
+            if not done or not finished or not content:
+                raise ValueError
+            meta['status'] = 'succeeded'
+            return {'role': 'assistant', 'content': ''.join(content)}
+        except StreamCancelled:
+            meta['status'] = 'cancelled'
+            raise
+        except PipelineError:
+            raise
+        except Exception:
+            if self._stopped.is_set():
+                meta['status'] = 'cancelled'
+                raise StreamCancelled from None
+            raise PipelineError('UPSTREAM_ERROR', 'DeepSeek流式连接、超时或返回格式错误，未返回未核验答案。') from None
+        finally:
+            self._response = None
+            meta['elapsed_seconds'] = round(time.perf_counter() - started, 6)
+            self.calls.append(meta)
 
     def __repr__(self):
         return '<DeepSeekClient credentials=redacted>'

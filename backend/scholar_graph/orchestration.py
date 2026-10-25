@@ -11,6 +11,7 @@ from .deepseek_client import DeepSeekClient, json_content
 from .errors import PipelineError
 from .grounded_model import ANSWER_INSTRUCTIONS, accepted_record
 from .qa import QuestionAnswerer, MISSING
+from .qa_evidence import retrieve as extractive_retrieve
 from .qa_compare import compare_papers, synthesis_from_table, validate_comparison
 
 
@@ -42,19 +43,21 @@ def comparison_value(prepared):
 
 
 class EvidenceAgent:
-    def __init__(self, repository, *, client=None, fetcher=None, allow_fetch=False, allow_fallback=True):
+    def __init__(self, repository, *, client=None, fetcher=None, allow_fetch=False, allow_fallback=True,
+                 extractive_reason=None):
         self.repository, self.client, self.fetcher = repository, client, fetcher
         self.allow_fetch = allow_fetch
         self.allow_fallback = allow_fallback
+        self.extractive_reason = extractive_reason
 
-    def run(self, paper_ids, question):
+    def run(self, paper_ids, question, *, emit=None, stream_tokens=False):
         if not paper_ids or len(paper_ids) > 10 or len(set(paper_ids)) != len(paper_ids):
             raise PipelineError('VALIDATION_ERROR', 'Agent需要1到10篇不同的论文。')
         bundles = [self.repository.paper(pid) for pid in paper_ids]
         tools = AgentTools(self.repository, paper_ids, fetcher=self.fetcher, allow_fetch=self.allow_fetch)
         client = self.client
-        missing = None
-        if client is None:
+        missing = self.extractive_reason
+        if client is None and not missing:
             try:
                 client = DeepSeekClient.environment()
             except PipelineError:
@@ -66,12 +69,24 @@ class EvidenceAgent:
         def traced(name, action):
             def node(state):
                 start = time.perf_counter()
-                update = action(state)
+                attempt = state.get('attempt', 0) + (1 if name in ('plan', 'retrieve') else 0)
+                event = {'node': name, 'attempt': max(1, attempt), 'evidence_count': len(state.get('evidence', []))}
+                if emit:
+                    emit('node_start', {**event, 'elapsed_seconds': 0.0})
+                try:
+                    update = action(state)
+                except PipelineError as error:
+                    if emit:
+                        emit('node_end', {**event, 'elapsed_seconds': round(time.perf_counter() - start, 6),
+                             'status': 'failed', 'validation': None, 'validation_error': None, 'reason': error.message})
+                    raise
                 row = {'node': name, 'elapsed_seconds': round(time.perf_counter() - start, 6),
                        'attempt': update.get('attempt', state.get('attempt', 0)),
                        'evidence_count': len(update.get('evidence', state.get('evidence', []))),
                        'validation': update.get('validated'), 'validation_error': update.get('validation_error'),
                        'fallback_reason': update.get('fallback_reason', state.get('fallback_reason'))}
+                if emit:
+                    emit('node_end', {**row, 'attempt': event['attempt'], 'status': 'completed'})
                 return {**update, 'trace': state.get('trace', []) + [row]}
             return node
 
@@ -94,7 +109,8 @@ class EvidenceAgent:
                 return {'fallback_reason': missing, 'messages': []}
             messages = plan_messages(state)
             try:
-                message = client.complete(messages, phase='plan', tools=FUNCTIONS, tool_choice='required', json_mode=False)
+                message = client.complete(messages, phase='plan' if not state.get('attempt') else 'retrieve_retry',
+                                          tools=FUNCTIONS, tool_choice='required', json_mode=False)
                 if not message.get('tool_calls'):
                     raise PipelineError('UPSTREAM_ERROR', '规划模型未发出工具调用。')
                 return {'messages': messages + [message], 'fallback_reason': None}
@@ -107,23 +123,18 @@ class EvidenceAgent:
             attempt = state.get('attempt', 0) + 1
             if state.get('fallback_reason'):
                 # Existing extractive mode is executed later; never fabricate a tool-call event.
-                return {'attempt': attempt, 'evidence': [], 'anchors': []}
+                evidence = [item for bundle in bundles for item in extractive_retrieve(bundle, question)]
+                return {'attempt': attempt, 'evidence': evidence, 'anchors': [e['anchor'] for e in evidence]}
             messages = state['messages']
-            if attempt > 1:
-                messages = plan_messages(state)
-                try:
-                    message = client.complete(messages, phase='retrieve_retry', tools=FUNCTIONS,
-                                              tool_choice='required', json_mode=False)
-                    if not message.get('tool_calls'):
-                        raise PipelineError('UPSTREAM_ERROR', '重检索模型未发出工具调用。')
-                    messages += [message]
-                except PipelineError as error:
-                    if not self.allow_fallback:
-                        raise
-                    return {'attempt': attempt, 'fallback_reason': error.code, 'evidence': [], 'anchors': []}
             evidence, seen = [], set()
             for call in messages[-1].get('tool_calls', []):
+                if emit:
+                    emit('tool_start', {'tool_name': call['function']['name'] if call['function']['name'] in
+                         {'search', 'graph_query', 'arxiv_fetch'} else 'unknown', 'origin': 'model_function_call',
+                         'tool_call_id': call['id'], 'attempt': attempt, 'evidence_count': 0})
                 result = tools.execute(call, attempt=attempt)
+                if emit:
+                    emit('tool_end', {**tools.trace[-1], 'evidence_count': len(result.get('items', []))})
                 messages = messages + [{'role': 'tool', 'tool_call_id': call['id'],
                                         'content': json.dumps(result, ensure_ascii=False)}]
                 for item in result.get('items', []):
@@ -142,7 +153,12 @@ class EvidenceAgent:
                 {'role': 'user', 'content': json.dumps({'question': question, 'paper_ids': paper_ids,
                                                        'evidence': state['evidence']}, ensure_ascii=False)}]
             try:
-                message = client.complete(messages, phase='qa', tools=FUNCTIONS, tool_choice='none')
+                if stream_tokens:
+                    message = client.stream_complete(messages, phase='qa', tools=FUNCTIONS, tool_choice='none',
+                        on_delta=lambda text: emit('token', {'node': 'qa', 'attempt': state['attempt'], 'delta': text,
+                            'verified': False, 'channel': 'model_json_draft'}))
+                else:
+                    message = client.complete(messages, phase='qa', tools=FUNCTIONS, tool_choice='none')
                 return {'proposed': json_content(message)}
             except PipelineError as error:
                 if error.code == 'UPSTREAM_ERROR':
@@ -194,7 +210,7 @@ class EvidenceAgent:
         builder.add_edge('retrieve', 'qa')
         builder.add_edge('qa', 'validate')
         builder.add_conditional_edges('validate', lambda s: 'done' if s['validated'] else ('retry' if s['attempt'] < 3 else 'refuse'),
-                                      {'done': END, 'retry': 'retrieve', 'refuse': 'refuse'})
+                                      {'done': END, 'retry': 'plan', 'refuse': 'refuse'})
         builder.add_edge('refuse', END)
         # Even if a host enabled LangSmith globally, no prompts/state/bodies may be exported.
         with tracing_context(enabled=False):

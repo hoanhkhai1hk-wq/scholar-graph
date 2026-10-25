@@ -1,4 +1,4 @@
-"""All nineteen approved HTTP routes; no background job queue."""
+"""Approved HTTP routes including QA SSE; no background job queue."""
 
 import os
 from pathlib import Path

@@ -5,6 +5,8 @@ import json
 import os
 from urllib.parse import quote
 from fastapi import APIRouter, Response
+from starlette.concurrency import run_in_threadpool
+from starlette.responses import StreamingResponse
 from pydantic import BaseModel, ConfigDict, Field, StringConstraints
 
 from .qa import QuestionAnswerer
@@ -14,6 +16,7 @@ from .errors import PipelineError
 from .deepseek_client import DeepSeekClient
 from .grounded_model import GroundedModelAnswerer
 from .orchestration import EvidenceAgent
+from .qa_sse import answer_stream
 
 Question = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=2000, strict=True)]
 
@@ -29,6 +32,13 @@ class CompareRequest(QuestionRequest):
 
 def question_routes(repository):
     router = APIRouter(prefix="/api/v1")
+
+    @router.post('/papers/{paper_id}/qa/stream', response_class=StreamingResponse,
+                 responses={200: {'content': {'text/event-stream': {'schema': {'type': 'string'}}}}})
+    async def stream(paper_id: str, body: QuestionRequest):
+        # Missing resources/bad input keep the normal HTTP error contract before SSE headers.
+        await run_in_threadpool(repository.paper, paper_id)
+        return answer_stream(repository, paper_id, body.question)
 
     @router.post("/papers/{paper_id}/qa")
     def answer(paper_id: str, body: QuestionRequest, response: Response, agent: bool = False):
