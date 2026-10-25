@@ -25,6 +25,8 @@ from .writing_routes import writing_routes
 from .chart_routes import chart_routes
 from .translation_routes import translation_routes
 from .topology_routes import topology_routes
+from .tracking import TrackingService
+from .tracking_routes import tracking_routes
 
 PREFIX = "/api/v1"
 LOCAL_ORIGINS = ["http://localhost:3000", "http://127.0.0.1:3000"]
@@ -55,6 +57,7 @@ def create_app(*, data_dir=None, pipeline_factory=None):
     app.state.uploads = uploads
     app.state.search = SearchService(repository, vector_from_environment(root))
     app.state.arxiv_fetcher = ArxivFetcher(repository, lock=uploads.lock)
+    app.state.tracking = TrackingService(repository, app.state.arxiv_fetcher)
 
     def error_response(code, message, status):
         value = {"error_code": code, "message": message, "details": None}
@@ -160,4 +163,5 @@ def create_app(*, data_dir=None, pipeline_factory=None):
     app.include_router(chart_routes())
     app.include_router(translation_routes(repository))
     app.include_router(topology_routes(repository))
+    app.include_router(tracking_routes())
     return app

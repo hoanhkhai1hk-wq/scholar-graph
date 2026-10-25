@@ -51,9 +51,10 @@ def retrieval_routes():
     @router.get("/recommendations")
     def recommend(request: Request, response: Response, paper_id: str = Query(..., min_length=1),
                   as_of_year: int | None = Query(None, ge=1, le=9999),
+                  profile_id: str = Query("local", pattern=r"^[A-Za-z0-9._-]{1,64}$"),
                   page: int = Query(1, ge=1), page_size: int = Query(20, ge=1)):
         year = as_of_year if as_of_year is not None else datetime.now(timezone.utc).year
-        items = recommendations(request.app.state.repository, paper_id, year)
+        items = recommendations(request.app.state.repository, paper_id, year, profile_id=profile_id)
         result = paginate(items, page, page_size)
         response.headers["X-ScholarGraph-Recommendation-Reason"] = (
             "NO_CANDIDATES" if not items else "PAGE_OUT_OF_RANGE" if not result["items"] else "OK")
