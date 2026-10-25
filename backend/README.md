@@ -138,9 +138,9 @@ backend/.venv/Scripts/python.exe -m scholar_graph parse data/input/paper-v1.pdf
 
 命令 stdout 返回 PaperMeta；失败返回固定三字段统一错误对象并使用非零退出码。上传第二版时，如本地已有记录的裸 DOI、arXiv 基号或标题加作者完全一致，自动生成 DedupDecision 和 DiffSummary 到 comparisons/，无需另运行比较命令。显式冲突的 DOI 不会因为标题相同而自动配对；多个匹配版本按本地入库顺序选择最后一个，不作为发表日期或质量排序。中间状态在 `data/module-one/jobs/<job-id>/parse-status.json`，是已校验的 ParseStatus 快照数组，支持查看完整 queued → parsing → ocr（可选）→ indexing → completed / failed 过程。indexing 在本单仅指构建并验证记录关联，不是检索索引。依赖异常原文和凭据不会进入命令输出或状态记录。
 
-每条记录先过冻结的 JSON Schema，随后检查外键、物理页码上限、章节路径、标题、bbox 顺序及引用唯一性。全部通过后才把四个文件作为一组原子发布；失败不发布半组文件。已有记录保持不可变，重复上传相同 PDF 返回相同记录；输出目录被修改或冲突时拒绝覆盖。
+每条记录先过冻结的 JSON Schema，随后检查外键、物理页码上限、章节路径、标题、bbox 顺序及引用唯一性。最终四类记录全部通过后作为一组原子发布；页面批次也必须先通过同一门禁，再单独原子发布。后续页失败不会删除已校验批次，部分产出不进入已完成论文列表。已有记录保持不可变，重复上传相同 PDF 返回相同记录；输出目录被修改或冲突时拒绝覆盖。
 
-本地默认限制：50 MiB、200 页、每个引擎调用 300 秒；`--timeout` 可设为 1–3600 秒。MinerU 原始中间结构仅在子进程 stdout/内存中传递，不把未校验的第三方 JSON 当作项目记录保存。输入快照保存在 data/ 下临时目录，结束时清理。
+本地默认限制：50 MiB、可配置2000页。分批路径为32页文本批次、单批120秒、单页OCR90秒、整篇1800秒；小型文本PDF的单次引擎上限300秒。`--timeout` 可设为1–3600秒，但分批路径同时受各批及剩余整篇时限约束。MinerU 原始中间结构仅在子进程 stdout/内存中传递，不把未校验的第三方 JSON 当作项目记录保存。输入快照保存在 data/ 下临时目录，结束时清理。
 
 ## 第二步：比较两版
 
@@ -150,7 +150,7 @@ backend/.venv/Scripts/python.exe -m scholar_graph parse data/input/paper-v1.pdf
 backend/.venv/Scripts/python.exe -m scholar_graph compare data/module-one/papers/<old-paper-id> data/module-one/papers/<new-paper-id>
 ```
 
-在 `data/module-one/comparisons/comparison-<id>/` 生成 dedup-decisions.json（DedupDecision 数组）与 diff-summary.json（DiffSummary）。相似度是词频重叠的 Dice 系数，不是科研质量或结论可信度。正文一致时建议 keep_old；发现变化时保守建议 manual_review，不凭版本号或样本数变大自动建议 keep_new。手动比较命令用于没有精确元数据对应或需要明确指定两版的情况。本单只有本地精确身份对应，不做语义检索、推荐或跨源候选召回。
+在 `data/module-one/comparisons/comparison-<id>/` 生成 dedup-decisions.json（DedupDecision 数组）与 diff-summary.json（DiffSummary）。相似度是词频重叠的 Dice 系数，不是科研质量或结论可信度。正文一致时建议 keep_old；发现变化时保守建议 manual_review，不凭版本号或样本数变大自动建议 keep_new。手动比较命令用于没有精确元数据对应或需要明确指定两版的情况。上传候选现支持精确身份与缺失身份时的词频Dice兜底；同一arXiv低版本上传时建议keep_old以避免版本降级，未增加语义向量去重或跨源召回。
 
 差异按真实 Chunk.section_path 分组；无章节分块的变化标作 Unsectioned。关键句是对应 Chunk 的最多 600 字符原文前缀，verified 必须同时通过四字段锚点匹配与原文子串检查；无锚点的外部关键句只能标 unverified。章节未变化时明确输出“未检出章节级差异”。删除章节引用旧版原文，不把删除推断为论文结论错误。
 
@@ -178,6 +178,29 @@ backend/.venv/Scripts/python.exe tests/run_module_one_smoke.py --output-root dat
 
 722 个边界用例证据见 tests/reports/contract-boundaries.md 和 JSON 逐项结果。解析/去重实跑报告见 tests/reports/module-one-report.md。所有 PDF 都是脚本自制，非官方 pdf/ 用例，不声称官方三用例通过。
 
-当前细粒度能力的边界：本地文本模式按 MinerU 返回块分割；参考文献回退只确认编号条目，支持明确的作者（年份）标题格式和数字引用；未覆盖作者年份正文引用、复杂跨栏引用、表格/公式识别质量或全类型论文。真实论文质量尚需独立评测。GROBID 可补充结构化元数据，但本轮未实连。扫描 OCR 只验证一份干净英文自制样例，不代表中文或复杂版面的精度。
+当前细粒度能力的边界：本地文本模式按 MinerU 返回块分割；参考文献回退只确认编号条目，支持明确的作者（年份）标题格式和数字引用；未覆盖作者年份正文引用、复杂跨栏引用、表格/公式识别质量或全类型论文。真实论文质量尚需独立评测。GROBID 可补充结构化元数据，但本轮未实连。早期OCR证据为干净英文自制样例；本轮官方 pdf/ 真文件的产出、失败页与耗时另见修复验收报告，不将识别完成等同于逐字准确率评测。
 
 实现参考：[MinerU 本地 SDK](https://opendatalab.github.io/MinerU/usage/sdk_api/)、[MinerU 中间格式](https://opendatalab.github.io/MinerU/reference/output_files/)、[PaddleOCR Python 接入](https://www.paddleocr.ai/main/en/version3.x/pipeline_usage/OCR.html)、[GROBID 服务 API](https://grobid.readthedocs.io/en/latest/Grobid-service/)。
+# 官方 PDF 修复：页面批次与去重预警
+
+上传仍同步返回原 PaperMeta，未改任何业务 Schema。发现相同 DOI/arXiv 身份后比较；缺少身份时，对已完成论文使用词频 Dice（阈值 0.90）找候选，冲突 DOI/arXiv 身份排除。这不是语义向量去重。同一 arXiv 的低版本再次上传时建议保留库内高版本，`new_paper_id` 仍指本次上传。
+
+单篇上传预警在 `X-ScholarGraph-Dedup-Warning` 响应头中，以 UTF-8 百分号编码返回，编码标记为 `X-ScholarGraph-Dedup-Warning-Encoding: percent-encoded-utf-8`；先解码再展示。`Link` 指向原去重接口，裁决与差异仍按本次 paper_id 读取。两个预警头均已加入本地开发 CORS expose_headers；未修改前端。批量成功项只在命中时增加可选传输字段 `warning`，不改 PaperMeta。
+
+扫描件逐页运行 PaddleOCR，明确使用 PP-OCRv5_mobile_det 与英文 en_PP-OCRv5_mobile_rec（其他语言使用通用 PP-OCRv5_mobile_rec），每页独立限时。大于32页的文本PDF使用 PDFium 生成最多32页的临时批次，再交给 MinerU；中间页码映射回原始 PDF 物理页。MinerU 批次失败后逐页 PaddleOCR 兜底。空白页计入完成页，另外登记 empty_pages，不生成空白 Chunk。
+
+每个成功批次先过原 Schema/外键门禁，原子发布到 `data/.../partial/{paper_id}/batch-*`，再提交 SQLite Chunk 锚点索引事务。解析期间已有 Chunk 可通过原 `/api/v1/papers/{id}/chunks` 分页读取；论文列表只列最终完成的论文。分批索引为 SQLite 的物理页/序号索引，不冒充 BGE-M3 向量索引。最终四类记录与引用关系再次验证后发布到原 papers 目录。索引连接、PDF/图片句柄明确关闭。
+
+单页失败继续处理其他页；最终状态为 failed，错误消息列出失败的物理页，已发布 Chunk 保留可查。统一错误体仍为三个字段；details 按原契约只用标量，`failed_pages` 是逗号分隔页码，`page_errors` 为逐页安全原因文本。完整逐页运行信息保存在内部 progress.json。再次上传同一原文件可复用已校验批次，只补未完成页；批次落盘后、索引提交前发生中断时会重建索引。
+
+可配置环境变量（不读取 .env 文件；由启动环境传入；不涉及 Key）：
+
+| 变量 | 默认值 | 含义/允许范围 |
+| --- | --- | --- |
+| SCHOLAR_GRAPH_MAX_PAGES | 2000 | PDF物理页数上限，1–10000；默认覆盖541页 |
+| SCHOLAR_GRAPH_TEXT_BATCH_PAGES | 32 | 每个MinerU批次页数，1–128 |
+| SCHOLAR_GRAPH_PAGE_TIMEOUT | 90 | 单页OCR最长秒数，1–600 |
+| SCHOLAR_GRAPH_BATCH_TIMEOUT | 120 | MinerU单批最长秒数，1–600 |
+| SCHOLAR_GRAPH_TOTAL_TIMEOUT | 1800 | 分批处理整篇最长秒数，1–7200；每次worker等待同时受剩余总时限约束 |
+
+修复验收使用本地官方 pdf/ 真文件；结果在 tests/reports/official-pdf-repair-acceptance.md。GROBID接通状态未因本次修复改变，仍待验证；本次没有调用真实大模型或真实API Key。
