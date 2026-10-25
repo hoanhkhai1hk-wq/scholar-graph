@@ -824,3 +824,161 @@ a:hover {
 .sg-rowlink {
   font-size: 12px;
 }
+
+/* ---------------- 图谱画布（Cytoscape） ---------------- */
+
+.sg-graph__toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--sg-space-2);
+  margin-bottom: var(--sg-space-2);
+}
+
+.sg-btn--ghost {
+  background: transparent;
+  color: var(--sg-primary);
+  border: 1px solid var(--sg-border-strong);
+}
+
+.sg-btn--ghost:hover:not(:disabled) {
+  background: var(--sg-primary-subtle);
+  border-color: var(--sg-primary);
+}
+
+.sg-graph__canvas {
+  height: 460px;
+  border: 1px solid var(--sg-border);
+  border-radius: var(--sg-radius-md);
+  background: var(--sg-bg-canvas);
+}
+
+.sg-graph__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sg-space-4);
+  margin-top: var(--sg-space-2);
+  font-size: 12px;
+  color: var(--sg-text-secondary);
+}
+
+.sg-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sg-space-1);
+}
+
+.sg-swatch {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 1px solid var(--sg-border-strong);
+  border-radius: 50%;
+}
+
+.sg-swatch--cornerstone {
+  background: var(--sg-primary);
+}
+
+.sg-swatch--derived {
+  background: var(--sg-chart-3);
+}
+
+.sg-swatch--isolated {
+  background: var(--sg-text-muted);
+}
+
+.sg-swatch--edge {
+  width: 18px;
+  height: 2px;
+  border: 0;
+  border-radius: 0;
+  background: var(--sg-chart-4);
+}
+
+/* ---------------- 编排时间线 ---------------- */
+
+.sg-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sg-space-2);
+  font-size: 13px;
+  margin-bottom: var(--sg-space-2);
+}
+
+.sg-trace {
+  border-top: 1px solid var(--sg-border);
+  padding-top: var(--sg-space-3);
+}
+
+.sg-timeline {
+  border-left: 1px solid var(--sg-border-strong);
+  padding-left: var(--sg-space-4);
+  margin: var(--sg-space-2) 0 var(--sg-space-4);
+}
+
+.sg-timeline__row {
+  position: relative;
+  padding-bottom: var(--sg-space-4);
+}
+
+.sg-timeline__dot {
+  position: absolute;
+  left: calc(-1 * var(--sg-space-4) - 5px);
+  top: 5px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--sg-primary);
+  border: 2px solid var(--sg-bg-surface);
+}
+
+.sg-timeline__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--sg-space-2);
+  font-size: 13px;
+}
+
+.sg-timeline__reason {
+  margin: var(--sg-space-1) 0 0;
+  font-size: 13px;
+  color: var(--sg-error);
+  border-left: 3px solid var(--sg-error);
+  background: var(--sg-error-subtle);
+  padding: var(--sg-space-2);
+}
+
+/* ---------------- 版本重复预警横幅 ---------------- */
+
+.sg-warning {
+  border: 1px solid var(--sg-border);
+  border-left: 3px solid var(--sg-warning);
+  background: var(--sg-warning-subtle);
+  border-radius: var(--sg-radius-md);
+  padding: var(--sg-space-3);
+  margin-top: var(--sg-space-3);
+}
+
+.sg-warning--inline {
+  margin-top: var(--sg-space-2);
+  padding: var(--sg-space-2);
+}
+
+.sg-warning__title {
+  font-weight: 600;
+  color: var(--sg-warning);
+  margin-bottom: var(--sg-space-1);
+}
+
+.sg-warning__text {
+  margin: 0;
+  font-size: 13px;
+  color: var(--sg-text-primary);
+}
+
+.sg-warning__advice {
+  margin: var(--sg-space-2) 0 0;
+  font-size: 13px;
+  color: var(--sg-text-secondary);
+}
