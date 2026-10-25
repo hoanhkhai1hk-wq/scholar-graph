@@ -1,0 +1,2862 @@
+{
+  "input_kind": "真实公开 arXiv 数据；种子为此前已解析官方 pdf/ 真文件 Attention 与公开 BERT；新候选由本轮实际下载并走原解析管线",
+  "model_api_key": "未设置",
+  "seed_ids": [
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+  ],
+  "papers_before": 2,
+  "started_at": "2026-10-25T17:08:58Z",
+  "rounds": [
+    {
+      "round": 1,
+      "http_status": 200,
+      "elapsed_seconds": 33.75,
+      "run": {
+        "run_id": "39f0e43ea4f64461ae15deea66786d55",
+        "started_at": "2026-10-25T17:08:58.697320+00:00",
+        "finished_at": "2026-10-25T17:09:32.212796+00:00",
+        "status": "completed",
+        "duration_seconds": 33.515,
+        "candidate_count": 2,
+        "candidates": [
+          {
+            "arxiv_id": "2610.31639v1",
+            "title": "Causal Chain of Thought: Mitigating Attention Leakage via Context Isolation",
+            "metadata": {
+              "schema_version": "1.0.0",
+              "id": "arxiv-2610.31639v1",
+              "title": "Causal Chain of Thought: Mitigating Attention Leakage via Context Isolation",
+              "authors": [
+                "Gabriele Dominici",
+                "Teague McMillan",
+                "Fazl Barez",
+                "Marc Langheinrich",
+                "Martin Gjoreski"
+              ],
+              "institutions": [],
+              "abstract": "Chain-of-thought (CoT) prompting elicits step-by-step rationales that appear to explain model predictions, but there is no guarantee these steps causally drive the final answer. In standard autoregressive generation, dense attention allows each reasoning step to attend to the full context, enabling the model to derive answers through direct lookup while generating plausible-sounding but post-hoc justifications. We introduce CausalCoT, an inference framework that enforces causal transparency by decomposing problems into a directed acyclic graph of atomic sub-questions, evaluating each node in an isolated context containing only its direct causal parents. This Markovian structure removes attention pathways to non-parent content, making downstream predictions sensitive to local reasoning rather than global context leakage. Across a diverse suite of reasoning benchmarks, CausalCoT preserves competitive predictive performance while improving explanation faithfulness, increasing causal sensitivity of intermediate reasoning steps by an average of 12 and up to 21 percentage points over the strongest baseline. The structured dependency graph additionally enables test-time interventions in which local corrections propagate predictably through downstream reasoning.",
+              "year": 2026,
+              "source": "https://arxiv.org/abs/2610.31639v1",
+              "arxiv_id": "2610.31639v1",
+              "doi": null,
+              "version": "v1",
+              "file_hash": null,
+              "page_count": null,
+              "has_text_layer": null
+            },
+            "related_to": [
+              {
+                "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                "kind": "topic",
+                "matched_terms": [
+                  "attention"
+                ],
+                "reason": "与库内论文主题词重合：attention",
+                "anchor": {
+                  "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                  "page_number": 1,
+                  "section": [],
+                  "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00002"
+                },
+                "reference_anchor": null
+              }
+            ],
+            "outcome": "imported",
+            "import": {
+              "succeeded": true,
+              "metadata": {
+                "schema_version": "1.0.0",
+                "id": "arxiv-2610.31639v1",
+                "title": "Causal Chain of Thought: Mitigating Attention Leakage via Context Isolation",
+                "authors": [
+                  "Gabriele Dominici",
+                  "Teague McMillan",
+                  "Fazl Barez",
+                  "Marc Langheinrich",
+                  "Martin Gjoreski"
+                ],
+                "institutions": [],
+                "abstract": "Chain-of-thought (CoT) prompting elicits step-by-step rationales that appear to explain model predictions, but there is no guarantee these steps causally drive the final answer. In standard autoregressive generation, dense attention allows each reasoning step to attend to the full context, enabling the model to derive answers through direct lookup while generating plausible-sounding but post-hoc justifications. We introduce CausalCoT, an inference framework that enforces causal transparency by decomposing problems into a directed acyclic graph of atomic sub-questions, evaluating each node in an isolated context containing only its direct causal parents. This Markovian structure removes attention pathways to non-parent content, making downstream predictions sensitive to local reasoning rather than global context leakage. Across a diverse suite of reasoning benchmarks, CausalCoT preserves competitive predictive performance while improving explanation faithfulness, increasing causal sensitivity of intermediate reasoning steps by an average of 12 and up to 21 percentage points over the strongest baseline. The structured dependency graph additionally enables test-time interventions in which local corrections propagate predictably through downstream reasoning.",
+                "year": 2026,
+                "source": "https://arxiv.org/abs/2610.31639v1",
+                "arxiv_id": "2610.31639v1",
+                "doi": null,
+                "version": "v1",
+                "file_hash": null,
+                "page_count": null,
+                "has_text_layer": null
+              },
+              "paper": {
+                "schema_version": "1.0.0",
+                "id": "paper-adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+                "title": "Causal Chain of Thought: Mitigating Attention Leakage via Context Isolation",
+                "authors": [
+                  "Gabriele Dominici",
+                  "Teague McMillan",
+                  "Fazl Barez",
+                  "Marc Langheinrich",
+                  "Martin Gjoreski"
+                ],
+                "institutions": [],
+                "abstract": "Chain-of-thought (CoT) prompting elicits step-by-step rationales that appear to explain model predictions, but there is no guarantee these steps causally drive the final answer. In standard autoregressive generation, dense attention allows each reasoning step to attend to the full context, enabling the model to derive answers through direct lookup while generating plausible-sounding but post-hoc justifications. We introduce CausalCoT, an inference framework that enforces causal transparency by decomposing problems into a directed acyclic graph of atomic sub-questions, evaluating each node in an isolated context containing only its direct causal parents. This Markovian structure removes attention pathways to non-parent content, making downstream predictions sensitive to local reasoning rather than global context leakage. Across a diverse suite of reasoning benchmarks, CausalCoT preserves competitive predictive performance while improving explanation faithfulness, increasing causal sensitivity of intermediate reasoning steps by an average of 12 and up to 21 percentage points over the strongest baseline. The structured dependency graph additionally enables test-time interventions in which local corrections propagate predictably through downstream reasoning.",
+                "year": 2026,
+                "source": "https://arxiv.org/abs/2610.31639v1",
+                "arxiv_id": "2610.31639v1",
+                "doi": null,
+                "version": "v1",
+                "file_hash": "adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+                "page_count": 38,
+                "has_text_layer": true
+              },
+              "initial_parse_status": {
+                "schema_version": "1.1.0",
+                "paper_id": "paper-adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+                "status": "queued",
+                "progress": 0,
+                "current_stage": "等待解析",
+                "error_code": null,
+                "error_message": null
+              },
+              "parse_status": {
+                "schema_version": "1.1.0",
+                "paper_id": "paper-adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+                "status": "completed",
+                "progress": 100,
+                "current_stage": "四类记录已通过校验并原子发布",
+                "error_code": null,
+                "error_message": null
+              },
+              "error": null,
+              "already_present": false,
+              "dedup": null
+            }
+          },
+          {
+            "arxiv_id": "2610.31633v1",
+            "title": "BeNice! Closing Looping's Inference-Memory Gap via KV-Sharing",
+            "metadata": {
+              "schema_version": "1.0.0",
+              "id": "arxiv-2610.31633v1",
+              "title": "BeNice! Closing Looping's Inference-Memory Gap via KV-Sharing",
+              "authors": [
+                "Hayden Prairie",
+                "Jacob M. Ryan",
+                "Taylor Berg-Kirkpatrick",
+                "Daniel Y. Fu"
+              ],
+              "institutions": [],
+              "abstract": "Looped architectures scale quality while keeping parameter count fixed by repeatedly passing activations through the same block of layers. During inference, each recurrence generates independent KV-caches, causing memory to grow linearly. To address this challenge, prior work has proposed KV-sharing (i.e., sharing KV-caches across depth), finding that, in some cases, the KV-cache of the final recurrence can be shared with the earlier recurrences without quality loss, a property we denote as KV-shareability. However, the mechanisms underlying KV-shareability remain poorly understood, with even identically trained looped architectures not consistently exhibiting it. In this paper, we study how KV-shareability can be enabled in looped models. We propose a two-stage method: in the first stage, we use stochastic depth during pretraining, which induces contractive residual dynamics that drive representations toward a common limit across recurrences. In the second stage, we propose BeNice!, a post-training method that broadcasts the final recurrence's KV-cache into the first recurrence, training it to produce compatible residuals while preserving the original model's quality. As a result, BeNice! enables KV-shareability while matching standard finetuning's unshared validation perplexity. Using BeNice!, we show that KV-sharing is complementary to alternative KV-compression methods, composing with memory-efficient sequence mixers (e.g., multi-latent attention, Kimi delta attention) and low-precision KV-cache quantization (e.g., fp8, mxfp8, nvfp4). Finally, in simulated low-memory, long-context inference, KV-sharing improves cache hit rates by up to 31.4%, increases throughput by up to 23.6%, and reduces p90 time-to-first-token by up to 83.6%.",
+              "year": 2026,
+              "source": "https://arxiv.org/abs/2610.31633v1",
+              "arxiv_id": "2610.31633v1",
+              "doi": null,
+              "version": "v1",
+              "file_hash": null,
+              "page_count": null,
+              "has_text_layer": null
+            },
+            "related_to": [
+              {
+                "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                "kind": "topic",
+                "matched_terms": [
+                  "attention"
+                ],
+                "reason": "与库内论文主题词重合：attention",
+                "anchor": {
+                  "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                  "page_number": 1,
+                  "section": [],
+                  "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00002"
+                },
+                "reference_anchor": null
+              }
+            ],
+            "outcome": "imported",
+            "import": {
+              "succeeded": true,
+              "metadata": {
+                "schema_version": "1.0.0",
+                "id": "arxiv-2610.31633v1",
+                "title": "BeNice! Closing Looping's Inference-Memory Gap via KV-Sharing",
+                "authors": [
+                  "Hayden Prairie",
+                  "Jacob M. Ryan",
+                  "Taylor Berg-Kirkpatrick",
+                  "Daniel Y. Fu"
+                ],
+                "institutions": [],
+                "abstract": "Looped architectures scale quality while keeping parameter count fixed by repeatedly passing activations through the same block of layers. During inference, each recurrence generates independent KV-caches, causing memory to grow linearly. To address this challenge, prior work has proposed KV-sharing (i.e., sharing KV-caches across depth), finding that, in some cases, the KV-cache of the final recurrence can be shared with the earlier recurrences without quality loss, a property we denote as KV-shareability. However, the mechanisms underlying KV-shareability remain poorly understood, with even identically trained looped architectures not consistently exhibiting it. In this paper, we study how KV-shareability can be enabled in looped models. We propose a two-stage method: in the first stage, we use stochastic depth during pretraining, which induces contractive residual dynamics that drive representations toward a common limit across recurrences. In the second stage, we propose BeNice!, a post-training method that broadcasts the final recurrence's KV-cache into the first recurrence, training it to produce compatible residuals while preserving the original model's quality. As a result, BeNice! enables KV-shareability while matching standard finetuning's unshared validation perplexity. Using BeNice!, we show that KV-sharing is complementary to alternative KV-compression methods, composing with memory-efficient sequence mixers (e.g., multi-latent attention, Kimi delta attention) and low-precision KV-cache quantization (e.g., fp8, mxfp8, nvfp4). Finally, in simulated low-memory, long-context inference, KV-sharing improves cache hit rates by up to 31.4%, increases throughput by up to 23.6%, and reduces p90 time-to-first-token by up to 83.6%.",
+                "year": 2026,
+                "source": "https://arxiv.org/abs/2610.31633v1",
+                "arxiv_id": "2610.31633v1",
+                "doi": null,
+                "version": "v1",
+                "file_hash": null,
+                "page_count": null,
+                "has_text_layer": null
+              },
+              "paper": {
+                "schema_version": "1.0.0",
+                "id": "paper-7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+                "title": "BeNice! Closing Looping's Inference-Memory Gap via KV-Sharing",
+                "authors": [
+                  "Hayden Prairie",
+                  "Jacob M. Ryan",
+                  "Taylor Berg-Kirkpatrick",
+                  "Daniel Y. Fu"
+                ],
+                "institutions": [],
+                "abstract": "Looped architectures scale quality while keeping parameter count fixed by repeatedly passing activations through the same block of layers. During inference, each recurrence generates independent KV-caches, causing memory to grow linearly. To address this challenge, prior work has proposed KV-sharing (i.e., sharing KV-caches across depth), finding that, in some cases, the KV-cache of the final recurrence can be shared with the earlier recurrences without quality loss, a property we denote as KV-shareability. However, the mechanisms underlying KV-shareability remain poorly understood, with even identically trained looped architectures not consistently exhibiting it. In this paper, we study how KV-shareability can be enabled in looped models. We propose a two-stage method: in the first stage, we use stochastic depth during pretraining, which induces contractive residual dynamics that drive representations toward a common limit across recurrences. In the second stage, we propose BeNice!, a post-training method that broadcasts the final recurrence's KV-cache into the first recurrence, training it to produce compatible residuals while preserving the original model's quality. As a result, BeNice! enables KV-shareability while matching standard finetuning's unshared validation perplexity. Using BeNice!, we show that KV-sharing is complementary to alternative KV-compression methods, composing with memory-efficient sequence mixers (e.g., multi-latent attention, Kimi delta attention) and low-precision KV-cache quantization (e.g., fp8, mxfp8, nvfp4). Finally, in simulated low-memory, long-context inference, KV-sharing improves cache hit rates by up to 31.4%, increases throughput by up to 23.6%, and reduces p90 time-to-first-token by up to 83.6%.",
+                "year": 2026,
+                "source": "https://arxiv.org/abs/2610.31633v1",
+                "arxiv_id": "2610.31633v1",
+                "doi": null,
+                "version": "v1",
+                "file_hash": "7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+                "page_count": 37,
+                "has_text_layer": true
+              },
+              "initial_parse_status": {
+                "schema_version": "1.1.0",
+                "paper_id": "paper-7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+                "status": "queued",
+                "progress": 0,
+                "current_stage": "等待解析",
+                "error_code": null,
+                "error_message": null
+              },
+              "parse_status": {
+                "schema_version": "1.1.0",
+                "paper_id": "paper-7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+                "status": "completed",
+                "progress": 100,
+                "current_stage": "四类记录已通过校验并原子发布",
+                "error_code": null,
+                "error_message": null
+              },
+              "error": null,
+              "already_present": false,
+              "dedup": null
+            }
+          }
+        ],
+        "queries": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "query": "all:\"attention\"",
+            "kind": "topic",
+            "terms": [
+              "attention"
+            ],
+            "anchor": {
+              "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+              "page_number": 1,
+              "section": [],
+              "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00002"
+            },
+            "returned_count": 2,
+            "error": null
+          },
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "query": "ti:\"Empirical evaluation of gated recurrent neural networks on sequence modeling\"",
+            "kind": "citation",
+            "reference": {
+              "schema_version": "1.0.0",
+              "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-7",
+              "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+              "number": 7,
+              "authors": [],
+              "year": null,
+              "title": null,
+              "venue": null,
+              "doi": null,
+              "arxiv_id": null
+            },
+            "terms": [
+              "empirical",
+              "evaluation",
+              "gated",
+              "modeling",
+              "network",
+              "neural",
+              "recurrent",
+              "sequence"
+            ],
+            "reference_title_excerpt": "Empirical evaluation of gated recurrent neural networks on sequence modeling",
+            "reference_anchor": {
+              "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+              "page_number": 11,
+              "section": [
+                "References"
+              ],
+              "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00134"
+            },
+            "anchor": {
+              "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+              "page_number": 2,
+              "section": [
+                "1 Introduction"
+              ],
+              "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00016"
+            },
+            "returned_count": 1,
+            "error": null
+          }
+        ],
+        "imported_count": 2,
+        "duplicate_count": 0,
+        "failed_count": 0,
+        "errors": [],
+        "cleanup": {
+          "papers_scanned": 2,
+          "papers_changed": 0,
+          "links_before": 69,
+          "links_after": 69,
+          "removed_count": 0,
+          "changes": []
+        },
+        "interval_seconds": 86400,
+        "dedup_record_count": 0,
+        "paper_ids": [
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+        ]
+      },
+      "papers_after": 4,
+      "paper_ids_after": [
+        "paper-7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+        "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+        "paper-adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+      ],
+      "chunk_counts": {
+        "paper-7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10": 350,
+        "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4": 277,
+        "paper-adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53": 409,
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697": 175
+      }
+    },
+    {
+      "round": 2,
+      "http_status": 200,
+      "elapsed_seconds": 4.266,
+      "run": {
+        "run_id": "bb051baacb5a40a1b3acda73f85aaf27",
+        "started_at": "2026-10-25T17:09:32.569499+00:00",
+        "finished_at": "2026-10-25T17:09:36.644844+00:00",
+        "status": "completed",
+        "duration_seconds": 4.062,
+        "candidate_count": 2,
+        "candidates": [
+          {
+            "arxiv_id": "2610.31639v1",
+            "title": "Causal Chain of Thought: Mitigating Attention Leakage via Context Isolation",
+            "metadata": {
+              "schema_version": "1.0.0",
+              "id": "arxiv-2610.31639v1",
+              "title": "Causal Chain of Thought: Mitigating Attention Leakage via Context Isolation",
+              "authors": [
+                "Gabriele Dominici",
+                "Teague McMillan",
+                "Fazl Barez",
+                "Marc Langheinrich",
+                "Martin Gjoreski"
+              ],
+              "institutions": [],
+              "abstract": "Chain-of-thought (CoT) prompting elicits step-by-step rationales that appear to explain model predictions, but there is no guarantee these steps causally drive the final answer. In standard autoregressive generation, dense attention allows each reasoning step to attend to the full context, enabling the model to derive answers through direct lookup while generating plausible-sounding but post-hoc justifications. We introduce CausalCoT, an inference framework that enforces causal transparency by decomposing problems into a directed acyclic graph of atomic sub-questions, evaluating each node in an isolated context containing only its direct causal parents. This Markovian structure removes attention pathways to non-parent content, making downstream predictions sensitive to local reasoning rather than global context leakage. Across a diverse suite of reasoning benchmarks, CausalCoT preserves competitive predictive performance while improving explanation faithfulness, increasing causal sensitivity of intermediate reasoning steps by an average of 12 and up to 21 percentage points over the strongest baseline. The structured dependency graph additionally enables test-time interventions in which local corrections propagate predictably through downstream reasoning.",
+              "year": 2026,
+              "source": "https://arxiv.org/abs/2610.31639v1",
+              "arxiv_id": "2610.31639v1",
+              "doi": null,
+              "version": "v1",
+              "file_hash": null,
+              "page_count": null,
+              "has_text_layer": null
+            },
+            "related_to": [
+              {
+                "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                "kind": "topic",
+                "matched_terms": [
+                  "attention"
+                ],
+                "reason": "与库内论文主题词重合：attention",
+                "anchor": {
+                  "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                  "page_number": 1,
+                  "section": [],
+                  "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00002"
+                },
+                "reference_anchor": null
+              }
+            ],
+            "outcome": "duplicate",
+            "import": {
+              "succeeded": true,
+              "metadata": {
+                "schema_version": "1.0.0",
+                "id": "arxiv-2610.31639v1",
+                "title": "Causal Chain of Thought: Mitigating Attention Leakage via Context Isolation",
+                "authors": [
+                  "Gabriele Dominici",
+                  "Teague McMillan",
+                  "Fazl Barez",
+                  "Marc Langheinrich",
+                  "Martin Gjoreski"
+                ],
+                "institutions": [],
+                "abstract": "Chain-of-thought (CoT) prompting elicits step-by-step rationales that appear to explain model predictions, but there is no guarantee these steps causally drive the final answer. In standard autoregressive generation, dense attention allows each reasoning step to attend to the full context, enabling the model to derive answers through direct lookup while generating plausible-sounding but post-hoc justifications. We introduce CausalCoT, an inference framework that enforces causal transparency by decomposing problems into a directed acyclic graph of atomic sub-questions, evaluating each node in an isolated context containing only its direct causal parents. This Markovian structure removes attention pathways to non-parent content, making downstream predictions sensitive to local reasoning rather than global context leakage. Across a diverse suite of reasoning benchmarks, CausalCoT preserves competitive predictive performance while improving explanation faithfulness, increasing causal sensitivity of intermediate reasoning steps by an average of 12 and up to 21 percentage points over the strongest baseline. The structured dependency graph additionally enables test-time interventions in which local corrections propagate predictably through downstream reasoning.",
+                "year": 2026,
+                "source": "https://arxiv.org/abs/2610.31639v1",
+                "arxiv_id": "2610.31639v1",
+                "doi": null,
+                "version": "v1",
+                "file_hash": null,
+                "page_count": null,
+                "has_text_layer": null
+              },
+              "paper": {
+                "schema_version": "1.0.0",
+                "id": "paper-adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+                "title": "Causal Chain of Thought: Mitigating Attention Leakage via Context Isolation",
+                "authors": [
+                  "Gabriele Dominici",
+                  "Teague McMillan",
+                  "Fazl Barez",
+                  "Marc Langheinrich",
+                  "Martin Gjoreski"
+                ],
+                "institutions": [],
+                "abstract": "Chain-of-thought (CoT) prompting elicits step-by-step rationales that appear to explain model predictions, but there is no guarantee these steps causally drive the final answer. In standard autoregressive generation, dense attention allows each reasoning step to attend to the full context, enabling the model to derive answers through direct lookup while generating plausible-sounding but post-hoc justifications. We introduce CausalCoT, an inference framework that enforces causal transparency by decomposing problems into a directed acyclic graph of atomic sub-questions, evaluating each node in an isolated context containing only its direct causal parents. This Markovian structure removes attention pathways to non-parent content, making downstream predictions sensitive to local reasoning rather than global context leakage. Across a diverse suite of reasoning benchmarks, CausalCoT preserves competitive predictive performance while improving explanation faithfulness, increasing causal sensitivity of intermediate reasoning steps by an average of 12 and up to 21 percentage points over the strongest baseline. The structured dependency graph additionally enables test-time interventions in which local corrections propagate predictably through downstream reasoning.",
+                "year": 2026,
+                "source": "https://arxiv.org/abs/2610.31639v1",
+                "arxiv_id": "2610.31639v1",
+                "doi": null,
+                "version": "v1",
+                "file_hash": "adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+                "page_count": 38,
+                "has_text_layer": true
+              },
+              "initial_parse_status": null,
+              "parse_status": {
+                "schema_version": "1.1.0",
+                "paper_id": "paper-adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+                "status": "completed",
+                "progress": 100,
+                "current_stage": "四类记录已通过校验并原子发布",
+                "error_code": null,
+                "error_message": null
+              },
+              "error": null,
+              "already_present": true,
+              "dedup": {
+                "identity": "2610.31639",
+                "paper_id": "paper-adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+                "reason": "ARXIV_ID",
+                "similarity": null,
+                "first_seen": "2026-10-25T17:09:36.360566+00:00",
+                "occurrences": 1,
+                "last_seen": "2026-10-25T17:09:36.360566+00:00",
+                "record_created": true
+              }
+            }
+          },
+          {
+            "arxiv_id": "2610.31633v1",
+            "title": "BeNice! Closing Looping's Inference-Memory Gap via KV-Sharing",
+            "metadata": {
+              "schema_version": "1.0.0",
+              "id": "arxiv-2610.31633v1",
+              "title": "BeNice! Closing Looping's Inference-Memory Gap via KV-Sharing",
+              "authors": [
+                "Hayden Prairie",
+                "Jacob M. Ryan",
+                "Taylor Berg-Kirkpatrick",
+                "Daniel Y. Fu"
+              ],
+              "institutions": [],
+              "abstract": "Looped architectures scale quality while keeping parameter count fixed by repeatedly passing activations through the same block of layers. During inference, each recurrence generates independent KV-caches, causing memory to grow linearly. To address this challenge, prior work has proposed KV-sharing (i.e., sharing KV-caches across depth), finding that, in some cases, the KV-cache of the final recurrence can be shared with the earlier recurrences without quality loss, a property we denote as KV-shareability. However, the mechanisms underlying KV-shareability remain poorly understood, with even identically trained looped architectures not consistently exhibiting it. In this paper, we study how KV-shareability can be enabled in looped models. We propose a two-stage method: in the first stage, we use stochastic depth during pretraining, which induces contractive residual dynamics that drive representations toward a common limit across recurrences. In the second stage, we propose BeNice!, a post-training method that broadcasts the final recurrence's KV-cache into the first recurrence, training it to produce compatible residuals while preserving the original model's quality. As a result, BeNice! enables KV-shareability while matching standard finetuning's unshared validation perplexity. Using BeNice!, we show that KV-sharing is complementary to alternative KV-compression methods, composing with memory-efficient sequence mixers (e.g., multi-latent attention, Kimi delta attention) and low-precision KV-cache quantization (e.g., fp8, mxfp8, nvfp4). Finally, in simulated low-memory, long-context inference, KV-sharing improves cache hit rates by up to 31.4%, increases throughput by up to 23.6%, and reduces p90 time-to-first-token by up to 83.6%.",
+              "year": 2026,
+              "source": "https://arxiv.org/abs/2610.31633v1",
+              "arxiv_id": "2610.31633v1",
+              "doi": null,
+              "version": "v1",
+              "file_hash": null,
+              "page_count": null,
+              "has_text_layer": null
+            },
+            "related_to": [
+              {
+                "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                "kind": "topic",
+                "matched_terms": [
+                  "attention"
+                ],
+                "reason": "与库内论文主题词重合：attention",
+                "anchor": {
+                  "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                  "page_number": 1,
+                  "section": [],
+                  "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00002"
+                },
+                "reference_anchor": null
+              }
+            ],
+            "outcome": "duplicate",
+            "import": {
+              "succeeded": true,
+              "metadata": {
+                "schema_version": "1.0.0",
+                "id": "arxiv-2610.31633v1",
+                "title": "BeNice! Closing Looping's Inference-Memory Gap via KV-Sharing",
+                "authors": [
+                  "Hayden Prairie",
+                  "Jacob M. Ryan",
+                  "Taylor Berg-Kirkpatrick",
+                  "Daniel Y. Fu"
+                ],
+                "institutions": [],
+                "abstract": "Looped architectures scale quality while keeping parameter count fixed by repeatedly passing activations through the same block of layers. During inference, each recurrence generates independent KV-caches, causing memory to grow linearly. To address this challenge, prior work has proposed KV-sharing (i.e., sharing KV-caches across depth), finding that, in some cases, the KV-cache of the final recurrence can be shared with the earlier recurrences without quality loss, a property we denote as KV-shareability. However, the mechanisms underlying KV-shareability remain poorly understood, with even identically trained looped architectures not consistently exhibiting it. In this paper, we study how KV-shareability can be enabled in looped models. We propose a two-stage method: in the first stage, we use stochastic depth during pretraining, which induces contractive residual dynamics that drive representations toward a common limit across recurrences. In the second stage, we propose BeNice!, a post-training method that broadcasts the final recurrence's KV-cache into the first recurrence, training it to produce compatible residuals while preserving the original model's quality. As a result, BeNice! enables KV-shareability while matching standard finetuning's unshared validation perplexity. Using BeNice!, we show that KV-sharing is complementary to alternative KV-compression methods, composing with memory-efficient sequence mixers (e.g., multi-latent attention, Kimi delta attention) and low-precision KV-cache quantization (e.g., fp8, mxfp8, nvfp4). Finally, in simulated low-memory, long-context inference, KV-sharing improves cache hit rates by up to 31.4%, increases throughput by up to 23.6%, and reduces p90 time-to-first-token by up to 83.6%.",
+                "year": 2026,
+                "source": "https://arxiv.org/abs/2610.31633v1",
+                "arxiv_id": "2610.31633v1",
+                "doi": null,
+                "version": "v1",
+                "file_hash": null,
+                "page_count": null,
+                "has_text_layer": null
+              },
+              "paper": {
+                "schema_version": "1.0.0",
+                "id": "paper-7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+                "title": "BeNice! Closing Looping's Inference-Memory Gap via KV-Sharing",
+                "authors": [
+                  "Hayden Prairie",
+                  "Jacob M. Ryan",
+                  "Taylor Berg-Kirkpatrick",
+                  "Daniel Y. Fu"
+                ],
+                "institutions": [],
+                "abstract": "Looped architectures scale quality while keeping parameter count fixed by repeatedly passing activations through the same block of layers. During inference, each recurrence generates independent KV-caches, causing memory to grow linearly. To address this challenge, prior work has proposed KV-sharing (i.e., sharing KV-caches across depth), finding that, in some cases, the KV-cache of the final recurrence can be shared with the earlier recurrences without quality loss, a property we denote as KV-shareability. However, the mechanisms underlying KV-shareability remain poorly understood, with even identically trained looped architectures not consistently exhibiting it. In this paper, we study how KV-shareability can be enabled in looped models. We propose a two-stage method: in the first stage, we use stochastic depth during pretraining, which induces contractive residual dynamics that drive representations toward a common limit across recurrences. In the second stage, we propose BeNice!, a post-training method that broadcasts the final recurrence's KV-cache into the first recurrence, training it to produce compatible residuals while preserving the original model's quality. As a result, BeNice! enables KV-shareability while matching standard finetuning's unshared validation perplexity. Using BeNice!, we show that KV-sharing is complementary to alternative KV-compression methods, composing with memory-efficient sequence mixers (e.g., multi-latent attention, Kimi delta attention) and low-precision KV-cache quantization (e.g., fp8, mxfp8, nvfp4). Finally, in simulated low-memory, long-context inference, KV-sharing improves cache hit rates by up to 31.4%, increases throughput by up to 23.6%, and reduces p90 time-to-first-token by up to 83.6%.",
+                "year": 2026,
+                "source": "https://arxiv.org/abs/2610.31633v1",
+                "arxiv_id": "2610.31633v1",
+                "doi": null,
+                "version": "v1",
+                "file_hash": "7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+                "page_count": 37,
+                "has_text_layer": true
+              },
+              "initial_parse_status": null,
+              "parse_status": {
+                "schema_version": "1.1.0",
+                "paper_id": "paper-7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+                "status": "completed",
+                "progress": 100,
+                "current_stage": "四类记录已通过校验并原子发布",
+                "error_code": null,
+                "error_message": null
+              },
+              "error": null,
+              "already_present": true,
+              "dedup": {
+                "identity": "2610.31633",
+                "paper_id": "paper-7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+                "reason": "ARXIV_ID",
+                "similarity": null,
+                "first_seen": "2026-10-25T17:09:36.569948+00:00",
+                "occurrences": 1,
+                "last_seen": "2026-10-25T17:09:36.569948+00:00",
+                "record_created": true
+              }
+            }
+          }
+        ],
+        "queries": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "query": "all:\"attention\"",
+            "kind": "topic",
+            "terms": [
+              "attention"
+            ],
+            "anchor": {
+              "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+              "page_number": 1,
+              "section": [],
+              "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00002"
+            },
+            "returned_count": 2,
+            "error": null
+          },
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "query": "ti:\"Empirical evaluation of gated recurrent neural networks on sequence modeling\"",
+            "kind": "citation",
+            "reference": {
+              "schema_version": "1.0.0",
+              "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-7",
+              "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+              "number": 7,
+              "authors": [],
+              "year": null,
+              "title": null,
+              "venue": null,
+              "doi": null,
+              "arxiv_id": null
+            },
+            "terms": [
+              "empirical",
+              "evaluation",
+              "gated",
+              "modeling",
+              "network",
+              "neural",
+              "recurrent",
+              "sequence"
+            ],
+            "reference_title_excerpt": "Empirical evaluation of gated recurrent neural networks on sequence modeling",
+            "reference_anchor": {
+              "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+              "page_number": 11,
+              "section": [
+                "References"
+              ],
+              "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00134"
+            },
+            "anchor": {
+              "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+              "page_number": 2,
+              "section": [
+                "1 Introduction"
+              ],
+              "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00016"
+            },
+            "returned_count": 1,
+            "error": null
+          }
+        ],
+        "imported_count": 0,
+        "duplicate_count": 2,
+        "failed_count": 0,
+        "errors": [],
+        "cleanup": {
+          "papers_scanned": 4,
+          "papers_changed": 0,
+          "links_before": 243,
+          "links_after": 243,
+          "removed_count": 0,
+          "changes": []
+        },
+        "interval_seconds": 86400,
+        "dedup_record_count": 2,
+        "paper_ids": [
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+        ]
+      },
+      "papers_after": 4,
+      "paper_ids_after": [
+        "paper-7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+        "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+        "paper-adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+      ],
+      "chunk_counts": {
+        "paper-7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10": 350,
+        "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4": 277,
+        "paper-adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53": 409,
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697": 175
+      }
+    }
+  ],
+  "request": {
+    "paper_ids": [
+      "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+    ],
+    "max_candidates": 2,
+    "max_imports": 2
+  },
+  "citation_cleanup_fault_injection": {
+    "description": "独立副本上明确注入两条相同链接，不冒充真实语料原生重复",
+    "first": {
+      "papers_scanned": 1,
+      "papers_changed": 1,
+      "links_before": 71,
+      "links_after": 69,
+      "removed_count": 2,
+      "changes": [
+        {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "removed_count": 2,
+          "at": "2026-10-25T17:09:37.239922+00:00",
+          "before_sha256": "a8c41bb8b268fa7fb7153f2dddb22b47fad334ae76523fc347d94ceb45304067",
+          "after_sha256": "b5a041ab3359e01657e2f9204fd16110077d4263bc5f59030f9e88a45d234718",
+          "audit_ref": "tracking/citation-cleanups/f394550ae8b944fb979e619beb6cdd72"
+        }
+      ]
+    },
+    "second": {
+      "papers_scanned": 1,
+      "papers_changed": 0,
+      "links_before": 69,
+      "links_after": 69,
+      "removed_count": 0,
+      "changes": []
+    }
+  },
+  "feedback_extra_public_import": {
+    "request": {
+      "title": "Reformer: The Efficient Transformer"
+    },
+    "http_status": 200,
+    "result": {
+      "succeeded": true,
+      "metadata": {
+        "schema_version": "1.0.0",
+        "id": "arxiv-2001.04451v2",
+        "title": "Reformer: The Efficient Transformer",
+        "authors": [
+          "Nikita Kitaev",
+          "Łukasz Kaiser",
+          "Anselm Levskaya"
+        ],
+        "institutions": [],
+        "abstract": "Large Transformer models routinely achieve state-of-the-art results on a number of tasks but training these models can be prohibitively costly, especially on long sequences. We introduce two techniques to improve the efficiency of Transformers. For one, we replace dot-product attention by one that uses locality-sensitive hashing, changing its complexity from O($L^2$) to O($L\\log L$), where $L$ is the length of the sequence. Furthermore, we use reversible residual layers instead of the standard residuals, which allows storing activations only once in the training process instead of $N$ times, where $N$ is the number of layers. The resulting model, the Reformer, performs on par with Transformer models while being much more memory-efficient and much faster on long sequences.",
+        "year": 2020,
+        "source": "https://arxiv.org/abs/2001.04451v2",
+        "arxiv_id": "2001.04451v2",
+        "doi": null,
+        "version": "v2",
+        "file_hash": null,
+        "page_count": null,
+        "has_text_layer": null
+      },
+      "paper": {
+        "schema_version": "1.0.0",
+        "id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+        "title": "Reformer: The Efficient Transformer",
+        "authors": [
+          "Nikita Kitaev",
+          "Łukasz Kaiser",
+          "Anselm Levskaya"
+        ],
+        "institutions": [],
+        "abstract": "Large Transformer models routinely achieve state-of-the-art results on a number of tasks but training these models can be prohibitively costly, especially on long sequences. We introduce two techniques to improve the efficiency of Transformers. For one, we replace dot-product attention by one that uses locality-sensitive hashing, changing its complexity from O($L^2$) to O($L\\log L$), where $L$ is the length of the sequence. Furthermore, we use reversible residual layers instead of the standard residuals, which allows storing activations only once in the training process instead of $N$ times, where $N$ is the number of layers. The resulting model, the Reformer, performs on par with Transformer models while being much more memory-efficient and much faster on long sequences.",
+        "year": 2020,
+        "source": "https://arxiv.org/abs/2001.04451v2",
+        "arxiv_id": "2001.04451v2",
+        "doi": null,
+        "version": "v2",
+        "file_hash": "f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+        "page_count": 12,
+        "has_text_layer": true
+      },
+      "initial_parse_status": {
+        "schema_version": "1.1.0",
+        "paper_id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+        "status": "queued",
+        "progress": 0,
+        "current_stage": "等待解析",
+        "error_code": null,
+        "error_message": null
+      },
+      "parse_status": {
+        "schema_version": "1.1.0",
+        "paper_id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+        "status": "completed",
+        "progress": 100,
+        "current_stage": "四类记录已通过校验并原子发布",
+        "error_code": null,
+        "error_message": null
+      },
+      "error": null,
+      "already_present": false,
+      "dedup": null
+    },
+    "seconds": 11.062
+  },
+  "feedback": {
+    "http_status": 200,
+    "event": {
+      "event_id": 1,
+      "profile_id": "local",
+      "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+      "seed_paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "vote": 1,
+      "at": "2026-10-25T17:09:50.194519+00:00",
+      "as_of_year": 2026,
+      "before": [
+        {
+          "paper_id": "paper-7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+          "rank": 1,
+          "score": 50.0,
+          "base_score": 50.0,
+          "feedback_adjustment": 0
+        },
+        {
+          "paper_id": "paper-adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+          "rank": 2,
+          "score": 50.0,
+          "base_score": 50.0,
+          "feedback_adjustment": 0
+        },
+        {
+          "paper_id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+          "rank": 3,
+          "score": 41.0,
+          "base_score": 41.0,
+          "feedback_adjustment": 0
+        },
+        {
+          "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+          "rank": 4,
+          "score": 35.0,
+          "base_score": 35.0,
+          "feedback_adjustment": 0
+        }
+      ],
+      "after": [
+        {
+          "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+          "rank": 1,
+          "score": 85.0,
+          "base_score": 35.0,
+          "feedback_adjustment": 50.0
+        },
+        {
+          "paper_id": "paper-7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+          "rank": 2,
+          "score": 50.0,
+          "base_score": 50.0,
+          "feedback_adjustment": 0.0
+        },
+        {
+          "paper_id": "paper-adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+          "rank": 3,
+          "score": 50.0,
+          "base_score": 50.0,
+          "feedback_adjustment": 0.0
+        },
+        {
+          "paper_id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+          "rank": 4,
+          "score": 46.0,
+          "base_score": 41.0,
+          "feedback_adjustment": 5.0
+        }
+      ],
+      "formula": "score = clamp(base_score + 50 * mean(vote * Jaccard(title_topics(candidate), title_topics(voted_paper))), 0, 100); empty profile adds 0",
+      "evidence": [
+        {
+          "paper": {
+            "schema_version": "1.0.0",
+            "id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+            "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+            "authors": [
+              "Jacob Devlin ; Ming-Wei Chang ; Kenton Lee ; Kristina Toutanova"
+            ],
+            "institutions": [],
+            "abstract": null,
+            "year": null,
+            "source": "local-upload",
+            "arxiv_id": null,
+            "doi": null,
+            "version": null,
+            "file_hash": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+            "page_count": 16,
+            "has_text_layer": true
+          },
+          "score": 85.0,
+          "signals": {
+            "graph_neighbor": 0,
+            "pagerank_normalized": 1.0,
+            "recency": null,
+            "github_link": null
+          },
+          "reasons": [
+            {
+              "signal": "pagerank_normalized",
+              "text": "复用模块五在当前本地论文集合计算的 PageRank，不是全网引用数或科研质量。",
+              "evidence": {
+                "graph_node": {
+                  "schema_version": "1.2.0",
+                  "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+                  "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+                  "year": null,
+                  "pagerank": 0.19999999999999998,
+                  "level": "isolated"
+                },
+                "scope_size": 5,
+                "maximum_pagerank": 0.19999999999999998
+              }
+            },
+            {
+              "signal": "explicit_feedback",
+              "text": "落盘点赞/踩的标题主题词 Jaccard 相似度；不是向量或引用数。",
+              "evidence": {
+                "formula": "score = clamp(base_score + 50 * mean(vote * Jaccard(title_topics(candidate), title_topics(voted_paper))), 0, 100); empty profile adds 0",
+                "votes": [
+                  {
+                    "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+                    "vote": 1,
+                    "updated_at": "2026-10-25T17:09:49.600724+00:00",
+                    "matched_terms": [
+                      "bert",
+                      "bidirectional",
+                      "deep",
+                      "language",
+                      "pre",
+                      "training",
+                      "transformer",
+                      "understanding"
+                    ],
+                    "candidate_terms": [
+                      "bert",
+                      "bidirectional",
+                      "deep",
+                      "language",
+                      "pre",
+                      "training",
+                      "transformer",
+                      "understanding"
+                    ],
+                    "voted_terms": [
+                      "bert",
+                      "bidirectional",
+                      "deep",
+                      "language",
+                      "pre",
+                      "training",
+                      "transformer",
+                      "understanding"
+                    ],
+                    "jaccard": 1.0
+                  }
+                ]
+              }
+            }
+          ],
+          "missing_signals": [
+            "publication_year",
+            "github_link"
+          ],
+          "scoring_version": "module-four-feedback-v1",
+          "as_of_year": 2026,
+          "base_score": 35.0,
+          "feedback_adjustment": 50.0
+        }
+      ]
+    },
+    "before": {
+      "items": [
+        {
+          "paper": {
+            "schema_version": "1.0.0",
+            "id": "paper-7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+            "title": "BeNice! Closing Looping's Inference-Memory Gap via KV-Sharing",
+            "authors": [
+              "Hayden Prairie",
+              "Jacob M. Ryan",
+              "Taylor Berg-Kirkpatrick",
+              "Daniel Y. Fu"
+            ],
+            "institutions": [],
+            "abstract": "Looped architectures scale quality while keeping parameter count fixed by repeatedly passing activations through the same block of layers. During inference, each recurrence generates independent KV-caches, causing memory to grow linearly. To address this challenge, prior work has proposed KV-sharing (i.e., sharing KV-caches across depth), finding that, in some cases, the KV-cache of the final recurrence can be shared with the earlier recurrences without quality loss, a property we denote as KV-shareability. However, the mechanisms underlying KV-shareability remain poorly understood, with even identically trained looped architectures not consistently exhibiting it. In this paper, we study how KV-shareability can be enabled in looped models. We propose a two-stage method: in the first stage, we use stochastic depth during pretraining, which induces contractive residual dynamics that drive representations toward a common limit across recurrences. In the second stage, we propose BeNice!, a post-training method that broadcasts the final recurrence's KV-cache into the first recurrence, training it to produce compatible residuals while preserving the original model's quality. As a result, BeNice! enables KV-shareability while matching standard finetuning's unshared validation perplexity. Using BeNice!, we show that KV-sharing is complementary to alternative KV-compression methods, composing with memory-efficient sequence mixers (e.g., multi-latent attention, Kimi delta attention) and low-precision KV-cache quantization (e.g., fp8, mxfp8, nvfp4). Finally, in simulated low-memory, long-context inference, KV-sharing improves cache hit rates by up to 31.4%, increases throughput by up to 23.6%, and reduces p90 time-to-first-token by up to 83.6%.",
+            "year": 2026,
+            "source": "https://arxiv.org/abs/2610.31633v1",
+            "arxiv_id": "2610.31633v1",
+            "doi": null,
+            "version": "v1",
+            "file_hash": "7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+            "page_count": 37,
+            "has_text_layer": true
+          },
+          "score": 50.0,
+          "signals": {
+            "graph_neighbor": 0,
+            "pagerank_normalized": 1.0,
+            "recency": 1.0,
+            "github_link": null
+          },
+          "reasons": [
+            {
+              "signal": "pagerank_normalized",
+              "text": "复用模块五在当前本地论文集合计算的 PageRank，不是全网引用数或科研质量。",
+              "evidence": {
+                "graph_node": {
+                  "schema_version": "1.2.0",
+                  "paper_id": "paper-7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+                  "title": "BeNice! Closing Looping's Inference-Memory Gap via KV-Sharing",
+                  "year": 2026,
+                  "pagerank": 0.19999999999999998,
+                  "level": "isolated"
+                },
+                "scope_size": 5,
+                "maximum_pagerank": 0.19999999999999998
+              }
+            },
+            {
+              "signal": "recency",
+              "text": "使用元数据发表年份与指定评分年份计算十年线性时效项。",
+              "evidence": {
+                "metadata_field": "year",
+                "year": 2026,
+                "as_of_year": 2026
+              }
+            }
+          ],
+          "missing_signals": [
+            "github_link"
+          ],
+          "scoring_version": "module-four-v1",
+          "as_of_year": 2026
+        },
+        {
+          "paper": {
+            "schema_version": "1.0.0",
+            "id": "paper-adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+            "title": "Causal Chain of Thought: Mitigating Attention Leakage via Context Isolation",
+            "authors": [
+              "Gabriele Dominici",
+              "Teague McMillan",
+              "Fazl Barez",
+              "Marc Langheinrich",
+              "Martin Gjoreski"
+            ],
+            "institutions": [],
+            "abstract": "Chain-of-thought (CoT) prompting elicits step-by-step rationales that appear to explain model predictions, but there is no guarantee these steps causally drive the final answer. In standard autoregressive generation, dense attention allows each reasoning step to attend to the full context, enabling the model to derive answers through direct lookup while generating plausible-sounding but post-hoc justifications. We introduce CausalCoT, an inference framework that enforces causal transparency by decomposing problems into a directed acyclic graph of atomic sub-questions, evaluating each node in an isolated context containing only its direct causal parents. This Markovian structure removes attention pathways to non-parent content, making downstream predictions sensitive to local reasoning rather than global context leakage. Across a diverse suite of reasoning benchmarks, CausalCoT preserves competitive predictive performance while improving explanation faithfulness, increasing causal sensitivity of intermediate reasoning steps by an average of 12 and up to 21 percentage points over the strongest baseline. The structured dependency graph additionally enables test-time interventions in which local corrections propagate predictably through downstream reasoning.",
+            "year": 2026,
+            "source": "https://arxiv.org/abs/2610.31639v1",
+            "arxiv_id": "2610.31639v1",
+            "doi": null,
+            "version": "v1",
+            "file_hash": "adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+            "page_count": 38,
+            "has_text_layer": true
+          },
+          "score": 50.0,
+          "signals": {
+            "graph_neighbor": 0,
+            "pagerank_normalized": 1.0,
+            "recency": 1.0,
+            "github_link": null
+          },
+          "reasons": [
+            {
+              "signal": "pagerank_normalized",
+              "text": "复用模块五在当前本地论文集合计算的 PageRank，不是全网引用数或科研质量。",
+              "evidence": {
+                "graph_node": {
+                  "schema_version": "1.2.0",
+                  "paper_id": "paper-adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+                  "title": "Causal Chain of Thought: Mitigating Attention Leakage via Context Isolation",
+                  "year": 2026,
+                  "pagerank": 0.19999999999999998,
+                  "level": "isolated"
+                },
+                "scope_size": 5,
+                "maximum_pagerank": 0.19999999999999998
+              }
+            },
+            {
+              "signal": "recency",
+              "text": "使用元数据发表年份与指定评分年份计算十年线性时效项。",
+              "evidence": {
+                "metadata_field": "year",
+                "year": 2026,
+                "as_of_year": 2026
+              }
+            }
+          ],
+          "missing_signals": [
+            "github_link"
+          ],
+          "scoring_version": "module-four-v1",
+          "as_of_year": 2026
+        },
+        {
+          "paper": {
+            "schema_version": "1.0.0",
+            "id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+            "title": "Reformer: The Efficient Transformer",
+            "authors": [
+              "Nikita Kitaev",
+              "Łukasz Kaiser",
+              "Anselm Levskaya"
+            ],
+            "institutions": [],
+            "abstract": "Large Transformer models routinely achieve state-of-the-art results on a number of tasks but training these models can be prohibitively costly, especially on long sequences. We introduce two techniques to improve the efficiency of Transformers. For one, we replace dot-product attention by one that uses locality-sensitive hashing, changing its complexity from O($L^2$) to O($L\\log L$), where $L$ is the length of the sequence. Furthermore, we use reversible residual layers instead of the standard residuals, which allows storing activations only once in the training process instead of $N$ times, where $N$ is the number of layers. The resulting model, the Reformer, performs on par with Transformer models while being much more memory-efficient and much faster on long sequences.",
+            "year": 2020,
+            "source": "https://arxiv.org/abs/2001.04451v2",
+            "arxiv_id": "2001.04451v2",
+            "doi": null,
+            "version": "v2",
+            "file_hash": "f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+            "page_count": 12,
+            "has_text_layer": true
+          },
+          "score": 41.0,
+          "signals": {
+            "graph_neighbor": 0,
+            "pagerank_normalized": 1.0,
+            "recency": 0.4,
+            "github_link": null
+          },
+          "reasons": [
+            {
+              "signal": "pagerank_normalized",
+              "text": "复用模块五在当前本地论文集合计算的 PageRank，不是全网引用数或科研质量。",
+              "evidence": {
+                "graph_node": {
+                  "schema_version": "1.2.0",
+                  "paper_id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+                  "title": "Reformer: The Efficient Transformer",
+                  "year": 2020,
+                  "pagerank": 0.19999999999999998,
+                  "level": "isolated"
+                },
+                "scope_size": 5,
+                "maximum_pagerank": 0.19999999999999998
+              }
+            },
+            {
+              "signal": "recency",
+              "text": "使用元数据发表年份与指定评分年份计算十年线性时效项。",
+              "evidence": {
+                "metadata_field": "year",
+                "year": 2020,
+                "as_of_year": 2026
+              }
+            }
+          ],
+          "missing_signals": [
+            "github_link"
+          ],
+          "scoring_version": "module-four-v1",
+          "as_of_year": 2026
+        },
+        {
+          "paper": {
+            "schema_version": "1.0.0",
+            "id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+            "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+            "authors": [
+              "Jacob Devlin ; Ming-Wei Chang ; Kenton Lee ; Kristina Toutanova"
+            ],
+            "institutions": [],
+            "abstract": null,
+            "year": null,
+            "source": "local-upload",
+            "arxiv_id": null,
+            "doi": null,
+            "version": null,
+            "file_hash": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+            "page_count": 16,
+            "has_text_layer": true
+          },
+          "score": 35.0,
+          "signals": {
+            "graph_neighbor": 0,
+            "pagerank_normalized": 1.0,
+            "recency": null,
+            "github_link": null
+          },
+          "reasons": [
+            {
+              "signal": "pagerank_normalized",
+              "text": "复用模块五在当前本地论文集合计算的 PageRank，不是全网引用数或科研质量。",
+              "evidence": {
+                "graph_node": {
+                  "schema_version": "1.2.0",
+                  "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+                  "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+                  "year": null,
+                  "pagerank": 0.19999999999999998,
+                  "level": "isolated"
+                },
+                "scope_size": 5,
+                "maximum_pagerank": 0.19999999999999998
+              }
+            }
+          ],
+          "missing_signals": [
+            "publication_year",
+            "github_link"
+          ],
+          "scoring_version": "module-four-v1",
+          "as_of_year": 2026
+        }
+      ],
+      "page": 1,
+      "page_size": 100,
+      "total": 4,
+      "total_pages": 1,
+      "has_next": false
+    },
+    "after": {
+      "items": [
+        {
+          "paper": {
+            "schema_version": "1.0.0",
+            "id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+            "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+            "authors": [
+              "Jacob Devlin ; Ming-Wei Chang ; Kenton Lee ; Kristina Toutanova"
+            ],
+            "institutions": [],
+            "abstract": null,
+            "year": null,
+            "source": "local-upload",
+            "arxiv_id": null,
+            "doi": null,
+            "version": null,
+            "file_hash": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+            "page_count": 16,
+            "has_text_layer": true
+          },
+          "score": 85.0,
+          "signals": {
+            "graph_neighbor": 0,
+            "pagerank_normalized": 1.0,
+            "recency": null,
+            "github_link": null
+          },
+          "reasons": [
+            {
+              "signal": "pagerank_normalized",
+              "text": "复用模块五在当前本地论文集合计算的 PageRank，不是全网引用数或科研质量。",
+              "evidence": {
+                "graph_node": {
+                  "schema_version": "1.2.0",
+                  "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+                  "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+                  "year": null,
+                  "pagerank": 0.19999999999999998,
+                  "level": "isolated"
+                },
+                "scope_size": 5,
+                "maximum_pagerank": 0.19999999999999998
+              }
+            },
+            {
+              "signal": "explicit_feedback",
+              "text": "落盘点赞/踩的标题主题词 Jaccard 相似度；不是向量或引用数。",
+              "evidence": {
+                "formula": "score = clamp(base_score + 50 * mean(vote * Jaccard(title_topics(candidate), title_topics(voted_paper))), 0, 100); empty profile adds 0",
+                "votes": [
+                  {
+                    "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+                    "vote": 1,
+                    "updated_at": "2026-10-25T17:09:50.195597+00:00",
+                    "matched_terms": [
+                      "bert",
+                      "bidirectional",
+                      "deep",
+                      "language",
+                      "pre",
+                      "training",
+                      "transformer",
+                      "understanding"
+                    ],
+                    "candidate_terms": [
+                      "bert",
+                      "bidirectional",
+                      "deep",
+                      "language",
+                      "pre",
+                      "training",
+                      "transformer",
+                      "understanding"
+                    ],
+                    "voted_terms": [
+                      "bert",
+                      "bidirectional",
+                      "deep",
+                      "language",
+                      "pre",
+                      "training",
+                      "transformer",
+                      "understanding"
+                    ],
+                    "jaccard": 1.0
+                  }
+                ]
+              }
+            }
+          ],
+          "missing_signals": [
+            "publication_year",
+            "github_link"
+          ],
+          "scoring_version": "module-four-feedback-v1",
+          "as_of_year": 2026,
+          "base_score": 35.0,
+          "feedback_adjustment": 50.0
+        },
+        {
+          "paper": {
+            "schema_version": "1.0.0",
+            "id": "paper-7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+            "title": "BeNice! Closing Looping's Inference-Memory Gap via KV-Sharing",
+            "authors": [
+              "Hayden Prairie",
+              "Jacob M. Ryan",
+              "Taylor Berg-Kirkpatrick",
+              "Daniel Y. Fu"
+            ],
+            "institutions": [],
+            "abstract": "Looped architectures scale quality while keeping parameter count fixed by repeatedly passing activations through the same block of layers. During inference, each recurrence generates independent KV-caches, causing memory to grow linearly. To address this challenge, prior work has proposed KV-sharing (i.e., sharing KV-caches across depth), finding that, in some cases, the KV-cache of the final recurrence can be shared with the earlier recurrences without quality loss, a property we denote as KV-shareability. However, the mechanisms underlying KV-shareability remain poorly understood, with even identically trained looped architectures not consistently exhibiting it. In this paper, we study how KV-shareability can be enabled in looped models. We propose a two-stage method: in the first stage, we use stochastic depth during pretraining, which induces contractive residual dynamics that drive representations toward a common limit across recurrences. In the second stage, we propose BeNice!, a post-training method that broadcasts the final recurrence's KV-cache into the first recurrence, training it to produce compatible residuals while preserving the original model's quality. As a result, BeNice! enables KV-shareability while matching standard finetuning's unshared validation perplexity. Using BeNice!, we show that KV-sharing is complementary to alternative KV-compression methods, composing with memory-efficient sequence mixers (e.g., multi-latent attention, Kimi delta attention) and low-precision KV-cache quantization (e.g., fp8, mxfp8, nvfp4). Finally, in simulated low-memory, long-context inference, KV-sharing improves cache hit rates by up to 31.4%, increases throughput by up to 23.6%, and reduces p90 time-to-first-token by up to 83.6%.",
+            "year": 2026,
+            "source": "https://arxiv.org/abs/2610.31633v1",
+            "arxiv_id": "2610.31633v1",
+            "doi": null,
+            "version": "v1",
+            "file_hash": "7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+            "page_count": 37,
+            "has_text_layer": true
+          },
+          "score": 50.0,
+          "signals": {
+            "graph_neighbor": 0,
+            "pagerank_normalized": 1.0,
+            "recency": 1.0,
+            "github_link": null
+          },
+          "reasons": [
+            {
+              "signal": "pagerank_normalized",
+              "text": "复用模块五在当前本地论文集合计算的 PageRank，不是全网引用数或科研质量。",
+              "evidence": {
+                "graph_node": {
+                  "schema_version": "1.2.0",
+                  "paper_id": "paper-7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+                  "title": "BeNice! Closing Looping's Inference-Memory Gap via KV-Sharing",
+                  "year": 2026,
+                  "pagerank": 0.19999999999999998,
+                  "level": "isolated"
+                },
+                "scope_size": 5,
+                "maximum_pagerank": 0.19999999999999998
+              }
+            },
+            {
+              "signal": "recency",
+              "text": "使用元数据发表年份与指定评分年份计算十年线性时效项。",
+              "evidence": {
+                "metadata_field": "year",
+                "year": 2026,
+                "as_of_year": 2026
+              }
+            },
+            {
+              "signal": "explicit_feedback",
+              "text": "落盘点赞/踩的标题主题词 Jaccard 相似度；不是向量或引用数。",
+              "evidence": {
+                "formula": "score = clamp(base_score + 50 * mean(vote * Jaccard(title_topics(candidate), title_topics(voted_paper))), 0, 100); empty profile adds 0",
+                "votes": [
+                  {
+                    "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+                    "vote": 1,
+                    "updated_at": "2026-10-25T17:09:50.195597+00:00",
+                    "matched_terms": [],
+                    "candidate_terms": [
+                      "benice",
+                      "closing",
+                      "gap",
+                      "inference",
+                      "looping",
+                      "memory",
+                      "sharing"
+                    ],
+                    "voted_terms": [
+                      "bert",
+                      "bidirectional",
+                      "deep",
+                      "language",
+                      "pre",
+                      "training",
+                      "transformer",
+                      "understanding"
+                    ],
+                    "jaccard": 0.0
+                  }
+                ]
+              }
+            }
+          ],
+          "missing_signals": [
+            "github_link"
+          ],
+          "scoring_version": "module-four-feedback-v1",
+          "as_of_year": 2026,
+          "base_score": 50.0,
+          "feedback_adjustment": 0.0
+        },
+        {
+          "paper": {
+            "schema_version": "1.0.0",
+            "id": "paper-adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+            "title": "Causal Chain of Thought: Mitigating Attention Leakage via Context Isolation",
+            "authors": [
+              "Gabriele Dominici",
+              "Teague McMillan",
+              "Fazl Barez",
+              "Marc Langheinrich",
+              "Martin Gjoreski"
+            ],
+            "institutions": [],
+            "abstract": "Chain-of-thought (CoT) prompting elicits step-by-step rationales that appear to explain model predictions, but there is no guarantee these steps causally drive the final answer. In standard autoregressive generation, dense attention allows each reasoning step to attend to the full context, enabling the model to derive answers through direct lookup while generating plausible-sounding but post-hoc justifications. We introduce CausalCoT, an inference framework that enforces causal transparency by decomposing problems into a directed acyclic graph of atomic sub-questions, evaluating each node in an isolated context containing only its direct causal parents. This Markovian structure removes attention pathways to non-parent content, making downstream predictions sensitive to local reasoning rather than global context leakage. Across a diverse suite of reasoning benchmarks, CausalCoT preserves competitive predictive performance while improving explanation faithfulness, increasing causal sensitivity of intermediate reasoning steps by an average of 12 and up to 21 percentage points over the strongest baseline. The structured dependency graph additionally enables test-time interventions in which local corrections propagate predictably through downstream reasoning.",
+            "year": 2026,
+            "source": "https://arxiv.org/abs/2610.31639v1",
+            "arxiv_id": "2610.31639v1",
+            "doi": null,
+            "version": "v1",
+            "file_hash": "adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+            "page_count": 38,
+            "has_text_layer": true
+          },
+          "score": 50.0,
+          "signals": {
+            "graph_neighbor": 0,
+            "pagerank_normalized": 1.0,
+            "recency": 1.0,
+            "github_link": null
+          },
+          "reasons": [
+            {
+              "signal": "pagerank_normalized",
+              "text": "复用模块五在当前本地论文集合计算的 PageRank，不是全网引用数或科研质量。",
+              "evidence": {
+                "graph_node": {
+                  "schema_version": "1.2.0",
+                  "paper_id": "paper-adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+                  "title": "Causal Chain of Thought: Mitigating Attention Leakage via Context Isolation",
+                  "year": 2026,
+                  "pagerank": 0.19999999999999998,
+                  "level": "isolated"
+                },
+                "scope_size": 5,
+                "maximum_pagerank": 0.19999999999999998
+              }
+            },
+            {
+              "signal": "recency",
+              "text": "使用元数据发表年份与指定评分年份计算十年线性时效项。",
+              "evidence": {
+                "metadata_field": "year",
+                "year": 2026,
+                "as_of_year": 2026
+              }
+            },
+            {
+              "signal": "explicit_feedback",
+              "text": "落盘点赞/踩的标题主题词 Jaccard 相似度；不是向量或引用数。",
+              "evidence": {
+                "formula": "score = clamp(base_score + 50 * mean(vote * Jaccard(title_topics(candidate), title_topics(voted_paper))), 0, 100); empty profile adds 0",
+                "votes": [
+                  {
+                    "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+                    "vote": 1,
+                    "updated_at": "2026-10-25T17:09:50.195597+00:00",
+                    "matched_terms": [],
+                    "candidate_terms": [
+                      "attention",
+                      "causal",
+                      "chain",
+                      "context",
+                      "isolation",
+                      "leakage",
+                      "mitigating",
+                      "thought"
+                    ],
+                    "voted_terms": [
+                      "bert",
+                      "bidirectional",
+                      "deep",
+                      "language",
+                      "pre",
+                      "training",
+                      "transformer",
+                      "understanding"
+                    ],
+                    "jaccard": 0.0
+                  }
+                ]
+              }
+            }
+          ],
+          "missing_signals": [
+            "github_link"
+          ],
+          "scoring_version": "module-four-feedback-v1",
+          "as_of_year": 2026,
+          "base_score": 50.0,
+          "feedback_adjustment": 0.0
+        },
+        {
+          "paper": {
+            "schema_version": "1.0.0",
+            "id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+            "title": "Reformer: The Efficient Transformer",
+            "authors": [
+              "Nikita Kitaev",
+              "Łukasz Kaiser",
+              "Anselm Levskaya"
+            ],
+            "institutions": [],
+            "abstract": "Large Transformer models routinely achieve state-of-the-art results on a number of tasks but training these models can be prohibitively costly, especially on long sequences. We introduce two techniques to improve the efficiency of Transformers. For one, we replace dot-product attention by one that uses locality-sensitive hashing, changing its complexity from O($L^2$) to O($L\\log L$), where $L$ is the length of the sequence. Furthermore, we use reversible residual layers instead of the standard residuals, which allows storing activations only once in the training process instead of $N$ times, where $N$ is the number of layers. The resulting model, the Reformer, performs on par with Transformer models while being much more memory-efficient and much faster on long sequences.",
+            "year": 2020,
+            "source": "https://arxiv.org/abs/2001.04451v2",
+            "arxiv_id": "2001.04451v2",
+            "doi": null,
+            "version": "v2",
+            "file_hash": "f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+            "page_count": 12,
+            "has_text_layer": true
+          },
+          "score": 46.0,
+          "signals": {
+            "graph_neighbor": 0,
+            "pagerank_normalized": 1.0,
+            "recency": 0.4,
+            "github_link": null
+          },
+          "reasons": [
+            {
+              "signal": "pagerank_normalized",
+              "text": "复用模块五在当前本地论文集合计算的 PageRank，不是全网引用数或科研质量。",
+              "evidence": {
+                "graph_node": {
+                  "schema_version": "1.2.0",
+                  "paper_id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+                  "title": "Reformer: The Efficient Transformer",
+                  "year": 2020,
+                  "pagerank": 0.19999999999999998,
+                  "level": "isolated"
+                },
+                "scope_size": 5,
+                "maximum_pagerank": 0.19999999999999998
+              }
+            },
+            {
+              "signal": "recency",
+              "text": "使用元数据发表年份与指定评分年份计算十年线性时效项。",
+              "evidence": {
+                "metadata_field": "year",
+                "year": 2020,
+                "as_of_year": 2026
+              }
+            },
+            {
+              "signal": "explicit_feedback",
+              "text": "落盘点赞/踩的标题主题词 Jaccard 相似度；不是向量或引用数。",
+              "evidence": {
+                "formula": "score = clamp(base_score + 50 * mean(vote * Jaccard(title_topics(candidate), title_topics(voted_paper))), 0, 100); empty profile adds 0",
+                "votes": [
+                  {
+                    "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+                    "vote": 1,
+                    "updated_at": "2026-10-25T17:09:50.195597+00:00",
+                    "matched_terms": [
+                      "transformer"
+                    ],
+                    "candidate_terms": [
+                      "efficient",
+                      "reformer",
+                      "transformer"
+                    ],
+                    "voted_terms": [
+                      "bert",
+                      "bidirectional",
+                      "deep",
+                      "language",
+                      "pre",
+                      "training",
+                      "transformer",
+                      "understanding"
+                    ],
+                    "jaccard": 0.1
+                  }
+                ]
+              }
+            }
+          ],
+          "missing_signals": [
+            "github_link"
+          ],
+          "scoring_version": "module-four-feedback-v1",
+          "as_of_year": 2026,
+          "base_score": 41.0,
+          "feedback_adjustment": 5.0
+        }
+      ],
+      "page": 1,
+      "page_size": 100,
+      "total": 4,
+      "total_pages": 1,
+      "has_next": false
+    },
+    "after_restart": {
+      "items": [
+        {
+          "paper": {
+            "schema_version": "1.0.0",
+            "id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+            "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+            "authors": [
+              "Jacob Devlin ; Ming-Wei Chang ; Kenton Lee ; Kristina Toutanova"
+            ],
+            "institutions": [],
+            "abstract": null,
+            "year": null,
+            "source": "local-upload",
+            "arxiv_id": null,
+            "doi": null,
+            "version": null,
+            "file_hash": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+            "page_count": 16,
+            "has_text_layer": true
+          },
+          "score": 85.0,
+          "signals": {
+            "graph_neighbor": 0,
+            "pagerank_normalized": 1.0,
+            "recency": null,
+            "github_link": null
+          },
+          "reasons": [
+            {
+              "signal": "pagerank_normalized",
+              "text": "复用模块五在当前本地论文集合计算的 PageRank，不是全网引用数或科研质量。",
+              "evidence": {
+                "graph_node": {
+                  "schema_version": "1.2.0",
+                  "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+                  "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+                  "year": null,
+                  "pagerank": 0.19999999999999998,
+                  "level": "isolated"
+                },
+                "scope_size": 5,
+                "maximum_pagerank": 0.19999999999999998
+              }
+            },
+            {
+              "signal": "explicit_feedback",
+              "text": "落盘点赞/踩的标题主题词 Jaccard 相似度；不是向量或引用数。",
+              "evidence": {
+                "formula": "score = clamp(base_score + 50 * mean(vote * Jaccard(title_topics(candidate), title_topics(voted_paper))), 0, 100); empty profile adds 0",
+                "votes": [
+                  {
+                    "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+                    "vote": 1,
+                    "updated_at": "2026-10-25T17:09:50.195597+00:00",
+                    "matched_terms": [
+                      "bert",
+                      "bidirectional",
+                      "deep",
+                      "language",
+                      "pre",
+                      "training",
+                      "transformer",
+                      "understanding"
+                    ],
+                    "candidate_terms": [
+                      "bert",
+                      "bidirectional",
+                      "deep",
+                      "language",
+                      "pre",
+                      "training",
+                      "transformer",
+                      "understanding"
+                    ],
+                    "voted_terms": [
+                      "bert",
+                      "bidirectional",
+                      "deep",
+                      "language",
+                      "pre",
+                      "training",
+                      "transformer",
+                      "understanding"
+                    ],
+                    "jaccard": 1.0
+                  }
+                ]
+              }
+            }
+          ],
+          "missing_signals": [
+            "publication_year",
+            "github_link"
+          ],
+          "scoring_version": "module-four-feedback-v1",
+          "as_of_year": 2026,
+          "base_score": 35.0,
+          "feedback_adjustment": 50.0
+        },
+        {
+          "paper": {
+            "schema_version": "1.0.0",
+            "id": "paper-7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+            "title": "BeNice! Closing Looping's Inference-Memory Gap via KV-Sharing",
+            "authors": [
+              "Hayden Prairie",
+              "Jacob M. Ryan",
+              "Taylor Berg-Kirkpatrick",
+              "Daniel Y. Fu"
+            ],
+            "institutions": [],
+            "abstract": "Looped architectures scale quality while keeping parameter count fixed by repeatedly passing activations through the same block of layers. During inference, each recurrence generates independent KV-caches, causing memory to grow linearly. To address this challenge, prior work has proposed KV-sharing (i.e., sharing KV-caches across depth), finding that, in some cases, the KV-cache of the final recurrence can be shared with the earlier recurrences without quality loss, a property we denote as KV-shareability. However, the mechanisms underlying KV-shareability remain poorly understood, with even identically trained looped architectures not consistently exhibiting it. In this paper, we study how KV-shareability can be enabled in looped models. We propose a two-stage method: in the first stage, we use stochastic depth during pretraining, which induces contractive residual dynamics that drive representations toward a common limit across recurrences. In the second stage, we propose BeNice!, a post-training method that broadcasts the final recurrence's KV-cache into the first recurrence, training it to produce compatible residuals while preserving the original model's quality. As a result, BeNice! enables KV-shareability while matching standard finetuning's unshared validation perplexity. Using BeNice!, we show that KV-sharing is complementary to alternative KV-compression methods, composing with memory-efficient sequence mixers (e.g., multi-latent attention, Kimi delta attention) and low-precision KV-cache quantization (e.g., fp8, mxfp8, nvfp4). Finally, in simulated low-memory, long-context inference, KV-sharing improves cache hit rates by up to 31.4%, increases throughput by up to 23.6%, and reduces p90 time-to-first-token by up to 83.6%.",
+            "year": 2026,
+            "source": "https://arxiv.org/abs/2610.31633v1",
+            "arxiv_id": "2610.31633v1",
+            "doi": null,
+            "version": "v1",
+            "file_hash": "7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+            "page_count": 37,
+            "has_text_layer": true
+          },
+          "score": 50.0,
+          "signals": {
+            "graph_neighbor": 0,
+            "pagerank_normalized": 1.0,
+            "recency": 1.0,
+            "github_link": null
+          },
+          "reasons": [
+            {
+              "signal": "pagerank_normalized",
+              "text": "复用模块五在当前本地论文集合计算的 PageRank，不是全网引用数或科研质量。",
+              "evidence": {
+                "graph_node": {
+                  "schema_version": "1.2.0",
+                  "paper_id": "paper-7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+                  "title": "BeNice! Closing Looping's Inference-Memory Gap via KV-Sharing",
+                  "year": 2026,
+                  "pagerank": 0.19999999999999998,
+                  "level": "isolated"
+                },
+                "scope_size": 5,
+                "maximum_pagerank": 0.19999999999999998
+              }
+            },
+            {
+              "signal": "recency",
+              "text": "使用元数据发表年份与指定评分年份计算十年线性时效项。",
+              "evidence": {
+                "metadata_field": "year",
+                "year": 2026,
+                "as_of_year": 2026
+              }
+            },
+            {
+              "signal": "explicit_feedback",
+              "text": "落盘点赞/踩的标题主题词 Jaccard 相似度；不是向量或引用数。",
+              "evidence": {
+                "formula": "score = clamp(base_score + 50 * mean(vote * Jaccard(title_topics(candidate), title_topics(voted_paper))), 0, 100); empty profile adds 0",
+                "votes": [
+                  {
+                    "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+                    "vote": 1,
+                    "updated_at": "2026-10-25T17:09:50.195597+00:00",
+                    "matched_terms": [],
+                    "candidate_terms": [
+                      "benice",
+                      "closing",
+                      "gap",
+                      "inference",
+                      "looping",
+                      "memory",
+                      "sharing"
+                    ],
+                    "voted_terms": [
+                      "bert",
+                      "bidirectional",
+                      "deep",
+                      "language",
+                      "pre",
+                      "training",
+                      "transformer",
+                      "understanding"
+                    ],
+                    "jaccard": 0.0
+                  }
+                ]
+              }
+            }
+          ],
+          "missing_signals": [
+            "github_link"
+          ],
+          "scoring_version": "module-four-feedback-v1",
+          "as_of_year": 2026,
+          "base_score": 50.0,
+          "feedback_adjustment": 0.0
+        },
+        {
+          "paper": {
+            "schema_version": "1.0.0",
+            "id": "paper-adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+            "title": "Causal Chain of Thought: Mitigating Attention Leakage via Context Isolation",
+            "authors": [
+              "Gabriele Dominici",
+              "Teague McMillan",
+              "Fazl Barez",
+              "Marc Langheinrich",
+              "Martin Gjoreski"
+            ],
+            "institutions": [],
+            "abstract": "Chain-of-thought (CoT) prompting elicits step-by-step rationales that appear to explain model predictions, but there is no guarantee these steps causally drive the final answer. In standard autoregressive generation, dense attention allows each reasoning step to attend to the full context, enabling the model to derive answers through direct lookup while generating plausible-sounding but post-hoc justifications. We introduce CausalCoT, an inference framework that enforces causal transparency by decomposing problems into a directed acyclic graph of atomic sub-questions, evaluating each node in an isolated context containing only its direct causal parents. This Markovian structure removes attention pathways to non-parent content, making downstream predictions sensitive to local reasoning rather than global context leakage. Across a diverse suite of reasoning benchmarks, CausalCoT preserves competitive predictive performance while improving explanation faithfulness, increasing causal sensitivity of intermediate reasoning steps by an average of 12 and up to 21 percentage points over the strongest baseline. The structured dependency graph additionally enables test-time interventions in which local corrections propagate predictably through downstream reasoning.",
+            "year": 2026,
+            "source": "https://arxiv.org/abs/2610.31639v1",
+            "arxiv_id": "2610.31639v1",
+            "doi": null,
+            "version": "v1",
+            "file_hash": "adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+            "page_count": 38,
+            "has_text_layer": true
+          },
+          "score": 50.0,
+          "signals": {
+            "graph_neighbor": 0,
+            "pagerank_normalized": 1.0,
+            "recency": 1.0,
+            "github_link": null
+          },
+          "reasons": [
+            {
+              "signal": "pagerank_normalized",
+              "text": "复用模块五在当前本地论文集合计算的 PageRank，不是全网引用数或科研质量。",
+              "evidence": {
+                "graph_node": {
+                  "schema_version": "1.2.0",
+                  "paper_id": "paper-adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+                  "title": "Causal Chain of Thought: Mitigating Attention Leakage via Context Isolation",
+                  "year": 2026,
+                  "pagerank": 0.19999999999999998,
+                  "level": "isolated"
+                },
+                "scope_size": 5,
+                "maximum_pagerank": 0.19999999999999998
+              }
+            },
+            {
+              "signal": "recency",
+              "text": "使用元数据发表年份与指定评分年份计算十年线性时效项。",
+              "evidence": {
+                "metadata_field": "year",
+                "year": 2026,
+                "as_of_year": 2026
+              }
+            },
+            {
+              "signal": "explicit_feedback",
+              "text": "落盘点赞/踩的标题主题词 Jaccard 相似度；不是向量或引用数。",
+              "evidence": {
+                "formula": "score = clamp(base_score + 50 * mean(vote * Jaccard(title_topics(candidate), title_topics(voted_paper))), 0, 100); empty profile adds 0",
+                "votes": [
+                  {
+                    "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+                    "vote": 1,
+                    "updated_at": "2026-10-25T17:09:50.195597+00:00",
+                    "matched_terms": [],
+                    "candidate_terms": [
+                      "attention",
+                      "causal",
+                      "chain",
+                      "context",
+                      "isolation",
+                      "leakage",
+                      "mitigating",
+                      "thought"
+                    ],
+                    "voted_terms": [
+                      "bert",
+                      "bidirectional",
+                      "deep",
+                      "language",
+                      "pre",
+                      "training",
+                      "transformer",
+                      "understanding"
+                    ],
+                    "jaccard": 0.0
+                  }
+                ]
+              }
+            }
+          ],
+          "missing_signals": [
+            "github_link"
+          ],
+          "scoring_version": "module-four-feedback-v1",
+          "as_of_year": 2026,
+          "base_score": 50.0,
+          "feedback_adjustment": 0.0
+        },
+        {
+          "paper": {
+            "schema_version": "1.0.0",
+            "id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+            "title": "Reformer: The Efficient Transformer",
+            "authors": [
+              "Nikita Kitaev",
+              "Łukasz Kaiser",
+              "Anselm Levskaya"
+            ],
+            "institutions": [],
+            "abstract": "Large Transformer models routinely achieve state-of-the-art results on a number of tasks but training these models can be prohibitively costly, especially on long sequences. We introduce two techniques to improve the efficiency of Transformers. For one, we replace dot-product attention by one that uses locality-sensitive hashing, changing its complexity from O($L^2$) to O($L\\log L$), where $L$ is the length of the sequence. Furthermore, we use reversible residual layers instead of the standard residuals, which allows storing activations only once in the training process instead of $N$ times, where $N$ is the number of layers. The resulting model, the Reformer, performs on par with Transformer models while being much more memory-efficient and much faster on long sequences.",
+            "year": 2020,
+            "source": "https://arxiv.org/abs/2001.04451v2",
+            "arxiv_id": "2001.04451v2",
+            "doi": null,
+            "version": "v2",
+            "file_hash": "f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+            "page_count": 12,
+            "has_text_layer": true
+          },
+          "score": 46.0,
+          "signals": {
+            "graph_neighbor": 0,
+            "pagerank_normalized": 1.0,
+            "recency": 0.4,
+            "github_link": null
+          },
+          "reasons": [
+            {
+              "signal": "pagerank_normalized",
+              "text": "复用模块五在当前本地论文集合计算的 PageRank，不是全网引用数或科研质量。",
+              "evidence": {
+                "graph_node": {
+                  "schema_version": "1.2.0",
+                  "paper_id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+                  "title": "Reformer: The Efficient Transformer",
+                  "year": 2020,
+                  "pagerank": 0.19999999999999998,
+                  "level": "isolated"
+                },
+                "scope_size": 5,
+                "maximum_pagerank": 0.19999999999999998
+              }
+            },
+            {
+              "signal": "recency",
+              "text": "使用元数据发表年份与指定评分年份计算十年线性时效项。",
+              "evidence": {
+                "metadata_field": "year",
+                "year": 2020,
+                "as_of_year": 2026
+              }
+            },
+            {
+              "signal": "explicit_feedback",
+              "text": "落盘点赞/踩的标题主题词 Jaccard 相似度；不是向量或引用数。",
+              "evidence": {
+                "formula": "score = clamp(base_score + 50 * mean(vote * Jaccard(title_topics(candidate), title_topics(voted_paper))), 0, 100); empty profile adds 0",
+                "votes": [
+                  {
+                    "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+                    "vote": 1,
+                    "updated_at": "2026-10-25T17:09:50.195597+00:00",
+                    "matched_terms": [
+                      "transformer"
+                    ],
+                    "candidate_terms": [
+                      "efficient",
+                      "reformer",
+                      "transformer"
+                    ],
+                    "voted_terms": [
+                      "bert",
+                      "bidirectional",
+                      "deep",
+                      "language",
+                      "pre",
+                      "training",
+                      "transformer",
+                      "understanding"
+                    ],
+                    "jaccard": 0.1
+                  }
+                ]
+              }
+            }
+          ],
+          "missing_signals": [
+            "github_link"
+          ],
+          "scoring_version": "module-four-feedback-v1",
+          "as_of_year": 2026,
+          "base_score": 41.0,
+          "feedback_adjustment": 5.0
+        }
+      ],
+      "page": 1,
+      "page_size": 100,
+      "total": 4,
+      "total_pages": 1,
+      "has_next": false
+    },
+    "persisted_profile": {
+      "profile_id": "local",
+      "votes": [
+        {
+          "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+          "vote": 1,
+          "updated_at": "2026-10-25T17:09:50.195597+00:00"
+        }
+      ],
+      "events": [
+        {
+          "event_id": 1,
+          "profile_id": "local",
+          "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+          "seed_paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "vote": 1,
+          "at": "2026-10-25T17:09:50.194519+00:00",
+          "as_of_year": 2026,
+          "before": [
+            {
+              "paper_id": "paper-7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+              "rank": 1,
+              "score": 50.0,
+              "base_score": 50.0,
+              "feedback_adjustment": 0
+            },
+            {
+              "paper_id": "paper-adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+              "rank": 2,
+              "score": 50.0,
+              "base_score": 50.0,
+              "feedback_adjustment": 0
+            },
+            {
+              "paper_id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+              "rank": 3,
+              "score": 41.0,
+              "base_score": 41.0,
+              "feedback_adjustment": 0
+            },
+            {
+              "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+              "rank": 4,
+              "score": 35.0,
+              "base_score": 35.0,
+              "feedback_adjustment": 0
+            }
+          ],
+          "after": [
+            {
+              "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+              "rank": 1,
+              "score": 85.0,
+              "base_score": 35.0,
+              "feedback_adjustment": 50.0
+            },
+            {
+              "paper_id": "paper-7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+              "rank": 2,
+              "score": 50.0,
+              "base_score": 50.0,
+              "feedback_adjustment": 0.0
+            },
+            {
+              "paper_id": "paper-adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+              "rank": 3,
+              "score": 50.0,
+              "base_score": 50.0,
+              "feedback_adjustment": 0.0
+            },
+            {
+              "paper_id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+              "rank": 4,
+              "score": 46.0,
+              "base_score": 41.0,
+              "feedback_adjustment": 5.0
+            }
+          ],
+          "formula": "score = clamp(base_score + 50 * mean(vote * Jaccard(title_topics(candidate), title_topics(voted_paper))), 0, 100); empty profile adds 0",
+          "evidence": [
+            {
+              "paper": {
+                "schema_version": "1.0.0",
+                "id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+                "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+                "authors": [
+                  "Jacob Devlin ; Ming-Wei Chang ; Kenton Lee ; Kristina Toutanova"
+                ],
+                "institutions": [],
+                "abstract": null,
+                "year": null,
+                "source": "local-upload",
+                "arxiv_id": null,
+                "doi": null,
+                "version": null,
+                "file_hash": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+                "page_count": 16,
+                "has_text_layer": true
+              },
+              "score": 85.0,
+              "signals": {
+                "graph_neighbor": 0,
+                "pagerank_normalized": 1.0,
+                "recency": null,
+                "github_link": null
+              },
+              "reasons": [
+                {
+                  "signal": "pagerank_normalized",
+                  "text": "复用模块五在当前本地论文集合计算的 PageRank，不是全网引用数或科研质量。",
+                  "evidence": {
+                    "graph_node": {
+                      "schema_version": "1.2.0",
+                      "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+                      "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+                      "year": null,
+                      "pagerank": 0.19999999999999998,
+                      "level": "isolated"
+                    },
+                    "scope_size": 5,
+                    "maximum_pagerank": 0.19999999999999998
+                  }
+                },
+                {
+                  "signal": "explicit_feedback",
+                  "text": "落盘点赞/踩的标题主题词 Jaccard 相似度；不是向量或引用数。",
+                  "evidence": {
+                    "formula": "score = clamp(base_score + 50 * mean(vote * Jaccard(title_topics(candidate), title_topics(voted_paper))), 0, 100); empty profile adds 0",
+                    "votes": [
+                      {
+                        "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+                        "vote": 1,
+                        "updated_at": "2026-10-25T17:09:49.600724+00:00",
+                        "matched_terms": [
+                          "bert",
+                          "bidirectional",
+                          "deep",
+                          "language",
+                          "pre",
+                          "training",
+                          "transformer",
+                          "understanding"
+                        ],
+                        "candidate_terms": [
+                          "bert",
+                          "bidirectional",
+                          "deep",
+                          "language",
+                          "pre",
+                          "training",
+                          "transformer",
+                          "understanding"
+                        ],
+                        "voted_terms": [
+                          "bert",
+                          "bidirectional",
+                          "deep",
+                          "language",
+                          "pre",
+                          "training",
+                          "transformer",
+                          "understanding"
+                        ],
+                        "jaccard": 1.0
+                      }
+                    ]
+                  }
+                }
+              ],
+              "missing_signals": [
+                "publication_year",
+                "github_link"
+              ],
+              "scoring_version": "module-four-feedback-v1",
+              "as_of_year": 2026,
+              "base_score": 35.0,
+              "feedback_adjustment": 50.0
+            }
+          ]
+        }
+      ],
+      "formula": "score = clamp(base_score + 50 * mean(vote * Jaccard(title_topics(candidate), title_topics(voted_paper))), 0, 100); empty profile adds 0"
+    }
+  },
+  "latest_status": {
+    "latest_run": {
+      "run_id": "bb051baacb5a40a1b3acda73f85aaf27",
+      "started_at": "2026-10-25T17:09:32.569499+00:00",
+      "finished_at": "2026-10-25T17:09:36.644844+00:00",
+      "status": "completed",
+      "duration_seconds": 4.062,
+      "candidate_count": 2,
+      "candidates": [
+        {
+          "arxiv_id": "2610.31639v1",
+          "title": "Causal Chain of Thought: Mitigating Attention Leakage via Context Isolation",
+          "metadata": {
+            "schema_version": "1.0.0",
+            "id": "arxiv-2610.31639v1",
+            "title": "Causal Chain of Thought: Mitigating Attention Leakage via Context Isolation",
+            "authors": [
+              "Gabriele Dominici",
+              "Teague McMillan",
+              "Fazl Barez",
+              "Marc Langheinrich",
+              "Martin Gjoreski"
+            ],
+            "institutions": [],
+            "abstract": "Chain-of-thought (CoT) prompting elicits step-by-step rationales that appear to explain model predictions, but there is no guarantee these steps causally drive the final answer. In standard autoregressive generation, dense attention allows each reasoning step to attend to the full context, enabling the model to derive answers through direct lookup while generating plausible-sounding but post-hoc justifications. We introduce CausalCoT, an inference framework that enforces causal transparency by decomposing problems into a directed acyclic graph of atomic sub-questions, evaluating each node in an isolated context containing only its direct causal parents. This Markovian structure removes attention pathways to non-parent content, making downstream predictions sensitive to local reasoning rather than global context leakage. Across a diverse suite of reasoning benchmarks, CausalCoT preserves competitive predictive performance while improving explanation faithfulness, increasing causal sensitivity of intermediate reasoning steps by an average of 12 and up to 21 percentage points over the strongest baseline. The structured dependency graph additionally enables test-time interventions in which local corrections propagate predictably through downstream reasoning.",
+            "year": 2026,
+            "source": "https://arxiv.org/abs/2610.31639v1",
+            "arxiv_id": "2610.31639v1",
+            "doi": null,
+            "version": "v1",
+            "file_hash": null,
+            "page_count": null,
+            "has_text_layer": null
+          },
+          "related_to": [
+            {
+              "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+              "kind": "topic",
+              "matched_terms": [
+                "attention"
+              ],
+              "reason": "与库内论文主题词重合：attention",
+              "anchor": {
+                "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                "page_number": 1,
+                "section": [],
+                "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00002"
+              },
+              "reference_anchor": null
+            }
+          ],
+          "outcome": "duplicate",
+          "import": {
+            "succeeded": true,
+            "metadata": {
+              "schema_version": "1.0.0",
+              "id": "arxiv-2610.31639v1",
+              "title": "Causal Chain of Thought: Mitigating Attention Leakage via Context Isolation",
+              "authors": [
+                "Gabriele Dominici",
+                "Teague McMillan",
+                "Fazl Barez",
+                "Marc Langheinrich",
+                "Martin Gjoreski"
+              ],
+              "institutions": [],
+              "abstract": "Chain-of-thought (CoT) prompting elicits step-by-step rationales that appear to explain model predictions, but there is no guarantee these steps causally drive the final answer. In standard autoregressive generation, dense attention allows each reasoning step to attend to the full context, enabling the model to derive answers through direct lookup while generating plausible-sounding but post-hoc justifications. We introduce CausalCoT, an inference framework that enforces causal transparency by decomposing problems into a directed acyclic graph of atomic sub-questions, evaluating each node in an isolated context containing only its direct causal parents. This Markovian structure removes attention pathways to non-parent content, making downstream predictions sensitive to local reasoning rather than global context leakage. Across a diverse suite of reasoning benchmarks, CausalCoT preserves competitive predictive performance while improving explanation faithfulness, increasing causal sensitivity of intermediate reasoning steps by an average of 12 and up to 21 percentage points over the strongest baseline. The structured dependency graph additionally enables test-time interventions in which local corrections propagate predictably through downstream reasoning.",
+              "year": 2026,
+              "source": "https://arxiv.org/abs/2610.31639v1",
+              "arxiv_id": "2610.31639v1",
+              "doi": null,
+              "version": "v1",
+              "file_hash": null,
+              "page_count": null,
+              "has_text_layer": null
+            },
+            "paper": {
+              "schema_version": "1.0.0",
+              "id": "paper-adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+              "title": "Causal Chain of Thought: Mitigating Attention Leakage via Context Isolation",
+              "authors": [
+                "Gabriele Dominici",
+                "Teague McMillan",
+                "Fazl Barez",
+                "Marc Langheinrich",
+                "Martin Gjoreski"
+              ],
+              "institutions": [],
+              "abstract": "Chain-of-thought (CoT) prompting elicits step-by-step rationales that appear to explain model predictions, but there is no guarantee these steps causally drive the final answer. In standard autoregressive generation, dense attention allows each reasoning step to attend to the full context, enabling the model to derive answers through direct lookup while generating plausible-sounding but post-hoc justifications. We introduce CausalCoT, an inference framework that enforces causal transparency by decomposing problems into a directed acyclic graph of atomic sub-questions, evaluating each node in an isolated context containing only its direct causal parents. This Markovian structure removes attention pathways to non-parent content, making downstream predictions sensitive to local reasoning rather than global context leakage. Across a diverse suite of reasoning benchmarks, CausalCoT preserves competitive predictive performance while improving explanation faithfulness, increasing causal sensitivity of intermediate reasoning steps by an average of 12 and up to 21 percentage points over the strongest baseline. The structured dependency graph additionally enables test-time interventions in which local corrections propagate predictably through downstream reasoning.",
+              "year": 2026,
+              "source": "https://arxiv.org/abs/2610.31639v1",
+              "arxiv_id": "2610.31639v1",
+              "doi": null,
+              "version": "v1",
+              "file_hash": "adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+              "page_count": 38,
+              "has_text_layer": true
+            },
+            "initial_parse_status": null,
+            "parse_status": {
+              "schema_version": "1.1.0",
+              "paper_id": "paper-adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+              "status": "completed",
+              "progress": 100,
+              "current_stage": "四类记录已通过校验并原子发布",
+              "error_code": null,
+              "error_message": null
+            },
+            "error": null,
+            "already_present": true,
+            "dedup": {
+              "identity": "2610.31639",
+              "paper_id": "paper-adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+              "reason": "ARXIV_ID",
+              "similarity": null,
+              "first_seen": "2026-10-25T17:09:36.360566+00:00",
+              "occurrences": 1,
+              "last_seen": "2026-10-25T17:09:36.360566+00:00",
+              "record_created": true
+            }
+          }
+        },
+        {
+          "arxiv_id": "2610.31633v1",
+          "title": "BeNice! Closing Looping's Inference-Memory Gap via KV-Sharing",
+          "metadata": {
+            "schema_version": "1.0.0",
+            "id": "arxiv-2610.31633v1",
+            "title": "BeNice! Closing Looping's Inference-Memory Gap via KV-Sharing",
+            "authors": [
+              "Hayden Prairie",
+              "Jacob M. Ryan",
+              "Taylor Berg-Kirkpatrick",
+              "Daniel Y. Fu"
+            ],
+            "institutions": [],
+            "abstract": "Looped architectures scale quality while keeping parameter count fixed by repeatedly passing activations through the same block of layers. During inference, each recurrence generates independent KV-caches, causing memory to grow linearly. To address this challenge, prior work has proposed KV-sharing (i.e., sharing KV-caches across depth), finding that, in some cases, the KV-cache of the final recurrence can be shared with the earlier recurrences without quality loss, a property we denote as KV-shareability. However, the mechanisms underlying KV-shareability remain poorly understood, with even identically trained looped architectures not consistently exhibiting it. In this paper, we study how KV-shareability can be enabled in looped models. We propose a two-stage method: in the first stage, we use stochastic depth during pretraining, which induces contractive residual dynamics that drive representations toward a common limit across recurrences. In the second stage, we propose BeNice!, a post-training method that broadcasts the final recurrence's KV-cache into the first recurrence, training it to produce compatible residuals while preserving the original model's quality. As a result, BeNice! enables KV-shareability while matching standard finetuning's unshared validation perplexity. Using BeNice!, we show that KV-sharing is complementary to alternative KV-compression methods, composing with memory-efficient sequence mixers (e.g., multi-latent attention, Kimi delta attention) and low-precision KV-cache quantization (e.g., fp8, mxfp8, nvfp4). Finally, in simulated low-memory, long-context inference, KV-sharing improves cache hit rates by up to 31.4%, increases throughput by up to 23.6%, and reduces p90 time-to-first-token by up to 83.6%.",
+            "year": 2026,
+            "source": "https://arxiv.org/abs/2610.31633v1",
+            "arxiv_id": "2610.31633v1",
+            "doi": null,
+            "version": "v1",
+            "file_hash": null,
+            "page_count": null,
+            "has_text_layer": null
+          },
+          "related_to": [
+            {
+              "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+              "kind": "topic",
+              "matched_terms": [
+                "attention"
+              ],
+              "reason": "与库内论文主题词重合：attention",
+              "anchor": {
+                "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                "page_number": 1,
+                "section": [],
+                "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00002"
+              },
+              "reference_anchor": null
+            }
+          ],
+          "outcome": "duplicate",
+          "import": {
+            "succeeded": true,
+            "metadata": {
+              "schema_version": "1.0.0",
+              "id": "arxiv-2610.31633v1",
+              "title": "BeNice! Closing Looping's Inference-Memory Gap via KV-Sharing",
+              "authors": [
+                "Hayden Prairie",
+                "Jacob M. Ryan",
+                "Taylor Berg-Kirkpatrick",
+                "Daniel Y. Fu"
+              ],
+              "institutions": [],
+              "abstract": "Looped architectures scale quality while keeping parameter count fixed by repeatedly passing activations through the same block of layers. During inference, each recurrence generates independent KV-caches, causing memory to grow linearly. To address this challenge, prior work has proposed KV-sharing (i.e., sharing KV-caches across depth), finding that, in some cases, the KV-cache of the final recurrence can be shared with the earlier recurrences without quality loss, a property we denote as KV-shareability. However, the mechanisms underlying KV-shareability remain poorly understood, with even identically trained looped architectures not consistently exhibiting it. In this paper, we study how KV-shareability can be enabled in looped models. We propose a two-stage method: in the first stage, we use stochastic depth during pretraining, which induces contractive residual dynamics that drive representations toward a common limit across recurrences. In the second stage, we propose BeNice!, a post-training method that broadcasts the final recurrence's KV-cache into the first recurrence, training it to produce compatible residuals while preserving the original model's quality. As a result, BeNice! enables KV-shareability while matching standard finetuning's unshared validation perplexity. Using BeNice!, we show that KV-sharing is complementary to alternative KV-compression methods, composing with memory-efficient sequence mixers (e.g., multi-latent attention, Kimi delta attention) and low-precision KV-cache quantization (e.g., fp8, mxfp8, nvfp4). Finally, in simulated low-memory, long-context inference, KV-sharing improves cache hit rates by up to 31.4%, increases throughput by up to 23.6%, and reduces p90 time-to-first-token by up to 83.6%.",
+              "year": 2026,
+              "source": "https://arxiv.org/abs/2610.31633v1",
+              "arxiv_id": "2610.31633v1",
+              "doi": null,
+              "version": "v1",
+              "file_hash": null,
+              "page_count": null,
+              "has_text_layer": null
+            },
+            "paper": {
+              "schema_version": "1.0.0",
+              "id": "paper-7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+              "title": "BeNice! Closing Looping's Inference-Memory Gap via KV-Sharing",
+              "authors": [
+                "Hayden Prairie",
+                "Jacob M. Ryan",
+                "Taylor Berg-Kirkpatrick",
+                "Daniel Y. Fu"
+              ],
+              "institutions": [],
+              "abstract": "Looped architectures scale quality while keeping parameter count fixed by repeatedly passing activations through the same block of layers. During inference, each recurrence generates independent KV-caches, causing memory to grow linearly. To address this challenge, prior work has proposed KV-sharing (i.e., sharing KV-caches across depth), finding that, in some cases, the KV-cache of the final recurrence can be shared with the earlier recurrences without quality loss, a property we denote as KV-shareability. However, the mechanisms underlying KV-shareability remain poorly understood, with even identically trained looped architectures not consistently exhibiting it. In this paper, we study how KV-shareability can be enabled in looped models. We propose a two-stage method: in the first stage, we use stochastic depth during pretraining, which induces contractive residual dynamics that drive representations toward a common limit across recurrences. In the second stage, we propose BeNice!, a post-training method that broadcasts the final recurrence's KV-cache into the first recurrence, training it to produce compatible residuals while preserving the original model's quality. As a result, BeNice! enables KV-shareability while matching standard finetuning's unshared validation perplexity. Using BeNice!, we show that KV-sharing is complementary to alternative KV-compression methods, composing with memory-efficient sequence mixers (e.g., multi-latent attention, Kimi delta attention) and low-precision KV-cache quantization (e.g., fp8, mxfp8, nvfp4). Finally, in simulated low-memory, long-context inference, KV-sharing improves cache hit rates by up to 31.4%, increases throughput by up to 23.6%, and reduces p90 time-to-first-token by up to 83.6%.",
+              "year": 2026,
+              "source": "https://arxiv.org/abs/2610.31633v1",
+              "arxiv_id": "2610.31633v1",
+              "doi": null,
+              "version": "v1",
+              "file_hash": "7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+              "page_count": 37,
+              "has_text_layer": true
+            },
+            "initial_parse_status": null,
+            "parse_status": {
+              "schema_version": "1.1.0",
+              "paper_id": "paper-7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+              "status": "completed",
+              "progress": 100,
+              "current_stage": "四类记录已通过校验并原子发布",
+              "error_code": null,
+              "error_message": null
+            },
+            "error": null,
+            "already_present": true,
+            "dedup": {
+              "identity": "2610.31633",
+              "paper_id": "paper-7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+              "reason": "ARXIV_ID",
+              "similarity": null,
+              "first_seen": "2026-10-25T17:09:36.569948+00:00",
+              "occurrences": 1,
+              "last_seen": "2026-10-25T17:09:36.569948+00:00",
+              "record_created": true
+            }
+          }
+        }
+      ],
+      "queries": [
+        {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "query": "all:\"attention\"",
+          "kind": "topic",
+          "terms": [
+            "attention"
+          ],
+          "anchor": {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 1,
+            "section": [],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00002"
+          },
+          "returned_count": 2,
+          "error": null
+        },
+        {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "query": "ti:\"Empirical evaluation of gated recurrent neural networks on sequence modeling\"",
+          "kind": "citation",
+          "reference": {
+            "schema_version": "1.0.0",
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-7",
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "number": 7,
+            "authors": [],
+            "year": null,
+            "title": null,
+            "venue": null,
+            "doi": null,
+            "arxiv_id": null
+          },
+          "terms": [
+            "empirical",
+            "evaluation",
+            "gated",
+            "modeling",
+            "network",
+            "neural",
+            "recurrent",
+            "sequence"
+          ],
+          "reference_title_excerpt": "Empirical evaluation of gated recurrent neural networks on sequence modeling",
+          "reference_anchor": {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 11,
+            "section": [
+              "References"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00134"
+          },
+          "anchor": {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 2,
+            "section": [
+              "1 Introduction"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00016"
+          },
+          "returned_count": 1,
+          "error": null
+        }
+      ],
+      "imported_count": 0,
+      "duplicate_count": 2,
+      "failed_count": 0,
+      "errors": [],
+      "cleanup": {
+        "papers_scanned": 4,
+        "papers_changed": 0,
+        "links_before": 243,
+        "links_after": 243,
+        "removed_count": 0,
+        "changes": []
+      },
+      "interval_seconds": 86400,
+      "dedup_record_count": 2,
+      "paper_ids": [
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+      ]
+    },
+    "dedup_records": [
+      {
+        "identity": "2610.31633",
+        "paper_id": "paper-7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+        "reason": "ARXIV_ID",
+        "similarity": null,
+        "first_seen": "2026-10-25T17:09:36.569948+00:00",
+        "occurrences": 1,
+        "last_seen": "2026-10-25T17:09:36.569948+00:00"
+      },
+      {
+        "identity": "2610.31639",
+        "paper_id": "paper-adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+        "reason": "ARXIV_ID",
+        "similarity": null,
+        "first_seen": "2026-10-25T17:09:36.360566+00:00",
+        "occurrences": 1,
+        "last_seen": "2026-10-25T17:09:36.360566+00:00"
+      }
+    ],
+    "scheduler": "externally_triggered",
+    "default_interval_seconds": 86400
+  },
+  "scheduled_task_not_due": {
+    "exit_code": 0,
+    "result": {
+      "skipped": true,
+      "reason": "NOT_DUE",
+      "latest_run": {
+        "run_id": "bb051baacb5a40a1b3acda73f85aaf27",
+        "started_at": "2026-10-25T17:09:32.569499+00:00",
+        "finished_at": "2026-10-25T17:09:36.644844+00:00",
+        "status": "completed",
+        "duration_seconds": 4.062,
+        "candidate_count": 2,
+        "candidates": [
+          {
+            "arxiv_id": "2610.31639v1",
+            "title": "Causal Chain of Thought: Mitigating Attention Leakage via Context Isolation",
+            "metadata": {
+              "schema_version": "1.0.0",
+              "id": "arxiv-2610.31639v1",
+              "title": "Causal Chain of Thought: Mitigating Attention Leakage via Context Isolation",
+              "authors": [
+                "Gabriele Dominici",
+                "Teague McMillan",
+                "Fazl Barez",
+                "Marc Langheinrich",
+                "Martin Gjoreski"
+              ],
+              "institutions": [],
+              "abstract": "Chain-of-thought (CoT) prompting elicits step-by-step rationales that appear to explain model predictions, but there is no guarantee these steps causally drive the final answer. In standard autoregressive generation, dense attention allows each reasoning step to attend to the full context, enabling the model to derive answers through direct lookup while generating plausible-sounding but post-hoc justifications. We introduce CausalCoT, an inference framework that enforces causal transparency by decomposing problems into a directed acyclic graph of atomic sub-questions, evaluating each node in an isolated context containing only its direct causal parents. This Markovian structure removes attention pathways to non-parent content, making downstream predictions sensitive to local reasoning rather than global context leakage. Across a diverse suite of reasoning benchmarks, CausalCoT preserves competitive predictive performance while improving explanation faithfulness, increasing causal sensitivity of intermediate reasoning steps by an average of 12 and up to 21 percentage points over the strongest baseline. The structured dependency graph additionally enables test-time interventions in which local corrections propagate predictably through downstream reasoning.",
+              "year": 2026,
+              "source": "https://arxiv.org/abs/2610.31639v1",
+              "arxiv_id": "2610.31639v1",
+              "doi": null,
+              "version": "v1",
+              "file_hash": null,
+              "page_count": null,
+              "has_text_layer": null
+            },
+            "related_to": [
+              {
+                "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                "kind": "topic",
+                "matched_terms": [
+                  "attention"
+                ],
+                "reason": "与库内论文主题词重合：attention",
+                "anchor": {
+                  "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                  "page_number": 1,
+                  "section": [],
+                  "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00002"
+                },
+                "reference_anchor": null
+              }
+            ],
+            "outcome": "duplicate",
+            "import": {
+              "succeeded": true,
+              "metadata": {
+                "schema_version": "1.0.0",
+                "id": "arxiv-2610.31639v1",
+                "title": "Causal Chain of Thought: Mitigating Attention Leakage via Context Isolation",
+                "authors": [
+                  "Gabriele Dominici",
+                  "Teague McMillan",
+                  "Fazl Barez",
+                  "Marc Langheinrich",
+                  "Martin Gjoreski"
+                ],
+                "institutions": [],
+                "abstract": "Chain-of-thought (CoT) prompting elicits step-by-step rationales that appear to explain model predictions, but there is no guarantee these steps causally drive the final answer. In standard autoregressive generation, dense attention allows each reasoning step to attend to the full context, enabling the model to derive answers through direct lookup while generating plausible-sounding but post-hoc justifications. We introduce CausalCoT, an inference framework that enforces causal transparency by decomposing problems into a directed acyclic graph of atomic sub-questions, evaluating each node in an isolated context containing only its direct causal parents. This Markovian structure removes attention pathways to non-parent content, making downstream predictions sensitive to local reasoning rather than global context leakage. Across a diverse suite of reasoning benchmarks, CausalCoT preserves competitive predictive performance while improving explanation faithfulness, increasing causal sensitivity of intermediate reasoning steps by an average of 12 and up to 21 percentage points over the strongest baseline. The structured dependency graph additionally enables test-time interventions in which local corrections propagate predictably through downstream reasoning.",
+                "year": 2026,
+                "source": "https://arxiv.org/abs/2610.31639v1",
+                "arxiv_id": "2610.31639v1",
+                "doi": null,
+                "version": "v1",
+                "file_hash": null,
+                "page_count": null,
+                "has_text_layer": null
+              },
+              "paper": {
+                "schema_version": "1.0.0",
+                "id": "paper-adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+                "title": "Causal Chain of Thought: Mitigating Attention Leakage via Context Isolation",
+                "authors": [
+                  "Gabriele Dominici",
+                  "Teague McMillan",
+                  "Fazl Barez",
+                  "Marc Langheinrich",
+                  "Martin Gjoreski"
+                ],
+                "institutions": [],
+                "abstract": "Chain-of-thought (CoT) prompting elicits step-by-step rationales that appear to explain model predictions, but there is no guarantee these steps causally drive the final answer. In standard autoregressive generation, dense attention allows each reasoning step to attend to the full context, enabling the model to derive answers through direct lookup while generating plausible-sounding but post-hoc justifications. We introduce CausalCoT, an inference framework that enforces causal transparency by decomposing problems into a directed acyclic graph of atomic sub-questions, evaluating each node in an isolated context containing only its direct causal parents. This Markovian structure removes attention pathways to non-parent content, making downstream predictions sensitive to local reasoning rather than global context leakage. Across a diverse suite of reasoning benchmarks, CausalCoT preserves competitive predictive performance while improving explanation faithfulness, increasing causal sensitivity of intermediate reasoning steps by an average of 12 and up to 21 percentage points over the strongest baseline. The structured dependency graph additionally enables test-time interventions in which local corrections propagate predictably through downstream reasoning.",
+                "year": 2026,
+                "source": "https://arxiv.org/abs/2610.31639v1",
+                "arxiv_id": "2610.31639v1",
+                "doi": null,
+                "version": "v1",
+                "file_hash": "adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+                "page_count": 38,
+                "has_text_layer": true
+              },
+              "initial_parse_status": null,
+              "parse_status": {
+                "schema_version": "1.1.0",
+                "paper_id": "paper-adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+                "status": "completed",
+                "progress": 100,
+                "current_stage": "四类记录已通过校验并原子发布",
+                "error_code": null,
+                "error_message": null
+              },
+              "error": null,
+              "already_present": true,
+              "dedup": {
+                "identity": "2610.31639",
+                "paper_id": "paper-adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+                "reason": "ARXIV_ID",
+                "similarity": null,
+                "first_seen": "2026-10-25T17:09:36.360566+00:00",
+                "occurrences": 1,
+                "last_seen": "2026-10-25T17:09:36.360566+00:00",
+                "record_created": true
+              }
+            }
+          },
+          {
+            "arxiv_id": "2610.31633v1",
+            "title": "BeNice! Closing Looping's Inference-Memory Gap via KV-Sharing",
+            "metadata": {
+              "schema_version": "1.0.0",
+              "id": "arxiv-2610.31633v1",
+              "title": "BeNice! Closing Looping's Inference-Memory Gap via KV-Sharing",
+              "authors": [
+                "Hayden Prairie",
+                "Jacob M. Ryan",
+                "Taylor Berg-Kirkpatrick",
+                "Daniel Y. Fu"
+              ],
+              "institutions": [],
+              "abstract": "Looped architectures scale quality while keeping parameter count fixed by repeatedly passing activations through the same block of layers. During inference, each recurrence generates independent KV-caches, causing memory to grow linearly. To address this challenge, prior work has proposed KV-sharing (i.e., sharing KV-caches across depth), finding that, in some cases, the KV-cache of the final recurrence can be shared with the earlier recurrences without quality loss, a property we denote as KV-shareability. However, the mechanisms underlying KV-shareability remain poorly understood, with even identically trained looped architectures not consistently exhibiting it. In this paper, we study how KV-shareability can be enabled in looped models. We propose a two-stage method: in the first stage, we use stochastic depth during pretraining, which induces contractive residual dynamics that drive representations toward a common limit across recurrences. In the second stage, we propose BeNice!, a post-training method that broadcasts the final recurrence's KV-cache into the first recurrence, training it to produce compatible residuals while preserving the original model's quality. As a result, BeNice! enables KV-shareability while matching standard finetuning's unshared validation perplexity. Using BeNice!, we show that KV-sharing is complementary to alternative KV-compression methods, composing with memory-efficient sequence mixers (e.g., multi-latent attention, Kimi delta attention) and low-precision KV-cache quantization (e.g., fp8, mxfp8, nvfp4). Finally, in simulated low-memory, long-context inference, KV-sharing improves cache hit rates by up to 31.4%, increases throughput by up to 23.6%, and reduces p90 time-to-first-token by up to 83.6%.",
+              "year": 2026,
+              "source": "https://arxiv.org/abs/2610.31633v1",
+              "arxiv_id": "2610.31633v1",
+              "doi": null,
+              "version": "v1",
+              "file_hash": null,
+              "page_count": null,
+              "has_text_layer": null
+            },
+            "related_to": [
+              {
+                "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                "kind": "topic",
+                "matched_terms": [
+                  "attention"
+                ],
+                "reason": "与库内论文主题词重合：attention",
+                "anchor": {
+                  "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                  "page_number": 1,
+                  "section": [],
+                  "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00002"
+                },
+                "reference_anchor": null
+              }
+            ],
+            "outcome": "duplicate",
+            "import": {
+              "succeeded": true,
+              "metadata": {
+                "schema_version": "1.0.0",
+                "id": "arxiv-2610.31633v1",
+                "title": "BeNice! Closing Looping's Inference-Memory Gap via KV-Sharing",
+                "authors": [
+                  "Hayden Prairie",
+                  "Jacob M. Ryan",
+                  "Taylor Berg-Kirkpatrick",
+                  "Daniel Y. Fu"
+                ],
+                "institutions": [],
+                "abstract": "Looped architectures scale quality while keeping parameter count fixed by repeatedly passing activations through the same block of layers. During inference, each recurrence generates independent KV-caches, causing memory to grow linearly. To address this challenge, prior work has proposed KV-sharing (i.e., sharing KV-caches across depth), finding that, in some cases, the KV-cache of the final recurrence can be shared with the earlier recurrences without quality loss, a property we denote as KV-shareability. However, the mechanisms underlying KV-shareability remain poorly understood, with even identically trained looped architectures not consistently exhibiting it. In this paper, we study how KV-shareability can be enabled in looped models. We propose a two-stage method: in the first stage, we use stochastic depth during pretraining, which induces contractive residual dynamics that drive representations toward a common limit across recurrences. In the second stage, we propose BeNice!, a post-training method that broadcasts the final recurrence's KV-cache into the first recurrence, training it to produce compatible residuals while preserving the original model's quality. As a result, BeNice! enables KV-shareability while matching standard finetuning's unshared validation perplexity. Using BeNice!, we show that KV-sharing is complementary to alternative KV-compression methods, composing with memory-efficient sequence mixers (e.g., multi-latent attention, Kimi delta attention) and low-precision KV-cache quantization (e.g., fp8, mxfp8, nvfp4). Finally, in simulated low-memory, long-context inference, KV-sharing improves cache hit rates by up to 31.4%, increases throughput by up to 23.6%, and reduces p90 time-to-first-token by up to 83.6%.",
+                "year": 2026,
+                "source": "https://arxiv.org/abs/2610.31633v1",
+                "arxiv_id": "2610.31633v1",
+                "doi": null,
+                "version": "v1",
+                "file_hash": null,
+                "page_count": null,
+                "has_text_layer": null
+              },
+              "paper": {
+                "schema_version": "1.0.0",
+                "id": "paper-7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+                "title": "BeNice! Closing Looping's Inference-Memory Gap via KV-Sharing",
+                "authors": [
+                  "Hayden Prairie",
+                  "Jacob M. Ryan",
+                  "Taylor Berg-Kirkpatrick",
+                  "Daniel Y. Fu"
+                ],
+                "institutions": [],
+                "abstract": "Looped architectures scale quality while keeping parameter count fixed by repeatedly passing activations through the same block of layers. During inference, each recurrence generates independent KV-caches, causing memory to grow linearly. To address this challenge, prior work has proposed KV-sharing (i.e., sharing KV-caches across depth), finding that, in some cases, the KV-cache of the final recurrence can be shared with the earlier recurrences without quality loss, a property we denote as KV-shareability. However, the mechanisms underlying KV-shareability remain poorly understood, with even identically trained looped architectures not consistently exhibiting it. In this paper, we study how KV-shareability can be enabled in looped models. We propose a two-stage method: in the first stage, we use stochastic depth during pretraining, which induces contractive residual dynamics that drive representations toward a common limit across recurrences. In the second stage, we propose BeNice!, a post-training method that broadcasts the final recurrence's KV-cache into the first recurrence, training it to produce compatible residuals while preserving the original model's quality. As a result, BeNice! enables KV-shareability while matching standard finetuning's unshared validation perplexity. Using BeNice!, we show that KV-sharing is complementary to alternative KV-compression methods, composing with memory-efficient sequence mixers (e.g., multi-latent attention, Kimi delta attention) and low-precision KV-cache quantization (e.g., fp8, mxfp8, nvfp4). Finally, in simulated low-memory, long-context inference, KV-sharing improves cache hit rates by up to 31.4%, increases throughput by up to 23.6%, and reduces p90 time-to-first-token by up to 83.6%.",
+                "year": 2026,
+                "source": "https://arxiv.org/abs/2610.31633v1",
+                "arxiv_id": "2610.31633v1",
+                "doi": null,
+                "version": "v1",
+                "file_hash": "7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+                "page_count": 37,
+                "has_text_layer": true
+              },
+              "initial_parse_status": null,
+              "parse_status": {
+                "schema_version": "1.1.0",
+                "paper_id": "paper-7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+                "status": "completed",
+                "progress": 100,
+                "current_stage": "四类记录已通过校验并原子发布",
+                "error_code": null,
+                "error_message": null
+              },
+              "error": null,
+              "already_present": true,
+              "dedup": {
+                "identity": "2610.31633",
+                "paper_id": "paper-7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+                "reason": "ARXIV_ID",
+                "similarity": null,
+                "first_seen": "2026-10-25T17:09:36.569948+00:00",
+                "occurrences": 1,
+                "last_seen": "2026-10-25T17:09:36.569948+00:00",
+                "record_created": true
+              }
+            }
+          }
+        ],
+        "queries": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "query": "all:\"attention\"",
+            "kind": "topic",
+            "terms": [
+              "attention"
+            ],
+            "anchor": {
+              "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+              "page_number": 1,
+              "section": [],
+              "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00002"
+            },
+            "returned_count": 2,
+            "error": null
+          },
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "query": "ti:\"Empirical evaluation of gated recurrent neural networks on sequence modeling\"",
+            "kind": "citation",
+            "reference": {
+              "schema_version": "1.0.0",
+              "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-7",
+              "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+              "number": 7,
+              "authors": [],
+              "year": null,
+              "title": null,
+              "venue": null,
+              "doi": null,
+              "arxiv_id": null
+            },
+            "terms": [
+              "empirical",
+              "evaluation",
+              "gated",
+              "modeling",
+              "network",
+              "neural",
+              "recurrent",
+              "sequence"
+            ],
+            "reference_title_excerpt": "Empirical evaluation of gated recurrent neural networks on sequence modeling",
+            "reference_anchor": {
+              "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+              "page_number": 11,
+              "section": [
+                "References"
+              ],
+              "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00134"
+            },
+            "anchor": {
+              "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+              "page_number": 2,
+              "section": [
+                "1 Introduction"
+              ],
+              "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00016"
+            },
+            "returned_count": 1,
+            "error": null
+          }
+        ],
+        "imported_count": 0,
+        "duplicate_count": 2,
+        "failed_count": 0,
+        "errors": [],
+        "cleanup": {
+          "papers_scanned": 4,
+          "papers_changed": 0,
+          "links_before": 243,
+          "links_after": 243,
+          "removed_count": 0,
+          "changes": []
+        },
+        "interval_seconds": 86400,
+        "dedup_record_count": 2,
+        "paper_ids": [
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+        ]
+      }
+    }
+  },
+  "source_sha256_lf": {
+    "backend/scholar_graph/api.py": "fcc88d326b935a98c7ff93aa0023ca14adb599f5ca1139e200828128ffe47fed",
+    "backend/scholar_graph/api_uploads.py": "84a8d601541244116f67f9d0c8459939f9ff04a437a71e42f366f6d9424f98ea",
+    "backend/scholar_graph/arxiv_fetch.py": "5c26adbbce4f9339282b21974ea0a90014cf7d1367e6d99eb271280eda31f55d",
+    "backend/scholar_graph/citation_cleanup.py": "b3c07380e109e444e387bc39f8967c173499e9c985b8fe84a69823347ab09be1",
+    "backend/scholar_graph/recommendations.py": "41e6fb18d826acd2f4b6a3173101f012a5f3018fb704a10a650e0d2aac6bafef",
+    "backend/scholar_graph/recommendation_feedback.py": "bf33a37798683966ce742bbe0be13ab5ca3feab2c8b571102a6d9f39d34cf202",
+    "backend/scholar_graph/retrieval_routes.py": "8989431ac7ed302905df2d796b2d3e96d096467358880d656035b754dd27c03a",
+    "backend/scholar_graph/tracking.py": "306b93266b306dbef8dcb5b31e1c88b9b000aa34c3c663a6e583d0c5eadc575b",
+    "backend/scholar_graph/tracking_cli.py": "dee6e2cc744cdfe31948b923533a6dee66d53e6d02379fff4a97f59b85f146ba",
+    "backend/scholar_graph/tracking_routes.py": "62dd56cf6558c73b9006b5e573e4d4be2ff117282de2abc4eab975a090337ce9",
+    "backend/scholar_graph/tracking_state.py": "10b21036cc494878b88d2ca93f10362305f93affe658b334ec6a8ae691a519f5",
+    "tests/run_tracking_acceptance.py": "62c4bcfe642bd69030389ada77b397555845cb720f5ae25b44866fab6599ede4"
+  },
+  "finished_at": "2026-10-25T17:09:51Z"
+}

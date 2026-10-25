@@ -1,0 +1,157 @@
+{
+  "baseline": "b42f3d21918bdb24c037c7845bd5129af6b1f9e3",
+  "checks": [
+    {
+      "check": "真实两轮运行均完成且HTTP200",
+      "passed": true
+    },
+    {
+      "check": "第一轮2候选2入库无失败",
+      "passed": true
+    },
+    {
+      "check": "第二轮零新增且跳过2重复",
+      "passed": true
+    },
+    {
+      "check": "两轮已发布论文id集合不变",
+      "passed": true
+    },
+    {
+      "check": "候选基础arXiv身份唯一",
+      "passed": true
+    },
+    {
+      "check": "公共请求无模型Key",
+      "passed": true
+    },
+    {
+      "check": "种子同时包含主题与真实引用关系",
+      "passed": true
+    },
+    {
+      "check": "全部种子锚点回溯真实Chunk",
+      "passed": true
+    },
+    {
+      "check": "实际解析发布和Chunk计数:2610.31639v1",
+      "passed": true
+    },
+    {
+      "check": "真实queued到completed:2610.31639v1",
+      "passed": true
+    },
+    {
+      "check": "重复复用同一论文且不伪造初始状态:2610.31639v1",
+      "passed": true
+    },
+    {
+      "check": "实际解析发布和Chunk计数:2610.31633v1",
+      "passed": true
+    },
+    {
+      "check": "真实queued到completed:2610.31633v1",
+      "passed": true
+    },
+    {
+      "check": "重复复用同一论文且不伪造初始状态:2610.31633v1",
+      "passed": true
+    },
+    {
+      "check": "去重日志仅两行且身份唯一",
+      "passed": true
+    },
+    {
+      "check": "重复计数与运行一致",
+      "passed": true
+    },
+    {
+      "check": "原生引用数据未虚报删除",
+      "passed": true
+    },
+    {
+      "check": "明确注入的两条重复引用被清理",
+      "passed": true
+    },
+    {
+      "check": "二次清理幂等",
+      "passed": true
+    },
+    {
+      "check": "保留引用原件与完成凭据",
+      "passed": true
+    },
+    {
+      "check": "清理后文件SHA匹配审计",
+      "passed": true
+    },
+    {
+      "check": "一次点赞真实改变排名",
+      "passed": true
+    },
+    {
+      "check": "同主题的其他论文有真实加分证据",
+      "passed": true
+    },
+    {
+      "check": "画像与排序重启持久化",
+      "passed": true
+    },
+    {
+      "check": "额外真实Reformer入库与两轮计数分开",
+      "passed": true
+    },
+    {
+      "check": "定时任务未到期不重复轮询",
+      "passed": true
+    },
+    {
+      "check": "实测源码SHA与当前源码一致",
+      "passed": true
+    },
+    {
+      "check": "最终全量481通过零失败错误跳过",
+      "passed": true
+    },
+    {
+      "check": "保留首次15失败回归证据",
+      "passed": true
+    },
+    {
+      "check": "不隐瞒额外候选解析失败原文",
+      "passed": true
+    },
+    {
+      "check": "只修改backend和tests",
+      "passed": true
+    },
+    {
+      "check": "既有契约和前端及协作目录零改动",
+      "passed": true
+    },
+    {
+      "check": "pdf仍被Git忽略",
+      "passed": true
+    },
+    {
+      "check": "语料与环境文件均未跟踪",
+      "passed": true
+    },
+    {
+      "check": "本单文件不含实际环境Key",
+      "passed": true
+    },
+    {
+      "check": "注册28条业务端点",
+      "passed": true
+    }
+  ],
+  "passed": 36,
+  "failed": 0,
+  "regression": {
+    "tests": 481,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
