@@ -5,6 +5,7 @@ import { clientFetchGraph } from "@/lib/api";
 import type { GraphView, PaperMeta } from "@/lib/types";
 import PaperPicker from "@/components/PaperPicker";
 import ErrorState from "@/components/ErrorState";
+import GraphCanvas from "@/components/GraphCanvas";
 
 type State =
   | { kind: "idle" }
@@ -87,7 +88,17 @@ export default function GraphWorkspace({ papers }: { papers: PaperMeta[] }) {
         <>
           <section className="sg-section">
             <div className="sg-section__head">
-              <h2 className="sg-section__title">节点与分层</h2>
+              <h2 className="sg-section__title">图谱画布</h2>
+              <span className="sg-section__hint">
+                只画已核验边 · 孤立节点可见 · 点节点进详情
+              </span>
+            </div>
+            <GraphCanvas graph={data} />
+          </section>
+
+          <section className="sg-section">
+            <div className="sg-section__head">
+              <h2 className="sg-section__title">节点与分层（附表）</h2>
               <span className="sg-section__hint">
                 基石 {data.layers.cornerstone.length} · 衍生{" "}
                 {data.layers.derived.length} · 孤立{" "}
