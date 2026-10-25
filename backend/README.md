@@ -357,7 +357,7 @@ backend/.venv/Scripts/python.exe -m scholar_graph.tracking_cli --data-dir data/m
 
 Windows任务计划程序的程序填写D盘仓库内Python绝对路径；参数填写`-m scholar_graph.tracking_cli --data-dir D:/AI_Workspace/Tasks/scholar-graph/data/module-one --due --interval-seconds 86400`；起始目录填写D盘仓库根目录，触发器设为每天执行。Linux可用每日cron调用同一模块并指定容器/主机实际数据目录。`--due`在距最近一次运行开始不足间隔时返回`skipped=true,reason=NOT_DUE`，不发网络请求；手动端点force=true可立即运行。命令对partial/failed返回退出码1，正常或未到期返回0。本单提供并实测可触发任务，没有替用户在宿主机注册系统计划，也没有后台常驻调度线程；部署时需配置定时触发器。
 
-默认从库内按id排序的前5篇取种子，可显式指定paper_ids或重复`--paper-id`。每篇最多两条查询：标题主题词查询，以及由真实CitationLink关联的首个可用ReferenceEntry标题查询。旧导入的PaperMeta.title或参考标题为空时，可从真实首屏标题Chunk和可识别的参考文献原文摘取，并附对应锚点；不回填、猜造或修改业务记录。找不到任何可用种子明确失败。主题为英文词法启发式：去停用词、拆连字符、长词去复数s，取排序前4词；不是语义向量检索。中文标题无可识别英文主题且无可用引用时会明确失败。
+默认从库内按id排序的前5篇取种子，可显式指定paper_ids或重复`--paper-id`。每篇最多两条查询：标题主题词查询，以及由真实CitationLink关联的首个可用ReferenceEntry标题查询。旧导入的PaperMeta.title或参考标题为空时，可从真实首屏短文本候选和可识别的参考文献原文摘取，并附对应锚点；短文本选择是启发式，不保证总是论文题名，不回填或修改业务记录。找不到任何可用种子明确失败。主题为英文词法启发式：去停用词、拆连字符、长词尾s归一化，取排序前4词；不是语义向量检索。中文标题无可识别英文主题且无可用引用时会明确失败。
 
 调用公开Atom API，查询按submittedDate倒序，每条查询最多max_candidates条，默认请求间隔3秒；合并相同基础arXiv ID后按查询顺序最多保留max_candidates个全局候选。相关理由包含库内paper_id、实际重合词、来源类型与可用引用锚点，不声称已证实学术承袭关系。候选是对当前库的新发现，不保证都是近期发表；引用种子可能找到历史文献。未达到导入预算的条目标deferred，未抓到、未解析成功不冒充入库。默认每次最多两次导入尝试（失败和重复也占预算），下一次重新查询，不是持久化候选队列。status为completed/partial/failed/running/interrupted，是运维运行状态，不扩展ParseStatus枚举。
 
