@@ -1,0 +1,946 @@
+{
+  "scope": "官方 pdf/ 真文件；题面来自本地命题PDF，仅规范空格与β下标",
+  "environment": {
+    "SCHOLAR_GRAPH_QA_MODE": "已设置",
+    "DEEPSEEK_MODEL": "已设置",
+    "DEEPSEEK_API_KEY": "已设置"
+  },
+  "cases": [
+    {
+      "case": 1,
+      "question": "论文Attention Is All You Need的第6作者是谁，在哪个公司/机构工作？",
+      "http_status": 200,
+      "metadata": {
+        "model_calls": [
+          {
+            "provider": "deepseek",
+            "model": "deepseek-chat",
+            "phase": "qa",
+            "elapsed_seconds": 1.555064,
+            "prompt_tokens": 6455,
+            "completion_tokens": 144,
+            "total_tokens": 6599,
+            "http_status": 200,
+            "status": "succeeded"
+          }
+        ]
+      },
+      "passed": false,
+      "result": {
+        "schema_version": "1.0.0",
+        "answer": "【证据 A】\nJakob Uszkoreit ∗  Google Research usz@google.com  Łukasz Kaiser ∗  Google Brain lukaszkaiser@google.com",
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 1,
+            "section": [],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00006"
+          }
+        ],
+        "numeric_fact_check": {
+          "status": "not_applicable",
+          "checks": []
+        },
+        "refused": false
+      },
+      "verification": {
+        "aidan": false,
+        "toronto": false,
+        "not_refused": true,
+        "anchors_present": true
+      }
+    },
+    {
+      "case": 2,
+      "question": "其中Adam优化器的超参数β₁和β₂分别被设置为了多少？",
+      "http_status": 200,
+      "metadata": {
+        "model_calls": [
+          {
+            "provider": "deepseek",
+            "model": "deepseek-chat",
+            "phase": "qa",
+            "elapsed_seconds": 1.44504,
+            "prompt_tokens": 1065,
+            "completion_tokens": 162,
+            "total_tokens": 1227,
+            "http_status": 200,
+            "status": "succeeded"
+          }
+        ]
+      },
+      "passed": true,
+      "result": {
+        "schema_version": "1.0.0",
+        "answer": "【证据 A】\nWe used the Adam optimizer [20] with β 1  = 0.9, β 2  = 0.98 and ϵ = 10 −9 . We varied the learning rate over the course of training, according to the formula:",
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 7,
+            "section": [
+              "5 Training",
+              "5.3 Optimizer"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00088"
+          }
+        ],
+        "numeric_fact_check": {
+          "status": "passed",
+          "checks": [
+            {
+              "claim": "We used the Adam optimizer [20] with β 1  = 0.9, β 2  = 0.98 and ϵ = 10 −9 . We varied the learning rate over the course of training, according to the formula:",
+              "status": "passed",
+              "evidence": [
+                {
+                  "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                  "page_number": 7,
+                  "section": [
+                    "5 Training",
+                    "5.3 Optimizer"
+                  ],
+                  "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00088"
+                }
+              ],
+              "reason": "数字与上下文逐字回溯同一真实Chunk；不证明实验结论本身。"
+            }
+          ]
+        },
+        "refused": false
+      },
+      "verification": {
+        "0.9": true,
+        "0.98": true,
+        "not_refused": true,
+        "anchors_present": true,
+        "numeric_backtrace": true
+      }
+    },
+    {
+      "case": 3,
+      "question": "这篇论文中提到的Transformer架构，在训练Base模型时使用了多少个GPU？具体是什么型号？",
+      "http_status": 200,
+      "metadata": {
+        "model_calls": [
+          {
+            "provider": "deepseek",
+            "model": "deepseek-chat",
+            "phase": "qa",
+            "elapsed_seconds": 1.076219,
+            "prompt_tokens": 6924,
+            "completion_tokens": 170,
+            "total_tokens": 7094,
+            "http_status": 200,
+            "status": "succeeded"
+          }
+        ]
+      },
+      "passed": true,
+      "result": {
+        "schema_version": "1.0.0",
+        "answer": "【证据 A】\nWe trained our models on one machine with 8 NVIDIA P100 GPUs. For our base models using the hyperparameters described throughout the paper, each training step took about 0.4 seconds. We trained the base models for a total of 100,000 steps or 12 hours.",
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 7,
+            "section": [
+              "5 Training",
+              "5.2 Hardware and Schedule"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00086"
+          }
+        ],
+        "numeric_fact_check": {
+          "status": "passed",
+          "checks": [
+            {
+              "claim": "We trained our models on one machine with 8 NVIDIA P100 GPUs. For our base models using the hyperparameters described throughout the paper, each training step took about 0.4 seconds. We trained the base models for a total of 100,000 steps or 12 hours.",
+              "status": "passed",
+              "evidence": [
+                {
+                  "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                  "page_number": 7,
+                  "section": [
+                    "5 Training",
+                    "5.2 Hardware and Schedule"
+                  ],
+                  "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00086"
+                }
+              ],
+              "reason": "数字与上下文逐字回溯同一真实Chunk；不证明实验结论本身。"
+            }
+          ]
+        },
+        "refused": false
+      },
+      "verification": {
+        "8": true,
+        "p100": true,
+        "not_refused": true,
+        "anchors_present": true,
+        "numeric_backtrace": true
+      }
+    },
+    {
+      "case": 4,
+      "question": "Transformer (big)模型在English-to-German任务上的BLEU分数是多少？当时的State-of-the-art模型是多少？提升了多少？",
+      "http_status": 200,
+      "metadata": {
+        "model_calls": [
+          {
+            "provider": "deepseek",
+            "model": "deepseek-chat",
+            "phase": "qa",
+            "elapsed_seconds": 2.39063,
+            "prompt_tokens": 8160,
+            "completion_tokens": 575,
+            "total_tokens": 8735,
+            "http_status": 200,
+            "status": "succeeded"
+          }
+        ]
+      },
+      "passed": true,
+      "result": {
+        "schema_version": "1.0.0",
+        "answer": "【证据 A】\nOn the WMT 2014 English-to-German translation task, the big transformer model (Transformer (big) in Table 2) outperforms the best previously reported models (including ensembles) by more than 2.0 BLEU, establishing a new state-of-the-art BLEU score of 28.4.\n\n【证据 B】\nOur model achieves 28.4 BLEU on the WMT 2014 Englishto-German translation task, improving over the existing best results, including ensembles, by over 2 BLEU.\n\n【证据 C】\n<td>GNMT + RL Ensemble [38]</td><td>26.30</td><td>41.16</td><td>1.8 · 10<sup>20</sup></td><td>1.1 · 10<sup>21</sup></td></tr><tr><td>ConvS2S Ensemble [9]</td><td>26.36</td><td>41.29</td><td>7.7 · 10<sup>19</sup></td><td>1.2 · 10<sup>21</sup></td></tr><tr><td>Transformer (base model)</td><td>27.3</td><td>38.1</td><td>3.3 ·</td><td>10<sup>18</sup></td></tr><tr><td>Transformer (big)</td><td>28.4</td><td>41.8</td><td>2.3 ·</td><td>10<sup>19</sup></td></tr></tbody></tabl",
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 8,
+            "section": [
+              "6 Results",
+              "6.1 Machine Translation"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00098"
+          },
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 1,
+            "section": [
+              "Abstract"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00010"
+          },
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 8,
+            "section": [
+              "5 Training",
+              "5.4 Regularization"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00093"
+          }
+        ],
+        "numeric_fact_check": {
+          "status": "passed",
+          "checks": [
+            {
+              "claim": "On the WMT 2014 English-to-German translation task, the big transformer model (Transformer (big) in Table 2) outperforms the best previously reported models (including ensembles) by more than 2.0 BLEU, establishing a new state-of-the-art BLEU score of 28.4.",
+              "status": "passed",
+              "evidence": [
+                {
+                  "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                  "page_number": 8,
+                  "section": [
+                    "6 Results",
+                    "6.1 Machine Translation"
+                  ],
+                  "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00098"
+                }
+              ],
+              "reason": "数字与上下文逐字回溯同一真实Chunk；不证明实验结论本身。"
+            },
+            {
+              "claim": "Our model achieves 28.4 BLEU on the WMT 2014 Englishto-German translation task, improving over the existing best results, including ensembles, by over 2 BLEU.",
+              "status": "passed",
+              "evidence": [
+                {
+                  "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                  "page_number": 1,
+                  "section": [
+                    "Abstract"
+                  ],
+                  "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00010"
+                }
+              ],
+              "reason": "数字与上下文逐字回溯同一真实Chunk；不证明实验结论本身。"
+            },
+            {
+              "claim": "<td>GNMT + RL Ensemble [38]</td><td>26.30</td><td>41.16</td><td>1.8 · 10<sup>20</sup></td><td>1.1 · 10<sup>21</sup></td></tr><tr><td>ConvS2S Ensemble [9]</td><td>26.36</td><td>41.29</td><td>7.7 · 10<sup>19</sup></td><td>1.2 · 10<sup>21</sup></td></tr><tr><td>Transformer (base model)</td><td>27.3</td><td>38.1</td><td>3.3 ·</td><td>10<sup>18</sup></td></tr><tr><td>Transformer (big)</td><td>28.4</td><td>41.8</td><td>2.3 ·</td><td>10<sup>19</sup></td></tr></tbody></tabl",
+              "status": "passed",
+              "evidence": [
+                {
+                  "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                  "page_number": 8,
+                  "section": [
+                    "5 Training",
+                    "5.4 Regularization"
+                  ],
+                  "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00093"
+                }
+              ],
+              "reason": "数字与上下文逐字回溯同一真实Chunk；不证明实验结论本身。"
+            }
+          ]
+        },
+        "refused": false
+      },
+      "derived_numeric_check": {
+        "expression": "28.4 - 26.36",
+        "value": "2.04",
+        "unit": "BLEU",
+        "source": "两项数值均在已通过原文锚点校验的回答中；差值由代码计算，不冒充原文逐字陈述。",
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 8,
+            "section": [
+              "6 Results",
+              "6.1 Machine Translation"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00098"
+          },
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 1,
+            "section": [
+              "Abstract"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00010"
+          },
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 8,
+            "section": [
+              "5 Training",
+              "5.4 Regularization"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00093"
+          }
+        ]
+      },
+      "verification": {
+        "28.4": true,
+        "26.36": true,
+        "not_refused": true,
+        "anchors_present": true,
+        "numeric_backtrace": true
+      }
+    },
+    {
+      "case": 5,
+      "question": "请列出论文中引用的关于“Layer Normalization”的参考文献（References）的完整作者和年份。",
+      "http_status": 200,
+      "metadata": {
+        "model_calls": [
+          {
+            "provider": "deepseek",
+            "model": "deepseek-chat",
+            "phase": "qa",
+            "elapsed_seconds": 1.314964,
+            "prompt_tokens": 6640,
+            "completion_tokens": 146,
+            "total_tokens": 6786,
+            "http_status": 200,
+            "status": "succeeded"
+          }
+        ]
+      },
+      "passed": true,
+      "result": {
+        "schema_version": "1.0.0",
+        "answer": "【证据 A】\n[1] Jimmy Lei Ba, Jamie Ryan Kiros, and Geoffrey E Hinton. Layer normalization. arXiv preprint  arXiv:1607.06450 , 2016.",
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 10,
+            "section": [
+              "References"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00127"
+          }
+        ],
+        "numeric_fact_check": {
+          "status": "passed",
+          "checks": [
+            {
+              "claim": "[1] Jimmy Lei Ba, Jamie Ryan Kiros, and Geoffrey E Hinton. Layer normalization. arXiv preprint  arXiv:1607.06450 , 2016.",
+              "status": "passed",
+              "evidence": [
+                {
+                  "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                  "page_number": 10,
+                  "section": [
+                    "References"
+                  ],
+                  "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00127"
+                }
+              ],
+              "reason": "数字与上下文逐字回溯同一真实Chunk；不证明实验结论本身。"
+            }
+          ]
+        },
+        "refused": false
+      },
+      "verification": {
+        "ba": true,
+        "kiros": true,
+        "hinton": true,
+        "2016": true,
+        "not_refused": true,
+        "anchors_present": true
+      }
+    },
+    {
+      "case": 6,
+      "question": "根据《Attention Is All You Need》和《BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding》。请对比：BERT的架构和原始Transformer的Encoder有什么承袭关系？BERT丢弃了原始Transformer的哪个部分？",
+      "http_status": 422,
+      "metadata": {},
+      "passed": false,
+      "error": {
+        "error_code": "VALIDATION_ERROR",
+        "message": "同一Chunk的摘录跨度超出600字符。",
+        "details": null
+      }
+    }
+  ],
+  "raw_model_bodies_retained": false,
+  "external_tracing": false,
+  "refusal": {
+    "question": "论文用Adam的β₁=0.5、β₂=0.6进行训练，对吗？请确认。",
+    "http_status": 200,
+    "result": {
+      "schema_version": "1.0.0",
+      "answer": "拒绝按题设作肯定回答：保守摘录模式不能确认该前提；以下原文供纠错核对。\n\n【证据 A】\nWe used the Adam optimizer [20] with β 1  = 0.9, β 2  = 0.98 and ϵ = 10 −9 . We varied the learning rate over the course of training, according to the formula:",
+      "anchors": [
+        {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 7,
+          "section": [
+            "5 Training",
+            "5.3 Optimizer"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00088"
+        }
+      ],
+      "numeric_fact_check": {
+        "status": "failed",
+        "checks": [
+          {
+            "claim": "论文用Adam的β₁=0.5、β₂=0.6进行训练，对吗？请确认。",
+            "status": "failed",
+            "evidence": [
+              {
+                "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                "page_number": 7,
+                "section": [
+                  "5 Training",
+                  "5.3 Optimizer"
+                ],
+                "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00088"
+              }
+            ],
+            "reason": "题设具名β超参数的数值与同项原文不符，拒绝肯定错误前提。"
+          },
+          {
+            "claim": "We used the Adam optimizer [20] with β 1  = 0.9, β 2  = 0.98 and ϵ = 10 −9 . We varied the learning rate over the course of training, according to the formula:",
+            "status": "passed",
+            "evidence": [
+              {
+                "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                "page_number": 7,
+                "section": [
+                  "5 Training",
+                  "5.3 Optimizer"
+                ],
+                "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00088"
+              }
+            ],
+            "reason": "数字与上下文逐字回溯同一真实Chunk；不证明实验结论本身。"
+          }
+        ]
+      },
+      "refused": true
+    },
+    "metadata": {
+      "model_calls": [
+        {
+          "provider": "deepseek",
+          "model": "deepseek-chat",
+          "phase": "qa",
+          "elapsed_seconds": 1.645243,
+          "prompt_tokens": 7357,
+          "completion_tokens": 162,
+          "total_tokens": 7519,
+          "http_status": 200,
+          "status": "succeeded"
+        }
+      ]
+    },
+    "passed": true
+  },
+  "orchestration": {
+    "http_status": 200,
+    "result": {
+      "evidence_table": [
+        {
+          "evidence_id": "E1",
+          "per_paper_index": 0,
+          "anchor": {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 3,
+            "section": [
+              "3 Model Architecture"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00029"
+          },
+          "quotes": [
+            "The Transformer follows this overall architecture using stacked self-attention and point-wise, fully connected layers for both the encoder and decoder, shown in the left and right halves of Figure 1, respectively."
+          ]
+        },
+        {
+          "evidence_id": "E2",
+          "per_paper_index": 0,
+          "anchor": {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 3,
+            "section": [
+              "3 Model Architecture",
+              "3.1 Encoder and Decoder Stacks"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031"
+          },
+          "quotes": [
+            "Encoder:  The encoder is composed of a stack of N = 6 identical layers. Each layer has two sub-layers. The first is a multi-head self-attention mechanism, and the second is a simple, positionwise fully connected feed-forward network. We employ a residual connection [11] around each of the two sub-layers, followed by layer normalization [1]. That is, the output of each sub-layer is LayerNorm(x + Sublayer(x)), where Sublayer(x) is the function implemented by the sub-layer itself. To facilitate these residual connections, all sub-layers in the model, as well as the embedding l"
+          ]
+        },
+        {
+          "evidence_id": "E3",
+          "per_paper_index": 0,
+          "anchor": {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 3,
+            "section": [
+              "3 Model Architecture",
+              "3.1 Encoder and Decoder Stacks"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+          },
+          "quotes": [
+            "Decoder:  The decoder is also composed of a stack of N = 6 identical layers. In addition to the two sub-layers in each encoder layer, the decoder inserts a third sub-layer, which performs multi-head attention over the output of the encoder stack. Similar to the encoder, we employ residual connections around each of the sub-layers, followed by layer normalization. We also modify the self-attention sub-layer in the decoder stack to prevent positions from attending to subsequent positions. This masking, combined with fact that the output embeddings are offset by one position, "
+          ]
+        },
+        {
+          "evidence_id": "E4",
+          "per_paper_index": 0,
+          "anchor": {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 5,
+            "section": [
+              "MultiHead(Q, K, V ) = Concat(head 1 , ..., head h )W O",
+              "3.2.3 Applications of Attention in our Model"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00058"
+          },
+          "quotes": [
+            "• The encoder contains self-attention layers. In a self-attention layer all of the keys, values and queries come from the same place, in this case, the output of the previous layer in the encoder. Each position in the encoder can attend to all positions in the previous layer of the encoder."
+          ]
+        },
+        {
+          "evidence_id": "E5",
+          "per_paper_index": 1,
+          "anchor": {
+            "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+            "page_number": 3,
+            "section": [
+              "3 BERT"
+            ],
+            "chunk_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0003-c00040"
+          },
+          "quotes": [
+            "Model Architecture  BERT’s model architecture is a multi-layer bidirectional Transformer encoder based on the original implementation described in Vaswani et al. (2017) and released in the tensor2tensor library. 1  Because the use of Transformers has become common and our implementation is almost identical to the original, we will omit an exhaustive background description of the model architecture and refer readers to Vaswani et al. (2017) as well as excellent guides such as “The Annotated Transformer.” 2  In this work, we denote the number of layers (i.e., Transformer bloc"
+          ]
+        },
+        {
+          "evidence_id": "E6",
+          "per_paper_index": 1,
+          "anchor": {
+            "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+            "page_number": 4,
+            "section": [
+              "4 We note that in the literature the bidirectional Trans-",
+              "3.1 Pre-training BERT"
+            ],
+            "chunk_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0004-c00056"
+          },
+          "quotes": [
+            "former is often referred to as a “Transformer encoder” while the left-context-only version is referred to as a “Transformer decoder” since it can be used for text generation."
+          ]
+        },
+        {
+          "evidence_id": "E7",
+          "per_paper_index": 1,
+          "anchor": {
+            "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+            "page_number": 13,
+            "section": [
+              "A.1 Illustration of the Pre-training Tasks"
+            ],
+            "chunk_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0013-c00212"
+          },
+          "quotes": [
+            " BERT uses a bidirectional Transformer. OpenAI GPT uses a left-to-right Transformer. ELMo uses the concatenation of independently trained left-to-right and right-to-left LSTMs to generate features for downstream tasks. Among the three, only BERT representations are jointly conditioned on both left and right context in all layers. In addition to the architecture differences, BERT and OpenAI GPT are fine-tuning approaches, while ELMo is a feature-based approach."
+          ]
+        }
+      ],
+      "per_paper": [
+        {
+          "schema_version": "1.0.0",
+          "answer": "【证据 A】\nThe Transformer follows this overall architecture using stacked self-attention and point-wise, fully connected layers for both the encoder and decoder, shown in the left and right halves of Figure 1, respectively.\n\n【证据 B】\nEncoder:  The encoder is composed of a stack of N = 6 identical layers. Each layer has two sub-layers. The first is a multi-head self-attention mechanism, and the second is a simple, positionwise fully connected feed-forward network. We employ a residual connection [11] around each of the two sub-layers, followed by layer normalization [1]. That is, the output of each sub-layer is LayerNorm(x + Sublayer(x)), where Sublayer(x) is the function implemented by the sub-layer itself. To facilitate these residual connections, all sub-layers in the model, as well as the embedding l\n\n【证据 C】\nDecoder:  The decoder is also composed of a stack of N = 6 identical layers. In addition to the two sub-layers in each encoder layer, the decoder inserts a third sub-layer, which performs multi-head attention over the output of the encoder stack. Similar to the encoder, we employ residual connections around each of the sub-layers, followed by layer normalization. We also modify the self-attention sub-layer in the decoder stack to prevent positions from attending to subsequent positions. This masking, combined with fact that the output embeddings are offset by one position, \n\n【证据 D】\n• The encoder contains self-attention layers. In a self-attention layer all of the keys, values and queries come from the same place, in this case, the output of the previous layer in the encoder. Each position in the encoder can attend to all positions in the previous layer of the encoder.",
+          "anchors": [
+            {
+              "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+              "page_number": 3,
+              "section": [
+                "3 Model Architecture"
+              ],
+              "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00029"
+            },
+            {
+              "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+              "page_number": 3,
+              "section": [
+                "3 Model Architecture",
+                "3.1 Encoder and Decoder Stacks"
+              ],
+              "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031"
+            },
+            {
+              "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+              "page_number": 3,
+              "section": [
+                "3 Model Architecture",
+                "3.1 Encoder and Decoder Stacks"
+              ],
+              "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+            },
+            {
+              "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+              "page_number": 5,
+              "section": [
+                "MultiHead(Q, K, V ) = Concat(head 1 , ..., head h )W O",
+                "3.2.3 Applications of Attention in our Model"
+              ],
+              "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00058"
+            }
+          ],
+          "numeric_fact_check": {
+            "status": "passed",
+            "checks": [
+              {
+                "claim": "The Transformer follows this overall architecture using stacked self-attention and point-wise, fully connected layers for both the encoder and decoder, shown in the left and right halves of Figure 1, respectively.",
+                "status": "passed",
+                "evidence": [
+                  {
+                    "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                    "page_number": 3,
+                    "section": [
+                      "3 Model Architecture"
+                    ],
+                    "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00029"
+                  }
+                ],
+                "reason": "数字与上下文逐字回溯同一真实Chunk；不证明实验结论本身。"
+              },
+              {
+                "claim": "Encoder:  The encoder is composed of a stack of N = 6 identical layers. Each layer has two sub-layers. The first is a multi-head self-attention mechanism, and the second is a simple, positionwise fully connected feed-forward network. We employ a residual connection [11] around each of the two sub-layers, followed by layer normalization [1]. That is, the output of each sub-layer is LayerNorm(x + Sublayer(x)), where Sublayer(x) is the function implemented by the sub-layer itself. To facilitate these residual connections, all sub-layers in the model, as well as the embedding l",
+                "status": "passed",
+                "evidence": [
+                  {
+                    "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                    "page_number": 3,
+                    "section": [
+                      "3 Model Architecture",
+                      "3.1 Encoder and Decoder Stacks"
+                    ],
+                    "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031"
+                  }
+                ],
+                "reason": "数字与上下文逐字回溯同一真实Chunk；不证明实验结论本身。"
+              },
+              {
+                "claim": "Decoder:  The decoder is also composed of a stack of N = 6 identical layers. In addition to the two sub-layers in each encoder layer, the decoder inserts a third sub-layer, which performs multi-head attention over the output of the encoder stack. Similar to the encoder, we employ residual connections around each of the sub-layers, followed by layer normalization. We also modify the self-attention sub-layer in the decoder stack to prevent positions from attending to subsequent positions. This masking, combined with fact that the output embeddings are offset by one position, ",
+                "status": "passed",
+                "evidence": [
+                  {
+                    "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                    "page_number": 3,
+                    "section": [
+                      "3 Model Architecture",
+                      "3.1 Encoder and Decoder Stacks"
+                    ],
+                    "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+                  }
+                ],
+                "reason": "数字与上下文逐字回溯同一真实Chunk；不证明实验结论本身。"
+              }
+            ]
+          },
+          "refused": false
+        },
+        {
+          "schema_version": "1.0.0",
+          "answer": "【证据 A】\nModel Architecture  BERT’s model architecture is a multi-layer bidirectional Transformer encoder based on the original implementation described in Vaswani et al. (2017) and released in the tensor2tensor library. 1  Because the use of Transformers has become common and our implementation is almost identical to the original, we will omit an exhaustive background description of the model architecture and refer readers to Vaswani et al. (2017) as well as excellent guides such as “The Annotated Transformer.” 2  In this work, we denote the number of layers (i.e., Transformer bloc\n\n【证据 B】\nformer is often referred to as a “Transformer encoder” while the left-context-only version is referred to as a “Transformer decoder” since it can be used for text generation.\n\n【证据 C】\n BERT uses a bidirectional Transformer. OpenAI GPT uses a left-to-right Transformer. ELMo uses the concatenation of independently trained left-to-right and right-to-left LSTMs to generate features for downstream tasks. Among the three, only BERT representations are jointly conditioned on both left and right context in all layers. In addition to the architecture differences, BERT and OpenAI GPT are fine-tuning approaches, while ELMo is a feature-based approach.",
+          "anchors": [
+            {
+              "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+              "page_number": 3,
+              "section": [
+                "3 BERT"
+              ],
+              "chunk_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0003-c00040"
+            },
+            {
+              "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+              "page_number": 4,
+              "section": [
+                "4 We note that in the literature the bidirectional Trans-",
+                "3.1 Pre-training BERT"
+              ],
+              "chunk_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0004-c00056"
+            },
+            {
+              "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+              "page_number": 13,
+              "section": [
+                "A.1 Illustration of the Pre-training Tasks"
+              ],
+              "chunk_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0013-c00212"
+            }
+          ],
+          "numeric_fact_check": {
+            "status": "passed",
+            "checks": [
+              {
+                "claim": "Model Architecture  BERT’s model architecture is a multi-layer bidirectional Transformer encoder based on the original implementation described in Vaswani et al. (2017) and released in the tensor2tensor library. 1  Because the use of Transformers has become common and our implementation is almost identical to the original, we will omit an exhaustive background description of the model architecture and refer readers to Vaswani et al. (2017) as well as excellent guides such as “The Annotated Transformer.” 2  In this work, we denote the number of layers (i.e., Transformer bloc",
+                "status": "passed",
+                "evidence": [
+                  {
+                    "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+                    "page_number": 3,
+                    "section": [
+                      "3 BERT"
+                    ],
+                    "chunk_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0003-c00040"
+                  }
+                ],
+                "reason": "数字与上下文逐字回溯同一真实Chunk；不证明实验结论本身。"
+              }
+            ]
+          },
+          "refused": false
+        }
+      ],
+      "synthesis": "原文并列：The Transformer follows this overall architecture using stacked self-attention and point-wise, fully connected layers for both the encoder and decoder, shown in the left and right halves of Figure 1, respectively. [E1]\n原文并列：Encoder:  The encoder is composed of a stack of N = 6 identical layers. Each layer has two sub-layers. The first is a multi-head self-attention mechanism, and the second is a simple, positionwise fully connected feed-forward network. We employ a residual connection [11] around each of the two sub-layers, followed by layer normalization [1]. That is, the output of each sub-layer is LayerNorm(x + Sublayer(x)), where Sublayer(x) is the function implemented by the sub-layer itself. To facilitate these residual connections, all sub-layers in the model, as well as the embedding l [E2]\n原文并列：Decoder:  The decoder is also composed of a stack of N = 6 identical layers. In addition to the two sub-layers in each encoder layer, the decoder inserts a third sub-layer, which performs multi-head attention over the output of the encoder stack. Similar to the encoder, we employ residual connections around each of the sub-layers, followed by layer normalization. We also modify the self-attention sub-layer in the decoder stack to prevent positions from attending to subsequent positions. This masking, combined with fact that the output embeddings are offset by one position,  [E3]\n原文并列：• The encoder contains self-attention layers. In a self-attention layer all of the keys, values and queries come from the same place, in this case, the output of the previous layer in the encoder. Each position in the encoder can attend to all positions in the previous layer of the encoder. [E4]\n原文并列：Model Architecture  BERT’s model architecture is a multi-layer bidirectional Transformer encoder based on the original implementation described in Vaswani et al. (2017) and released in the tensor2tensor library. 1  Because the use of Transformers has become common and our implementation is almost identical to the original, we will omit an exhaustive background description of the model architecture and refer readers to Vaswani et al. (2017) as well as excellent guides such as “The Annotated Transformer.” 2  In this work, we denote the number of layers (i.e., Transformer bloc [E5]\n原文并列：former is often referred to as a “Transformer encoder” while the left-context-only version is referred to as a “Transformer decoder” since it can be used for text generation. [E6]\n原文并列： BERT uses a bidirectional Transformer. OpenAI GPT uses a left-to-right Transformer. ELMo uses the concatenation of independently trained left-to-right and right-to-left LSTMs to generate features for downstream tasks. Among the three, only BERT representations are jointly conditioned on both left and right context in all layers. In addition to the architecture differences, BERT and OpenAI GPT are fine-tuning approaches, while ELMo is a feature-based approach. [E7]\n不可验证：这些摘录不证明跨篇因果关系，也不支持不同指标之间的优劣排名。"
+    },
+    "metadata": {
+      "engine": "langgraph",
+      "attempts": 2,
+      "max_attempts": 3,
+      "fallback_reason": null,
+      "trace": [
+        {
+          "node": "plan",
+          "elapsed_seconds": 1.65311,
+          "attempt": 0,
+          "evidence_count": 0,
+          "validation": null,
+          "validation_error": null,
+          "fallback_reason": null
+        },
+        {
+          "node": "retrieve",
+          "elapsed_seconds": 0.114214,
+          "attempt": 1,
+          "evidence_count": 24,
+          "validation": null,
+          "validation_error": null,
+          "fallback_reason": null
+        },
+        {
+          "node": "qa",
+          "elapsed_seconds": 6.112797,
+          "attempt": 1,
+          "evidence_count": 24,
+          "validation": null,
+          "validation_error": null,
+          "fallback_reason": null
+        },
+        {
+          "node": "validate",
+          "elapsed_seconds": 0.002172,
+          "attempt": 1,
+          "evidence_count": 24,
+          "validation": false,
+          "validation_error": "同一Chunk的摘录跨度超出600字符。",
+          "fallback_reason": null
+        },
+        {
+          "node": "retrieve",
+          "elapsed_seconds": 1.429632,
+          "attempt": 2,
+          "evidence_count": 20,
+          "validation": null,
+          "validation_error": null,
+          "fallback_reason": null
+        },
+        {
+          "node": "qa",
+          "elapsed_seconds": 4.92965,
+          "attempt": 2,
+          "evidence_count": 20,
+          "validation": null,
+          "validation_error": null,
+          "fallback_reason": null
+        },
+        {
+          "node": "validate",
+          "elapsed_seconds": 0.010053,
+          "attempt": 2,
+          "evidence_count": 20,
+          "validation": true,
+          "validation_error": null,
+          "fallback_reason": null
+        }
+      ],
+      "tool_calls": [
+        {
+          "tool_name": "search",
+          "tool_call_id": "call_00_m3GnCpqBn3Xa1Af2AhsP9860",
+          "attempt": 1,
+          "origin": "model_function_call",
+          "arguments_summary": {
+            "paper_ids": [
+              "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+            ],
+            "query_chars": 76,
+            "limit": 12
+          },
+          "return_summary": {
+            "evidence_count": 12,
+            "method": "lexical"
+          },
+          "elapsed_seconds": 0.047007,
+          "status": "succeeded"
+        },
+        {
+          "tool_name": "search",
+          "tool_call_id": "call_01_PWOo1ybYb1PuQgEZ9ilt8761",
+          "attempt": 1,
+          "origin": "model_function_call",
+          "arguments_summary": {
+            "paper_ids": [
+              "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            ],
+            "query_chars": 72,
+            "limit": 12
+          },
+          "return_summary": {
+            "evidence_count": 12,
+            "method": "lexical"
+          },
+          "elapsed_seconds": 0.067001,
+          "status": "succeeded"
+        },
+        {
+          "tool_name": "search",
+          "tool_call_id": "call_00_hTWNiYL24nj4e8g8t9cr4828",
+          "attempt": 2,
+          "origin": "model_function_call",
+          "arguments_summary": {
+            "paper_ids": [
+              "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+            ],
+            "query_chars": 66,
+            "limit": 10
+          },
+          "return_summary": {
+            "evidence_count": 10,
+            "method": "lexical"
+          },
+          "elapsed_seconds": 0.046596,
+          "status": "succeeded"
+        },
+        {
+          "tool_name": "search",
+          "tool_call_id": "call_01_tefH3qnWv4prqT75pw7t6125",
+          "attempt": 2,
+          "origin": "model_function_call",
+          "arguments_summary": {
+            "paper_ids": [
+              "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            ],
+            "query_chars": 63,
+            "limit": 10
+          },
+          "return_summary": {
+            "evidence_count": 10,
+            "method": "lexical"
+          },
+          "elapsed_seconds": 0.066464,
+          "status": "succeeded"
+        }
+      ],
+      "model_calls": [
+        {
+          "provider": "deepseek",
+          "model": "deepseek-chat",
+          "phase": "plan",
+          "elapsed_seconds": 1.65307,
+          "prompt_tokens": 947,
+          "completion_tokens": 217,
+          "total_tokens": 1164,
+          "http_status": 200,
+          "status": "succeeded"
+        },
+        {
+          "provider": "deepseek",
+          "model": "deepseek-chat",
+          "phase": "qa",
+          "elapsed_seconds": 6.11264,
+          "prompt_tokens": 15549,
+          "completion_tokens": 1506,
+          "total_tokens": 17055,
+          "http_status": 200,
+          "status": "succeeded"
+        },
+        {
+          "provider": "deepseek",
+          "model": "deepseek-chat",
+          "phase": "retrieve_retry",
+          "elapsed_seconds": 1.316376,
+          "prompt_tokens": 958,
+          "completion_tokens": 212,
+          "total_tokens": 1170,
+          "http_status": 200,
+          "status": "succeeded"
+        },
+        {
+          "provider": "deepseek",
+          "model": "deepseek-chat",
+          "phase": "qa",
+          "elapsed_seconds": 4.929439,
+          "prompt_tokens": 13075,
+          "completion_tokens": 1097,
+          "total_tokens": 14172,
+          "http_status": 200,
+          "status": "succeeded"
+        }
+      ],
+      "checkpointing": false,
+      "external_tracing": false,
+      "validated": true
+    },
+    "passed": true
+  }
+}

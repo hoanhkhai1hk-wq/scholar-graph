@@ -1,0 +1,38 @@
+{
+  "scope": "官方 pdf/ 真文件；最终作者序号门禁补验，不覆盖六题历史结果",
+  "question": "论文Attention Is All You Need的第6作者是谁，在哪个公司/机构工作？",
+  "http_status": 200,
+  "result": {
+    "schema_version": "1.0.0",
+    "answer": "【证据 A】\nAidan N. Gomez ∗  † University of Toronto aidan@cs.toronto.edu",
+    "anchors": [
+      {
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "page_number": 1,
+        "section": [],
+        "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00004"
+      }
+    ],
+    "numeric_fact_check": {
+      "status": "not_applicable",
+      "checks": []
+    },
+    "refused": false
+  },
+  "metadata": {
+    "model_calls": [
+      {
+        "provider": "deepseek",
+        "model": "deepseek-chat",
+        "phase": "qa",
+        "elapsed_seconds": 1.255367,
+        "prompt_tokens": 7216,
+        "completion_tokens": 133,
+        "total_tokens": 7349,
+        "http_status": 200,
+        "status": "succeeded"
+      }
+    ]
+  },
+  "passed": true
+}
