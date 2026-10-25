@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "cytoscape": "^3.34.4",
     "next": "15.5.28",
     "react": "19.3.1",
     "react-dom": "19.3.1"
