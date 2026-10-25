@@ -6,7 +6,7 @@ import { uploadBatch, uploadSingle } from "@/lib/api";
 import type { BatchResult, PaperMeta } from "@/lib/types";
 import ErrorState from "./ErrorState";
 
-type Phase =
+  type Phase =
   | { kind: "idle" }
   | { kind: "running"; startedAt: number }
   | { kind: "done"; elapsedMs: number }
@@ -14,8 +14,13 @@ type Phase =
 
 type ResultState =
   | { kind: "idle" }
-  | { kind: "ok"; paper: PaperMeta }
-  | { kind: "ok-batch"; result: BatchResult; fileCount: number }
+  | { kind: "ok"; paper: PaperMeta; warning: string | null }
+  | {
+      kind: "ok-batch";
+      result: BatchResult;
+      fileCount: number;
+      warnings: Record<string, string>;
+    }
   | { kind: "error"; error: unknown };
 
 /**
@@ -56,7 +61,7 @@ export default function UploadForm() {
     try {
       const paper = await uploadSingle(singleFile);
       setDoneCount(1);
-      setResult({ kind: "ok", paper });
+      setResult({ kind: "ok", paper: paper.data, warning: paper.warning });
       setPhase({ kind: "done", elapsedMs: Date.now() - startedAt });
     } catch (error) {
       setResult({ kind: "error", error });
@@ -75,8 +80,9 @@ export default function UploadForm() {
       setDoneCount(batchFiles.length);
       setResult({
         kind: "ok-batch",
-        result: batch,
+        result: batch.data,
         fileCount: batchFiles.length,
+        warnings: batch.warnings,
       });
       setPhase({ kind: "done", elapsedMs: Date.now() - startedAt });
     } catch (error) {
@@ -144,6 +150,21 @@ export default function UploadForm() {
         ) : null}
         {result.kind === "error" ? (
           <ErrorState title="单篇上传失败" error={result.error} />
+        ) : null}
+
+        {result.kind === "ok" && result.warning ? (
+          <div className="sg-warning" role="alert">
+            <div className="sg-warning__title">版本重复预警</div>
+            <p className="sg-warning__text">{result.warning}</p>
+            <p className="sg-warning__advice">
+              建议保留库里较新版本：新论文仍已入库，可点上方链接进入详情核对，
+              版本裁决与差异按本次 paper_id 读取。
+            </p>
+            <p className="sg-mono">
+              以上原文来自响应头 X-ScholarGraph-Dedup-Warning（UTF-8 百分号编码，
+              前端解码后展示）。
+            </p>
+          </div>
         ) : null}
       </section>
 
@@ -233,6 +254,19 @@ export default function UploadForm() {
                         <Link href={`/papers/${item.paper_id}`}>
                           {item.paper_id}
                         </Link>
+                        {result.warnings[item.paper_id] ? (
+                          <div className="sg-warning sg-warning--inline">
+                            <span className="sg-tag sg-tag--warning">
+                              版本重复预警
+                            </span>
+                            <p className="sg-warning__text">
+                              {result.warnings[item.paper_id]}
+                            </p>
+                            <p className="sg-mono">
+                              建议保留库里较新版本；裁决与差异按本次 paper_id 读取。
+                            </p>
+                          </div>
+                        ) : null}
                       </td>
                       <td>
                         <span className="sg-tag sg-tag--muted">

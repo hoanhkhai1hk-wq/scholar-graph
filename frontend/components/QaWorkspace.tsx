@@ -4,24 +4,38 @@ import { useState } from "react";
 import Link from "next/link";
 import { askQuestion, comparePapers } from "@/lib/api";
 import type {
+  AgentMeta,
   CompareResult,
   PaperMeta,
   QAAnswer,
+  QaMeta,
 } from "@/lib/types";
 import PaperPicker from "@/components/PaperPicker";
 import QaAnswerView from "@/components/QaAnswerView";
 import ErrorState from "@/components/ErrorState";
+import TraceTimeline from "@/components/TraceTimeline";
 
 type State =
   | { kind: "idle" }
   | { kind: "loading" }
-  | { kind: "qa"; answer: QAAnswer }
-  | { kind: "compare"; result: CompareResult }
+  | {
+      kind: "qa";
+      answer: QAAnswer;
+      agentMeta: AgentMeta | null;
+      qaMeta: QaMeta | null;
+    }
+  | {
+      kind: "compare";
+      result: CompareResult;
+      agentMeta: AgentMeta | null;
+      qaMeta: QaMeta | null;
+    }
   | { kind: "error"; error: unknown };
 
 export default function QaWorkspace({ papers }: { papers: PaperMeta[] }) {
   const [selected, setSelected] = useState<string[]>([]);
   const [question, setQuestion] = useState("");
+  const [useAgent, setUseAgent] = useState(true);
   const [state, setState] = useState<State>({ kind: "idle" });
 
   const isCompare = selected.length >= 2;
@@ -31,11 +45,25 @@ export default function QaWorkspace({ papers }: { papers: PaperMeta[] }) {
     setState({ kind: "loading" });
     try {
       if (selected.length === 1) {
-        const answer = await askQuestion(selected[0], question.trim());
-        setState({ kind: "qa", answer });
+        const response = await askQuestion(selected[0], question.trim(), {
+          agent: useAgent,
+        });
+        setState({
+          kind: "qa",
+          answer: response.data,
+          agentMeta: response.agentMeta,
+          qaMeta: response.qaMeta,
+        });
       } else {
-        const result = await comparePapers(selected, question.trim());
-        setState({ kind: "compare", result });
+        const response = await comparePapers(selected, question.trim(), {
+          agent: useAgent,
+        });
+        setState({
+          kind: "compare",
+          result: response.data,
+          agentMeta: response.agentMeta,
+          qaMeta: response.qaMeta,
+        });
       }
     } catch (error) {
       setState({ kind: "error", error });
@@ -49,10 +77,23 @@ export default function QaWorkspace({ papers }: { papers: PaperMeta[] }) {
           <h2 className="sg-section__title">提问</h2>
           <span className="sg-section__hint">
             {isCompare
-              ? "已选多篇 → POST /api/v1/compare"
-              : "选中一篇 → POST /api/v1/papers/{id}/qa"}
+              ? `已选多篇 → POST /api/v1/compare${useAgent ? "?agent=true" : ""}`
+              : `选中一篇 → POST /api/v1/papers/{id}/qa${useAgent ? "?agent=true" : ""}`}
           </span>
         </div>
+
+        <label className="sg-checkbox">
+          <input
+            type="checkbox"
+            checked={useAgent}
+            onChange={(event) => setUseAgent(event.target.checked)}
+          />
+          使用 LangGraph 编排（<code>?agent=true</code>）
+        </label>
+        <p className="sg-mono">
+          勾选后后端返回 X-ScholarGraph-Agent-Meta，前端据此画出 plan → retrieve →
+          qa → validate 的轨迹时间线；不勾选则没有轨迹可展示。
+        </p>
 
         <PaperPicker
           papers={papers}
@@ -93,6 +134,8 @@ export default function QaWorkspace({ papers }: { papers: PaperMeta[] }) {
             <span className="sg-section__hint">QAAnswer</span>
           </div>
           <QaAnswerView answer={state.answer} />
+          <h3 className="sg-subhead">思考过程时间线</h3>
+          <TraceTimeline agentMeta={state.agentMeta} qaMeta={state.qaMeta} />
         </section>
       ) : null}
 
@@ -153,6 +196,9 @@ export default function QaWorkspace({ papers }: { papers: PaperMeta[] }) {
 
           <h3 className="sg-subhead">综合</h3>
           <pre className="sg-synthesis">{state.result.synthesis}</pre>
+
+          <h3 className="sg-subhead">思考过程时间线</h3>
+          <TraceTimeline agentMeta={state.agentMeta} qaMeta={state.qaMeta} />
         </section>
       ) : null}
 

@@ -327,6 +327,62 @@ export interface ChartOutput {
   numeric_checks: ChartNumericCheck[];
 }
 
+// ------------------------------------------------- 编排 trace 与调用元数据
+
+/** LangGraph 节点轨迹行：plan → retrieve → qa → validate */
+export interface TraceRow {
+  node: string;
+  elapsed_seconds: number;
+  attempt: number;
+  evidence_count: number;
+  validation: boolean | null;
+  validation_error: string | null;
+  fallback_reason: string | null;
+}
+
+/** 工具调用行：origin 为 model_function_call 时表示真实模型发起 */
+export interface ToolCallRow {
+  tool_name: string;
+  tool_call_id: string | null;
+  attempt: number;
+  origin: string;
+  arguments_summary: Record<string, unknown>;
+  return_summary: Record<string, unknown>;
+  elapsed_seconds: number | null;
+  status: string;
+}
+
+/** X-ScholarGraph-Agent-Meta 解码后的结构 */
+export interface AgentMeta {
+  engine: string;
+  attempts: number;
+  max_attempts: number;
+  fallback_reason: string | null;
+  trace: TraceRow[];
+  tool_calls: ToolCallRow[];
+  model_calls: ModelCallRow[];
+  checkpointing: boolean;
+  external_tracing: boolean;
+  validated: boolean;
+}
+
+/** X-ScholarGraph-QA-Meta 与 Agent-Meta 中的模型调用统计 */
+export interface ModelCallRow {
+  provider: string;
+  model: string;
+  phase: string;
+  elapsed_seconds: number | null;
+  prompt_tokens: number | null;
+  completion_tokens: number | null;
+  total_tokens: number | null;
+  http_status: number | null;
+  status: string;
+}
+
+export interface QaMeta {
+  model_calls: ModelCallRow[];
+}
+
 /** 列表端点统一分页壳（六字段，docs/api-draft-v1.md 已定义） */
 export interface Paged<T> {
   items: T[];

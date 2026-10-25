@@ -1,4 +1,5 @@
 import type {
+  AgentMeta,
   BatchResult,
   ChartOutput,
   Chunk,
@@ -13,6 +14,7 @@ import type {
   PaperMeta,
   ParseStatus,
   QAAnswer,
+  QaMeta,
   RecommendationItem,
   ReferenceEntry,
   ReviewDraft,
@@ -341,24 +343,97 @@ export async function clientFetchParseStatus(
   );
 }
 
-export async function uploadSingle(file: File): Promise<PaperMeta> {
-  const form = new FormData();
-  form.append("file", file);
-  return requestJson<PaperMeta>(clientUrl("/papers"), {
-    method: "POST",
-    body: form,
-  });
+/**
+ * 后端响应头为 UTF-8 百分号编码（见 backend/README.md：
+ * X-ScholarGraph-Dedup-Warning 与 X-ScholarGraph-QA-Meta / Agent-Meta）。
+ * 必须先解码再展示，不能直接把 %E4%BD%A0 之类的串给用户看。
+ */
+export function decodePercentUtf8(value: string): string {
+  try {
+    return decodeURIComponent(value);
+  } catch {
+    // 非法百分号序列：解码失败时返回原值，页面会照实显示原始串
+    return value;
+  }
 }
 
-export async function uploadBatch(files: File[]): Promise<BatchResult> {
+/** 读取编排元数据两个响应头，缺失时返回 null，不编造内容 */
+export function readMetaHeaders(headers: Headers): {
+  agentMeta: AgentMeta | null;
+  qaMeta: QaMeta | null;
+} {
+  const agentRaw = headers.get("x-scholargraph-agent-meta");
+  const qaRaw = headers.get("x-scholargraph-qa-meta");
+
+  let agentMeta: AgentMeta | null = null;
+  let qaMeta: QaMeta | null = null;
+
+  if (agentRaw) {
+    try {
+      agentMeta = JSON.parse(decodePercentUtf8(agentRaw)) as AgentMeta;
+    } catch {
+      agentMeta = null;
+    }
+  }
+  if (qaRaw) {
+    try {
+      qaMeta = JSON.parse(decodePercentUtf8(qaRaw)) as QaMeta;
+    } catch {
+      qaMeta = null;
+    }
+  }
+
+  return { agentMeta, qaMeta };
+}
+
+export interface QaResponse<T> {
+  data: T;
+  agentMeta: AgentMeta | null;
+  qaMeta: QaMeta | null;
+}
+
+export interface UploadResult {
+  data: PaperMeta;
+  warning: string | null;
+}
+
+export async function uploadSingle(file: File): Promise<UploadResult> {
+  const form = new FormData();
+  form.append("file", file);
+  const { data, headers } = await requestJsonWithHeaders<PaperMeta>(
+    clientUrl("/papers"),
+    { method: "POST", body: form },
+  );
+  const raw = headers.get("x-scholargraph-dedup-warning");
+  return {
+    data,
+    warning: raw ? decodePercentUtf8(raw) : null,
+  };
+}
+
+export interface BatchUploadResult {
+  data: BatchResult;
+  /** 批量时后端在命中成功项上附加可选的 warning 字段 */
+  warnings: Record<string, string>;
+}
+
+export async function uploadBatch(files: File[]): Promise<BatchUploadResult> {
   const form = new FormData();
   for (const file of files) {
     form.append("files", file);
   }
-  return requestJson<BatchResult>(clientUrl("/papers/batch"), {
+  const data = await requestJson<BatchResult>(clientUrl("/papers/batch"), {
     method: "POST",
     body: form,
   });
+  const warnings: Record<string, string> = {};
+  for (const item of data.succeeded) {
+    const warning = (item as { warning?: string }).warning;
+    if (warning) {
+      warnings[item.paper_id] = warning;
+    }
+  }
+  return { data, warnings };
 }
 
 // ------------------------------------------------------- 模块二：问答与对比
@@ -374,18 +449,35 @@ function postJsonClient<T>(endpointPath: string, payload: unknown): Promise<T> {
 export async function askQuestion(
   paperId: string,
   question: string,
-): Promise<QAAnswer> {
-  return postJsonClient<QAAnswer>(`/papers/${paperId}/qa`, { question });
+  options: { agent?: boolean } = {},
+): Promise<QaResponse<QAAnswer>> {
+  const suffix = options.agent ? "?agent=true" : "";
+  const { data, headers } = await requestJsonWithHeaders<QAAnswer>(
+    clientUrl(`/papers/${paperId}/qa${suffix}`),
+    {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ question }),
+    },
+  );
+  return { data, ...readMetaHeaders(headers) };
 }
 
 export async function comparePapers(
   paperIds: string[],
   question: string,
-): Promise<CompareResult> {
-  return postJsonClient<CompareResult>("/compare", {
-    paper_ids: paperIds,
-    question,
-  });
+  options: { agent?: boolean } = {},
+): Promise<QaResponse<CompareResult>> {
+  const suffix = options.agent ? "?agent=true" : "";
+  const { data, headers } = await requestJsonWithHeaders<CompareResult>(
+    clientUrl(`/compare${suffix}`),
+    {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ paper_ids: paperIds, question }),
+    },
+  );
+  return { data, ...readMetaHeaders(headers) };
 }
 
 // --------------------------------------------------------- 模块五：引用图谱
