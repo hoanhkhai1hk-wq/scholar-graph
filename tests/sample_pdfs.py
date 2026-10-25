@@ -17,7 +17,9 @@ def make_pdf(path: Path, *, version="v1", samples=12, scan=False, blank_cover=Fa
         from reportlab.lib.utils import ImageReader
         image = Image.new("RGB", (1224, 1584), "white")
         draw = ImageDraw.Draw(image)
-        font = ImageFont.truetype("C:/Windows/Fonts/arial.ttf", 32)
+        # Docker installs DejaVu; preserve the original Arial fixture on Windows.
+        windows_font = Path("C:/Windows/Fonts/arial.ttf")
+        font = ImageFont.truetype(str(windows_font) if windows_font.is_file() else "DejaVuSans.ttf", 32)
         for index, text in enumerate(["Synthetic scanned page", "1 Introduction", "The synthetic study uses 12 samples."]):
             draw.text((120, 120 + index * 90), text, font=font, fill="black")
         document.drawImage(ImageReader(image), 0, 0, width=612, height=792)
