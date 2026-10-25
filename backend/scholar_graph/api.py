@@ -24,6 +24,7 @@ from .arxiv_fetch import ArxivFetcher
 from .writing_routes import writing_routes
 from .chart_routes import chart_routes
 from .translation_routes import translation_routes
+from .topology_routes import topology_routes
 
 PREFIX = "/api/v1"
 LOCAL_ORIGINS = ["http://localhost:3000", "http://127.0.0.1:3000"]
@@ -158,4 +159,5 @@ def create_app(*, data_dir=None, pipeline_factory=None):
     app.include_router(writing_routes())
     app.include_router(chart_routes())
     app.include_router(translation_routes(repository))
+    app.include_router(topology_routes(repository))
     return app
