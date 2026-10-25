@@ -44,7 +44,8 @@ def create_app(*, data_dir=None, pipeline_factory=None):
         allow_methods=["GET", "POST"],
         allow_headers=["Content-Type"],
         expose_headers=["Location", "Link", *SEARCH_HEADERS, "X-ScholarGraph-Recommendation-Reason",
-                        "X-ScholarGraph-Dedup-Warning", "X-ScholarGraph-Dedup-Warning-Encoding"],
+                        "X-ScholarGraph-Dedup-Warning", "X-ScholarGraph-Dedup-Warning-Encoding",
+                        "X-ScholarGraph-QA-Meta", "X-ScholarGraph-Agent-Meta"],
         allow_credentials=False,
     )
     app.state.repository = repository
