@@ -383,6 +383,40 @@ export interface QaMeta {
   model_calls: ModelCallRow[];
 }
 
+// ------------------------------------------------ 模块三：英→中翻译与对齐
+
+export type TranslateScope = "abstract" | "section" | "selection" | "full";
+
+/** 一条源 Chunk 对应一条译文；按 source_chunk_id 与阅读器已落盘 Chunk 对齐 */
+export interface TranslateSegment {
+  source_chunk_id: string;
+  source_text: string;
+  translated_text: string;
+  paper_id: string;
+  page_number: number;
+  section_path: string[];
+  type: string;
+}
+
+export interface TranslateMetadata {
+  provider: string;
+  model: string;
+  elapsed_seconds: number | null;
+  model_calls: unknown[];
+  terminology: string[];
+  alignment: string;
+  layout_source: string;
+}
+
+export interface TranslateResponse {
+  paper_id: string;
+  scope: TranslateScope;
+  target: string;
+  segments: TranslateSegment[];
+  markdown: string | null;
+  metadata: TranslateMetadata;
+}
+
 /** 列表端点统一分页壳（六字段，docs/api-draft-v1.md 已定义） */
 export interface Paged<T> {
   items: T[];

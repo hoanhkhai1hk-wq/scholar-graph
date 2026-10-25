@@ -18,6 +18,7 @@ import type {
   RecommendationItem,
   ReferenceEntry,
   ReviewDraft,
+  TranslateResponse,
   SearchHit,
   SearchMeta,
 } from "./types";
@@ -583,6 +584,23 @@ export async function generateReview(payload: {
   requirements?: string[];
 }): Promise<ReviewDraft> {
   return postJsonClient<ReviewDraft>("/reviews", payload);
+}
+
+// -------------------------------------------------- 模块三：英→中翻译
+
+export async function translatePaper(
+  paperId: string,
+  body: {
+    scope: string;
+    target?: string;
+    section_path?: string[];
+    chunk_ids?: string[];
+  },
+): Promise<TranslateResponse> {
+  return postJsonClient<TranslateResponse>(`/papers/${paperId}/translate`, {
+    target: "zh",
+    ...body,
+  });
 }
 
 export async function uploadCsvChart(payload: {
