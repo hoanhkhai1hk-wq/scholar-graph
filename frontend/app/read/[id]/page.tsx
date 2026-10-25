@@ -6,7 +6,7 @@ import {
   fetchPaper,
   fetchReferences,
 } from "@/lib/api";
-import ReaderPane from "@/components/ReaderPane";
+import ReaderWorkspace from "@/components/ReaderWorkspace";
 import ErrorState from "@/components/ErrorState";
 
 export default async function ReaderPage({
@@ -138,7 +138,8 @@ export default async function ReaderPage({
         </div>
       ) : null}
 
-      <ReaderPane
+      <ReaderWorkspace
+        paperId={id}
         chunks={chunksResult.value.items}
         references={refsResult.value.items}
         links={linksResult.value.items}
