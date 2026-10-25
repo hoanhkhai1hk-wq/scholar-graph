@@ -25,7 +25,7 @@ def github_signals(paper):
     return result
 
 
-def recommendations(repository, seed_id, as_of_year):
+def recommendations(repository, seed_id, as_of_year, *, profile_id=None):
     repository.paper(seed_id)  # Missing seed is a 404, not an empty recommendation record.
     bundles = load_bundles(repository)
     edges, unresolved = citation_edges(bundles, repository.gate)
@@ -61,4 +61,9 @@ def recommendations(repository, seed_id, as_of_year):
             missing.append("github_link")  # Unknown, never assert that the paper has no code.
         result.append({"paper": paper, "score": score, "signals": signals, "reasons": reasons,
                        "missing_signals": missing, "scoring_version": "module-four-v1", "as_of_year": as_of_year})
-    return sorted(result, key=lambda item: (-item["score"], item["paper"]["id"]))
+    result = sorted(result, key=lambda item: (-item["score"], item["paper"]["id"]))
+    if profile_id is not None:
+        from .recommendation_feedback import rerank
+        from .tracking_state import TrackingState
+        result = rerank(repository, result, TrackingState(repository.root).votes(profile_id))
+    return result
