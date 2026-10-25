@@ -1,0 +1,2580 @@
+{
+  "scope": "官方 pdf/ 真文件",
+  "case": "repair-ocr",
+  "baseline": "fb98c8fddadfebdcc58e325f7bdd53b4d42ba71f",
+  "source_commit": "acc04e264632c305608a6a00357a0a618fa5314f",
+  "run_utc": "2026-10-25T04:24:43.600559+00:00",
+  "versions": {
+    "mineru": "4.0.12",
+    "pypdf": "6.21.2",
+    "psutil": "7.2.2",
+    "fastapi": "0.162.0"
+  },
+  "real_llm_calls": 0,
+  "real_api_keys_used": false,
+  "default_api_configuration": true,
+  "uploads": [
+    {
+      "http_status": 201,
+      "response": {
+        "schema_version": "1.0.0",
+        "id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+        "title": null,
+        "authors": [],
+        "institutions": [],
+        "abstract": null,
+        "year": null,
+        "source": "local-upload",
+        "arxiv_id": null,
+        "doi": null,
+        "version": null,
+        "file_hash": "64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+        "page_count": 15,
+        "has_text_layer": false
+      },
+      "measurement": {
+        "sample_interval_seconds": 0.05,
+        "rss_peak_bytes": 1065250816,
+        "private_peak_bytes": 1765195776,
+        "sample_count": 9379,
+        "includes_descendant_processes": true,
+        "rss_start_bytes": 79970304,
+        "elapsed_seconds": 688.328745,
+        "scope": "整个测试进程及全部子进程的采样合计，不是精确瞬时峰值；不含下载阶段。"
+      },
+      "warning_header": null,
+      "warning_text": null,
+      "source": {
+        "file": "D:\\AI_Workspace\\Tasks\\scholar-graph\\pdf\\1706.03762v1_img.pdf",
+        "bytes": 4672118,
+        "sha256": "64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+        "physical_pages": 15,
+        "pdf_title": null
+      },
+      "source_after": {
+        "file": "D:\\AI_Workspace\\Tasks\\scholar-graph\\pdf\\1706.03762v1_img.pdf",
+        "bytes": 4672118,
+        "sha256": "64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+        "physical_pages": 15,
+        "pdf_title": null
+      },
+      "observations": [
+        {
+          "elapsed_seconds": 2.062,
+          "status": {
+            "schema_version": "1.1.0",
+            "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+            "status": "ocr",
+            "progress": 10,
+            "current_stage": "逐页OCR；完成页即时校验发布",
+            "error_code": null,
+            "error_message": null
+          },
+          "chunks_http": 404,
+          "published_chunks": 0
+        },
+        {
+          "elapsed_seconds": 46.484,
+          "status": {
+            "schema_version": "1.1.0",
+            "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+            "status": "ocr",
+            "progress": 14,
+            "current_stage": "已处理1/15页，已发布57个Chunk；失败页[]",
+            "error_code": null,
+            "error_message": null
+          },
+          "chunks_http": 200,
+          "published_chunks": 57
+        },
+        {
+          "elapsed_seconds": 111.039,
+          "status": {
+            "schema_version": "1.1.0",
+            "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+            "status": "ocr",
+            "progress": 18,
+            "current_stage": "已处理2/15页，已发布114个Chunk；失败页[]",
+            "error_code": null,
+            "error_message": null
+          },
+          "chunks_http": 200,
+          "published_chunks": 114
+        },
+        {
+          "elapsed_seconds": 147.407,
+          "status": {
+            "schema_version": "1.1.0",
+            "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+            "status": "ocr",
+            "progress": 23,
+            "current_stage": "已处理3/15页，已发布177个Chunk；失败页[]",
+            "error_code": null,
+            "error_message": null
+          },
+          "chunks_http": 200,
+          "published_chunks": 177
+        },
+        {
+          "elapsed_seconds": 195.806,
+          "status": {
+            "schema_version": "1.1.0",
+            "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+            "status": "ocr",
+            "progress": 27,
+            "current_stage": "已处理4/15页，已发布244个Chunk；失败页[]",
+            "error_code": null,
+            "error_message": null
+          },
+          "chunks_http": 200,
+          "published_chunks": 244
+        },
+        {
+          "elapsed_seconds": 244.27,
+          "status": {
+            "schema_version": "1.1.0",
+            "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+            "status": "ocr",
+            "progress": 31,
+            "current_stage": "已处理5/15页，已发布292个Chunk；失败页[]",
+            "error_code": null,
+            "error_message": null
+          },
+          "chunks_http": 200,
+          "published_chunks": 292
+        },
+        {
+          "elapsed_seconds": 304.9,
+          "status": {
+            "schema_version": "1.1.0",
+            "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+            "status": "ocr",
+            "progress": 36,
+            "current_stage": "已处理6/15页，已发布359个Chunk；失败页[]",
+            "error_code": null,
+            "error_message": null
+          },
+          "chunks_http": 200,
+          "published_chunks": 359
+        },
+        {
+          "elapsed_seconds": 349.291,
+          "status": {
+            "schema_version": "1.1.0",
+            "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+            "status": "ocr",
+            "progress": 40,
+            "current_stage": "已处理7/15页，已发布411个Chunk；失败页[]",
+            "error_code": null,
+            "error_message": null
+          },
+          "chunks_http": 200,
+          "published_chunks": 411
+        },
+        {
+          "elapsed_seconds": 413.991,
+          "status": {
+            "schema_version": "1.1.0",
+            "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+            "status": "ocr",
+            "progress": 44,
+            "current_stage": "已处理8/15页，已发布511个Chunk；失败页[]",
+            "error_code": null,
+            "error_message": null
+          },
+          "chunks_http": 200,
+          "published_chunks": 511
+        },
+        {
+          "elapsed_seconds": 474.538,
+          "status": {
+            "schema_version": "1.1.0",
+            "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+            "status": "ocr",
+            "progress": 49,
+            "current_stage": "已处理9/15页，已发布693个Chunk；失败页[]",
+            "error_code": null,
+            "error_message": null
+          },
+          "chunks_http": 200,
+          "published_chunks": 693
+        },
+        {
+          "elapsed_seconds": 527.128,
+          "status": {
+            "schema_version": "1.1.0",
+            "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+            "status": "ocr",
+            "progress": 53,
+            "current_stage": "已处理10/15页，已发布750个Chunk；失败页[]",
+            "error_code": null,
+            "error_message": null
+          },
+          "chunks_http": 200,
+          "published_chunks": 750
+        },
+        {
+          "elapsed_seconds": 579.731,
+          "status": {
+            "schema_version": "1.1.0",
+            "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+            "status": "ocr",
+            "progress": 57,
+            "current_stage": "已处理11/15页，已发布807个Chunk；失败页[]",
+            "error_code": null,
+            "error_message": null
+          },
+          "chunks_http": 200,
+          "published_chunks": 807
+        },
+        {
+          "elapsed_seconds": 597.968,
+          "status": {
+            "schema_version": "1.1.0",
+            "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+            "status": "ocr",
+            "progress": 62,
+            "current_stage": "已处理12/15页，已发布818个Chunk；失败页[]",
+            "error_code": null,
+            "error_message": null
+          },
+          "chunks_http": 200,
+          "published_chunks": 818
+        },
+        {
+          "elapsed_seconds": 624.248,
+          "status": {
+            "schema_version": "1.1.0",
+            "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+            "status": "ocr",
+            "progress": 66,
+            "current_stage": "已处理13/15页，已发布864个Chunk；失败页[]",
+            "error_code": null,
+            "error_message": null
+          },
+          "chunks_http": 200,
+          "published_chunks": 864
+        },
+        {
+          "elapsed_seconds": 656.672,
+          "status": {
+            "schema_version": "1.1.0",
+            "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+            "status": "ocr",
+            "progress": 70,
+            "current_stage": "已处理14/15页，已发布925个Chunk；失败页[]",
+            "error_code": null,
+            "error_message": null
+          },
+          "chunks_http": 200,
+          "published_chunks": 925
+        },
+        {
+          "elapsed_seconds": 687.075,
+          "status": {
+            "schema_version": "1.1.0",
+            "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+            "status": "indexing",
+            "progress": 80,
+            "current_stage": "批次已发布；合并参考文献与引用锚点",
+            "error_code": null,
+            "error_message": null
+          },
+          "chunks_http": 200,
+          "published_chunks": 989
+        }
+      ],
+      "parsed": {
+        "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+        "record_counts": {
+          "PaperMeta": 1,
+          "Chunk": 989,
+          "ReferenceEntry": 36,
+          "CitationLink": 61
+        },
+        "latest_status": {
+          "path": "/api/v1/papers/paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d/parse-status",
+          "http_status": 200,
+          "response": {
+            "schema_version": "1.1.0",
+            "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+            "status": "completed",
+            "progress": 100,
+            "current_stage": "四类记录已通过校验并原子发布",
+            "error_code": null,
+            "error_message": null
+          }
+        },
+        "status_histories": [
+          [
+            {
+              "schema_version": "1.1.0",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "status": "queued",
+              "progress": 0,
+              "current_stage": "等待解析",
+              "error_code": null,
+              "error_message": null
+            },
+            {
+              "schema_version": "1.1.0",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "status": "parsing",
+              "progress": 5,
+              "current_stage": "检查 PDF 与文本层",
+              "error_code": null,
+              "error_message": null
+            },
+            {
+              "schema_version": "1.1.0",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "status": "ocr",
+              "progress": 10,
+              "current_stage": "逐页OCR；完成页即时校验发布",
+              "error_code": null,
+              "error_message": null
+            },
+            {
+              "schema_version": "1.1.0",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "status": "ocr",
+              "progress": 14,
+              "current_stage": "已处理1/15页，已发布57个Chunk；失败页[]",
+              "error_code": null,
+              "error_message": null
+            },
+            {
+              "schema_version": "1.1.0",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "status": "ocr",
+              "progress": 18,
+              "current_stage": "已处理2/15页，已发布114个Chunk；失败页[]",
+              "error_code": null,
+              "error_message": null
+            },
+            {
+              "schema_version": "1.1.0",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "status": "ocr",
+              "progress": 23,
+              "current_stage": "已处理3/15页，已发布177个Chunk；失败页[]",
+              "error_code": null,
+              "error_message": null
+            },
+            {
+              "schema_version": "1.1.0",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "status": "ocr",
+              "progress": 27,
+              "current_stage": "已处理4/15页，已发布244个Chunk；失败页[]",
+              "error_code": null,
+              "error_message": null
+            },
+            {
+              "schema_version": "1.1.0",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "status": "ocr",
+              "progress": 31,
+              "current_stage": "已处理5/15页，已发布292个Chunk；失败页[]",
+              "error_code": null,
+              "error_message": null
+            },
+            {
+              "schema_version": "1.1.0",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "status": "ocr",
+              "progress": 36,
+              "current_stage": "已处理6/15页，已发布359个Chunk；失败页[]",
+              "error_code": null,
+              "error_message": null
+            },
+            {
+              "schema_version": "1.1.0",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "status": "ocr",
+              "progress": 40,
+              "current_stage": "已处理7/15页，已发布411个Chunk；失败页[]",
+              "error_code": null,
+              "error_message": null
+            },
+            {
+              "schema_version": "1.1.0",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "status": "ocr",
+              "progress": 44,
+              "current_stage": "已处理8/15页，已发布511个Chunk；失败页[]",
+              "error_code": null,
+              "error_message": null
+            },
+            {
+              "schema_version": "1.1.0",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "status": "ocr",
+              "progress": 49,
+              "current_stage": "已处理9/15页，已发布693个Chunk；失败页[]",
+              "error_code": null,
+              "error_message": null
+            },
+            {
+              "schema_version": "1.1.0",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "status": "ocr",
+              "progress": 53,
+              "current_stage": "已处理10/15页，已发布750个Chunk；失败页[]",
+              "error_code": null,
+              "error_message": null
+            },
+            {
+              "schema_version": "1.1.0",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "status": "ocr",
+              "progress": 57,
+              "current_stage": "已处理11/15页，已发布807个Chunk；失败页[]",
+              "error_code": null,
+              "error_message": null
+            },
+            {
+              "schema_version": "1.1.0",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "status": "ocr",
+              "progress": 62,
+              "current_stage": "已处理12/15页，已发布818个Chunk；失败页[]",
+              "error_code": null,
+              "error_message": null
+            },
+            {
+              "schema_version": "1.1.0",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "status": "ocr",
+              "progress": 66,
+              "current_stage": "已处理13/15页，已发布864个Chunk；失败页[]",
+              "error_code": null,
+              "error_message": null
+            },
+            {
+              "schema_version": "1.1.0",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "status": "ocr",
+              "progress": 70,
+              "current_stage": "已处理14/15页，已发布925个Chunk；失败页[]",
+              "error_code": null,
+              "error_message": null
+            },
+            {
+              "schema_version": "1.1.0",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "status": "ocr",
+              "progress": 75,
+              "current_stage": "已处理15/15页，已发布989个Chunk；失败页[]",
+              "error_code": null,
+              "error_message": null
+            },
+            {
+              "schema_version": "1.1.0",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "status": "indexing",
+              "progress": 80,
+              "current_stage": "批次已发布；合并参考文献与引用锚点",
+              "error_code": null,
+              "error_message": null
+            },
+            {
+              "schema_version": "1.1.0",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "status": "indexing",
+              "progress": 95,
+              "current_stage": "Schema 与外键校验通过",
+              "error_code": null,
+              "error_message": null
+            },
+            {
+              "schema_version": "1.1.0",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "status": "completed",
+              "progress": 100,
+              "current_stage": "四类记录已通过校验并原子发布",
+              "error_code": null,
+              "error_message": null
+            }
+          ]
+        ]
+      },
+      "status": {
+        "path": "/api/v1/papers/paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d/parse-status",
+        "http_status": 200,
+        "response": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+          "status": "completed",
+          "progress": 100,
+          "current_stage": "四类记录已通过校验并原子发布",
+          "error_code": null,
+          "error_message": null
+        }
+      },
+      "chunks_first": {
+        "path": "/api/v1/papers/paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d/chunks?page=1&page_size=5",
+        "http_status": 200,
+        "response": {
+          "items": [
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0001-c00001",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 1,
+              "section_path": [],
+              "heading_1": null,
+              "heading_2": null,
+              "heading_3": null,
+              "text": "Attention Is All You Need",
+              "bbox": [
+                0.3464052287581699,
+                0.12618296529968454,
+                0.6527777777777778,
+                0.14321766561514196
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0001-c00002",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 1,
+              "section_path": [],
+              "heading_1": null,
+              "heading_2": null,
+              "heading_3": null,
+              "text": "Ashish Vaswani*",
+              "bbox": [
+                0.21568627450980393,
+                0.2334384858044164,
+                0.3341503267973856,
+                0.24542586750788645
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0001-c00003",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 1,
+              "section_path": [],
+              "heading_1": null,
+              "heading_2": null,
+              "heading_3": null,
+              "text": "Noam Shazeer*",
+              "bbox": [
+                0.3888888888888889,
+                0.2334384858044164,
+                0.4991830065359477,
+                0.24605678233438485
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0001-c00004",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 1,
+              "section_path": [],
+              "heading_1": null,
+              "heading_2": null,
+              "heading_3": null,
+              "text": "Niki Parmar*",
+              "bbox": [
+                0.5498366013071896,
+                0.23154574132492114,
+                0.6495098039215687,
+                0.24605678233438485
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0001-c00005",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 1,
+              "section_path": [],
+              "heading_1": null,
+              "heading_2": null,
+              "heading_3": null,
+              "text": "Jakob Uszkoreit*",
+              "bbox": [
+                0.6919934640522876,
+                0.232807570977918,
+                0.8120915032679739,
+                0.24542586750788645
+              ],
+              "type": "text"
+            }
+          ],
+          "page": 1,
+          "page_size": 5,
+          "total": 989,
+          "total_pages": 198,
+          "has_next": true
+        }
+      },
+      "batch_metrics": {
+        "parser": "MinerU text batches + PaddleOCR page fallback",
+        "limits": {
+          "max_pages": 2000,
+          "text_batch_pages": 32,
+          "page_timeout": 90,
+          "batch_timeout": 120,
+          "total_timeout": 1800
+        },
+        "completed_pages": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "failed_pages": [],
+        "empty_pages": [],
+        "batches": [
+          {
+            "mode": "paddleocr",
+            "pages": [
+              1
+            ],
+            "chunks": 57,
+            "cumulative_chunks": 57
+          },
+          {
+            "mode": "paddleocr",
+            "pages": [
+              2
+            ],
+            "chunks": 57,
+            "cumulative_chunks": 114
+          },
+          {
+            "mode": "paddleocr",
+            "pages": [
+              3
+            ],
+            "chunks": 63,
+            "cumulative_chunks": 177
+          },
+          {
+            "mode": "paddleocr",
+            "pages": [
+              4
+            ],
+            "chunks": 67,
+            "cumulative_chunks": 244
+          },
+          {
+            "mode": "paddleocr",
+            "pages": [
+              5
+            ],
+            "chunks": 48,
+            "cumulative_chunks": 292
+          },
+          {
+            "mode": "paddleocr",
+            "pages": [
+              6
+            ],
+            "chunks": 67,
+            "cumulative_chunks": 359
+          },
+          {
+            "mode": "paddleocr",
+            "pages": [
+              7
+            ],
+            "chunks": 52,
+            "cumulative_chunks": 411
+          },
+          {
+            "mode": "paddleocr",
+            "pages": [
+              8
+            ],
+            "chunks": 100,
+            "cumulative_chunks": 511
+          },
+          {
+            "mode": "paddleocr",
+            "pages": [
+              9
+            ],
+            "chunks": 182,
+            "cumulative_chunks": 693
+          },
+          {
+            "mode": "paddleocr",
+            "pages": [
+              10
+            ],
+            "chunks": 57,
+            "cumulative_chunks": 750
+          },
+          {
+            "mode": "paddleocr",
+            "pages": [
+              11
+            ],
+            "chunks": 57,
+            "cumulative_chunks": 807
+          },
+          {
+            "mode": "paddleocr",
+            "pages": [
+              12
+            ],
+            "chunks": 11,
+            "cumulative_chunks": 818
+          },
+          {
+            "mode": "paddleocr",
+            "pages": [
+              13
+            ],
+            "chunks": 46,
+            "cumulative_chunks": 864
+          },
+          {
+            "mode": "paddleocr",
+            "pages": [
+              14
+            ],
+            "chunks": 61,
+            "cumulative_chunks": 925
+          },
+          {
+            "mode": "paddleocr",
+            "pages": [
+              15
+            ],
+            "chunks": 64,
+            "cumulative_chunks": 989
+          }
+        ],
+        "published_chunks": 989,
+        "indexing_seconds": 2.096,
+        "resumed_pages": 0
+      },
+      "chunks_last": {
+        "path": "/api/v1/papers/paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d/chunks?page=10&page_size=100",
+        "http_status": 200,
+        "response": {
+          "items": [
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0014-c00901",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 14,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "b",
+              "bbox": [
+                0.45588235294117646,
+                0.5287066246056782,
+                0.4722222222222222,
+                0.5457413249211357
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0014-c00902",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 14,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "S1!",
+              "bbox": [
+                0.38562091503267976,
+                0.5293375394321767,
+                0.4019607843137255,
+                0.5482649842271293
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0014-c00903",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 14,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "ere",
+              "bbox": [
+                0.619281045751634,
+                0.5236593059936908,
+                0.6339869281045751,
+                0.546372239747634
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0014-c00904",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 14,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "is",
+              "bbox": [
+                0.5449346405228758,
+                0.5305993690851735,
+                0.565359477124183,
+                0.5476340694006309
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0014-c00905",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 14,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "hw",
+              "bbox": [
+                0.7091503267973857,
+                0.5249211356466877,
+                0.7279411764705882,
+                0.5476340694006309
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0014-c00906",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 14,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": ".",
+              "bbox": [
+                0.6862745098039216,
+                0.5318611987381704,
+                0.7026143790849673,
+                0.5470031545741325
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0014-c00907",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 14,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "I!l",
+              "bbox": [
+                0.24673202614379086,
+                0.6675078864353312,
+                0.2630718954248366,
+                0.689589905362776
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0014-c00908",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 14,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "∂q",
+              "bbox": [
+                0.29248366013071897,
+                0.6649842271293376,
+                0.3112745098039216,
+                0.6864353312302839
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0014-c00909",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 14,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "1nq",
+              "bbox": [
+                0.3611111111111111,
+                0.6656151419558359,
+                0.380718954248366,
+                0.6889589905362776
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0014-c00910",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 14,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "is",
+              "bbox": [
+                0.38562091503267976,
+                0.6662460567823344,
+                0.4019607843137255,
+                0.6845425867507886
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0014-c00911",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 14,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "snous",
+              "bbox": [
+                0.4297385620915033,
+                0.6662460567823344,
+                0.45098039215686275,
+                0.705993690851735
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0014-c00912",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 14,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "usn!",
+              "bbox": [
+                0.47875816993464054,
+                0.6656151419558359,
+                0.49754901960784315,
+                0.6914826498422713
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0014-c00913",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 14,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "-",
+              "bbox": [
+                0.5073529411764706,
+                0.6668769716088329,
+                0.5130718954248366,
+                0.677602523659306
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0014-c00914",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 14,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": ".s",
+              "bbox": [
+                0.5449346405228758,
+                0.6637223974763407,
+                0.5645424836601307,
+                0.6832807570977918
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0014-c00915",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 14,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "eae",
+              "bbox": [
+                0.6184640522875817,
+                0.6662460567823344,
+                0.6339869281045751,
+                0.689589905362776
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0014-c00916",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 14,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "bu!ss!w",
+              "bbox": [
+                0.636437908496732,
+                0.6643533123028391,
+                0.6609477124183006,
+                0.7116719242902209
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0014-c00917",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 14,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": ".",
+              "bbox": [
+                0.6862745098039216,
+                0.6668769716088329,
+                0.7009803921568627,
+                0.6813880126182965
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0014-c00918",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 14,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "w",
+              "bbox": [
+                0.7099673202614379,
+                0.6649842271293376,
+                0.7279411764705882,
+                0.6927444794952682
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0014-c00919",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 14,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "uo!u!do",
+              "bbox": [
+                0.7295751633986928,
+                0.6637223974763407,
+                0.7516339869281046,
+                0.7104100946372239
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0014-c00920",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 14,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "<SO∃>",
+              "bbox": [
+                0.7769607843137255,
+                0.6656151419558359,
+                0.7949346405228758,
+                0.7078864353312303
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0014-c00921",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 14,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "<ped>",
+              "bbox": [
+                0.7998366013071896,
+                0.6649842271293376,
+                0.821078431372549,
+                0.7041009463722397
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0014-c00922",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 14,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "Figure 4: Two attention heads, also in layer 5 of 6, apparently involved in anaphora resolution. Top:",
+              "bbox": [
+                0.17401960784313725,
+                0.7728706624605678,
+                0.826797385620915,
+                0.78801261829653
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0014-c00923",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 14,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "Full attentions for head 5. Bottom: Isolated attentions from just the word 'its' for attention heads 5",
+              "bbox": [
+                0.17320261437908496,
+                0.7861198738170347,
+                0.826797385620915,
+                0.8012618296529969
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0014-c00924",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 14,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "and 6. Note that the attentions are very sharp for this word.",
+              "bbox": [
+                0.17320261437908496,
+                0.8,
+                0.5620915032679739,
+                0.8151419558359622
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0014-c00925",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 14,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "14",
+              "bbox": [
+                0.48937908496732024,
+                0.9324921135646688,
+                0.5122549019607843,
+                0.9501577287066246
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00926",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "aa!eo!ddn",
+              "bbox": [
+                0.4019607843137255,
+                0.22902208201892746,
+                0.4256535947712418,
+                0.2921135646687697
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00927",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "snous",
+              "bbox": [
+                0.4264705882352941,
+                0.25173501577287066,
+                0.4452614379084967,
+                0.2914826498422713
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00928",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "6u!ss!w",
+              "bbox": [
+                0.6323529411764706,
+                0.24605678233438485,
+                0.6544117647058824,
+                0.29337539432176657
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00929",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "uo!udo",
+              "bbox": [
+                0.7222222222222222,
+                0.2473186119873817,
+                0.7450980392156863,
+                0.294006309148265
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00930",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "<S0S>",
+              "bbox": [
+                0.7687908496732027,
+                0.2473186119873817,
+                0.7892156862745098,
+                0.2914826498422713
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00931",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "<ped>",
+              "bbox": [
+                0.7908496732026143,
+                0.25173501577287066,
+                0.815359477124183,
+                0.2921135646687697
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00932",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "II!",
+              "bbox": [
+                0.24428104575163398,
+                0.27066246056782334,
+                0.26062091503267976,
+                0.2921135646687697
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00933",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "∂e",
+              "bbox": [
+                0.2916666666666667,
+                0.27129337539432175,
+                0.30718954248366015,
+                0.2914826498422713
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00934",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "usn!",
+              "bbox": [
+                0.47467320261437906,
+                0.27003154574132493,
+                0.49019607843137253,
+                0.2902208201892745
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00935",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "eae",
+              "bbox": [
+                0.613562091503268,
+                0.2694006309148265,
+                0.6282679738562091,
+                0.29274447949526816
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00936",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "is",
+              "bbox": [
+                0.38235294117647056,
+                0.2757097791798107,
+                0.39950980392156865,
+                0.2908517350157729
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00937",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "w",
+              "bbox": [
+                0.701797385620915,
+                0.27003154574132493,
+                0.7205882352941176,
+                0.2946372239747634
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00938",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "s",
+              "bbox": [
+                0.5441176470588235,
+                0.2782334384858044,
+                0.5580065359477124,
+                0.2914826498422713
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00939",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": ".",
+              "bbox": [
+                0.6781045751633987,
+                0.2763406940063092,
+                0.6977124183006536,
+                0.29337539432176657
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00940",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "∂q",
+              "bbox": [
+                0.2908496732026144,
+                0.4082018927444795,
+                0.30718954248366015,
+                0.4302839116719243
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00941",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "jnq",
+              "bbox": [
+                0.35866013071895425,
+                0.40946372239747636,
+                0.375,
+                0.43217665615141954
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00942",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "S!!",
+              "bbox": [
+                0.3790849673202614,
+                0.4069400630914827,
+                0.4019607843137255,
+                0.42839116719242903
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00943",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "aageoddn",
+              "bbox": [
+                0.4019607843137255,
+                0.4082018927444795,
+                0.4256535947712418,
+                0.47066246056782335
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00944",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "snous",
+              "bbox": [
+                0.4256535947712418,
+                0.4069400630914827,
+                0.44689542483660133,
+                0.449211356466877
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00945",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "∂q",
+              "bbox": [
+                0.45179738562091504,
+                0.4088328075709779,
+                0.4673202614379085,
+                0.42965299684542585
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00946",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "usn!",
+              "bbox": [
+                0.4714052287581699,
+                0.4075709779179811,
+                0.49264705882352944,
+                0.4334384858044164
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00947",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "s!",
+              "bbox": [
+                0.5424836601307189,
+                0.4088328075709779,
+                0.5588235294117647,
+                0.4277602523659306
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00948",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "eae",
+              "bbox": [
+                0.613562091503268,
+                0.4082018927444795,
+                0.6282679738562091,
+                0.4334384858044164
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00949",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "buss!w",
+              "bbox": [
+                0.6315359477124183,
+                0.4075709779179811,
+                0.6544117647058824,
+                0.45425867507886436
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00950",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "m",
+              "bbox": [
+                0.6805555555555556,
+                0.40946372239747636,
+                0.6968954248366013,
+                0.4246056782334385
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00951",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "hw",
+              "bbox": [
+                0.7009803921568627,
+                0.4075709779179811,
+                0.7222222222222222,
+                0.4353312302839117
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00952",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "uo!u!do",
+              "bbox": [
+                0.7205882352941176,
+                0.4069400630914827,
+                0.7450980392156863,
+                0.4523659305993691
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00953",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "<3OS>",
+              "bbox": [
+                0.7687908496732027,
+                0.4088328075709779,
+                0.7892156862745098,
+                0.4517350157728707
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00954",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "<ped>",
+              "bbox": [
+                0.7908496732026143,
+                0.4075709779179811,
+                0.815359477124183,
+                0.4485804416403785
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00955",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "aageodde",
+              "bbox": [
+                0.40032679738562094,
+                0.5053627760252366,
+                0.4256535947712418,
+                0.5697160883280757
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00956",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "pnous",
+              "bbox": [
+                0.4264705882352941,
+                0.526813880126183,
+                0.4452614379084967,
+                0.5678233438485805
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00957",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "bu!ss!w",
+              "bbox": [
+                0.6323529411764706,
+                0.5217665615141955,
+                0.6535947712418301,
+                0.5709779179810726
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00958",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "uo!u!do",
+              "bbox": [
+                0.7222222222222222,
+                0.5230283911671925,
+                0.7450980392156863,
+                0.571608832807571
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00959",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "<SOS>",
+              "bbox": [
+                0.7687908496732027,
+                0.522397476340694,
+                0.7892156862745098,
+                0.5678233438485805
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00960",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "<ped>",
+              "bbox": [
+                0.7908496732026143,
+                0.526813880126183,
+                0.8145424836601307,
+                0.567192429022082
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00961",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "II!M",
+              "bbox": [
+                0.2426470588235294,
+                0.5457413249211357,
+                0.26143790849673204,
+                0.5703470031545741
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00962",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "∂q",
+              "bbox": [
+                0.2908496732026144,
+                0.5470031545741325,
+                0.30637254901960786,
+                0.5690851735015773
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00963",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "jnq",
+              "bbox": [
+                0.35947712418300654,
+                0.5457413249211357,
+                0.3758169934640523,
+                0.5665615141955836
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00964",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "∂q",
+              "bbox": [
+                0.45179738562091504,
+                0.5488958990536278,
+                0.4673202614379085,
+                0.567192429022082
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00965",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "usn!",
+              "bbox": [
+                0.47467320261437906,
+                0.5444794952681388,
+                0.49019607843137253,
+                0.5665615141955836
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00966",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "eae",
+              "bbox": [
+                0.6127450980392157,
+                0.5444794952681388,
+                0.6274509803921569,
+                0.567192429022082
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00967",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "Aw",
+              "bbox": [
+                0.7001633986928104,
+                0.5451104100946372,
+                0.7222222222222222,
+                0.5709779179810726
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00968",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": ".s",
+              "bbox": [
+                0.5424836601307189,
+                0.5539432176656152,
+                0.5580065359477124,
+                0.5665615141955836
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00969",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": ".",
+              "bbox": [
+                0.6805555555555556,
+                0.5533123028391167,
+                0.696078431372549,
+                0.5665615141955836
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00970",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "I!",
+              "bbox": [
+                0.2434640522875817,
+                0.6858044164037855,
+                0.2622549019607843,
+                0.7078864353312303
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00971",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "b",
+              "bbox": [
+                0.2900326797385621,
+                0.6851735015772871,
+                0.30637254901960786,
+                0.7028391167192429
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00972",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "is",
+              "bbox": [
+                0.3815359477124183,
+                0.6851735015772871,
+                0.397875816993464,
+                0.7009463722397477
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00973",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "aageodd",
+              "bbox": [
+                0.4011437908496732,
+                0.6826498422712933,
+                0.42483660130718953,
+                0.7463722397476341
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00974",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "pnous",
+              "bbox": [
+                0.4272875816993464,
+                0.6845425867507886,
+                0.44607843137254904,
+                0.7255520504731862
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00975",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "∂q",
+              "bbox": [
+                0.45179738562091504,
+                0.6845425867507886,
+                0.4673202614379085,
+                0.7028391167192429
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00976",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "usn!",
+              "bbox": [
+                0.47467320261437906,
+                0.6851735015772871,
+                0.49019607843137253,
+                0.7066246056782335
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00977",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": ".s",
+              "bbox": [
+                0.5416666666666666,
+                0.6839116719242903,
+                0.5588235294117647,
+                0.6996845425867508
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00978",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "eae",
+              "bbox": [
+                0.6127450980392157,
+                0.6845425867507886,
+                0.6274509803921569,
+                0.7066246056782335
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00979",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "6u!ss!w",
+              "bbox": [
+                0.6331699346405228,
+                0.6832807570977918,
+                0.6544117647058824,
+                0.7299684542586751
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00980",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "m",
+              "bbox": [
+                0.6805555555555556,
+                0.6845425867507886,
+                0.6968954248366013,
+                0.6996845425867508
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00981",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "Aw",
+              "bbox": [
+                0.7050653594771242,
+                0.6858044164037855,
+                0.7214052287581699,
+                0.7053627760252366
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00982",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "uo!udo",
+              "bbox": [
+                0.7214052287581699,
+                0.6826498422712933,
+                0.7450980392156863,
+                0.7280757097791798
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00983",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "<SOS>",
+              "bbox": [
+                0.7704248366013072,
+                0.6845425867507886,
+                0.7883986928104575,
+                0.726813880126183
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00984",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "<ped>",
+              "bbox": [
+                0.7933006535947712,
+                0.6839116719242903,
+                0.8137254901960784,
+                0.7230283911671924
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00985",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "Figure 5: Many of the attention heads exhibit behaviour that seems related to the structure of the",
+              "bbox": [
+                0.17238562091503268,
+                0.7558359621451104,
+                0.8259803921568627,
+                0.7735015772870663
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00986",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "sentence.",
+              "bbox": [
+                0.17320261437908496,
+                0.7728706624605678,
+                0.2426470588235294,
+                0.7861198738170347
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00987",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "We give two such examples above, from two different heads from the encoder self-attention",
+              "bbox": [
+                0.23366013071895425,
+                0.771608832807571,
+                0.8259803921568627,
+                0.7861198738170347
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00988",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "at layer 5 of 6. The heads clearly learned to perform different tasks.",
+              "bbox": [
+                0.17238562091503268,
+                0.7848580441640378,
+                0.6176470588235294,
+                0.8006309148264984
+              ],
+              "type": "text"
+            },
+            {
+              "schema_version": "1.0.0",
+              "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00989",
+              "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+              "page_number": 15,
+              "section_path": [
+                "1 : Long Papers), pages 434443. ACL, August 2013."
+              ],
+              "heading_1": "1 : Long Papers), pages 434443. ACL, August 2013.",
+              "heading_2": null,
+              "heading_3": null,
+              "text": "15",
+              "bbox": [
+                0.48937908496732024,
+                0.9324921135646688,
+                0.511437908496732,
+                0.9501577287066246
+              ],
+              "type": "text"
+            }
+          ],
+          "page": 10,
+          "page_size": 100,
+          "total": 989,
+          "total_pages": 10,
+          "has_next": false
+        }
+      },
+      "chunks_overflow": {
+        "path": "/api/v1/papers/paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d/chunks?page=999999&page_size=100",
+        "http_status": 200,
+        "response": {
+          "items": [],
+          "page": 999999,
+          "page_size": 100,
+          "total": 989,
+          "total_pages": 10,
+          "has_next": false
+        }
+      }
+    }
+  ],
+  "passed": true
+}
