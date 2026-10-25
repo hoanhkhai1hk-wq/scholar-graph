@@ -1,0 +1,501 @@
+{
+  "scope": "官方 pdf/ 真文件",
+  "baseline": "fb98c8fddadfebdcc58e325f7bdd53b4d42ba71f",
+  "source_commit": "78b5ddb59762c386c4d9f9d9429e8f8fcb797484",
+  "business_cases_passed": 3,
+  "business_cases_failed": 0,
+  "checks": [
+    {
+      "check": "dedup:官方真文件标记与真实成功",
+      "passed": true
+    },
+    {
+      "check": "dedup:无真实模型API",
+      "passed": true
+    },
+    {
+      "check": "dedup:语料未修改",
+      "passed": true
+    },
+    {
+      "check": "dedup:源路径为官方pdf目录",
+      "passed": true
+    },
+    {
+      "check": "dedup:与修复前同一份真文件",
+      "passed": true
+    },
+    {
+      "check": "dedup:201且完成100%",
+      "passed": true
+    },
+    {
+      "check": "dedup:非空真实文本及契约数量一致",
+      "passed": true
+    },
+    {
+      "check": "dedup:语料未修改",
+      "passed": true
+    },
+    {
+      "check": "dedup:源路径为官方pdf目录",
+      "passed": true
+    },
+    {
+      "check": "dedup:与修复前同一份真文件",
+      "passed": true
+    },
+    {
+      "check": "dedup:201且完成100%",
+      "passed": true
+    },
+    {
+      "check": "dedup:非空真实文本及契约数量一致",
+      "passed": true
+    },
+    {
+      "check": "去重:第二传有保留v7预警原文",
+      "passed": true
+    },
+    {
+      "check": "去重:裁决与摘要不再404",
+      "passed": true
+    },
+    {
+      "check": "去重:按新上传id落盘且保留库内版本",
+      "passed": true
+    },
+    {
+      "check": "去重:真实身份和版本来自文件",
+      "passed": true
+    },
+    {
+      "check": "ocr:官方真文件标记与真实成功",
+      "passed": true
+    },
+    {
+      "check": "ocr:无真实模型API",
+      "passed": true
+    },
+    {
+      "check": "ocr:语料未修改",
+      "passed": true
+    },
+    {
+      "check": "ocr:源路径为官方pdf目录",
+      "passed": true
+    },
+    {
+      "check": "ocr:与修复前同一份真文件",
+      "passed": true
+    },
+    {
+      "check": "ocr:201且完成100%",
+      "passed": true
+    },
+    {
+      "check": "ocr:非空真实文本及契约数量一致",
+      "passed": true
+    },
+    {
+      "check": "ocr:完整物理页处理且无失败页",
+      "passed": true
+    },
+    {
+      "check": "ocr:解析中即可读取已发布Chunk",
+      "passed": true
+    },
+    {
+      "check": "ocr:分批SQLite索引数量一致",
+      "passed": true
+    },
+    {
+      "check": "ocr:索引确实运行",
+      "passed": true
+    },
+    {
+      "check": "ocr:越界分页为空",
+      "passed": true
+    },
+    {
+      "check": "ocr:内存与耗时有实测采样",
+      "passed": true
+    },
+    {
+      "check": "OCR:全部15页有真实Chunk",
+      "passed": true
+    },
+    {
+      "check": "OCR:存在真实标题识别文本",
+      "passed": true
+    },
+    {
+      "check": "longbook:官方真文件标记与真实成功",
+      "passed": true
+    },
+    {
+      "check": "longbook:无真实模型API",
+      "passed": true
+    },
+    {
+      "check": "longbook:语料未修改",
+      "passed": true
+    },
+    {
+      "check": "longbook:源路径为官方pdf目录",
+      "passed": true
+    },
+    {
+      "check": "longbook:与修复前同一份真文件",
+      "passed": true
+    },
+    {
+      "check": "longbook:201且完成100%",
+      "passed": true
+    },
+    {
+      "check": "longbook:非空真实文本及契约数量一致",
+      "passed": true
+    },
+    {
+      "check": "longbook:完整物理页处理且无失败页",
+      "passed": true
+    },
+    {
+      "check": "longbook:解析中即可读取已发布Chunk",
+      "passed": true
+    },
+    {
+      "check": "longbook:分批SQLite索引数量一致",
+      "passed": true
+    },
+    {
+      "check": "longbook:索引确实运行",
+      "passed": true
+    },
+    {
+      "check": "longbook:越界分页为空",
+      "passed": true
+    },
+    {
+      "check": "longbook:内存与耗时有实测采样",
+      "passed": true
+    },
+    {
+      "check": "长书:完整541页与17批",
+      "passed": true
+    },
+    {
+      "check": "长书:页数上限默认覆盖541",
+      "passed": true
+    },
+    {
+      "check": "长书:尾页可取",
+      "passed": true
+    },
+    {
+      "check": "contracts/CONTRACTS.md:契约原样保留",
+      "passed": true
+    },
+    {
+      "check": "contracts/README.md:契约原样保留",
+      "passed": true
+    },
+    {
+      "check": "contracts/chart-output.v1.1.example.json:契约原样保留",
+      "passed": true
+    },
+    {
+      "check": "contracts/chart-output.v1.1.schema.json:契约原样保留",
+      "passed": true
+    },
+    {
+      "check": "contracts/chunk.v1.example.json:契约原样保留",
+      "passed": true
+    },
+    {
+      "check": "contracts/chunk.v1.schema.json:契约原样保留",
+      "passed": true
+    },
+    {
+      "check": "contracts/citation-link.v1.example.json:契约原样保留",
+      "passed": true
+    },
+    {
+      "check": "contracts/citation-link.v1.schema.json:契约原样保留",
+      "passed": true
+    },
+    {
+      "check": "contracts/dedup-decision.v1.1.example.json:契约原样保留",
+      "passed": true
+    },
+    {
+      "check": "contracts/dedup-decision.v1.1.schema.json:契约原样保留",
+      "passed": true
+    },
+    {
+      "check": "contracts/diff-summary.v1.1.example.json:契约原样保留",
+      "passed": true
+    },
+    {
+      "check": "contracts/diff-summary.v1.1.schema.json:契约原样保留",
+      "passed": true
+    },
+    {
+      "check": "contracts/framework-outline.v1.2.example.json:契约原样保留",
+      "passed": true
+    },
+    {
+      "check": "contracts/framework-outline.v1.2.schema.json:契约原样保留",
+      "passed": true
+    },
+    {
+      "check": "contracts/graph-edge.v1.2.example.json:契约原样保留",
+      "passed": true
+    },
+    {
+      "check": "contracts/graph-edge.v1.2.schema.json:契约原样保留",
+      "passed": true
+    },
+    {
+      "check": "contracts/graph-node.v1.2.example.json:契约原样保留",
+      "passed": true
+    },
+    {
+      "check": "contracts/graph-node.v1.2.schema.json:契约原样保留",
+      "passed": true
+    },
+    {
+      "check": "contracts/paper-meta.v1.example.json:契约原样保留",
+      "passed": true
+    },
+    {
+      "check": "contracts/paper-meta.v1.schema.json:契约原样保留",
+      "passed": true
+    },
+    {
+      "check": "contracts/parse-status.v1.1.example.json:契约原样保留",
+      "passed": true
+    },
+    {
+      "check": "contracts/parse-status.v1.1.schema.json:契约原样保留",
+      "passed": true
+    },
+    {
+      "check": "contracts/qa-answer.v1.example.json:契约原样保留",
+      "passed": true
+    },
+    {
+      "check": "contracts/qa-answer.v1.schema.json:契约原样保留",
+      "passed": true
+    },
+    {
+      "check": "contracts/reference-entry.v1.example.json:契约原样保留",
+      "passed": true
+    },
+    {
+      "check": "contracts/reference-entry.v1.schema.json:契约原样保留",
+      "passed": true
+    },
+    {
+      "check": "只改后端并新增测试证据",
+      "passed": true
+    },
+    {
+      "check": "旧官方报告零改动",
+      "passed": true
+    },
+    {
+      "check": "pdf目录忽略且无跟踪文件",
+      "passed": true
+    },
+    {
+      "check": "改动文件无常见密钥格式",
+      "passed": true
+    },
+    {
+      "check": "全量回归含新增用例且零失败零跳过",
+      "passed": true
+    }
+  ],
+  "contract_files_unchanged": [
+    {
+      "file": "contracts/CONTRACTS.md",
+      "blob": "e4292d4ebf99c3b700c3e48c657b60938d05fb14"
+    },
+    {
+      "file": "contracts/README.md",
+      "blob": "85b7a5d1b43407df09733194dc141ca7297a839f"
+    },
+    {
+      "file": "contracts/chart-output.v1.1.example.json",
+      "blob": "f34c9130ecb750cf583a9cf5cb802fbe95a28bb7"
+    },
+    {
+      "file": "contracts/chart-output.v1.1.schema.json",
+      "blob": "7b5b196ecc88d31d7a13b0f560f02c9feb0814dd"
+    },
+    {
+      "file": "contracts/chunk.v1.example.json",
+      "blob": "330a0845a9569aa85053dbfa1dc643363b45f2c3"
+    },
+    {
+      "file": "contracts/chunk.v1.schema.json",
+      "blob": "d577c91c27b33e360da8cdfbacbbf2da33ac1bcf"
+    },
+    {
+      "file": "contracts/citation-link.v1.example.json",
+      "blob": "1df93d863fd88272ea4b3ec71d7fde77916c84f6"
+    },
+    {
+      "file": "contracts/citation-link.v1.schema.json",
+      "blob": "1c26cb51d10256635af9cd43881a0219316408f8"
+    },
+    {
+      "file": "contracts/dedup-decision.v1.1.example.json",
+      "blob": "d47edb3181b70f7fe0bed872d50a5178a1e3baaa"
+    },
+    {
+      "file": "contracts/dedup-decision.v1.1.schema.json",
+      "blob": "a0679f1dd466fe247f2f8d9a77f05a669aa622bb"
+    },
+    {
+      "file": "contracts/diff-summary.v1.1.example.json",
+      "blob": "947217164499f39932b9b4e88013828f5c1a9cdf"
+    },
+    {
+      "file": "contracts/diff-summary.v1.1.schema.json",
+      "blob": "6df5e7753e629277068dd7c023938b2df0b122d8"
+    },
+    {
+      "file": "contracts/framework-outline.v1.2.example.json",
+      "blob": "fe04eb4ea3b10663225a3a0bf23667e0154859ba"
+    },
+    {
+      "file": "contracts/framework-outline.v1.2.schema.json",
+      "blob": "c1400597c95b685746e6ee714e516fd26d102762"
+    },
+    {
+      "file": "contracts/graph-edge.v1.2.example.json",
+      "blob": "8a33fb93f0026639d49409134e8b50a99efe4c59"
+    },
+    {
+      "file": "contracts/graph-edge.v1.2.schema.json",
+      "blob": "50194dc973bf38a8c4c7c1a0c31c849f9aa7bcfa"
+    },
+    {
+      "file": "contracts/graph-node.v1.2.example.json",
+      "blob": "60d0d77292e9cb855259be05c14c9a0a3afa5f9a"
+    },
+    {
+      "file": "contracts/graph-node.v1.2.schema.json",
+      "blob": "cf7d452c939aaae8faeafa159ccdfba5ba447163"
+    },
+    {
+      "file": "contracts/paper-meta.v1.example.json",
+      "blob": "141f90fe6d68cbfb7f4770aace62c190100f7f8f"
+    },
+    {
+      "file": "contracts/paper-meta.v1.schema.json",
+      "blob": "a8d65964a698823b165c7369d9912e0956081995"
+    },
+    {
+      "file": "contracts/parse-status.v1.1.example.json",
+      "blob": "9dcae28d3c0605d1e3ca625d884125662ef105b3"
+    },
+    {
+      "file": "contracts/parse-status.v1.1.schema.json",
+      "blob": "0821189d573e9b489bc3c900a97b3128f30bd132"
+    },
+    {
+      "file": "contracts/qa-answer.v1.example.json",
+      "blob": "29dcf10a680b880f6559f6ab0a840195f90e0f89"
+    },
+    {
+      "file": "contracts/qa-answer.v1.schema.json",
+      "blob": "9afbdd2b5fd1eafaddbf34bcd1377d333c0f3b1e"
+    },
+    {
+      "file": "contracts/reference-entry.v1.example.json",
+      "blob": "35c676e8fbbe6ae4bc9e6d3622c1c9ba2e491965"
+    },
+    {
+      "file": "contracts/reference-entry.v1.schema.json",
+      "blob": "e26db67f190041c4ea42f6e0729536e9babd6926"
+    }
+  ],
+  "regression": {
+    "tests": 306,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "cases": {
+    "dedup": {
+      "bundle_counts": [
+        175,
+        162
+      ],
+      "rss_peak_mib": [
+        403.0,
+        386.140625
+      ],
+      "elapsed_seconds": [
+        7.850778,
+        9.326942
+      ]
+    },
+    "ocr": {
+      "bundle_counts": [
+        989
+      ],
+      "rss_peak_mib": [
+        1015.90234375
+      ],
+      "elapsed_seconds": [
+        688.328745
+      ]
+    },
+    "longbook": {
+      "bundle_counts": [
+        6859
+      ],
+      "rss_peak_mib": [
+        830.33984375
+      ],
+      "elapsed_seconds": [
+        166.185635
+      ]
+    }
+  },
+  "changed_paths": [
+    "backend/README.md",
+    "backend/pyproject.toml",
+    "backend/scholar_graph/_engine_worker.py",
+    "backend/scholar_graph/adapters.py",
+    "backend/scholar_graph/api.py",
+    "backend/scholar_graph/api_repository.py",
+    "backend/scholar_graph/api_uploads.py",
+    "backend/scholar_graph/batching.py",
+    "backend/scholar_graph/chunk_index.py",
+    "backend/scholar_graph/dedup.py",
+    "backend/scholar_graph/errors.py",
+    "backend/scholar_graph/normalize.py",
+    "backend/scholar_graph/pipeline.py",
+    "backend/scholar_graph/storage.py",
+    "tests/audit_official_repairs.py",
+    "tests/reports/official-pdf-repair-acceptance.md",
+    "tests/reports/official-pdf-repair-audit.json",
+    "tests/reports/official-pdf-repair-dedup.json",
+    "tests/reports/official-pdf-repair-longbook.json",
+    "tests/reports/official-pdf-repair-ocr.json",
+    "tests/reports/official-pdf-repair-pytest.xml",
+    "tests/run_official_repair_regression.py",
+    "tests/run_official_repairs.py",
+    "tests/test_dedup_repair.py",
+    "tests/test_page_batches.py",
+    "tests/write_official_repair_report.py"
+  ],
+  "secret_pattern_matches": 0,
+  "notes": "真实产出经过原Schema/锚点门禁；未修改前端/旧契约/旧报告；索引为本地SQLite物理页索引，不声称语义向量去重。"
+}
