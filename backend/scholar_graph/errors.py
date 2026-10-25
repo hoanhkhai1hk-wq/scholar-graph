@@ -2,10 +2,11 @@
 
 
 class PipelineError(Exception):
-    def __init__(self, code: str, message: str):
+    def __init__(self, code: str, message: str, *, details=None):
         super().__init__(message)
         self.code = code
         self.message = message
+        self.details = details
 
     def envelope(self) -> dict:
-        return {"error_code": self.code, "message": self.message, "details": None}
+        return {"error_code": self.code, "message": self.message, "details": self.details}

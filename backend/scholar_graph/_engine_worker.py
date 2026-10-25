@@ -17,6 +17,8 @@ def paddle_text(path, language, pages):
 
     engine = PaddleOCR(lang=language, ocr_version="PP-OCRv5", device="cpu", cpu_threads=4,
                        text_detection_model_name="PP-OCRv5_mobile_det",
+                       text_recognition_model_name=("en_PP-OCRv5_mobile_rec" if language == "en" else "PP-OCRv5_mobile_rec"),
+                       text_recognition_batch_size=8,
                        use_doc_orientation_classify=False, use_doc_unwarping=False,
                        use_textline_orientation=False, enable_mkldnn=False)
     document = pdfium.PdfDocument(path)
@@ -25,6 +27,7 @@ def paddle_text(path, language, pages):
         for index in pages:
             page = document[index]
             bitmap = page.render(scale=2)
+            image = None
             try:
                 image = bitmap.to_pil().convert("RGB")
                 width, height = image.size
@@ -41,6 +44,8 @@ def paddle_text(path, language, pages):
                                        "content": [{"type": "text", "content": text.strip()}]})
                 result_pages.append({"page_idx": index, "blocks": blocks})
             finally:
+                if image is not None:
+                    image.close()
                 bitmap.close()
                 page.close()
     finally:

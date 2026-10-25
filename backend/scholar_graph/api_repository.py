@@ -6,6 +6,8 @@ from pathlib import Path
 
 from .errors import PipelineError
 from .storage import RecordStore
+from .chunk_index import ChunkIndex
+from .api_transport import paginate
 
 
 class ApiRepository:
@@ -20,8 +22,23 @@ class ApiRepository:
             raise PipelineError("PAPER_NOT_FOUND", "无该论文记录。")
         target = (parent / paper_id).resolve()
         if target.parent != parent.resolve() or not target.is_dir():
-            raise PipelineError("PAPER_NOT_FOUND", "无该论文记录。")
+            return self.store.partial(paper_id)
         return self.store.load(target)
+
+    def chunk_page(self, paper_id, page, page_size):
+        if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9._-]*', paper_id):
+            raise PipelineError('PAPER_NOT_FOUND', '无该论文记录。')
+        index = ChunkIndex(self.root, paper_id)
+        if not index.path.is_file():
+            return paginate(self.paper(paper_id)['chunks'], page, page_size)
+        # Each batch was gated before indexing. Validate returned records again, without
+        # loading every page/layout payload just to serve one page of results.
+        value = index.page(page, min(100, page_size))
+        for chunk in value['items']:
+            self.gate.record('Chunk', chunk)
+            if chunk['paper_id'] != paper_id:
+                raise PipelineError('VALIDATION_ERROR', '索引分块归属不一致。')
+        return value
 
     def papers(self, *, title=None, year=None, source=None):
         parent = self.root / "papers"

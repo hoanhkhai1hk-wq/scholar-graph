@@ -78,11 +78,12 @@ def citation_links(chunks: list[dict], references: list[dict]) -> list[dict]:
     return links
 
 
-def normalize(native: dict, ocr: dict | None, paper: dict, ocr_pages: list[int]) -> dict:
+def normalize(native: dict, ocr: dict | None, paper: dict, ocr_pages: list[int], *,
+              start_index=0, section_path=None, include_references=True) -> dict:
     pages = {page["page_idx"]: page for page in native["pages"] if page["page_idx"] not in ocr_pages}
     if ocr:
         pages.update({page["page_idx"]: page for page in ocr["pages"] if page["page_idx"] in ocr_pages})
-    chunks, path = [], []
+    chunks, path = [], list(section_path or [])
     for page_index, page in sorted(pages.items()):
         if type(page_index) is not int or not 0 <= page_index < paper["page_count"]:
             raise PipelineError("PARSE_FAILED", "解析器返回无效的 PDF 物理页索引。")
@@ -106,10 +107,10 @@ def normalize(native: dict, ocr: dict | None, paper: dict, ocr_pages: list[int])
                 bbox = None
             chunk_type = {"table": "table", "image": "figure", "figure": "figure",
                           "equation": "formula", "formula": "formula"}.get(kind, "text")
-            chunks.append({"schema_version": "1.0.0", "chunk_id": f"{paper['id']}-p{page_index + 1:04d}-c{len(chunks) + 1:05d}",
+            chunks.append({"schema_version": "1.0.0", "chunk_id": f"{paper['id']}-p{page_index + 1:04d}-c{start_index + len(chunks) + 1:05d}",
                            "paper_id": paper["id"], "page_number": page_index + 1, "section_path": list(path),
                            "heading_1": fields[0], "heading_2": fields[1], "heading_3": fields[2],
                            "text": text, "bbox": bbox, "type": chunk_type})
-    refs = reference_entries(chunks, paper["id"])
+    refs = reference_entries(chunks, paper["id"]) if include_references else []
     return {"paper_meta": paper, "chunks": chunks, "reference_entries": refs,
             "citation_links": citation_links(chunks, refs)}

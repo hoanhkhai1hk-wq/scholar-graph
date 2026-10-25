@@ -60,7 +60,8 @@ def create_app(*, data_dir=None, pipeline_factory=None):
 
     @app.exception_handler(PipelineError)
     async def pipeline_error(request, error):
-        return error_response(error.code, error.message, ERROR_STATUS.get(error.code, 500))
+        gate.error(error.envelope())
+        return JSONResponse(error.envelope(), status_code=ERROR_STATUS.get(error.code, 500))
 
     @app.exception_handler(RequestValidationError)
     async def invalid_request(request, error):
@@ -135,7 +136,7 @@ def create_app(*, data_dir=None, pipeline_factory=None):
 
     @app.get(PREFIX + "/papers/{paper_id}/chunks")
     def chunks(paper_id: str, page: int = Query(1, ge=1), page_size: int = Query(20, ge=1)):
-        return paginate(repository.paper(paper_id)["chunks"], page, page_size)
+        return repository.chunk_page(paper_id, page, page_size)
 
     @app.get(PREFIX + "/papers/{paper_id}/references")
     def references(paper_id: str, page: int = Query(1, ge=1), page_size: int = Query(20, ge=1)):

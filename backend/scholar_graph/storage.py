@@ -81,6 +81,41 @@ class RecordStore:
         except (OSError, ValueError):
             raise PipelineError("VALIDATION_ERROR", "不能读取完整、合法的论文记录组。") from None
 
+    def partial_batch(self, bundle: dict, number: int):
+        """Publish only a schema/foreign-key valid batch, outside the complete-paper catalog."""
+        self.gate.bundle(bundle)
+        parent = self.root / 'partial' / bundle['paper_meta']['id']
+        parent.mkdir(parents=True, exist_ok=True)
+        target = parent / f'batch-{number:05d}'
+        if target.exists():
+            if self.load(target) != bundle:
+                raise PipelineError('VALIDATION_ERROR', '已有页面批次不可覆盖。')
+            return target
+        staging = Path(tempfile.mkdtemp(prefix='.pending-', dir=parent))
+        try:
+            for key, filename in FILES.items():
+                write_json(staging / filename, bundle[key])
+            windows_retry(lambda: staging.rename(target))
+        finally:
+            if staging.exists():
+                discard_staging(staging, parent)
+        return target
+
+    def partial(self, paper_id):
+        result = None
+        for directory in sorted((self.root / 'partial' / paper_id).glob('batch-*')):
+            batch = self.load(directory)
+            if result is None:
+                result = batch
+            else:
+                if result['paper_meta'] != batch['paper_meta']:
+                    raise PipelineError('VALIDATION_ERROR', '页面批次论文身份不一致。')
+                result['chunks'].extend(batch['chunks'])
+        if result is None:
+            raise PipelineError('PAPER_NOT_FOUND', '无该论文已发布的页面批次。')
+        self.gate.bundle(result)
+        return result
+
     def previous_version(self, paper: dict) -> dict | None:
         """Exact local identity lookup for uploads, not semantic retrieval or recommendation."""
         self.gate.record("PaperMeta", paper)
