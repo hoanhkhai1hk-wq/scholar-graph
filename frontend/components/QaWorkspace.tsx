@@ -14,6 +14,7 @@ import PaperPicker from "@/components/PaperPicker";
 import QaAnswerView from "@/components/QaAnswerView";
 import ErrorState from "@/components/ErrorState";
 import TraceTimeline from "@/components/TraceTimeline";
+import StreamTimeline from "@/components/StreamTimeline";
 
 type State =
   | { kind: "idle" }
@@ -36,12 +37,16 @@ export default function QaWorkspace({ papers }: { papers: PaperMeta[] }) {
   const [selected, setSelected] = useState<string[]>([]);
   const [question, setQuestion] = useState("");
   const [useAgent, setUseAgent] = useState(true);
+  const [transport, setTransport] = useState<"sync" | "stream">("stream");
   const [state, setState] = useState<State>({ kind: "idle" });
 
   const isCompare = selected.length >= 2;
+  // 流式端点目前只有单篇问答；跨篇对比走同步端点
+  const useStream = transport === "stream" && !isCompare;
 
   async function submit() {
     if (selected.length === 0 || !question.trim()) return;
+    if (useStream) return; // 流式由 StreamTimeline 自己的按钮驱动
     setState({ kind: "loading" });
     try {
       if (selected.length === 1) {
@@ -82,17 +87,38 @@ export default function QaWorkspace({ papers }: { papers: PaperMeta[] }) {
           </span>
         </div>
 
-        <label className="sg-checkbox">
-          <input
-            type="checkbox"
-            checked={useAgent}
-            onChange={(event) => setUseAgent(event.target.checked)}
-          />
-          使用 LangGraph 编排（<code>?agent=true</code>）
-        </label>
+        <div className="sg-form sg-form--inline">
+          <label className="sg-checkbox">
+            <input
+              type="radio"
+              name="transport"
+              checked={transport === "stream"}
+              onChange={() => setTransport("stream")}
+            />
+            流式 SSE（<code>POST /qa/stream</code>）
+          </label>
+          <label className="sg-checkbox">
+            <input
+              type="radio"
+              name="transport"
+              checked={transport === "sync"}
+              onChange={() => setTransport("sync")}
+            />
+            同步（<code>POST /qa</code> 或 <code>/compare</code>）
+          </label>
+          <label className="sg-checkbox">
+            <input
+              type="checkbox"
+              checked={useAgent}
+              onChange={(event) => setUseAgent(event.target.checked)}
+            />
+            同步时启用 LangGraph 编排（<code>?agent=true</code>）
+          </label>
+        </div>
         <p className="sg-mono">
-          勾选后后端返回 X-ScholarGraph-Agent-Meta，前端据此画出 plan → retrieve →
-          qa → validate 的轨迹时间线；不勾选则没有轨迹可展示。
+          流式用 fetch + ReadableStream 逐事件读取（原生 EventSource 只发 GET，
+          本端点是 POST）。草稿与最终答案严格分开：只有 final 事件到达后才展示经校验的
+          QAAnswer。跨篇对比暂用同步端点。
         </p>
 
         <PaperPicker
@@ -113,7 +139,12 @@ export default function QaWorkspace({ papers }: { papers: PaperMeta[] }) {
           <button
             className="sg-btn"
             type="button"
-            disabled={selected.length === 0 || !question.trim() || state.kind === "loading"}
+            disabled={
+              selected.length === 0 ||
+              !question.trim() ||
+              state.kind === "loading" ||
+              useStream
+            }
             onClick={submit}
           >
             {state.kind === "loading" ? "请求中…" : isCompare ? "跨篇对比" : "提问"}
@@ -125,7 +156,30 @@ export default function QaWorkspace({ papers }: { papers: PaperMeta[] }) {
             跨篇对比最多 10 篇，当前已选 {selected.length} 篇
           </p>
         ) : null}
+        {useStream && isCompare ? (
+          <p className="sg-tag sg-tag--warning">
+            流式端点目前只有单篇问答，已选多篇请改用同步方式。
+          </p>
+        ) : null}
       </section>
+
+      {useStream ? (
+        <section className="sg-section">
+          <div className="sg-section__head">
+            <h2 className="sg-section__title">流式问答（SSE）</h2>
+            <span className="sg-section__hint">
+              POST /api/v1/papers/{"{id}"}/qa/stream
+            </span>
+          </div>
+          {selected.length === 1 ? (
+            <StreamTimeline paperId={selected[0]} question={question} />
+          ) : (
+            <p className="sg-mono">
+              请先在上方勾选且仅勾选一篇论文，再开始流式问答。
+            </p>
+          )}
+        </section>
+      ) : null}
 
       {state.kind === "qa" ? (
         <section className="sg-section">
