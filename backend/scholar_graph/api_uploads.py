@@ -3,6 +3,7 @@
 import tempfile
 from pathlib import Path
 from threading import Lock
+from urllib.parse import quote
 
 from .errors import PipelineError
 from .pipeline import Pipeline
@@ -36,11 +37,16 @@ class UploadService:
             self.gate.bundle(bundle)
             initial = pipeline.last_job.history[0]
             self.gate.record("ParseStatus", initial)
-            return bundle["paper_meta"], initial
+            return bundle["paper_meta"], initial, getattr(pipeline, 'last_warning', None)
 
-    def single(self, upload):
+    def single(self, upload, response=None):
         with self.lock:
-            return self._one(upload)[0]
+            meta, _, warning = self._one(upload)
+            if warning and response is not None:
+                response.headers['X-ScholarGraph-Dedup-Warning'] = quote(warning, safe='')
+                response.headers['X-ScholarGraph-Dedup-Warning-Encoding'] = 'percent-encoded-utf-8'
+                response.headers['Link'] = f'</api/v1/papers/{meta["id"]}/dedup-decision>; rel="dedup-decision"'
+            return meta
 
     def batch(self, parts):
         succeeded, failed = [], []
@@ -50,8 +56,10 @@ class UploadService:
                 try:
                     if field != "files" or not hasattr(upload, "file"):
                         raise PipelineError("VALIDATION_ERROR", "批量上传只接受 files 文件字段。")
-                    meta, initial = self._one(upload)
+                    meta, initial, warning = self._one(upload)
                     succeeded.append({"paper_id": meta["id"], "parse_status": initial})
+                    if warning:
+                        succeeded[-1]['warning'] = warning
                 except Exception as error:
                     if not isinstance(error, PipelineError):
                         error = PipelineError("INTERNAL_ERROR", "该文件处理失败。")

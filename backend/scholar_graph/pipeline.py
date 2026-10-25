@@ -31,10 +31,12 @@ class Pipeline:
         self.last_job = None
         self.last_output = None
         self.last_comparison = None
+        self.last_warning = None
 
     def parse(self, source: Path) -> dict:
         self.last_job, self.last_output = None, None
         self.last_comparison = None
+        self.last_warning = None
         try:
             if source.suffix.lower() != ".pdf":
                 raise PipelineError("UNSUPPORTED_FILE_TYPE", "输入必须为 PDF 文件。")
@@ -93,7 +95,7 @@ class Pipeline:
                     bundle["paper_meta"] = enriched
                 self.gate.bundle(bundle)
                 already_present = (self.store.root / "papers" / pid).exists()
-                prior = self.store.previous_version(bundle["paper_meta"]) if not already_present else None
+                prior = self.store.dedup_candidate(bundle) if not already_present else None
                 comparison = compare(prior, bundle, self.gate) if prior is not None else None
                 job.move("indexing", "Schema 与外键校验通过", progress=95)
                 target = self.store.paper(bundle)
@@ -101,6 +103,8 @@ class Pipeline:
                 job.move("completed", "四类记录已通过校验并原子发布")
                 self.last_output = target
                 self.last_comparison = comparison_target
+                if comparison:
+                    self.last_warning = comparison[0]['evidence'][0]['reason']
                 return bundle
         except PipelineError as error:
             if job.current["status"] not in {"completed", "failed"}:
@@ -136,6 +140,7 @@ class Pipeline:
             meta = reader.metadata
             first = next((text for text in texts if text.strip()), "")
             version = re.search(r"(?:^|\n)\s*Version:\s*(v\d+)\b", first, re.I)
+            arxiv = re.search(r'arXiv\s*:\s*(\d{4}\.\d{4,5})(v\d+)?', first, re.I)
             doi_line = re.search(r"(?:^|\n)\s*DOI:\s*([^\n]+)", first, re.I)
             year_line = re.search(r"(?:^|\n)\s*Year:\s*((?:18|19|20)\d{2})\b", first)
             paper = {"schema_version": "1.0.0", "id": "paper-" + digest,
@@ -143,8 +148,8 @@ class Pipeline:
                      "authors": [str(meta.author).strip()] if meta and meta.author and str(meta.author).strip() else [],
                      "institutions": [], "abstract": None,
                      "year": int(year_line[1]) if year_line else None, "source": "local-upload",
-                     "arxiv_id": None, "doi": doi(doi_line[1]) if doi_line else None,
-                     "version": version[1] if version else None, "file_hash": digest,
+                     "arxiv_id": arxiv[1] + (arxiv[2] or '') if arxiv else None, "doi": doi(doi_line[1]) if doi_line else None,
+                     "version": version[1] if version else (arxiv[2] if arxiv else None), "file_hash": digest,
                      "page_count": count, "has_text_layer": any(text.strip() for text in texts)}
             return paper, ocr_pages
         except PipelineError:

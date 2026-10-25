@@ -43,7 +43,8 @@ def create_app(*, data_dir=None, pipeline_factory=None):
         allow_origins=LOCAL_ORIGINS,
         allow_methods=["GET", "POST"],
         allow_headers=["Content-Type"],
-        expose_headers=["Location", "Link", *SEARCH_HEADERS, "X-ScholarGraph-Recommendation-Reason"],
+        expose_headers=["Location", "Link", *SEARCH_HEADERS, "X-ScholarGraph-Recommendation-Reason",
+                        "X-ScholarGraph-Dedup-Warning", "X-ScholarGraph-Dedup-Warning-Encoding"],
         allow_credentials=False,
     )
     app.state.repository = repository
@@ -89,7 +90,7 @@ def create_app(*, data_dir=None, pipeline_factory=None):
     @app.post(PREFIX + "/papers", status_code=201)
     def upload(response: Response, file: UploadFile = File(...)):
         try:
-            meta = uploads.single(file)
+            meta = uploads.single(file, response)
             response.headers["Location"] = f'{PREFIX}/papers/{meta["id"]}'
             return meta
         finally:

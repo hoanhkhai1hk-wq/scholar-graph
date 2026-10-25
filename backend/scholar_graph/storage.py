@@ -13,6 +13,7 @@ from uuid import uuid4
 from .errors import PipelineError
 from .validation import ContractGate
 from .atomic_io import windows_retry
+from .dedup import similarity
 
 FILES = {"paper_meta": "paper-meta.json", "chunks": "chunks.json",
          "reference_entries": "reference-entries.json", "citation_links": "citation-links.json"}
@@ -109,6 +110,26 @@ class RecordStore:
                 matches.append((directory.stat().st_mtime_ns, directory.name, other))
         # This is local ingestion order only, never a publication date or quality ranking.
         return max(matches, key=lambda item: item[:2])[2] if matches else None
+
+    def dedup_candidate(self, bundle: dict, *, threshold: float = .90) -> dict | None:
+        """Exact identity first, then real token Dice; conflicting identifiers never pair."""
+        exact = self.previous_version(bundle['paper_meta'])
+        if exact is not None:
+            return exact
+        paper, candidates = bundle['paper_meta'], []
+        for directory in (self.root / 'papers').glob('paper-*'):
+            if not directory.is_dir() or directory.name == paper['id']:
+                continue
+            other = self.load(directory)
+            meta = other['paper_meta']
+            if paper['doi'] and meta['doi'] and paper['doi'].casefold() != meta['doi'].casefold():
+                continue
+            if paper['arxiv_id'] and meta['arxiv_id'] and re.sub(r'v\d+$', '', paper['arxiv_id']) != re.sub(r'v\d+$', '', meta['arxiv_id']):
+                continue
+            score = similarity(other, bundle)
+            if score >= threshold:
+                candidates.append((score, directory.name, other))
+        return max(candidates, key=lambda row: row[:2])[2] if candidates else None
 
     def comparison(self, decision, diff, bundles, *, human=None) -> Path:
         self.gate.comparison(decision, diff, bundles)

@@ -61,6 +61,15 @@ def compare(old: dict, new: dict, gate: ContractGate) -> tuple[dict, dict]:
     recommendation = "keep_old" if identical else "manual_review"
     reason = ("两份已解析正文一致；保留已有记录可避免重复。" if identical else
               "已检出文本变化，但文本相似度和版本序号不能证明新版质量更高；需人工核对差异。")
+    old_meta, new_meta = old['paper_meta'], new['paper_meta']
+    same_arxiv = (old_meta['arxiv_id'] and new_meta['arxiv_id'] and
+                  re.sub(r'v\d+$', '', old_meta['arxiv_id']) == re.sub(r'v\d+$', '', new_meta['arxiv_id']))
+    old_version = re.fullmatch(r'v(\d+)', old_meta['version'] or '')
+    new_version = re.fullmatch(r'v(\d+)', new_meta['version'] or '')
+    if same_arxiv and old_version and new_version and int(old_version[1]) > int(new_version[1]):
+        recommendation = 'keep_old'
+        reason = (f"建议保留库里较新版本（{old_meta['version']}）；本次上传为{new_meta['version']}。"
+                  "依据同一arXiv身份及PDF原文版本标识，避免降级覆盖；不代表学术质量排名。")
     # Include actual context from both versions; no invented comparative scientific findings.
     evidence_sources = None
     # Prefer a shared section containing changed body text in both versions. Metadata-only
