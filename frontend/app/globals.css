@@ -982,3 +982,28 @@ a:hover {
   font-size: 13px;
   color: var(--sg-text-secondary);
 }
+
+/* ---------------- 流式 SSE 区 ---------------- */
+
+.sg-form--inline {
+  gap: var(--sg-space-4);
+}
+
+.sg-stream__mode,
+.sg-stream__done {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--sg-space-2);
+  border-left: 3px solid var(--sg-border-strong);
+  background: var(--sg-bg-subtle);
+  border-radius: var(--sg-radius-md);
+  padding: var(--sg-space-3);
+  margin: var(--sg-space-3) 0;
+}
+
+.sg-stream__mode p,
+.sg-stream__done p {
+  flex-basis: 100%;
+  margin: var(--sg-space-2) 0 0;
+}
