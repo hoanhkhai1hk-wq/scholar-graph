@@ -157,3 +157,14 @@ def test_interrupted_run_is_closed_and_missing_seed_does_not_disappear(tmp_path)
     with app.state.tracking.state.connect() as db:
         old = json.loads(db.execute("SELECT payload FROM runs WHERE id='old'").fetchone()[0])
     assert old["status"] == "interrupted"
+
+
+def test_hyphenated_and_plural_topics_use_the_same_matching_rules(tmp_path):
+    from scholar_graph.tracking import topic_terms
+    assert topic_terms({"title": "Attention-based Transformers"}) == {"attention", "transformer"}
+    client, app = prepared(tmp_path)
+    metadata = copy.deepcopy(graph_bundles()[0]["paper_meta"])
+    metadata.update(id="arxiv-2601.00001v1", arxiv_id="2601.00001v1", title="Graph-based studies", abstract=None)
+    app.state.arxiv_fetcher.client.search = lambda *args: [metadata]
+    result = client.post("/api/v1/retrieval/tracking/run", json={"paper_ids": ["paper-graph-a"], "max_imports": 0}).json()
+    assert result["candidate_count"] == 1 and "graph" in result["candidates"][0]["related_to"][0]["matched_terms"]

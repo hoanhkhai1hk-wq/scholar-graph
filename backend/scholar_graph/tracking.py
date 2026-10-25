@@ -112,7 +112,7 @@ class TrackingService:
                         entry["returned_count"] = len(papers)
                         for paper in papers:
                             identity = base_identity(paper["arxiv_id"])
-                            shared = sorted(set(query["terms"]) & terms((paper["title"] or "") + " " + (paper["abstract"] or "")))
+                            shared = sorted(set(query["terms"]) & topic_terms({"title": (paper["title"] or "") + " " + (paper["abstract"] or "")}))
                             if not shared:
                                 continue  # The public search match alone is not a relevance assertion.
                             relation = {"paper_id": query["paper_id"], "kind": query["kind"], "matched_terms": shared,
