@@ -5,6 +5,7 @@ import math
 import os
 import subprocess
 import threading
+import time
 from pathlib import Path
 
 from .retrieval import VectorUnavailable, fuse_ranks
@@ -31,6 +32,7 @@ class BgeChromaSearch:
                    ANONYMIZED_TELEMETRY="False", TOKENIZERS_PARALLELISM="false")
         worker = Path(__file__).with_name("vector_worker.py")
         try:
+            started = time.perf_counter()
             with self.lock:
                 result = subprocess.run([str(self.python), str(worker)], input=json.dumps(payload),
                                         capture_output=True, text=True, encoding="utf-8", env=env,
@@ -38,6 +40,8 @@ class BgeChromaSearch:
             if result.returncode:
                 raise VectorUnavailable
             evidence = json.loads(result.stdout)
+            if isinstance(evidence, dict):
+                evidence["worker_seconds"] = time.perf_counter() - started
             ids = {chunk["chunk_id"] for chunk in chunks}
             if (not isinstance(evidence, dict) or
                     any(not isinstance(evidence.get(kind), dict) or set(evidence[kind]) != ids
