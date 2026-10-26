@@ -25,7 +25,7 @@ backend/.venv/Scripts/python.exe -m uvicorn scholar_graph.api:create_app --facto
 
 OpenAPI 为 `http://127.0.0.1:8000/openapi.json`，Swagger 为 `/docs`。上传单文件字段为 file，批量为重复 files 字段；文献详情中的 Link 头给出 chunks、references、citation-links 的真实取数路径。详情/状态/去重/差异返回裸记录；列表统一分页，page_size 超过 100 按 100 计。去重、差异的路径参数为 **new_paper_id**，没有记录时 404，不返回空记录。
 
-完整请求、响应及 19 条草案端点的实施清单见 [API 草案](../docs/api-draft-v1.md)；HTTP 实测及可复现命令见 [本轮报告](../tests/reports/module-one-api-report.md)。新增响应只是本轮获批的传输封装，九份业务 Schema 未改。HTTP 默认工厂不启用 GROBID，GROBID 真实联调仍为待验证。没有验证前端接通。
+完整请求、响应及 19 条草案端点的实施清单见 [API 草案](../docs/api-draft-v1.md)；HTTP 实测及可复现命令见 [本轮报告](../tests/reports/module-one-api-report.md)。新增响应只是本轮获批的传输封装，九份业务 Schema 未改。HTTP 默认工厂不启用 GROBID；独立容器联调的当前状态见 tests/reports/grobid-integration-acceptance.md。没有验证前端接通。
 
 ## 模块二：单篇问答与跨篇对比
 
@@ -83,7 +83,7 @@ backend/.venv/Scripts/python.exe -m uvicorn scholar_graph.api:create_app --facto
 
 运行期模型完全离线，不隐式下载或使用远程Embedding接口；worker不继承API_KEY/TOKEN/SECRET/PASSWORD类环境变量。未启用为lexical/NOT_ENABLED；模型缺失、依赖错误、worker失败或240秒超时为lexical/UNAVAILABLE，不伪报向量成功。Chroma持久数据位于当前 SCHOLAR_GRAPH_DATA_DIR/chroma-bge-m3；启动使用单worker，单实例向量操作串行，上传和抓取复用同一写锁。本实现面向本机开发，不声称分布式索引或异步队列。
 
-POST /api/v1/retrieval/fetch 接收 `{title}` 或 `{reference:完整ReferenceEntry}`。通过公开 arXiv API 唯一匹配标题/标识/裸DOI，先保存真实元数据，再下载PDF并复用模块一Pipeline、ParseJob和所有校验/发布/去重逻辑。固定HTTP200操作封装 `{succeeded,metadata,paper,initial_parse_status,parse_status,error}`；失败保留真实原因，下载前未拿到PDF不伪建queued。metadata的arxiv-id与paper的PDF哈希id明确分开，catalog里的未解析元数据不混入/papers。请求非法仍为422三字段统一错误。无真实Key、无另起解析管线，GROBID仍待验证。
+POST /api/v1/retrieval/fetch 接收 `{title}` 或 `{reference:完整ReferenceEntry}`。通过公开 arXiv API 唯一匹配标题/标识/裸DOI，先保存真实元数据，再下载PDF并复用模块一Pipeline、ParseJob和所有校验/发布/去重逻辑。固定HTTP200操作封装 `{succeeded,metadata,paper,initial_parse_status,parse_status,error}`；失败保留真实原因，下载前未拿到PDF不伪建queued。metadata的arxiv-id与paper的PDF哈希id明确分开，catalog里的未解析元数据不混入/papers。请求非法仍为422三字段统一错误。无真实Key、无另起解析管线；该 HTTP 抓取路径不启用 GROBID。
 
 真实公开探针已获取1706.03762v7《Attention Is All You Need》，复用MinerU解析15页，得到1 PaperMeta /175 Chunk /40 ReferenceEntry /69 CitationLink。它是一次公开论文连通性验证，不能替代真实论文解析质量评测或官方比赛用例。自制Atom+PDF测试另得到1/6/1/1。
 
@@ -166,7 +166,7 @@ backend/.venv/Scripts/python.exe -m scholar_graph compare data/module-one/papers
 
 配置 `GROBID_URL` 或 `--grobid-url http://127.0.0.1:8070` 后，通过 multipart 调用 `/api/processFulltextDocument`，将 TEI 中可靠的元数据和参考文献归一化为现有契约。默认关闭，不影响 MinerU 本地直跑。配置后调用失败即输出 UPSTREAM_ERROR，不静默声称已经用到 GROBID。禁用服务端 Crossref consolidation，避免隐式联网补元数据。
 
-本机没有 Docker Desktop / Docker CLI，GROBID 实际联调与 `docker compose config` 均待验证。Mock HTTP/TEI 测试仅证明客户端转换逻辑，不证明真实服务已接通。Compose 的镜像标签有官方文档依据，尚未拉取或启动；详见 services/README.md。
+当前独立服务配置为 services/docker-compose.grobid.yml，使用 grobid/grobid:0.9.1-full，启动命令与真实联调状态见 services/README.md、tests/reports/grobid-integration-acceptance.md。配置语法通过不等于容器解析通过；Mock HTTP/TEI 不算联调证据。只有显式 CLI 参数/环境变量或 Pipeline(grobid=...) 启用补充，默认 HTTP 上传与 arXiv 抓取不读取 GROBID_URL。GROBID 补 PaperMeta 与 ReferenceEntry，并重建 CitationLink；Chunk、物理页与 bbox 仍由 MinerU 负责，GROBID 正文结构不会替换 Chunk。
 
 ## 验证与范围
 
@@ -178,7 +178,7 @@ backend/.venv/Scripts/python.exe tests/run_module_one_smoke.py --output-root dat
 
 722 个边界用例证据见 tests/reports/contract-boundaries.md 和 JSON 逐项结果。解析/去重实跑报告见 tests/reports/module-one-report.md。所有 PDF 都是脚本自制，非官方 pdf/ 用例，不声称官方三用例通过。
 
-当前细粒度能力的边界：本地文本模式按 MinerU 返回块分割；参考文献回退只确认编号条目，支持明确的作者（年份）标题格式和数字引用；未覆盖作者年份正文引用、复杂跨栏引用、表格/公式识别质量或全类型论文。真实论文质量尚需独立评测。GROBID 可补充结构化元数据，但本轮未实连。早期OCR证据为干净英文自制样例；本轮官方 pdf/ 真文件的产出、失败页与耗时另见修复验收报告，不将识别完成等同于逐字准确率评测。
+当前细粒度能力的边界：本地文本模式按 MinerU 返回块分割；参考文献回退只确认编号条目，支持明确的作者（年份）标题格式和数字引用；未覆盖作者年份正文引用、复杂跨栏引用、表格/公式识别质量或全类型论文。真实论文质量尚需独立评测。GROBID 可补充结构化元数据；当前容器联调证据另见 grobid-integration-acceptance.md，不将早期 mock 写成真实接通。早期OCR证据为干净英文自制样例；本轮官方 pdf/ 真文件的产出、失败页与耗时另见修复验收报告，不将识别完成等同于逐字准确率评测。
 
 实现参考：[MinerU 本地 SDK](https://opendatalab.github.io/MinerU/usage/sdk_api/)、[MinerU 中间格式](https://opendatalab.github.io/MinerU/reference/output_files/)、[PaddleOCR Python 接入](https://www.paddleocr.ai/main/en/version3.x/pipeline_usage/OCR.html)、[GROBID 服务 API](https://grobid.readthedocs.io/en/latest/Grobid-service/)。
 # 官方 PDF 修复：页面批次与去重预警
