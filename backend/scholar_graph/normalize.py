@@ -5,14 +5,9 @@ from __future__ import annotations
 import re
 
 from .errors import PipelineError
+from .reference_identity import DOI, doi, bibliography_sources, parse_reference, author_year_markers
 
-DOI = re.compile(r"10\.\d{4,9}/[^\s<>\"]+", re.I)
 REFERENCE = re.compile(r"\[(\d+)\]\s*(.*?)(?=\s*\[\d+\]|$)", re.S)
-
-
-def doi(text: str) -> str | None:
-    match = DOI.search(text)
-    return match.group().rstrip(".,;)") if match else None
 
 
 def block_text(value) -> str:
@@ -27,22 +22,13 @@ def block_text(value) -> str:
 
 
 def reference_entries(chunks: list[dict], paper_id: str) -> list[dict]:
-    text = "\n".join(chunk["text"] for chunk in chunks if is_references(chunk))
     found = {}
-    for match in REFERENCE.finditer(text):
-        number, raw = int(match[1]), match[2].strip()
-        if number < 1 or not raw:
-            continue
+    for source in bibliography_sources(chunks):
+        number, raw = source['number'], source['raw']
         if number in found:
             raise PipelineError("PARSE_FAILED", "参考文献编号重复，不能确认正文引用目标。")
-        structured = re.match(r"^(.+?)\s*\(((?:18|19|20)\d{2})\)\.\s*(.+?)\.\s*(.*)$", raw, re.S)
         found[number] = {"schema_version": "1.0.0", "ref_id": f"{paper_id}-ref-{number}",
-                         "paper_id": paper_id, "number": number,
-                         "authors": [structured[1].strip()] if structured else [],
-                         "year": int(structured[2]) if structured else None,
-                         "title": structured[3].strip() if structured else None,
-                         "venue": (re.split(r"\s*(?:doi:|https?://doi\.org/)", structured[4], flags=re.I)[0].strip(" .") or None) if structured else None,
-                         "doi": doi(raw), "arxiv_id": None}
+                         "paper_id": paper_id, "number": number, **parse_reference(raw)}
     return [found[n] for n in sorted(found)]
 
 
@@ -57,6 +43,7 @@ def citation_links(chunks: list[dict], references: list[dict]) -> list[dict]:
     for chunk in chunks:
         if is_references(chunk):
             continue
+        cited = set()
         for marker in re.finditer(r"\[(\d+(?:\s*[,;–-]\s*\d+)*)\]", chunk["text"]):
             numbers = set()
             for token in re.split(r"[,;]", marker[1]):
@@ -67,14 +54,16 @@ def citation_links(chunks: list[dict], references: list[dict]) -> list[dict]:
                     start, end = map(int, bounds)
                     # Intersect with actual references instead of expanding attacker-sized ranges.
                     numbers.update(n for n in by_number if start <= n <= end)
-            for number in sorted(numbers & by_number.keys()):
-                key = (chunk["chunk_id"], number)
-                if key in seen:
-                    continue
-                seen.add(key)
-                links.append({"schema_version": "1.0.0", "paper_id": chunk["paper_id"],
-                              "citation_number": number, "page_number": chunk["page_number"],
-                              "chunk_id": chunk["chunk_id"], "ref_id": by_number[number]["ref_id"]})
+            cited.update(numbers & by_number.keys())
+        cited.update(ref['number'] for ref, _ in author_year_markers(chunk['text'], references))
+        for number in sorted(cited):
+            key = (chunk["chunk_id"], number)
+            if key in seen:
+                continue
+            seen.add(key)
+            links.append({"schema_version": "1.0.0", "paper_id": chunk["paper_id"],
+                          "citation_number": number, "page_number": chunk["page_number"],
+                          "chunk_id": chunk["chunk_id"], "ref_id": by_number[number]["ref_id"]})
     return links
 
 

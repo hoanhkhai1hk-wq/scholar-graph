@@ -8,6 +8,7 @@ from defusedxml import ElementTree as ET
 
 from .errors import PipelineError
 from .normalize import citation_links, doi
+from .reference_identity import arxiv
 
 NS = {"t": "http://www.tei-c.org/ns/1.0"}
 
@@ -92,12 +93,14 @@ class GrobidClient:
             number = int(printed) if printed.isdigit() and int(printed) > 0 else index
             title = text(item.find("t:analytic/t:title", NS)) or text(item.find("t:monogr/t:title", NS))
             identifiers = [text(x) for x in item.findall(".//t:idno", NS) if x.get("type", "").lower() == "doi"]
+            arxiv_ids = [arxiv('arXiv:' + (text(x) or '')) for x in item.findall('.//t:idno', NS)
+                         if x.get('type', '').casefold() == 'arxiv']
             refs.append({"schema_version": "1.0.0", "ref_id": f"{paper['id']}-ref-{number}",
                          "paper_id": paper["id"], "number": number, "authors": authors(item),
                          "year": year(item), "title": title,
                          "venue": text(item.find("t:monogr/t:title", NS)),
                          "doi": next((value for x in identifiers if (value := doi(x or ""))), None),
-                         "arxiv_id": None})
+                         "arxiv_id": next((value for value in arxiv_ids if value), None) or arxiv(text(item))})
         if not refs:
             refs = bundle["reference_entries"]
         return {**bundle, "paper_meta": paper, "reference_entries": refs,
