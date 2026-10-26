@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import io
+import os
 import re
 import tempfile
 from pathlib import Path
@@ -21,10 +22,13 @@ from .normalize import block_text, doi, normalize
 from .status import ParseJob
 from .storage import RecordStore
 from .validation import ContractGate
+from .semantic_dedup import semantic_from_environment
+from .storage import write_json
+from .atomic_io import windows_retry
 
 
 class Pipeline:
-    def __init__(self, root: Path, *, engines=None, grobid=None, gate=None, metadata_enricher=None, limits=None):
+    def __init__(self, root: Path, *, engines=None, grobid=None, gate=None, metadata_enricher=None, limits=None, semantic=None):
         self.limits = limits or ParseLimits.environment()
         self.last_metrics = None
         self.gate = gate or ContractGate()
@@ -36,11 +40,14 @@ class Pipeline:
         self.last_output = None
         self.last_comparison = None
         self.last_warning = None
+        self.semantic = semantic if semantic is not None else semantic_from_environment(root)
+        self.last_dedup_metadata = None
 
     def parse(self, source: Path) -> dict:
         self.last_job, self.last_output = None, None
         self.last_comparison = None
         self.last_warning = None
+        self.last_dedup_metadata = None
         try:
             if source.suffix.lower() != ".pdf":
                 raise PipelineError("UNSUPPORTED_FILE_TYPE", "输入必须为 PDF 文件。")
@@ -61,6 +68,10 @@ class Pipeline:
         try:
             job.move("parsing", "检查 PDF 与文本层", progress=5)
             paper, ocr_pages = self._inspect(raw, digest, max_pages=self.limits.max_pages, threshold=self.limits.text_batch_pages)
+            existing = self.store.root / "papers" / pid
+            if existing.is_dir():
+                job.move("indexing", "文件哈希命中已发布论文；复用合法记录", progress=80)
+                return self._publish(self.store.load(existing), job, pid)
             scratch = self.store.root / ".scratch"
             scratch.mkdir(parents=True, exist_ok=True)
             with tempfile.TemporaryDirectory(prefix="parse-", dir=scratch) as temporary:
@@ -102,18 +113,7 @@ class Pipeline:
                         raise PipelineError("VALIDATION_ERROR", "元数据补充不得改变实际文件身份、页数或文本层。")
                     bundle["paper_meta"] = enriched
                 self.gate.bundle(bundle)
-                already_present = (self.store.root / "papers" / pid).exists()
-                prior = self.store.dedup_candidate(bundle) if not already_present else None
-                comparison = compare(prior, bundle, self.gate) if prior is not None else None
-                job.move("indexing", "Schema 与外键校验通过", progress=95)
-                target = self.store.paper(bundle)
-                comparison_target = self.store.comparison(*comparison, [prior, bundle]) if comparison else None
-                job.move("completed", "四类记录已通过校验并原子发布")
-                self.last_output = target
-                self.last_comparison = comparison_target
-                if comparison:
-                    self.last_warning = comparison[0]['evidence'][0]['reason']
-                return bundle
+                return self._publish(bundle, job, pid)
         except PipelineError as error:
             if job.current["status"] not in {"completed", "failed"}:
                 job.move("failed", "解析未完成", error=error)
@@ -123,6 +123,53 @@ class Pipeline:
             if job.current["status"] not in {"completed", "failed"}:
                 job.move("failed", "解析未完成", error=error)
             raise error from None
+
+    def _publish(self, bundle, job, pid):
+        already_present = (self.store.root / "papers" / pid).exists()
+        if self.semantic is not None:
+            prior, assessment = self.semantic.assess(bundle, self.store)
+        else:
+            prior = self.store.dedup_candidate(bundle) if not already_present else None
+            assessment = {"status": "disabled", "method": "doi_identity_token_dice", "reason": "语义向量未启用。"}
+        comparison = compare(prior, bundle, self.gate) if prior is not None and prior["paper_meta"]["id"] != pid else None
+        if comparison and assessment["status"] == "ready":
+            decision, diff = comparison
+            decision["similarity"] = max(0.0, assessment["score"])
+            if assessment["band"] == "manual_review":
+                decision["recommendation"] = "manual_review"
+            if assessment["band"] == "duplicate":
+                old, new = prior["paper_meta"], bundle["paper_meta"]
+                if old["arxiv_id"] and new["arxiv_id"] and re.sub(r"v\d+$", "", old["arxiv_id"]) == re.sub(r"v\d+$", "", new["arxiv_id"]):
+                    a, b = re.fullmatch(r"v(\d+)", old["version"] or ""), re.fullmatch(r"v(\d+)", new["version"] or "")
+                    if a and b and int(b[1]) > int(a[1]):
+                        decision["recommendation"] = "keep_new"
+                        for evidence in decision["evidence"]:
+                            evidence["reason"] = f"建议保留本次较新版本（{new['version']}），依据同一 arXiv 身份及更高版本号；不代表学术质量更高。" + evidence["reason"]
+            for evidence in decision["evidence"]:
+                evidence["reason"] += f" 本地 BGE-M3 语义余弦={assessment['score']:.9f}；分档={assessment['band']}。{assessment['reason']}"
+            self.gate.comparison(decision, diff, [prior, bundle])
+        job.move("indexing", "Schema 与外键校验通过", progress=95)
+        self.last_output = self.store.paper(bundle)
+        self.last_comparison = self.store.comparison(*comparison, [prior, bundle]) if comparison else None
+        if comparison:
+            self.last_warning = comparison[0]["evidence"][0]["reason"]
+            assessment["recommendation"] = comparison[0]["recommendation"]
+        if already_present:
+            self.last_warning = "同一文件内容已入库；换名重传触发重复判定，保留已有论文，不重复入库。"
+            assessment.update(band="duplicate", recommendation="keep_old", exact_file_hash=True)
+            if assessment["status"] != "ready":
+                assessment.update(method="file_hash", score=None)
+        self.last_dedup_metadata = assessment
+        parent = self.store.root / "semantic-dedup" / "assessments" / pid
+        parent.mkdir(parents=True, exist_ok=True)
+        temporary = parent / (uuid4().hex + ".tmp")
+        try:
+            write_json(temporary, assessment)
+            windows_retry(lambda: os.replace(temporary, parent / "latest.json"))
+        finally:
+            temporary.unlink(missing_ok=True)
+        job.move("completed", "四类记录与去重判定已通过校验并发布")
+        return bundle
 
     @staticmethod
     def _inspect(raw: bytes, digest: str, *, max_pages=2000, threshold=32):
