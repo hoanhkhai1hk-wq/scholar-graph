@@ -1,0 +1,67 @@
+{
+  "checks": {
+    "Attention_official_file_and_saved_counts": true,
+    "BERT_official_file_and_saved_counts": true,
+    "GPT-1_official_file_and_saved_counts": true,
+    "FlashAttention_official_file_and_saved_counts": true,
+    "published_graph_equals_http_evidence": true,
+    "saved_local_response_equals_evidence": true,
+    "every_reference_has_one_resolution": true,
+    "all_resolution_methods_and_bibliography_anchors_valid": true,
+    "one_proof_per_graph_edge": true,
+    "all_verified_edges_join_real_citationlink_reference_chunk_and_target": true,
+    "unresolved_totals_are_honest": true,
+    "all_unresolved_reasons_preserved": true,
+    "three_requested_pairs_verified": true,
+    "same_chunks_baseline_projection_measured": true,
+    "contracts_and_protected_paths_unchanged": true,
+    "official_pdf_ignored": true,
+    "full_regression_without_failures": true,
+    "new_regression_cases_executed": true,
+    "credential_absent_from_artifacts": true
+  },
+  "passed": true,
+  "regression": {
+    "tests": 599,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 5
+  },
+  "baseline": "e3df9a97865b748c5ac174c18a5690097014a40a",
+  "verified_pairs": [
+    [
+      "BERT",
+      "Attention"
+    ],
+    [
+      "FlashAttention",
+      "Attention"
+    ],
+    [
+      "FlashAttention",
+      "BERT"
+    ],
+    [
+      "GPT-1",
+      "Attention"
+    ]
+  ],
+  "counts": {
+    "nodes": 4,
+    "edges": 9,
+    "verified_edges": 9,
+    "verified_pairs": 4,
+    "references": 261,
+    "resolved_references": 4,
+    "unresolved_references": 257
+  },
+  "same_chunks_baseline_projection": {
+    "nodes": 4,
+    "references": 205,
+    "edges": 0,
+    "unresolved_reasons": {
+      "insufficient_identity": 204,
+      "not_in_selection": 1
+    }
+  }
+}

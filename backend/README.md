@@ -62,6 +62,12 @@ backend/.venv/Scripts/python.exe tests/run_module_two_smoke.py --output-root dat
 
 GET `/api/v1/graph?paper_ids=paper-a&paper_ids=paper-b` 用 1–100 个不同已入库 id 生成视图；先按真实 CitationLink/ReferenceEntry/Chunk 关联，再运行显式 PageRank，返回 nodes、edges、layers、future_work 和 diagnostics。GraphNode/GraphEdge 使用 v1.2，原九份记录和示例不变。没有锚点的边为 unverified，不参与排名或未来方向排除；身份无法唯一匹配不猜边。接口形状与全部规则见 API 草案。
 
+缺口 E 已补引用身份解析：参考文献提取裸 DOI、带版本 arXiv 号，支持编号条目及作者年份式条目；无编号条目按文末顺序赋号，只在正文作者年份唯一对应时建立 CitationLink。图谱按 arxiv / doi / title / author-year 记录匹配方法与依据；标题使用 Unicode 归一、小写、去标点空白后的精确匹配，作者及年份辅助排除冲突。强标识冲突或多版本歧义不猜；目标标识缺失时可用精确标题，不能覆盖已知不同标识。旧 PaperMeta.title 为 null 时仅用摘要前短小首面 Chunk 的完整文本作标题比对，保留该目标 Chunk 锚点，不改 PaperMeta；缺失作者/年份明确登记为缺失。
+
+原 GraphEdge 五字段与全部契约保持不变。新增的是可选传输诊断字段：`diagnostics.reference_resolutions`（每条参考文献的方法、目标、依据、文末锚点或未解析原因），`diagnostics.edge_evidence`（用 edge_index 对应 edges，含 ref_id、文献序号、正文原文与锚点），以及 reference_count / resolved_reference_count / unresolved_reference_count。正文锚点与文末参考条目锚点分别提供，不能互换；没有正文 CitationLink 的边仍为 unverified。前端可忽略这些附加诊断，本单未改前端与 docs/。
+
+官方 pdf/ 真文件四篇重跑、真实连边及未解析数见 [引用身份验收报告](../tests/reports/graph-identity-acceptance.md)。解析行为应用于新解析；哈希命中会复用旧记录，本单未自动改写既有论文组。旧记录中的已有 ReferenceEntry 可在构图时利用其文末 Chunk 补充身份依据，但旧 BERT 若完全没有 ReferenceEntry/CitationLink，须从原件解析到新的数据目录，不能凭空补出已落盘记录。
+
 PageRank 阻尼 0.85、悬挂质量均匀回流、L1 容差1e-12；基石是有入边且高于所选图 1/N 均匀基线的节点，孤立节点保留。分层不是论文质量评价。未来方向仅按明确标记行摘录；主题完全一致、严格更晚、解决声明所在 Chunk 有真实引用时才排除，并保留两侧 QAAnswer 证据与核验原因。未满足条件只表示所选语料尚未证明已解决；不推断全球科研状态。模块五自身不调用向量检索或真实大模型，也未对接前端图谱页面。
 
 本轮先处理上一单 WinError 5：修复前10轮未能自然复现，未定位历史占用者；受控真实共享锁出现 WinError 32，释放句柄后退避成功。原子发布/清理只对 Windows 5/32/33 有限重试，永久错误仍抛出；保留校验后原子发布，不复制半成品、不改权限。诊断与第0项148项全量通过证据见 [存储报告](../tests/reports/graph-storage-report.md)，本轮最终图谱实跑和完整回归见 [模块五报告](../tests/reports/module-five-report.md)。
