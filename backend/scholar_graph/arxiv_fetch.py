@@ -16,6 +16,8 @@ from defusedxml import ElementTree as ET
 from .atomic_io import windows_retry
 from .errors import PipelineError
 from .pipeline import Pipeline
+from .grobid_enrichment import DefaultGrobid
+from .parse_provenance import latest as parse_metadata,summary as parse_summary
 from .pdf_files import PdfFiles
 from .storage import write_json
 from .tracking_state import TrackingState, operation_lock
@@ -180,9 +182,11 @@ class ArxivFetcher:
     def _pipeline(self, metadata):
         def enrich(paper):
             for field in ("title", "authors", "institutions", "abstract", "year", "source", "arxiv_id", "doi", "version"):
-                paper[field] = metadata[field]
+                if metadata[field] is not None and metadata[field]!=[] and metadata[field]!='':
+                    paper[field] = metadata[field]
             return paper
-        return Pipeline(self.repository.root, gate=self.repository.gate, metadata_enricher=enrich)
+        return Pipeline(self.repository.root, gate=self.repository.gate, metadata_enricher=enrich,
+            enhancement=DefaultGrobid(),metadata_authority=('title','authors','institutions','abstract','year','doi'))
 
     def _catalog(self, paper):
         self.repository.gate.record("PaperMeta", paper)
@@ -235,7 +239,8 @@ class ArxivFetcher:
                         status = None  # Older imported bundles may have no parse job history.
                     return {"succeeded": True, "metadata": metadata, "paper": paper,
                         "initial_parse_status": None, "parse_status": status, "error": None,
-                        "already_present": True, "dedup": dedup}
+                        "already_present": True, "dedup": dedup,
+                        'parse_metadata':parse_summary(parse_metadata(self.repository.root,paper['id']))}
                 raw = self.client.pdf(metadata)
                 scratch = self.repository.root / ".fetch"
                 scratch.mkdir(parents=True, exist_ok=True)
@@ -252,6 +257,6 @@ class ArxivFetcher:
                                                  score=decision["similarity"])
             return {"succeeded": True, "metadata": metadata, "paper": bundle["paper_meta"],
                 "initial_parse_status": pipeline.last_job.history[0], "parse_status": pipeline.last_job.current, "error": None,
-                "already_present": False, "dedup": dedup}
+                "already_present": False, "dedup": dedup,'parse_metadata':parse_summary(getattr(pipeline,'last_parse_metadata',None))}
         except Exception as error:
             return self._failure(error, metadata, pipeline)

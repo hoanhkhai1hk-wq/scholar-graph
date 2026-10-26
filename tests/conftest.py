@@ -51,6 +51,7 @@ def isolate_model_mode(monkeypatch, request):
     monkeypatch.setenv('SCHOLAR_GRAPH_DEDUP_MODE', 'off')
     monkeypatch.setenv('SCHOLAR_GRAPH_QA_RETRIEVAL_MODE', 'lexical')
     monkeypatch.setenv('SCHOLAR_GRAPH_TRACKING_ENABLED', 'false')
+    monkeypatch.setenv('SCHOLAR_GRAPH_GROBID_ENABLED','false')
     if 'real_model' not in request.keywords:
         monkeypatch.setenv('SCHOLAR_GRAPH_QA_MODE', 'extractive')
     if request.config.getoption('--layer') == 'fast':

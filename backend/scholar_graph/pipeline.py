@@ -25,10 +25,12 @@ from .validation import ContractGate
 from .semantic_dedup import semantic_from_environment
 from .storage import write_json
 from .atomic_io import windows_retry
+from .parse_provenance import save as save_provenance,latest as latest_provenance
 
 
 class Pipeline:
-    def __init__(self, root: Path, *, engines=None, grobid=None, gate=None, metadata_enricher=None, limits=None, semantic=None):
+    def __init__(self, root: Path, *, engines=None, grobid=None, gate=None, metadata_enricher=None, limits=None, semantic=None,
+                 enhancement=None,metadata_authority=()):
         self.limits = limits or ParseLimits.environment()
         self.last_metrics = None
         self.gate = gate or ContractGate()
@@ -42,12 +44,15 @@ class Pipeline:
         self.last_warning = None
         self.semantic = semantic if semantic is not None else semantic_from_environment(root)
         self.last_dedup_metadata = None
+        self.enhancement,self.metadata_authority=enhancement,metadata_authority
+        self.last_parse_metadata=None
 
     def parse(self, source: Path) -> dict:
         self.last_job, self.last_output = None, None
         self.last_comparison = None
         self.last_warning = None
         self.last_dedup_metadata = None
+        self.last_parse_metadata={'method':'mineru','grobid_attempted':False,'cache_hit':False}
         try:
             if source.suffix.lower() != ".pdf":
                 raise PipelineError("UNSUPPORTED_FILE_TYPE", "输入必须为 PDF 文件。")
@@ -63,6 +68,7 @@ class Pipeline:
         digest = hashlib.sha256(raw).hexdigest()
         pid = "paper-" + digest
         job_id = "job-" + uuid4().hex
+        self._parse_job_id=job_id
         job = ParseJob(pid, self.gate, lambda history: self.store.statuses(job_id, history))
         self.last_job = job
         try:
@@ -70,6 +76,9 @@ class Pipeline:
             paper, ocr_pages = self._inspect(raw, digest, max_pages=self.limits.max_pages, threshold=self.limits.text_batch_pages)
             existing = self.store.root / "papers" / pid
             if existing.is_dir():
+                previous=latest_provenance(self.store.root,pid)
+                self.last_parse_metadata={**(previous or self.last_parse_metadata),'cache_hit':True,
+                    'source_job_id':previous.get('job_id') if previous else None,'grobid_attempted':False}
                 job.move("indexing", "文件哈希命中已发布论文；复用合法记录", progress=80)
                 return self._publish(self.store.load(existing), job, pid)
             scratch = self.store.root / ".scratch"
@@ -103,8 +112,6 @@ class Pipeline:
                         job.move("ocr", "扫描页 OCR 完成", progress=70)
                     job.move("indexing", "生成契约记录与锚点索引", progress=80)
                     bundle = normalize(native, ocr, paper, ocr_pages)
-                if self.grobid is not None:
-                    bundle = self.grobid.enrich(bundle, raw)
                 if self.metadata_enricher is not None:
                     original = bundle["paper_meta"]
                     enriched = self.metadata_enricher(dict(original))
@@ -112,16 +119,25 @@ class Pipeline:
                     if any(enriched.get(key) != original[key] for key in protected):
                         raise PipelineError("VALIDATION_ERROR", "元数据补充不得改变实际文件身份、页数或文本层。")
                     bundle["paper_meta"] = enriched
+                if self.enhancement is not None:
+                    bundle,self.last_parse_metadata=self.enhancement.apply(bundle,raw,self.gate,self.metadata_authority)
+                elif self.grobid is not None:
+                    bundle = self.grobid.enrich(bundle, raw)
+                    self.last_parse_metadata.update(method='mineru+grobid',grobid_attempted=True)
                 self.gate.bundle(bundle)
                 return self._publish(bundle, job, pid)
         except PipelineError as error:
             if job.current["status"] not in {"completed", "failed"}:
                 job.move("failed", "解析未完成", error=error)
+            self.last_parse_metadata.update(paper_id=pid,job_id=job_id,status='failed')
+            save_provenance(self.store.root,job_id,self.last_parse_metadata)
             raise
         except Exception:
             error = PipelineError("PARSE_FAILED", "解析未完成；未发布不合规记录。")
             if job.current["status"] not in {"completed", "failed"}:
                 job.move("failed", "解析未完成", error=error)
+            self.last_parse_metadata.update(paper_id=pid,job_id=job_id,status='failed')
+            save_provenance(self.store.root,job_id,self.last_parse_metadata)
             raise error from None
 
     def _publish(self, bundle, job, pid):
@@ -168,6 +184,8 @@ class Pipeline:
             windows_retry(lambda: os.replace(temporary, parent / "latest.json"))
         finally:
             temporary.unlink(missing_ok=True)
+        self.last_parse_metadata.update(paper_id=pid,job_id=self._parse_job_id,status='completed')
+        save_provenance(self.store.root,self._parse_job_id,self.last_parse_metadata)
         job.move("completed", "四类记录与去重判定已通过校验并发布")
         return bundle
 

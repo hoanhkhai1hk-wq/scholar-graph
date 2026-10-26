@@ -32,7 +32,7 @@ def main():
             if any(part in name.upper() for part in ('API_KEY', 'TOKEN', 'SECRET', 'PASSWORD')):
                 env.pop(name)
         env.pop('DEEPSEEK_MODEL', None)
-    env.update(SCHOLAR_GRAPH_TRACKING_ENABLED='false', PYTHONIOENCODING='utf-8')
+    env.update(SCHOLAR_GRAPH_TRACKING_ENABLED='false',SCHOLAR_GRAPH_GROBID_ENABLED='false', PYTHONIOENCODING='utf-8')
     if args.layer=='full':
         env.setdefault('SCHOLAR_GRAPH_OCR_CACHE_DIR',str(ROOT/'data/paddle-models'))
         # Public download/initialization has a separate bounded preparation stage;

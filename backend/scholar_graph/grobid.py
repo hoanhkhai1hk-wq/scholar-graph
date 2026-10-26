@@ -61,6 +61,13 @@ class GrobidClient:
                 return self._convert(bundle, root)
         except PipelineError:
             raise
+        except httpx.TimeoutException:
+            raise PipelineError('UPSTREAM_ERROR','GROBID 服务超时，未采用增强结果。',details={'failure_kind':'timeout'}) from None
+        except httpx.ConnectError:
+            raise PipelineError('UPSTREAM_ERROR','GROBID 服务不可达，未采用增强结果。',details={'failure_kind':'unavailable'}) from None
+        except httpx.HTTPStatusError as error:
+            raise PipelineError('UPSTREAM_ERROR',f'GROBID 服务返回 HTTP {error.response.status_code}，未采用增强结果。',
+                details={'failure_kind':'http_status','http_status':error.response.status_code}) from None
         except Exception:
             raise PipelineError("UPSTREAM_ERROR", "GROBID 服务调用或 TEI 响应校验失败。") from None
 
