@@ -101,7 +101,14 @@ def stream_sample(app, ids, mode):
         if finals:
             validate_comparison(finals[0]['data'], [app.state.repository.paper(pid) for pid in ids], app.state.repository.gate)
             checks['validated_final'] = events[-1]['data'].get('verified') is True
-            checks['answers_not_refused'] = all(not r['refused'] and r['anchors'] for r in finals[0]['data']['per_paper'])
+            records = finals[0]['data']['per_paper']
+            row['refused_papers'] = sum(r['refused'] for r in records)
+            # A lack of lexical evidence must be an honest, validated refusal.
+            # Refusal is a quality failure for the official six, not a transport failure.
+            checks['safe_answer_or_refusal'] = all((r['refused'] and not r['anchors'] and bool(r['answer'])) or
+                (not r['refused'] and bool(r['anchors'])) for r in records)
+            if mode == 'deepseek':
+                checks['answers_not_refused'] = row['refused_papers'] == 0
         if mode=='deepseek':
             checks['unverified_drafts'] = bool(tokens) and all(e['data']['verified'] is False for e in tokens)
             ends = [e for e in events if e['event']=='node_start' and e['data']['node']=='validate']
@@ -121,7 +128,31 @@ def stream_sample(app, ids, mode):
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--without-model',action='store_true')
+    parser.add_argument('--fallback-only',action='store_true',help='Repeat only the actual no-key/no-vector TCP sample, preserving six-question results.')
     args=parser.parse_args()
+    if args.fallback_only:
+        result=json.loads(REPORT.read_text(encoding='utf-8'))
+        prior=ROOT/'tests/reports/reranker-compare-stream-first-probe.json'
+        if not prior.exists():
+            prior.write_bytes(REPORT.read_bytes())
+        result['initial_transport_probe']={'path':str(prior.relative_to(ROOT)),
+            'sha256':hashlib.sha256(prior.read_bytes()).hexdigest(),
+            'reason':'首轮无Key协议探针误把BERT对optimizer查询的合法拒答当成协议失败；保留首轮，修正为校验拒答合法且无假token，重跑TCP。实现与六题质量标准未改。'}
+        app=create_app(data_dir=ROOT/result['isolated_data_dir']/'records')
+        source_ids=json.loads((ROOT/'data/real-model/sources.json').read_text(encoding='utf-8'))
+        ids=[source_ids['attention_id'],source_ids['bert_id']]
+        saved={k:os.environ.pop(k,None) for k in ('DEEPSEEK_API_KEY','DEEPSEEK_MODEL')}
+        os.environ.update(SCHOLAR_GRAPH_QA_MODE='deepseek',SCHOLAR_GRAPH_QA_RETRIEVAL_MODE='lexical')
+        try:
+            row=stream_sample(app,ids,'no-key-no-vector')
+        finally:
+            for k,v in saved.items():
+                if v is not None:
+                    os.environ[k]=v
+        result['streams']=[r for r in result['streams'] if r['mode']!='no-key-no-vector']+[row]
+        persist(result)
+        print(json.dumps({k:v for k,v in row.items() if k!='events'},ensure_ascii=False))
+        return int(not row['passed'])
     result={'baseline':'9f30f089548d4211445b132deab30ca1efc87a0b',
         'scope':'官方 pdf/ 真文件已落盘Attention v7与BERT；真实本地模型/真实DeepSeek，未重新解析PDF。',
         'environment':{k:'已设置' if os.environ.get(k) else '未设置' for k in
