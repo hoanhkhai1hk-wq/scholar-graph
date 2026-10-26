@@ -133,3 +133,16 @@ def test_batch_and_default_arxiv_factory_share_optional_enrichment(tmp_path,monk
     assert result['paper']['title']==TITLE and result['paper']['authors']==['Demo Author']
     again=ArxivFetcher(repository,client=upstream).fetch(title=TITLE)
     assert again['already_present'] and again['parse_metadata']['method']=='mineru+grobid'
+
+
+def test_obvious_organizations_and_version_date_do_not_pollute_bibliographic_fields():
+    local=example_bundle();local['paper_meta']['year']=None
+    remote=copy.deepcopy(local)
+    remote['paper_meta'].update(authors=['Ada Example','Google Research','Google Brain'],
+        institutions=['University of Example','Work performed while at Lab. Conference on tests'],year=2023)
+    result,metadata=merge(local,remote,ContractGate())
+    assert result['paper_meta']['authors']==['Ada Example']
+    assert result['paper_meta']['institutions']==['University of Example']
+    assert result['paper_meta']['year'] is None
+    assert metadata['withheld_header_fields']['year']['candidate']==2023
+    assert metadata['discarded_header_values']['authors']==['Google Research','Google Brain']

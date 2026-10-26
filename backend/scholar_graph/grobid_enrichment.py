@@ -1,6 +1,7 @@
 """Fail-open default enrichment with immutable MinerU anchors and explicit provenance."""
 import copy
 import os
+import re
 import time
 
 from .errors import PipelineError
@@ -8,7 +9,9 @@ from .grobid import GrobidClient
 from .normalize import citation_links
 from .reference_identity import title_key,arxiv_key,surnames,bibliography_sources
 
-HEADER_FIELDS=('title','authors','institutions','abstract','year','doi')
+HEADER_FIELDS=('title','authors','institutions','abstract','doi')
+ORG_PERSON=re.compile(r'\b(?:google|university|research|institute|department|laboratory|laboratories)\b',re.I)
+FOOTNOTE_ORG=re.compile(r'\b(?:work performed|permission|copyright|conference on|proceedings of)\b',re.I)
 
 
 def present(value):
@@ -39,12 +42,21 @@ def merge(local,remote,gate,authority=()):
         raise PipelineError('VALIDATION_ERROR','GROBID 不得替换 MinerU Chunk 与物理页锚点。')
     output=copy.deepcopy(local)
     fields=[]
+    discarded={}
+    withheld={}
+    if remote['paper_meta']['year']!=local['paper_meta']['year'] and remote['paper_meta']['year'] is not None:
+        withheld['year']={'candidate':remote['paper_meta']['year'],'reason':'GROBID header日期未区分版本日期与发表年，不自动采用。'}
     for field in HEADER_FIELDS:
         # Explicit local identities/dates, or verified arXiv catalog fields, win.
         if (field in authority or field in ('doi','year')) and present(local['paper_meta'][field]):
             continue
-        if present(remote['paper_meta'][field]):
-            output['paper_meta'][field]=remote['paper_meta'][field]
+        value=remote['paper_meta'][field]
+        guard=ORG_PERSON if field=='authors' else FOOTNOTE_ORG if field=='institutions' else None
+        if guard and isinstance(value,list):
+            discarded[field]=[item for item in value if guard.search(item)]
+            value=[item for item in value if not guard.search(item)]
+        if present(value):
+            output['paper_meta'][field]=value
             if output['paper_meta'][field]!=local['paper_meta'][field]:fields.append(field)
     sources={r['number']:r['raw'] for r in bibliography_sources(local['chunks'])}
     by_number={r['number']:r for r in remote['reference_entries']}
@@ -64,6 +76,7 @@ def merge(local,remote,gate,authority=()):
     output['citation_links']=list({tuple(link[k] for k in ('paper_id','citation_number','page_number','chunk_id','ref_id')):link for link in links}.values())
     gate.bundle(output)
     return output,{'paper_fields':fields,'reference_matches':matches,
+        'discarded_header_values':{k:v for k,v in discarded.items() if v},'withheld_header_fields':withheld,
         'references_enriched':sum(bool(m['fields']) for m in matches),
         'unmatched_grobid_references':len(remote['reference_entries'])-len(matches)}
 
