@@ -15,6 +15,7 @@ import type {
 } from "@/lib/types";
 import PaperPicker from "@/components/PaperPicker";
 import ErrorState from "@/components/ErrorState";
+import TrackingPanel from "@/components/TrackingPanel";
 
 type SearchState =
   | { kind: "idle" }
@@ -291,6 +292,17 @@ export default function RetrievalWorkspace({
           抓取优先按 arXiv 基号精确查 Atom API，其次裸 DOI，最后标题完全匹配；
           不使用相似标题冒充。失败时 error 为统一三字段错误体，不虚构排队记录。
         </p>
+      </section>
+
+      {/* 定期追踪 */}
+      <section className="sg-section">
+        <div className="sg-section__head">
+          <h2 className="sg-section__title">arXiv 定期追踪</h2>
+          <span className="sg-section__hint">
+            GET /retrieval/tracking/status · POST /retrieval/tracking/run
+          </span>
+        </div>
+        <TrackingPanel paperIds={papers.map((paper) => paper.id)} />
       </section>
 
       {/* 推荐 */}
