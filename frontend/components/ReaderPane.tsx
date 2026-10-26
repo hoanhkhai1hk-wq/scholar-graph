@@ -203,12 +203,10 @@ export default function ReaderPane({
 
       <div className="sg-reader__main">
         <div className="sg-note">
-          <span className="sg-tag sg-tag--warning">
-            版式原文渲染待后端文件端点
-          </span>
+          <span className="sg-tag sg-tag--info">本视图是文本 pane，不是版式原文</span>
           <p className="sg-note__text">
-            后端没有提供 PDF 原文件下载端点，本页不渲染 PDF 版式原文，
-            阅读材料为已落盘的 Chunk 正文。不凭空构造 PDF 接口。
+            这里的阅读材料是已落盘的 Chunk 正文，不是 PDF 版式原文。
+            要看原排版（单栏/双栏以原件为准），请切到顶部的「版式原文（pdf.js）」视图。
           </p>
         </div>
 
