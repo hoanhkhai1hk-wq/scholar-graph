@@ -60,8 +60,17 @@ class AgentTools:
                 items = []
                 methods = []
                 for pid in args['paper_ids']:
-                    evidence, info = self.retriever.retrieve(self.repository.paper(pid), args['query'], limit=args['limit'])
-                    items.extend(evidence)
+                    evidence, info = self.retriever.retrieve(self.repository.paper(pid), args['query'], limit=2 * args['limit'])
+                    # A QAAnswer supports one contiguous quote per Chunk. Avoid offering
+                    # disjoint windows as separate claims to an agent in the same round.
+                    selected, seen_chunks = [], set()
+                    for item in evidence:
+                        if item['anchor']['chunk_id'] not in seen_chunks:
+                            selected.append(item)
+                            seen_chunks.add(item['anchor']['chunk_id'])
+                        if len(selected) >= args['limit']:
+                            break
+                    items.extend(selected)
                     methods.append(info['method'])
                 method = 'lexical-fallback' if 'lexical-fallback' in methods else 'hybrid' if 'hybrid' in methods else 'vector'
                 result = {'items': items, 'reason': 'OK' if items else 'NO_MATCHING_CHUNKS', 'method': method}

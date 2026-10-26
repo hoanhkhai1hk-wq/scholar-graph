@@ -143,9 +143,9 @@ class EvidenceAgent:
                 messages = messages + [{'role': 'tool', 'tool_call_id': call['id'],
                                         'content': json.dumps(result, ensure_ascii=False)}]
                 for item in result.get('items', []):
-                    if item['evidence_id'] not in seen:
+                    if item['anchor']['chunk_id'] not in seen:
                         evidence.append(item)
-                        seen.add(item['evidence_id'])
+                        seen.add(item['anchor']['chunk_id'])
             return {'attempt': attempt, 'messages': messages, 'evidence': evidence,
                     'anchors': [e['anchor'] for e in evidence]}
 

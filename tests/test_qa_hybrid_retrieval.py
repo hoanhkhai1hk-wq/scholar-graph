@@ -145,6 +145,21 @@ def test_agent_retrieve_and_tool_metadata_use_hybrid(tmp_path):
     assert all(row["return_summary"]["method"] == "hybrid" for row in meta["tool_calls"])
 
 
+def test_agent_search_only_offers_one_contiguous_window_per_chunk(tmp_path):
+    from scholar_graph.agent_tools import AgentTools
+    from test_agent_orchestration import call
+    repo, bundle, service = make(tmp_path)
+    # The real source is long enough to have several disjoint quotation windows.
+    bundle = copy.deepcopy(bundle)
+    bundle['paper_meta']['id'] = 'paper-window-fixture'
+    bundle['chunks'] = [dict(bundle['chunks'][0], paper_id='paper-window-fixture', chunk_id='window-long', text=('source samples text ' * 100))]
+    bundle['reference_entries'], bundle['citation_links'] = [], []
+    repo.store.paper(bundle)
+    tools = AgentTools(repo, ['paper-window-fixture'], retriever=service)
+    result = tools.execute(call('search', {'paper_ids': ['paper-window-fixture'], 'query': 'samples', 'limit': 8}), attempt=1)
+    assert len(result['items']) == 1 and len(result['items'][0]['quote']) <= 600
+
+
 def test_direct_and_compare_extractive_metadata_are_present(tmp_path, monkeypatch):
     app = create_app(data_dir=tmp_path)
     from test_dedup import versions
