@@ -62,6 +62,16 @@ with p.open('rb') as f:
 print(json.dumps({'bytes':p.stat().st_size,'sha256':h.hexdigest(),'matches_fixed_revision_weights':h.hexdigest()=='b5e0ce3470abf5ef3831aa1bd5553b486803e83251590ab7ff35a117cf6aad38'}))
 """
     result['model_snapshot'] = json.loads(run(compose+['exec','-T','backend','python','-c',model_code]))
+    vector_code = """import pathlib,sys,json
+from importlib.metadata import version
+real=pathlib.Path(sys.executable).resolve()
+print(json.dumps({'resolved_executable':str(real),'prefix':sys.prefix,
+ 'isolated_after_resolution':real.parent.parent==pathlib.Path('/opt/vector-venv'),
+ 'versions':{n:version(n) for n in ('torch','chromadb','FlagEmbedding','transformers')}}))
+"""
+    result['vector_runtime'] = json.loads(run(compose+['exec','-T','backend','/opt/vector-venv/bin/python','-c',vector_code]))
+    source_code="import pathlib,hashlib,json; names=['backend/prepare_ocr_models.py','tests/run_regression.py','tests/test_engine_cache.py']; print(json.dumps({n:hashlib.sha256(pathlib.Path('/app',n).read_bytes()).hexdigest() for n in names}))"
+    result['supplementary_source_sha256']=json.loads(run(compose+['exec','-T','backend','python','-c',source_code]))
     (ROOT/'tests/reports/final-deployment-runtime.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(result,ensure_ascii=False))
 

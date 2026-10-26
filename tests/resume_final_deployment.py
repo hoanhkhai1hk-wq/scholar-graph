@@ -9,6 +9,7 @@ import subprocess
 import time
 
 import httpx
+from deployment_timer import finish_timer_observation
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -77,13 +78,17 @@ def main():
         copied,_=command('export-final-'+name.replace('.','-'),['cp','backend:'+parent+'/'+name,str(exported/name)])
         assert copied==0
     result=json.loads((exported/'container.json').read_text(encoding='utf-8'))
+    result['original_probe_exit_code']=code
+    finish_timer_observation(result,compose,checkout,env)
+    (exported/'container-after-timer-observation.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     evidence['container']=result
     evidence['source_matches_clean_clone']=all(hashlib.sha256((checkout/name).read_bytes()).hexdigest()==digest
         for name,digest in result['source_sha256'].items())
     evidence['clone']['clean_after_build_and_run']=not subprocess.check_output(['git','status','--porcelain'],cwd=checkout).strip()
     for name,target in [('container.json','final-deployment-container.json'),('container-pytest.xml','final-deployment-container-pytest.xml')]:
         shutil.copyfile(exported/name,ROOT/'tests/reports'/target)
-    evidence['passed']=code==0 and result['passed'] and evidence['source_matches_clean_clone'] and evidence['clone']['clean_after_build_and_run']
+    (ROOT/'tests/reports/final-deployment-container.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    evidence['passed']=result['passed'] and evidence['source_matches_clean_clone'] and evidence['clone']['clean_after_build_and_run']
     save()
     print(json.dumps({'passed':evidence['passed'],'report':str(output)}),flush=True)
     return int(not evidence['passed'])

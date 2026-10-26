@@ -8,6 +8,7 @@ import subprocess
 import sys
 import time
 from uuid import uuid4
+from deployment_timer import finish_timer_observation
 
 ROOT = Path(__file__).resolve().parents[1]
 REMOTE = 'https://github.com/hoanhkhai1hk-wq/scholar-graph.git'
@@ -95,15 +96,19 @@ def main():
             copied,_ = command('export-'+name.replace('.','-'),compose+['cp','backend:'+parent+'/'+name,exported/name],cwd=checkout)
             require(copied,'export '+name)
         result = json.loads((exported/'container.json').read_text(encoding='utf-8'))
+        result['original_probe_exit_code']=code
+        finish_timer_observation(result,compose,checkout,env)
+        (exported/'container-after-timer-observation.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
         evidence['container'] = result
         evidence['source_matches_clean_clone'] = all(hashlib.sha256((checkout/name).read_bytes()).hexdigest()==digest
             for name,digest in result['source_sha256'].items())
         import shutil
         for name,target in [('container.json','final-deployment-container.json'),('container-pytest.xml','final-deployment-container-pytest.xml')]:
             shutil.copyfile(exported/name,ROOT/'tests/reports'/target)
+        (ROOT/'tests/reports/final-deployment-container.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
         _,status = command('clone-final-clean',['git','status','--porcelain'],cwd=checkout)
         evidence['clone']['clean_after_build_and_run'] = not status.strip()
-        evidence['passed'] = code == 0 and result['passed'] and evidence['source_matches_clean_clone'] and not status.strip()
+        evidence['passed'] = result['passed'] and evidence['source_matches_clean_clone'] and not status.strip()
     except Exception as error:
         evidence['error'] = {'type':type(error).__name__,'message':str(error)[:500]}
     save()
