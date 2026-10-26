@@ -1,0 +1,494 @@
+{
+  "scope": "官方 pdf/ 真文件；真实 GROBID 0.9.1-crf + MinerU；无模型API/Key",
+  "timestamp_utc": "2026-10-26T03:43:54.217583+00:00",
+  "revision": "a3725bfed43fedf13be9fb7597749e72f9a7a9f7",
+  "local_artifacts": "data\\grobid-conversion-fix\\8dc9ac2680d645469a26c5dc6eb4b0c9",
+  "input": {
+    "filename": "1706.03762v7.pdf",
+    "sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+    "bytes": 2215244
+  },
+  "published_groups": 1,
+  "passed": true,
+  "service": {
+    "isalive": {
+      "status": 200,
+      "body": "true"
+    },
+    "version": {
+      "status": 200,
+      "body": "{\"version\":\"0.9.1\",\"revision\":\"0.9.1\"}"
+    }
+  },
+  "mineru": {
+    "elapsed_seconds": 6.95299,
+    "paper_meta": {
+      "schema_version": "1.0.0",
+      "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "title": null,
+      "authors": [],
+      "institutions": [],
+      "abstract": null,
+      "year": null,
+      "source": "local-upload",
+      "arxiv_id": "1706.03762v7",
+      "doi": null,
+      "version": "v7",
+      "file_hash": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "page_count": 15,
+      "has_text_layer": true
+    },
+    "counts": {
+      "titles": 0,
+      "authors": 0,
+      "institutions": 0,
+      "abstracts": 0,
+      "chunks": 175,
+      "types": {
+        "text": 166,
+        "figure": 5,
+        "table": 4
+      },
+      "chunks_with_bbox": 175,
+      "distinct_section_paths": 29,
+      "references": 40,
+      "citation_links": 69
+    },
+    "reference_coverage": {
+      "title": 0,
+      "authors": 0,
+      "year": 0,
+      "venue": 0,
+      "doi": 0
+    },
+    "samples": {
+      "table": {
+        "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00066",
+        "page_number": 6,
+        "section_path": [
+          "MultiHead(Q, K, V ) = Concat(head 1 , ..., head h )W O",
+          "3.4 Embeddings and Softmax"
+        ],
+        "type": "table",
+        "bbox": [
+          0.194,
+          0.142,
+          0.806,
+          0.236
+        ],
+        "text": "Table 1: Maximum path lengths, per-layer complexity and minimum number of sequential operations for different layer types. n is the sequence length, d is the representation dimension, k is the kernel size of convolutions and r the size of the neighborhood in restricted self-attention. <table><tbody><tr><td>Layer Type</td><td>Complexity per Layer</td><td>Sequential Operations</td><td>Maximum Path Length</td></tr><tr><td>Self-Attention</td><td>O(n<sup>2</sup> · d)</td><td>O(1)</td><td>O(1)</td></tr><tr><td>Recurrent</td><td>O(n · d<sup>2</sup>)</td><td>O(n)</td><td>O(n)</td></tr><tr><td>Convolutional</td><td>O(k · n · d<sup>2</sup>)</td><td>O(1)</td><td>O(log<sub>k</sub>(n))</td></tr><tr><td>Self-Attention (restricted)</td><td>O(r · n · d)</td><td>O(1)</td><td>O(n/r)</td></tr></tbody></table>"
+      },
+      "formula": null,
+      "first_page_chunks": [
+        {
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00001",
+          "text": "Provided proper attribution is provided, Google hereby grants permission to reproduce the tables and figures in this paper solely for use in journalistic or scholarly works."
+        },
+        {
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00002",
+          "text": "Attention Is All You Need"
+        },
+        {
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00003",
+          "text": "Ashish Vaswani ∗ Google Brain avaswani@google.com  Llion Jones ∗  Google Research llion@google.com"
+        },
+        {
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00004",
+          "text": "Noam Shazeer ∗  Google Brain noam@google.com  Aidan N. Gomez ∗  † University of Toronto aidan@cs.toronto.edu"
+        },
+        {
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00005",
+          "text": "Niki Parmar ∗  Google Research nikip@google.com"
+        },
+        {
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00006",
+          "text": "Jakob Uszkoreit ∗  Google Research usz@google.com  Łukasz Kaiser ∗  Google Brain lukaszkaiser@google.com"
+        },
+        {
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00007",
+          "text": "Illia Polosukhin ∗  ‡"
+        },
+        {
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00008",
+          "text": "illia.polosukhin@gmail.com"
+        },
+        {
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00009",
+          "text": "Abstract"
+        }
+      ],
+      "abstract_chunks": [
+        {
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00009",
+          "page_number": 1,
+          "text": "Abstract"
+        },
+        {
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00010",
+          "page_number": 1,
+          "text": "The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely. Experiments on two machine translation tasks show these models to be superior in quality while being more parallelizable and requiring significantly less time to train. Our model achieves 28.4 BLEU on the WMT 2014 Englishto-German translation task, improving over the existing best results, including ensembles, by over 2 BLEU. On the WMT 2014 English-to-French translation task, our model establishes a new single-model state-of-the-art BLEU score of 41.8 after training for 3.5 days on eight GPUs, a small fraction of the training costs of the best models from the literature. We show that the Transformer generalizes well to other tasks by applying it successfully to English constituency parsing both with large and limited training data."
+        }
+      ],
+      "references": [
+        {
+          "schema_version": "1.0.0",
+          "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-1",
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "number": 1,
+          "authors": [],
+          "year": null,
+          "title": null,
+          "venue": null,
+          "doi": null,
+          "arxiv_id": null
+        },
+        {
+          "schema_version": "1.0.0",
+          "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-2",
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "number": 2,
+          "authors": [],
+          "year": null,
+          "title": null,
+          "venue": null,
+          "doi": null,
+          "arxiv_id": null
+        }
+      ]
+    }
+  },
+  "elapsed_seconds": 9.680789,
+  "service_call": {
+    "status": 200,
+    "path": "/api/processFulltextDocument",
+    "elapsed_seconds": 2.454602,
+    "tei_sha256": "55dc0a7a1a927d20af2b97a0b9b3e537023da6194909d44b5d862b282c4a0b1d",
+    "tei_bytes": 80698
+  },
+  "status": {
+    "schema_version": "1.1.0",
+    "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+    "status": "completed",
+    "progress": 100,
+    "current_stage": "四类记录与去重判定已通过校验并发布",
+    "error_code": null,
+    "error_message": null
+  },
+  "status_history": [
+    {
+      "schema_version": "1.1.0",
+      "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "status": "queued",
+      "progress": 0,
+      "current_stage": "等待解析",
+      "error_code": null,
+      "error_message": null
+    },
+    {
+      "schema_version": "1.1.0",
+      "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "status": "parsing",
+      "progress": 5,
+      "current_stage": "检查 PDF 与文本层",
+      "error_code": null,
+      "error_message": null
+    },
+    {
+      "schema_version": "1.1.0",
+      "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "status": "parsing",
+      "progress": 30,
+      "current_stage": "MinerU 本地文本解析完成",
+      "error_code": null,
+      "error_message": null
+    },
+    {
+      "schema_version": "1.1.0",
+      "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "status": "indexing",
+      "progress": 80,
+      "current_stage": "生成契约记录与锚点索引",
+      "error_code": null,
+      "error_message": null
+    },
+    {
+      "schema_version": "1.1.0",
+      "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "status": "indexing",
+      "progress": 95,
+      "current_stage": "Schema 与外键校验通过",
+      "error_code": null,
+      "error_message": null
+    },
+    {
+      "schema_version": "1.1.0",
+      "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "status": "completed",
+      "progress": 100,
+      "current_stage": "四类记录与去重判定已通过校验并发布",
+      "error_code": null,
+      "error_message": null
+    }
+  ],
+  "schema_and_anchor_validation": "passed",
+  "disk_roundtrip_identical": true,
+  "chunks_unchanged": true,
+  "output": {
+    "paper_meta": {
+      "schema_version": "1.0.0",
+      "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "title": "Attention Is All You Need",
+      "authors": [
+        "Ashish Vaswani",
+        "Google Brain",
+        "Noam Shazeer",
+        "Niki Parmar",
+        "Google Research",
+        "Jakob Uszkoreit",
+        "Llion Jones",
+        "Aidan N Gomez",
+        "Łukasz Kaiser",
+        "Illia Polosukhin"
+      ],
+      "institutions": [
+        "University of Toronto",
+        "Work performed while at Google Research. 31st Conference on Neural Information Processing Systems (NIPS 2017)"
+      ],
+      "abstract": "The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely. Experiments on two machine translation tasks show these models to be superior in quality while being more parallelizable and requiring significantly less time to train. Our model achieves 28.4 BLEU on the WMT 2014 Englishto-German translation task, improving over the existing best results, including ensembles, by over 2 BLEU. On the WMT 2014 English-to-French translation task, our model establishes a new single-model state-of-the-art BLEU score of 41.8 after training for 3.5 days on eight GPUs, a small fraction of the training costs of the best models from the literature. We show that the Transformer generalizes well to other tasks by applying it successfully to English constituency parsing both with large and limited training data.* Equal contribution. Listing order is random. Jakob proposed replacing RNNs with self-attention and started the effort to evaluate this idea. Ashish, with Illia, designed and implemented the first Transformer models and has been crucially involved in every aspect of this work. Noam proposed scaled dot-product attention, multi-head attention and the parameter-free position representation and became the other person involved in nearly every detail. Niki designed, implemented, tuned and evaluated countless model variants in our original codebase and tensor2tensor. Llion also experimented with novel model variants, was responsible for our initial codebase, and efficient inference and visualizations. Lukasz and Aidan spent countless long days designing various parts of and implementing tensor2tensor, replacing our earlier codebase, greatly improving results and massively accelerating our research.† Work performed while at Google Brain.",
+      "year": 2023,
+      "source": "local-upload",
+      "arxiv_id": "1706.03762v7",
+      "doi": null,
+      "version": "v7",
+      "file_hash": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "page_count": 15,
+      "has_text_layer": true
+    },
+    "counts": {
+      "titles": 1,
+      "authors": 10,
+      "institutions": 2,
+      "abstracts": 1,
+      "chunks": 175,
+      "types": {
+        "text": 166,
+        "figure": 5,
+        "table": 4
+      },
+      "chunks_with_bbox": 175,
+      "distinct_section_paths": 29,
+      "references": 40,
+      "citation_links": 69
+    },
+    "reference_coverage": {
+      "title": 39,
+      "authors": 39,
+      "year": 40,
+      "venue": 39,
+      "doi": 0
+    },
+    "samples": {
+      "table": {
+        "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00066",
+        "page_number": 6,
+        "section_path": [
+          "MultiHead(Q, K, V ) = Concat(head 1 , ..., head h )W O",
+          "3.4 Embeddings and Softmax"
+        ],
+        "type": "table",
+        "bbox": [
+          0.194,
+          0.142,
+          0.806,
+          0.236
+        ],
+        "text": "Table 1: Maximum path lengths, per-layer complexity and minimum number of sequential operations for different layer types. n is the sequence length, d is the representation dimension, k is the kernel size of convolutions and r the size of the neighborhood in restricted self-attention. <table><tbody><tr><td>Layer Type</td><td>Complexity per Layer</td><td>Sequential Operations</td><td>Maximum Path Length</td></tr><tr><td>Self-Attention</td><td>O(n<sup>2</sup> · d)</td><td>O(1)</td><td>O(1)</td></tr><tr><td>Recurrent</td><td>O(n · d<sup>2</sup>)</td><td>O(n)</td><td>O(n)</td></tr><tr><td>Convolutional</td><td>O(k · n · d<sup>2</sup>)</td><td>O(1)</td><td>O(log<sub>k</sub>(n))</td></tr><tr><td>Self-Attention (restricted)</td><td>O(r · n · d)</td><td>O(1)</td><td>O(n/r)</td></tr></tbody></table>"
+      },
+      "formula": null,
+      "first_page_chunks": [
+        {
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00001",
+          "text": "Provided proper attribution is provided, Google hereby grants permission to reproduce the tables and figures in this paper solely for use in journalistic or scholarly works."
+        },
+        {
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00002",
+          "text": "Attention Is All You Need"
+        },
+        {
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00003",
+          "text": "Ashish Vaswani ∗ Google Brain avaswani@google.com  Llion Jones ∗  Google Research llion@google.com"
+        },
+        {
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00004",
+          "text": "Noam Shazeer ∗  Google Brain noam@google.com  Aidan N. Gomez ∗  † University of Toronto aidan@cs.toronto.edu"
+        },
+        {
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00005",
+          "text": "Niki Parmar ∗  Google Research nikip@google.com"
+        },
+        {
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00006",
+          "text": "Jakob Uszkoreit ∗  Google Research usz@google.com  Łukasz Kaiser ∗  Google Brain lukaszkaiser@google.com"
+        },
+        {
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00007",
+          "text": "Illia Polosukhin ∗  ‡"
+        },
+        {
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00008",
+          "text": "illia.polosukhin@gmail.com"
+        },
+        {
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00009",
+          "text": "Abstract"
+        }
+      ],
+      "abstract_chunks": [
+        {
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00009",
+          "page_number": 1,
+          "text": "Abstract"
+        },
+        {
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00010",
+          "page_number": 1,
+          "text": "The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely. Experiments on two machine translation tasks show these models to be superior in quality while being more parallelizable and requiring significantly less time to train. Our model achieves 28.4 BLEU on the WMT 2014 Englishto-German translation task, improving over the existing best results, including ensembles, by over 2 BLEU. On the WMT 2014 English-to-French translation task, our model establishes a new single-model state-of-the-art BLEU score of 41.8 after training for 3.5 days on eight GPUs, a small fraction of the training costs of the best models from the literature. We show that the Transformer generalizes well to other tasks by applying it successfully to English constituency parsing both with large and limited training data."
+        }
+      ],
+      "references": [
+        {
+          "schema_version": "1.0.0",
+          "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-1",
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "number": 1,
+          "authors": [
+            "Jimmy Lei Ba",
+            "Jamie Ryan Kiros",
+            "Geoffrey E Hinton"
+          ],
+          "year": 2016,
+          "title": null,
+          "venue": null,
+          "doi": null,
+          "arxiv_id": null
+        },
+        {
+          "schema_version": "1.0.0",
+          "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-2",
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "number": 2,
+          "authors": [
+            "Dzmitry Bahdanau",
+            "Kyunghyun Cho",
+            "Yoshua Bengio"
+          ],
+          "year": 2014,
+          "title": "Neural machine translation by jointly learning to align and translate",
+          "venue": "Neural machine translation by jointly learning to align and translate",
+          "doi": null,
+          "arxiv_id": null
+        }
+      ]
+    }
+  },
+  "normalization": {
+    "title_empty_to_null": 1,
+    "venue_empty_to_null": 1,
+    "affected_reference_entries": 1,
+    "changes": [
+      {
+        "number": 1,
+        "fields": [
+          "title",
+          "venue"
+        ],
+        "before": {
+          "title": "",
+          "venue": ""
+        },
+        "after": {
+          "title": null,
+          "venue": null
+        }
+      }
+    ],
+    "person_names_checked": 165,
+    "person_names_changed": 159,
+    "person_name_samples": [
+      {
+        "before": "AshishVaswani",
+        "after": "Ashish Vaswani"
+      },
+      {
+        "before": "GoogleBrain",
+        "after": "Google Brain"
+      },
+      {
+        "before": "NoamShazeer",
+        "after": "Noam Shazeer"
+      },
+      {
+        "before": "NikiParmar",
+        "after": "Niki Parmar"
+      },
+      {
+        "before": "GoogleResearch",
+        "after": "Google Research"
+      },
+      {
+        "before": "JakobUszkoreit",
+        "after": "Jakob Uszkoreit"
+      },
+      {
+        "before": "LlionJones",
+        "after": "Llion Jones"
+      },
+      {
+        "before": "AidanNGomez",
+        "after": "Aidan N Gomez"
+      },
+      {
+        "before": "ŁukaszKaiser",
+        "after": "Łukasz Kaiser"
+      },
+      {
+        "before": "IlliaPolosukhin",
+        "after": "Illia Polosukhin"
+      },
+      {
+        "before": "JimmyLei Ba",
+        "after": "Jimmy Lei Ba"
+      },
+      {
+        "before": "JamieRyan Kiros",
+        "after": "Jamie Ryan Kiros"
+      },
+      {
+        "before": "GeoffreyEHinton",
+        "after": "Geoffrey E Hinton"
+      },
+      {
+        "before": "DzmitryBahdanau",
+        "after": "Dzmitry Bahdanau"
+      }
+    ]
+  },
+  "wiring": "explicit CLI GROBID_URL/--grobid-url or Pipeline(grobid=...); default HTTP upload/arXiv disabled",
+  "docker": {
+    "version": {
+      "exit_code": 0,
+      "stdout": "29.9.2",
+      "stderr": ""
+    },
+    "image": {
+      "exit_code": 0,
+      "stdout": "[\"grobid/grobid@sha256:223957791ac2bbe48609dcc58a689b16b60baeae13a8734ef440ae6bfb38f4cd\"]",
+      "stderr": ""
+    },
+    "service": {
+      "exit_code": 0,
+      "stdout": "{\"Command\":\"\\\"/tini -s -- ./grobi…\\\"\",\"CreatedAt\":\"2026-10-26 10:36:19 +0800 CST\",\"Engine\":\"\",\"ExitCode\":0,\"Health\":\"\",\"ID\":\"bdefda1eed71\",\"Image\":\"grobid/grobid:0.9.1-crf\",\"Labels\":\"authors=The contributors,com.docker.compose.service=grobid,org.label-schema.name=GROBID,desktop.docker.io/ports/8070/tcp=127.0.0.1:8070,org.label-schema.description=Image with GROBID service,com.docker.compose.config-hash=84d556e90d0734e40c1b04aacd7312bca08295f4d7a7044b6e4f23aab2529d1d,com.docker.compose.container-number=1,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=D:\\\\AI_Workspace\\\\Tasks\\\\scholar-graph\\\\services\\\\docker-compose.grobid.yml,com.docker.compose.project.working_dir=D:\\\\AI_Workspace\\\\Tasks\\\\scholar-graph\\\\services,desktop.docker.io/ports.scheme=v2,com.docker.compose.project=scholar-graph-grobid,com.docker.compose.version=5.6.1,org.label-schema.url=https://github.com/kermitt2/grobid,org.label-schema.version=0.9.1,org.opencontainers.image.version=24.04,com.docker.compose.depends_on=,com.docker.compose.image=sha256:eb306e6d494f6f7e89b35bbaf3b4925afd58c6a5638c775f2a1c35bfd3c5db0d\",\"LocalVolumes\":\"0\",\"Mounts\":\"\",\"Name\":\"scholar-graph-grobid-grobid-1\",\"Names\":\"scholar-graph-grobid-grobid-1\",\"Networks\":\"scholar-graph-grobid_default\",\"Ports\":\"127.0.0.1:8070-\\u003e8070/tcp\",\"Project\":\"scholar-graph-grobid\",\"Publishers\":[{\"URL\":\"127.0.0.1\",\"TargetPort\":8070,\"PublishedPort\":8070,\"Protocol\":\"tcp\"}],\"RunningFor\":\"About an hour ago\",\"Service\":\"grobid\",\"Size\":\"0B\",\"State\":\"running\",\"Status\":\"Up About an hour\"}",
+      "stderr": ""
+    }
+  }
+}

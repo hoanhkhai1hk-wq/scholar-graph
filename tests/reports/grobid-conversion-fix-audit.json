@@ -1,0 +1,31 @@
+{
+  "checks": {
+    "official_pdf_identity": true,
+    "actual_tei_identity": true,
+    "mineru-only_schemas_foreign_keys_and_saved_counts": true,
+    "with-grobid_schemas_foreign_keys_and_saved_counts": true,
+    "tei_conversion_matches_entire_publication": true,
+    "chunks_retained": true,
+    "null_and_name_counts_recomputed": true,
+    "reference_one_title_venue_are_null": true,
+    "reference_one_actual_names_have_spacing": true,
+    "header_names_match_real_tei_components": true,
+    "completed_one_real_paper_group": true,
+    "contracts_and_protected_paths_unchanged": true,
+    "pdf_ignored": true,
+    "default_http_upload_not_enabled": true,
+    "default_arxiv_not_enabled": true,
+    "full_regression_passes": true,
+    "credential_absent": true
+  },
+  "regression": {
+    "tests": 564,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 5
+  },
+  "passed": true,
+  "contracts_baseline": "a3725bfed43fedf13be9fb7597749e72f9a7a9f7",
+  "default_http_grobid": false,
+  "default_arxiv_grobid": false
+}
