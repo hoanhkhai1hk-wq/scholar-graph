@@ -1,11 +1,16 @@
 """Self-made TEI tests for evidence counting; these are NOT live service passes."""
 import copy
+import sys
+import httpx
 import pytest
 from defusedxml import ElementTree as ET
 
-from run_grobid_acceptance import tei_summary
+from run_grobid_acceptance import tei_summary, command
 from scholar_graph.grobid import GrobidClient
 from scholar_graph.validation import ContractGate
+from scholar_graph.errors import PipelineError
+from scholar_graph.pipeline import Pipeline
+from sample_pdfs import make_pdf
 from test_validation_status import example_bundle
 
 
@@ -31,6 +36,7 @@ def test_tei_counts_distinguish_header_authors_and_caption():
         "table_elements": 1, "formulas": 1, "references": 1, "bibliography_markers": 1}
     assert result["samples"]["authors"] == ["Ada Example", "Bo Example"]
     assert result["reference_coverage"] == {"title": 1, "authors": 1, "year": 1, "venue": 1, "raw": 1}
+    assert result["tables"] == [{"label": "", "head": "Table caption is not a section", "rows": 1, "cells": 1}]
 
 
 def test_missing_tables_formula_refs_are_zero_not_filled():
@@ -68,3 +74,28 @@ def test_optional_mapper_preserves_chunks_and_file_identity():
     assert result["paper_meta"]["title"] == "Self-made study"
     assert result["reference_entries"][0]["title"] == "Prior study"
     ContractGate().bundle(result)
+
+
+def test_docker_metadata_probe_decodes_utf8_on_windows():
+    # Docker Compose's command abbreviation contains an ellipsis. Windows GBK
+    # decoding previously lost the entire successful live evidence at final ps.
+    result = command(sys.executable, "-c", "import sys; sys.stdout.buffer.write(chr(0x2026).encode('utf-8'))")
+    assert result == {"exit_code": 0, "stdout": "…", "stderr": ""}
+
+
+def test_empty_grobid_reference_fields_fail_before_publication(tmp_path):
+    # Reproduce the real CRF response shape with a self-made TEI. This protects
+    # the schema gate; it does not claim the existing converter has been fixed.
+    root = ET.fromstring(TEI)
+    namespace = {"t": "http://www.tei-c.org/ns/1.0"}
+    ref = root.find(".//t:listBibl/t:biblStruct", namespace)
+    ref.find("t:analytic/t:title", namespace).text = ""
+    ref.find("t:monogr/t:title", namespace).text = ""
+    client = GrobidClient("http://127.0.0.1:8070", transport=httpx.MockTransport(
+        lambda request: httpx.Response(200, content=ET.tostring(root))))
+    pipeline = Pipeline(tmp_path / "records", grobid=client)
+    with pytest.raises(PipelineError, match="ReferenceEntry"):
+        pipeline.parse(make_pdf(tmp_path / "self-made.pdf"))
+    assert pipeline.last_job.current["status"] == "failed"
+    assert pipeline.last_job.current["error_code"] == "VALIDATION_ERROR"
+    assert not (pipeline.store.root / "papers").exists()

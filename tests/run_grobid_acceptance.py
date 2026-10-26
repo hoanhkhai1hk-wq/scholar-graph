@@ -86,6 +86,9 @@ def tei_summary(payload):
                     "references": [reference_fields(x) for x in refs[:2]]},
         "reference_coverage": {key: sum(bool(reference_fields(x)[key]) for x in refs)
                                for key in ("title", "authors", "year", "venue", "raw")},
+        "tables": [{"label": words(x.find("t:label", NS)), "head": words(x.find("t:head", NS)),
+                    "rows": len(x.findall(".//t:row", NS)), "cells": len(x.findall(".//t:cell", NS))}
+                   for x in tables],
         "tei_sha256": hashlib.sha256(payload).hexdigest(), "tei_bytes": len(payload),
     }
 
@@ -121,6 +124,8 @@ class MeasuredEngines(LocalEngines):
             "block_types": dict(Counter(x.get("type", "text") for x in blocks)),
             "formula_samples": [json.dumps(x, ensure_ascii=False)[:2400] for x in blocks
                                 if x.get("type") in {"equation", "formula"}][:2],
+            "formulas_with_text": sum(bool(block_text(x.get("content")).strip()) for x in blocks
+                                      if x.get("type") in {"equation", "formula"}),
             "heading_samples": [block_text(x.get("content")) for x in blocks
                                 if x.get("type") in {"doc_title", "title", "paragraph_title", "section_title"}][:45]}
         return result
@@ -132,12 +137,18 @@ class MeasuredGrobid(GrobidClient):
         started = time.perf_counter()
         value = super().enrich(bundle, pdf_bytes)
         self.elapsed = time.perf_counter() - started
+        gate = ContractGate()
+        self.reference_validation_errors = [
+            {"reference_number": ref["number"], "path": list(error.path),
+             "validator": error.validator, "message": error.message}
+            for ref in value["reference_entries"]
+            for error in gate.validators["ReferenceEntry"].iter_errors(ref)]
         return value
 
 
 def command(*args):
     # Whitelisted callers use only version/digest/state, never inspect environment.
-    value = subprocess.run(args, capture_output=True, text=True, timeout=30, cwd=ROOT)
+    value = subprocess.run(args, capture_output=True, text=True, encoding="utf-8", timeout=30, cwd=ROOT)
     return {"exit_code": value.returncode, "stdout": value.stdout.strip(), "stderr": value.stderr.strip()}
 
 
@@ -168,7 +179,8 @@ def main():
         "started_utc": datetime.now(timezone.utc).isoformat(), "revision": command("git", "rev-parse", "HEAD")["stdout"],
         "input": {"filename": source.name, "bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()},
         "versions": {name: importlib.metadata.version(name) for name in ("mineru", "httpx", "pypdf")},
-        "local_artifacts": str(folder.relative_to(ROOT)), "passed": False}
+        "local_artifacts": str(folder.relative_to(ROOT)), "passed": False,
+        "service_evidence_passed": False, "production_pipeline_passed": False}
     engines = MeasuredEngines(cache_dir=folder / "models")
     pipeline = Pipeline(folder / "mineru-only", engines=engines)
     started = time.perf_counter()
@@ -178,6 +190,7 @@ def main():
         "engine_seconds": round(engines.elapsed, 6), "native": engines.native_summary,
         "status": pipeline.last_job.current, "schema_and_anchor_gate": "passed", **bundle_summary(bundle)}
     save(output, report)
+    stage = "service"
     try:
         with httpx.Client(timeout=args.timeout, trust_env=False) as client:
             checks = {}
@@ -199,10 +212,14 @@ def main():
             (folder / "attention.tei.xml").write_bytes(response.content)
             report["grobid"] = {"status": response.status_code, "elapsed_seconds": round(elapsed, 6),
                                 "health_checks": checks, "request_parameters": form, **summary}
+            report["service_evidence_passed"] = all(summary["counts"][key] > 0 for key in
+                ("titles", "authors", "unique_institution_names", "abstracts", "section_heads", "table_figures", "formulas", "references"))
+            save(output, report)
         # A SECOND fresh record store forces a real HTTP call in the opt-in
         # production Pipeline. No cached MinerU records or mocked TEI are used.
         grobid = MeasuredGrobid(args.url, timeout=args.timeout)
         opted_in = Pipeline(folder / "mineru-with-grobid", grobid=grobid)
+        stage = "optional_pipeline"
         started = time.perf_counter()
         enriched = opted_in.parse(source)
         ContractGate().bundle(enriched)
@@ -210,19 +227,28 @@ def main():
             "grobid_http_seconds": round(grobid.elapsed, 6), "schema_and_anchor_gate": "passed",
             "chunks_unchanged": enriched["chunks"] == bundle["chunks"],
             "status": opted_in.last_job.current, **bundle_summary(enriched)}
-        report["passed"] = (report["grobid"]["counts"]["titles"] > 0 and
-                            report["grobid"]["counts"]["references"] > 0 and
-                            report["optional_pipeline"]["chunks_unchanged"])
+        report["production_pipeline_passed"] = report["optional_pipeline"]["chunks_unchanged"]
+        report["passed"] = report["service_evidence_passed"] and report["production_pipeline_passed"]
+        save(output, report)
     except Exception as error:
         # GROBID is a keyless local service. Retain the actual transport/service
         # failure, without dumping a response/PDF body or process environment.
-        report["grobid_error"] = {"type": type(error).__name__, "message": str(error)[:1500]}
+        report["grobid_error"] = {"stage": stage, "type": type(error).__name__, "message": str(error)[:1500]}
+        if stage == "optional_pipeline":
+            paper_root = opted_in.store.root / "papers"
+            report["optional_pipeline"] = {"elapsed_seconds": round(time.perf_counter() - started, 6),
+                "grobid_http_seconds": round(grobid.elapsed, 6) if hasattr(grobid, "elapsed") else None,
+                "schema_and_anchor_gate": "failed", "chunks_unchanged": None,
+                "status": opted_in.last_job.current, "status_history": opted_in.last_job.history,
+                "published_paper_groups": len(list(paper_root.iterdir())) if paper_root.exists() else 0,
+                "reference_validation_errors": getattr(grobid, "reference_validation_errors", [])}
     report["docker"] = {"version": command("docker", "version", "--format", "{{.Server.Version}}"),
         "service": command("docker", "compose", "-f", "services/docker-compose.grobid.yml", "-p", "scholar-graph-grobid", "ps", "--format", "json"),
-        "image": command("docker", "image", "inspect", "grobid/grobid:0.9.1-full", "--format", '{{json .RepoDigests}} {{.Id}} {{.Size}}')}
+        "image": command("docker", "image", "inspect", "grobid/grobid:0.9.1-crf", "--format", '{{json .RepoDigests}} {{.Id}} {{.Size}}')}
     report["finished_utc"] = datetime.now(timezone.utc).isoformat()
     save(output, report)
-    print(json.dumps({"passed": report["passed"], "report": str(output.relative_to(ROOT)),
+    print(json.dumps({"passed": report["passed"], "service_evidence_passed": report["service_evidence_passed"],
+                      "production_pipeline_passed": report["production_pipeline_passed"], "report": str(output.relative_to(ROOT)),
                       "mineru_chunks": len(bundle["chunks"]),
                       "grobid": report.get("grobid", {}).get("counts", report.get("grobid_error"))}, ensure_ascii=False))
     return 0 if report["passed"] else 1
