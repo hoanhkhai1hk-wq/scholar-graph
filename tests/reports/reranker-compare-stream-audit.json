@@ -79,7 +79,7 @@
   },
   "passed": true,
   "baseline": "9f30f089548d4211445b132deab30ca1efc87a0b",
-  "head": "02455d178b86be6451a5f4f2d7b056becafff676",
+  "head": "45604df49b90b98237f4b6d588155035e06f4ac9",
   "regression": {
     "fast": {
       "tests": 187,

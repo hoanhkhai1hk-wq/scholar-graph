@@ -156,3 +156,5 @@ backend/.venv/Scripts/python.exe tests/audit_reranker_compare_stream.py
 - `02455d178b86be6451a5f4f2d7b056becafff676`：`tests/test_api_comparison.py`、`tests/regression_layers.py`、`tests/run_reranker_compare_stream_acceptance.py`。
 
 最后验收提交包含本报告、首轮/最终JUnit、live与完整诊断JSON、审计JSON及加强后的审计脚本；其完整哈希随推送回报提供，避免报告自引用自身提交哈希。
+
+推送后的克隆口径检查发现Windows的CRLF与Git存储的LF会影响原始字节摘要。首轮探针记录保留Windows原始`sha256`，追加`sha256_lf`作为UTF-8/LF规范摘要，审计使用后者；路径采用正斜杠。已直接核对Git中实际存储的日志与规范摘要一致，不需要依赖某台机器的换行配置。

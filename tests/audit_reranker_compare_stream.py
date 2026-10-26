@@ -92,7 +92,9 @@ def audit():
     failures=[t for t in previous.iter('testcase') if t.find('failure') is not None]
     checks['first_regression_failure_preserved']=len(failures)==1 and failures[0].attrib['name']=='test_nineteen_business_routes_including_module_six'
     prior=ROOT/live['initial_transport_probe']['path']
-    checks['first_transport_probe_preserved']=hashlib.sha256(prior.read_bytes()).hexdigest()==live['initial_transport_probe']['sha256']
+    # Git may convert CRLF on Windows checkout. Compare canonical UTF-8/LF text;
+    # the initial Windows raw-byte digest remains separate forensic metadata.
+    checks['first_transport_probe_preserved']=hashlib.sha256(prior.read_text(encoding='utf-8').encode('utf-8')).hexdigest()==live['initial_transport_probe']['sha256_lf']
     markdown=(ROOT/'tests/reports/reranker-compare-stream-acceptance.md').read_text(encoding='utf-8')
     checks['report_completed']='{{' not in markdown
     protected=git('diff',BASE,'--name-only','--','contracts/','frontend/','docs/','prompts/','experiments/','test-records/')

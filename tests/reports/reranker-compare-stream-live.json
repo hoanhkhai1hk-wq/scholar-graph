@@ -26152,8 +26152,9 @@
     "backend/scholar_graph/orchestration.py": "d06a2d6a179660059a5c8945669a3a6c30261a44e1da768df1d73da86d1f3371"
   },
   "initial_transport_probe": {
-    "path": "tests\\reports\\reranker-compare-stream-first-probe.json",
+    "path": "tests/reports/reranker-compare-stream-first-probe.json",
     "sha256": "5c12157e19b6969dfa462931ac804113e322e473cbecd6ff1547ebdd3245841c",
-    "reason": "首轮无Key协议探针误把BERT对optimizer查询的合法拒答当成协议失败；保留首轮，修正为校验拒答合法且无假token，重跑TCP。实现与六题质量标准未改。"
+    "reason": "首轮无Key协议探针误把BERT对optimizer查询的合法拒答当成协议失败；保留首轮，修正为校验拒答合法且无假token，重跑TCP。实现与六题质量标准未改。",
+    "sha256_lf": "30e08516965a9b3a4c322c5c61ebe4823278d1cf515a0e9b1cf196dedf5f35a6"
   }
 }

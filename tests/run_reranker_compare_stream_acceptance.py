@@ -135,8 +135,9 @@ def main():
         prior=ROOT/'tests/reports/reranker-compare-stream-first-probe.json'
         if not prior.exists():
             prior.write_bytes(REPORT.read_bytes())
-        result['initial_transport_probe']={'path':str(prior.relative_to(ROOT)),
+        result['initial_transport_probe']={'path':prior.relative_to(ROOT).as_posix(),
             'sha256':hashlib.sha256(prior.read_bytes()).hexdigest(),
+            'sha256_lf':hashlib.sha256(prior.read_text(encoding='utf-8').encode('utf-8')).hexdigest(),
             'reason':'首轮无Key协议探针误把BERT对optimizer查询的合法拒答当成协议失败；保留首轮，修正为校验拒答合法且无假token，重跑TCP。实现与六题质量标准未改。'}
         app=create_app(data_dir=ROOT/result['isolated_data_dir']/'records')
         source_ids=json.loads((ROOT/'data/real-model/sources.json').read_text(encoding='utf-8'))
