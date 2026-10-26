@@ -78,7 +78,7 @@ def main():
         code,_ = command('prepare-public-vector-model',compose+['exec','-T','backend',
             '/opt/vector-venv/bin/python','backend/download_bge_m3.py'],cwd=checkout,timeout=7200)
         require(code,'public model preparation')
-        code,log = command('container-acceptance',compose+['exec','-T','backend','python',
+        code,log = command('container-acceptance',compose+['exec','-T','-e','SCHOLAR_GRAPH_RETRIEVAL_MODE=lexical','backend','python',
             'tests/run_final_deployment_container.py'],cwd=checkout,timeout=10800)
         rows = []
         for line in log.splitlines():

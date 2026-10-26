@@ -29,13 +29,13 @@ def main():
         '开工 main：`8de7a907c212b49588fdf00ef9842e45863b273f`，git pull 为 `Already up to date.`，工作区干净。', '',
         '本次先推送全部应用、配置与回归用例，再从远端 main 新克隆：`'+build['clone']['commit']+'`。', '',
         '克隆目录：`'+build['clone']['path']+'`。构建前后均干净；初始没有 backend/.venv、frontend/node_modules、frontend/.next、.env、pdf/、data/。没有复制宿主机依赖、模型缓存或已解析记录。', '',
-        '镜像 OCI revision 标签均为该功能主干提交；后续交付仅增加宿主机检查脚本与验收证据，不改变已构建的应用、配置或被执行回归用例。', '',
+        '镜像 OCI revision 标签均为该功能主干提交；后续交付仅增加宿主机检查脚本、运行说明与验收证据，不改变已构建的应用、配置或被执行回归用例。', '',
         '| 阶段 | 退出码 | 实测秒 |', '| --- | ---: | ---: |']
     for step in build['steps']:
         if step['stage'] in {'clone-main','compose-config','build-no-cache','build-no-cache-network-failure','up-healthy','container-acceptance',
                              'prepare-public-vector-model','prepare-public-vector-model-range',
                              'prepare-public-vector-model-range-parallel',
-                             'confirm-public-vector-model','container-acceptance-after-model-preparation'}:
+                             'confirm-public-vector-model','container-acceptance-after-model-preparation','container-full-isolated-test-env'}:
             lines.append(f"| {step['stage']} | {step['exit_code']} | {step['elapsed_seconds']:.6f} |")
     lines += ['', '首轮镜像来源 `'+initial_build['clone']['commit']+'`，无缓存构建 '+str(next(s['elapsed_seconds'] for s in initial_build['steps'] if s['stage']=='build-no-cache'))+'秒，容器全量实测3失败/10跳过；不是最终通过结果。', '',
         '首轮失败逐项：①Linux venv符号链接经Path.resolve变成系统Python，worker缺torch；改为venv --copies，构建时用解析后的解释器实际导入torch/Chroma/FlagEmbedding；②.dockerignore排除了全量测试必需的semantic-dedup-calibration.json，现仅放行这一份公开数值证据，其他报告仍排除；③调度单测继承部署Attention种子而测试库只含seed，现单测显式设定种子。没有放宽断言或把真向量改成假向量。', '',
@@ -63,17 +63,18 @@ def main():
         '## 健康检查与无 Key 问答', '',
         '最终默认配置（每日调度）下：`'+json.dumps(runtime['http_status'],ensure_ascii=False)+'`；后端8000、前端3000均绑定127.0.0.1。两个服务均healthy，使用restart:unless-stopped。', '',
         '资源调整：独立可选 GROBID 容器实占约 '+resource['observed_memory_before']+'，而引擎总内存 '+resource['engine_memory']+'。本轮已停止该容器以给真实向量/OCR联测释放内存，退出码 '+str(resource['stop_exit_code'])+'，保留容器及配置；最终运行的是本单要求的前后端两服务。GROBID不是默认HTTP解析路径，本轮不宣称它仍在线。', '',
-        '一次容器内真实 HTTP 摘录式问答：`Which optimizer?`，HTTP '+str(container['no_key_qa']['http_status'])+'，refused='+str(container['no_key_qa']['body']['refused'])+'，锚点数 '+str(len(container['no_key_qa']['body']['anchors']))+'。答案、数字校验与锚点见容器JSON；无真实模型调用。', '',
+        '一次容器内真实 HTTP 摘录式问答：`Which optimizer?`，HTTP '+str(container['no_key_qa']['http_status'])+'，refused='+str(container['no_key_qa']['body']['refused'])+'，锚点数 '+str(len(container['no_key_qa']['body']['anchors']))+'。答案、数字校验与锚点见容器JSON；未调用生成式大模型。', '',
         '## 宿主机与容器全量回归', '',
         '| 环境 | 收集 | 通过 | 跳过 | 失败 | 错误 |', '| --- | ---: | ---: | ---: | ---: | ---: |']
     for label,key in [('宿主机最终','host_final'),('Linux容器','container')]:
         s=audit['regression'][key]
         lines.append(f"| {label} | {s['tests']} | {s['passed']} | {s['skipped']} | {s['failures']} | {s['errors']} |")
     lines += ['', '全量入口实际执行真实本地 BGE-M3/Chroma（4个自制Chunk、1024维dense+sparse）、真实自制扫描OCR，以及官方541页长书解析与分页索引；不是只跑假向量单测。真实向量版本/加载与查询耗时、长书Chunk数/索引秒数写入JUnit testcase properties。属性记录产生的xunit2兼容警告不计为失败；未隐藏警告。', '',
-        '最终向量解释器及依赖：`'+json.dumps(runtime['vector_runtime'],ensure_ascii=False)+'`。首轮容器失败JUnit仍在final-deployment-container-before-runtime-fix-pytest.xml。', '',
+        '容器另有两项纯词法用例继承生产混合检索默认值而失败（完整JSON/JUnit保留在final-deployment-container-before-test-isolation*）。最终全量只给exec测试子进程设置SCHOLAR_GRAPH_RETRIEVAL_MODE=lexical，原断言不变，生产服务仍为bge_m3_hybrid；真实向量验收直接调用BGE-M3/Chroma并实际跑过，未用词法冒充。官方三用例来自同一最终镜像此前空库HTTP上传，未为此环境隔离复用宿主机解析结果。最终向量解释器及依赖：`'+json.dumps(runtime['vector_runtime'],ensure_ascii=False)+'`。首轮容器失败JUnit仍在final-deployment-container-before-runtime-fix-pytest.xml。', '',
         '两边均保留5项无Key真实模型测试跳过，跳过不计为通过。容器另有Windows专属测试跳过；逐项如下：', '']
     for case in audit['regression']['container']['skipped_cases']:
         lines.append('- `'+case['name']+'`：'+case['reason'])
+    lines += ['', '最终原始控制台：宿主机 '+str(host['regression'].get('warnings'))+' 条警告，容器 '+str(container['regression'].get('warnings'))+' 条警告。两边有record_property与xunit2兼容警告，Linux另有只读源码目录pytest缓存写入警告；原文见[宿主机控制台](final-deployment-host-console.txt)、[容器控制台](final-deployment-container-console.txt)，未计为失败或隐去。']
     lines += ['', '宿主机首轮全量有1项失败：新增真向量测试错误地将排序列表当字典读取。已修正断言，定向真向量测试通过，再完整重跑得到上表最终结果。首轮JSON/JUnit及原日志保留，不将失败改成通过。并行重建期间另一轮为604通过/5跳过/2个真实OCR失败（单页90秒超时），原JSON/JUnit另存final-deployment-host-during-rebuild*，未把负载认定为唯一根因。随后新增共享公开OCR权重缓存及独立7200秒准备步骤，推理仍为真实Paddle、单页仍90秒，再串行跑完整层。最终宿主机JSON合并最后回归与本单此前新目录已完成的官方三用例并明确来源；PDF切块算法未改，容器则使用最终镜像从空HTTP库重新上传。', '',
         '## 官方三用例：两环境分别实测', '',
         '| 环境 | 文件 | HTTP | Chunk | 上传秒 | RSS采样峰值 MiB | 通过 |', '| --- | --- | ---: | ---: | ---: | ---: | --- |']
@@ -82,7 +83,7 @@ def main():
             for row in case['uploads']:
                 m=row['measurement']; rss=m.get('rss_peak_bytes',m.get('rss_sampled_peak_bytes',0))/1048576
                 lines.append(f"| {label} | {row['file']} | {row['http_status']} | {row['chunks']} | {m['elapsed_seconds']:.6f} | {rss:.6f} | {row['passed']} |")
-    lines += ['', '每次上传前状态接口为404，后续为completed且Chunk>0；源文件SHA-256在两环境与本地原件一致。容器用本轮空卷的实际HTTP上传，未挂宿主机解析结果。宿主机测量为测试进程及子进程RSS采样合计；容器测量为容器内可读进程RSS采样合计，含共享页重复计数可能。容器另存cgroup采样与生命周期峰值，后者不能当作单次上传峰值。并行验收条件下记录墙钟耗时，不作为独占硬件性能对比。', '']
+    lines += ['', '每次上传前状态接口为404，后续为completed且Chunk>0；源文件SHA-256在两环境与本地原件一致。容器用本轮空卷的实际HTTP上传，未挂宿主机解析结果。宿主机测量为测试进程及子进程RSS采样合计；容器测量为容器内可读进程RSS采样合计，含共享页重复计数可能。容器另存cgroup采样与生命周期峰值，后者不能当作单次上传峰值。宿主机用例与初期构建曾并行；最终容器官方用例与组件回归串行。记录的是当时环境墙钟耗时，不作为独占硬件性能对比。', '']
     for label,result in [('宿主机',host),('容器',container)]:
         dedup=result['cases']['dedup']['uploads'][-1]
         book=result['cases']['longbook']['uploads'][0]

@@ -38,6 +38,8 @@ docker compose exec -T backend python tests/run_regression.py fast --no-key
 
 提交钩子：`git config --local core.hooksPath services/git-hooks`，本工作区已启用；钩子每次提交实际运行快速层。干净克隆后执行同一配置即可启用，Git 不会自动信任克隆仓库里的钩子。`.github/workflows/backend-fast.yml` 同时在 push/PR 执行快速层，未把全量 OCR/模型任务塞进每次提交。
 
+容器组件回归使用独立进程配置：`docker compose exec -T -e SCHOLAR_GRAPH_RETRIEVAL_MODE=lexical backend python tests/run_regression.py full --no-key --corpus-dir /corpus`（先用只读语料覆盖挂载/corpus）。词法用例需要固定词法默认值；这只影响exec测试进程，生产后端仍为bge_m3_hybrid。全量中的真向量验收直接调用真实BGE-M3/Chroma，仍实际执行dense+sparse/1024维验证；官方HTTP上传与无Key问答仍访问原生产服务。复现控制脚本自动传入此测试环境，未关闭服务向量能力。
+
 官方容器验收：在全新 Compose 项目/空数据卷上，用 `services/docker-compose.acceptance.yml` 只读挂载现有官方 pdf/ 到 `/corpus`，再运行 `python tests/run_final_deployment_container.py`。此脚本在容器内下载公开模型、跑全量层、真实 HTTP 三用例、无 Key 问答和自动定时证据；不复用宿主机解析结果。干净远端克隆与无缓存构建入口为 `python tests/reproduce_final_deployment.py`。本轮真实结果与限制见 [最终部署验收报告](../tests/reports/final-deployment-acceptance.md)。
 
 本后端实现本地 PDF 解析、状态机、去重与版本差异，模块二问答/对比、模块四检索/公开抓取/推荐，模块五局域引用图谱，以及模块六综述框架、摘录草稿与CSV图表，原19条 HTTP 端点保持，另增问答SSE、双向翻译、拓扑脚本与三维CSV图表端点，共23条。Python 包为 `scholar_graph`。自由成文、文档导出、异步队列仍未实现。

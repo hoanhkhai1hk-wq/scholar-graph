@@ -64,7 +64,7 @@ def main():
         evidence.update(passed=False,error={'message':'Public SDK model confirmation failed'})
         save()
         return 1
-    code,text=command('container-acceptance-after-model-preparation',['exec','-T','backend','python','tests/run_final_deployment_container.py'])
+    code,text=command('container-acceptance-after-model-preparation',['exec','-T','-e','SCHOLAR_GRAPH_RETRIEVAL_MODE=lexical','backend','python','tests/run_final_deployment_container.py'])
     rows=[]
     for line in text.splitlines():
         try: rows.append(json.loads(line))

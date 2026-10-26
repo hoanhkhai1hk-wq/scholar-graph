@@ -48,8 +48,11 @@ def main():
     stats = {'host_final':junit('final-deployment-host-final-pytest.xml'),
              'host_initial':junit('final-deployment-host-pytest.xml'),
              'container_initial':junit('final-deployment-container-before-runtime-fix-pytest.xml'),
+             'container_before_test_isolation':junit('final-deployment-container-before-test-isolation-pytest.xml'),
              'container':junit('final-deployment-container-pytest.xml')}
     checks['first_container_three_failures_preserved'] = stats['container_initial']['failures']==3
+    checks['component_default_conflict_two_failures_preserved']=stats['container_before_test_isolation']['failures']==2
+    checks['production_vector_mode_not_disabled_for_component_tests']=container['component_test_environment']['production_backend_retrieval_mode']=='bge_m3_hybrid'
     for name in ('host_final','container'):
         checks[name+'_full_layer_passed'] = stats[name]['tests']==613 and stats[name]['failures']==stats[name]['errors']==0
         checks[name+'_five_no_key_model_tests_skipped'] = sum('real model disabled' in (c['reason'] or '') for c in stats[name]['skipped_cases'])==5
@@ -68,10 +71,19 @@ def main():
     diff = subprocess.check_output(['git','diff',BASELINE,'--name-only','--','contracts','frontend','docs','prompts','experiments','test-records'],cwd=ROOT,text=True)
     checks['contracts_and_frontend_protected_paths_unchanged'] = not diff.strip()
     checks['pdf_ignored'] = subprocess.run(['git','check-ignore','pdf/1706.03762v7.pdf'],cwd=ROOT,capture_output=True).returncode==0
+    checks['official_corpus_not_tracked']=not subprocess.check_output(['git','ls-files','--','pdf'],cwd=ROOT).strip()
+    unchanged=subprocess.check_output(['git','diff',build['clone']['commit'],'--name-only','--',
+        'backend/scholar_graph','backend/prepare_ocr_models.py','backend/pyproject.toml','backend/requirements-retrieval.txt',
+        'Dockerfile','docker-compose.yml','.dockerignore','tests/conftest.py','tests/run_regression.py',':(glob)tests/test_*.py'],cwd=ROOT)
+    checks['current_production_and_collected_tests_match_built_revision']=not unchanged.strip()
     key = os.environ.get('DEEPSEEK_API_KEY')
     artifacts = list((ROOT/'tests/reports').glob('final-deployment-*'))
     checks['key_absent_from_artifacts'] = all(not key or key.encode() not in p.read_bytes() for p in artifacts if p.is_file())
+    tracked=subprocess.check_output(['git','ls-files','-z'],cwd=ROOT).decode('utf-8').split('\0')
+    checks['known_key_absent_from_tracked_files']=all(not key or key.encode() not in (ROOT/name).read_bytes()
+        for name in tracked if name and (ROOT/name).is_file())
     result = {'passed':all(checks.values()),'checks':checks,'regression':stats,
+              'opaque_key_value_scan_available':bool(key),
               'image_source_commit':build['clone']['commit'],'initial_host_failure_preserved':stats['host_initial']['failures']>0}
     (ROOT/'tests/reports/final-deployment-audit.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(result,ensure_ascii=False))
