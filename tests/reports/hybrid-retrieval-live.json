@@ -1,0 +1,2286 @@
+{
+  "scope": "官方 pdf/ 真文件六题；模型原始响应体和Key不保存，只保留批准答案及调用元数据",
+  "environment": {
+    "DEEPSEEK_API_KEY": "已设置",
+    "DEEPSEEK_MODEL": "已设置"
+  },
+  "cases": [
+    {
+      "case": 1,
+      "question": "论文Attention Is All You Need的第6作者是谁，在哪个公司/机构工作？",
+      "http_status": 200,
+      "elapsed_seconds": 16.330862,
+      "metadata": {
+        "model_calls": [
+          {
+            "provider": "deepseek",
+            "model": "deepseek-chat",
+            "phase": "qa",
+            "elapsed_seconds": 1.27607,
+            "prompt_tokens": 7489,
+            "completion_tokens": 133,
+            "total_tokens": 7622,
+            "http_status": 200,
+            "status": "succeeded"
+          }
+        ],
+        "method": "hybrid",
+        "retrieval": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "method": "hybrid",
+            "vector_status": "READY",
+            "reason": "OK",
+            "lexical_recalled": 24,
+            "vector_recalled": 24,
+            "rerank": {
+              "method": "rrf",
+              "reason": "MEASURED_CPU_BUDGET_EXCEEDED",
+              "timing": {
+                "model_load_seconds": 5.343436500057578,
+                "rerank_seconds": 12.42324969987385
+              },
+              "worker_seconds": 27.557949099922553,
+              "candidate_count": 36,
+              "budget_seconds": 5,
+              "model": "BAAI/bge-reranker-large",
+              "revision": "55611d7bca2a7133960a6d3b71e083071bbfc312"
+            },
+            "evidence_count": 24,
+            "union_recalled": 36,
+            "vector_timing": {
+              "model_load_seconds": 1.9964455999433994,
+              "index_seconds": 0.11725890007801354,
+              "startup_to_model_ready_seconds": 12.591409600107,
+              "query_seconds": 0.5792107000015676
+            },
+            "worker_seconds": 14.925905200187117,
+            "indexed_chunks": 175,
+            "updated_chunks": 0,
+            "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+            "versions": {
+              "chromadb": "1.5.9",
+              "FlagEmbedding": "1.4.2",
+              "torch": "2.14.1+cpu",
+              "transformers": "5.20.2"
+            },
+            "fusion": {
+              "method": "equal_weight_rrf",
+              "k": 60,
+              "route_limit": 24,
+              "lexical_expansion": "existing_grounded_model_aliases",
+              "bge_sparse_scores_used": false
+            },
+            "elapsed_seconds": 14.974091
+          }
+        ]
+      },
+      "agent": {},
+      "result": {
+        "schema_version": "1.0.0",
+        "answer": "【证据 A】\nAidan N. Gomez ∗  † University of Toronto aidan@cs.toronto.edu",
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 1,
+            "section": [],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00004"
+          }
+        ],
+        "numeric_fact_check": {
+          "status": "not_applicable",
+          "checks": []
+        },
+        "refused": false
+      },
+      "passed": true,
+      "verification": {
+        "aidan": true,
+        "toronto": true,
+        "anchors": true,
+        "actual_hybrid": true
+      }
+    },
+    {
+      "case": 2,
+      "question": "其中Adam优化器的超参数β₁和β₂分别被设置为了多少？",
+      "http_status": 200,
+      "elapsed_seconds": 16.215422,
+      "metadata": {
+        "model_calls": [
+          {
+            "provider": "deepseek",
+            "model": "deepseek-chat",
+            "phase": "qa",
+            "elapsed_seconds": 0.984083,
+            "prompt_tokens": 8049,
+            "completion_tokens": 162,
+            "total_tokens": 8211,
+            "http_status": 200,
+            "status": "succeeded"
+          }
+        ],
+        "method": "hybrid",
+        "retrieval": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "method": "hybrid",
+            "vector_status": "READY",
+            "reason": "OK",
+            "lexical_recalled": 3,
+            "vector_recalled": 24,
+            "rerank": {
+              "method": "rrf",
+              "reason": "MEASURED_CPU_BUDGET_EXCEEDED",
+              "timing": {
+                "model_load_seconds": 5.343436500057578,
+                "rerank_seconds": 12.42324969987385
+              },
+              "worker_seconds": 27.557949099922553,
+              "candidate_count": 36,
+              "budget_seconds": 5,
+              "model": "BAAI/bge-reranker-large",
+              "revision": "55611d7bca2a7133960a6d3b71e083071bbfc312"
+            },
+            "evidence_count": 24,
+            "union_recalled": 24,
+            "vector_timing": {
+              "model_load_seconds": 2.0268778998870403,
+              "index_seconds": 0.11276180017739534,
+              "startup_to_model_ready_seconds": 12.852723200106993,
+              "query_seconds": 0.5003229000139982
+            },
+            "worker_seconds": 15.127962599974126,
+            "indexed_chunks": 175,
+            "updated_chunks": 0,
+            "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+            "versions": {
+              "chromadb": "1.5.9",
+              "FlagEmbedding": "1.4.2",
+              "torch": "2.14.1+cpu",
+              "transformers": "5.20.2"
+            },
+            "fusion": {
+              "method": "equal_weight_rrf",
+              "k": 60,
+              "route_limit": 24,
+              "lexical_expansion": "existing_grounded_model_aliases",
+              "bge_sparse_scores_used": false
+            },
+            "elapsed_seconds": 15.172251
+          }
+        ]
+      },
+      "agent": {},
+      "result": {
+        "schema_version": "1.0.0",
+        "answer": "【证据 A】\nWe used the Adam optimizer [20] with β 1  = 0.9, β 2  = 0.98 and ϵ = 10 −9 . We varied the learning rate over the course of training, according to the formula:",
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 7,
+            "section": [
+              "5 Training",
+              "5.3 Optimizer"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00088"
+          }
+        ],
+        "numeric_fact_check": {
+          "status": "passed",
+          "checks": [
+            {
+              "claim": "We used the Adam optimizer [20] with β 1  = 0.9, β 2  = 0.98 and ϵ = 10 −9 . We varied the learning rate over the course of training, according to the formula:",
+              "status": "passed",
+              "evidence": [
+                {
+                  "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                  "page_number": 7,
+                  "section": [
+                    "5 Training",
+                    "5.3 Optimizer"
+                  ],
+                  "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00088"
+                }
+              ],
+              "reason": "数字与上下文逐字回溯同一真实Chunk；不证明实验结论本身。"
+            }
+          ]
+        },
+        "refused": false
+      },
+      "passed": true,
+      "verification": {
+        "0.9": true,
+        "0.98": true,
+        "anchors": true,
+        "actual_hybrid": true,
+        "numeric": true
+      }
+    },
+    {
+      "case": 3,
+      "question": "这篇论文中提到的Transformer架构，在训练Base模型时使用了多少个GPU？具体是什么型号？",
+      "http_status": 200,
+      "elapsed_seconds": 16.377191,
+      "metadata": {
+        "model_calls": [
+          {
+            "provider": "deepseek",
+            "model": "deepseek-chat",
+            "phase": "qa",
+            "elapsed_seconds": 0.950776,
+            "prompt_tokens": 8047,
+            "completion_tokens": 151,
+            "total_tokens": 8198,
+            "http_status": 200,
+            "status": "succeeded"
+          }
+        ],
+        "method": "hybrid",
+        "retrieval": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "method": "hybrid",
+            "vector_status": "READY",
+            "reason": "OK",
+            "lexical_recalled": 24,
+            "vector_recalled": 24,
+            "rerank": {
+              "method": "rrf",
+              "reason": "MEASURED_CPU_BUDGET_EXCEEDED",
+              "timing": {
+                "model_load_seconds": 5.343436500057578,
+                "rerank_seconds": 12.42324969987385
+              },
+              "worker_seconds": 27.557949099922553,
+              "candidate_count": 36,
+              "budget_seconds": 5,
+              "model": "BAAI/bge-reranker-large",
+              "revision": "55611d7bca2a7133960a6d3b71e083071bbfc312"
+            },
+            "evidence_count": 24,
+            "union_recalled": 34,
+            "vector_timing": {
+              "model_load_seconds": 1.892077700002119,
+              "index_seconds": 0.14137640013359487,
+              "startup_to_model_ready_seconds": 12.90772380004637,
+              "query_seconds": 0.5397489999886602
+            },
+            "worker_seconds": 15.31982470001094,
+            "indexed_chunks": 175,
+            "updated_chunks": 0,
+            "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+            "versions": {
+              "chromadb": "1.5.9",
+              "FlagEmbedding": "1.4.2",
+              "torch": "2.14.1+cpu",
+              "transformers": "5.20.2"
+            },
+            "fusion": {
+              "method": "equal_weight_rrf",
+              "k": 60,
+              "route_limit": 24,
+              "lexical_expansion": "existing_grounded_model_aliases",
+              "bge_sparse_scores_used": false
+            },
+            "elapsed_seconds": 15.366598
+          }
+        ]
+      },
+      "agent": {},
+      "result": {
+        "schema_version": "1.0.0",
+        "answer": "【证据 A】\nWe trained our models on one machine with 8 NVIDIA P100 GPUs. For our base models using the hyperparameters described throughout the paper, each training step took about 0.4 seconds.",
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 7,
+            "section": [
+              "5 Training",
+              "5.2 Hardware and Schedule"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00086"
+          }
+        ],
+        "numeric_fact_check": {
+          "status": "passed",
+          "checks": [
+            {
+              "claim": "We trained our models on one machine with 8 NVIDIA P100 GPUs. For our base models using the hyperparameters described throughout the paper, each training step took about 0.4 seconds.",
+              "status": "passed",
+              "evidence": [
+                {
+                  "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                  "page_number": 7,
+                  "section": [
+                    "5 Training",
+                    "5.2 Hardware and Schedule"
+                  ],
+                  "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00086"
+                }
+              ],
+              "reason": "数字与上下文逐字回溯同一真实Chunk；不证明实验结论本身。"
+            }
+          ]
+        },
+        "refused": false
+      },
+      "passed": true,
+      "verification": {
+        "8": true,
+        "p100": true,
+        "anchors": true,
+        "actual_hybrid": true,
+        "numeric": true
+      }
+    },
+    {
+      "case": 4,
+      "question": "Transformer (big)模型在English-to-German任务上的BLEU分数是多少？当时的State-of-the-art模型是多少？提升了多少？",
+      "http_status": 200,
+      "elapsed_seconds": 16.915673,
+      "metadata": {
+        "model_calls": [
+          {
+            "provider": "deepseek",
+            "model": "deepseek-chat",
+            "phase": "qa",
+            "elapsed_seconds": 2.461266,
+            "prompt_tokens": 8405,
+            "completion_tokens": 467,
+            "total_tokens": 8872,
+            "http_status": 200,
+            "status": "succeeded"
+          }
+        ],
+        "method": "hybrid",
+        "retrieval": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "method": "hybrid",
+            "vector_status": "READY",
+            "reason": "OK",
+            "lexical_recalled": 24,
+            "vector_recalled": 24,
+            "rerank": {
+              "method": "rrf",
+              "reason": "MEASURED_CPU_BUDGET_EXCEEDED",
+              "timing": {
+                "model_load_seconds": 5.343436500057578,
+                "rerank_seconds": 12.42324969987385
+              },
+              "worker_seconds": 27.557949099922553,
+              "candidate_count": 36,
+              "budget_seconds": 5,
+              "model": "BAAI/bge-reranker-large",
+              "revision": "55611d7bca2a7133960a6d3b71e083071bbfc312"
+            },
+            "evidence_count": 24,
+            "union_recalled": 36,
+            "vector_timing": {
+              "model_load_seconds": 1.9367446000687778,
+              "index_seconds": 0.11301129986532032,
+              "startup_to_model_ready_seconds": 12.069429199909791,
+              "query_seconds": 0.5915008999872953
+            },
+            "worker_seconds": 14.342756900005043,
+            "indexed_chunks": 175,
+            "updated_chunks": 0,
+            "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+            "versions": {
+              "chromadb": "1.5.9",
+              "FlagEmbedding": "1.4.2",
+              "torch": "2.14.1+cpu",
+              "transformers": "5.20.2"
+            },
+            "fusion": {
+              "method": "equal_weight_rrf",
+              "k": 60,
+              "route_limit": 24,
+              "lexical_expansion": "existing_grounded_model_aliases",
+              "bge_sparse_scores_used": false
+            },
+            "elapsed_seconds": 14.391352
+          }
+        ]
+      },
+      "agent": {},
+      "result": {
+        "schema_version": "1.0.0",
+        "answer": "【证据 A】\nOn the WMT 2014 English-to-German translation task, the big transformer model (Transformer (big) in Table 2) outperforms the best previously reported models (including ensembles) by more than 2.0 BLEU, establishing a new state-of-the-art BLEU score of 28.4.\n\n【证据 B】\n<td>GNMT + RL Ensemble [38]</td><td>26.30</td><td>41.16</td><td>1.8 · 10<sup>20</sup></td><td>1.1 · 10<sup>21</sup></td></tr><tr><td>ConvS2S Ensemble [9]</td><td>26.36</td><td>41.29</td><td>7.7 · 10<sup>19</sup></td><td>1.2 · 10<sup>21</sup></td></tr><tr><td>Transformer (base model)</td><td>27.3</td><td>38.1</td><td>3.3 ·</td><td>10<sup>18</sup></td></tr><tr><td>Transformer (big)</td><td>28.4</td><td>41.8</td><td>2.3 ·</td><td>10<sup>19</sup></td></tr>",
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 8,
+            "section": [
+              "6 Results",
+              "6.1 Machine Translation"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00098"
+          },
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 8,
+            "section": [
+              "5 Training",
+              "5.4 Regularization"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00093"
+          }
+        ],
+        "numeric_fact_check": {
+          "status": "passed",
+          "checks": [
+            {
+              "claim": "On the WMT 2014 English-to-German translation task, the big transformer model (Transformer (big) in Table 2) outperforms the best previously reported models (including ensembles) by more than 2.0 BLEU, establishing a new state-of-the-art BLEU score of 28.4.",
+              "status": "passed",
+              "evidence": [
+                {
+                  "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                  "page_number": 8,
+                  "section": [
+                    "6 Results",
+                    "6.1 Machine Translation"
+                  ],
+                  "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00098"
+                }
+              ],
+              "reason": "数字与上下文逐字回溯同一真实Chunk；不证明实验结论本身。"
+            },
+            {
+              "claim": "<td>GNMT + RL Ensemble [38]</td><td>26.30</td><td>41.16</td><td>1.8 · 10<sup>20</sup></td><td>1.1 · 10<sup>21</sup></td></tr><tr><td>ConvS2S Ensemble [9]</td><td>26.36</td><td>41.29</td><td>7.7 · 10<sup>19</sup></td><td>1.2 · 10<sup>21</sup></td></tr><tr><td>Transformer (base model)</td><td>27.3</td><td>38.1</td><td>3.3 ·</td><td>10<sup>18</sup></td></tr><tr><td>Transformer (big)</td><td>28.4</td><td>41.8</td><td>2.3 ·</td><td>10<sup>19</sup></td></tr>",
+              "status": "passed",
+              "evidence": [
+                {
+                  "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                  "page_number": 8,
+                  "section": [
+                    "5 Training",
+                    "5.4 Regularization"
+                  ],
+                  "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00093"
+                }
+              ],
+              "reason": "数字与上下文逐字回溯同一真实Chunk；不证明实验结论本身。"
+            }
+          ]
+        },
+        "refused": false
+      },
+      "passed": true,
+      "verification": {
+        "28.4": true,
+        "26.36": true,
+        "anchors": true,
+        "actual_hybrid": true,
+        "numeric": true
+      }
+    },
+    {
+      "case": 5,
+      "question": "请列出论文中引用的关于“Layer Normalization”的参考文献（References）的完整作者和年份。",
+      "http_status": 200,
+      "elapsed_seconds": 15.747314,
+      "metadata": {
+        "model_calls": [
+          {
+            "provider": "deepseek",
+            "model": "deepseek-chat",
+            "phase": "qa",
+            "elapsed_seconds": 1.160334,
+            "prompt_tokens": 7876,
+            "completion_tokens": 146,
+            "total_tokens": 8022,
+            "http_status": 200,
+            "status": "succeeded"
+          }
+        ],
+        "method": "hybrid",
+        "retrieval": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "method": "hybrid",
+            "vector_status": "READY",
+            "reason": "OK",
+            "lexical_recalled": 24,
+            "vector_recalled": 24,
+            "rerank": {
+              "method": "rrf",
+              "reason": "MEASURED_CPU_BUDGET_EXCEEDED",
+              "timing": {
+                "model_load_seconds": 5.343436500057578,
+                "rerank_seconds": 12.42324969987385
+              },
+              "worker_seconds": 27.557949099922553,
+              "candidate_count": 36,
+              "budget_seconds": 5,
+              "model": "BAAI/bge-reranker-large",
+              "revision": "55611d7bca2a7133960a6d3b71e083071bbfc312"
+            },
+            "evidence_count": 24,
+            "union_recalled": 44,
+            "vector_timing": {
+              "model_load_seconds": 1.891184899955988,
+              "index_seconds": 0.1062108997721225,
+              "startup_to_model_ready_seconds": 12.127870599972084,
+              "query_seconds": 0.5768478999380022
+            },
+            "worker_seconds": 14.460811000084504,
+            "indexed_chunks": 175,
+            "updated_chunks": 0,
+            "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+            "versions": {
+              "chromadb": "1.5.9",
+              "FlagEmbedding": "1.4.2",
+              "torch": "2.14.1+cpu",
+              "transformers": "5.20.2"
+            },
+            "fusion": {
+              "method": "equal_weight_rrf",
+              "k": 60,
+              "route_limit": 24,
+              "lexical_expansion": "existing_grounded_model_aliases",
+              "bge_sparse_scores_used": false
+            },
+            "elapsed_seconds": 14.504962
+          }
+        ]
+      },
+      "agent": {},
+      "result": {
+        "schema_version": "1.0.0",
+        "answer": "【证据 A】\n[1] Jimmy Lei Ba, Jamie Ryan Kiros, and Geoffrey E Hinton. Layer normalization. arXiv preprint  arXiv:1607.06450 , 2016.",
+        "anchors": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 10,
+            "section": [
+              "References"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00127"
+          }
+        ],
+        "numeric_fact_check": {
+          "status": "passed",
+          "checks": [
+            {
+              "claim": "[1] Jimmy Lei Ba, Jamie Ryan Kiros, and Geoffrey E Hinton. Layer normalization. arXiv preprint  arXiv:1607.06450 , 2016.",
+              "status": "passed",
+              "evidence": [
+                {
+                  "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                  "page_number": 10,
+                  "section": [
+                    "References"
+                  ],
+                  "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00127"
+                }
+              ],
+              "reason": "数字与上下文逐字回溯同一真实Chunk；不证明实验结论本身。"
+            }
+          ]
+        },
+        "refused": false
+      },
+      "passed": true,
+      "verification": {
+        "ba": true,
+        "kiros": true,
+        "hinton": true,
+        "2016": true,
+        "anchors": true,
+        "actual_hybrid": true
+      }
+    },
+    {
+      "case": 6,
+      "question": "根据《Attention Is All You Need》和《BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding》。请对比：BERT的架构和原始Transformer的Encoder有什么承袭关系？BERT丢弃了原始Transformer的哪个部分？",
+      "http_status": 200,
+      "elapsed_seconds": 69.689243,
+      "metadata": {
+        "model_calls": [
+          {
+            "provider": "deepseek",
+            "model": "deepseek-chat",
+            "phase": "plan",
+            "elapsed_seconds": 1.929417,
+            "prompt_tokens": 947,
+            "completion_tokens": 442,
+            "total_tokens": 1389,
+            "http_status": 200,
+            "status": "succeeded"
+          },
+          {
+            "provider": "deepseek",
+            "model": "deepseek-chat",
+            "phase": "qa",
+            "elapsed_seconds": 5.923476,
+            "prompt_tokens": 26304,
+            "completion_tokens": 1591,
+            "total_tokens": 27895,
+            "http_status": 200,
+            "status": "succeeded"
+          }
+        ],
+        "method": "hybrid",
+        "retrieval": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "method": "hybrid",
+            "vector_status": "READY",
+            "reason": "OK",
+            "lexical_recalled": 24,
+            "vector_recalled": 24,
+            "rerank": {
+              "method": "rrf",
+              "reason": "MEASURED_CPU_BUDGET_EXCEEDED",
+              "timing": {
+                "model_load_seconds": 5.343436500057578,
+                "rerank_seconds": 12.42324969987385
+              },
+              "worker_seconds": 27.557949099922553,
+              "candidate_count": 36,
+              "budget_seconds": 5,
+              "model": "BAAI/bge-reranker-large",
+              "revision": "55611d7bca2a7133960a6d3b71e083071bbfc312"
+            },
+            "evidence_count": 24,
+            "union_recalled": 33,
+            "vector_timing": {
+              "model_load_seconds": 1.9316928000189364,
+              "index_seconds": 0.11473300005309284,
+              "startup_to_model_ready_seconds": 12.751243800157681,
+              "query_seconds": 0.5924875000491738
+            },
+            "worker_seconds": 15.104577699908987,
+            "indexed_chunks": 175,
+            "updated_chunks": 0,
+            "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+            "versions": {
+              "chromadb": "1.5.9",
+              "FlagEmbedding": "1.4.2",
+              "torch": "2.14.1+cpu",
+              "transformers": "5.20.2"
+            },
+            "fusion": {
+              "method": "equal_weight_rrf",
+              "k": 60,
+              "route_limit": 24,
+              "lexical_expansion": "existing_grounded_model_aliases",
+              "bge_sparse_scores_used": false
+            },
+            "elapsed_seconds": 15.151133
+          },
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "method": "hybrid",
+            "vector_status": "READY",
+            "reason": "OK",
+            "lexical_recalled": 24,
+            "vector_recalled": 24,
+            "rerank": {
+              "method": "rrf",
+              "reason": "MEASURED_CPU_BUDGET_EXCEEDED",
+              "timing": {
+                "model_load_seconds": 5.343436500057578,
+                "rerank_seconds": 12.42324969987385
+              },
+              "worker_seconds": 27.557949099922553,
+              "candidate_count": 36,
+              "budget_seconds": 5,
+              "model": "BAAI/bge-reranker-large",
+              "revision": "55611d7bca2a7133960a6d3b71e083071bbfc312"
+            },
+            "evidence_count": 24,
+            "union_recalled": 34,
+            "vector_timing": {
+              "model_load_seconds": 1.9839874999597669,
+              "index_seconds": 0.11288479994982481,
+              "startup_to_model_ready_seconds": 12.970726599916816,
+              "query_seconds": 0.5301481999922544
+            },
+            "worker_seconds": 15.194453600095585,
+            "indexed_chunks": 175,
+            "updated_chunks": 0,
+            "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+            "versions": {
+              "chromadb": "1.5.9",
+              "FlagEmbedding": "1.4.2",
+              "torch": "2.14.1+cpu",
+              "transformers": "5.20.2"
+            },
+            "fusion": {
+              "method": "equal_weight_rrf",
+              "k": 60,
+              "route_limit": 24,
+              "lexical_expansion": "existing_grounded_model_aliases",
+              "bge_sparse_scores_used": false
+            },
+            "elapsed_seconds": 15.240171
+          },
+          {
+            "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+            "method": "hybrid",
+            "vector_status": "READY",
+            "reason": "OK",
+            "lexical_recalled": 24,
+            "vector_recalled": 24,
+            "rerank": {
+              "method": "rrf",
+              "reason": "MEASURED_CPU_BUDGET_EXCEEDED",
+              "timing": {
+                "model_load_seconds": 5.343436500057578,
+                "rerank_seconds": 12.42324969987385
+              },
+              "worker_seconds": 27.557949099922553,
+              "candidate_count": 36,
+              "budget_seconds": 5,
+              "model": "BAAI/bge-reranker-large",
+              "revision": "55611d7bca2a7133960a6d3b71e083071bbfc312"
+            },
+            "evidence_count": 24,
+            "union_recalled": 31,
+            "vector_timing": {
+              "model_load_seconds": 1.9953296999447048,
+              "index_seconds": 0.11932239984162152,
+              "startup_to_model_ready_seconds": 13.87385300011374,
+              "query_seconds": 0.5558494001161307
+            },
+            "worker_seconds": 16.16834820015356,
+            "indexed_chunks": 277,
+            "updated_chunks": 0,
+            "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+            "versions": {
+              "chromadb": "1.5.9",
+              "FlagEmbedding": "1.4.2",
+              "torch": "2.14.1+cpu",
+              "transformers": "5.20.2"
+            },
+            "fusion": {
+              "method": "equal_weight_rrf",
+              "k": 60,
+              "route_limit": 24,
+              "lexical_expansion": "existing_grounded_model_aliases",
+              "bge_sparse_scores_used": false
+            },
+            "elapsed_seconds": 16.239533
+          },
+          {
+            "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+            "method": "hybrid",
+            "vector_status": "READY",
+            "reason": "OK",
+            "lexical_recalled": 24,
+            "vector_recalled": 24,
+            "rerank": {
+              "method": "rrf",
+              "reason": "MEASURED_CPU_BUDGET_EXCEEDED",
+              "timing": {
+                "model_load_seconds": 5.343436500057578,
+                "rerank_seconds": 12.42324969987385
+              },
+              "worker_seconds": 27.557949099922553,
+              "candidate_count": 36,
+              "budget_seconds": 5,
+              "model": "BAAI/bge-reranker-large",
+              "revision": "55611d7bca2a7133960a6d3b71e083071bbfc312"
+            },
+            "evidence_count": 24,
+            "union_recalled": 37,
+            "vector_timing": {
+              "model_load_seconds": 2.0163806001655757,
+              "index_seconds": 0.11349590006284416,
+              "startup_to_model_ready_seconds": 12.594922100193799,
+              "query_seconds": 0.5198762000072747
+            },
+            "worker_seconds": 14.858447700040415,
+            "indexed_chunks": 277,
+            "updated_chunks": 0,
+            "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+            "versions": {
+              "chromadb": "1.5.9",
+              "FlagEmbedding": "1.4.2",
+              "torch": "2.14.1+cpu",
+              "transformers": "5.20.2"
+            },
+            "fusion": {
+              "method": "equal_weight_rrf",
+              "k": 60,
+              "route_limit": 24,
+              "lexical_expansion": "existing_grounded_model_aliases",
+              "bge_sparse_scores_used": false
+            },
+            "elapsed_seconds": 14.925658
+          }
+        ]
+      },
+      "agent": {
+        "engine": "langgraph",
+        "attempts": 1,
+        "max_attempts": 3,
+        "fallback_reason": null,
+        "trace": [
+          {
+            "node": "plan",
+            "elapsed_seconds": 1.929478,
+            "attempt": 0,
+            "evidence_count": 0,
+            "validation": null,
+            "validation_error": null,
+            "fallback_reason": null
+          },
+          {
+            "node": "retrieve",
+            "elapsed_seconds": 61.679291,
+            "attempt": 1,
+            "evidence_count": 32,
+            "validation": null,
+            "validation_error": null,
+            "fallback_reason": null,
+            "retrieval": {
+              "method": "hybrid",
+              "retrieval": [
+                {
+                  "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                  "method": "hybrid",
+                  "vector_status": "READY",
+                  "reason": "OK",
+                  "lexical_recalled": 24,
+                  "vector_recalled": 24,
+                  "rerank": {
+                    "method": "rrf",
+                    "reason": "MEASURED_CPU_BUDGET_EXCEEDED",
+                    "timing": {
+                      "model_load_seconds": 5.343436500057578,
+                      "rerank_seconds": 12.42324969987385
+                    },
+                    "worker_seconds": 27.557949099922553,
+                    "candidate_count": 36,
+                    "budget_seconds": 5,
+                    "model": "BAAI/bge-reranker-large",
+                    "revision": "55611d7bca2a7133960a6d3b71e083071bbfc312"
+                  },
+                  "evidence_count": 24,
+                  "union_recalled": 33,
+                  "vector_timing": {
+                    "model_load_seconds": 1.9316928000189364,
+                    "index_seconds": 0.11473300005309284,
+                    "startup_to_model_ready_seconds": 12.751243800157681,
+                    "query_seconds": 0.5924875000491738
+                  },
+                  "worker_seconds": 15.104577699908987,
+                  "indexed_chunks": 175,
+                  "updated_chunks": 0,
+                  "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+                  "versions": {
+                    "chromadb": "1.5.9",
+                    "FlagEmbedding": "1.4.2",
+                    "torch": "2.14.1+cpu",
+                    "transformers": "5.20.2"
+                  },
+                  "fusion": {
+                    "method": "equal_weight_rrf",
+                    "k": 60,
+                    "route_limit": 24,
+                    "lexical_expansion": "existing_grounded_model_aliases",
+                    "bge_sparse_scores_used": false
+                  },
+                  "elapsed_seconds": 15.151133
+                },
+                {
+                  "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                  "method": "hybrid",
+                  "vector_status": "READY",
+                  "reason": "OK",
+                  "lexical_recalled": 24,
+                  "vector_recalled": 24,
+                  "rerank": {
+                    "method": "rrf",
+                    "reason": "MEASURED_CPU_BUDGET_EXCEEDED",
+                    "timing": {
+                      "model_load_seconds": 5.343436500057578,
+                      "rerank_seconds": 12.42324969987385
+                    },
+                    "worker_seconds": 27.557949099922553,
+                    "candidate_count": 36,
+                    "budget_seconds": 5,
+                    "model": "BAAI/bge-reranker-large",
+                    "revision": "55611d7bca2a7133960a6d3b71e083071bbfc312"
+                  },
+                  "evidence_count": 24,
+                  "union_recalled": 34,
+                  "vector_timing": {
+                    "model_load_seconds": 1.9839874999597669,
+                    "index_seconds": 0.11288479994982481,
+                    "startup_to_model_ready_seconds": 12.970726599916816,
+                    "query_seconds": 0.5301481999922544
+                  },
+                  "worker_seconds": 15.194453600095585,
+                  "indexed_chunks": 175,
+                  "updated_chunks": 0,
+                  "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+                  "versions": {
+                    "chromadb": "1.5.9",
+                    "FlagEmbedding": "1.4.2",
+                    "torch": "2.14.1+cpu",
+                    "transformers": "5.20.2"
+                  },
+                  "fusion": {
+                    "method": "equal_weight_rrf",
+                    "k": 60,
+                    "route_limit": 24,
+                    "lexical_expansion": "existing_grounded_model_aliases",
+                    "bge_sparse_scores_used": false
+                  },
+                  "elapsed_seconds": 15.240171
+                },
+                {
+                  "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+                  "method": "hybrid",
+                  "vector_status": "READY",
+                  "reason": "OK",
+                  "lexical_recalled": 24,
+                  "vector_recalled": 24,
+                  "rerank": {
+                    "method": "rrf",
+                    "reason": "MEASURED_CPU_BUDGET_EXCEEDED",
+                    "timing": {
+                      "model_load_seconds": 5.343436500057578,
+                      "rerank_seconds": 12.42324969987385
+                    },
+                    "worker_seconds": 27.557949099922553,
+                    "candidate_count": 36,
+                    "budget_seconds": 5,
+                    "model": "BAAI/bge-reranker-large",
+                    "revision": "55611d7bca2a7133960a6d3b71e083071bbfc312"
+                  },
+                  "evidence_count": 24,
+                  "union_recalled": 31,
+                  "vector_timing": {
+                    "model_load_seconds": 1.9953296999447048,
+                    "index_seconds": 0.11932239984162152,
+                    "startup_to_model_ready_seconds": 13.87385300011374,
+                    "query_seconds": 0.5558494001161307
+                  },
+                  "worker_seconds": 16.16834820015356,
+                  "indexed_chunks": 277,
+                  "updated_chunks": 0,
+                  "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+                  "versions": {
+                    "chromadb": "1.5.9",
+                    "FlagEmbedding": "1.4.2",
+                    "torch": "2.14.1+cpu",
+                    "transformers": "5.20.2"
+                  },
+                  "fusion": {
+                    "method": "equal_weight_rrf",
+                    "k": 60,
+                    "route_limit": 24,
+                    "lexical_expansion": "existing_grounded_model_aliases",
+                    "bge_sparse_scores_used": false
+                  },
+                  "elapsed_seconds": 16.239533
+                },
+                {
+                  "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+                  "method": "hybrid",
+                  "vector_status": "READY",
+                  "reason": "OK",
+                  "lexical_recalled": 24,
+                  "vector_recalled": 24,
+                  "rerank": {
+                    "method": "rrf",
+                    "reason": "MEASURED_CPU_BUDGET_EXCEEDED",
+                    "timing": {
+                      "model_load_seconds": 5.343436500057578,
+                      "rerank_seconds": 12.42324969987385
+                    },
+                    "worker_seconds": 27.557949099922553,
+                    "candidate_count": 36,
+                    "budget_seconds": 5,
+                    "model": "BAAI/bge-reranker-large",
+                    "revision": "55611d7bca2a7133960a6d3b71e083071bbfc312"
+                  },
+                  "evidence_count": 24,
+                  "union_recalled": 37,
+                  "vector_timing": {
+                    "model_load_seconds": 2.0163806001655757,
+                    "index_seconds": 0.11349590006284416,
+                    "startup_to_model_ready_seconds": 12.594922100193799,
+                    "query_seconds": 0.5198762000072747
+                  },
+                  "worker_seconds": 14.858447700040415,
+                  "indexed_chunks": 277,
+                  "updated_chunks": 0,
+                  "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+                  "versions": {
+                    "chromadb": "1.5.9",
+                    "FlagEmbedding": "1.4.2",
+                    "torch": "2.14.1+cpu",
+                    "transformers": "5.20.2"
+                  },
+                  "fusion": {
+                    "method": "equal_weight_rrf",
+                    "k": 60,
+                    "route_limit": 24,
+                    "lexical_expansion": "existing_grounded_model_aliases",
+                    "bge_sparse_scores_used": false
+                  },
+                  "elapsed_seconds": 14.925658
+                }
+              ]
+            }
+          },
+          {
+            "node": "qa",
+            "elapsed_seconds": 5.923734,
+            "attempt": 1,
+            "evidence_count": 32,
+            "validation": null,
+            "validation_error": null,
+            "fallback_reason": null
+          },
+          {
+            "node": "validate",
+            "elapsed_seconds": 0.014736,
+            "attempt": 1,
+            "evidence_count": 32,
+            "validation": true,
+            "validation_error": null,
+            "fallback_reason": null
+          }
+        ],
+        "tool_calls": [
+          {
+            "tool_name": "search",
+            "tool_call_id": "call_00_BKVFxhj1zQGguRDARORq9957",
+            "attempt": 1,
+            "origin": "model_function_call",
+            "arguments_summary": {
+              "paper_ids": [
+                "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+              ],
+              "query_chars": 81,
+              "limit": 12
+            },
+            "return_summary": {
+              "evidence_count": 12,
+              "method": "hybrid"
+            },
+            "elapsed_seconds": 15.18141,
+            "status": "succeeded"
+          },
+          {
+            "tool_name": "search",
+            "tool_call_id": "call_01_lbq6smrDYVmWtkMIcL610388",
+            "attempt": 1,
+            "origin": "model_function_call",
+            "arguments_summary": {
+              "paper_ids": [
+                "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+              ],
+              "query_chars": 85,
+              "limit": 12
+            },
+            "return_summary": {
+              "evidence_count": 12,
+              "method": "hybrid"
+            },
+            "elapsed_seconds": 15.26633,
+            "status": "succeeded"
+          },
+          {
+            "tool_name": "search",
+            "tool_call_id": "call_02_RPdcF1FiXrOPYvuNc1Ze1736",
+            "attempt": 1,
+            "origin": "model_function_call",
+            "arguments_summary": {
+              "paper_ids": [
+                "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+              ],
+              "query_chars": 94,
+              "limit": 12
+            },
+            "return_summary": {
+              "evidence_count": 12,
+              "method": "hybrid"
+            },
+            "elapsed_seconds": 16.272843,
+            "status": "succeeded"
+          },
+          {
+            "tool_name": "search",
+            "tool_call_id": "call_03_p5h0KOmCyR8wfBm6P4do8817",
+            "attempt": 1,
+            "origin": "model_function_call",
+            "arguments_summary": {
+              "paper_ids": [
+                "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+              ],
+              "query_chars": 76,
+              "limit": 12
+            },
+            "return_summary": {
+              "evidence_count": 12,
+              "method": "hybrid"
+            },
+            "elapsed_seconds": 14.958349,
+            "status": "succeeded"
+          }
+        ],
+        "model_calls": [
+          {
+            "provider": "deepseek",
+            "model": "deepseek-chat",
+            "phase": "plan",
+            "elapsed_seconds": 1.929417,
+            "prompt_tokens": 947,
+            "completion_tokens": 442,
+            "total_tokens": 1389,
+            "http_status": 200,
+            "status": "succeeded"
+          },
+          {
+            "provider": "deepseek",
+            "model": "deepseek-chat",
+            "phase": "qa",
+            "elapsed_seconds": 5.923476,
+            "prompt_tokens": 26304,
+            "completion_tokens": 1591,
+            "total_tokens": 27895,
+            "http_status": 200,
+            "status": "succeeded"
+          }
+        ],
+        "checkpointing": false,
+        "external_tracing": false,
+        "validated": true,
+        "method": "hybrid",
+        "retrieval": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "method": "hybrid",
+            "vector_status": "READY",
+            "reason": "OK",
+            "lexical_recalled": 24,
+            "vector_recalled": 24,
+            "rerank": {
+              "method": "rrf",
+              "reason": "MEASURED_CPU_BUDGET_EXCEEDED",
+              "timing": {
+                "model_load_seconds": 5.343436500057578,
+                "rerank_seconds": 12.42324969987385
+              },
+              "worker_seconds": 27.557949099922553,
+              "candidate_count": 36,
+              "budget_seconds": 5,
+              "model": "BAAI/bge-reranker-large",
+              "revision": "55611d7bca2a7133960a6d3b71e083071bbfc312"
+            },
+            "evidence_count": 24,
+            "union_recalled": 33,
+            "vector_timing": {
+              "model_load_seconds": 1.9316928000189364,
+              "index_seconds": 0.11473300005309284,
+              "startup_to_model_ready_seconds": 12.751243800157681,
+              "query_seconds": 0.5924875000491738
+            },
+            "worker_seconds": 15.104577699908987,
+            "indexed_chunks": 175,
+            "updated_chunks": 0,
+            "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+            "versions": {
+              "chromadb": "1.5.9",
+              "FlagEmbedding": "1.4.2",
+              "torch": "2.14.1+cpu",
+              "transformers": "5.20.2"
+            },
+            "fusion": {
+              "method": "equal_weight_rrf",
+              "k": 60,
+              "route_limit": 24,
+              "lexical_expansion": "existing_grounded_model_aliases",
+              "bge_sparse_scores_used": false
+            },
+            "elapsed_seconds": 15.151133
+          },
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "method": "hybrid",
+            "vector_status": "READY",
+            "reason": "OK",
+            "lexical_recalled": 24,
+            "vector_recalled": 24,
+            "rerank": {
+              "method": "rrf",
+              "reason": "MEASURED_CPU_BUDGET_EXCEEDED",
+              "timing": {
+                "model_load_seconds": 5.343436500057578,
+                "rerank_seconds": 12.42324969987385
+              },
+              "worker_seconds": 27.557949099922553,
+              "candidate_count": 36,
+              "budget_seconds": 5,
+              "model": "BAAI/bge-reranker-large",
+              "revision": "55611d7bca2a7133960a6d3b71e083071bbfc312"
+            },
+            "evidence_count": 24,
+            "union_recalled": 34,
+            "vector_timing": {
+              "model_load_seconds": 1.9839874999597669,
+              "index_seconds": 0.11288479994982481,
+              "startup_to_model_ready_seconds": 12.970726599916816,
+              "query_seconds": 0.5301481999922544
+            },
+            "worker_seconds": 15.194453600095585,
+            "indexed_chunks": 175,
+            "updated_chunks": 0,
+            "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+            "versions": {
+              "chromadb": "1.5.9",
+              "FlagEmbedding": "1.4.2",
+              "torch": "2.14.1+cpu",
+              "transformers": "5.20.2"
+            },
+            "fusion": {
+              "method": "equal_weight_rrf",
+              "k": 60,
+              "route_limit": 24,
+              "lexical_expansion": "existing_grounded_model_aliases",
+              "bge_sparse_scores_used": false
+            },
+            "elapsed_seconds": 15.240171
+          },
+          {
+            "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+            "method": "hybrid",
+            "vector_status": "READY",
+            "reason": "OK",
+            "lexical_recalled": 24,
+            "vector_recalled": 24,
+            "rerank": {
+              "method": "rrf",
+              "reason": "MEASURED_CPU_BUDGET_EXCEEDED",
+              "timing": {
+                "model_load_seconds": 5.343436500057578,
+                "rerank_seconds": 12.42324969987385
+              },
+              "worker_seconds": 27.557949099922553,
+              "candidate_count": 36,
+              "budget_seconds": 5,
+              "model": "BAAI/bge-reranker-large",
+              "revision": "55611d7bca2a7133960a6d3b71e083071bbfc312"
+            },
+            "evidence_count": 24,
+            "union_recalled": 31,
+            "vector_timing": {
+              "model_load_seconds": 1.9953296999447048,
+              "index_seconds": 0.11932239984162152,
+              "startup_to_model_ready_seconds": 13.87385300011374,
+              "query_seconds": 0.5558494001161307
+            },
+            "worker_seconds": 16.16834820015356,
+            "indexed_chunks": 277,
+            "updated_chunks": 0,
+            "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+            "versions": {
+              "chromadb": "1.5.9",
+              "FlagEmbedding": "1.4.2",
+              "torch": "2.14.1+cpu",
+              "transformers": "5.20.2"
+            },
+            "fusion": {
+              "method": "equal_weight_rrf",
+              "k": 60,
+              "route_limit": 24,
+              "lexical_expansion": "existing_grounded_model_aliases",
+              "bge_sparse_scores_used": false
+            },
+            "elapsed_seconds": 16.239533
+          },
+          {
+            "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+            "method": "hybrid",
+            "vector_status": "READY",
+            "reason": "OK",
+            "lexical_recalled": 24,
+            "vector_recalled": 24,
+            "rerank": {
+              "method": "rrf",
+              "reason": "MEASURED_CPU_BUDGET_EXCEEDED",
+              "timing": {
+                "model_load_seconds": 5.343436500057578,
+                "rerank_seconds": 12.42324969987385
+              },
+              "worker_seconds": 27.557949099922553,
+              "candidate_count": 36,
+              "budget_seconds": 5,
+              "model": "BAAI/bge-reranker-large",
+              "revision": "55611d7bca2a7133960a6d3b71e083071bbfc312"
+            },
+            "evidence_count": 24,
+            "union_recalled": 37,
+            "vector_timing": {
+              "model_load_seconds": 2.0163806001655757,
+              "index_seconds": 0.11349590006284416,
+              "startup_to_model_ready_seconds": 12.594922100193799,
+              "query_seconds": 0.5198762000072747
+            },
+            "worker_seconds": 14.858447700040415,
+            "indexed_chunks": 277,
+            "updated_chunks": 0,
+            "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+            "versions": {
+              "chromadb": "1.5.9",
+              "FlagEmbedding": "1.4.2",
+              "torch": "2.14.1+cpu",
+              "transformers": "5.20.2"
+            },
+            "fusion": {
+              "method": "equal_weight_rrf",
+              "k": 60,
+              "route_limit": 24,
+              "lexical_expansion": "existing_grounded_model_aliases",
+              "bge_sparse_scores_used": false
+            },
+            "elapsed_seconds": 14.925658
+          }
+        ]
+      },
+      "result": {
+        "evidence_table": [
+          {
+            "evidence_id": "E1",
+            "per_paper_index": 0,
+            "anchor": {
+              "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+              "page_number": 3,
+              "section": [
+                "3 Model Architecture",
+                "3.1 Encoder and Decoder Stacks"
+              ],
+              "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031"
+            },
+            "quotes": [
+              "Encoder:  The encoder is composed of a stack of N = 6 identical layers. Each layer has two sub-layers. The first is a multi-head self-attention mechanism, and the second is a simple, positionwise fully connected feed-forward network. We employ a residual connection [11] around each of the two sub-layers, followed by layer normalization [1]. That is, the output of each sub-layer is LayerNorm(x + Sublayer(x)), where Sublayer(x) is the function implemented by the sub-layer itself. To facilitate these residual connections, all sub-layers in the model, as well as the embedding l"
+            ]
+          },
+          {
+            "evidence_id": "E2",
+            "per_paper_index": 0,
+            "anchor": {
+              "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+              "page_number": 5,
+              "section": [
+                "MultiHead(Q, K, V ) = Concat(head 1 , ..., head h )W O",
+                "3.2.3 Applications of Attention in our Model"
+              ],
+              "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00058"
+            },
+            "quotes": [
+              "• The encoder contains self-attention layers. In a self-attention layer all of the keys, values and queries come from the same place, in this case, the output of the previous layer in the encoder. Each position in the encoder can attend to all positions in the previous layer of the encoder."
+            ]
+          },
+          {
+            "evidence_id": "E3",
+            "per_paper_index": 0,
+            "anchor": {
+              "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+              "page_number": 3,
+              "section": [
+                "3 Model Architecture",
+                "3.1 Encoder and Decoder Stacks"
+              ],
+              "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+            },
+            "quotes": [
+              "Decoder:  The decoder is also composed of a stack of N = 6 identical layers. In addition to the two sub-layers in each encoder layer, the decoder inserts a third sub-layer, which performs multi-head attention over the output of the encoder stack. Similar to the encoder, we employ residual connections around each of the sub-layers, followed by layer normalization. We also modify the self-attention sub-layer in the decoder stack to prevent positions from attending to subsequent positions. This masking, combined with fact that the output embeddings are offset by one position, "
+            ]
+          },
+          {
+            "evidence_id": "E4",
+            "per_paper_index": 0,
+            "anchor": {
+              "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+              "page_number": 5,
+              "section": [
+                "MultiHead(Q, K, V ) = Concat(head 1 , ..., head h )W O",
+                "3.2.3 Applications of Attention in our Model"
+              ],
+              "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00057"
+            },
+            "quotes": [
+              "• In \"encoder-decoder attention\" layers, the queries come from the previous decoder layer, and the memory keys and values come from the output of the encoder. This allows every position in the decoder to attend over all positions in the input sequence. This mimics the typical encoder-decoder attention mechanisms in sequence-to-sequence models such as [38, 2, 9]."
+            ]
+          },
+          {
+            "evidence_id": "E5",
+            "per_paper_index": 0,
+            "anchor": {
+              "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+              "page_number": 2,
+              "section": [
+                "3 Model Architecture"
+              ],
+              "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00026"
+            },
+            "quotes": [
+              "Most competitive neural sequence transduction models have an encoder-decoder structure [5, 2, 35]. Here, the encoder maps an input sequence of symbol representations (x 1 , ..., x n ) to a sequence of continuous representations z = (z 1 , ..., z n ). Given z, the decoder then generates an output sequence (y 1 , ..., y m ) of symbols one element at a time. At each step the model is auto-regressive [10], consuming the previously generated symbols as additional input when generating the next."
+            ]
+          },
+          {
+            "evidence_id": "E6",
+            "per_paper_index": 1,
+            "anchor": {
+              "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+              "page_number": 3,
+              "section": [
+                "3 BERT"
+              ],
+              "chunk_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0003-c00040"
+            },
+            "quotes": [
+              "Model Architecture  BERT’s model architecture is a multi-layer bidirectional Transformer encoder based on the original implementation described in Vaswani et al. (2017) and released in the tensor2tensor library. 1  Because the use of Transformers has become common and our implementation is almost identical to the original, we will omit an exhaustive background description of the model architecture and refer readers to Vaswani et al. (2017) as well as excellent guides such as “The Annotated Transformer.” 2  In this work, we denote the number of layers (i.e., Transformer bloc"
+            ]
+          },
+          {
+            "evidence_id": "E7",
+            "per_paper_index": 1,
+            "anchor": {
+              "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+              "page_number": 4,
+              "section": [
+                "4 We note that in the literature the bidirectional Trans-",
+                "3.1 Pre-training BERT"
+              ],
+              "chunk_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0004-c00056"
+            },
+            "quotes": [
+              "former is often referred to as a “Transformer encoder” while the left-context-only version is referred to as a “Transformer decoder” since it can be used for text generation."
+            ]
+          },
+          {
+            "evidence_id": "E8",
+            "per_paper_index": 1,
+            "anchor": {
+              "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+              "page_number": 3,
+              "section": [
+                "3 BERT"
+              ],
+              "chunk_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0003-c00041"
+            },
+            "quotes": [
+              "BERT BASE  was chosen to have the same model size as OpenAI GPT for comparison purposes. Critically, however, the BERT Transformer uses bidirectional self-attention, while the GPT Transformer uses constrained self-attention where every token can only attend to context to its left. 4"
+            ]
+          },
+          {
+            "evidence_id": "E9",
+            "per_paper_index": 1,
+            "anchor": {
+              "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+              "page_number": 13,
+              "section": [
+                "A.1 Illustration of the Pre-training Tasks"
+              ],
+              "chunk_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0013-c00212"
+            },
+            "quotes": [
+              " BERT uses a bidirectional Transformer. OpenAI GPT uses a left-to-right Transformer. ELMo uses the concatenation of independently trained left-to-right and right-to-left LSTMs to generate features for downstream tasks. Among the three, only BERT representations are jointly conditioned on both left and right context in all layers. In addition to the architecture differences, BERT and OpenAI GPT are fine-tuning approaches, while ELMo is a feature-based approach."
+            ]
+          },
+          {
+            "evidence_id": "E10",
+            "per_paper_index": 1,
+            "anchor": {
+              "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+              "page_number": 1,
+              "section": [
+                "Abstract"
+              ],
+              "chunk_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0001-c00009"
+            },
+            "quotes": [
+              "We introduce a new language representation model called  BERT , which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a; Radford et al., 2018), BERT is designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be finetuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language "
+            ]
+          }
+        ],
+        "per_paper": [
+          {
+            "schema_version": "1.0.0",
+            "answer": "【证据 A】\nEncoder:  The encoder is composed of a stack of N = 6 identical layers. Each layer has two sub-layers. The first is a multi-head self-attention mechanism, and the second is a simple, positionwise fully connected feed-forward network. We employ a residual connection [11] around each of the two sub-layers, followed by layer normalization [1]. That is, the output of each sub-layer is LayerNorm(x + Sublayer(x)), where Sublayer(x) is the function implemented by the sub-layer itself. To facilitate these residual connections, all sub-layers in the model, as well as the embedding l\n\n【证据 B】\n• The encoder contains self-attention layers. In a self-attention layer all of the keys, values and queries come from the same place, in this case, the output of the previous layer in the encoder. Each position in the encoder can attend to all positions in the previous layer of the encoder.\n\n【证据 C】\nDecoder:  The decoder is also composed of a stack of N = 6 identical layers. In addition to the two sub-layers in each encoder layer, the decoder inserts a third sub-layer, which performs multi-head attention over the output of the encoder stack. Similar to the encoder, we employ residual connections around each of the sub-layers, followed by layer normalization. We also modify the self-attention sub-layer in the decoder stack to prevent positions from attending to subsequent positions. This masking, combined with fact that the output embeddings are offset by one position, \n\n【证据 D】\n• In \"encoder-decoder attention\" layers, the queries come from the previous decoder layer, and the memory keys and values come from the output of the encoder. This allows every position in the decoder to attend over all positions in the input sequence. This mimics the typical encoder-decoder attention mechanisms in sequence-to-sequence models such as [38, 2, 9].\n\n【证据 E】\nMost competitive neural sequence transduction models have an encoder-decoder structure [5, 2, 35]. Here, the encoder maps an input sequence of symbol representations (x 1 , ..., x n ) to a sequence of continuous representations z = (z 1 , ..., z n ). Given z, the decoder then generates an output sequence (y 1 , ..., y m ) of symbols one element at a time. At each step the model is auto-regressive [10], consuming the previously generated symbols as additional input when generating the next.",
+            "anchors": [
+              {
+                "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                "page_number": 3,
+                "section": [
+                  "3 Model Architecture",
+                  "3.1 Encoder and Decoder Stacks"
+                ],
+                "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031"
+              },
+              {
+                "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                "page_number": 5,
+                "section": [
+                  "MultiHead(Q, K, V ) = Concat(head 1 , ..., head h )W O",
+                  "3.2.3 Applications of Attention in our Model"
+                ],
+                "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00058"
+              },
+              {
+                "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                "page_number": 3,
+                "section": [
+                  "3 Model Architecture",
+                  "3.1 Encoder and Decoder Stacks"
+                ],
+                "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+              },
+              {
+                "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                "page_number": 5,
+                "section": [
+                  "MultiHead(Q, K, V ) = Concat(head 1 , ..., head h )W O",
+                  "3.2.3 Applications of Attention in our Model"
+                ],
+                "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00057"
+              },
+              {
+                "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                "page_number": 2,
+                "section": [
+                  "3 Model Architecture"
+                ],
+                "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00026"
+              }
+            ],
+            "numeric_fact_check": {
+              "status": "passed",
+              "checks": [
+                {
+                  "claim": "Encoder:  The encoder is composed of a stack of N = 6 identical layers. Each layer has two sub-layers. The first is a multi-head self-attention mechanism, and the second is a simple, positionwise fully connected feed-forward network. We employ a residual connection [11] around each of the two sub-layers, followed by layer normalization [1]. That is, the output of each sub-layer is LayerNorm(x + Sublayer(x)), where Sublayer(x) is the function implemented by the sub-layer itself. To facilitate these residual connections, all sub-layers in the model, as well as the embedding l",
+                  "status": "passed",
+                  "evidence": [
+                    {
+                      "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                      "page_number": 3,
+                      "section": [
+                        "3 Model Architecture",
+                        "3.1 Encoder and Decoder Stacks"
+                      ],
+                      "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031"
+                    }
+                  ],
+                  "reason": "数字与上下文逐字回溯同一真实Chunk；不证明实验结论本身。"
+                },
+                {
+                  "claim": "Decoder:  The decoder is also composed of a stack of N = 6 identical layers. In addition to the two sub-layers in each encoder layer, the decoder inserts a third sub-layer, which performs multi-head attention over the output of the encoder stack. Similar to the encoder, we employ residual connections around each of the sub-layers, followed by layer normalization. We also modify the self-attention sub-layer in the decoder stack to prevent positions from attending to subsequent positions. This masking, combined with fact that the output embeddings are offset by one position, ",
+                  "status": "passed",
+                  "evidence": [
+                    {
+                      "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                      "page_number": 3,
+                      "section": [
+                        "3 Model Architecture",
+                        "3.1 Encoder and Decoder Stacks"
+                      ],
+                      "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+                    }
+                  ],
+                  "reason": "数字与上下文逐字回溯同一真实Chunk；不证明实验结论本身。"
+                },
+                {
+                  "claim": "Most competitive neural sequence transduction models have an encoder-decoder structure [5, 2, 35]. Here, the encoder maps an input sequence of symbol representations (x 1 , ..., x n ) to a sequence of continuous representations z = (z 1 , ..., z n ). Given z, the decoder then generates an output sequence (y 1 , ..., y m ) of symbols one element at a time. At each step the model is auto-regressive [10], consuming the previously generated symbols as additional input when generating the next.",
+                  "status": "passed",
+                  "evidence": [
+                    {
+                      "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                      "page_number": 2,
+                      "section": [
+                        "3 Model Architecture"
+                      ],
+                      "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00026"
+                    }
+                  ],
+                  "reason": "数字与上下文逐字回溯同一真实Chunk；不证明实验结论本身。"
+                }
+              ]
+            },
+            "refused": false
+          },
+          {
+            "schema_version": "1.0.0",
+            "answer": "【证据 A】\nModel Architecture  BERT’s model architecture is a multi-layer bidirectional Transformer encoder based on the original implementation described in Vaswani et al. (2017) and released in the tensor2tensor library. 1  Because the use of Transformers has become common and our implementation is almost identical to the original, we will omit an exhaustive background description of the model architecture and refer readers to Vaswani et al. (2017) as well as excellent guides such as “The Annotated Transformer.” 2  In this work, we denote the number of layers (i.e., Transformer bloc\n\n【证据 B】\nformer is often referred to as a “Transformer encoder” while the left-context-only version is referred to as a “Transformer decoder” since it can be used for text generation.\n\n【证据 C】\nBERT BASE  was chosen to have the same model size as OpenAI GPT for comparison purposes. Critically, however, the BERT Transformer uses bidirectional self-attention, while the GPT Transformer uses constrained self-attention where every token can only attend to context to its left. 4\n\n【证据 D】\n BERT uses a bidirectional Transformer. OpenAI GPT uses a left-to-right Transformer. ELMo uses the concatenation of independently trained left-to-right and right-to-left LSTMs to generate features for downstream tasks. Among the three, only BERT representations are jointly conditioned on both left and right context in all layers. In addition to the architecture differences, BERT and OpenAI GPT are fine-tuning approaches, while ELMo is a feature-based approach.\n\n【证据 E】\nWe introduce a new language representation model called  BERT , which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a; Radford et al., 2018), BERT is designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be finetuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language ",
+            "anchors": [
+              {
+                "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+                "page_number": 3,
+                "section": [
+                  "3 BERT"
+                ],
+                "chunk_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0003-c00040"
+              },
+              {
+                "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+                "page_number": 4,
+                "section": [
+                  "4 We note that in the literature the bidirectional Trans-",
+                  "3.1 Pre-training BERT"
+                ],
+                "chunk_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0004-c00056"
+              },
+              {
+                "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+                "page_number": 3,
+                "section": [
+                  "3 BERT"
+                ],
+                "chunk_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0003-c00041"
+              },
+              {
+                "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+                "page_number": 13,
+                "section": [
+                  "A.1 Illustration of the Pre-training Tasks"
+                ],
+                "chunk_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0013-c00212"
+              },
+              {
+                "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+                "page_number": 1,
+                "section": [
+                  "Abstract"
+                ],
+                "chunk_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0001-c00009"
+              }
+            ],
+            "numeric_fact_check": {
+              "status": "passed",
+              "checks": [
+                {
+                  "claim": "Model Architecture  BERT’s model architecture is a multi-layer bidirectional Transformer encoder based on the original implementation described in Vaswani et al. (2017) and released in the tensor2tensor library. 1  Because the use of Transformers has become common and our implementation is almost identical to the original, we will omit an exhaustive background description of the model architecture and refer readers to Vaswani et al. (2017) as well as excellent guides such as “The Annotated Transformer.” 2  In this work, we denote the number of layers (i.e., Transformer bloc",
+                  "status": "passed",
+                  "evidence": [
+                    {
+                      "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+                      "page_number": 3,
+                      "section": [
+                        "3 BERT"
+                      ],
+                      "chunk_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0003-c00040"
+                    }
+                  ],
+                  "reason": "数字与上下文逐字回溯同一真实Chunk；不证明实验结论本身。"
+                },
+                {
+                  "claim": "BERT BASE  was chosen to have the same model size as OpenAI GPT for comparison purposes. Critically, however, the BERT Transformer uses bidirectional self-attention, while the GPT Transformer uses constrained self-attention where every token can only attend to context to its left. 4",
+                  "status": "passed",
+                  "evidence": [
+                    {
+                      "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+                      "page_number": 3,
+                      "section": [
+                        "3 BERT"
+                      ],
+                      "chunk_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0003-c00041"
+                    }
+                  ],
+                  "reason": "数字与上下文逐字回溯同一真实Chunk；不证明实验结论本身。"
+                },
+                {
+                  "claim": "We introduce a new language representation model called  BERT , which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a; Radford et al., 2018), BERT is designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be finetuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language ",
+                  "status": "passed",
+                  "evidence": [
+                    {
+                      "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+                      "page_number": 1,
+                      "section": [
+                        "Abstract"
+                      ],
+                      "chunk_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0001-c00009"
+                    }
+                  ],
+                  "reason": "数字与上下文逐字回溯同一真实Chunk；不证明实验结论本身。"
+                }
+              ]
+            },
+            "refused": false
+          }
+        ],
+        "synthesis": "原文并列：Encoder:  The encoder is composed of a stack of N = 6 identical layers. Each layer has two sub-layers. The first is a multi-head self-attention mechanism, and the second is a simple, positionwise fully connected feed-forward network. We employ a residual connection [11] around each of the two sub-layers, followed by layer normalization [1]. That is, the output of each sub-layer is LayerNorm(x + Sublayer(x)), where Sublayer(x) is the function implemented by the sub-layer itself. To facilitate these residual connections, all sub-layers in the model, as well as the embedding l [E1]\n原文并列：• The encoder contains self-attention layers. In a self-attention layer all of the keys, values and queries come from the same place, in this case, the output of the previous layer in the encoder. Each position in the encoder can attend to all positions in the previous layer of the encoder. [E2]\n原文并列：Decoder:  The decoder is also composed of a stack of N = 6 identical layers. In addition to the two sub-layers in each encoder layer, the decoder inserts a third sub-layer, which performs multi-head attention over the output of the encoder stack. Similar to the encoder, we employ residual connections around each of the sub-layers, followed by layer normalization. We also modify the self-attention sub-layer in the decoder stack to prevent positions from attending to subsequent positions. This masking, combined with fact that the output embeddings are offset by one position,  [E3]\n原文并列：• In \"encoder-decoder attention\" layers, the queries come from the previous decoder layer, and the memory keys and values come from the output of the encoder. This allows every position in the decoder to attend over all positions in the input sequence. This mimics the typical encoder-decoder attention mechanisms in sequence-to-sequence models such as [38, 2, 9]. [E4]\n原文并列：Most competitive neural sequence transduction models have an encoder-decoder structure [5, 2, 35]. Here, the encoder maps an input sequence of symbol representations (x 1 , ..., x n ) to a sequence of continuous representations z = (z 1 , ..., z n ). Given z, the decoder then generates an output sequence (y 1 , ..., y m ) of symbols one element at a time. At each step the model is auto-regressive [10], consuming the previously generated symbols as additional input when generating the next. [E5]\n原文并列：Model Architecture  BERT’s model architecture is a multi-layer bidirectional Transformer encoder based on the original implementation described in Vaswani et al. (2017) and released in the tensor2tensor library. 1  Because the use of Transformers has become common and our implementation is almost identical to the original, we will omit an exhaustive background description of the model architecture and refer readers to Vaswani et al. (2017) as well as excellent guides such as “The Annotated Transformer.” 2  In this work, we denote the number of layers (i.e., Transformer bloc [E6]\n原文并列：former is often referred to as a “Transformer encoder” while the left-context-only version is referred to as a “Transformer decoder” since it can be used for text generation. [E7]\n原文并列：BERT BASE  was chosen to have the same model size as OpenAI GPT for comparison purposes. Critically, however, the BERT Transformer uses bidirectional self-attention, while the GPT Transformer uses constrained self-attention where every token can only attend to context to its left. 4 [E8]\n原文并列： BERT uses a bidirectional Transformer. OpenAI GPT uses a left-to-right Transformer. ELMo uses the concatenation of independently trained left-to-right and right-to-left LSTMs to generate features for downstream tasks. Among the three, only BERT representations are jointly conditioned on both left and right context in all layers. In addition to the architecture differences, BERT and OpenAI GPT are fine-tuning approaches, while ELMo is a feature-based approach. [E9]\n原文并列：We introduce a new language representation model called  BERT , which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a; Radford et al., 2018), BERT is designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be finetuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language  [E10]\n不可验证：这些摘录不证明跨篇因果关系，也不支持不同指标之间的优劣排名。"
+      },
+      "passed": true,
+      "verification": {
+        "encoder": true,
+        "bidirectional": true,
+        "decoder_or_encoder_stack": true,
+        "vaswani": true,
+        "anchors": true,
+        "actual_hybrid": true
+      }
+    }
+  ],
+  "paraphrase": {
+    "query": "基础网络借助哪种加速卡完成学习？",
+    "legacy_extractive_count": 0,
+    "legacy_model_candidates": 0,
+    "metadata": {
+      "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "method": "vector",
+      "vector_status": "READY",
+      "reason": "OK",
+      "lexical_recalled": 0,
+      "vector_recalled": 24,
+      "rerank": {
+        "method": "rrf",
+        "reason": "MEASURED_CPU_BUDGET_EXCEEDED",
+        "timing": {
+          "model_load_seconds": 5.343436500057578,
+          "rerank_seconds": 12.42324969987385
+        },
+        "worker_seconds": 27.557949099922553,
+        "candidate_count": 36,
+        "budget_seconds": 5,
+        "model": "BAAI/bge-reranker-large",
+        "revision": "55611d7bca2a7133960a6d3b71e083071bbfc312"
+      },
+      "evidence_count": 24,
+      "union_recalled": 24,
+      "vector_timing": {
+        "model_load_seconds": 1.9615309000946581,
+        "index_seconds": 0.1140976999886334,
+        "startup_to_model_ready_seconds": 13.151745700044557,
+        "query_seconds": 0.4669134998694062
+      },
+      "worker_seconds": 15.385806699981913,
+      "indexed_chunks": 175,
+      "updated_chunks": 0,
+      "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+      "versions": {
+        "chromadb": "1.5.9",
+        "FlagEmbedding": "1.4.2",
+        "torch": "2.14.1+cpu",
+        "transformers": "5.20.2"
+      },
+      "fusion": {
+        "method": "equal_weight_rrf",
+        "k": 60,
+        "route_limit": 24,
+        "lexical_expansion": "existing_grounded_model_aliases",
+        "bge_sparse_scores_used": false
+      },
+      "elapsed_seconds": 15.430409
+    },
+    "evidence": [
+      {
+        "evidence_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00021@9a50c6659c8eaa89",
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "source_order": 20,
+        "record_type": "text",
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 2,
+          "section": [
+            "2 Background"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00021"
+        },
+        "quote": "The goal of reducing sequential computation also forms the foundation of the Extended Neural GPU [16], ByteNet [18] and ConvS2S [9], all of which use convolutional neural networks as basic building block, computing hidden representations in parallel for all input and output positions. In these models, the number of operations required to relate signals from two arbitrary input or output positions grows in the distance between positions, linearly for ConvS2S and logarithmically for ByteNet. This makes it more difficult to learn dependencies between distant positions [12]. In"
+      },
+      {
+        "evidence_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00021@eecca666c36c1cf1",
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "source_order": 20,
+        "record_type": "text",
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 2,
+          "section": [
+            "2 Background"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00021"
+        },
+        "quote": "for ConvS2S and logarithmically for ByteNet. This makes it more difficult to learn dependencies between distant positions [12]. In the Transformer this is reduced to a constant number of operations, albeit at the cost of reduced effective resolution due to averaging attention-weighted positions, an effect we counteract with Multi-Head Attention as described in section 3.2."
+      },
+      {
+        "evidence_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00086@432fef0b24ee043a",
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "source_order": 85,
+        "record_type": "text",
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 7,
+          "section": [
+            "5 Training",
+            "5.2 Hardware and Schedule"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00086"
+        },
+        "quote": "We trained our models on one machine with 8 NVIDIA P100 GPUs. For our base models using the hyperparameters described throughout the paper, each training step took about 0.4 seconds. We trained the base models for a total of 100,000 steps or 12 hours. For our big models,(described on the bottom line of table 3), step time was 1.0 seconds. The big models were trained for 300,000 steps (3.5 days)."
+      },
+      {
+        "evidence_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00010@c3abf84dd2eccd0e",
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "source_order": 9,
+        "record_type": "text",
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 1,
+          "section": [
+            "Abstract"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00010"
+        },
+        "quote": "The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely. Experiments on two machine translation tasks show these models to be superior in quality while being more parallelizable and requiring significantly less time to train. Our model achie"
+      },
+      {
+        "evidence_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00010@861d2d1b935f6d51",
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "source_order": 9,
+        "record_type": "text",
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 1,
+          "section": [
+            "Abstract"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00010"
+        },
+        "quote": "e models to be superior in quality while being more parallelizable and requiring significantly less time to train. Our model achieves 28.4 BLEU on the WMT 2014 Englishto-German translation task, improving over the existing best results, including ensembles, by over 2 BLEU. On the WMT 2014 English-to-French translation task, our model establishes a new single-model state-of-the-art BLEU score of 41.8 after training for 3.5 days on eight GPUs, a small fraction of the training costs of the best models from the literature. We show that the Transformer generalizes well to other "
+      },
+      {
+        "evidence_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00019@ea07473b48f37e4e",
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "source_order": 18,
+        "record_type": "text",
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 2,
+          "section": [
+            "1 Introduction"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00019"
+        },
+        "quote": "In this work we propose the Transformer, a model architecture eschewing recurrence and instead relying entirely on an attention mechanism to draw global dependencies between input and output. The Transformer allows for significantly more parallelization and can reach a new state of the art in translation quality after being trained for as little as twelve hours on eight P100 GPUs."
+      },
+      {
+        "evidence_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00093@d799d8daf3d843dd",
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "source_order": 92,
+        "record_type": "table",
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 8,
+          "section": [
+            "5 Training",
+            "5.4 Regularization"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00093"
+        },
+        "quote": "Table 2: The Transformer achieves better BLEU scores than previous state-of-the-art models on the English-to-German and English-to-French newstest2014 tests at a fraction of the training cost. <table><tbody><tr><td rowspan=\"2\">Model</td><td colspan=\"2\">BLEU</td><td colspan=\"2\">Training Cost (FLOPs)</td></tr><tr><td>EN-DE</td><td>EN-FR</td><td>EN-DE</td><td>EN-FR</td></tr><tr><td>ByteNet [18]</td><td>23.75</td><td></td><td></td><td></td></tr><tr><td>Deep-Att + PosUnk [39]</td><td></td><td>39.2</td><td></td><td>1.0 · 10<sup>20</sup></td></tr><tr><td>GNMT + RL [38]</td><td>24."
+      },
+      {
+        "evidence_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00093@5f9b2ce3bba16c09",
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "source_order": 92,
+        "record_type": "table",
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 8,
+          "section": [
+            "5 Training",
+            "5.4 Regularization"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00093"
+        },
+        "quote": "td>Deep-Att + PosUnk [39]</td><td></td><td>39.2</td><td></td><td>1.0 · 10<sup>20</sup></td></tr><tr><td>GNMT + RL [38]</td><td>24.6</td><td>39.92</td><td>2.3 · 10<sup>19</sup></td><td>1.4 · 10<sup>20</sup></td></tr><tr><td>ConvS2S [9]</td><td>25.16</td><td>40.46</td><td>9.6 · 10<sup>18</sup></td><td>1.5 · 10<sup>20</sup></td></tr><tr><td>MoE [32]</td><td>26.03</td><td>40.56</td><td>2.0 · 10<sup>19</sup></td><td>1.2 · 10<sup>20</sup></td></tr><tr><td>Deep-Att + PosUnk Ensemble [39]</td><td></td><td>40.4</td><td></td><td>8.0 · 10<sup>20</sup></td></tr><tr><td>GNMT + RL Ensemb"
+      },
+      {
+        "evidence_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031@830c40a143799767",
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "source_order": 30,
+        "record_type": "text",
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 3,
+          "section": [
+            "3 Model Architecture",
+            "3.1 Encoder and Decoder Stacks"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031"
+        },
+        "quote": "Encoder:  The encoder is composed of a stack of N = 6 identical layers. Each layer has two sub-layers. The first is a multi-head self-attention mechanism, and the second is a simple, positionwise fully connected feed-forward network. We employ a residual connection [11] around each of the two sub-layers, followed by layer normalization [1]. That is, the output of each sub-layer is LayerNorm(x + Sublayer(x)), where Sublayer(x) is the function implemented by the sub-layer itself. To facilitate these residual connections, all sub-layers in the model, as well as the embedding l"
+      },
+      {
+        "evidence_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031@88e8745cdc06f476",
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "source_order": 30,
+        "record_type": "text",
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 3,
+          "section": [
+            "3 Model Architecture",
+            "3.1 Encoder and Decoder Stacks"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031"
+        },
+        "quote": "emented by the sub-layer itself. To facilitate these residual connections, all sub-layers in the model, as well as the embedding layers, produce outputs of dimension d model  = 512."
+      },
+      {
+        "evidence_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00075@e6395c6b2b168791",
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "source_order": 74,
+        "record_type": "text",
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 6,
+          "section": [
+            "4 Why Self-Attention"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00075"
+        },
+        "quote": "The third is the path length between long-range dependencies in the network. Learning long-range dependencies is a key challenge in many sequence transduction tasks. One key factor affecting the ability to learn such dependencies is the length of the paths forward and backward signals have to traverse in the network. The shorter these paths between any combination of positions in the input and output sequences, the easier it is to learn long-range dependencies [12]. Hence we also compare the maximum path length between any two input and output positions in networks composed"
+      },
+      {
+        "evidence_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00075@5ac5a7884fe495b0",
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "source_order": 74,
+        "record_type": "text",
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 6,
+          "section": [
+            "4 Why Self-Attention"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00075"
+        },
+        "quote": "e dependencies [12]. Hence we also compare the maximum path length between any two input and output positions in networks composed of the different layer types."
+      },
+      {
+        "evidence_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00079@92293e4c5f7ac66a",
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "source_order": 78,
+        "record_type": "text",
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 7,
+          "section": [
+            "4 Why Self-Attention"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00079"
+        },
+        "quote": "A single convolutional layer with kernel width k < n does not connect all pairs of input and output positions. Doing so requires a stack of O(n/k) convolutional layers in the case of contiguous kernels, or O(log k (n)) in the case of dilated convolutions [18], increasing the length of the longest paths between any two positions in the network. Convolutional layers are generally more expensive than recurrent layers, by a factor of k. Separable convolutions [6], however, decrease the complexity considerably, to O(k · n · d + n · d 2 ). Even with k = n, however, the complexity"
+      },
+      {
+        "evidence_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00079@1b41df2995514a3c",
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "source_order": 78,
+        "record_type": "text",
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 7,
+          "section": [
+            "4 Why Self-Attention"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00079"
+        },
+        "quote": "volutions [6], however, decrease the complexity considerably, to O(k · n · d + n · d 2 ). Even with k = n, however, the complexity of a separable convolution is equal to the combination of a self-attention layer and a point-wise feed-forward layer, the approach we take in our model."
+      },
+      {
+        "evidence_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00085@a2d2a5f9885292f4",
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "source_order": 84,
+        "record_type": "text",
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 7,
+          "section": [
+            "5 Training",
+            "5.2 Hardware and Schedule"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00085"
+        },
+        "quote": "5.2 Hardware and Schedule"
+      },
+      {
+        "evidence_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00061@d25fe7951542a748",
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "source_order": 60,
+        "record_type": "text",
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 5,
+          "section": [
+            "MultiHead(Q, K, V ) = Concat(head 1 , ..., head h )W O",
+            "3.3 Position-wise Feed-Forward Networks"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00061"
+        },
+        "quote": "In addition to attention sub-layers, each of the layers in our encoder and decoder contains a fully connected feed-forward network, which is applied to each position separately and identically. This consists of two linear transformations with a ReLU activation in between."
+      },
+      {
+        "evidence_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00098@720f3f61ad85d089",
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "source_order": 97,
+        "record_type": "text",
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 8,
+          "section": [
+            "6 Results",
+            "6.1 Machine Translation"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00098"
+        },
+        "quote": "On the WMT 2014 English-to-German translation task, the big transformer model (Transformer (big) in Table 2) outperforms the best previously reported models (including ensembles) by more than 2.0 BLEU, establishing a new state-of-the-art BLEU score of 28.4. The configuration of this model is listed in the bottom line of Table 3. Training took 3.5 days on 8 P100 GPUs. Even our base model surpasses all previously published models and ensembles, at a fraction of the training cost of any of the competitive models."
+      },
+      {
+        "evidence_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00112@e352b6c722549064",
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "source_order": 111,
+        "record_type": "text",
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 9,
+          "section": [
+            "5 We used values of 2.8, 3.7, 6.0 and 9.5 TFLOPS for K80, K40, M40 and P100, respectively.",
+            "6.3 English Constituency Parsing"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00112"
+        },
+        "quote": "We trained a 4-layer transformer with d model  = 1024 on the Wall Street Journal (WSJ) portion of the Penn Treebank [25], about 40K training sentences. We also trained it in a semi-supervised setting, using the larger high-confidence and BerkleyParser corpora from with approximately 17M sentences [37]. We used a vocabulary of 16K tokens for the WSJ only setting and a vocabulary of 32K tokens for the semi-supervised setting."
+      },
+      {
+        "evidence_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00101@95f97d5afdf1658f",
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "source_order": 100,
+        "record_type": "text",
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 8,
+          "section": [
+            "6 Results",
+            "6.1 Machine Translation"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00101"
+        },
+        "quote": "Table 2 summarizes our results and compares our translation quality and training costs to other model architectures from the literature. We estimate the number of floating point operations used to train a model by multiplying the training time, the number of GPUs used, and an estimate of the sustained single-precision floating-point capacity of each GPU  5 ."
+      },
+      {
+        "evidence_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00089@618a59c55973cd00",
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "source_order": 88,
+        "record_type": "text",
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 7,
+          "section": [
+            "5 Training",
+            "5.3 Optimizer"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00089"
+        },
+        "quote": "This corresponds to increasing the learning rate linearly for the first warmup_steps training steps, and decreasing it thereafter proportionally to the inverse square root of the step number. We used warmup_steps = 4000."
+      },
+      {
+        "evidence_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00121@a23a22100218eb89",
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "source_order": 120,
+        "record_type": "text",
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 10,
+          "section": [
+            "7 Conclusion"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00121"
+        },
+        "quote": "For translation tasks, the Transformer can be trained significantly faster than architectures based on recurrent or convolutional layers. On both WMT 2014 English-to-German and WMT 2014 English-to-French translation tasks, we achieve a new state of the art. In the former task our best model outperforms even all previously reported ensembles."
+      },
+      {
+        "evidence_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00088@9a902605765ac175",
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "source_order": 87,
+        "record_type": "text",
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 7,
+          "section": [
+            "5 Training",
+            "5.3 Optimizer"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00088"
+        },
+        "quote": "We used the Adam optimizer [20] with β 1  = 0.9, β 2  = 0.98 and ϵ = 10 −9 . We varied the learning rate over the course of training, according to the formula:"
+      },
+      {
+        "evidence_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00023@02e62658b412829c",
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "source_order": 22,
+        "record_type": "text",
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 2,
+          "section": [
+            "2 Background"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00023"
+        },
+        "quote": "End-to-end memory networks are based on a recurrent attention mechanism instead of sequencealigned recurrence and have been shown to perform well on simple-language question answering and language modeling tasks [34]."
+      },
+      {
+        "evidence_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00139@ae3b1cc3052b6022",
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "source_order": 138,
+        "record_type": "text",
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 11,
+          "section": [
+            "References"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00139"
+        },
+        "quote": "[12] Sepp Hochreiter, Yoshua Bengio, Paolo Frasconi, and Jürgen Schmidhuber. Gradient flow in recurrent nets: the difficulty of learning long-term dependencies, 2001."
+      }
+    ],
+    "target_hits": [
+      {
+        "evidence_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00086@432fef0b24ee043a",
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "source_order": 85,
+        "record_type": "text",
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 7,
+          "section": [
+            "5 Training",
+            "5.2 Hardware and Schedule"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00086"
+        },
+        "quote": "We trained our models on one machine with 8 NVIDIA P100 GPUs. For our base models using the hyperparameters described throughout the paper, each training step took about 0.4 seconds. We trained the base models for a total of 100,000 steps or 12 hours. For our big models,(described on the bottom line of table 3), step time was 1.0 seconds. The big models were trained for 300,000 steps (3.5 days)."
+      },
+      {
+        "evidence_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00098@720f3f61ad85d089",
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "source_order": 97,
+        "record_type": "text",
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 8,
+          "section": [
+            "6 Results",
+            "6.1 Machine Translation"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00098"
+        },
+        "quote": "On the WMT 2014 English-to-German translation task, the big transformer model (Transformer (big) in Table 2) outperforms the best previously reported models (including ensembles) by more than 2.0 BLEU, establishing a new state-of-the-art BLEU score of 28.4. The configuration of this model is listed in the bottom line of Table 3. Training took 3.5 days on 8 P100 GPUs. Even our base model surpasses all previously published models and ensembles, at a fraction of the training cost of any of the competitive models."
+      }
+    ],
+    "advantage_observed": true
+  },
+  "refusal": {
+    "question": "论文用Adam的β₁=0.5、β₂=0.6进行训练，对吗？请确认。",
+    "http_status": 200,
+    "result": {
+      "schema_version": "1.0.0",
+      "answer": "拒答：本文本无相关证据，未检索到足以回答该问题的原文或所需数值；不能据此断言全文未报告。",
+      "anchors": [],
+      "numeric_fact_check": {
+        "status": "unverifiable",
+        "checks": [
+          {
+            "claim": "未获得可支持该问题的数字证据。",
+            "status": "unverifiable",
+            "evidence": [],
+            "reason": "不将缺失证据写成数字校验通过。"
+          }
+        ]
+      },
+      "refused": true
+    },
+    "metadata": {
+      "model_calls": [
+        {
+          "provider": "deepseek",
+          "model": "deepseek-chat",
+          "phase": "qa",
+          "elapsed_seconds": 0.811214,
+          "prompt_tokens": 7409,
+          "completion_tokens": 53,
+          "total_tokens": 7462,
+          "http_status": 200,
+          "status": "succeeded"
+        }
+      ],
+      "method": "hybrid",
+      "retrieval": [
+        {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "method": "hybrid",
+          "vector_status": "READY",
+          "reason": "OK",
+          "lexical_recalled": 24,
+          "vector_recalled": 24,
+          "rerank": {
+            "method": "rrf",
+            "reason": "MEASURED_CPU_BUDGET_EXCEEDED",
+            "timing": {
+              "model_load_seconds": 5.343436500057578,
+              "rerank_seconds": 12.42324969987385
+            },
+            "worker_seconds": 27.557949099922553,
+            "candidate_count": 36,
+            "budget_seconds": 5,
+            "model": "BAAI/bge-reranker-large",
+            "revision": "55611d7bca2a7133960a6d3b71e083071bbfc312"
+          },
+          "evidence_count": 24,
+          "union_recalled": 38,
+          "vector_timing": {
+            "model_load_seconds": 1.979002800071612,
+            "index_seconds": 0.1177058001048863,
+            "startup_to_model_ready_seconds": 12.402123200008646,
+            "query_seconds": 0.4999855998903513
+          },
+          "worker_seconds": 14.614400599850342,
+          "indexed_chunks": 175,
+          "updated_chunks": 0,
+          "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+          "versions": {
+            "chromadb": "1.5.9",
+            "FlagEmbedding": "1.4.2",
+            "torch": "2.14.1+cpu",
+            "transformers": "5.20.2"
+          },
+          "fusion": {
+            "method": "equal_weight_rrf",
+            "k": 60,
+            "route_limit": 24,
+            "lexical_expansion": "existing_grounded_model_aliases",
+            "bge_sparse_scores_used": false
+          },
+          "elapsed_seconds": 14.661355
+        }
+      ]
+    }
+  },
+  "source_sha256_lf": {
+    "backend/scholar_graph/qa.py": "30b1a48829bbe56f83f0bf56e8754ee09bc9833fa27c571ddf93a47ba14ca6d7",
+    "backend/scholar_graph/qa_compare.py": "16109b305e83839d07607657b048d66d5ff9bdb45d0e36b5b122a584713fef17",
+    "backend/scholar_graph/qa_evidence.py": "6b29ffdcfd48e4110a096153db2d5745a273fe2132ef1f3010b80adc6ee00384",
+    "backend/scholar_graph/qa_model.py": "bf8773661e5da36d7965869f7b4a28d9712df185a3169b04cfcbae9e01179346",
+    "backend/scholar_graph/qa_retrieval.py": "899cf75419ff476eb923b2845de6416dd1b2b99568a5fa9c3752644b8d3ffdd8",
+    "backend/scholar_graph/qa_routes.py": "27f951da568dc8a3ae0e7a9853d61ecf0f6f67b77d16a62260700a72db9c90e4",
+    "backend/scholar_graph/qa_sse.py": "1d26c9842347995ad5e2d14a041b9f2c530c8129758d78ece3da68a034ba5825",
+    "backend/scholar_graph/vector_search.py": "d2056086bf56e50d8ad92a1ffc19565bbcdb6b7c73ac8f310542e8af4e53fb1d",
+    "backend/scholar_graph/vector_worker.py": "69597cb81c2ce4fc3f99aa0f1e7b4b1fdf825195db96006a70997f7381aaf20c",
+    "backend/scholar_graph/orchestration.py": "43e60e7b32359b6e6f48fad634ea97507d51ced79e18bd647ca25fd80ee262a8",
+    "backend/scholar_graph/agent_tools.py": "1889bb97b68c5b0b39ca245839d6fe1670fd4f5635c16748769b3ff41f76f05d",
+    "backend/scholar_graph/grounded_model.py": "36df53f707724cf39340293cf25d978fdd3aca21ce546f33a0a394ca67eb7983"
+  }
+}

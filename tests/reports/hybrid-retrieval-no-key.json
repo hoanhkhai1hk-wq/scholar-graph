@@ -1,0 +1,157 @@
+{
+  "environment": "未设置模型Key",
+  "scope": "官方pdf/真文件，无Key实际本地向量与摘录QA",
+  "question": "基础网络借助什么加速卡完成学习？",
+  "http_status": 200,
+  "result": {
+    "schema_version": "1.0.0",
+    "answer": "【证据 A】\nThe goal of reducing sequential computation also forms the foundation of the Extended Neural GPU [16], ByteNet [18] and ConvS2S [9], all of which use convolutional neural networks as basic building block, computing hidden representations in parallel for all input and output positions. In these models, the number of operations required to relate signals from two arbitrary input or output positions grows in the distance between positions, linearly for ConvS2S and logarithmically for ByteNet. This makes it more difficult to learn dependencies between distant positions [12]. In\n\n【证据 B】\nWe trained our models on one machine with 8 NVIDIA P100 GPUs. For our base models using the hyperparameters described throughout the paper, each training step took about 0.4 seconds. We trained the base models for a total of 100,000 steps or 12 hours. For our big models,(described on the bottom line of table 3), step time was 1.0 seconds. The big models were trained for 300,000 steps (3.5 days).\n\n【证据 C】\nThe dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely. Experiments on two machine translation tasks show these models to be superior in quality while being more parallelizable and requiring significantly less time to train. Our model achie\n\n【证据 D】\nIn this work we propose the Transformer, a model architecture eschewing recurrence and instead relying entirely on an attention mechanism to draw global dependencies between input and output. The Transformer allows for significantly more parallelization and can reach a new state of the art in translation quality after being trained for as little as twelve hours on eight P100 GPUs.",
+    "anchors": [
+      {
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "page_number": 2,
+        "section": [
+          "2 Background"
+        ],
+        "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00021"
+      },
+      {
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "page_number": 7,
+        "section": [
+          "5 Training",
+          "5.2 Hardware and Schedule"
+        ],
+        "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00086"
+      },
+      {
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "page_number": 1,
+        "section": [
+          "Abstract"
+        ],
+        "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00010"
+      },
+      {
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "page_number": 2,
+        "section": [
+          "1 Introduction"
+        ],
+        "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00019"
+      }
+    ],
+    "numeric_fact_check": {
+      "status": "passed",
+      "checks": [
+        {
+          "claim": "We trained our models on one machine with 8 NVIDIA P100 GPUs. For our base models using the hyperparameters described throughout the paper, each training step took about 0.4 seconds. We trained the base models for a total of 100,000 steps or 12 hours. For our big models,(described on the bottom line of table 3), step time was 1.0 seconds. The big models were trained for 300,000 steps (3.5 days).",
+          "status": "passed",
+          "evidence": [
+            {
+              "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+              "page_number": 7,
+              "section": [
+                "5 Training",
+                "5.2 Hardware and Schedule"
+              ],
+              "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00086"
+            }
+          ],
+          "reason": "数字及其上下文逐字来自该 Chunk；仅核验原文回溯，不证明实验真实性或跨指标可比性。"
+        }
+      ]
+    },
+    "refused": false
+  },
+  "metadata": {
+    "method": "vector",
+    "retrieval": [
+      {
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "method": "vector",
+        "vector_status": "READY",
+        "reason": "OK",
+        "lexical_recalled": 0,
+        "vector_recalled": 24,
+        "rerank": {
+          "method": "rrf",
+          "reason": "MEASURED_CPU_BUDGET_EXCEEDED",
+          "timing": {
+            "model_load_seconds": 5.343436500057578,
+            "rerank_seconds": 12.42324969987385
+          },
+          "worker_seconds": 27.557949099922553,
+          "candidate_count": 36,
+          "budget_seconds": 5,
+          "model": "BAAI/bge-reranker-large",
+          "revision": "55611d7bca2a7133960a6d3b71e083071bbfc312"
+        },
+        "evidence_count": 24,
+        "union_recalled": 24,
+        "vector_timing": {
+          "model_load_seconds": 1.9215271999128163,
+          "index_seconds": 0.1510225001256913,
+          "startup_to_model_ready_seconds": 12.257247499888763,
+          "query_seconds": 0.4645553999580443
+        },
+        "worker_seconds": 14.474569800077006,
+        "indexed_chunks": 175,
+        "updated_chunks": 0,
+        "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+        "versions": {
+          "chromadb": "1.5.9",
+          "FlagEmbedding": "1.4.2",
+          "torch": "2.14.1+cpu",
+          "transformers": "5.20.2"
+        },
+        "fusion": {
+          "method": "equal_weight_rrf",
+          "k": 60,
+          "route_limit": 24,
+          "lexical_expansion": "existing_grounded_model_aliases",
+          "bge_sparse_scores_used": false
+        },
+        "elapsed_seconds": 14.518165
+      }
+    ]
+  },
+  "missing_vector": {
+    "http_status": 200,
+    "result": {
+      "schema_version": "1.0.0",
+      "answer": "拒答：本文本无相关证据，未检索到足以回答该问题的原文或所需数值；不能据此断言全文未报告。",
+      "anchors": [],
+      "numeric_fact_check": {
+        "status": "unverifiable",
+        "checks": [
+          {
+            "claim": "How many samples?",
+            "status": "unverifiable",
+            "evidence": [],
+            "reason": "未取得支持题设数字的同项原文；不以未找到作为反证。"
+          }
+        ]
+      },
+      "refused": true
+    },
+    "metadata": {
+      "method": "lexical-fallback",
+      "retrieval": [
+        {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "method": "lexical-fallback",
+          "vector_status": "UNAVAILABLE",
+          "reason": "LOCAL_VECTOR_UNAVAILABLE",
+          "lexical_recalled": 0,
+          "vector_recalled": 0,
+          "rerank": {
+            "method": "none"
+          },
+          "evidence_count": 0,
+          "elapsed_seconds": 0.040142
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,342 @@
+{
+  "baseline": "1dc443e6fb80840d4b0b49a5187ccce88129ce58",
+  "checks": [
+    {
+      "check": "官方六题全部HTTP200并通过",
+      "passed": true
+    },
+    {
+      "check": "第1题实际混合检索",
+      "passed": true
+    },
+    {
+      "check": "第1题有双路真实召回计数",
+      "passed": true
+    },
+    {
+      "check": "第1题使用实测慢重排后的RRF",
+      "passed": true
+    },
+    {
+      "check": "第1题记录加载与索引计时",
+      "passed": true
+    },
+    {
+      "check": "第1题第1篇无拒答且有锚点",
+      "passed": true
+    },
+    {
+      "check": "第1题第1篇摘录与锚点一一对应",
+      "passed": true
+    },
+    {
+      "check": "第1题真实连续原文:paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00004",
+      "passed": true
+    },
+    {
+      "check": "第1题第1篇数字通过项有真实证据",
+      "passed": true
+    },
+    {
+      "check": "第2题实际混合检索",
+      "passed": true
+    },
+    {
+      "check": "第2题有双路真实召回计数",
+      "passed": true
+    },
+    {
+      "check": "第2题使用实测慢重排后的RRF",
+      "passed": true
+    },
+    {
+      "check": "第2题记录加载与索引计时",
+      "passed": true
+    },
+    {
+      "check": "第2题第1篇无拒答且有锚点",
+      "passed": true
+    },
+    {
+      "check": "第2题第1篇摘录与锚点一一对应",
+      "passed": true
+    },
+    {
+      "check": "第2题真实连续原文:paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00088",
+      "passed": true
+    },
+    {
+      "check": "第2题第1篇数字通过项有真实证据",
+      "passed": true
+    },
+    {
+      "check": "第3题实际混合检索",
+      "passed": true
+    },
+    {
+      "check": "第3题有双路真实召回计数",
+      "passed": true
+    },
+    {
+      "check": "第3题使用实测慢重排后的RRF",
+      "passed": true
+    },
+    {
+      "check": "第3题记录加载与索引计时",
+      "passed": true
+    },
+    {
+      "check": "第3题第1篇无拒答且有锚点",
+      "passed": true
+    },
+    {
+      "check": "第3题第1篇摘录与锚点一一对应",
+      "passed": true
+    },
+    {
+      "check": "第3题真实连续原文:paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00086",
+      "passed": true
+    },
+    {
+      "check": "第3题第1篇数字通过项有真实证据",
+      "passed": true
+    },
+    {
+      "check": "第4题实际混合检索",
+      "passed": true
+    },
+    {
+      "check": "第4题有双路真实召回计数",
+      "passed": true
+    },
+    {
+      "check": "第4题使用实测慢重排后的RRF",
+      "passed": true
+    },
+    {
+      "check": "第4题记录加载与索引计时",
+      "passed": true
+    },
+    {
+      "check": "第4题第1篇无拒答且有锚点",
+      "passed": true
+    },
+    {
+      "check": "第4题第1篇摘录与锚点一一对应",
+      "passed": true
+    },
+    {
+      "check": "第4题真实连续原文:paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00098",
+      "passed": true
+    },
+    {
+      "check": "第4题真实连续原文:paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00093",
+      "passed": true
+    },
+    {
+      "check": "第4题第1篇数字通过项有真实证据",
+      "passed": true
+    },
+    {
+      "check": "第5题实际混合检索",
+      "passed": true
+    },
+    {
+      "check": "第5题有双路真实召回计数",
+      "passed": true
+    },
+    {
+      "check": "第5题使用实测慢重排后的RRF",
+      "passed": true
+    },
+    {
+      "check": "第5题记录加载与索引计时",
+      "passed": true
+    },
+    {
+      "check": "第5题第1篇无拒答且有锚点",
+      "passed": true
+    },
+    {
+      "check": "第5题第1篇摘录与锚点一一对应",
+      "passed": true
+    },
+    {
+      "check": "第5题真实连续原文:paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00127",
+      "passed": true
+    },
+    {
+      "check": "第5题第1篇数字通过项有真实证据",
+      "passed": true
+    },
+    {
+      "check": "第6题实际混合检索",
+      "passed": true
+    },
+    {
+      "check": "第6题有双路真实召回计数",
+      "passed": true
+    },
+    {
+      "check": "第6题使用实测慢重排后的RRF",
+      "passed": true
+    },
+    {
+      "check": "第6题记录加载与索引计时",
+      "passed": true
+    },
+    {
+      "check": "第6题第1篇无拒答且有锚点",
+      "passed": true
+    },
+    {
+      "check": "第6题第1篇摘录与锚点一一对应",
+      "passed": true
+    },
+    {
+      "check": "第6题真实连续原文:paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031",
+      "passed": true
+    },
+    {
+      "check": "第6题真实连续原文:paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00058",
+      "passed": true
+    },
+    {
+      "check": "第6题真实连续原文:paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032",
+      "passed": true
+    },
+    {
+      "check": "第6题真实连续原文:paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00057",
+      "passed": true
+    },
+    {
+      "check": "第6题真实连续原文:paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00026",
+      "passed": true
+    },
+    {
+      "check": "第6题第1篇数字通过项有真实证据",
+      "passed": true
+    },
+    {
+      "check": "第6题第2篇无拒答且有锚点",
+      "passed": true
+    },
+    {
+      "check": "第6题第2篇摘录与锚点一一对应",
+      "passed": true
+    },
+    {
+      "check": "第6题真实连续原文:paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0003-c00040",
+      "passed": true
+    },
+    {
+      "check": "第6题真实连续原文:paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0004-c00056",
+      "passed": true
+    },
+    {
+      "check": "第6题真实连续原文:paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0003-c00041",
+      "passed": true
+    },
+    {
+      "check": "第6题真实连续原文:paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0013-c00212",
+      "passed": true
+    },
+    {
+      "check": "第6题真实连续原文:paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0001-c00009",
+      "passed": true
+    },
+    {
+      "check": "第6题第2篇数字通过项有真实证据",
+      "passed": true
+    },
+    {
+      "check": "跨篇retrieve节点实际走混合",
+      "passed": true
+    },
+    {
+      "check": "跨篇模型Function Calling工具确用混合",
+      "passed": true
+    },
+    {
+      "check": "BLEU双来源支持确定性差值2.04",
+      "passed": true
+    },
+    {
+      "check": "真实改写查询旧词法均零而向量命中",
+      "passed": true
+    },
+    {
+      "check": "改写命中确为Base硬件原文",
+      "passed": true
+    },
+    {
+      "check": "改写候选全部锚点合法",
+      "passed": true
+    },
+    {
+      "check": "错误前提仍拒答",
+      "passed": true
+    },
+    {
+      "check": "无Key真实本地向量QA",
+      "passed": true
+    },
+    {
+      "check": "缺本地向量真实词法回退",
+      "passed": true
+    },
+    {
+      "check": "保留首次跨篇三轮校验失败",
+      "passed": true
+    },
+    {
+      "check": "首次冷索引175和277条真实编码",
+      "passed": true
+    },
+    {
+      "check": "实际大模型重排超过预设预算",
+      "passed": true
+    },
+    {
+      "check": "Chroma实际452条向量",
+      "passed": true
+    },
+    {
+      "check": "最终实测源码SHA一致",
+      "passed": true
+    },
+    {
+      "check": "重排权重与公开固定快照SHA一致",
+      "passed": true
+    },
+    {
+      "check": "最终528回归全过无跳过",
+      "passed": true
+    },
+    {
+      "check": "只改backend和tests",
+      "passed": true
+    },
+    {
+      "check": "前端契约和协作目录零改动",
+      "passed": true
+    },
+    {
+      "check": "pdf仍忽略未跟踪",
+      "passed": true
+    },
+    {
+      "check": "本单文件没有实际Key",
+      "passed": true
+    }
+  ],
+  "passed": 82,
+  "failed": 0,
+  "regression": {
+    "tests": 528,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "reranker_sha256": "c5ae4e262c60ed2fb507ec587358285377ec36ee0a2e6da029f0534272b06d36"
+}
