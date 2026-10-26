@@ -410,3 +410,23 @@ SQLite缓存保存模型快照、文本指纹和向量，命中时复用；不�
 同文件改名上传按SHA-256复用原论文，仍返回预警及缓存向量自余弦，避免重复解析/入库。由于原契约要求DedupDecision指向两个不同PaperMeta，**不伪造自比较业务记录**；这类判定放在上传响应头和本地运维记录，不返回指向不存在自比较记录的Link。正式跨版本裁决/差异端点保持原路径。
 
 测试默认禁用本地大模型，由显式假向量验证边界、降级、DOI通道、人工裁决与协议；官方三组验收脚本另在无Key子进程真实加载本地BGE-M3。实际分数、官方输入散列、判定原文和最终回归见[语义去重验收报告](../tests/reports/semantic-dedup-acceptance.md)。旧Docker镜像需重建并另挂本地模型才能启用向量，未声称本单已完成容器向量联调。算法调用依据：[BGE-M3官方模型说明](https://huggingface.co/BAAI/bge-m3)。
+
+## QA 混合检索（2026-10-26）
+
+单篇问答、跨篇比较、Agent Function Calling的search工具和SSE retrieve节点现统一使用QAHybridRetriever。现有QAAnswer等12份业务契约、前端、端点路径及响应业务记录均未修改。默认SCHOLAR_GRAPH_QA_RETRIEVAL_MODE=hybrid；lexical显式回退，不依赖检索页的SCHOLAR_GRAPH_RETRIEVAL_MODE开关。
+
+本地环境沿用SCHOLAR_GRAPH_VECTOR_PYTHON、SCHOLAR_GRAPH_BGE_M3_PATH（D盘默认路径同前节）；其他部署尤其Linux须指定实际Python和模型目录。QA片段索引单独位于数据目录chroma-qa-bge-m3，复用Chroma 1.5.9和固定快照BGE-M3，CPU、512 token、batch=1、2线程；每个worker仍独立加载模型，600秒上限包含首次建索引。向量子进程不继承API_KEY/TOKEN/SECRET/PASSWORD，离线运行；需要Key的是deepseek回答/规划，向量检索及无Key摘录模式不需要Key。
+
+每篇论文双路召回：BGE-M3 dense余弦取前24个真实Chunk，词法路复用原IDF排序、领域别名扩展及首页作者布局覆盖，取前24个不同Chunk。并集最多48块，使用等权RRF排序：各路第r名贡献`0.5*61/(60+r)`，未召回的路贡献0。原检索页仍使用自己的BGE dense/sparse融合；QA不把BGE sparse当作这次词法路，元数据明确bge_sparse_scores_used=false。全部结果受用户论文集合约束，不把其他索引旧行返回作证据。
+
+优先尝试本地bge-reranker-large，固定快照55611d7bca2a7133960a6d3b71e083071bbfc312。可用`data/module-four-runtime/.venv/Scripts/python.exe backend/download_bge_reranker.py`公开下载一次；运行时只读本地模型，不自动联网。SCHOLAR_GRAPH_RERANKER_PATH覆盖本地目录，SCHOLAR_GRAPH_QA_RERANKER=auto（默认）/cross_encoder（强制使用）/rrf（明确指定融合）。CPU auto设额外每请求重排预算5秒，包含本架构每次冷加载；首次实际打分并校验所有返回id后，超过预算则本次使用RRF，将实测原因和计时原子保存到qa-retrieval/reranker-policy.json，该目录后续auto复用。它是当前数据目录/当前部署的性能选择，不是通用跨硬件结论；更换硬件可重测或强制cross_encoder。模型缺失、重排失败或超时也明确用RRF，不冒充cross-encoder成功。
+
+本机首次36个候选实测：reranker模型构造5.3434365秒、逐对推理12.4232497秒、含Python导入/进程启动的worker总耗时27.5579491秒，超过5秒预算，因此最终选RRF。没有假称reranker未安装或仅凭估计判慢。首次Attention建索引实测51.0089652秒，冷请求还包括上述重排基准；后续索引指纹命中不重复编码。报告同时列BGE模型构造时间、worker启动到模型可用时间、索引/查询时间、整段worker时间；构造时间不包含重型库导入，不能拿它与旧15–20秒端到端worker数据直接混比。
+
+单篇/普通比较通过原X-ScholarGraph-QA-Meta返回method与retrieval列表；显式agent=true通过原X-ScholarGraph-Agent-Meta，deepseek比较同时提供两头；SSE在retrieve节点完成与done.metadata中给相同信息。头仍为百分号编码UTF-8 JSON，现有CORS已暴露。method只取hybrid（双路）、vector（词法无结果但实际向量成功）、lexical-fallback（禁用/未配置/失败）；混合多篇中任何一次回落，全局保守标lexical-fallback，每篇实际方法仍逐项保留。vector_status、reason、候选数、重排选择、真实阶段计时和版本可查；模型回答回落与向量回退是两种独立原因。
+
+证据仍是≤600字符的连续真实Chunk窗口，答案仍过原锚点与数字门禁。单篇直接模型保留双窗口以覆盖SOTA表格；Agent工具每轮每Chunk只提供一段，并在多工具结果合并时按Chunk去重，避免模型选择同块远距离片段后跨度超过600字符。未放宽契约、未拼造省略号摘录；确无依据仍拒答。无Key摘录模式也执行真实可用的混合retrieve，只发原SSE轨迹和最终整段，不伪造token增量。
+
+普通回归默认使用词法或显式假向量保证确定性，真实本地向量和官方六题另跑独立探针。完整六题方法、候选/返回证据数、同义改写对照、初次跨篇拒答及修复、加载与重排耗时、回归证据见[QA混合检索验收](../tests/reports/hybrid-retrieval-acceptance.md)。用户转达WorkBuddy：仅元数据增加可选字段，前端未改；冷索引请求可能较长，不能把整请求耗时当成模型加载时间。旧Docker镜像及未挂载模型的部署不会凭空启用向量，本单未重建容器。
+
+模型依据：[BGE-M3官方模型说明](https://huggingface.co/BAAI/bge-m3)、[bge-reranker-large官方模型说明](https://huggingface.co/BAAI/bge-reranker-large)。
