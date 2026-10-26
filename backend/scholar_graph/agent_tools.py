@@ -7,6 +7,7 @@ from jsonschema import Draft202012Validator
 from .errors import PipelineError
 from .graph_service import build_graph
 from .grounded_model import evidence_candidates
+from .qa_retrieval import qa_retriever
 
 PAPER_IDS = {'type': 'array', 'minItems': 1, 'maxItems': 10, 'uniqueItems': True,
              'items': {'type': 'string', 'pattern': '^[A-Za-z0-9][A-Za-z0-9._:-]*$'}}
@@ -29,10 +30,11 @@ FUNCTIONS = [
 
 
 class AgentTools:
-    def __init__(self, repository, paper_ids, *, fetcher=None, allow_fetch=False):
+    def __init__(self, repository, paper_ids, *, fetcher=None, allow_fetch=False, retriever=None):
         self.repository, self.paper_ids = repository, set(paper_ids)
         self.fetcher, self.allow_fetch = fetcher, allow_fetch
         self.trace = []
+        self.retriever = retriever or qa_retriever(repository)
 
     def execute(self, call, *, attempt):
         started = time.perf_counter()
@@ -56,10 +58,14 @@ class AgentTools:
             if name == 'search':
                 row['arguments_summary'].update(query_chars=len(args['query']), limit=args['limit'])
                 items = []
+                methods = []
                 for pid in args['paper_ids']:
-                    items.extend(evidence_candidates(self.repository.paper(pid), args['query'], limit=args['limit']))
-                result = {'items': items, 'reason': 'OK' if items else 'NO_MATCHING_CHUNKS', 'method': 'lexical'}
-                row['return_summary'] = {'evidence_count': len(items), 'method': 'lexical'}
+                    evidence, info = self.retriever.retrieve(self.repository.paper(pid), args['query'], limit=args['limit'])
+                    items.extend(evidence)
+                    methods.append(info['method'])
+                method = 'lexical-fallback' if 'lexical-fallback' in methods else 'hybrid' if 'hybrid' in methods else 'vector'
+                result = {'items': items, 'reason': 'OK' if items else 'NO_MATCHING_CHUNKS', 'method': method}
+                row['return_summary'] = {'evidence_count': len(items), 'method': method}
             elif name == 'graph_query':
                 graph = build_graph([self.repository.paper(pid) for pid in args['paper_ids']], self.repository.gate)
                 result = {key: graph[key] for key in ('nodes', 'edges', 'layers')}

@@ -49,12 +49,14 @@ def validate_answer(record, bundle, evidence, gate, *, prefix=""):
 
 
 class QuestionAnswerer:
-    def __init__(self, gate, selector=None):
+    def __init__(self, gate, selector=None, *, retriever=None):
         self.gate, self.selector = gate, selector
+        self.retriever = retriever
 
-    def answer(self, bundle, question):
+    def answer(self, bundle, question, *, candidates=None):
         self.gate.bundle(bundle)
-        candidates = retrieve(bundle, question)
+        if candidates is None:
+            candidates = self.retriever.extractive(bundle, question)[0] if self.retriever else retrieve(bundle, question)
         neutral = neutral_question(question)
         numeric = numeric_question(question)
         requested = facets(question)

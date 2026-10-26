@@ -40,10 +40,16 @@ def evidence_candidates(bundle, question, *, limit=24):
     ordered = sorted(bundle['chunks'], key=lambda c: (
         0 if author_question and c['page_number'] == 1 else 1,
         0 if author_question and c['page_number'] == 1 else -ranked.get(c['chunk_id'], 0), c['page_number'], c['chunk_id']))
+    return evidence_from_chunks(bundle, ordered, question, limit=limit,
+        allowed_ids={c['chunk_id'] for c in ordered if c['chunk_id'] in ranked or (author_question and c['page_number'] == 1)})
+
+
+def evidence_from_chunks(bundle, ordered, question, *, limit=24, allowed_ids=None):
+    expanded = question + ' ' + ' '.join(extra for pattern, extra in ALIASES if re.search(pattern, question, re.I))
     result = []
     query = terms(expanded)
     for chunk in ordered:
-        if chunk['chunk_id'] not in ranked and not (author_question and chunk['page_number'] == 1):
+        if allowed_ids is not None and chunk['chunk_id'] not in allowed_ids:
             continue
         text = chunk['text']
         # A long table/paragraph is searched in contiguous windows, not fabricated summaries.
@@ -138,13 +144,17 @@ def accepted_record(bundle, proposed, candidates, gate, *, question=''):
 
 
 class GroundedModelAnswerer:
-    def __init__(self, gate, client, *, comparison=False):
+    def __init__(self, gate, client, *, comparison=False, retriever=None):
         self.gate, self.client, self.comparison = gate, client, comparison
+        self.retriever, self.retrieval_metadata = retriever, None
 
     def answer(self, bundle, question):
         import json
         self.gate.bundle(bundle)
-        candidates = evidence_candidates(bundle, question)
+        if self.retriever is None:
+            candidates = evidence_candidates(bundle, question)
+        else:
+            candidates, self.retrieval_metadata = self.retriever.retrieve(bundle, question)
         payload = {'question': question, 'paper_ids': [bundle['paper_meta']['id']], 'evidence': candidates,
                    'comparison_context': self.comparison,
                    'task_scope': 'Supply this paper\'s own architecture facts for one side of the comparison; do not require it to mention the other paper.' if self.comparison else 'Answer this single-paper question.'}

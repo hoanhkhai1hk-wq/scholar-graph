@@ -13,6 +13,7 @@ from .grounded_model import ANSWER_INSTRUCTIONS, accepted_record
 from .qa import QuestionAnswerer, MISSING
 from .qa_evidence import retrieve as extractive_retrieve
 from .qa_compare import compare_papers, synthesis_from_table, validate_comparison
+from .qa_retrieval import qa_retriever
 
 
 class AgentState(TypedDict, total=False):
@@ -29,6 +30,7 @@ class AgentState(TypedDict, total=False):
     validation_error: str | None
     fallback_reason: str | None
     trace: list[dict]
+    retrieval_metadata: dict
 
 
 def comparison_value(prepared):
@@ -44,17 +46,18 @@ def comparison_value(prepared):
 
 class EvidenceAgent:
     def __init__(self, repository, *, client=None, fetcher=None, allow_fetch=False, allow_fallback=True,
-                 extractive_reason=None):
+                 extractive_reason=None, retriever=None):
         self.repository, self.client, self.fetcher = repository, client, fetcher
         self.allow_fetch = allow_fetch
         self.allow_fallback = allow_fallback
         self.extractive_reason = extractive_reason
+        self.retriever = retriever or qa_retriever(repository)
 
     def run(self, paper_ids, question, *, emit=None, stream_tokens=False):
         if not paper_ids or len(paper_ids) > 10 or len(set(paper_ids)) != len(paper_ids):
             raise PipelineError('VALIDATION_ERROR', 'Agent需要1到10篇不同的论文。')
         bundles = [self.repository.paper(pid) for pid in paper_ids]
-        tools = AgentTools(self.repository, paper_ids, fetcher=self.fetcher, allow_fetch=self.allow_fetch)
+        tools = AgentTools(self.repository, paper_ids, fetcher=self.fetcher, allow_fetch=self.allow_fetch, retriever=self.retriever)
         client = self.client
         missing = self.extractive_reason
         if client is None and not missing:
@@ -85,6 +88,8 @@ class EvidenceAgent:
                        'evidence_count': len(update.get('evidence', state.get('evidence', []))),
                        'validation': update.get('validated'), 'validation_error': update.get('validation_error'),
                        'fallback_reason': update.get('fallback_reason', state.get('fallback_reason'))}
+                if name == 'retrieve':
+                    row['retrieval'] = self.retriever.metadata()
                 if emit:
                     emit('node_end', {**row, 'attempt': event['attempt'], 'status': 'completed'})
                 return {**update, 'trace': state.get('trace', []) + [row]}
@@ -123,7 +128,7 @@ class EvidenceAgent:
             attempt = state.get('attempt', 0) + 1
             if state.get('fallback_reason'):
                 # Existing extractive mode is executed later; never fabricate a tool-call event.
-                evidence = [item for bundle in bundles for item in extractive_retrieve(bundle, question)]
+                evidence = [item for bundle in bundles for item in self.retriever.extractive(bundle, question)[0]]
                 return {'attempt': attempt, 'evidence': evidence, 'anchors': [e['anchor'] for e in evidence]}
             messages = state['messages']
             evidence, seen = [], set()
@@ -145,8 +150,11 @@ class EvidenceAgent:
                     'anchors': [e['anchor'] for e in evidence]}
 
         def answer(state):
+            def extractive_answers():
+                return [QuestionAnswerer(self.repository.gate).answer(b, question,
+                    candidates=[e for e in state['evidence'] if e['anchor']['paper_id'] == b['paper_meta']['id']]) for b in bundles]
             if state.get('fallback_reason'):
-                prepared = [QuestionAnswerer(self.repository.gate).answer(b, question) for b in bundles]
+                prepared = extractive_answers()
                 result = comparison_value(prepared)
                 return {'result': result, 'proposed': {}}
             messages = state['messages'] + [{'role': 'system', 'content': ANSWER_INSTRUCTIONS},
@@ -164,7 +172,7 @@ class EvidenceAgent:
                 if error.code == 'UPSTREAM_ERROR':
                     if not self.allow_fallback:
                         raise
-                    prepared = [QuestionAnswerer(self.repository.gate).answer(b, question) for b in bundles]
+                    prepared = extractive_answers()
                     return {'result': comparison_value(prepared), 'proposed': {}, 'fallback_reason': error.code}
                 return {'proposed': {}}
 
@@ -222,4 +230,5 @@ class EvidenceAgent:
                     'fallback_reason': final.get('fallback_reason'), 'trace': final['trace'],
                     'tool_calls': tools.trace, 'model_calls': client.calls[calls_start:] if client else [],
                     'checkpointing': False, 'external_tracing': False, 'validated': final['validated']}
+        metadata.update(self.retriever.metadata())
         return final['result'], metadata

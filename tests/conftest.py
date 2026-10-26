@@ -35,5 +35,6 @@ def isolate_model_mode(monkeypatch, request):
     # Fast regression tests inject deterministic encoders explicitly. Actual local
     # BGE-M3 official-file acceptance is executed by run_semantic_dedup_acceptance.py.
     monkeypatch.setenv('SCHOLAR_GRAPH_DEDUP_MODE', 'off')
+    monkeypatch.setenv('SCHOLAR_GRAPH_QA_RETRIEVAL_MODE', 'lexical')
     if 'real_model' not in request.keywords:
         monkeypatch.setenv('SCHOLAR_GRAPH_QA_MODE', 'extractive')
