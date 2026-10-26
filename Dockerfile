@@ -28,10 +28,11 @@ CMD ["npm", "run", "start", "--", "--hostname", "0.0.0.0", "--port", "3000"]
 FROM ${PYTHON_IMAGE} AS vector-runtime
 COPY backend/requirements-retrieval.txt /tmp/requirements-retrieval.txt
 # Separate from PaddleOCR's dependencies; public CPU wheels only, no credentials.
-RUN python -m venv /opt/vector-venv \
+RUN python -m venv --copies /opt/vector-venv \
     && /opt/vector-venv/bin/python -m pip install --no-cache-dir --index-url https://download.pytorch.org/whl/cpu torch==2.14.1+cpu \
     && /opt/vector-venv/bin/python -m pip install --no-cache-dir -r /tmp/requirements-retrieval.txt \
-    && /opt/vector-venv/bin/python -m pip check
+    && /opt/vector-venv/bin/python -m pip check \
+    && /opt/vector-venv/bin/python -c "from pathlib import Path; import subprocess,sys; subprocess.run([str(Path(sys.executable).resolve()), '-c', 'import torch, chromadb, FlagEmbedding'], check=True)"
 
 FROM ${PYTHON_IMAGE} AS backend
 ARG SCHOLAR_GRAPH_REVISION=unknown

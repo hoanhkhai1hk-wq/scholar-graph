@@ -4,6 +4,8 @@
 
 最终部署配置沿用根 Dockerfile/docker-compose.yml：后端 8000、前端 3000，只绑定本机，两个服务配置健康检查和 `restart: unless-stopped`。镜像增加独立 `/opt/vector-venv`（固定 CPU torch、Chroma、FlagEmbedding），不混用 PaddleOCR 的依赖；公开 BGE-M3 权重在运行时下载进持久卷，PDF 与 Key 不进镜像。默认无 Key 摘录式问答；模型权重未准备好时向量明确降级，不把镜像内已安装依赖说成模型已就绪。
 
+Linux 向量虚拟环境使用 `venv --copies`：现有 worker 会正规化 Python 路径，符号链接会被解析成缺少向量依赖的系统解释器。构建时实际用正规化后的解释器导入 torch/Chroma/FlagEmbedding 自检，避免安装成功但运行时落到另一解释器。
+
 ```powershell
 $env:SCHOLAR_GRAPH_REVISION=(git rev-parse HEAD)
 docker compose build --no-cache
