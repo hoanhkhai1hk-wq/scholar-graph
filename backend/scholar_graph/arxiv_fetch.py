@@ -16,6 +16,7 @@ from defusedxml import ElementTree as ET
 from .atomic_io import windows_retry
 from .errors import PipelineError
 from .pipeline import Pipeline
+from .pdf_files import PdfFiles
 from .storage import write_json
 from .tracking_state import TrackingState, operation_lock
 
@@ -243,6 +244,7 @@ class ArxivFetcher:
                     source.write_bytes(raw)
                     pipeline = self.factory(metadata)
                     bundle = pipeline.parse(source)
+                    PdfFiles(self.repository.root).retain(source, bundle["paper_meta"])
                 dedup = None
                 if getattr(pipeline, "last_comparison", None):
                     decision = self.repository.comparison(bundle["paper_meta"]["id"], kind="decision")

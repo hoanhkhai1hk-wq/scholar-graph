@@ -9,6 +9,7 @@ from urllib.parse import quote
 from .errors import PipelineError
 from .pipeline import Pipeline
 from .tracking_state import operation_lock
+from .pdf_files import PdfFiles
 
 MAX_BYTES = 50 * 1024 * 1024
 
@@ -37,6 +38,7 @@ class UploadService:
             pipeline = self.factory()
             bundle = pipeline.parse(path)
             self.gate.bundle(bundle)
+            PdfFiles(self.root).retain(path, bundle["paper_meta"])
             initial = pipeline.last_job.history[0]
             self.gate.record("ParseStatus", initial)
             return bundle["paper_meta"], initial, getattr(pipeline, 'last_warning', None), getattr(pipeline, 'last_dedup_metadata', None)
