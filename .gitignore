@@ -9,6 +9,9 @@
 # 交付物例外：技术文档 PDF 必须随仓库提交（命题要求提交技术文档）
 !docs/technical-document.pdf
 
+# 由 npm run sync-pdf-worker 从 node_modules 复制的生成物，不入库
+frontend/public/pdf.worker.min.mjs
+
 # Dependencies and Python caches
 node_modules/
 __pycache__/
