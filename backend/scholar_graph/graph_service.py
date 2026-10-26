@@ -6,11 +6,11 @@ from .future_work import filter_future_work
 
 
 def _assemble(bundles, gate):
-    edges, unresolved = citation_edges(bundles, gate)
+    edges, unresolved, identity = citation_edges(bundles, gate, with_evidence=True)
     nodes, layers, diagnostics = graph_nodes(bundles, edges, gate)
     return {"nodes": nodes, "edges": edges, "layers": layers,
             "future_work": filter_future_work(bundles, edges, gate),
-            "diagnostics": {"unresolved_references": unresolved, "pagerank": diagnostics}}
+            "diagnostics": {"unresolved_references": unresolved, "pagerank": diagnostics, **identity}}
 
 
 def validate_graph(value, bundles, gate):

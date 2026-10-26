@@ -1,45 +1,43 @@
 """Local citation identity joins and explicit, unweighted PageRank."""
 
-import re
-
 from .errors import PipelineError
 from .validation import chunk_anchor
+from .reference_identity import bibliography_sources, paper_titles, resolve_reference
 
 DAMPING, TOLERANCE, MAX_ITERATIONS = 0.85, 1e-12, 1000
 
 
-def normalized(text):
-    return " ".join((text or "").casefold().split())
-
-
 def target_for(reference, papers):
-    if reference["doi"]:
-        matches = [paper["id"] for paper in papers if paper["doi"] and normalized(paper["doi"]) == normalized(reference["doi"])]
-    elif reference["arxiv_id"]:
-        identity = re.sub(r"v\d+$", "", reference["arxiv_id"])
-        matches = [paper["id"] for paper in papers if paper["arxiv_id"]
-                   and re.sub(r"v\d+$", "", paper["arxiv_id"]) == identity]
-    elif reference["title"] and reference["year"] and reference["authors"]:
-        matches = [paper["id"] for paper in papers if normalized(paper["title"]) == normalized(reference["title"])
-            and paper["year"] == reference["year"]
-            and [normalized(name) for name in paper["authors"]] == [normalized(name) for name in reference["authors"]]]
-    else:
-        return None, "insufficient_identity"
-    return (matches[0], None) if len(matches) == 1 else (None, "ambiguous_identity" if matches else "not_in_selection")
+    profiles = [{'paper': paper, 'titles': [{'text': paper['title'], 'anchor': None, 'source': 'PaperMeta.title'}]
+                 if paper['title'] else []} for paper in papers]
+    result = resolve_reference(reference, profiles)
+    return result['target_paper_id'], result['reason']
 
 
-def citation_edges(bundles, gate):
+def citation_edges(bundles, gate, *, with_evidence=False):
     for bundle in bundles:
         gate.bundle(bundle)
     papers = [bundle["paper_meta"] for bundle in bundles]
     if len({paper["id"] for paper in papers}) != len(papers):
         raise PipelineError("VALIDATION_ERROR", "图谱不能重复选择论文。")
-    edges, unresolved, seen = [], [], set()
+    profiles = [{'paper': bundle['paper_meta'], 'titles': paper_titles(bundle)} for bundle in bundles]
+    edges, unresolved, resolutions, proofs, seen = [], [], [], [], {}
     for bundle in sorted(bundles, key=lambda item: item["paper_meta"]["id"]):
         chunks = {item["chunk_id"]: item for item in bundle["chunks"]}
         pid = bundle["paper_meta"]["id"]
+        sources = {item['number']: item for item in bibliography_sources(bundle['chunks'])}
         for ref in sorted(bundle["reference_entries"], key=lambda item: item["number"]):
-            target, reason = target_for(ref, papers)
+            source = sources.get(ref['number'], {})
+            resolution = resolve_reference(ref, profiles, source.get('raw', ''))
+            bibliography = [{'anchor': chunk_anchor(chunk), 'quote': chunk['text'][:600]}
+                            for chunk in source.get('chunks', [])]
+            for quote in bibliography:
+                gate.anchor(quote['anchor'], bundles, quote=quote['quote'])
+            resolution.update(paper_id=pid, ref_id=ref['ref_id'], reference_number=ref['number'],
+                              bibliography=bibliography,
+                              status='resolved' if resolution['target_paper_id'] else 'unresolved')
+            resolutions.append(resolution)
+            target, reason = resolution['target_paper_id'], resolution['reason']
             if target is None:
                 unresolved.append({"paper_id": pid, "ref_id": ref["ref_id"], "reason": reason})
                 continue
@@ -48,14 +46,23 @@ def citation_edges(bundles, gate):
                 anchor = chunk_anchor(chunks[link["chunk_id"]]) if link else None
                 key = (pid, target, link["chunk_id"] if link else None)
                 if key in seen:
+                    proofs[seen[key]]['references'].append(resolution)
                     continue
-                seen.add(key)
+                seen[key] = len(edges)
                 edge = {"schema_version": "1.2.0", "from_paper_id": pid, "to_paper_id": target,
                         "anchor": anchor, "status": "verified" if anchor else "unverified"}
                 gate.record("GraphEdge", edge)
                 if anchor:
                     gate.anchor(anchor, bundles)
                 edges.append(edge)
+                proofs.append({'edge_index': len(edges) - 1, 'from_paper_id': pid, 'to_paper_id': target,
+                    'anchor': anchor, 'citation_number': link['citation_number'] if link else None,
+                    'body_quote': chunks[link['chunk_id']]['text'] if link else None,
+                    'references': [resolution]})
+    if with_evidence:
+        return edges, unresolved, {'reference_resolutions': resolutions, 'edge_evidence': proofs,
+            'reference_count': len(resolutions), 'unresolved_reference_count': len(unresolved),
+            'resolved_reference_count': len(resolutions) - len(unresolved)}
     return edges, unresolved
 
 
