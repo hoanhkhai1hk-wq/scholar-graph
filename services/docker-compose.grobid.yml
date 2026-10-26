@@ -1,0 +1,13 @@
+# Optional, separate service. Does not enable enrichment in the HTTP upload factory.
+# Official CPU/GPU-capable full image, including header/citation models.
+services:
+  grobid:
+    image: grobid/grobid:0.9.1-full
+    platform: linux/amd64
+    init: true
+    ports:
+      - "127.0.0.1:8070:8070"
+    ulimits:
+      core: 0
+    mem_limit: 6g
+    restart: "no"
