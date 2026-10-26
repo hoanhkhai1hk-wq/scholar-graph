@@ -6,6 +6,8 @@
 # Local data and PDF samples
 /data/
 *.pdf
+# 交付物例外：技术文档 PDF 必须随仓库提交（命题要求提交技术文档）
+!docs/technical-document.pdf
 
 # Dependencies and Python caches
 node_modules/
