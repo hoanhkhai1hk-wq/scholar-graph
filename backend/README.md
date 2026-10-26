@@ -6,6 +6,8 @@
 
 Linux 向量虚拟环境使用 `venv --copies`：现有 worker 会正规化 Python 路径，符号链接会被解析成缺少向量依赖的系统解释器。构建时实际用正规化后的解释器导入 torch/Chroma/FlagEmbedding 自检，避免安装成功但运行时落到另一解释器。
 
+公开构建依赖下载保留真实失败输出：npm ci 最多3次完整尝试（请求超时600秒），Debian使用官方HTTPS源和有界重试；达到上限仍构建失败，不把网络失败当作构建成功。
+
 公开OCR模型准备：`docker compose exec -T backend python backend/prepare_ocr_models.py`。只初始化现有Paddle引擎并下载公开权重，不读取PDF、不创建论文记录；单独限时7200秒，失败返回非零。Compose显式使用持久卷中的`SCHOLAR_GRAPH_OCR_CACHE_DIR=/app/data/paddle-models`，页面推理仍保留原90秒上限与逐页错误。全量回归入口先做同一准备，再真实跑每项OCR推理，避免把慢网络下载反复计入每个临时测试库的单页时限；测试记录和索引仍隔离。
 
 ```powershell

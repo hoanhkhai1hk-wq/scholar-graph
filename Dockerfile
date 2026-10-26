@@ -7,7 +7,11 @@ FROM ${NODE_IMAGE} AS frontend-dependencies
 WORKDIR /app/frontend
 ENV NEXT_TELEMETRY_DISABLED=1
 COPY frontend/package.json frontend/package-lock.json ./
-RUN npm ci --no-audit --no-fund
+RUN for attempt in 1 2 3; do \
+      npm ci --no-audit --no-fund --fetch-retries=3 --fetch-timeout=600000 && break; \
+      if [ "$attempt" -eq 3 ]; then exit 1; fi; \
+      echo "Public npm download failed; bounded retry $attempt/3"; sleep 5; \
+    done
 
 FROM frontend-dependencies AS frontend-build
 # NEXT_PUBLIC values are embedded at build time; this URL is never a secret.
@@ -44,8 +48,9 @@ ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=/app/backend \
     SCHOLAR_GRAPH_VECTOR_PYTHON=/opt/vector-venv/bin/python \
     SCHOLAR_GRAPH_BGE_M3_PATH=/app/data/module-four-models/bge-m3 \
     HOME=/app/data/home
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
+RUN sed -i 's|http://deb.debian.org|https://deb.debian.org|g' /etc/apt/sources.list.d/debian.sources \
+    && apt-get -o Acquire::Retries=3 update \
+    && apt-get -o Acquire::Retries=3 install -y --no-install-recommends \
        ca-certificates fonts-dejavu-core libatomic1 libgl1 libglib2.0-0 libgomp1 \
        libsm6 libxext6 libxrender1 \
     && rm -rf /var/lib/apt/lists/*
