@@ -3,13 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "sync-pdf-worker": "node scripts/copy-pdf-worker.mjs",
+    "dev": "npm run sync-pdf-worker && next dev",
+    "build": "npm run sync-pdf-worker && next build",
     "start": "next start"
   },
   "dependencies": {
     "cytoscape": "^3.34.4",
     "next": "15.5.28",
+    "pdfjs-dist": "^4.10.38",
     "react": "19.3.1",
     "react-dom": "19.3.1"
   },
