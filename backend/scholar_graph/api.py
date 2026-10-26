@@ -5,7 +5,7 @@ from pathlib import Path
 
 from fastapi import FastAPI, Query, Response, Request, UploadFile, File
 from fastapi.exceptions import RequestValidationError
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, FileResponse
 from starlette.exceptions import HTTPException
 from starlette.concurrency import run_in_threadpool
 from starlette.middleware.cors import CORSMiddleware
@@ -27,6 +27,8 @@ from .translation_routes import translation_routes
 from .topology_routes import topology_routes
 from .tracking import TrackingService
 from .tracking_routes import tracking_routes
+from .pdf_files import PdfFiles
+from .pdf_response import PdfResponse
 
 PREFIX = "/api/v1"
 LOCAL_ORIGINS = ["http://localhost:3000", "http://127.0.0.1:3000"]
@@ -46,10 +48,11 @@ def create_app(*, data_dir=None, pipeline_factory=None):
         CORSMiddleware,
         allow_origins=LOCAL_ORIGINS,
         allow_methods=["GET", "POST"],
-        allow_headers=["Content-Type"],
+        allow_headers=["Content-Type", "Range", "If-Range"],
         expose_headers=["Location", "Link", *SEARCH_HEADERS, "X-ScholarGraph-Recommendation-Reason",
                         "X-ScholarGraph-Dedup-Warning", "X-ScholarGraph-Dedup-Warning-Encoding", "X-ScholarGraph-Dedup-Meta",
-                        "X-ScholarGraph-QA-Meta", "X-ScholarGraph-Agent-Meta"],
+                        "X-ScholarGraph-QA-Meta", "X-ScholarGraph-Agent-Meta",
+                        "Content-Disposition", "Accept-Ranges", "Content-Range", "ETag"],
         allow_credentials=False,
     )
     app.state.repository = repository
@@ -125,12 +128,18 @@ def create_app(*, data_dir=None, pipeline_factory=None):
         value = repository.paper(paper_id)["paper_meta"]
         response.headers["Link"] = ", ".join(
             f'<{PREFIX}/papers/{paper_id}/{name}>; rel="{name}"'
-            for name in ("chunks", "references", "citation-links"))
+            for name in ("chunks", "references", "citation-links", "file"))
         return value
 
     @app.get(PREFIX + "/papers/{paper_id}/parse-status")
     def status(paper_id: str):
         return repository.status(paper_id)
+
+    @app.get(PREFIX + "/papers/{paper_id}/file", response_class=FileResponse)
+    def original_pdf(paper_id: str):
+        path = PdfFiles(root).locate(paper_id)
+        return PdfResponse(path, media_type="application/pdf", filename="paper.pdf",
+                            content_disposition_type="inline", headers={"X-Content-Type-Options": "nosniff"})
 
     @app.get(PREFIX + "/papers/{paper_id}/dedup-decision")
     def decision(paper_id: str):
