@@ -1163,6 +1163,25 @@ a:hover {
   display: block;
 }
 
+.sg-pdfpage__stage {
+  position: relative;
+}
+
+/* 段落级定位命中高亮 */
+.sg-pdfpage__hit {
+  position: absolute;
+  background: rgba(180, 85, 29, 0.22);
+  border-bottom: 2px solid var(--sg-accent);
+  pointer-events: none;
+}
+
+.sg-layout__note {
+  border-left: 3px solid var(--sg-accent);
+  background: var(--sg-bg-subtle);
+  padding: var(--sg-space-2) var(--sg-space-3);
+  margin-bottom: var(--sg-space-2);
+}
+
 /* 翻译入口 */
 .sg-translate__entries {
   display: grid;
