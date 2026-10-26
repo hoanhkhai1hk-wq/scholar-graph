@@ -382,3 +382,31 @@ vote点赞为1、踩为-1；Jaccard=主题词交集数/并集数，空并集为0
 两轮真实公开arXiv追踪、额外解析失败原文、引用清理数量、反馈效果与全量回归见[追踪验收报告](../tests/reports/tracking-acceptance.md)。用户转达WorkBuddy：本单只交后端端点与传输封装，前端未接入；docs草案本单未授权修改。已有Docker镜像需重建才包含这些代码，不能把旧容器视为已更新。
 
 协议依据：[arXiv API查询、Atom与排序](https://info.arxiv.org/help/api/user-manual.html)、[arXiv API使用条款](https://info.arxiv.org/help/api/tou.html)。
+
+## 上传语义向量去重（2026-10-26）
+
+上传解析完成、Schema校验通过后，Pipeline接入本地BGE-M3论文向量余弦比较；既有裸DOI精确快速通道保留，向量不可用时保留身份/词频Dice与人工核对兜底，并明确返回状态，不把兜底结果称为向量结果。前端、API路径和12份业务契约均未修改。
+
+默认SCHOLAR_GRAPH_DEDUP_MODE=auto，独立于检索模式；本机复用data/module-four-runtime/.venv/Scripts/python.exe与data/module-four-models/bge-m3。其他部署须通过SCHOLAR_GRAPH_VECTOR_PYTHON、SCHOLAR_GRAPH_BGE_M3_PATH指定已安装隔离依赖的Python与本地固定模型目录，Linux需指定实际Python路径。SCHOLAR_GRAPH_DEDUP_MODE=off显式禁用向量。模型/环境均不进镜像或Git，运行时离线，不自动下载，不需要Key；子进程移除API_KEY/TOKEN/SECRET/PASSWORD类变量。
+
+模型沿用BAAI/bge-m3快照5617a9f61b028005a4858fdac845db406aefb181，CPU/float32，FlagEmbedding 1.4.2、torch 2.14.1+cpu、transformers 5.20.2。每篇优先取摘要、引言、结论中的真实正文Chunk，再按原文位置补足最多8个；每段最多2000字符，再按512 token截断。过滤明确标识的References/Bibliography/参考文献节，缺正文时回退真实text块，不生成虚构段落。8个dense向量取均值再归一化，得到1024维论文代表向量，论文之间计算余弦；不把检索的dense/sparse融合名次当成语义余弦。
+
+SQLite缓存保存模型快照、文本指纹和向量，命中时复用；不缓存外部Key或把输入正文写进日志。每次隔离worker有240秒时限，异常、无效/非有限向量、校准配置不匹配均明确降级。代表性采样不等于完整论文的逐段语义覆盖，大规模库性能尚未验证。
+
+分档来自独立4篇官方pdf/论文的实测校准，非手填常数。正样本为同论文每5个Chunk删除1个的明确人工扰动4对，负样本为4篇不同论文两两组合6对；不使用Attention v7/v1或BERT验收输入来定阈值。负样本最高0.8098823029271678、正样本最低0.9137429008639619，取观测间隔的1/3、2/3：
+
+| 余弦范围 | 分档与行为 |
+| --- | --- |
+| ≥0.8791227015516972 | duplicate；同论文且版本号可核验时建议保留较新版本；身份冲突强制人工核对，未知版本不据余弦虚构质量结论 |
+| ≥0.8445025022394325且低于重复阈值 | manual_review；只预警人工核对，不宣称已确认重复 |
+| <0.8445025022394325 | new_paper；不发重复预警；若另有明确身份依据冲突则保留人工核对 |
+
+另外每7块删除1块的4对保留扰动均超过重复阈值。校准只是小规模同文缺块鲁棒性，不是任意改写、中文、跨学科大样本性能证明；分布变化需重新校准。配置semantic_thresholds.json作为包数据随安装交付，绑定模型快照和采样版本。来源、完整分数与算法在tests/reports/semantic-dedup-calibration.json。
+
+单篇上传仍返回原PaperMeta；新增响应头X-ScholarGraph-Dedup-Meta（百分号编码UTF-8 JSON）回显status、method、score、band、reason及可用推荐/回退原因；已有预警头继续使用。浏览器CORS已暴露新头。批量成功项增加dedup_metadata，属于向后兼容传输加法。完整逐候选分数、阈值和真实代表Chunk id仅落盘到semantic-dedup/assessments/{paper_id}/latest.json；向量库为同目录vectors.sqlite3。无候选时score=null，表示无可比论文；DOI快速通道score=null，明确未编码；不可用时不会返回编造分数。
+
+不同文件的DedupDecision.similarity在status=ready时使用语义余弦；原契约下限为0，若因身份依据而比较负余弦，则该字段截为0，原始负值仍保留在元数据和reason。三组实测均为正值，无截断。证据reason明确算法、分档，DiffSummary仍是原文差异。旧的离线/禁用比较继续为Dice，二者由元数据与证据文字区分。人工human_override仍由原查询优先返回，系统不覆盖人工记录；高语义相似仅给建议，不自动删论文。keep_new只在同一arXiv身份、更高版本号可核验时给出，并带新版本Chunk依据；版本较新不等于学术质量更高。
+
+同文件改名上传按SHA-256复用原论文，仍返回预警及缓存向量自余弦，避免重复解析/入库。由于原契约要求DedupDecision指向两个不同PaperMeta，**不伪造自比较业务记录**；这类判定放在上传响应头和本地运维记录，不返回指向不存在自比较记录的Link。正式跨版本裁决/差异端点保持原路径。
+
+测试默认禁用本地大模型，由显式假向量验证边界、降级、DOI通道、人工裁决与协议；官方三组验收脚本另在无Key子进程真实加载本地BGE-M3。实际分数、官方输入散列、判定原文和最终回归见[语义去重验收报告](../tests/reports/semantic-dedup-acceptance.md)。旧Docker镜像需重建并另挂本地模型才能启用向量，未声称本单已完成容器向量联调。算法调用依据：[BGE-M3官方模型说明](https://huggingface.co/BAAI/bge-m3)。
