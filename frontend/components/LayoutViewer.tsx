@@ -3,11 +3,20 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { Chunk, CitationLink, ReferenceEntry } from "@/lib/types";
 
+type TextItem = { str: string; transform: number[]; width: number; height: number };
+
 type PdfPage = {
-  getViewport: (opts: { scale: number }) => { width: number; height: number };
+  getViewport: (opts: { scale: number }) => {
+    width: number;
+    height: number;
+    transform: number[];
+  };
   render: (opts: { canvasContext: CanvasRenderingContext2D; viewport: unknown }) => {
     promise: Promise<void>;
   };
+  getTextContent: (opts?: { normalizeWhitespace?: boolean }) => Promise<{
+    items: TextItem[];
+  }>;
   cleanup: () => Promise<void>;
 };
 
@@ -21,39 +30,76 @@ interface TreeNode {
   path: string[];
   label: string;
   page: number;
+  queries: string[];
   children: TreeNode[];
 }
 
-/** 用已解析章节结构生成标题树：每个节点的页码取该路径下最早出现的物理页 */
+interface Highlight {
+  page: number;
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+}
+
+const SCALE = 1.4;
+/** 未量到真实高度前的占位比例（A4 附近），量到后替换 */
+const DEFAULT_RATIO = 1.32;
+
+function snippetOf(text: string, length = 48): string {
+  return text.replace(/\s+/g, " ").trim().slice(0, length);
+}
+
+function applyTransform(m: number[], x: number, y: number): [number, number] {
+  return [m[0] * x + m[2] * y + m[4], m[1] * x + m[3] * y + m[5]];
+}
+
+/** 用已解析 Chunk 的 section_path 生成标题树，并带上文本层定位用的候选串 */
 function buildTree(chunks: Chunk[]): TreeNode[] {
   const roots: TreeNode[] = [];
+  const firstByPath = new Map<string, { page: number; text: string }>();
 
   for (const chunk of chunks) {
     if (chunk.section_path.length === 0) continue;
-    let level = roots;
     let prefix: string[] = [];
-
     for (const part of chunk.section_path) {
       prefix = [...prefix, part];
-      let node = level.find((item) => item.label === part);
-      if (!node) {
+      const key = prefix.join(" / ");
+      const existing = firstByPath.get(key);
+      if (!existing || chunk.page_number < existing.page) {
+        firstByPath.set(key, { page: chunk.page_number, text: chunk.text });
+      }
+    }
+  }
+
+  for (const [key, value] of firstByPath) {
+    const parts = key.split(" / ");
+    let level = roots;
+    let node: TreeNode | null = null;
+
+    for (let depth = 0; depth < parts.length; depth += 1) {
+      const part = parts[depth];
+      const found = level.find((item) => item.label === part);
+      if (found) {
+        node = found;
+      } else {
         node = {
-          path: prefix,
+          path: parts.slice(0, depth + 1),
           label: part,
-          page: chunk.page_number,
+          page: value.page,
+          queries: [part, snippetOf(value.text)],
           children: [],
         };
         level.push(node);
-      } else {
-        node.page = Math.min(node.page, chunk.page_number);
       }
+      node.page = Math.min(node.page, value.page);
       level = node.children;
     }
   }
 
   const sortTree = (nodes: TreeNode[]) => {
     nodes.sort((a, b) => a.page - b.page || a.label.localeCompare(b.label));
-    for (const node of nodes) sortTree(node.children);
+    for (const item of nodes) sortTree(item.children);
   };
   sortTree(roots);
   return roots;
@@ -62,10 +108,11 @@ function buildTree(chunks: Chunk[]): TreeNode[] {
 /**
  * 版式原文阅读器（pdf.js）。
  *
- * 三条口径：
- * 1. 渲染的是文件端点返回的 **PDF 原件**，不是解析后的 Markdown，也不重排版面；
- * 2. 标题树与参考文献跳转都是**页级精度**——跳到该页的画布，做不到字符级定位；
- * 3. 没有对应页的条目如实说明，不猜页码，不跳转到近似位置。
+ * 定位精度口径：
+ * 1. 优先**段落级定位**：在 PDF 文本层搜到该段文字，滚过去并高亮命中区间；
+ * 2. 文本层搜不到（扫描件、文字转曲、chunk 与 PDF 文本不一致）时退回**页级定位**
+ *    并在界面写明，不假装定位到段落；
+ * 3. 字符级坐标定位做不到，未实现，也不声称能定位到某一行或某个字。
  */
 export default function LayoutViewer({
   paperId,
@@ -83,27 +130,35 @@ export default function LayoutViewer({
   const [numPages, setNumPages] = useState<number | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [activeRef, setActiveRef] = useState<string | null>(null);
+  const [highlight, setHighlight] = useState<Highlight | null>(null);
+  const [locateNote, setLocateNote] = useState<string | null>(null);
+  const [timing, setTiming] = useState<{ load: number; first: number } | null>(null);
 
   const canvasHostRef = useRef<HTMLDivElement>(null);
   const docRef = useRef<PdfDoc | null>(null);
   const renderedRef = useRef<Set<number>>(new Set());
   const pageRefs = useRef<Map<number, HTMLElement>>(new Map());
   const refItemRefs = useRef<Map<string, HTMLElement>>(new Map());
+  const startRef = useRef<number>(0);
+  const firstPaintRef = useRef(false);
 
   const tree = useMemo(() => buildTree(chunks), [chunks]);
+  const chunkById = useMemo(() => {
+    const map = new Map<string, Chunk>();
+    for (const chunk of chunks) map.set(chunk.chunk_id, chunk);
+    return map;
+  }, [chunks]);
 
-  /** 每个参考文献条 → 正文中引用它的页码（按 ref_id ↔ CitationLink 对应） */
-  const pagesByRefId = useMemo(() => {
-    const map = new Map<string, number[]>();
+  const linksByRefId = useMemo(() => {
+    const map = new Map<string, CitationLink[]>();
     for (const link of links) {
       const list = map.get(link.ref_id) ?? [];
-      if (!list.includes(link.page_number)) list.push(link.page_number);
-      map.set(link.ref_id, list.sort((a, b) => a - b));
+      list.push(link);
+      map.set(link.ref_id, list);
     }
     return map;
   }, [links]);
 
-  /** 当前页上出现的引用编号 → 对应的文献条目，用于从 PDF 页回到文献列表 */
   const refsOnPage = useMemo(() => {
     const map = new Map<number, { ref_id: string; number: number }[]>();
     for (const link of links) {
@@ -120,6 +175,7 @@ export default function LayoutViewer({
 
   useEffect(() => {
     let cancelled = false;
+    startRef.current = performance.now();
 
     async function load() {
       try {
@@ -140,17 +196,13 @@ export default function LayoutViewer({
           throw new Error(detail);
         }
         const data = await response.arrayBuffer();
-
         if (cancelled) return;
         const task = pdfjs.getDocument({ data });
         const doc = (await task.promise) as unknown as PdfDoc;
         docRef.current = doc;
         setNumPages(doc.numPages);
+        setTiming({ load: performance.now() - startRef.current, first: 0 });
         setStatus("ok");
-        // 先量出每页高度并占位，再谈跳转：
-        // 否则未渲染的页高度为 0，标题树跳到第 N 页后，上方页面陆续渲染变高，
-        // 会把目标页推下去，跳到的页数就不对了。
-        void measureAllPages(doc, doc.numPages);
       } catch (cause) {
         if (cancelled) return;
         setStatus("error");
@@ -172,23 +224,55 @@ export default function LayoutViewer({
     };
   }, [paperId]);
 
-  /** 量出每页高度占位（长书按序渐进，量完即释放该页对象） */
-  async function measureAllPages(doc: PdfDoc, total: number) {
-    for (let index = 1; index <= total; index += 1) {
-      if (!docRef.current) return;
-      const page = await doc.getPage(index);
-      const viewport = page.getViewport({ scale: 1.4 });
-      const height = Math.floor(viewport.height);
-      const element = pageRefs.current.get(index);
-      if (element) {
-        element.style.minHeight = `${height + 44}px`;
-        element.dataset.measured = "1";
-      }
-      await page.cleanup();
+  /** 未量高前按 A4 附近比例占位，避免未渲染页高度为 0 导致跳页偏移 */
+  function ensurePlaceholder(page: number) {
+    const element = pageRefs.current.get(page);
+    if (!element || element.dataset.measured === "1") return;
+    const width = element.clientWidth || 700;
+    element.style.minHeight = `${Math.round(width * DEFAULT_RATIO) + 60}px`;
+  }
+
+  /** 按需量高：只量进入视口附近的页，不一次性量完 541 页 */
+  async function measurePage(page: number): Promise<void> {
+    const element = pageRefs.current.get(page);
+    const doc = docRef.current;
+    if (!element || !doc || element.dataset.measured === "1") return;
+    const pdfPage = await doc.getPage(page);
+    const viewport = pdfPage.getViewport({ scale: SCALE });
+    const width = element.clientWidth || 700;
+    const ratio = viewport.height / viewport.width;
+    element.style.minHeight = `${Math.round(width * ratio) + 60}px`;
+    element.dataset.measured = "1";
+    await pdfPage.cleanup();
+  }
+
+  async function renderPage(page: number, host: HTMLElement) {
+    const doc = docRef.current;
+    if (!doc) return;
+    const canvas = host.querySelector("canvas");
+    if (!canvas) return;
+    const pdfPage = await doc.getPage(page);
+    const viewport = pdfPage.getViewport({ scale: SCALE });
+    canvas.width = Math.floor(viewport.width);
+    canvas.height = Math.floor(viewport.height);
+    canvas.style.width = "100%";
+    canvas.style.height = "auto";
+    const context = canvas.getContext("2d");
+    if (!context) {
+      await pdfPage.cleanup();
+      return;
+    }
+    await pdfPage.render({ canvasContext: context, viewport }).promise;
+    await pdfPage.cleanup();
+    if (!firstPaintRef.current) {
+      firstPaintRef.current = true;
+      setTiming((value) => ({
+        load: value?.load ?? 0,
+        first: performance.now() - startRef.current,
+      }));
     }
   }
 
-  /** 懒渲染：页面进入视口才画，避免长书一次画几百张画布 */
   useEffect(() => {
     if (status !== "ok" || !numPages) return;
     const host = canvasHostRef.current;
@@ -200,38 +284,26 @@ export default function LayoutViewer({
           if (!entry.isIntersecting) continue;
           const element = entry.target as HTMLElement;
           const page = Number(element.dataset.page);
-          if (renderedRef.current.has(page)) continue;
-          renderedRef.current.add(page);
-          void renderPage(page, element);
+          void (async () => {
+            await measurePage(page);
+            if (renderedRef.current.has(page)) return;
+            renderedRef.current.add(page);
+            await renderPage(page, element);
+          })();
         }
       },
-      { rootMargin: "400px 0px" },
+      { rootMargin: "600px 0px" },
     );
 
     host.querySelectorAll<HTMLElement>("[data-page]").forEach((element) => {
+      const page = Number(element.dataset.page);
+      ensurePlaceholder(page);
       observer.observe(element);
     });
 
     return () => observer.disconnect();
-
-    async function renderPage(page: number, host: HTMLElement) {
-      const doc = docRef.current;
-      if (!doc) return;
-      const canvas = host.querySelector("canvas");
-      if (!canvas) return;
-      const pageProxy = await doc.getPage(page);
-      const viewport = pageProxy.getViewport({ scale: 1.4 });
-      canvas.width = Math.floor(viewport.width);
-      canvas.height = Math.floor(viewport.height);
-      canvas.style.width = "100%";
-      canvas.style.height = "auto";
-      const context = canvas.getContext("2d");
-      if (!context) return;
-      await pageProxy.render({ canvasContext: context, viewport }).promise;
-    }
   }, [status, numPages]);
 
-  /** 跟踪当前可见页（取视口顶部最近的一页） */
   useEffect(() => {
     const host = canvasHostRef.current;
     if (!host) return;
@@ -240,9 +312,7 @@ export default function LayoutViewer({
         const visible = entries
           .filter((entry) => entry.isIntersecting)
           .map((entry) => Number((entry.target as HTMLElement).dataset.page));
-        if (visible.length > 0) {
-          setCurrentPage(Math.min(...visible));
-        }
+        if (visible.length > 0) setCurrentPage(Math.min(...visible));
       },
       { rootMargin: "-20% 0px -70% 0px" },
     );
@@ -252,51 +322,148 @@ export default function LayoutViewer({
     return () => observer.disconnect();
   }, [status, numPages]);
 
-  /**
-   * 跳页：先把目标页**及它之前所有页**的高度量出来占位，再滚动。
-   * 只量目标页不够——上方页面陆续量到真实高度后会把目标页顶下去，
-   * 于是"跳第 7 页"会落到第 6 页。量完后再补一次校正滚动，抵消后台量高造成的位移。
-   */
-  async function scrollToPage(page: number) {
+  function scrollToPageOffset(page: number, offsetY: number) {
     const element = pageRefs.current.get(page);
     if (!element) return;
-    const doc = docRef.current;
+    const go = () => {
+      const top = element.getBoundingClientRect().top + window.scrollY + (offsetY || 0) - 90;
+      window.scrollTo({ top: Math.max(0, top), behavior: "auto" });
+    };
+    go();
+    requestAnimationFrame(() => {
+      go();
+      setCurrentPage(page);
+      // 量高/渲染可能改变上方页高度，再补一次校正
+      window.setTimeout(go, 260);
+    });
+    setCurrentPage(page);
+  }
 
-    if (doc) {
-      for (let index = 1; index <= page; index += 1) {
-        const target = pageRefs.current.get(index);
-        if (!target || target.dataset.measured) continue;
-        const pdfPage = await doc.getPage(index);
-        const viewport = pdfPage.getViewport({ scale: 1.4 });
-        target.style.minHeight = `${Math.floor(viewport.height) + 44}px`;
-        target.dataset.measured = "1";
-        await pdfPage.cleanup();
+  /** 在页面文本层里搜候选串，返回命中区间（已换算到画布 CSS 坐标） */
+  async function locateInPage(
+    page: number,
+    queries: string[],
+  ): Promise<Omit<Highlight, "page"> | null> {
+    const doc = docRef.current;
+    const host = pageRefs.current.get(page);
+    if (!doc || !host) return null;
+
+    const pdfPage = await doc.getPage(page);
+    const viewport = pdfPage.getViewport({ scale: SCALE });
+    const content = await pdfPage.getTextContent({ normalizeWhitespace: true });
+    const items = content.items ?? [];
+
+    let raw = "";
+    for (const item of items) raw += item.str ?? "";
+    let normalized = "";
+    const origin: number[] = [];
+    let pendingSpace = false;
+    for (let i = 0; i < raw.length; i += 1) {
+      const ch = raw[i];
+      if (/\s/.test(ch)) {
+        if (normalized.length > 0) pendingSpace = true;
+        continue;
+      }
+      if (pendingSpace) {
+        normalized += " ";
+        origin.push(i);
+        pendingSpace = false;
+      }
+      normalized += ch.toLowerCase();
+      origin.push(i);
+    }
+
+    let matched: { start: number; end: number } | null = null;
+    for (const query of queries) {
+      const needle = query.replace(/\s+/g, " ").trim().toLowerCase();
+      if (needle.length < 4) continue;
+      const at = normalized.indexOf(needle);
+      if (at >= 0) {
+        matched = { start: origin[at], end: origin[at + needle.length - 1] };
+        break;
       }
     }
+    if (!matched) {
+      await pdfPage.cleanup();
+      return null;
+    }
 
-    element.scrollIntoView({ behavior: "auto", block: "start" });
-    setCurrentPage(page);
-    requestAnimationFrame(() => {
-      element.scrollIntoView({ behavior: "auto", block: "start" });
-      setCurrentPage(page);
-    });
+    let base = 0;
+    let minX = Infinity;
+    let minY = Infinity;
+    let maxX = -Infinity;
+    let maxY = -Infinity;
+    for (const item of items) {
+      const len = (item.str ?? "").length;
+      const start = base;
+      const end = base + len - 1;
+      base += len;
+      if (end < matched.start || start > matched.end) continue;
+      const [, , , , px, py] = item.transform;
+      const [x, y] = applyTransform(viewport.transform, px, py);
+      const width = (item.width ?? 0) * SCALE;
+      const height = (item.height ?? 10) * SCALE;
+      minX = Math.min(minX, x);
+      maxX = Math.max(maxX, x + width);
+      minY = Math.min(minY, y - height);
+      maxY = Math.max(maxY, y + height * 0.3);
+    }
+    await pdfPage.cleanup();
+
+    if (!Number.isFinite(minX)) return null;
+    const canvas = host.querySelector("canvas");
+    const ratio = canvas && canvas.width ? canvas.clientWidth / canvas.width : 1;
+    return {
+      x: minX * ratio,
+      y: minY * ratio,
+      w: Math.max(24, (maxX - minX) * ratio),
+      h: Math.max(14, (maxY - minY) * ratio),
+    };
   }
 
-  /** 点参考文献 → 跳到它在正文中的引用页 */
+  async function locateAndJump(page: number, queries: string[], label: string) {
+    setLocateNote(null);
+    setHighlight(null);
+    const element = pageRefs.current.get(page);
+    if (element && !renderedRef.current.has(page)) {
+      await measurePage(page);
+      renderedRef.current.add(page);
+      await renderPage(page, element);
+    }
+    const hit = await locateInPage(page, queries);
+    if (hit) {
+      setHighlight({ page, ...hit });
+      setLocateNote(`段落级定位：第 ${page} 页文本层命中「${label}」，已滚动并高亮。`);
+      scrollToPageOffset(page, hit.y);
+    } else {
+      setLocateNote(
+        `段落级定位未命中：第 ${page} 页文本层没找到「${label}」，已退回页首（页级定位）。`,
+      );
+      scrollToPageOffset(page, 0);
+    }
+  }
+
   function jumpToCitation(refId: string) {
-    const pages = pagesByRefId.get(refId);
     setActiveRef(refId);
-    if (!pages || pages.length === 0) return;
-    scrollToPage(pages[0]);
+    const entries = linksByRefId.get(refId) ?? [];
+    const ref = references.find((item) => item.ref_id === refId);
+    if (entries.length === 0) {
+      setLocateNote("该条没有解析出正文引用位置，无法跳转。");
+      return;
+    }
+    const link = entries[0];
+    const chunk = chunkById.get(link.chunk_id);
+    void locateAndJump(
+      link.page_number,
+      [`[${ref?.number ?? ""}]`, chunk ? snippetOf(chunk.text) : ""],
+      `文献 [${ref?.number ?? "?"}] 的引用处`,
+    );
   }
 
-  /** 从当前 PDF 页 → 回到该条参考文献（滚动并高亮） */
-  function jumpToReference(refId: string) {
+  function backToReference(refId: string) {
     setActiveRef(refId);
     const element = refItemRefs.current.get(refId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
+    if (element) element.scrollIntoView({ behavior: "smooth", block: "center" });
   }
 
   if (status === "loading") {
@@ -320,20 +487,27 @@ export default function LayoutViewer({
   return (
     <div className="sg-layout">
       <aside className="sg-layout__nav">
-        <h2 className="sg-section__title">标题树（页级定位）</h2>
+        <h3 className="sg-qa__sub">标题树（段落级定位）</h3>
         <p className="sg-mono">
-          按已解析 section_path 生成，页码为该章节首个 Chunk 的 PDF 物理页。
+          点标题会在 PDF 文本层搜索该段文字并高亮；搜不到时退回页首并写明。
         </p>
         <ul className="sg-nav-list">
           {tree.map((node) => (
-            <TreeItem key={node.path.join("/")} node={node} onJump={scrollToPage} />
+            <TreeItem
+              key={node.path.join("/")}
+              node={node}
+              onJump={(page, queries) => locateAndJump(page, queries, node.label)}
+            />
           ))}
         </ul>
 
-        <h2 className="sg-section__title">参考文献（点条跳到引用页）</h2>
+        <h3 className="sg-qa__sub">参考文献（点条跳到引用处）</h3>
         <ul className="sg-nav-list">
           {references.map((ref) => {
-            const pages = pagesByRefId.get(ref.ref_id) ?? [];
+            const entries = linksByRefId.get(ref.ref_id) ?? [];
+            const pages = [
+              ...new Set(entries.map((item) => item.page_number)),
+            ].sort((a, b) => a - b);
             return (
               <li key={ref.ref_id}>
                 <button
@@ -353,7 +527,7 @@ export default function LayoutViewer({
                   </span>
                   <span className="sg-mono">
                     {pages.length > 0
-                      ? `正文中引用出现在 p.${pages.join("、p.")}`
+                      ? `正文引用出现在 p.${pages.join("、p.")}`
                       : "正文引用位置未解析出，无法跳转"}
                   </span>
                 </button>
@@ -368,6 +542,12 @@ export default function LayoutViewer({
           <span className="sg-mono">
             共 {numPages} 页 · 当前第 {currentPage} 页
           </span>
+          {timing ? (
+            <span className="sg-mono">
+              载入 {timing.load.toFixed(0)} ms
+              {timing.first > 0 ? ` · 首屏渲染 ${timing.first.toFixed(0)} ms` : ""}
+            </span>
+          ) : null}
           {onPageRefs.length > 0 ? (
             <span className="sg-layout__backrefs">
               本页引用：
@@ -376,7 +556,7 @@ export default function LayoutViewer({
                   key={item.ref_id}
                   type="button"
                   className="sg-linklike"
-                  onClick={() => jumpToReference(item.ref_id)}
+                  onClick={() => backToReference(item.ref_id)}
                 >
                   [{item.number}]
                 </button>
@@ -388,33 +568,46 @@ export default function LayoutViewer({
           )}
         </div>
 
+        {locateNote ? (
+          <p className="sg-mono sg-layout__note">{locateNote}</p>
+        ) : null}
+
         <div className="sg-layout__pages" ref={canvasHostRef}>
-          {Array.from({ length: numPages ?? 0 }, (_, index) => index + 1).map(
-            (page) => (
-              <section
-                key={page}
-                id={`pdf-page-${page}`}
-                data-page={page}
-                ref={(element) => {
-                  if (element) pageRefs.current.set(page, element);
-                }}
-                className={
-                  currentPage === page
-                    ? "sg-pdfpage sg-pdfpage--active"
-                    : "sg-pdfpage"
-                }
-              >
-                <header className="sg-mono">第 {page} 页</header>
+          {Array.from({ length: numPages ?? 0 }, (_, index) => index + 1).map((page) => (
+            <section
+              key={page}
+              id={`pdf-page-${page}`}
+              data-page={page}
+              ref={(element) => {
+                if (element) pageRefs.current.set(page, element);
+              }}
+              className={
+                currentPage === page ? "sg-pdfpage sg-pdfpage--active" : "sg-pdfpage"
+              }
+            >
+              <header className="sg-mono">第 {page} 页</header>
+              <div className="sg-pdfpage__stage">
                 <canvas />
-              </section>
-            ),
-          )}
+                {highlight && highlight.page === page ? (
+                  <span
+                    className="sg-pdfpage__hit"
+                    style={{
+                      left: `${highlight.x}px`,
+                      top: `${highlight.y}px`,
+                      width: `${highlight.w}px`,
+                      height: `${highlight.h}px`,
+                    }}
+                  />
+                ) : null}
+              </div>
+            </section>
+          ))}
         </div>
 
         <p className="sg-mono">
           以上为文件端点返回的 PDF 原件逐页渲染（pdf.js），单栏/双栏以原件为准；
-          不是解析后的 Markdown，也不重新排版。标题树与参考文献跳转均为**页级精度**：
-          只能定位到该页，做不到字符级定位。
+          不是解析后的 Markdown，也不重新排版。定位为段落级：在文本层搜到该段文字后滚动
+          并高亮；搜不到时退回页首并如实写明。字符级坐标定位未实现。
         </p>
       </div>
     </div>
@@ -427,7 +620,7 @@ function TreeItem({
   depth = 0,
 }: {
   node: TreeNode;
-  onJump: (page: number) => void;
+  onJump: (page: number, queries: string[]) => void;
   depth?: number;
 }) {
   return (
@@ -436,7 +629,7 @@ function TreeItem({
         type="button"
         className="sg-nav-item"
         style={{ paddingLeft: `${8 + depth * 14}px` }}
-        onClick={() => onJump(node.page)}
+        onClick={() => onJump(node.page, node.queries)}
       >
         <span className="sg-nav-item__title">{node.label}</span>
         <span className="sg-mono">p.{node.page}</span>
