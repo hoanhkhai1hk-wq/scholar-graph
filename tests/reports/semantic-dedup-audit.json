@@ -1,0 +1,235 @@
+{
+  "baseline": "8d15d1229451703805848f5ca3023a40fd5e027c",
+  "checks": [
+    {
+      "check": "三组官方真文件且无模型Key",
+      "passed": true
+    },
+    {
+      "check": "实测:all_http_201",
+      "passed": true
+    },
+    {
+      "check": "实测:all_actual_bge_ready",
+      "passed": true
+    },
+    {
+      "check": "实测:version_warn_keep_v7",
+      "passed": true
+    },
+    {
+      "check": "实测:renamed_duplicate_single_paper",
+      "passed": true
+    },
+    {
+      "check": "实测:different_not_duplicate",
+      "passed": true
+    },
+    {
+      "check": "已发布论文数:versions",
+      "passed": true
+    },
+    {
+      "check": "官方输入SHA:versions0",
+      "passed": true
+    },
+    {
+      "check": "真实Chunk计数:versions0",
+      "passed": true
+    },
+    {
+      "check": "本地1024维固定模型:versions0",
+      "passed": true
+    },
+    {
+      "check": "代表段均来自真实Chunk:versions0",
+      "passed": true
+    },
+    {
+      "check": "官方输入SHA:versions1",
+      "passed": true
+    },
+    {
+      "check": "真实Chunk计数:versions1",
+      "passed": true
+    },
+    {
+      "check": "本地1024维固定模型:versions1",
+      "passed": true
+    },
+    {
+      "check": "代表段均来自真实Chunk:versions1",
+      "passed": true
+    },
+    {
+      "check": "分数符合冻结阈值:versions",
+      "passed": true
+    },
+    {
+      "check": "已发布论文数:renamed",
+      "passed": true
+    },
+    {
+      "check": "官方输入SHA:renamed0",
+      "passed": true
+    },
+    {
+      "check": "真实Chunk计数:renamed0",
+      "passed": true
+    },
+    {
+      "check": "本地1024维固定模型:renamed0",
+      "passed": true
+    },
+    {
+      "check": "代表段均来自真实Chunk:renamed0",
+      "passed": true
+    },
+    {
+      "check": "官方输入SHA:renamed1",
+      "passed": true
+    },
+    {
+      "check": "真实Chunk计数:renamed1",
+      "passed": true
+    },
+    {
+      "check": "本地1024维固定模型:renamed1",
+      "passed": true
+    },
+    {
+      "check": "代表段均来自真实Chunk:renamed1",
+      "passed": true
+    },
+    {
+      "check": "分数符合冻结阈值:renamed",
+      "passed": true
+    },
+    {
+      "check": "已发布论文数:different",
+      "passed": true
+    },
+    {
+      "check": "官方输入SHA:different0",
+      "passed": true
+    },
+    {
+      "check": "真实Chunk计数:different0",
+      "passed": true
+    },
+    {
+      "check": "本地1024维固定模型:different0",
+      "passed": true
+    },
+    {
+      "check": "代表段均来自真实Chunk:different0",
+      "passed": true
+    },
+    {
+      "check": "官方输入SHA:different1",
+      "passed": true
+    },
+    {
+      "check": "真实Chunk计数:different1",
+      "passed": true
+    },
+    {
+      "check": "本地1024维固定模型:different1",
+      "passed": true
+    },
+    {
+      "check": "代表段均来自真实Chunk:different1",
+      "passed": true
+    },
+    {
+      "check": "分数符合冻结阈值:different",
+      "passed": true
+    },
+    {
+      "check": "业务裁决确用语义分数且锚点有效",
+      "passed": true
+    },
+    {
+      "check": "保留较新v7预警原文",
+      "passed": true
+    },
+    {
+      "check": "换名确为同字节且未伪造自比较",
+      "passed": true
+    },
+    {
+      "check": "阈值由独立观测数据重算",
+      "passed": true
+    },
+    {
+      "check": "校准与验收论文分离",
+      "passed": true
+    },
+    {
+      "check": "4组保留扰动通过",
+      "passed": true
+    },
+    {
+      "check": "校准官方输入SHA:1607.06450v1.pdf",
+      "passed": true
+    },
+    {
+      "check": "校准官方输入SHA:1707.06347v2.pdf",
+      "passed": true
+    },
+    {
+      "check": "校准官方输入SHA:1910.02054v3.pdf",
+      "passed": true
+    },
+    {
+      "check": "校准官方输入SHA:2001.08361v1.pdf",
+      "passed": true
+    },
+    {
+      "check": "最终实测源码SHA一致",
+      "passed": true
+    },
+    {
+      "check": "权重SHA与既有BGE-M3一致",
+      "passed": true
+    },
+    {
+      "check": "本地后端wheel包含阈值配置",
+      "passed": true
+    },
+    {
+      "check": "全量511通过无失败错误跳过",
+      "passed": true
+    },
+    {
+      "check": "仅修改backend和tests",
+      "passed": true
+    },
+    {
+      "check": "前端契约及协作目录零改动",
+      "passed": true
+    },
+    {
+      "check": "pdf仍忽略未跟踪",
+      "passed": true
+    },
+    {
+      "check": "数据与环境文件未跟踪",
+      "passed": true
+    },
+    {
+      "check": "本单文件不含实际Key",
+      "passed": true
+    }
+  ],
+  "passed": 55,
+  "failed": 0,
+  "regression": {
+    "tests": 511,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "model_sha256": "b5e0ce3470abf5ef3831aa1bd5553b486803e83251590ab7ff35a117cf6aad38",
+  "wheel": "scholar_graph_backend-0.1.0-py3-none-any.whl"
+}
