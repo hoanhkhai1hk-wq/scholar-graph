@@ -31,3 +31,6 @@ scholar-graph = "scholar_graph.cli:main"
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["scholar_graph*"]
+
+[tool.setuptools.package-data]
+scholar_graph = ["semantic_thresholds.json"]

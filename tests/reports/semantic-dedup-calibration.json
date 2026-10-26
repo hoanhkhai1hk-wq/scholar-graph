@@ -1,0 +1,233 @@
+{
+  "input_kind": "官方 pdf/ 真文件；四篇校准论文与三组验收输入分离；删块变体是明确的同论文人工扰动，不冒充不同版本PDF",
+  "positive_pairs": [
+    {
+      "file": "1607.06450v1.pdf",
+      "score": 0.9411207660697047,
+      "label": "same_paper_missing_every_fifth_chunk"
+    },
+    {
+      "file": "1707.06347v2.pdf",
+      "score": 0.9923528256202194,
+      "label": "same_paper_missing_every_fifth_chunk"
+    },
+    {
+      "file": "1910.02054v3.pdf",
+      "score": 0.9543000443460861,
+      "label": "same_paper_missing_every_fifth_chunk"
+    },
+    {
+      "file": "2001.08361v1.pdf",
+      "score": 0.9137429008639619,
+      "label": "same_paper_missing_every_fifth_chunk"
+    }
+  ],
+  "negative_pairs": [
+    {
+      "left": "1607.06450v1.pdf",
+      "right": "1707.06347v2.pdf",
+      "score": 0.7248961742109692
+    },
+    {
+      "left": "1607.06450v1.pdf",
+      "right": "1910.02054v3.pdf",
+      "score": 0.7538387678816579
+    },
+    {
+      "left": "1607.06450v1.pdf",
+      "right": "2001.08361v1.pdf",
+      "score": 0.758295727615154
+    },
+    {
+      "left": "1707.06347v2.pdf",
+      "right": "1910.02054v3.pdf",
+      "score": 0.7604680277132413
+    },
+    {
+      "left": "1707.06347v2.pdf",
+      "right": "2001.08361v1.pdf",
+      "score": 0.8021498198007081
+    },
+    {
+      "left": "1910.02054v3.pdf",
+      "right": "2001.08361v1.pdf",
+      "score": 0.8098823029271678
+    }
+  ],
+  "heldout_positive_pairs": [
+    {
+      "file": "1607.06450v1.pdf",
+      "score": 0.9819304407078407,
+      "label": "same_paper_missing_every_seventh_chunk"
+    },
+    {
+      "file": "1707.06347v2.pdf",
+      "score": 0.9930867911466308,
+      "label": "same_paper_missing_every_seventh_chunk"
+    },
+    {
+      "file": "1910.02054v3.pdf",
+      "score": 0.9591820029103416,
+      "label": "same_paper_missing_every_seventh_chunk"
+    },
+    {
+      "file": "2001.08361v1.pdf",
+      "score": 0.9331952665028239,
+      "label": "same_paper_missing_every_seventh_chunk"
+    }
+  ],
+  "policy": {
+    "review_threshold": 0.8445025022394325,
+    "duplicate_threshold": 0.8791227015516972,
+    "negative_max": 0.8098823029271678,
+    "positive_min": 0.9137429008639619,
+    "positive_pairs": 4,
+    "negative_pairs": 6,
+    "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+    "representation": "paper-body-8x2000chars-512tokens-mean-unit-v1",
+    "calibration_id": "official-separate-four-papers-drop5-v1",
+    "calibration_files": [
+      "1607.06450v1.pdf",
+      "1707.06347v2.pdf",
+      "1910.02054v3.pdf",
+      "2001.08361v1.pdf"
+    ]
+  },
+  "encoder": {
+    "model": "BAAI/bge-m3",
+    "revision": "5617a9f61b028005a4858fdac845db406aefb181",
+    "representation": "paper-body-8x2000chars-512tokens-mean-unit-v1",
+    "device": "cpu",
+    "dimension": 1024,
+    "encoded_papers": 12,
+    "cached_papers": 0,
+    "representatives": {
+      "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7": [
+        "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7-p0001-c00012",
+        "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7-p0001-c00014",
+        "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7-p0002-c00025",
+        "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7-p0003-c00040",
+        "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7-p0005-c00055",
+        "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7-p0006-c00075",
+        "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7-p0008-c00093",
+        "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7-p0010-c00115"
+      ],
+      "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7-calibration": [
+        "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7-p0001-c00012",
+        "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7-p0001-c00014",
+        "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7-p0002-c00023",
+        "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7-p0003-c00039",
+        "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7-p0004-c00052",
+        "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7-p0007-c00079",
+        "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7-p0009-c00098",
+        "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7-p0010-c00116"
+      ],
+      "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7-heldout": [
+        "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7-p0001-c00012",
+        "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7-p0001-c00016",
+        "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7-p0002-c00026",
+        "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7-p0003-c00040",
+        "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7-p0005-c00055",
+        "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7-p0006-c00075",
+        "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7-p0008-c00093",
+        "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7-p0010-c00115"
+      ],
+      "paper-e78feadadbdbb0b601b3c2bcc81404722cd431a489b307545f9b7bea1e8c4f5b": [
+        "paper-e78feadadbdbb0b601b3c2bcc81404722cd431a489b307545f9b7bea1e8c4f5b-p0003-c00007",
+        "paper-e78feadadbdbb0b601b3c2bcc81404722cd431a489b307545f9b7bea1e8c4f5b-p0004-c00011",
+        "paper-e78feadadbdbb0b601b3c2bcc81404722cd431a489b307545f9b7bea1e8c4f5b-p0004-c00013",
+        "paper-e78feadadbdbb0b601b3c2bcc81404722cd431a489b307545f9b7bea1e8c4f5b-p0004-c00015",
+        "paper-e78feadadbdbb0b601b3c2bcc81404722cd431a489b307545f9b7bea1e8c4f5b-p0004-c00016",
+        "paper-e78feadadbdbb0b601b3c2bcc81404722cd431a489b307545f9b7bea1e8c4f5b-p0007-c00022",
+        "paper-e78feadadbdbb0b601b3c2bcc81404722cd431a489b307545f9b7bea1e8c4f5b-p0007-c00024"
+      ],
+      "paper-e78feadadbdbb0b601b3c2bcc81404722cd431a489b307545f9b7bea1e8c4f5b-calibration": [
+        "paper-e78feadadbdbb0b601b3c2bcc81404722cd431a489b307545f9b7bea1e8c4f5b-p0003-c00007",
+        "paper-e78feadadbdbb0b601b3c2bcc81404722cd431a489b307545f9b7bea1e8c4f5b-p0004-c00011",
+        "paper-e78feadadbdbb0b601b3c2bcc81404722cd431a489b307545f9b7bea1e8c4f5b-p0004-c00013",
+        "paper-e78feadadbdbb0b601b3c2bcc81404722cd431a489b307545f9b7bea1e8c4f5b-p0004-c00016",
+        "paper-e78feadadbdbb0b601b3c2bcc81404722cd431a489b307545f9b7bea1e8c4f5b-p0007-c00022",
+        "paper-e78feadadbdbb0b601b3c2bcc81404722cd431a489b307545f9b7bea1e8c4f5b-p0007-c00024"
+      ],
+      "paper-e78feadadbdbb0b601b3c2bcc81404722cd431a489b307545f9b7bea1e8c4f5b-heldout": [
+        "paper-e78feadadbdbb0b601b3c2bcc81404722cd431a489b307545f9b7bea1e8c4f5b-p0004-c00011",
+        "paper-e78feadadbdbb0b601b3c2bcc81404722cd431a489b307545f9b7bea1e8c4f5b-p0004-c00013",
+        "paper-e78feadadbdbb0b601b3c2bcc81404722cd431a489b307545f9b7bea1e8c4f5b-p0004-c00015",
+        "paper-e78feadadbdbb0b601b3c2bcc81404722cd431a489b307545f9b7bea1e8c4f5b-p0004-c00016",
+        "paper-e78feadadbdbb0b601b3c2bcc81404722cd431a489b307545f9b7bea1e8c4f5b-p0007-c00022",
+        "paper-e78feadadbdbb0b601b3c2bcc81404722cd431a489b307545f9b7bea1e8c4f5b-p0007-c00024"
+      ],
+      "paper-c531734c7d9ee647fda9b4f0e1a6abd6d58ad34e862bc945451b09032be3167e": [
+        "paper-c531734c7d9ee647fda9b4f0e1a6abd6d58ad34e862bc945451b09032be3167e-p0001-c00006",
+        "paper-c531734c7d9ee647fda9b4f0e1a6abd6d58ad34e862bc945451b09032be3167e-p0001-c00009",
+        "paper-c531734c7d9ee647fda9b4f0e1a6abd6d58ad34e862bc945451b09032be3167e-p0003-c00029",
+        "paper-c531734c7d9ee647fda9b4f0e1a6abd6d58ad34e862bc945451b09032be3167e-p0006-c00053",
+        "paper-c531734c7d9ee647fda9b4f0e1a6abd6d58ad34e862bc945451b09032be3167e-p0008-c00081",
+        "paper-c531734c7d9ee647fda9b4f0e1a6abd6d58ad34e862bc945451b09032be3167e-p0011-c00111",
+        "paper-c531734c7d9ee647fda9b4f0e1a6abd6d58ad34e862bc945451b09032be3167e-p0014-c00144",
+        "paper-c531734c7d9ee647fda9b4f0e1a6abd6d58ad34e862bc945451b09032be3167e-p0017-c00172"
+      ],
+      "paper-c531734c7d9ee647fda9b4f0e1a6abd6d58ad34e862bc945451b09032be3167e-calibration": [
+        "paper-c531734c7d9ee647fda9b4f0e1a6abd6d58ad34e862bc945451b09032be3167e-p0001-c00006",
+        "paper-c531734c7d9ee647fda9b4f0e1a6abd6d58ad34e862bc945451b09032be3167e-p0001-c00009",
+        "paper-c531734c7d9ee647fda9b4f0e1a6abd6d58ad34e862bc945451b09032be3167e-p0003-c00028",
+        "paper-c531734c7d9ee647fda9b4f0e1a6abd6d58ad34e862bc945451b09032be3167e-p0006-c00054",
+        "paper-c531734c7d9ee647fda9b4f0e1a6abd6d58ad34e862bc945451b09032be3167e-p0008-c00081",
+        "paper-c531734c7d9ee647fda9b4f0e1a6abd6d58ad34e862bc945451b09032be3167e-p0010-c00107",
+        "paper-c531734c7d9ee647fda9b4f0e1a6abd6d58ad34e862bc945451b09032be3167e-p0014-c00141",
+        "paper-c531734c7d9ee647fda9b4f0e1a6abd6d58ad34e862bc945451b09032be3167e-p0017-c00173"
+      ],
+      "paper-c531734c7d9ee647fda9b4f0e1a6abd6d58ad34e862bc945451b09032be3167e-heldout": [
+        "paper-c531734c7d9ee647fda9b4f0e1a6abd6d58ad34e862bc945451b09032be3167e-p0001-c00006",
+        "paper-c531734c7d9ee647fda9b4f0e1a6abd6d58ad34e862bc945451b09032be3167e-p0001-c00009",
+        "paper-c531734c7d9ee647fda9b4f0e1a6abd6d58ad34e862bc945451b09032be3167e-p0003-c00031",
+        "paper-c531734c7d9ee647fda9b4f0e1a6abd6d58ad34e862bc945451b09032be3167e-p0006-c00054",
+        "paper-c531734c7d9ee647fda9b4f0e1a6abd6d58ad34e862bc945451b09032be3167e-p0008-c00082",
+        "paper-c531734c7d9ee647fda9b4f0e1a6abd6d58ad34e862bc945451b09032be3167e-p0011-c00113",
+        "paper-c531734c7d9ee647fda9b4f0e1a6abd6d58ad34e862bc945451b09032be3167e-p0014-c00145",
+        "paper-c531734c7d9ee647fda9b4f0e1a6abd6d58ad34e862bc945451b09032be3167e-p0017-c00172"
+      ],
+      "paper-a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494": [
+        "paper-a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494-p0001-c00025",
+        "paper-a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494-p0002-c00030",
+        "paper-a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494-p0006-c00084",
+        "paper-a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494-p0009-c00143",
+        "paper-a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494-p0013-c00197",
+        "paper-a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494-p0018-c00273",
+        "paper-a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494-p0022-c00346",
+        "paper-a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494-p0029-c00419"
+      ],
+      "paper-a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494-calibration": [
+        "paper-a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494-p0001-c00028",
+        "paper-a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494-p0002-c00032",
+        "paper-a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494-p0006-c00084",
+        "paper-a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494-p0010-c00147",
+        "paper-a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494-p0014-c00207",
+        "paper-a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494-p0018-c00276",
+        "paper-a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494-p0022-c00346",
+        "paper-a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494-p0029-c00418"
+      ],
+      "paper-a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494-heldout": [
+        "paper-a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494-p0001-c00025",
+        "paper-a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494-p0002-c00030",
+        "paper-a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494-p0005-c00082",
+        "paper-a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494-p0009-c00138",
+        "paper-a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494-p0013-c00198",
+        "paper-a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494-p0018-c00274",
+        "paper-a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494-p0022-c00347",
+        "paper-a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494-p0029-c00418"
+      ]
+    },
+    "versions": {
+      "FlagEmbedding": "1.4.2",
+      "torch": "2.14.1+cpu",
+      "transformers": "5.20.2"
+    }
+  },
+  "source_sha256": {
+    "1607.06450v1.pdf": "c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7",
+    "1707.06347v2.pdf": "e78feadadbdbb0b601b3c2bcc81404722cd431a489b307545f9b7bea1e8c4f5b",
+    "1910.02054v3.pdf": "c531734c7d9ee647fda9b4f0e1a6abd6d58ad34e862bc945451b09032be3167e",
+    "2001.08361v1.pdf": "a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494"
+  }
+}

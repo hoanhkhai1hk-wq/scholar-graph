@@ -61,11 +61,27 @@ def hybrid_search(payload):
             "versions": {name: version(name) for name in ("chromadb", "FlagEmbedding", "torch", "transformers")}}
 
 
+def paper_embeddings(payload):
+    import torch
+    from FlagEmbedding import BGEM3FlagModel
+    torch.set_num_threads(2)
+    model = BGEM3FlagModel(str(Path(payload["model_path"]).resolve()), devices="cpu", use_fp16=False,
+                          batch_size=1, return_dense=True, return_sparse=False, passage_max_length=512)
+    vectors = {}
+    for paper in payload["papers"]:
+        encoded = model.encode(paper["texts"], batch_size=1, max_length=512,
+            return_dense=True, return_sparse=False, return_colbert_vecs=False)["dense_vecs"]
+        vector = encoded.mean(axis=0)
+        vector = vector / float(torch.linalg.vector_norm(torch.tensor(vector)))
+        vectors[paper["id"]] = vector.tolist()
+    return {"vectors": vectors, "versions": {name: version(name) for name in ("FlagEmbedding", "torch", "transformers")}}
+
+
 if __name__ == "__main__":
     try:
         payload = json.loads(sys.stdin.read())
         with redirect_stdout(sys.stderr):
-            result = hybrid_search(payload)
+            result = paper_embeddings(payload) if payload.get("operation") == "paper_embeddings" else hybrid_search(payload)
         print(json.dumps(result, allow_nan=False))
     except Exception as error:
         # No exception strings, URLs or environment values cross the API boundary.

@@ -1,0 +1,17 @@
+{
+  "review_threshold": 0.8445025022394325,
+  "duplicate_threshold": 0.8791227015516972,
+  "negative_max": 0.8098823029271678,
+  "positive_min": 0.9137429008639619,
+  "positive_pairs": 4,
+  "negative_pairs": 6,
+  "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+  "representation": "paper-body-8x2000chars-512tokens-mean-unit-v1",
+  "calibration_id": "official-separate-four-papers-drop5-v1",
+  "calibration_files": [
+    "1607.06450v1.pdf",
+    "1707.06347v2.pdf",
+    "1910.02054v3.pdf",
+    "2001.08361v1.pdf"
+  ]
+}
