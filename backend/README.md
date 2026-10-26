@@ -483,7 +483,9 @@ SQLite缓存保存模型快照、文本指纹和向量，命中时复用；不�
 
 每篇论文双路召回：BGE-M3 dense余弦取前24个真实Chunk，词法路复用原IDF排序、领域别名扩展及首页作者布局覆盖，取前24个不同Chunk。并集最多48块，使用等权RRF排序：各路第r名贡献`0.5*61/(60+r)`，未召回的路贡献0。原检索页仍使用自己的BGE dense/sparse融合；QA不把BGE sparse当作这次词法路，元数据明确bge_sparse_scores_used=false。全部结果受用户论文集合约束，不把其他索引旧行返回作证据。
 
-优先尝试本地bge-reranker-large，固定快照55611d7bca2a7133960a6d3b71e083071bbfc312。可用`data/module-four-runtime/.venv/Scripts/python.exe backend/download_bge_reranker.py`公开下载一次；运行时只读本地模型，不自动联网。SCHOLAR_GRAPH_RERANKER_PATH覆盖本地目录，SCHOLAR_GRAPH_QA_RERANKER=auto（默认）/cross_encoder（强制使用）/rrf（明确指定融合）。CPU auto设额外每请求重排预算5秒，包含本架构每次冷加载；首次实际打分并校验所有返回id后，超过预算则本次使用RRF，将实测原因和计时原子保存到qa-retrieval/reranker-policy.json，该目录后续auto复用。它是当前数据目录/当前部署的性能选择，不是通用跨硬件结论；更换硬件可重测或强制cross_encoder。模型缺失、重排失败或超时也明确用RRF，不冒充cross-encoder成功。
+优先尝试本地bge-reranker-large，固定快照55611d7bca2a7133960a6d3b71e083071bbfc312。可用`data/module-four-runtime/.venv/Scripts/python.exe backend/download_bge_reranker.py`公开下载一次；运行时只读本地模型，不自动联网。SCHOLAR_GRAPH_RERANKER_PATH覆盖本地目录，SCHOLAR_GRAPH_QA_RERANKER=auto（默认）或rrf（明确指定融合）。当前默认路径改为RRF粗排前10块做cross-encoder精排，其余召回尾部仍保留在精排前缀之后，首页作者布局规则保持。旧36候选的reranker-policy.json不再决定新策略。
+
+默认精排通过隔离常驻CPU worker复用模型，每个进程/本地模型目录一份；输入是问题与10块以内真实文本，每块最多2000字符、每对最多512 token，2线程。子进程剥离密钥变量、不落请求正文，退出时清理。额外每请求预算仍为5秒，包含等待锁、尚未完成的冷加载、IPC与推理；冷加载超过预算时本次RRF，worker可在后台完成预热，后续请求独立重新测量。推理超时则终止该worker，防止迟到结果被下一请求复用。不可用、忙、超时、分数非有限或候选id不一致一律明确回落；任何环境模式都不能绕过默认路径的5秒预算。显式基准预热耗时另列，不能从冷请求中隐去。旧单次worker适配器仍供独立诊断使用，默认HTTP路径使用常驻实现。
 
 本机首次36个候选实测：reranker模型构造5.3434365秒、逐对推理12.4232497秒、含Python导入/进程启动的worker总耗时27.5579491秒，超过5秒预算，因此最终选RRF。没有假称reranker未安装或仅凭估计判慢。首次Attention建索引实测51.0089652秒，冷请求还包括上述重排基准；后续索引指纹命中不重复编码。报告同时列BGE模型构造时间、worker启动到模型可用时间、索引/查询时间、整段worker时间；构造时间不包含重型库导入，不能拿它与旧15–20秒端到端worker数据直接混比。
 
@@ -494,3 +496,15 @@ SQLite缓存保存模型快照、文本指纹和向量，命中时复用；不�
 普通回归默认使用词法或显式假向量保证确定性，真实本地向量和官方六题另跑独立探针。完整六题方法、候选/返回证据数、同义改写对照、初次跨篇拒答及修复、加载与重排耗时、回归证据见[QA混合检索验收](../tests/reports/hybrid-retrieval-acceptance.md)。用户转达WorkBuddy：仅元数据增加可选字段，前端未改；冷索引请求可能较长，不能把整请求耗时当成模型加载时间。旧Docker镜像及未挂载模型的部署不会凭空启用向量，本单未重建容器。
 
 模型依据：[BGE-M3官方模型说明](https://huggingface.co/BAAI/bge-m3)、[bge-reranker-large官方模型说明](https://huggingface.co/BAAI/bge-reranker-large)。
+
+## 二段精排与跨篇比较流式端点（2026-10-26）
+
+新增`POST /api/v1/compare/stream`，请求与同步`/api/v1/compare`相同：`{paper_ids:[至少2个不同论文id],question:"问题"}`，最多10篇。无此论文、重复id和输入错误在SSE响应头发送前仍用HTTP JSON错误体返回。单篇原流式路径保持。前端和12份业务契约均未修改。
+
+事件为`mode`（模式/回落原因）→`node_start/node_end`（plan、retrieve、qa、validate及重试）与真实`tool_start/tool_end`→`token`（如实际使用模型流）→`final`→`done`。`token`只在qa节点由真实上游增量触发，`verified:false`、`channel:model_json_draft`，JSON草稿不可当成答案，attempt区分校验驳回后的新草稿。`final`直接沿用同步比较形状`{evidence_table,per_paper,synthesis}`；每篇仍为QAAnswer，先验证所有锚点、连续原文及数字，再输出证据表与综合。`mode.final_verified:true`和`done.verified:true`说明final的校验语义，不把字段塞进业务记录。校验最多3轮，仍不通过则返回真实拒答记录。模型调用失败发`error`+`done`，没有编造的final。
+
+无Key、显式摘录、无向量配置或检索时向量失败，明确`token_streaming:false`、`fallback_reason`和“回落模式、非 token 流式”，仅输出轨迹与整段final；运行中发现向量失败时，在qa前补发mode更新。允许真实规划已执行后转摘录，但绝不发假token。连接断开使用现有有界队列及上游cancel机制；Cache-Control=no-cache,no-transform，X-Accel-Buffering=no。
+
+以下为可选传输元数据加法，不属于任何业务schema：既有QA/Agent头、SSE retrieve节点和done.metadata里增加`ranking_method`（reranked/rrf/lexical/mixed/none）、`fallback_reasons`；每次retrieval增加`ranking_method`和`fallback_reason`，rerank包含候选数、预算、实际计时、cold_start与startup（实际可用时）。原`method`仍明确hybrid/vector/lexical-fallback。混合召回成功且精排超预算时必须写method=hybrid、ranking_method=rrf和具体原因，不能标成reranked。模型回落原因与精排回落原因分别保留。
+
+本地真模型、官方六题和TCP流式样本运行`backend/.venv/Scripts/python.exe tests/run_reranker_compare_stream_acceptance.py`；依赖现有官方Attention/BERT已落盘数据与本地模型，Key只读环境。全量离线回归运行`backend/.venv/Scripts/python.exe tests/run_regression.py full --no-key --corpus-dir pdf`，5项无Key真模型测试仍跳过。实际结果见[二段精排与比较流式验收](../tests/reports/reranker-compare-stream-acceptance.md)。现有Docker镜像需另行重建才有本单端点，未将本次宿主机验证宣称为容器验证。

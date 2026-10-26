@@ -101,6 +101,28 @@ def test_inference_timeout_terminates_worker_to_prevent_stale_reply():
     assert closed and not worker.lock.locked()
 
 
+def test_concurrent_busy_worker_keeps_an_independent_request_within_its_budget():
+    worker = worker_fixture(); worker.ready.set(); worker.lock.acquire()
+    try:
+        with pytest.raises(WorkerUnavailable, match='LOCAL_RERANKER_BUSY'):
+            worker.score({}, .001)
+        assert worker.process.stdin.getvalue() == ''
+    finally:
+        worker.lock.release()
+
+
+def test_forcing_encoder_cannot_bypass_the_resident_five_second_budget(tmp_path, monkeypatch):
+    service = configured(tmp_path)
+    monkeypatch.setenv('SCHOLAR_GRAPH_QA_RERANKER', 'cross_encoder')
+    times = iter([0, 6])
+    monkeypatch.setattr('scholar_graph.qa_retrieval.time.perf_counter', lambda: next(times))
+    def score(*args):
+        return {'scores': {'c': .7}, 'timing': {'rerank_seconds': 6}, 'model': 'local', 'revision': 'test'}, {}
+    monkeypatch.setattr('scholar_graph.qa_retrieval.resident_worker', lambda *a: SimpleNamespace(score=score))
+    order, info = service.order('samples', [{'chunk_id': 'c', 'text': '12 samples'}])
+    assert order is None and info['method'] == 'rrf' and info['reason'] == 'MEASURED_CPU_BUDGET_EXCEEDED'
+
+
 def test_local_worker_environment_excludes_all_credential_variables(monkeypatch):
     for name in ['DEEPSEEK_API_KEY', 'HF_TOKEN', 'PRIVATE_SECRET', 'DATABASE_PASSWORD']:
         monkeypatch.setenv(name, 'test-private-value')
