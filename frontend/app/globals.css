@@ -1095,6 +1095,74 @@ a:hover {
   white-space: pre;
 }
 
+/* ---------------- 版式原文阅读器 ---------------- */
+
+.sg-layout {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: var(--sg-space-4);
+  align-items: start;
+}
+
+@media (max-width: 1100px) {
+  .sg-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sg-layout__nav {
+  position: sticky;
+  top: var(--sg-space-3);
+  max-height: calc(100vh - 80px);
+  overflow: auto;
+  border: 1px solid var(--sg-border);
+  border-radius: var(--sg-radius-md);
+  background: var(--sg-bg-surface);
+  padding: var(--sg-space-3);
+}
+
+.sg-layout__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--sg-space-3);
+  border-bottom: 1px solid var(--sg-border);
+  padding-bottom: var(--sg-space-2);
+  margin-bottom: var(--sg-space-3);
+}
+
+.sg-layout__backrefs {
+  font-size: 12px;
+  color: var(--sg-text-secondary);
+}
+
+.sg-layout__pages {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sg-space-4);
+}
+
+.sg-pdfpage {
+  border: 1px solid var(--sg-border);
+  border-left: 3px solid transparent;
+  background: var(--sg-bg-surface);
+  padding: var(--sg-space-2);
+  scroll-margin-top: var(--sg-space-3);
+}
+
+.sg-pdfpage--active {
+  border-left-color: var(--sg-accent);
+}
+
+.sg-pdfpage header {
+  color: var(--sg-text-muted);
+  margin-bottom: var(--sg-space-1);
+}
+
+.sg-pdfpage canvas {
+  display: block;
+}
+
 /* 翻译入口 */
 .sg-translate__entries {
   display: grid;
