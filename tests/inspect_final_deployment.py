@@ -54,6 +54,14 @@ def main():
     result['versions'] = {'python':run(compose+['exec','-T','backend','python','--version']).strip(),
         'node':run(compose+['exec','-T','frontend','node','--version']).strip(),
         'api':httpx.get('http://127.0.0.1:8000/openapi.json',trust_env=False).json()['info']['version']}
+    model_code = """import pathlib,os,hashlib,json
+p=pathlib.Path(os.environ['SCHOLAR_GRAPH_BGE_M3_PATH'])/'pytorch_model.bin'
+h=hashlib.sha256()
+with p.open('rb') as f:
+ while b:=f.read(4*1024*1024): h.update(b)
+print(json.dumps({'bytes':p.stat().st_size,'sha256':h.hexdigest(),'matches_fixed_revision_weights':h.hexdigest()=='b5e0ce3470abf5ef3831aa1bd5553b486803e83251590ab7ff35a117cf6aad38'}))
+"""
+    result['model_snapshot'] = json.loads(run(compose+['exec','-T','backend','python','-c',model_code]))
     (ROOT/'tests/reports/final-deployment-runtime.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(result,ensure_ascii=False))
 

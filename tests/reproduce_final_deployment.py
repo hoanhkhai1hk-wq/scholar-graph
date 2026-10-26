@@ -72,6 +72,11 @@ def main():
         require(code,'container health')
         _,state = command('container-state',compose+['ps','--format','json'],cwd=checkout)
         evidence['container_state'] = state
+        # Network preparation has its own bound; it must not consume the
+        # validation probe's 40-minute subprocess budget on slower links.
+        code,_ = command('prepare-public-vector-model',compose+['exec','-T','backend',
+            '/opt/vector-venv/bin/python','backend/download_bge_m3.py'],cwd=checkout,timeout=7200)
+        require(code,'public model preparation')
         code,log = command('container-acceptance',compose+['exec','-T','backend','python',
             'tests/run_final_deployment_container.py'],cwd=checkout,timeout=10800)
         rows = []

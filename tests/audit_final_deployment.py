@@ -38,6 +38,7 @@ def main():
     checks['image_sources_match_clean_clone'] = build['source_matches_clean_clone']
     checks['two_healthy_services_and_ports'] = all(s['healthy'] for s in runtime['services']) and set(runtime['http_status'].values())=={200}
     checks['both_image_revision_labels_match_clone'] = all(s['revision']==build['clone']['commit'] for s in runtime['services'])
+    checks['runtime_public_model_full_checksum_verified'] = runtime['model_snapshot']['matches_fixed_revision_weights'] and runtime['model_snapshot']['bytes']==2271145830
     checks['no_official_corpus_or_credentials_in_images'] = all(s['input_audit']['passed'] for s in runtime['services'])
     checks['automatic_daily_configuration_active'] = runtime['scheduler']['scheduler_details']['enabled'] and runtime['scheduler']['scheduler_details']['interval_seconds']==86400 and runtime['scheduler']['scheduler_details']['active']
     stats = {'host_final':junit('final-deployment-host-final-pytest.xml'),

@@ -13,6 +13,8 @@ docker compose exec -T backend python tests/run_regression.py fast --no-key
 
 公开模型准备命令：`docker compose exec -T backend /opt/vector-venv/bin/python backend/download_bge_m3.py`，模型快照沿用既有固定版本；不需要 Key。只有准备后真实向量校验成功，才能宣称该运行环境向量已接通。
 
+干净复现控制脚本将公开模型准备单独限时7200秒，再运行容器验收，避免下载占用测试探针的限时。本轮慢网络下的恢复入口为 `python tests/resume_final_deployment.py`：只允许论文库仍为空时恢复，保留已构建镜像及本轮容器下载片段，使用 `tests/prepare_bge_public.py` 对固定 Hugging Face 快照做有界 HTTP 范围续传（最多4路）；2,271,145,830字节和完整SHA-256都匹配才发布权重，再由原SDK确认。它只传入准备脚本，不复制宿主机模型、向量索引或解析记录。已有正式上传时拒绝用该恢复入口冒充从空库验收。
+
 **自动追踪机制是后端生命周期内调度。** Compose 默认 `SCHOLAR_GRAPH_TRACKING_ENABLED=true`、间隔 86400 秒、启动延迟 15 秒；可选 `SCHOLAR_GRAPH_TRACKING_MAX_CANDIDATES`（默认3）、`MAX_IMPORTS`（默认1）、`PAPER_IDS`（逗号分隔，默认库内第一篇）。同一数据目录用操作系统锁选一个调度实例，单轮结束后等待下一个间隔，不补跑重叠任务；空库或指定论文尚未上传时只记等待事件。调度线程有界等待关闭；尚在返回的上游请求不会被谎报为已停止。非 Compose 本地启动默认关闭，需要同样环境变量显式开启。
 
 `GET /api/v1/retrieval/tracking/status` 附加 `scheduler_details`（配置、active、进程号、运行数、最近事件），原手动端点保留。自动运行继续用原 TrackingService、公开 arXiv API、幂等与去重规则；记录候选和上游失败，不伪造成功。`tracking/scheduler-events.jsonl`、`scheduler-status.json` 与 `state.sqlite3` 位于持久数据目录，容器重建后日志保留。演示覆盖 `services/docker-compose.final-acceptance.yml` 使用同一调度机制，只将间隔设为60秒、固定官方 Attention 种子、max_imports=0（只追踪候选）；移除此覆盖即回到每日部署配置。
