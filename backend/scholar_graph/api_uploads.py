@@ -1,6 +1,7 @@
 """Ordered synchronous uploads using the existing local parsing pipeline."""
 
 import tempfile
+import json
 from pathlib import Path
 from threading import Lock
 from urllib.parse import quote
@@ -38,15 +39,21 @@ class UploadService:
             self.gate.bundle(bundle)
             initial = pipeline.last_job.history[0]
             self.gate.record("ParseStatus", initial)
-            return bundle["paper_meta"], initial, getattr(pipeline, 'last_warning', None)
+            return bundle["paper_meta"], initial, getattr(pipeline, 'last_warning', None), getattr(pipeline, 'last_dedup_metadata', None)
 
     def single(self, upload, response=None):
         with self.lock, operation_lock(self.root, "ingestion", timeout=30):
-            meta, _, warning = self._one(upload)
+            meta, _, warning, dedup = self._one(upload)
+            if response is not None and dedup is not None:
+                # Keep frozen PaperMeta intact. Bounded summary only; full scores are local.
+                fields = ("status", "method", "score", "band", "reason", "fallback_reason", "matched_paper_id", "recommendation", "exact_file_hash")
+                summary = {key: dedup[key] for key in fields if key in dedup}
+                response.headers["X-ScholarGraph-Dedup-Meta"] = quote(json.dumps(summary, ensure_ascii=False, allow_nan=False), safe="")
             if warning and response is not None:
                 response.headers['X-ScholarGraph-Dedup-Warning'] = quote(warning, safe='')
                 response.headers['X-ScholarGraph-Dedup-Warning-Encoding'] = 'percent-encoded-utf-8'
-                response.headers['Link'] = f'</api/v1/papers/{meta["id"]}/dedup-decision>; rel="dedup-decision"'
+                if not (dedup and dedup.get("exact_file_hash")):
+                    response.headers['Link'] = f'</api/v1/papers/{meta["id"]}/dedup-decision>; rel="dedup-decision"'
             return meta
 
     def batch(self, parts):
@@ -57,10 +64,12 @@ class UploadService:
                 try:
                     if field != "files" or not hasattr(upload, "file"):
                         raise PipelineError("VALIDATION_ERROR", "批量上传只接受 files 文件字段。")
-                    meta, initial, warning = self._one(upload)
+                    meta, initial, warning, dedup = self._one(upload)
                     succeeded.append({"paper_id": meta["id"], "parse_status": initial})
                     if warning:
                         succeeded[-1]['warning'] = warning
+                    if dedup is not None:
+                        succeeded[-1]['dedup_metadata'] = {key: dedup[key] for key in ("status", "method", "score", "band", "reason", "fallback_reason", "recommendation") if key in dedup}
                 except Exception as error:
                     if not isinstance(error, PipelineError):
                         error = PipelineError("INTERNAL_ERROR", "该文件处理失败。")
