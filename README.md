@@ -52,29 +52,33 @@ npm run dev
 
 TODO：按总指挥验收的模块边界补充架构图。
 
-## 目录骨架
+## 团队信息
+
+| 项 | 内容 |
+| --- | --- |
+| 参赛选手 | 黄伟浩 |
+| 院校 | 广州商学院 |
+| 组别 | B 组个人赛 |
+| 项目名 | 研枢 ScholarGraph |
+
+## 目录骨架（当前实际结构）
 
 ```text
-backend/       后端预留；只有占位 README
-frontend/      WorkBuddy 前端区域；本单仅建立空目录
-contracts/     五份 JSON Schema、五份合成示例与中文说明
+backend/       后端实现；scholar_graph 包、28 条业务端点与 README
+frontend/      Next.js 15 前端；9 条路由（列表/详情/阅读器/问答/图谱/检索/写作/上传 + 同源代理）
+contracts/     五类业务记录的 JSON Schema、合成示例与中文说明（零改动）
 services/      服务集成预留；只有占位 README
-docs/          本单只有 api-draft-v1.md，其他文档归 WorkBuddy
-prompts/       DeepSeek Harness 区域；本单仅建立空目录
-experiments/   实验区域；本单仅建立空目录
-test-records/  跑测记录区域；本单仅建立空目录
+docs/          API 草案、演示指南、开源组件登记表、技术文档与各项验收报告
+prompts/       Prompt 实验区域
+experiments/   实验区域
+test-records/  跑测与用例记录
+tests/         测试与验收脚本；tests/reports/ 存放各单验收报告与原始证据
 fixtures/      测试样本预留；只有占位 README，PDF 被忽略
+pdf/           官方测试用论文（被 .gitignore 排除，不入库）
+data/          运行时数据目录（被 .gitignore 排除）
 ```
 
-Git 不保存空目录。为遵守分工，本单不向 frontend、prompts、experiments、test-records 写入 README 或 .gitkeep；克隆后可在仓库根目录用 PowerShell 恢复这些空目录：
-
-```powershell
-'frontend', 'prompts', 'experiments', 'test-records' | ForEach-Object {
-    New-Item -ItemType Directory -Path $_ -Force | Out-Null
-}
-```
-
-数据契约入口：[contracts/CONTRACTS.md](contracts/CONTRACTS.md)。API 清单：[docs/api-draft-v1.md](docs/api-draft-v1.md)。未被现有五份契约覆盖的数据结构在 API 草案中明确登记，不能由后续模块自行补充。
+数据契约入口：[contracts/CONTRACTS.md](contracts/CONTRACTS.md)。API 清单：[docs/api-draft-v1.md](docs/api-draft-v1.md)。未被现有契约覆盖的数据结构在 API 草案中明确登记，不能由后续模块自行补充。技术文档见 [docs/technical-document.md](docs/technical-document.md)（PDF：[docs/technical-document.pdf](docs/technical-document.pdf)，实测 12 页）。
 
 ## 协作边界
 
