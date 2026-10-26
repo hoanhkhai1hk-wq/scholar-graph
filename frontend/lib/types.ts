@@ -383,6 +383,52 @@ export interface QaMeta {
   model_calls: ModelCallRow[];
 }
 
+// ------------------------------------------------ arXiv 追踪运行状态
+
+export interface TrackingError {
+  error_code: string;
+  message: string;
+  details: unknown;
+}
+
+export interface TrackingRun {
+  run_id: string;
+  started_at: string | null;
+  finished_at: string | null;
+  status: string;
+  duration_seconds: number | null;
+  candidate_count: number;
+  candidates: unknown[];
+  queries: unknown[];
+  imported_count: number;
+  duplicate_count: number;
+  failed_count: number;
+  errors: TrackingError[];
+  cleanup: unknown;
+  interval_seconds: number | null;
+  dedup_record_count: number | null;
+}
+
+export interface TrackingScheduler {
+  enabled: boolean;
+  mechanism: string;
+  active: boolean;
+  interval_seconds: number | null;
+  initial_delay_seconds: number | null;
+  max_imports: number | null;
+  run_count: number | null;
+  pid: number | null;
+  last_event: unknown;
+}
+
+export interface TrackingStatus {
+  latest_run: TrackingRun | null;
+  dedup_records: unknown[];
+  scheduler: string;
+  default_interval_seconds: number | null;
+  scheduler_details: TrackingScheduler | null;
+}
+
 // ------------------------------------------------ 模块三：英→中翻译与对齐
 
 export type TranslateScope = "abstract" | "section" | "selection" | "full";

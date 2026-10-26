@@ -18,6 +18,8 @@ import type {
   RecommendationItem,
   ReferenceEntry,
   ReviewDraft,
+  TrackingRun,
+  TrackingStatus,
   TranslateResponse,
   SearchHit,
   SearchMeta,
@@ -584,6 +586,25 @@ export async function generateReview(payload: {
   requirements?: string[];
 }): Promise<ReviewDraft> {
   return postJsonClient<ReviewDraft>("/reviews", payload);
+}
+
+// -------------------------------------------------- arXiv 定期追踪
+
+export async function fetchTrackingStatus(): Promise<TrackingStatus> {
+  // 与页面其它取数一致：走浏览器侧同源代理，避免服务端直连默认端口造成地址不一致
+  return requestJson<TrackingStatus>(clientUrl("/retrieval/tracking/status"), {
+    cache: "no-store",
+  });
+}
+
+export async function runTracking(body: {
+  paper_ids?: string[];
+  max_candidates?: number;
+  max_imports?: number;
+  interval_seconds?: number;
+  force?: boolean;
+}): Promise<TrackingRun> {
+  return postJsonClient<TrackingRun>("/retrieval/tracking/run", body);
 }
 
 // -------------------------------------------------- 模块三：英→中翻译
