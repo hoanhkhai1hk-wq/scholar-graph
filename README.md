@@ -4,7 +4,9 @@
 
 科研助手 Agent 系统：面向论文 PDF 的解析、问答、图谱、综述与写作辅助的全栈 Web 应用。
 
-当前状态：后端 19 条 HTTP 端点与前端界面已实现并可本地运行；问答与综述草稿为**摘录式**（不调用大模型），官方三用例未运行，GROBID 未联调。仓库名：`scholar-graph`；Python 包名：`scholar_graph`。所有路径和文件名使用英文。
+当前状态：后端 **28 条业务端点**与前端 9 条路由已实现并可本地运行。官方三用例（v7/v1 去重、扫描 OCR、541 页长书）在宿主机与容器**两环境分别实测通过**；真模型六题 6/6 通过；语义向量去重、GROBID 容器全文解析（仅显式补充路径）、原文文件端点与 pdf.js 版式阅读、引用图谱身份解析、每日自动追踪调度均已落地并通过验收。最终 Docker 部署验收通过，快速回归层 148 通过。仓库名：`scholar-graph`；Python 包名：`scholar_graph`。所有路径和文件名使用英文。
+
+仍保留的限制（详列见 [技术文档](docs/technical-document.md) 第十二节）：GROBID 默认上传/抓取路径未启用、reranker 二段精排未做、版式阅读为页级精度且仅官方 v7 实测、划词翻译与三维雷达图未实现、自由成文与文档导出未实现。在线演示地址（第⑧单补）。
 
 ## 快速开始
 
@@ -78,7 +80,7 @@ pdf/           官方测试用论文（被 .gitignore 排除，不入库）
 data/          运行时数据目录（被 .gitignore 排除）
 ```
 
-数据契约入口：[contracts/CONTRACTS.md](contracts/CONTRACTS.md)。API 清单：[docs/api-draft-v1.md](docs/api-draft-v1.md)。未被现有契约覆盖的数据结构在 API 草案中明确登记，不能由后续模块自行补充。技术文档见 [docs/technical-document.md](docs/technical-document.md)（PDF：[docs/technical-document.pdf](docs/technical-document.pdf)，实测 12 页）。
+数据契约入口：[contracts/CONTRACTS.md](contracts/CONTRACTS.md)。API 清单：[docs/api-draft-v1.md](docs/api-draft-v1.md)。未被现有契约覆盖的数据结构在 API 草案中明确登记，不能由后续模块自行补充。技术文档见 [docs/technical-document.md](docs/technical-document.md)（PDF：[docs/technical-document.pdf](docs/technical-document.pdf)，实测 16 页）。各单验收报告与原始证据在 `tests/reports/`。
 
 ## 协作边界
 
