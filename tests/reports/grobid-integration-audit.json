@@ -1,0 +1,94 @@
+{
+  "scope": "官方 pdf/ 真文件；审计通过不替代容器联调通过",
+  "baseline": "523d07666767c0cafd9f54ed1a5980af3b26176d",
+  "checks": [
+    {
+      "name": "official_file_identity",
+      "passed": true,
+      "detail": {
+        "filename": "1706.03762v7.pdf",
+        "bytes": 2215244,
+        "sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+      }
+    },
+    {
+      "name": "pdf_ignored",
+      "passed": true,
+      "detail": "pdf/1706.03762v7.pdf"
+    },
+    {
+      "name": "protected_paths_unchanged",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "no_pdf_added",
+      "passed": true,
+      "detail": [
+        "backend/README.md",
+        "services/README.md",
+        "services/docker-compose.grobid.yml",
+        "tests/run_grobid_acceptance.py",
+        "tests/test_grobid_evidence.py"
+      ]
+    },
+    {
+      "name": "keyless_local_service",
+      "passed": true,
+      "detail": {
+        "image": "grobid/grobid:0.9.1-full",
+        "ports": [
+          "127.0.0.1:8070:8070"
+        ]
+      }
+    },
+    {
+      "name": "fresh_mineru_records",
+      "passed": true,
+      "detail": {
+        "titles": 0,
+        "authors": 0,
+        "institutions": 0,
+        "abstracts": 0,
+        "chunks": 175,
+        "types": {
+          "text": 166,
+          "figure": 5,
+          "table": 4
+        },
+        "chunks_with_bbox": 175,
+        "distinct_section_paths": 29,
+        "references": 40,
+        "citation_links": 69
+      }
+    },
+    {
+      "name": "regression_no_failures",
+      "passed": true,
+      "detail": {
+        "tests": 535,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 5
+      }
+    },
+    {
+      "name": "live_failure_not_called_success",
+      "passed": true,
+      "detail": {
+        "live_passed": false,
+        "error": {
+          "type": "ConnectError",
+          "message": "[WinError 10061] 由于目标计算机积极拒绝，无法连接。"
+        }
+      }
+    },
+    {
+      "name": "credential_absent_from_artifacts",
+      "passed": true,
+      "detail": "仅检查，不输出凭据；未调用模型 API"
+    }
+  ],
+  "passed": true,
+  "live_acceptance_passed": false
+}

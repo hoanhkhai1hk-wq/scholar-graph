@@ -1,0 +1,236 @@
+{
+  "scope": "官方 pdf/ 真文件；本地 MinerU 与真实 GROBID 容器；不调用模型 API",
+  "started_utc": "2026-10-26T01:27:41.411059+00:00",
+  "revision": "130aab0124801e9bfe4c3df82b38168aaba615ec",
+  "input": {
+    "filename": "1706.03762v7.pdf",
+    "bytes": 2215244,
+    "sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+  },
+  "versions": {
+    "mineru": "4.0.12",
+    "httpx": "0.28.1",
+    "pypdf": "6.21.2"
+  },
+  "local_artifacts": "data\\grobid-integration\\20261026T012741Z-9ae086c5",
+  "passed": false,
+  "mineru": {
+    "elapsed_seconds": 6.75447,
+    "engine_seconds": 5.505349,
+    "native": {
+      "schema": "docvortex.middle",
+      "page_count": 15,
+      "block_types": {
+        "text": 121,
+        "doc_title": 1,
+        "paragraph_title": 27,
+        "aside_text": 1,
+        "page_number": 14,
+        "image": 5,
+        "equation": 7,
+        "page_footnote": 2,
+        "table": 4
+      },
+      "formula_samples": [
+        "{\"type\": \"equation\", \"index\": 6, \"bbox\": [0.358, 0.587, 0.825, 0.62], \"content\": \"\"}",
+        "{\"type\": \"equation\", \"index\": 3, \"bbox\": [0.366, 0.204, 0.695, 0.222], \"content\": \"\"}"
+      ],
+      "heading_samples": [
+        "Attention Is All You Need",
+        "Illia Polosukhin ∗  ‡",
+        "illia.polosukhin@gmail.com",
+        "Abstract",
+        "1 Introduction",
+        "2 Background",
+        "3 Model Architecture",
+        "3.1 Encoder and Decoder Stacks",
+        "3.2 Attention",
+        "3.2.1 Scaled Dot-Product Attention",
+        "3.2.2 Multi-Head Attention",
+        "MultiHead(Q, K, V ) = Concat(head 1 , ..., head h )W O",
+        "3.2.3 Applications of Attention in our Model",
+        "3.3 Position-wise Feed-Forward Networks",
+        "3.4 Embeddings and Softmax",
+        "3.5 Positional Encoding",
+        "4 Why Self-Attention",
+        "5 Training",
+        "5.1 Training Data and Batching",
+        "5.2 Hardware and Schedule",
+        "5.3 Optimizer",
+        "5.4 Regularization",
+        "6 Results",
+        "6.1 Machine Translation",
+        "6.2 Model Variations",
+        "6.3 English Constituency Parsing",
+        "7 Conclusion",
+        "References"
+      ]
+    },
+    "status": {
+      "schema_version": "1.1.0",
+      "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "status": "completed",
+      "progress": 100,
+      "current_stage": "四类记录与去重判定已通过校验并发布",
+      "error_code": null,
+      "error_message": null
+    },
+    "schema_and_anchor_gate": "passed",
+    "paper_meta": {
+      "schema_version": "1.0.0",
+      "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "title": null,
+      "authors": [],
+      "institutions": [],
+      "abstract": null,
+      "year": null,
+      "source": "local-upload",
+      "arxiv_id": "1706.03762v7",
+      "doi": null,
+      "version": "v7",
+      "file_hash": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "page_count": 15,
+      "has_text_layer": true
+    },
+    "counts": {
+      "titles": 0,
+      "authors": 0,
+      "institutions": 0,
+      "abstracts": 0,
+      "chunks": 175,
+      "types": {
+        "text": 166,
+        "figure": 5,
+        "table": 4
+      },
+      "chunks_with_bbox": 175,
+      "distinct_section_paths": 29,
+      "references": 40,
+      "citation_links": 69
+    },
+    "reference_coverage": {
+      "title": 0,
+      "authors": 0,
+      "year": 0,
+      "venue": 0,
+      "doi": 0
+    },
+    "samples": {
+      "table": {
+        "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00066",
+        "page_number": 6,
+        "section_path": [
+          "MultiHead(Q, K, V ) = Concat(head 1 , ..., head h )W O",
+          "3.4 Embeddings and Softmax"
+        ],
+        "type": "table",
+        "bbox": [
+          0.194,
+          0.142,
+          0.806,
+          0.236
+        ],
+        "text": "Table 1: Maximum path lengths, per-layer complexity and minimum number of sequential operations for different layer types. n is the sequence length, d is the representation dimension, k is the kernel size of convolutions and r the size of the neighborhood in restricted self-attention. <table><tbody><tr><td>Layer Type</td><td>Complexity per Layer</td><td>Sequential Operations</td><td>Maximum Path Length</td></tr><tr><td>Self-Attention</td><td>O(n<sup>2</sup> · d)</td><td>O(1)</td><td>O(1)</td></tr><tr><td>Recurrent</td><td>O(n · d<sup>2</sup>)</td><td>O(n)</td><td>O(n)</td></tr><tr><td>Convolutional</td><td>O(k · n · d<sup>2</sup>)</td><td>O(1)</td><td>O(log<sub>k</sub>(n))</td></tr><tr><td>Self-Attention (restricted)</td><td>O(r · n · d)</td><td>O(1)</td><td>O(n/r)</td></tr></tbody></table>"
+      },
+      "formula": null,
+      "first_page_chunks": [
+        {
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00001",
+          "text": "Provided proper attribution is provided, Google hereby grants permission to reproduce the tables and figures in this paper solely for use in journalistic or scholarly works."
+        },
+        {
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00002",
+          "text": "Attention Is All You Need"
+        },
+        {
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00003",
+          "text": "Ashish Vaswani ∗ Google Brain avaswani@google.com  Llion Jones ∗  Google Research llion@google.com"
+        },
+        {
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00004",
+          "text": "Noam Shazeer ∗  Google Brain noam@google.com  Aidan N. Gomez ∗  † University of Toronto aidan@cs.toronto.edu"
+        },
+        {
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00005",
+          "text": "Niki Parmar ∗  Google Research nikip@google.com"
+        },
+        {
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00006",
+          "text": "Jakob Uszkoreit ∗  Google Research usz@google.com  Łukasz Kaiser ∗  Google Brain lukaszkaiser@google.com"
+        },
+        {
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00007",
+          "text": "Illia Polosukhin ∗  ‡"
+        },
+        {
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00008",
+          "text": "illia.polosukhin@gmail.com"
+        },
+        {
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00009",
+          "text": "Abstract"
+        }
+      ],
+      "abstract_chunks": [
+        {
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00009",
+          "page_number": 1,
+          "text": "Abstract"
+        },
+        {
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00010",
+          "page_number": 1,
+          "text": "The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely. Experiments on two machine translation tasks show these models to be superior in quality while being more parallelizable and requiring significantly less time to train. Our model achieves 28.4 BLEU on the WMT 2014 Englishto-German translation task, improving over the existing best results, including ensembles, by over 2 BLEU. On the WMT 2014 English-to-French translation task, our model establishes a new single-model state-of-the-art BLEU score of 41.8 after training for 3.5 days on eight GPUs, a small fraction of the training costs of the best models from the literature. We show that the Transformer generalizes well to other tasks by applying it successfully to English constituency parsing both with large and limited training data."
+        }
+      ],
+      "references": [
+        {
+          "schema_version": "1.0.0",
+          "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-1",
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "number": 1,
+          "authors": [],
+          "year": null,
+          "title": null,
+          "venue": null,
+          "doi": null,
+          "arxiv_id": null
+        },
+        {
+          "schema_version": "1.0.0",
+          "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-2",
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "number": 2,
+          "authors": [],
+          "year": null,
+          "title": null,
+          "venue": null,
+          "doi": null,
+          "arxiv_id": null
+        }
+      ]
+    }
+  },
+  "grobid_error": {
+    "type": "ConnectError",
+    "message": "[WinError 10061] 由于目标计算机积极拒绝，无法连接。"
+  },
+  "docker": {
+    "version": {
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "failed to connect to the docker API at npipe:////./pipe/dockerDesktopLinuxEngine; check if the path is correct and if the daemon is running: open //./pipe/dockerDesktopLinuxEngine: The system cannot find the file specified."
+    },
+    "service": {
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "failed to connect to the docker API at npipe:////./pipe/dockerDesktopLinuxEngine; check if the path is correct and if the daemon is running: open //./pipe/dockerDesktopLinuxEngine: The system cannot find the file specified."
+    },
+    "image": {
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "failed to connect to the docker API at npipe:////./pipe/dockerDesktopLinuxEngine; check if the path is correct and if the daemon is running: open //./pipe/dockerDesktopLinuxEngine: The system cannot find the file specified."
+    }
+  },
+  "finished_utc": "2026-10-26T01:27:51.181378+00:00"
+}
