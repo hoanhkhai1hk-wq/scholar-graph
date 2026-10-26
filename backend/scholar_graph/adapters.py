@@ -24,7 +24,7 @@ class LocalEngines:
         cache = self.cache_dir.resolve()
         env.update({"PYTHONIOENCODING": "utf-8", "HF_HOME": str(cache / "huggingface"),
                     "MODELSCOPE_CACHE": str(cache / "modelscope"),
-                    "PADDLE_PDX_CACHE_HOME": str(cache / "paddlex"),
+                    "PADDLE_PDX_CACHE_HOME": str(Path(os.environ.get("SCHOLAR_GRAPH_OCR_CACHE_DIR", cache / "paddlex")).resolve()),
                     "PADDLE_PDX_DISABLE_MODEL_SOURCE_CHECK": "True"})
         command = [sys.executable, str(Path(__file__).with_name("_engine_worker.py")),
                    str(pdf), mode, self.language, json.dumps(pages or [])]

@@ -14,6 +14,7 @@ services:
     environment:
       SCHOLAR_GRAPH_DATA_DIR: /app/data/records
       SCHOLAR_GRAPH_QA_MODE: extractive
+      SCHOLAR_GRAPH_OCR_CACHE_DIR: /app/data/paddle-models
       SCHOLAR_GRAPH_RETRIEVAL_MODE: bge_m3_hybrid
       SCHOLAR_GRAPH_QA_RETRIEVAL_MODE: hybrid
       SCHOLAR_GRAPH_TRACKING_ENABLED: "true"

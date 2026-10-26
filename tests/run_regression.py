@@ -33,6 +33,13 @@ def main():
                 env.pop(name)
         env.pop('DEEPSEEK_MODEL', None)
     env.update(SCHOLAR_GRAPH_TRACKING_ENABLED='false', PYTHONIOENCODING='utf-8')
+    if args.layer=='full':
+        env.setdefault('SCHOLAR_GRAPH_OCR_CACHE_DIR',str(ROOT/'data/paddle-models'))
+        # Public download/initialization has a separate bounded preparation stage;
+        # actual inference still runs in every real OCR test with normal limits.
+        prepared=subprocess.run([sys.executable,'backend/prepare_ocr_models.py'],cwd=ROOT,env=env)
+        if prepared.returncode:
+            return prepared.returncode
     return subprocess.run(command, cwd=ROOT, env=env).returncode
 
 

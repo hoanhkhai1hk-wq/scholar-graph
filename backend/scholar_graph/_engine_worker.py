@@ -10,17 +10,20 @@ def mineru_text(path):
     return parse(path, tier="flash", ocr_mode="txt", image_analysis=False).to_dict()
 
 
-def paddle_text(path, language, pages):
-    import numpy as np
-    import pypdfium2 as pdfium
+def paddle_engine(language):
     from paddleocr import PaddleOCR
-
-    engine = PaddleOCR(lang=language, ocr_version="PP-OCRv5", device="cpu", cpu_threads=4,
+    return PaddleOCR(lang=language, ocr_version="PP-OCRv5", device="cpu", cpu_threads=4,
                        text_detection_model_name="PP-OCRv5_mobile_det",
                        text_recognition_model_name=("en_PP-OCRv5_mobile_rec" if language == "en" else "PP-OCRv5_mobile_rec"),
                        text_recognition_batch_size=8,
                        use_doc_orientation_classify=False, use_doc_unwarping=False,
                        use_textline_orientation=False, enable_mkldnn=False)
+
+
+def paddle_text(path, language, pages):
+    import numpy as np
+    import pypdfium2 as pdfium
+    engine = paddle_engine(language)
     document = pdfium.PdfDocument(path)
     result_pages = []
     try:
