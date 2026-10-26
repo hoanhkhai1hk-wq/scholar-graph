@@ -1,8 +1,8 @@
 # Optional, separate service. Does not enable enrichment in the HTTP upload factory.
-# Official CPU/GPU-capable full image, including header/citation models.
+# Official CRF CPU image; full-text/header/reference outputs are measured by the probe.
 services:
   grobid:
-    image: grobid/grobid:0.9.1-full
+    image: grobid/grobid:0.9.1-crf
     platform: linux/amd64
     init: true
     ports:
