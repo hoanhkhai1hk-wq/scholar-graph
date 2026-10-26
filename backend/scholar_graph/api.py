@@ -1,6 +1,7 @@
 """Approved HTTP routes including QA SSE; no background job queue."""
 
 import os
+from contextlib import asynccontextmanager
 from pathlib import Path
 
 from fastapi import FastAPI, Query, Response, Request, UploadFile, File
@@ -27,6 +28,7 @@ from .translation_routes import translation_routes
 from .topology_routes import topology_routes
 from .tracking import TrackingService
 from .tracking_routes import tracking_routes
+from .tracking_scheduler import ScheduleConfig, TrackingScheduler
 from .pdf_files import PdfFiles
 from .pdf_response import PdfResponse
 
@@ -43,7 +45,15 @@ def create_app(*, data_dir=None, pipeline_factory=None):
                 Path(__file__).resolve().parents[2] / "data" / "module-one").resolve()
     gate = ContractGate()
     repository = ApiRepository(root, gate)
-    app = FastAPI(title="ScholarGraph modules one, two, four, five and six", version="1.2.0")
+    @asynccontextmanager
+    async def lifespan(application):
+        application.state.tracking_scheduler.start()
+        try:
+            yield
+        finally:
+            application.state.tracking_scheduler.stop()
+
+    app = FastAPI(title="ScholarGraph modules one, two, four, five and six", version="1.2.0", lifespan=lifespan)
     app.add_middleware(
         CORSMiddleware,
         allow_origins=LOCAL_ORIGINS,
@@ -61,6 +71,7 @@ def create_app(*, data_dir=None, pipeline_factory=None):
     app.state.search = SearchService(repository, vector_from_environment(root))
     app.state.arxiv_fetcher = ArxivFetcher(repository, lock=uploads.lock)
     app.state.tracking = TrackingService(repository, app.state.arxiv_fetcher)
+    app.state.tracking_scheduler = TrackingScheduler(app.state.tracking, ScheduleConfig.environment())
 
     def error_response(code, message, status):
         value = {"error_code": code, "message": message, "details": None}

@@ -38,7 +38,10 @@ def tracking_routes():
 
     @router.get("/retrieval/tracking/status")
     def status(request: Request):
-        return request.app.state.tracking.status()
+        value = request.app.state.tracking.status()
+        scheduler = request.app.state.tracking_scheduler.snapshot()
+        return {**value, 'scheduler': 'backend_interval' if scheduler['enabled'] else value['scheduler'],
+                'scheduler_details': scheduler}
 
     @router.post("/retrieval/citations/cleanup")
     def cleanup(request: Request):
