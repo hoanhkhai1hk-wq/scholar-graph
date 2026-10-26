@@ -1,0 +1,9 @@
+#!/bin/sh
+set -eu
+if [ -x backend/.venv/Scripts/python.exe ]; then
+  exec backend/.venv/Scripts/python.exe tests/run_regression.py fast --no-key
+elif [ -x backend/.venv/bin/python ]; then
+  exec backend/.venv/bin/python tests/run_regression.py fast --no-key
+else
+  exec python tests/run_regression.py fast --no-key
+fi
