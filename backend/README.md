@@ -8,6 +8,8 @@ Linux 向量虚拟环境使用 `venv --copies`：现有 worker 会正规化 Pyth
 
 公开构建依赖下载保留真实失败输出：npm ci 最多3次完整尝试（请求超时600秒），Debian使用官方HTTPS源和有界重试；达到上限仍构建失败，不把网络失败当作构建成功。
 
+两个Python环境先固定安装pip 26.2.2，公开依赖下载最多20次断点恢复，继续保留下载完整性校验。基础镜像自带pip 25.0.1没有默认断点恢复，本轮曾把196.3 MB CPU torch下载到34 MB即断开并被SHA-256校验拦下，不能忽略此错误。
+
 公开OCR模型准备：`docker compose exec -T backend python backend/prepare_ocr_models.py`。只初始化现有Paddle引擎并下载公开权重，不读取PDF、不创建论文记录；单独限时7200秒，失败返回非零。Compose显式使用持久卷中的`SCHOLAR_GRAPH_OCR_CACHE_DIR=/app/data/paddle-models`，页面推理仍保留原90秒上限与逐页错误。全量回归入口先做同一准备，再真实跑每项OCR推理，避免把慢网络下载反复计入每个临时测试库的单页时限；测试记录和索引仍隔离。
 
 ```powershell

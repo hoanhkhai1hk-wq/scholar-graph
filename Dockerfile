@@ -33,8 +33,9 @@ FROM ${PYTHON_IMAGE} AS vector-runtime
 COPY backend/requirements-retrieval.txt /tmp/requirements-retrieval.txt
 # Separate from PaddleOCR's dependencies; public CPU wheels only, no credentials.
 RUN python -m venv --copies /opt/vector-venv \
-    && /opt/vector-venv/bin/python -m pip install --no-cache-dir --index-url https://download.pytorch.org/whl/cpu torch==2.14.1+cpu \
-    && /opt/vector-venv/bin/python -m pip install --no-cache-dir -r /tmp/requirements-retrieval.txt \
+    && /opt/vector-venv/bin/python -m pip install --no-cache-dir --timeout 60 pip==26.2.2 \
+    && /opt/vector-venv/bin/python -m pip install --no-cache-dir --timeout 60 --resume-retries 20 --index-url https://download.pytorch.org/whl/cpu torch==2.14.1+cpu \
+    && /opt/vector-venv/bin/python -m pip install --no-cache-dir --timeout 60 --resume-retries 20 -r /tmp/requirements-retrieval.txt \
     && /opt/vector-venv/bin/python -m pip check \
     && /opt/vector-venv/bin/python -c "from pathlib import Path; import subprocess,sys; subprocess.run([str(Path(sys.executable).resolve()), '-c', 'import torch, chromadb, FlagEmbedding'], check=True)"
 
@@ -57,7 +58,9 @@ RUN sed -i 's|http://deb.debian.org|https://deb.debian.org|g' /etc/apt/sources.l
 WORKDIR /app
 COPY backend/ ./backend/
 COPY contracts/ ./contracts/
-RUN python -m pip install './backend[ocr,test]' && python -m pip check
+RUN python -m pip install --no-cache-dir --timeout 60 pip==26.2.2 \
+    && python -m pip install './backend[ocr,test]' --timeout 60 --resume-retries 20 \
+    && python -m pip check
 COPY --from=vector-runtime /opt/vector-venv /opt/vector-venv
 # Include independently built Node/TypeScript for the existing actual proxy test.
 COPY --from=frontend-dependencies /usr/local/bin/node /usr/local/bin/node
