@@ -13,11 +13,23 @@ NS = {"t": "http://www.tei-c.org/ns/1.0"}
 
 
 def text(node):
-    return " ".join("".join(node.itertext()).split()) if node is not None else None
+    if node is None:
+        return None
+    return " ".join("".join(node.itertext()).split()) or None
+
+
+def person_name(node):
+    # TEI serializes adjacent <forename>/<surname> tags without whitespace.
+    # Insert boundaries between name components, preserving inline markup
+    # inside each component (and any direct text/tails in mixed-content names).
+    parts = [node.text or ""]
+    for component in node:
+        parts.extend((text(component) or "", component.tail or ""))
+    return " ".join(" ".join(parts).split()) or None
 
 
 def authors(node):
-    return [name for item in node.findall(".//t:author/t:persName", NS) if (name := text(item))]
+    return [name for item in node.findall(".//t:author/t:persName", NS) if (name := person_name(item))]
 
 
 def year(node):

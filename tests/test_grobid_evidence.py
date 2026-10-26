@@ -8,7 +8,6 @@ from defusedxml import ElementTree as ET
 from run_grobid_acceptance import tei_summary, command
 from scholar_graph.grobid import GrobidClient
 from scholar_graph.validation import ContractGate
-from scholar_graph.errors import PipelineError
 from scholar_graph.pipeline import Pipeline
 from sample_pdfs import make_pdf
 from test_validation_status import example_bundle
@@ -83,9 +82,8 @@ def test_docker_metadata_probe_decodes_utf8_on_windows():
     assert result == {"exit_code": 0, "stdout": "…", "stderr": ""}
 
 
-def test_empty_grobid_reference_fields_fail_before_publication(tmp_path):
-    # Reproduce the real CRF response shape with a self-made TEI. This protects
-    # the schema gate; it does not claim the existing converter has been fixed.
+def test_empty_grobid_reference_fields_become_null_and_publish(tmp_path):
+    # The same self-made CRF shape used to fail on empty title/venue strings.
     root = ET.fromstring(TEI)
     namespace = {"t": "http://www.tei-c.org/ns/1.0"}
     ref = root.find(".//t:listBibl/t:biblStruct", namespace)
@@ -94,8 +92,8 @@ def test_empty_grobid_reference_fields_fail_before_publication(tmp_path):
     client = GrobidClient("http://127.0.0.1:8070", transport=httpx.MockTransport(
         lambda request: httpx.Response(200, content=ET.tostring(root))))
     pipeline = Pipeline(tmp_path / "records", grobid=client)
-    with pytest.raises(PipelineError, match="ReferenceEntry"):
-        pipeline.parse(make_pdf(tmp_path / "self-made.pdf"))
-    assert pipeline.last_job.current["status"] == "failed"
-    assert pipeline.last_job.current["error_code"] == "VALIDATION_ERROR"
-    assert not (pipeline.store.root / "papers").exists()
+    result = pipeline.parse(make_pdf(tmp_path / "self-made.pdf"))
+    assert pipeline.last_job.current["status"] == "completed"
+    assert result["reference_entries"][0]["title"] is None
+    assert result["reference_entries"][0]["venue"] is None
+    ContractGate().bundle(pipeline.store.load(pipeline.last_output))
