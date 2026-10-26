@@ -1,0 +1,31 @@
+{
+  "checks": {
+    "official_source_identity": true,
+    "upload_original_matches_response": true,
+    "upload_bounded_asgi_stream": true,
+    "final_original_matches_response": true,
+    "final_bounded_asgi_stream": true,
+    "historical_original_matches_response": true,
+    "historical_bounded_asgi_stream": true,
+    "real_arxiv_pdf_original_matches_response": true,
+    "real_arxiv_pdf_bounded_asgi_stream": true,
+    "private_archived_bytes_match": true,
+    "traversal_and_unknown_rejected": true,
+    "legacy_same_hash_recovery": true,
+    "real_public_download_matches_saved_original": true,
+    "metadata_query_failure_not_reported_as_success": true,
+    "pdf_ignored": true,
+    "protected_paths_unchanged": true,
+    "final_regression_passes": true,
+    "credential_absent": true
+  },
+  "regression": {
+    "tests": 552,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 5
+  },
+  "passed": true,
+  "endpoint_checks_passed": true,
+  "fresh_metadata_api_passed": false
+}

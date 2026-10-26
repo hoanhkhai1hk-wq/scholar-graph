@@ -1,0 +1,175 @@
+{
+  "scope": "官方 pdf/ 真文件上传 + 真实公开 arXiv 抓取；无模型 API/Key",
+  "revision": "a60dffd2bb94e8542bf2874e2c0fe4f430ae992f",
+  "timestamp_utc": "2026-10-26T03:24:30.848164+00:00",
+  "local_artifacts": "data\\pdf-file-acceptance\\2f3ce3880f474e26a8fffc40c66a0de7",
+  "input": {
+    "name": "1706.03762v7.pdf",
+    "sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+    "bytes": 2215244
+  },
+  "upload": {
+    "status": 201,
+    "elapsed_seconds": 7.154795,
+    "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+    "file_hash": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+    "file": {
+      "status": 200,
+      "content_type": "application/pdf",
+      "content_disposition": "inline; filename=\"paper.pdf\"",
+      "bytes": 2215244,
+      "sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "asgi": {
+        "status": [
+          200
+        ],
+        "chunks": 34,
+        "max_chunk_bytes": 65536,
+        "bytes": 2215244,
+        "sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+      }
+    }
+  },
+  "passed": false,
+  "range": {
+    "status": 206
+  },
+  "rejected": [
+    {
+      "path": "/api/v1/papers/paper-unknown/file",
+      "status": 404,
+      "body": {
+        "error_code": "PAPER_NOT_FOUND",
+        "message": "无该论文的本地 PDF 原件；历史记录需重新上传同一原件补齐。",
+        "details": null
+      }
+    },
+    {
+      "path": "/api/v1/papers/%2e%2e%5cprivate/file",
+      "status": 404,
+      "body": {
+        "error_code": "PAPER_NOT_FOUND",
+        "message": "无该论文的 PDF 原件。",
+        "details": null
+      }
+    },
+    {
+      "path": "/api/v1/papers/%2e%2e%2fprivate/file",
+      "status": 404,
+      "body": {
+        "error_code": "PAPER_NOT_FOUND",
+        "message": "无该资源或端点。",
+        "details": null
+      }
+    },
+    {
+      "path": "/api/v1/papers/%252e%252e%255cprivate/file",
+      "status": 404,
+      "body": {
+        "error_code": "PAPER_NOT_FOUND",
+        "message": "无该论文的 PDF 原件。",
+        "details": null
+      }
+    },
+    {
+      "path": "/api/v1/papers/paper%27%20OR%201=1--/file",
+      "status": 404,
+      "body": {
+        "error_code": "PAPER_NOT_FOUND",
+        "message": "无该论文的 PDF 原件。",
+        "details": null
+      }
+    }
+  ],
+  "arxiv": {
+    "http_status": 200,
+    "elapsed_seconds": 0.547935,
+    "succeeded": false,
+    "error": {
+      "error_code": "UPSTREAM_ERROR",
+      "message": "arXiv 公共接口返回 HTTP 429，未取得所需记录或文件。",
+      "details": null
+    },
+    "download": null
+  },
+  "historical_arxiv": {
+    "provenance": "module-four-smoke.json/LIVE-public-arxiv-reference; not a fresh fetch",
+    "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+    "arxiv_id": "1706.03762v7",
+    "source": "https://arxiv.org/abs/1706.03762v7",
+    "file_hash": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+    "before": {
+      "status": 404,
+      "body": {
+        "error_code": "PAPER_NOT_FOUND",
+        "message": "无该论文的本地 PDF 原件；历史记录需重新上传同一原件补齐。",
+        "details": null
+      }
+    },
+    "same_hash_reupload_status": 201,
+    "after": {
+      "status": 200,
+      "content_type": "application/pdf",
+      "content_disposition": "inline; filename=\"paper.pdf\"",
+      "bytes": 2215244,
+      "sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "asgi": {
+        "status": [
+          200
+        ],
+        "chunks": 34,
+        "max_chunk_bytes": 65536,
+        "bytes": 2215244,
+        "sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+      }
+    }
+  },
+  "endpoint_checks_passed": true,
+  "fresh_public_arxiv_passed": false,
+  "verified_metadata_arxiv": {
+    "provenance": "historical verified Atom metadata; fresh real arxiv.org PDF download via existing fetch_metadata; not fresh metadata API",
+    "succeeded": true,
+    "elapsed_seconds": 7.555025,
+    "error": null,
+    "download": {
+      "bytes": 2215244,
+      "sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+    },
+    "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+    "source": "https://arxiv.org/abs/1706.03762v7",
+    "file_hash": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+    "file": {
+      "status": 200,
+      "content_type": "application/pdf",
+      "content_disposition": "inline; filename=\"paper.pdf\"",
+      "bytes": 2215244,
+      "sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "asgi": {
+        "status": [
+          200
+        ],
+        "chunks": 34,
+        "max_chunk_bytes": 65536,
+        "bytes": 2215244,
+        "sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+      }
+    }
+  },
+  "final_file_check": {
+    "source_revision": "cb7b0ea98e2ba73252d93b07b4e26203c6e155b7",
+    "status": 200,
+    "content_type": "application/pdf",
+    "content_disposition": "inline; filename=\"paper.pdf\"",
+    "bytes": 2215244,
+    "sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+    "asgi": {
+      "status": [
+        200
+      ],
+      "chunks": 34,
+      "max_chunk_bytes": 65536,
+      "bytes": 2215244,
+      "sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+    }
+  }
+}
