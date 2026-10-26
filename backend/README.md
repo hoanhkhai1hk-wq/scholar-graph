@@ -67,7 +67,7 @@ backend/.venv/Scripts/python.exe -m uvicorn scholar_graph.api:create_app --facto
 
 OpenAPI 为 `http://127.0.0.1:8000/openapi.json`，Swagger 为 `/docs`。上传单文件字段为 file，批量为重复 files 字段；文献详情中的 Link 头给出 chunks、references、citation-links 的真实取数路径。详情/状态/去重/差异返回裸记录；列表统一分页，page_size 超过 100 按 100 计。去重、差异的路径参数为 **new_paper_id**，没有记录时 404，不返回空记录。
 
-完整请求、响应及 19 条草案端点的实施清单见 [API 草案](../docs/api-draft-v1.md)；HTTP 实测及可复现命令见 [本轮报告](../tests/reports/module-one-api-report.md)。新增响应只是本轮获批的传输封装，九份业务 Schema 未改。HTTP 默认工厂不启用 GROBID；独立容器联调的当前状态见 tests/reports/grobid-integration-acceptance.md。没有验证前端接通。
+完整请求、响应及 19 条草案端点的实施清单见 [API 草案](../docs/api-draft-v1.md)；HTTP 实测及可复现命令见 [本轮报告](../tests/reports/module-one-api-report.md)。新增响应只是本轮获批的传输封装，九份业务 Schema 未改。HTTP 默认工厂已启用可回落的GROBID增强；当前接线与实测见tests/reports/grobid-default-path-acceptance.md，早期独立联调报告保留。没有验证前端接通。
 
 ## 原文 PDF 文件端点
 
@@ -141,7 +141,7 @@ backend/.venv/Scripts/python.exe -m uvicorn scholar_graph.api:create_app --facto
 
 运行期模型完全离线，不隐式下载或使用远程Embedding接口；worker不继承API_KEY/TOKEN/SECRET/PASSWORD类环境变量。未启用为lexical/NOT_ENABLED；模型缺失、依赖错误、worker失败或240秒超时为lexical/UNAVAILABLE，不伪报向量成功。Chroma持久数据位于当前 SCHOLAR_GRAPH_DATA_DIR/chroma-bge-m3；启动使用单worker，单实例向量操作串行，上传和抓取复用同一写锁。本实现面向本机开发，不声称分布式索引或异步队列。
 
-POST /api/v1/retrieval/fetch 接收 `{title}` 或 `{reference:完整ReferenceEntry}`。通过公开 arXiv API 唯一匹配标题/标识/裸DOI，先保存真实元数据，再下载PDF并复用模块一Pipeline、ParseJob和所有校验/发布/去重逻辑。固定HTTP200操作封装 `{succeeded,metadata,paper,initial_parse_status,parse_status,error}`；失败保留真实原因，下载前未拿到PDF不伪建queued。metadata的arxiv-id与paper的PDF哈希id明确分开，catalog里的未解析元数据不混入/papers。请求非法仍为422三字段统一错误。无真实Key、无另起解析管线；该 HTTP 抓取路径不启用 GROBID。
+POST /api/v1/retrieval/fetch 接收 `{title}` 或 `{reference:完整ReferenceEntry}`。通过公开 arXiv API 唯一匹配标题/标识/裸DOI，先保存真实元数据，再下载PDF并复用模块一Pipeline、ParseJob和所有校验/发布/去重逻辑。固定HTTP200操作封装 `{succeeded,metadata,paper,initial_parse_status,parse_status,error}`；失败保留真实原因，下载前未拿到PDF不伪建queued。metadata的arxiv-id与paper的PDF哈希id明确分开，catalog里的未解析元数据不混入/papers。请求非法仍为422三字段统一错误。无真实Key、无另起解析管线；该HTTP抓取路径复用与默认上传相同的可回落GROBID增强；可选parse_metadata位于传输封装中。
 
 真实公开探针已获取1706.03762v7《Attention Is All You Need》，复用MinerU解析15页，得到1 PaperMeta /175 Chunk /40 ReferenceEntry /69 CitationLink。它是一次公开论文连通性验证，不能替代真实论文解析质量评测或官方比赛用例。自制Atom+PDF测试另得到1/6/1/1。
 
@@ -220,13 +220,17 @@ backend/.venv/Scripts/python.exe -m scholar_graph compare data/module-one/papers
 
 系统记录原样保留为数组第一项，人工意见是另一项且 human_override=true。程序不删除 PDF，不覆盖原系统 recommendation，也不自动执行淘汰。人工依据本身是人工意见，不冒充程序验证的科研质量结论。
 
-## 可选 GROBID
+## 默认 GROBID 增强与显式补充
 
-配置 `GROBID_URL` 或 `--grobid-url http://127.0.0.1:8070` 后，通过 multipart 调用 `/api/processFulltextDocument`，尝试将 TEI 元数据和参考文献归一化为现有契约。默认关闭，不影响 MinerU 本地直跑。配置后调用失败即输出 UPSTREAM_ERROR，不静默声称已经用到 GROBID。禁用服务端 Crossref consolidation，避免隐式联网补元数据。
+默认HTTP上传（单个/批量）和arXiv下载后的Pipeline，在MinerU解析后尝试GROBID。默认`SCHOLAR_GRAPH_GROBID_ENABLED=true`，`GROBID_URL=http://127.0.0.1:8070`，`SCHOLAR_GRAPH_GROBID_TIMEOUT=60`秒（允许0至120秒且大于0）。Docker Desktop后端使用`http://host.docker.internal:8070`访问独立服务；服务启动命令为`docker compose -p scholar-graph-grobid -f services/docker-compose.grobid.yml up -d`，官方镜像仍为`grobid/grobid:0.9.1-crf`。无需Key，关闭Crossref consolidation。
 
-当前独立服务配置为 services/docker-compose.grobid.yml，使用 grobid/grobid:0.9.1-crf，启动命令见 services/README.md。配置语法通过不等于容器解析通过；Mock HTTP/TEI 不算联调证据。只有显式 CLI 参数/环境变量或 Pipeline(grobid=...) 启用补充，默认 HTTP 上传与 arXiv 抓取不读取 GROBID_URL。GROBID 补 PaperMeta 与 ReferenceEntry，并重建 CitationLink；Chunk、物理页与 bbox 仍由 MinerU 负责，GROBID 正文结构不会替换 Chunk。
+服务不可达、超时、HTTP/XML/Schema错误或无法合并时保留整份原始MinerU结果，上传继续发布；不会将失败TEI或部分修改混入记录。显式禁用增强设`SCHOLAR_GRAPH_GROBID_ENABLED=false`。独立CLI `--grobid-url`及`Pipeline(grobid=...)`继续采用严格补充语义，显式失败仍报错；不把该行为变化扩大到旧显式调用者。
 
-2026-10-26 官方 Attention v7 容器全文解析已实测。早期联调曾因第 1 条参考文献 title/venue 空字符串被拒收；C-补将空节点归一为 null，并修复 persName 分量间距后，显式补充路径已通过原契约，成功发布 1 组论文、40 条参考文献。最新证据见 tests/reports/grobid-conversion-fix-acceptance.md；tests/reports/grobid-integration-acceptance.md 保留历史失败。默认 HTTP 上传与 arXiv 路径仍未启用 GROBID；CRF 作者/机构误识别仍存在，空值与间距修复不能解决该实体识别问题。
+合并规则：上传的title/authors/institutions/abstract采用GROBID非空值；已知本地DOI优先、GROBID只补空DOI；年份始终沿用本地或已核验arXiv值，GROBID header日期不能可靠区分版本日期，留在方法日志中不自动写入year。arXiv抓取的已核验非空题录字段优先，GROBID只补缺项。空数组/null不清空已有值。作者中含明确机构关键词、机构中含工作声明/会议脚注的候选值会被规则过滤并记入日志；此过滤不等于通用实体识别质量保证。id、schema_version、file_hash、页数、文本层、source/arxiv_id/version及全部Chunk/页码/章节/bbox保持原值。参考文献保留MinerU的number/ref_id/paper_id；只对同序号且有一致DOI/arXiv、规范化标题或作者年份依据的条目使用GROBID非空字段，不按序号盲换、不添加无法对齐的条目。原CitationLink保留，并只从真实Chunk重建补充链接；输出仍走原Schema与外键门禁。CRF仍可能有作者/机构识别误差，增强不等于人工校正。
+
+可选方法元数据不进入任何冻结契约：单上传、详情和解析状态的`X-ScholarGraph-Parse-Meta`响应头（percent-encoded UTF-8 JSON，已向CORS暴露）；批量成功项和arXiv抓取封装可含`parse_metadata`。`method`为`mineru`（明确禁用）、`mineru+grobid`（真实调用、有效且有增强）、`mineru-fallback`（尝试失败或无可合并内容）。包含调用耗时、错误类别、增强字段与参考匹配数量。逐条匹配依据保存在数据目录`jobs/<job_id>/parse-metadata.json`，响应只给有界摘要。相同文件重传复用不可覆盖的旧记录、原方法与原调用耗时（source_job_id标明来源），`cache_hit=true`且`grobid_attempted=false`，不声称重新增强；历史未记录方法的旧文件不自动改写。
+
+实测：[默认路径验收](../tests/reports/grobid-default-path-acceptance.md)。该单验证主干源代码的默认工厂；已有运行容器不会因git pull自动更新，部署需按Docker构建流程重建后端镜像。前端与原契约未改。
 
 ## 验证与范围
 
@@ -238,7 +242,7 @@ backend/.venv/Scripts/python.exe tests/run_module_one_smoke.py --output-root dat
 
 722 个边界用例证据见 tests/reports/contract-boundaries.md 和 JSON 逐项结果。解析/去重实跑报告见 tests/reports/module-one-report.md。所有 PDF 都是脚本自制，非官方 pdf/ 用例，不声称官方三用例通过。
 
-当前细粒度能力的边界：本地文本模式按 MinerU 返回块分割；参考文献回退只确认编号条目，支持明确的作者（年份）标题格式和数字引用；未覆盖作者年份正文引用、复杂跨栏引用、表格/公式识别质量或全类型论文。真实论文质量尚需独立评测。GROBID 可补充结构化元数据；当前容器联调证据另见 grobid-integration-acceptance.md，不将早期 mock 写成真实接通。早期OCR证据为干净英文自制样例；本轮官方 pdf/ 真文件的产出、失败页与耗时另见修复验收报告，不将识别完成等同于逐字准确率评测。
+当前细粒度能力的边界：本地文本模式按 MinerU 返回块分割；参考文献回退只确认编号条目，支持明确的作者（年份）标题格式和数字引用；未覆盖作者年份正文引用、复杂跨栏引用、表格/公式识别质量或全类型论文。真实论文质量尚需独立评测。GROBID默认增强的最新接线和实测见grobid-default-path-acceptance.md；独立容器联调历史证据另见grobid-integration-acceptance.md，不将早期 mock 写成真实接通。早期OCR证据为干净英文自制样例；本轮官方 pdf/ 真文件的产出、失败页与耗时另见修复验收报告，不将识别完成等同于逐字准确率评测。
 
 实现参考：[MinerU 本地 SDK](https://opendatalab.github.io/MinerU/usage/sdk_api/)、[MinerU 中间格式](https://opendatalab.github.io/MinerU/reference/output_files/)、[PaddleOCR Python 接入](https://www.paddleocr.ai/main/en/version3.x/pipeline_usage/OCR.html)、[GROBID 服务 API](https://grobid.readthedocs.io/en/latest/Grobid-service/)。
 # 官方 PDF 修复：页面批次与去重预警
@@ -263,7 +267,7 @@ backend/.venv/Scripts/python.exe tests/run_module_one_smoke.py --output-root dat
 | SCHOLAR_GRAPH_BATCH_TIMEOUT | 120 | MinerU单批最长秒数，1–600 |
 | SCHOLAR_GRAPH_TOTAL_TIMEOUT | 1800 | 分批处理整篇最长秒数，1–7200；每次worker等待同时受剩余总时限约束 |
 
-修复验收使用本地官方 pdf/ 真文件；结果在 tests/reports/official-pdf-repair-acceptance.md。GROBID接通状态未因本次修复改变，仍待验证；本次没有调用真实大模型或真实API Key。
+修复验收使用本地官方 pdf/ 真文件；结果在 tests/reports/official-pdf-repair-acceptance.md。该历史修复单当时未验证GROBID；其后已完成联调、转换修复和默认路径接线，最新证据见grobid-default-path-acceptance.md；本次没有调用真实大模型或真实API Key。
 
 
 ## 真模型、LangGraph 与 Function Calling（2026-10-25）

@@ -1,4 +1,4 @@
-# Optional, separate service. Does not enable enrichment in the HTTP upload factory.
+# Optional, separate service. Default factories attempt enrichment and safely fall back.
 # Official CRF CPU image; full-text/header/reference outputs are measured by the probe.
 services:
   grobid:
