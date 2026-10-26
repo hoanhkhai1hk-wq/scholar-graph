@@ -1,164 +1,148 @@
-# GROBID 联调验收记录（当前未通过）
+# GROBID 容器联调与 MinerU 对照验收
 
-日期：2026-10-26。语料：**官方 pdf/ 真文件**。本单没有改后端业务实现、契约、前端或技术文档，没有调用模型 API、没有使用或保存 Key。
+日期：2026-10-26（Asia/Shanghai）。语料为 **官方 pdf/ 真文件**。
 
-## 结论
+## 结论与验收边界
 
-**GROBID 容器联调未通过，逐字段双解析器对照尚未完成。** 本机装有 Docker Desktop/CLI，但本次 Docker Desktop 启动失败，Linux Server 不可连接；不能将 CLI 已安装、Compose 语法有效或自制 TEI 测试通过说成 GROBID 已接通。GROBID 没有返回 TEI，各字段数量是“未取得”，不是 0。已向用户报告这个需要在本机恢复引擎的阻塞，恢复后可用本报告命令重跑。
+**GROBID 0.9.1-crf 容器服务已实连，完整 TEI 解析与逐字段对照证据已取得；现有可选生产转换未通过。** 两个结论分别记录，不把服务 HTTP 200 写成生产链路已接通。
 
-独立配置、真实探针、7 项新增单元测试和本机回归已经完成。官方真文件 MinerU 从空目录实跑完成，保留了题录为空、公式无文本等实际边界。未伪造 GROBID 数量、样本、镜像摘要、服务版本或比较结论。
+- `/api/isalive`：HTTP 200，原文 `true`。
+- `/api/version`：HTTP 200，原文 `{"version":"0.9.1","revision":"0.9.1"}`。
+- 官方 Attention v7 的 `/api/processFulltextDocument`：HTTP 200，最新实测 2.089062 秒（已预热）。标题、作者、机构、摘要、章节、表格、公式、参考文献都有实际 TEI 产出；其中存在误识别，详见下表。
+- 同一输入从两个全新目录跑 MinerU 和显式启用 GROBID 的现有 Pipeline。后者被第 1 条 ReferenceEntry 的空字符串 title/venue 拦截，状态 failed、VALIDATION_ERROR、进度 80、发布论文组 **0**。没有跳过校验，没有发布无效业务记录。
+- 默认 HTTP 上传与 arXiv 抓取均没有注入 GROBID；本单未改生产实现、契约、前端、技术文档。未调用模型 API、未使用或保存 Key。
 
-## 开工基线与输入
+[实测 JSON](grobid-integration-live.json) 中 `service_evidence_passed=true`，`production_pipeline_passed=false`；原 `passed` 仍为 false，表示可选管线端到端未通过，未将失败改写成通过。[审计 JSON](grobid-integration-audit.json) 的审计成功也不替代业务成功。
 
-- `git pull`：`Already up to date.`；开工主干 `523d07666767c0cafd9f54ed1a5980af3b26176d`，工作区干净。
-- 本地文件 `D:\AI_Workspace\Tasks\scholar-graph\pdf\1706.03762v7.pdf`，2,215,244 字节、15 个 PDF 物理页。
-- SHA-256：`bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697`。
-- `.gitignore` 仍含 `/pdf/` 和 `*.pdf`；本单 PDF、模型和完整解析结果不进 Git。
-- 最新一次探针开始于 `2026-10-26T01:27:41.411059+00:00`，输出空目录 `data/grobid-integration/20261026T012741Z-9ae086c5/`，没有复用宿主机已解析记录。
-- 结构化实测：[grobid-integration-live.json](grobid-integration-live.json)。报告样本是官方真文件实际 MinerU 输出，非手写替代。
+## 基线与语料身份
 
-## 服务版本、启动与失败证据
+首次开工 `git pull` 为 `Already up to date.`，主干 `523d07666767c0cafd9f54ed1a5980af3b26176d`；本次恢复后再次 pull 为 `Already up to date.`，主干 `c0e7e361e3b5032c2cb8300b76a59c4885acf4c3`，两次开工工作区均干净。
 
-独立配置：`services/docker-compose.grobid.yml`，镜像标签 **`grobid/grobid:0.9.1-full`**，`linux/amd64`、CPU 路径，仅开放 `127.0.0.1:8070`，容器内存上限 6 GiB、core dump 为 0，不注入环境变量、密钥或 PDF 卷。标签来自 [GROBID 官方 Docker 文档](https://grobid.readthedocs.io/en/latest/Grobid-docker/)（2026-10-26 查阅）。这只是配置版本；实际 `/api/version`、容器运行状态和镜像 digest 均未取得。
-
-CLI 实际版本为 Docker 29.9.2，Desktop 启动日志标示 4.96.3。开始时 `docker version` 的 Server 为 null。尝试 `docker desktop start` 后，Docker 自身启动失败原文（仅 HOME 脱敏）：
+输入：`D:\AI_Workspace\Tasks\scholar-graph\pdf\1706.03762v7.pdf`，**2,215,244 字节、15 个 PDF 物理页**。SHA-256：
 
 ```text
-starting services: initializing Secrets Engine: listening on unix://<HOME>/AppData/Local/docker-secrets-engine/engine.sock: rename <HOME>/AppData/Local/docker-secrets-engine/engine.sock <HOME>/AppData/Local/docker-secrets-engine/engine.sock.stale: The file cannot be accessed by the system. (listener: The file cannot be accessed by the system.)
+bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697
 ```
 
-核实该目录只含 `engine.sock`（0 字节、Archive/ReparsePoint）。对本次启动后已崩溃的 Docker 进程进行停止后，尝试完整保留该 socket 目录并重命名；PowerShell 与 .NET 的目录移动均返回：
+最新完整探针：`2026-10-26T02:41:22.823825+00:00` 至 `2026-10-26T02:41:41.550095+00:00`（北京时间 10:41:22 至 10:41:41）。本地输出目录：`data/grobid-integration/20261026T024122Z-af7ce869/`。`mineru-only/` 和 `mineru-with-grobid/` 均为此次新建，没有复用旧解析记录。
+
+完整 TEI 为该目录下 `attention.tei.xml`，121,852 字节，SHA-256：
 
 ```text
-Access to the path 'C:\Users\1234\AppData\Local\docker-secrets-engine' is denied.
+6512b0576b4b00b48677e6dc71c763fe265afa5c8542e2c27419764392c79d8a
 ```
 
-没有删除目录、没有工厂重置、没有修改 Docker 设置或清理镜像/数据卷，也没有尝试提权。该故障模式与 [Docker 官方问题仓库 #15064](https://github.com/docker/for-win/issues/15064) 相似；本机重命名也失败，不能声称该 workaround 已修复本机。
+PDF、完整 TEI、模型与业务记录仅保留在被忽略的 pdf/、data/。Git 只包含探针、少量样本、统计和回归证据；没有 COPY PDF 进镜像。
 
-真实执行启动命令：
+## 服务版本与复现
+
+配置 `services/docker-compose.grobid.yml` 使用官方 **`grobid/grobid:0.9.1-crf`**，linux/amd64、CPU/CRF 模式；不是 full/DL 模式。Docker Desktop 4.96.3，Linux Engine 29.9.2。容器 `scholar-graph-grobid-grobid-1`，仅绑定 `127.0.0.1:8070`，6 GiB 内存上限、core dump 为 0，不传入密钥、环境文件或 PDF 挂载。
+
+实际镜像 RepoDigest：
+
+```text
+grobid/grobid@sha256:223957791ac2bbe48609dcc58a689b16b60baeae13a8734ef440ae6bfb38f4cd
+```
+
+Docker inspect 返回镜像大小 1,717,306,087 字节。Registry manifest 的压缩层合计：CRF 509,986,678 字节/10 层，full 14,822,914,882 字节/21 层。原 full 下载因体积与本机 CPU 环境改选而停止，没有声称 full 拉取或解析通过；本轮全部字段证据来自 CRF。镜像与模式依据 [GROBID 官方 Docker 文档](https://grobid.readthedocs.io/en/latest/Grobid-docker/) 和 [0.9.1 官方 CRF Dockerfile](https://raw.githubusercontent.com/kermitt2/grobid/0.9.1/Dockerfile.crf)。
+
+在仓库根目录运行：
 
 ```powershell
-docker compose -f services/docker-compose.grobid.yml -p scholar-graph-grobid up -d
-```
-
-退出码 1，输出原文：
-
-```text
-failed to connect to the docker API at npipe:////./pipe/dockerDesktopLinuxEngine; check if the path is correct and if the daemon is running: open //./pipe/dockerDesktopLinuxEngine: The system cannot find the file specified.
-```
-
-本机 HTTP 探针实际失败原文：
-
-```text
-ConnectError: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
-```
-
-因此没有服务端解析耗时、GROBID TEI 或可选 Pipeline 实连耗时；没有把 MinerU 耗时当成容器耗时。
-
-配置语法校验确实成功（退出码 0），输出原文：
-
-```yaml
-name: scholar-graph-grobid
-services:
-  grobid:
-    restart: 'no'
-    image: grobid/grobid:0.9.1-full
-    init: true
-    mem_limit: "6442450944"
-    networks:
-      default: null
-    platform: linux/amd64
-    ulimits:
-      core:
-        soft: 0
-        hard: 0
-    ports:
-      - mode: ingress
-        host_ip: 127.0.0.1
-        target: 8070
-        published: "8070"
-        protocol: tcp
-networks:
-  default:
-    name: scholar-graph-grobid_default
-```
-
-## 同一官方真文件逐字段对照（GROBID 列仍待真实服务）
-
-MinerU 4.0.12，使用项目既定本地 SDK `tier=flash, ocr_mode=txt, image_analysis=False`。这不是 MinerU 的视觉模型/OCR 模式。全管线 6.754470 秒，其中引擎 5.505349 秒；最终 completed/100，四类记录与锚点校验通过。
-
-| 字段 | MinerU 原始/归一化实测 | GROBID 容器实测 | 可据实判断的差异 |
-| --- | --- | --- | --- |
-| 标题 | 原生 `doc_title` 1；Chunk 中 1 个明确标题；PaperMeta.title 为空 | 未取得 | 文本存在，但本地上传题录未补齐；不能声称两者题录一致 |
-| 作者 | 作者原文位于首面多个 Chunk；PaperMeta.authors 为 0 | 未取得 | 正文能回溯作者行，但不是结构化作者列表 |
-| 机构 | 首面原文含 Google Brain、Google Research、University of Toronto；PaperMeta.institutions 为 0 | 未取得 | 有原文不代表字段已归一化，不能以手工计数冒充字段产出 |
-| 摘要 | 摘要标题/正文 Chunk 有文本；PaperMeta.abstract 为空 | 未取得 | 摘要可作为证据检索，但没有进入题录字段 |
-| 章节 | 原生 paragraph_title 27；归一化非空 section_path 去重 29 | 未取得 | 单位不同；27 中包括作者、邮箱、公式误判，不能说是 27 个准确章节 |
-| 表格 | 原生 table 4；最终 table Chunk 4，带 HTML 行列与物理页 bbox | 未取得 | 本例真实优势是表格内容、位置均有产出；没有测得 GROBID 表格质量 |
-| 公式 | 原生 equation 7，但内容均为空的情况须单独核对；已抽样的前 2 个 content=""；最终 formula Chunk 0 | 未取得 | 当前文本层配置没有产出可用公式文本，不能说 MinerU 已识别出 7 个公式原文 |
-| 参考文献 | ReferenceEntry 40；40 条的作者、年份、标题、出处、DOI 均为空，仅编号身份有效；CitationLink 69 | 未取得 | 编号锚点可用；结构化文献字段有明确缺口，尚无 GROBID 实测补齐证据 |
-
-最终 Chunk 为 **175**：text 166、figure 5、table 4、formula 0；175 个都有 bbox。原生中间结果包括 text 121、doc_title 1、paragraph_title 27、aside_text 1、page_number 14、image 5、equation 7、page_footnote 2、table 4。不能把原生块数与有文本的发布 Chunk 数直接等同。
-
-GROBID 的原定优势是题录与结构化参考文献；这是服务设计及现有适配器的职责，不是本轮已测得结论。**本轮无法完成“两者各自强项”的实验性判断**，没有把官方文档、旧 mock 或 MinerU 输出放进 GROBID 列充数。
-
-## MinerU 原文样本（官方 pdf/ 真文件）
-
-以下均来自本次新发布的 Chunk；完整 chunk_id 在 JSON 中。`p0001` 等为 PDF 物理页，不是印刷页码。
-
-- 标题：第 1 页 `c00002`：`Attention Is All You Need`。
-- 作者/机构：第 1 页 `c00003`：`Ashish Vaswani ∗ Google Brain avaswani@google.com  Llion Jones ∗  Google Research llion@google.com`。第 1 页 `c00004`：`Noam Shazeer ∗  Google Brain noam@google.com  Aidan N. Gomez ∗  † University of Toronto aidan@cs.toronto.edu`。这是原文行，未假装成已归一化作者/机构字段。
-- 摘要：第 1 页 `c00010`：`The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism.`
-- 章节：原生标题样本 `3 Model Architecture`、`3.2.1 Scaled Dot-Product Attention`、`5.3 Optimizer`。同一列表还包含 `illia.polosukhin@gmail.com`，故不将其总数当准确章节数。
-- 表格：第 6 页 `c00066`：`Table 1: Maximum path lengths, per-layer complexity and minimum number of sequential operations for different layer types.` HTML 原文片段：`<tr><td>Self-Attention</td><td>O(n<sup>2</sup> · d)</td><td>O(1)</td><td>O(1)</td></tr>`。
-- 公式：没有可引用的 formula Chunk。原生样本：`{"type":"equation","index":6,"bbox":[0.358,0.587,0.825,0.62],"content":""}`。空字符串没有被补写成公式原文。
-- 参考文献：ReferenceEntry number=1 的 `authors=[]; year=null; title=null; venue=null; doi=null`，number=2 同样为空。原文引用编号能解析，但不能把空记录说成完整文献解析结果。
-- GROBID 上述八类字段：**均无返回样本**；未借用 MinerU 或手工填写。
-
-## 生产链路真实分工与文档修正句
-
-静态核查的具体位置：
-
-1. `backend/scholar_graph/cli.py` 的 `parse --grobid-url`（默认读取 GROBID_URL）构造 GrobidClient，传给 Pipeline。
-2. `backend/scholar_graph/pipeline.py`：MinerU/必要时 OCR 完成后，仅当 `self.grobid is not None` 才调用 `enrich`；随后仍走契约/锚点校验与发布。同文件哈希已存在会提前复用结果，因此真实探针分别使用两个全新目录，不能复用旧记录冒充本次调用。
-3. `backend/scholar_graph/grobid.py`：补 PaperMeta 的标题、作者、机构、摘要、年份、DOI；生成 ReferenceEntry，并按既有 Chunk 引用标记重建 CitationLink。保留 Chunk，不将 GROBID 正文、章节、表格、公式映射到 Chunk。当前 XML 人名的 token 连接方式也尚缺真实 TEI 验证，不能保证所有姓名格式正确。
-4. `backend/scholar_graph/api_uploads.py:UploadService.__init__` 的默认工厂只有 `Pipeline(root, gate=gate)`，**没有注入 GROBID**。
-5. `backend/scholar_graph/arxiv_fetch.py:ArxivFetcher._pipeline` 的默认工厂只加元数据补充，没有注入 GROBID。根 Compose 也没有替 HTTP 工厂启用它。
-
-结论：**源码有可选补充接入点，默认 HTTP 生产路径未启用；本轮连可选分支的真实容器调用也尚未跑通。** 不是“已验证的 MinerU + GROBID 默认融合基座”。没有为补证据擅自改变默认生产实现。
-
-供用户转给文档补丁单的精确替换句（本单不改 docs/）：
-
-> PDF 文本与版式解析基座为本地 MinerU；扫描页由 PaddleOCR 兜底。GROBID 仅保留显式启用的 CLI/Pipeline 题录及参考文献补充接入点，默认 HTTP 上传和 arXiv 抓取未启用；本轮受 Docker Desktop 启动故障阻塞，尚未取得 GROBID 容器联调证据，不宣称已形成经实测的 MinerU + GROBID 融合解析基座。本轮未验证 DeepSeek-OCR。
-
-## 探针与回归
-
-探针 `tests/run_grobid_acceptance.py` 的设计顺序：空目录 MinerU → `/api/isalive` 与 `/api/version` → multipart `/api/processFulltextDocument`（全页、不设 start/end，consolidation 全为 0，附原始 affiliation/citation 与坐标）→ 第二个空目录启用现有 GrobidClient 的真实 Pipeline。无 mock 网络、无自造业务答案。失败设置 `passed=false` 并返回退出码 1；后续步骤未执行就不写成成功。API 参数依据 [GROBID 官方服务文档](https://grobid.readthedocs.io/en/latest/Grobid-service/)。
-
-7 项新增测试使用**自制 TEI，非官方 PDF、非容器联调证据**：题录/文献作者分开计数、章节与表格 caption 分开计数、缺失字段保持 0、3 种坏响应拒收、XXE 拒收、可选转换不更改 Chunk 与文件身份。单测 7/7 通过。
-
-本机全量回归命令与输出原文：
-
-```powershell
-backend/.venv/Scripts/python.exe -m pytest tests -q --run-ocr --basetemp data/grobid-integration-regression --junitxml tests/reports/grobid-integration-pytest.xml
-```
-
-```text
-530 passed, 5 skipped in 164.02s (0:02:44)
-```
-
-JUnit：535 项、530 通过、5 跳过、0 失败、0 错误。包含真实自制扫描件 PaddleOCR 测试。本单不启用 `--run-real-model`，5 项真实 DeepSeek 测试按既有规则跳过：连通性、SSE、英中翻译、中英翻译、3D 图注。**没有把跳过计为通过，也没有声称 GROBID 容器测试通过。**
-
-证据审计命令：`backend/.venv/Scripts/python.exe tests/audit_grobid_acceptance.py`。审计将仓库范围、语料身份、忽略规则、配置无密钥与回归检查，同“GROBID 业务验收是否通过”分别标记，见 [审计 JSON](grobid-integration-audit.json)。
-
-## 重跑入口
-
-Docker Server 恢复后，在 D 盘工作目录依次执行：
-
-```powershell
-docker compose -f services/docker-compose.grobid.yml -p scholar-graph-grobid up -d
+docker compose -f services/docker-compose.grobid.yml -p scholar-graph-grobid config
+docker compose --progress quiet -f services/docker-compose.grobid.yml -p scholar-graph-grobid up -d
 backend/.venv/Scripts/python.exe tests/run_grobid_acceptance.py
 backend/.venv/Scripts/python.exe tests/audit_grobid_acceptance.py
 ```
 
-只有真实容器返回完整 TEI、完成可选 Pipeline、取得逐字段数量和样本后，才能将本报告的“未取得”改为结果并改验收结论。目前三项任务中服务解析与双解析器实测对照仍未完成；分工口径核查已完成。
+`config` 和 `up -d` 均退出 0，容器 running。探针因可选管线失败退出 **1**，但会完整保留已成功的服务证据和失败状态。审计检查证据真实性与守门行为，业务结果另列。
+
+服务 POST 使用 multipart 原始 PDF，全页、不设 start/end；consolidateHeader/Citations/Funders 全为 0，不靠 Crossref 或 Key 补数据。证据调用附 includeRawCitations、includeRawAffiliations、generateIDs 和 TEI 坐标；生产客户端调用仍使用原有参数。参数依据 [官方服务 API](https://grobid.readthedocs.io/en/latest/Grobid-service/)。首个冷请求服务日志为 `duration_ms=15198`；最新预热客户端实测 2.089062 秒，两者测量口径不同，不混作同一耗时。
+
+## 同文件逐字段对照
+
+MinerU **4.0.12**，项目既定本地 `tier=flash, ocr_mode=txt, image_analysis=False`，非视觉模型模式。最新全管线 **6.727363 秒**（引擎 5.594250 秒），completed/100，Schema 与锚点校验通过，发布 **1 PaperMeta /175 Chunk /40 ReferenceEntry /69 CitationLink**。175 Chunk 均有 bbox，类型为 text 166、figure 5、table 4、formula 0。
+
+| 字段/计数口径 | MinerU 真实结果 | GROBID CRF 真实结果 | 强项与明确缺陷 |
+| --- | --- | --- | --- |
+| 标题 | 原生 doc_title 1，标题 Chunk 有原文；PaperMeta.title=null | titleStmt/title **1**，原文标题正确 | GROBID 已给出结构化题名；MinerU 原文有但本地上传元数据未补齐 |
+| 作者 | 首面作者行保留在 Chunk；PaperMeta.authors **0** | header author/persName **10** | 论文实际 8 位作者；GROBID 把 Google Brain、Google Research 多识别为两个人，顺序也不宜当作原文作者次序 |
+| 机构 | 原文有 Google Brain、Google Research、University of Toronto；PaperMeta.institutions **0** | affiliation 元素 **10**，去重 orgName **2** | 只有 University of Toronto 是正确的独立机构名；另一个把脚注和会议信息混成机构，Google 两机构落入作者列表；不能说机构字段准确 |
+| 摘要 | 有摘要标题/正文 Chunk；PaperMeta.abstract=null | abstract **1** | GROBID 形成独立字段，但包含等贡献说明与工作机构脚注；MinerU 摘要正文 Chunk 更便于单独回溯 |
+| 章节 | 原生 paragraph_title **27**；去重非空 section_path **29** | body 下 div/head **25** | GROBID 主体层次较清楚，但末尾有两个 Input-Input Layer5 图中文字误作章节；MinerU 也有邮箱、作者行、公式误作标题，计数不是正确章节数 |
+| 表格 | table Chunk **4**，含表1–4的 HTML 行列和 bbox | table figure/table 元素均 **3**，仅表2–4；43行/274个cell | 本例 MinerU 覆盖更全；GROBID 表3部分单元格拆分也需复核。服务日志明确提示3张表格式不完整/异常，不能说三张均准确 |
+| 公式 | 原生 equation **7**，7个内容均为空；发布 formula Chunk **0** | formula **13**，有表达式文本和物理页坐标 | GROBID 有公式文本产出；其 TEI 线性文本不是完整 LaTeX，也没有核定13条均为独立、准确公式 |
+| 参考文献 | ReferenceEntry **40**；作者/年份/标题/出处/DOI 非空数均 **0**；编号锚点 CitationLink **69** | biblStruct **40**；标题/作者/年份/出处/原始条文非空数为 **39/39/40/39/40**；正文 bibr 标记 **58** | GROBID 结构化文献明显更丰富，但 ref1 的题名被放进 report_type 而非 title，且 venue 空；非空覆盖率不是准确率。58是原生引用标记数，69是拆分后的契约链接数，单位不同 |
+
+GROBID 三张表的逐项统计：表2为11行/43 cell，表3为19行/193 cell，表4为13行/38 cell。这里计 XML row/cell 元素，不把 colspan 展开。正文/表格/公式只作为 TEI 对照证据，未冒充项目 Chunk 已增加相同能力。
+
+## 字段原文样本（官方 pdf/ 真文件）
+
+样本逐项对应 JSON；XML 仅按元素边界加空格便于阅读，未人工纠正 CRF 分类。
+
+- 标题：GROBID `Attention Is All You Need`；MinerU 第1页 `c00002` 同为该原文。
+- 作者：GROBID 的10个节点依次为 `Ashish Vaswani; Google Brain; Noam Shazeer; Niki Parmar; Google Research; Jakob Uszkoreit; Llion Jones; Aidan N Gomez; Łukasz Kaiser; Illia Polosukhin`。MinerU 第1页 `c00003` 原文：`Ashish Vaswani ∗ Google Brain avaswani@google.com  Llion Jones ∗  Google Research llion@google.com`，展示了机构为何不能直接当人名。
+- 机构：GROBID 两个 orgName 原文为 `University of Toronto` 和 `Work performed while at Google Research. 31st Conference on Neural Information Processing Systems (NIPS 2017)`。MinerU 第1页 `c00004`：`Noam Shazeer ∗  Google Brain noam@google.com  Aidan N. Gomez ∗  † University of Toronto aidan@cs.toronto.edu`。
+- 摘要：两者正文均含 `The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism.` GROBID abstract 后面还实际包含 `* Equal contribution. Listing order is random.` 等贡献说明及 `† Work performed while at Google Brain.`；没有将污染脚注剪掉后声称原始结果干净。MinerU 对应第1页 `c00010`。
+- 章节：GROBID `Model Architecture; Scaled Dot-Product Attention; Optimizer`，也包含两个 `Input-Input Layer5`；MinerU 对应标题带编号 `3 Model Architecture; 3.2.1 Scaled Dot-Product Attention; 5.3 Optimizer`，其标题列表还混有 `illia.polosukhin@gmail.com`。
+- 表格：GROBID 表2原文 `Transformer (big) 28.4 41.8 2.3 • 10 19`，其 XML 含 `<row><cell>Transformer (big)</cell><cell>28.4</cell><cell>41.8</cell><cell>2.3 • 10 19</cell></row>`。MinerU 第6页 `c00066` 为表1，含 `<tr><td>Self-Attention</td><td>O(n<sup>2</sup> · d)</td><td>O(1)</td><td>O(1)</td></tr>`；GROBID table 结构中没有表1。
+- 公式：GROBID 首条原文 `Attention(Q, K, V ) = softmax( QK T √ d k )V (1)`，coords 为 `4,219.97,465.65,284.70,25.41`，首项4为物理页；上/下标和分式被线性化，未称其为 LaTeX。MinerU 原生样本 `{"type":"equation","index":6,"bbox":[0.358,0.587,0.825,0.62],"content":""}`，没有可引用的 formula Chunk 文本。
+- 参考文献：GROBID ref1 原始条文为 `Jimmy Lei Ba, Jamie Ryan Kiros, and Geoffrey E Hinton. Layer normalization. arXiv preprint arXiv:1607.06450, 2016.`，作者3人、年份2016；但 `<monogr><title/></monogr>` 为空，`Layer normalization. arXiv preprint` 落在 report_type。ref2 题名为 `Neural machine translation by jointly learning to align and translate`，作者 `Dzmitry Bahdanau; Kyunghyun Cho; Yoshua Bengio`，年份2014。MinerU ref1/ref2 的 title/year/venue 为 null、authors=[]，没有拿 GROBID 样本反填到 MinerU 列。
+
+## 可选生产转换失败：精确定位与守门证据
+
+独立服务能解析 PDF，不代表现有项目转换正确。显式 `Pipeline(grobid=...)` 本次运行8.691425秒，实际 GROBID HTTP 调用1.904619秒，之后在发布前失败：
+
+```json
+{"status":"failed","progress":80,"error_code":"VALIDATION_ERROR","error_message":"ReferenceEntry 未通过 Schema 校验。"}
+```
+
+对客户端的实际转换结果在内存中逐条运行现有验证器，只有以下两项错误：
+
+```json
+[
+  {"reference_number":1,"path":["title"],"validator":"anyOf","message":"'' is not valid under any of the given schemas"},
+  {"reference_number":1,"path":["venue"],"validator":"anyOf","message":"'' is not valid under any of the given schemas"}
+]
+```
+
+来源是 GROBID 的空 `<title/>`，现有 `grobid.py:text()` 将存在但无文本的节点转成 `""`；`_convert()` 直接用于 title/venue。冻结契约允许 null 或非空字符串，不允许空字符串。**本单只定位，不改转换、不放宽契约，也不把原始条文手工填成标题来制造通过。** 作者 persName 内 token 的现有拼接也有丢空格风险，尚不能将该转换宣称生产可用。
+
+状态真实走到 queued → parsing → indexing → failed；未到 completed，未发布 PaperMeta/Chunk/ReferenceEntry/CitationLink 论文组（0组）。原始 TEI 只保留在 ignored data/，失败项在报告中是诊断信息，不是发布的无效业务记录。
+
+## 生产分工与技术文档替换句
+
+- `backend/scholar_graph/cli.py`：仅 `parse --grobid-url` 或 CLI 的 GROBID_URL 构造 GrobidClient；也支持调用方显式注入 Pipeline。
+- `pipeline.py`：MinerU/必要时 OCR 之后，条件 `self.grobid is not None` 才调用 enrich，再过原有校验/发布；哈希已存在会提前复用，因此本探针使用全新记录目录。
+- `grobid.py` 的设计职责：补 PaperMeta 标题、作者、机构、摘要、年份、DOI；生成 ReferenceEntry，并按 MinerU Chunk 中引用编号重建 CitationLink；不替换 Chunk、物理页、bbox，不把 GROBID 正文章节/表格/公式转成 Chunk。本次该可选转换实际失败，上述是设计职责，不是已经成功发布字段的承诺。
+- `api_uploads.py:UploadService.__init__` 默认只构造 `Pipeline(root, gate=gate)`；`arxiv_fetch.py:ArxivFetcher._pipeline` 只注入元数据补充；两条默认 HTTP 路径都未启用 GROBID，设置 GROBID_URL 不会改变它们。
+
+供用户转给文档补丁单的精确修正句（本单不改 docs/）：
+
+> 默认 PDF 文本与版式解析使用本地 MinerU，扫描页由 PaddleOCR 兜底。GROBID 0.9.1-crf 已完成官方 Attention v7 的容器全文 TEI 解析与逐字段对照，但存在作者/机构误识别；它尚未接入默认 HTTP 上传及 arXiv 抓取，显式 CLI/Pipeline 补充路径也因 ReferenceEntry 空字符串校验失败而未发布记录。因此当前不能宣称经生产验证的“MinerU + GROBID 融合解析基座”。本轮未验证 DeepSeek-OCR。
+
+## 前次失败与本次恢复记录
+
+前次提交 c0e7e36 中 Docker Server 不可用，Desktop 启动因 `docker-secrets-engine/engine.sock` 无法访问失败，保留式重命名返回 Access denied；当时没有取得 GROBID 输出，失败结论保留在 Git 历史。本次用户打开 Docker 后，重新检查已能返回 Linux Server 信息；没有声称本单自动修好了 Docker 系统问题。
+
+恢复后的首轮服务两次返回 HTTP 200，但探针整理 Docker ps 元数据时误用 Windows GBK 解码 UTF-8 省略号而失败。探针现已显式 UTF-8，增加阶段保存点和回归测试；以上主结果来自修正后再次创建空目录的完整重跑。没有把该次报告保存失败当作后端解析实现已修复。
+
+## 回归与审计
+
+新增探针测试现为9项：自制 TEI 的题录/参考作者分开计数、章节与表格 caption 区分、行列计数、缺失结构保持0、3种坏响应拒收、XXE拒收、转换保留Chunk身份、Windows UTF-8子进程输出、无效参考文献发布前拦截（计数含参数化，合计9）。自制样例测试不替代上面的官方 pdf/ 真文件容器证据。
+
+最终全量回归命令：
+
+```powershell
+backend/.venv/Scripts/python.exe -m pytest tests -q --run-ocr --basetemp data/grobid-integration-regression-final --junitxml tests/reports/grobid-integration-pytest.xml
+```
+
+实际输出原文：
+
+```text
+532 passed, 5 skipped in 184.91s (0:03:04)
+```
+
+JUnit：537项，532通过、5跳过、0失败、0错误。未启用 --run-real-model，5项真实 DeepSeek测试按规则跳过，不将跳过计为通过；真实自制扫描件 PaddleOCR 测试启用。无 Docker/模型 API 依赖的常规回归不假装验证真实 GROBID。
+
+审计 `tests/audit_grobid_acceptance.py` 重算本地 TEI 的哈希、数量、样本与表格计数，重验 MinerU 落盘四类记录与锚点，核实失败补充路径没有发布记录；另核对 PDF 身份及忽略、保护目录零改动、配置无密钥和 JUnit。审计结果与“生产转换是否通过”分开，不以审计通过掩盖生产失败。

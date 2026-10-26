@@ -28,6 +28,11 @@
         "backend/README.md",
         "services/README.md",
         "services/docker-compose.grobid.yml",
+        "tests/audit_grobid_acceptance.py",
+        "tests/reports/grobid-integration-acceptance.md",
+        "tests/reports/grobid-integration-audit.json",
+        "tests/reports/grobid-integration-live.json",
+        "tests/reports/grobid-integration-pytest.xml",
         "tests/run_grobid_acceptance.py",
         "tests/test_grobid_evidence.py"
       ]
@@ -36,7 +41,7 @@
       "name": "keyless_local_service",
       "passed": true,
       "detail": {
-        "image": "grobid/grobid:0.9.1-full",
+        "image": "grobid/grobid:0.9.1-crf",
         "ports": [
           "127.0.0.1:8070:8070"
         ]
@@ -66,7 +71,7 @@
       "name": "regression_no_failures",
       "passed": true,
       "detail": {
-        "tests": 535,
+        "tests": 537,
         "failures": 0,
         "errors": 0,
         "skipped": 5
@@ -78,8 +83,79 @@
       "detail": {
         "live_passed": false,
         "error": {
-          "type": "ConnectError",
-          "message": "[WinError 10061] 由于目标计算机积极拒绝，无法连接。"
+          "stage": "optional_pipeline",
+          "type": "PipelineError",
+          "message": "ReferenceEntry 未通过 Schema 校验。"
+        }
+      }
+    },
+    {
+      "name": "tei_counts_hash_and_samples_match",
+      "passed": true,
+      "detail": {
+        "sha256": "6512b0576b4b00b48677e6dc71c763fe265afa5c8542e2c27419764392c79d8a",
+        "counts": {
+          "titles": 1,
+          "authors": 10,
+          "unique_institution_names": 2,
+          "affiliation_elements": 10,
+          "abstracts": 1,
+          "section_heads": 25,
+          "table_figures": 3,
+          "table_elements": 3,
+          "formulas": 13,
+          "references": 40,
+          "bibliography_markers": 58
+        }
+      }
+    },
+    {
+      "name": "mineru_records_schema_anchors_and_measurements",
+      "passed": true,
+      "detail": {
+        "titles": 0,
+        "authors": 0,
+        "institutions": 0,
+        "abstracts": 0,
+        "chunks": 175,
+        "types": {
+          "text": 166,
+          "figure": 5,
+          "table": 4
+        },
+        "chunks_with_bbox": 175,
+        "distinct_section_paths": 29,
+        "references": 40,
+        "citation_links": 69
+      }
+    },
+    {
+      "name": "invalid_optional_records_not_published",
+      "passed": true,
+      "detail": {
+        "status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "status": "failed",
+          "progress": 80,
+          "current_stage": "解析未完成",
+          "error_code": "VALIDATION_ERROR",
+          "error_message": "ReferenceEntry 未通过 Schema 校验。"
+        },
+        "published_groups": 0
+      }
+    },
+    {
+      "name": "actual_service_http_succeeded",
+      "passed": true,
+      "detail": {
+        "isalive": {
+          "status": 200,
+          "body": "true"
+        },
+        "version": {
+          "status": 200,
+          "body": "{\"version\":\"0.9.1\",\"revision\":\"0.9.1\"}"
         }
       }
     },
@@ -90,5 +166,7 @@
     }
   ],
   "passed": true,
-  "live_acceptance_passed": false
+  "live_acceptance_passed": false,
+  "service_evidence_passed": true,
+  "production_pipeline_passed": false
 }
