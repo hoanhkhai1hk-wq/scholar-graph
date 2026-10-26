@@ -1,0 +1,93 @@
+{
+  "project": "sg-final-29fc813d71",
+  "services": [
+    {
+      "name": "backend",
+      "container_id": "4b0c8db664c96ac6e12184614bc5f0691ecf3be7a7c5ece3c6ab71c2d068526c",
+      "image_id": "sha256:0ec52f418474e94f9d4ff7837608515c54f7d41f8a870ef92d41e0c8c8afae01",
+      "healthy": true,
+      "revision": "000e8023a068c978138aece9aff8fbb2b8743e81",
+      "size_bytes": 6849085020,
+      "ports": {
+        "8000/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "8000"
+          }
+        ]
+      },
+      "mounts": [
+        {
+          "type": "bind",
+          "destination": "/corpus",
+          "read_write": false
+        },
+        {
+          "type": "volume",
+          "destination": "/app/data",
+          "read_write": true
+        }
+      ],
+      "input_audit": {
+        "pdf_count": 0,
+        "private_paths_present": [],
+        "credential_names": [],
+        "passed": true
+      }
+    },
+    {
+      "name": "frontend",
+      "container_id": "014d6c3df9c0f54dc7136ee24eb734ef0a243ebccdee80774efd89237d2c537e",
+      "image_id": "sha256:9b821d9eb717dc82fc0e7ca331358db1872516493c3d84bcd1480c7f4da2c8a7",
+      "healthy": true,
+      "revision": "000e8023a068c978138aece9aff8fbb2b8743e81",
+      "size_bytes": 1312350715,
+      "ports": {
+        "3000/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "3000"
+          }
+        ]
+      },
+      "mounts": [],
+      "input_audit": {
+        "pdf_count": 0,
+        "credential_names": [],
+        "private_paths_present": [],
+        "passed": true
+      }
+    }
+  ],
+  "http_status": {
+    "backend": 200,
+    "frontend": 200,
+    "proxy": 200
+  },
+  "scheduler": {
+    "latest_run": null,
+    "dedup_records": [],
+    "scheduler": "backend_interval",
+    "default_interval_seconds": 86400,
+    "scheduler_details": {
+      "enabled": true,
+      "mechanism": "backend_interval",
+      "active": true,
+      "interval_seconds": 60,
+      "initial_delay_seconds": 15,
+      "max_imports": 0,
+      "run_count": 0,
+      "pid": 8,
+      "last_event": {
+        "event": "waiting_for_papers",
+        "timestamp": "2026-10-26T07:42:35.932778+00:00",
+        "pid": 8
+      }
+    }
+  },
+  "versions": {
+    "python": "Python 3.12.15",
+    "node": "v22.23.4",
+    "api": "1.2.0"
+  }
+}

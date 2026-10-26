@@ -1,0 +1,160 @@
+{
+  "project": "sg-final-29fc813d71",
+  "remote": "https://github.com/hoanhkhai1hk-wq/scholar-graph.git",
+  "run_root": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\a26b2213e22f41799137fc3018c09943",
+  "steps": [
+    {
+      "stage": "clone-main",
+      "argv": [
+        "git",
+        "clone",
+        "--branch",
+        "main",
+        "--single-branch",
+        "https://github.com/hoanhkhai1hk-wq/scholar-graph.git",
+        "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\a26b2213e22f41799137fc3018c09943\\checkout"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 9.430916,
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\a26b2213e22f41799137fc3018c09943\\clone-main.log",
+      "log_bytes": 124,
+      "log_sha256": "15f98a5aa0d63d381cd04330c33ff98e4ff0b569b8a0e322926bae6c5364db84",
+      "last_lines": [
+        "Cloning into 'D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\a26b2213e22f41799137fc3018c09943\\checkout'..."
+      ]
+    },
+    {
+      "stage": "clone-head",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.049587,
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\a26b2213e22f41799137fc3018c09943\\clone-head.log",
+      "log_bytes": 41,
+      "log_sha256": "6c263a473b7f17ba4c8e9951e63668407183fcae26df012bdb74481640473644",
+      "last_lines": [
+        "4f87ad3f13fa04f353986750e90f4e8582015064"
+      ]
+    },
+    {
+      "stage": "clone-clean",
+      "argv": [
+        "git",
+        "status",
+        "--porcelain"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.136889,
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\a26b2213e22f41799137fc3018c09943\\clone-clean.log",
+      "log_bytes": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "last_lines": []
+    },
+    {
+      "stage": "compose-config",
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "sg-final-29fc813d71",
+        "-f",
+        "docker-compose.yml",
+        "-f",
+        "services/docker-compose.acceptance.yml",
+        "-f",
+        "services/docker-compose.final-acceptance.yml",
+        "config"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.418929,
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\a26b2213e22f41799137fc3018c09943\\compose-config.log",
+      "log_bytes": 2864,
+      "log_sha256": "e125ef217cdc774eb879b3cd58bcef40c8a01a86a92b179c5021f1a6bc8f76d8",
+      "last_lines": [
+        "        - CMD",
+        "        - node",
+        "        - -e",
+        "        - fetch('http://127.0.0.1:3000/api/backend/papers?page_size=1').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        "      timeout: 12s",
+        "      interval: 15s",
+        "      retries: 8",
+        "      start_period: 30s",
+        "    ports:",
+        "      - mode: ingress",
+        "        host_ip: 127.0.0.1",
+        "        target: 3000",
+        "        published: \"3000\"",
+        "        protocol: tcp",
+        "networks:",
+        "  default:",
+        "    name: sg-final-29fc813d71_default",
+        "volumes:",
+        "  backend-data:",
+        "    name: sg-final-29fc813d71_backend-data"
+      ]
+    },
+    {
+      "stage": "build-no-cache",
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "sg-final-29fc813d71",
+        "-f",
+        "docker-compose.yml",
+        "-f",
+        "services/docker-compose.acceptance.yml",
+        "-f",
+        "services/docker-compose.final-acceptance.yml",
+        "build",
+        "--no-cache"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 415.716465,
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\a26b2213e22f41799137fc3018c09943\\build-no-cache.log",
+      "log_bytes": 21368,
+      "log_sha256": "b1ea11c09f9a78d4ee5f9186509968cc047c21d46b4faba370338ebc43f22ae2",
+      "last_lines": [
+        "--------------------",
+        "",
+        "  34 |     # Separate from PaddleOCR's dependencies; public CPU wheels only, no credentials.",
+        "",
+        "  35 | >>> RUN python -m venv --copies /opt/vector-venv \\",
+        "",
+        "  36 | >>>     && /opt/vector-venv/bin/python -m pip install --no-cache-dir --index-url https://download.pytorch.org/whl/cpu torch==2.14.1+cpu \\",
+        "",
+        "  37 | >>>     && /opt/vector-venv/bin/python -m pip install --no-cache-dir -r /tmp/requirements-retrieval.txt \\",
+        "",
+        "  38 | >>>     && /opt/vector-venv/bin/python -m pip check \\",
+        "",
+        "  39 | >>>     && /opt/vector-venv/bin/python -c \"from pathlib import Path; import subprocess,sys; subprocess.run([str(Path(sys.executable).resolve()), '-c', 'import torch, chromadb, FlagEmbedding'], check=True)\"",
+        "",
+        "  40 |     ",
+        "",
+        "--------------------",
+        "",
+        "target backend: failed to solve: process \"/bin/sh -c python -m venv --copies /opt/vector-venv     && /opt/vector-venv/bin/python -m pip install --no-cache-dir --index-url https://download.pytorch.org/whl/cpu torch==2.14.1+cpu     && /opt/vector-venv/bin/python -m pip install --no-cache-dir -r /tmp/requirements-retrieval.txt     && /opt/vector-venv/bin/python -m pip check     && /opt/vector-venv/bin/python -c \\\"from pathlib import Path; import subprocess,sys; subprocess.run([str(Path(sys.executable).resolve()), '-c', 'import torch, chromadb, FlagEmbedding'], check=True)\\\"\" did not complete successfully: exit code: 1",
+        ""
+      ]
+    }
+  ],
+  "credentials_forwarded": false,
+  "passed": false,
+  "reason": "Linux symlink-resolved worker used system Python without vector dependencies",
+  "clone": {
+    "commit": "4f87ad3f13fa04f353986750e90f4e8582015064",
+    "clean": true,
+    "path": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\a26b2213e22f41799137fc3018c09943\\checkout",
+    "host_artifacts_absent": {
+      "backend/.venv": true,
+      "frontend/node_modules": true,
+      "frontend/.next": true,
+      ".env": true,
+      "pdf": true,
+      "data": true
+    }
+  }
+}

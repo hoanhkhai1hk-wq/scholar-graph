@@ -1,0 +1,23 @@
+{"public_ocr_preparation": true, "exit_code": 0, "error": null, "cache_directory": "/app/data/paddle-models", "elapsed_seconds": 3.512024, "weight_files": 2, "pdf_inputs": 0}
+..........................................................ssss...s...... [ 11%]
+................................................s....................... [ 23%]
+..............s......................................................... [ 35%]
+........................................................................ [ 46%]
+........................................................................ [ 58%]
+...s.................................................................... [ 70%]
+........................................................................ [ 82%]
+.........................................................s.............. [ 93%]
+.........s...........................                                    [100%]
+=============================== warnings summary ===============================
+app/tests/test_full_layer_live.py::test_real_local_bge_m3_dense_sparse_chroma
+  app/tests/test_full_layer_live.py:16: PytestWarning: record_property is incompatible with junit_family 'xunit2' (use 'legacy' or 'xunit1')
+
+app/tests/test_full_layer_live.py::test_official_541_page_longbook_full_layer
+  app/tests/test_full_layer_live.py:39: PytestWarning: record_property is incompatible with junit_family 'xunit2' (use 'legacy' or 'xunit1')
+
+../usr/local/lib/python3.12/site-packages/_pytest/cacheprovider.py:469
+  /usr/local/lib/python3.12/site-packages/_pytest/cacheprovider.py:469: PytestCacheWarning: could not create cache path /.pytest_cache/v/cache/nodeids: [Errno 13] Permission denied: '/pytest-cache-files-ymfmwx61'
+    config.cache.set("cache/nodeids", sorted(self.cached_nodeids))
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+603 passed, 10 skipped, 3 warnings in 324.64s (0:05:24)

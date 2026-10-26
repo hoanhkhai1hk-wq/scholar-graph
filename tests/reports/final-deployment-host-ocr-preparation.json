@@ -1,0 +1,10 @@
+{
+  "public_ocr_preparation": true,
+  "exit_code": 0,
+  "error": null,
+  "cache_directory": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\paddle-models",
+  "elapsed_seconds": 110.742672,
+  "weight_files": 2,
+  "pdf_inputs": 0,
+  "provenance": "Actual backend/prepare_ocr_models.py stdout from host preparation, before final serial full regression; public weights only, no PDF parsing."
+}

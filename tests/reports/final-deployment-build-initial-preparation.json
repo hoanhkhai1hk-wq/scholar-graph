@@ -1,0 +1,298 @@
+{
+  "project": "sg-final-29fc813d71",
+  "run_root": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\29fc813d718f47e3a2cf0ef0aa88c27b",
+  "remote": "https://github.com/hoanhkhai1hk-wq/scholar-graph.git",
+  "steps": [
+    {
+      "stage": "clone-main",
+      "exit_code": 0,
+      "elapsed_seconds": 3.645356,
+      "argv": [
+        "git",
+        "clone",
+        "--branch",
+        "main",
+        "--single-branch",
+        "https://github.com/hoanhkhai1hk-wq/scholar-graph.git",
+        "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\29fc813d718f47e3a2cf0ef0aa88c27b\\checkout"
+      ],
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\29fc813d718f47e3a2cf0ef0aa88c27b\\clone-main.log",
+      "log_bytes": 124,
+      "log_sha256": "02854082e46bdf8970c726afa784a6aa06c766253be168bf513a2921f7e6992b",
+      "last_lines": [
+        "Cloning into 'D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\29fc813d718f47e3a2cf0ef0aa88c27b\\checkout'..."
+      ]
+    },
+    {
+      "stage": "clone-head",
+      "exit_code": 0,
+      "elapsed_seconds": 0.115732,
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\29fc813d718f47e3a2cf0ef0aa88c27b\\clone-head.log",
+      "log_bytes": 41,
+      "log_sha256": "d3d7e8bb1620d151edcbbad10d00e50d22531949a9c64763dcff38e5aebb9232",
+      "last_lines": [
+        "000e8023a068c978138aece9aff8fbb2b8743e81"
+      ]
+    },
+    {
+      "stage": "clone-clean",
+      "exit_code": 0,
+      "elapsed_seconds": 0.081749,
+      "argv": [
+        "git",
+        "status",
+        "--porcelain"
+      ],
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\29fc813d718f47e3a2cf0ef0aa88c27b\\clone-clean.log",
+      "log_bytes": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "last_lines": []
+    },
+    {
+      "stage": "compose-config",
+      "exit_code": 0,
+      "elapsed_seconds": 0.453228,
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "sg-final-29fc813d71",
+        "-f",
+        "docker-compose.yml",
+        "-f",
+        "services/docker-compose.acceptance.yml",
+        "-f",
+        "services/docker-compose.final-acceptance.yml",
+        "config"
+      ],
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\29fc813d718f47e3a2cf0ef0aa88c27b\\compose-config.log",
+      "log_bytes": 2805,
+      "log_sha256": "9fabe8bbdf67f7e2b239a4f71613f1b88eaf13c164c286538c9d65ccda47349b",
+      "last_lines": [
+        "        - CMD",
+        "        - node",
+        "        - -e",
+        "        - fetch('http://127.0.0.1:3000/api/backend/papers?page_size=1').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        "      timeout: 12s",
+        "      interval: 15s",
+        "      retries: 8",
+        "      start_period: 30s",
+        "    ports:",
+        "      - mode: ingress",
+        "        host_ip: 127.0.0.1",
+        "        target: 3000",
+        "        published: \"3000\"",
+        "        protocol: tcp",
+        "networks:",
+        "  default:",
+        "    name: sg-final-29fc813d71_default",
+        "volumes:",
+        "  backend-data:",
+        "    name: sg-final-29fc813d71_backend-data"
+      ]
+    },
+    {
+      "stage": "docker-version",
+      "exit_code": 0,
+      "elapsed_seconds": 0.245776,
+      "argv": [
+        "docker",
+        "version"
+      ],
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\29fc813d718f47e3a2cf0ef0aa88c27b\\docker-version.log",
+      "log_bytes": 758,
+      "log_sha256": "fa16eb1dd45e805b94b6d1b1bdad209aa6343fbdffb21f1881c7059019d24fed",
+      "last_lines": [
+        " Context:           desktop-linux",
+        "",
+        "Server: Docker Desktop 4.96.3 (244472)",
+        " Engine:",
+        "  Version:          29.9.2",
+        "  API version:      1.56 (minimum version 1.40)",
+        "  Go version:       go1.26.10",
+        "  Git commit:       0367cbe",
+        "  Built:            Tue Oct 20 18:45:02 2026",
+        "  OS/Arch:          linux/amd64",
+        "  Experimental:     false",
+        " containerd:",
+        "  Version:          v2.4.2",
+        "  GitCommit:        b7a25261e029d68978bbf290df0a62fc819b3c51",
+        " runc:",
+        "  Version:          1.5.2",
+        "  GitCommit:        v1.5.2-0-g29dd3dc2",
+        " docker-init:",
+        "  Version:          0.19.0",
+        "  GitCommit:        de40ad0"
+      ]
+    },
+    {
+      "stage": "build-no-cache",
+      "exit_code": 0,
+      "elapsed_seconds": 768.059373,
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "sg-final-29fc813d71",
+        "-f",
+        "docker-compose.yml",
+        "-f",
+        "services/docker-compose.acceptance.yml",
+        "-f",
+        "services/docker-compose.final-acceptance.yml",
+        "build",
+        "--no-cache"
+      ],
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\29fc813d718f47e3a2cf0ef0aa88c27b\\build-no-cache.log",
+      "log_bytes": 152176,
+      "log_sha256": "7c6564ca76977b2da0c600c543244368aef6865facbf854306ea55f2ae835522",
+      "last_lines": [
+        "#40 [backend backend 13/13] RUN useradd --uid 1000 --create-home --home-dir /home/scholar scholar     && mkdir -p /app/data/home /app/tests/reports     && chown -R scholar:scholar /app/data /app/tests/reports",
+        "#40 DONE 0.5s",
+        "",
+        "#41 [backend] exporting to image",
+        "#41 exporting layers",
+        "#41 exporting layers 60.2s done",
+        "#41 exporting manifest sha256:852a7ac9fd84a3638ef066374721ef956ffe3c9a9e07c0c566023e4588c3659a 0.0s done",
+        "#41 exporting config sha256:51f00f6f6f5b5b30924ec0b865d9bdf3ffe0e22906767ebc166384424c7aca6a 0.0s done",
+        "#41 exporting attestation manifest sha256:d85d9022b97fa52ba312285c4beed3b4b7ba44e7f6913bd9386e55458dcac11d 0.0s done",
+        "#41 exporting manifest list sha256:0ec52f418474e94f9d4ff7837608515c54f7d41f8a870ef92d41e0c8c8afae01 0.0s done",
+        "#41 naming to docker.io/library/sg-final-29fc813d71-backend:latest",
+        "#41 naming to docker.io/library/sg-final-29fc813d71-backend:latest done",
+        "#41 unpacking to docker.io/library/sg-final-29fc813d71-backend:latest",
+        "#41 unpacking to docker.io/library/sg-final-29fc813d71-backend:latest 26.0s done",
+        "#41 DONE 86.3s",
+        "",
+        "#42 [backend] resolving provenance for metadata file",
+        "#42 DONE 0.0s",
+        " Image sg-final-29fc813d71-frontend Built ",
+        " Image sg-final-29fc813d71-backend Built "
+      ]
+    },
+    {
+      "stage": "up-healthy",
+      "exit_code": 0,
+      "elapsed_seconds": 13.537825,
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "sg-final-29fc813d71",
+        "-f",
+        "docker-compose.yml",
+        "-f",
+        "services/docker-compose.acceptance.yml",
+        "-f",
+        "services/docker-compose.final-acceptance.yml",
+        "up",
+        "-d",
+        "--wait",
+        "--wait-timeout",
+        "300"
+      ],
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\29fc813d718f47e3a2cf0ef0aa88c27b\\up-healthy.log",
+      "log_bytes": 1098,
+      "log_sha256": "babcf12104832308e3cb18345d4e5a7fae3665c336a418cfae60698eac945c85",
+      "last_lines": [
+        " Volume sg-final-29fc813d71_backend-data Creating ",
+        " Volume sg-final-29fc813d71_backend-data Creating ",
+        " Volume sg-final-29fc813d71_backend-data Created ",
+        " Volume sg-final-29fc813d71_backend-data Created ",
+        " Network sg-final-29fc813d71_default Created ",
+        " Network sg-final-29fc813d71_default Created ",
+        " Container sg-final-29fc813d71-backend-1 Creating ",
+        " Container sg-final-29fc813d71-backend-1 Created ",
+        " Container sg-final-29fc813d71-frontend-1 Creating ",
+        " Container sg-final-29fc813d71-frontend-1 Created ",
+        " Container sg-final-29fc813d71-backend-1 Starting ",
+        " Container sg-final-29fc813d71-backend-1 Started ",
+        " Container sg-final-29fc813d71-backend-1 Waiting ",
+        " Container sg-final-29fc813d71-backend-1 Healthy ",
+        " Container sg-final-29fc813d71-frontend-1 Starting ",
+        " Container sg-final-29fc813d71-frontend-1 Started ",
+        " Container sg-final-29fc813d71-frontend-1 Waiting ",
+        " Container sg-final-29fc813d71-backend-1 Waiting ",
+        " Container sg-final-29fc813d71-backend-1 Healthy ",
+        " Container sg-final-29fc813d71-frontend-1 Healthy "
+      ]
+    },
+    {
+      "stage": "container-state",
+      "exit_code": 0,
+      "elapsed_seconds": 0.45105,
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "sg-final-29fc813d71",
+        "-f",
+        "docker-compose.yml",
+        "-f",
+        "services/docker-compose.acceptance.yml",
+        "-f",
+        "services/docker-compose.final-acceptance.yml",
+        "ps",
+        "--format",
+        "json"
+      ],
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\29fc813d718f47e3a2cf0ef0aa88c27b\\container-state.log",
+      "log_bytes": 3899,
+      "log_sha256": "b7ba02804fdf7a6a5806bfc3660eb56c5850b0e6b1838d8a74cb9dfe7df35e3f",
+      "last_lines": [
+        "{\"Command\":\"\\\"python -m uvicorn s…\\\"\",\"CreatedAt\":\"2026-10-26 15:40:17 +0800 CST\",\"Engine\":\"\",\"ExitCode\":0,\"Health\":\"healthy\",\"ID\":\"4b0c8db664c9\",\"Image\":\"sg-final-29fc813d71-backend\",\"Labels\":\"com.docker.compose.version=5.6.1,desktop.docker.io/ports/8000/tcp=127.0.0.1:8000,com.docker.compose.project.config_files=D:\\\\AI_Workspace\\\\Tasks\\\\scholar-graph\\\\data\\\\final-deployment-build\\\\29fc813d718f47e3a2cf0ef0aa88c27b\\\\checkout\\\\docker-compose.yml,D:\\\\AI_Workspace\\\\Tasks\\\\scholar-graph\\\\data\\\\final-deployment-build\\\\29fc813d718f47e3a2cf0ef0aa88c27b\\\\checkout\\\\services\\\\docker-compose.acceptance.yml,D:\\\\AI_Workspace\\\\Tasks\\\\scholar-graph\\\\data\\\\final-deployment-build\\\\29fc813d718f47e3a2cf0ef0aa88c27b\\\\checkout\\\\services\\\\docker-compose.final-acceptance.yml,desktop.docker.io/ports.scheme=v2,com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.oneoff=False,com.docker.compose.service=backend,desktop.docker.io/mounts/0/SourceKind=hostFile,org.opencontainers.image.revision=000e8023a068c978138aece9aff8fbb2b8743e81,com.docker.compose.image=sha256:852a7ac9fd84a3638ef066374721ef956ffe3c9a9e07c0c566023e4588c3659a,com.docker.compose.project=sg-final-29fc813d71,com.docker.compose.project.working_dir=D:\\\\AI_Workspace\\\\Tasks\\\\scholar-graph\\\\data\\\\final-deployment-build\\\\29fc813d718f47e3a2cf0ef0aa88c27b\\\\checkout,desktop.docker.io/mounts/0/Source=D:\\\\AI_Workspace\\\\Tasks\\\\scholar-graph\\\\pdf,desktop.docker.io/mounts/0/Target=/corpus,com.docker.compose.config-hash=6f03d777d651a85d43af47a799488ff007ce3293f885c4ab90b703c9a092b12f\",\"LocalVolumes\":\"1\",\"Mounts\":\"/run/desktop/m…,sg-final-29fc8…\",\"Name\":\"sg-final-29fc813d71-backend-1\",\"Names\":\"sg-final-29fc813d71-backend-1\",\"Networks\":\"sg-final-29fc813d71_default\",\"Ports\":\"127.0.0.1:8000-\\u003e8000/tcp\",\"Project\":\"sg-final-29fc813d71\",\"Publishers\":[{\"URL\":\"127.0.0.1\",\"TargetPort\":8000,\"PublishedPort\":8000,\"Protocol\":\"tcp\"}],\"RunningFor\":\"13 seconds ago\",\"Service\":\"backend\",\"Size\":\"0B\",\"State\":\"running\",\"Status\":\"Up 12 seconds (healthy)\"}",
+        "{\"Command\":\"\\\"docker-entrypoint.s…\\\"\",\"CreatedAt\":\"2026-10-26 15:40:17 +0800 CST\",\"Engine\":\"\",\"ExitCode\":0,\"Health\":\"healthy\",\"ID\":\"014d6c3df9c0\",\"Image\":\"sg-final-29fc813d71-frontend\",\"Labels\":\"com.docker.compose.depends_on=backend:service_healthy:false,com.docker.compose.project=sg-final-29fc813d71,com.docker.compose.project.config_files=D:\\\\AI_Workspace\\\\Tasks\\\\scholar-graph\\\\data\\\\final-deployment-build\\\\29fc813d718f47e3a2cf0ef0aa88c27b\\\\checkout\\\\docker-compose.yml,D:\\\\AI_Workspace\\\\Tasks\\\\scholar-graph\\\\data\\\\final-deployment-build\\\\29fc813d718f47e3a2cf0ef0aa88c27b\\\\checkout\\\\services\\\\docker-compose.acceptance.yml,D:\\\\AI_Workspace\\\\Tasks\\\\scholar-graph\\\\data\\\\final-deployment-build\\\\29fc813d718f47e3a2cf0ef0aa88c27b\\\\checkout\\\\services\\\\docker-compose.final-acceptance.yml,desktop.docker.io/ports/3000/tcp=127.0.0.1:3000,org.opencontainers.image.revision=000e8023a068c978138aece9aff8fbb2b8743e81,com.docker.compose.image=sha256:4c953d36728afca034ec71a5f7e3ad1911ed1f132820458b847e7745eb7820b7,com.docker.compose.oneoff=False,com.docker.compose.project.working_dir=D:\\\\AI_Workspace\\\\Tasks\\\\scholar-graph\\\\data\\\\final-deployment-build\\\\29fc813d718f47e3a2cf0ef0aa88c27b\\\\checkout,com.docker.compose.service=frontend,com.docker.compose.version=5.6.1,desktop.docker.io/ports.scheme=v2,com.docker.compose.config-hash=0c6d2f4a5333291b112b3c02ab1e1ef7652b233656c5e832453348c0af575c71,com.docker.compose.container-number=1\",\"LocalVolumes\":\"0\",\"Mounts\":\"\",\"Name\":\"sg-final-29fc813d71-frontend-1\",\"Names\":\"sg-final-29fc813d71-frontend-1\",\"Networks\":\"sg-final-29fc813d71_default\",\"Ports\":\"127.0.0.1:3000-\\u003e3000/tcp\",\"Project\":\"sg-final-29fc813d71\",\"Publishers\":[{\"URL\":\"127.0.0.1\",\"TargetPort\":3000,\"PublishedPort\":3000,\"Protocol\":\"tcp\"}],\"RunningFor\":\"13 seconds ago\",\"Service\":\"frontend\",\"Size\":\"0B\",\"State\":\"running\",\"Status\":\"Up 6 seconds (healthy)\"}"
+      ]
+    },
+    {
+      "stage": "container-acceptance",
+      "exit_code": 143,
+      "elapsed_seconds": 1570.67429,
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "sg-final-29fc813d71",
+        "-f",
+        "docker-compose.yml",
+        "-f",
+        "services/docker-compose.acceptance.yml",
+        "-f",
+        "services/docker-compose.final-acceptance.yml",
+        "exec",
+        "-T",
+        "backend",
+        "python",
+        "tests/run_final_deployment_container.py"
+      ],
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\29fc813d718f47e3a2cf0ef0aa88c27b\\container-acceptance.log",
+      "log_bytes": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "last_lines": []
+    }
+  ],
+  "credentials_forwarded": false,
+  "passed": false,
+  "clone": {
+    "commit": "000e8023a068c978138aece9aff8fbb2b8743e81",
+    "clean": true,
+    "path": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\29fc813d718f47e3a2cf0ef0aa88c27b\\checkout",
+    "host_artifacts_absent": {
+      "backend/.venv": true,
+      "frontend/node_modules": true,
+      "frontend/.next": true,
+      ".env": true,
+      "pdf": true,
+      "data": true
+    }
+  },
+  "container_state": "{\"Command\":\"\\\"python -m uvicorn s…\\\"\",\"CreatedAt\":\"2026-10-26 15:40:17 +0800 CST\",\"Engine\":\"\",\"ExitCode\":0,\"Health\":\"healthy\",\"ID\":\"4b0c8db664c9\",\"Image\":\"sg-final-29fc813d71-backend\",\"Labels\":\"com.docker.compose.version=5.6.1,desktop.docker.io/ports/8000/tcp=127.0.0.1:8000,com.docker.compose.project.config_files=D:\\\\AI_Workspace\\\\Tasks\\\\scholar-graph\\\\data\\\\final-deployment-build\\\\29fc813d718f47e3a2cf0ef0aa88c27b\\\\checkout\\\\docker-compose.yml,D:\\\\AI_Workspace\\\\Tasks\\\\scholar-graph\\\\data\\\\final-deployment-build\\\\29fc813d718f47e3a2cf0ef0aa88c27b\\\\checkout\\\\services\\\\docker-compose.acceptance.yml,D:\\\\AI_Workspace\\\\Tasks\\\\scholar-graph\\\\data\\\\final-deployment-build\\\\29fc813d718f47e3a2cf0ef0aa88c27b\\\\checkout\\\\services\\\\docker-compose.final-acceptance.yml,desktop.docker.io/ports.scheme=v2,com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.oneoff=False,com.docker.compose.service=backend,desktop.docker.io/mounts/0/SourceKind=hostFile,org.opencontainers.image.revision=000e8023a068c978138aece9aff8fbb2b8743e81,com.docker.compose.image=sha256:852a7ac9fd84a3638ef066374721ef956ffe3c9a9e07c0c566023e4588c3659a,com.docker.compose.project=sg-final-29fc813d71,com.docker.compose.project.working_dir=D:\\\\AI_Workspace\\\\Tasks\\\\scholar-graph\\\\data\\\\final-deployment-build\\\\29fc813d718f47e3a2cf0ef0aa88c27b\\\\checkout,desktop.docker.io/mounts/0/Source=D:\\\\AI_Workspace\\\\Tasks\\\\scholar-graph\\\\pdf,desktop.docker.io/mounts/0/Target=/corpus,com.docker.compose.config-hash=6f03d777d651a85d43af47a799488ff007ce3293f885c4ab90b703c9a092b12f\",\"LocalVolumes\":\"1\",\"Mounts\":\"/run/desktop/m…,sg-final-29fc8…\",\"Name\":\"sg-final-29fc813d71-backend-1\",\"Names\":\"sg-final-29fc813d71-backend-1\",\"Networks\":\"sg-final-29fc813d71_default\",\"Ports\":\"127.0.0.1:8000-\\u003e8000/tcp\",\"Project\":\"sg-final-29fc813d71\",\"Publishers\":[{\"URL\":\"127.0.0.1\",\"TargetPort\":8000,\"PublishedPort\":8000,\"Protocol\":\"tcp\"}],\"RunningFor\":\"13 seconds ago\",\"Service\":\"backend\",\"Size\":\"0B\",\"State\":\"running\",\"Status\":\"Up 12 seconds (healthy)\"}\n{\"Command\":\"\\\"docker-entrypoint.s…\\\"\",\"CreatedAt\":\"2026-10-26 15:40:17 +0800 CST\",\"Engine\":\"\",\"ExitCode\":0,\"Health\":\"healthy\",\"ID\":\"014d6c3df9c0\",\"Image\":\"sg-final-29fc813d71-frontend\",\"Labels\":\"com.docker.compose.depends_on=backend:service_healthy:false,com.docker.compose.project=sg-final-29fc813d71,com.docker.compose.project.config_files=D:\\\\AI_Workspace\\\\Tasks\\\\scholar-graph\\\\data\\\\final-deployment-build\\\\29fc813d718f47e3a2cf0ef0aa88c27b\\\\checkout\\\\docker-compose.yml,D:\\\\AI_Workspace\\\\Tasks\\\\scholar-graph\\\\data\\\\final-deployment-build\\\\29fc813d718f47e3a2cf0ef0aa88c27b\\\\checkout\\\\services\\\\docker-compose.acceptance.yml,D:\\\\AI_Workspace\\\\Tasks\\\\scholar-graph\\\\data\\\\final-deployment-build\\\\29fc813d718f47e3a2cf0ef0aa88c27b\\\\checkout\\\\services\\\\docker-compose.final-acceptance.yml,desktop.docker.io/ports/3000/tcp=127.0.0.1:3000,org.opencontainers.image.revision=000e8023a068c978138aece9aff8fbb2b8743e81,com.docker.compose.image=sha256:4c953d36728afca034ec71a5f7e3ad1911ed1f132820458b847e7745eb7820b7,com.docker.compose.oneoff=False,com.docker.compose.project.working_dir=D:\\\\AI_Workspace\\\\Tasks\\\\scholar-graph\\\\data\\\\final-deployment-build\\\\29fc813d718f47e3a2cf0ef0aa88c27b\\\\checkout,com.docker.compose.service=frontend,com.docker.compose.version=5.6.1,desktop.docker.io/ports.scheme=v2,com.docker.compose.config-hash=0c6d2f4a5333291b112b3c02ab1e1ef7652b233656c5e832453348c0af575c71,com.docker.compose.container-number=1\",\"LocalVolumes\":\"0\",\"Mounts\":\"\",\"Name\":\"sg-final-29fc813d71-frontend-1\",\"Names\":\"sg-final-29fc813d71-frontend-1\",\"Networks\":\"sg-final-29fc813d71_default\",\"Ports\":\"127.0.0.1:3000-\\u003e3000/tcp\",\"Project\":\"sg-final-29fc813d71\",\"Publishers\":[{\"URL\":\"127.0.0.1\",\"TargetPort\":3000,\"PublishedPort\":3000,\"Protocol\":\"tcp\"}],\"RunningFor\":\"13 seconds ago\",\"Service\":\"frontend\",\"Size\":\"0B\",\"State\":\"running\",\"Status\":\"Up 6 seconds (healthy)\"}\n",
+  "error": {
+    "type": "StopIteration",
+    "message": ""
+  }
+}

@@ -1,0 +1,1578 @@
+{
+  "automatic_public_runs": [
+    {
+      "run_id": "429b2b3e143d4a3490615c5db8746997",
+      "started_at": "2026-10-26T09:31:41.374227+00:00",
+      "finished_at": "2026-10-26T09:31:47.942557+00:00",
+      "status": "completed",
+      "duration_seconds": 6.568333,
+      "candidate_count": 1,
+      "candidates": [
+        {
+          "arxiv_id": "2610.32977v1",
+          "title": "UniAction: Unified Action Conditioning for World Models",
+          "metadata": {
+            "schema_version": "1.0.0",
+            "id": "arxiv-2610.32977v1",
+            "title": "UniAction: Unified Action Conditioning for World Models",
+            "authors": [
+              "Bowen Xue",
+              "Zizhang Li",
+              "Hong-Xing Yu",
+              "Jiajun Wu"
+            ],
+            "institutions": [],
+            "abstract": "Actions that condition world models are highly heterogeneous, and thus existing action-conditioned world models are typically built for individual action types, fragmenting already limited action-annotated data across separate models. We introduce UniAction, a unified action-conditioning framework that represents any action as a sparse set of action elements, each with a discrete semantic identity and a continuous spatiotemporal grounding coordinate. By mapping these coordinates directly into the pretrained video model's native positional space, UniAction allows heterogeneous actions to condition a shared world model within the same spatiotemporal structure. We further introduce cardinality-calibrated attention to address the bias from differing action representation granularities. We evaluate UniAction on four representative action forms: force, camera control, hand pose, and robot pose. UniAction outperforms conditioning alternatives in action following, and a single jointly trained model surpasses the action-specific experts, showing that heterogeneous action data benefit from unified model and joint training.",
+            "year": 2026,
+            "source": "https://arxiv.org/abs/2610.32977v1",
+            "arxiv_id": "2610.32977v1",
+            "doi": null,
+            "version": "v1",
+            "file_hash": null,
+            "page_count": null,
+            "has_text_layer": null
+          },
+          "related_to": [
+            {
+              "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+              "kind": "topic",
+              "matched_terms": [
+                "attention"
+              ],
+              "reason": "与库内论文主题词重合：attention",
+              "anchor": {
+                "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                "page_number": 1,
+                "section": [],
+                "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00002"
+              },
+              "reference_anchor": null
+            }
+          ],
+          "outcome": "deferred",
+          "import": null
+        }
+      ],
+      "queries": [
+        {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "query": "all:\"attention\"",
+          "kind": "topic",
+          "terms": [
+            "attention"
+          ],
+          "anchor": {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 1,
+            "section": [],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00002"
+          },
+          "returned_count": 1,
+          "error": null
+        },
+        {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "query": "ti:\"Neural machine translation by jointly learning to align and translate\"",
+          "kind": "citation",
+          "reference": {
+            "schema_version": "1.0.0",
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-2",
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "number": 2,
+            "authors": [
+              "Dzmitry Bahdanau",
+              "Kyunghyun Cho",
+              "Yoshua Bengio"
+            ],
+            "year": 2014,
+            "title": "Neural machine translation by jointly learning to align and translate",
+            "venue": "CoRR, abs/1409.0473, 2014",
+            "doi": null,
+            "arxiv_id": "1409.0473"
+          },
+          "terms": [
+            "align",
+            "jointly",
+            "learning",
+            "machine",
+            "neural",
+            "translate",
+            "translation"
+          ],
+          "reference_title_excerpt": "Neural machine translation by jointly learning to align and translate",
+          "reference_anchor": null,
+          "anchor": {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 2,
+            "section": [
+              "1 Introduction"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00016"
+          },
+          "returned_count": 1,
+          "error": null
+        }
+      ],
+      "imported_count": 0,
+      "duplicate_count": 0,
+      "failed_count": 0,
+      "errors": [],
+      "cleanup": {
+        "papers_scanned": 3,
+        "papers_changed": 0,
+        "links_before": 133,
+        "links_after": 133,
+        "removed_count": 0,
+        "changes": []
+      },
+      "interval_seconds": 60,
+      "dedup_record_count": 0,
+      "paper_ids": [
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+      ]
+    },
+    {
+      "run_id": "427a011bd6f7437d800436d412067deb",
+      "started_at": "2026-10-26T09:32:48.986967+00:00",
+      "finished_at": "2026-10-26T09:32:53.329903+00:00",
+      "status": "completed",
+      "duration_seconds": 4.345384,
+      "candidate_count": 1,
+      "candidates": [
+        {
+          "arxiv_id": "2610.32977v1",
+          "title": "UniAction: Unified Action Conditioning for World Models",
+          "metadata": {
+            "schema_version": "1.0.0",
+            "id": "arxiv-2610.32977v1",
+            "title": "UniAction: Unified Action Conditioning for World Models",
+            "authors": [
+              "Bowen Xue",
+              "Zizhang Li",
+              "Hong-Xing Yu",
+              "Jiajun Wu"
+            ],
+            "institutions": [],
+            "abstract": "Actions that condition world models are highly heterogeneous, and thus existing action-conditioned world models are typically built for individual action types, fragmenting already limited action-annotated data across separate models. We introduce UniAction, a unified action-conditioning framework that represents any action as a sparse set of action elements, each with a discrete semantic identity and a continuous spatiotemporal grounding coordinate. By mapping these coordinates directly into the pretrained video model's native positional space, UniAction allows heterogeneous actions to condition a shared world model within the same spatiotemporal structure. We further introduce cardinality-calibrated attention to address the bias from differing action representation granularities. We evaluate UniAction on four representative action forms: force, camera control, hand pose, and robot pose. UniAction outperforms conditioning alternatives in action following, and a single jointly trained model surpasses the action-specific experts, showing that heterogeneous action data benefit from unified model and joint training.",
+            "year": 2026,
+            "source": "https://arxiv.org/abs/2610.32977v1",
+            "arxiv_id": "2610.32977v1",
+            "doi": null,
+            "version": "v1",
+            "file_hash": null,
+            "page_count": null,
+            "has_text_layer": null
+          },
+          "related_to": [
+            {
+              "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+              "kind": "topic",
+              "matched_terms": [
+                "attention"
+              ],
+              "reason": "与库内论文主题词重合：attention",
+              "anchor": {
+                "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                "page_number": 1,
+                "section": [],
+                "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00002"
+              },
+              "reference_anchor": null
+            }
+          ],
+          "outcome": "deferred",
+          "import": null
+        }
+      ],
+      "queries": [
+        {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "query": "all:\"attention\"",
+          "kind": "topic",
+          "terms": [
+            "attention"
+          ],
+          "anchor": {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 1,
+            "section": [],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00002"
+          },
+          "returned_count": 1,
+          "error": null
+        },
+        {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "query": "ti:\"Neural machine translation by jointly learning to align and translate\"",
+          "kind": "citation",
+          "reference": {
+            "schema_version": "1.0.0",
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-2",
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "number": 2,
+            "authors": [
+              "Dzmitry Bahdanau",
+              "Kyunghyun Cho",
+              "Yoshua Bengio"
+            ],
+            "year": 2014,
+            "title": "Neural machine translation by jointly learning to align and translate",
+            "venue": "CoRR, abs/1409.0473, 2014",
+            "doi": null,
+            "arxiv_id": "1409.0473"
+          },
+          "terms": [
+            "align",
+            "jointly",
+            "learning",
+            "machine",
+            "neural",
+            "translate",
+            "translation"
+          ],
+          "reference_title_excerpt": "Neural machine translation by jointly learning to align and translate",
+          "reference_anchor": null,
+          "anchor": {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 2,
+            "section": [
+              "1 Introduction"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00016"
+          },
+          "returned_count": 1,
+          "error": null
+        }
+      ],
+      "imported_count": 0,
+      "duplicate_count": 0,
+      "failed_count": 0,
+      "errors": [],
+      "cleanup": {
+        "papers_scanned": 3,
+        "papers_changed": 0,
+        "links_before": 133,
+        "links_after": 133,
+        "removed_count": 0,
+        "changes": []
+      },
+      "interval_seconds": 60,
+      "dedup_record_count": 0,
+      "paper_ids": [
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+      ]
+    },
+    {
+      "run_id": "347bd063d4654fc4bfc5e03988b960aa",
+      "started_at": "2026-10-26T09:33:54.263264+00:00",
+      "finished_at": "2026-10-26T09:33:59.409683+00:00",
+      "status": "completed",
+      "duration_seconds": 5.146432,
+      "candidate_count": 1,
+      "candidates": [
+        {
+          "arxiv_id": "2610.32977v1",
+          "title": "UniAction: Unified Action Conditioning for World Models",
+          "metadata": {
+            "schema_version": "1.0.0",
+            "id": "arxiv-2610.32977v1",
+            "title": "UniAction: Unified Action Conditioning for World Models",
+            "authors": [
+              "Bowen Xue",
+              "Zizhang Li",
+              "Hong-Xing Yu",
+              "Jiajun Wu"
+            ],
+            "institutions": [],
+            "abstract": "Actions that condition world models are highly heterogeneous, and thus existing action-conditioned world models are typically built for individual action types, fragmenting already limited action-annotated data across separate models. We introduce UniAction, a unified action-conditioning framework that represents any action as a sparse set of action elements, each with a discrete semantic identity and a continuous spatiotemporal grounding coordinate. By mapping these coordinates directly into the pretrained video model's native positional space, UniAction allows heterogeneous actions to condition a shared world model within the same spatiotemporal structure. We further introduce cardinality-calibrated attention to address the bias from differing action representation granularities. We evaluate UniAction on four representative action forms: force, camera control, hand pose, and robot pose. UniAction outperforms conditioning alternatives in action following, and a single jointly trained model surpasses the action-specific experts, showing that heterogeneous action data benefit from unified model and joint training.",
+            "year": 2026,
+            "source": "https://arxiv.org/abs/2610.32977v1",
+            "arxiv_id": "2610.32977v1",
+            "doi": null,
+            "version": "v1",
+            "file_hash": null,
+            "page_count": null,
+            "has_text_layer": null
+          },
+          "related_to": [
+            {
+              "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+              "kind": "topic",
+              "matched_terms": [
+                "attention"
+              ],
+              "reason": "与库内论文主题词重合：attention",
+              "anchor": {
+                "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                "page_number": 1,
+                "section": [],
+                "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00002"
+              },
+              "reference_anchor": null
+            }
+          ],
+          "outcome": "deferred",
+          "import": null
+        }
+      ],
+      "queries": [
+        {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "query": "all:\"attention\"",
+          "kind": "topic",
+          "terms": [
+            "attention"
+          ],
+          "anchor": {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 1,
+            "section": [],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00002"
+          },
+          "returned_count": 1,
+          "error": null
+        },
+        {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "query": "ti:\"Neural machine translation by jointly learning to align and translate\"",
+          "kind": "citation",
+          "reference": {
+            "schema_version": "1.0.0",
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-2",
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "number": 2,
+            "authors": [
+              "Dzmitry Bahdanau",
+              "Kyunghyun Cho",
+              "Yoshua Bengio"
+            ],
+            "year": 2014,
+            "title": "Neural machine translation by jointly learning to align and translate",
+            "venue": "CoRR, abs/1409.0473, 2014",
+            "doi": null,
+            "arxiv_id": "1409.0473"
+          },
+          "terms": [
+            "align",
+            "jointly",
+            "learning",
+            "machine",
+            "neural",
+            "translate",
+            "translation"
+          ],
+          "reference_title_excerpt": "Neural machine translation by jointly learning to align and translate",
+          "reference_anchor": null,
+          "anchor": {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 2,
+            "section": [
+              "1 Introduction"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00016"
+          },
+          "returned_count": 1,
+          "error": null
+        }
+      ],
+      "imported_count": 0,
+      "duplicate_count": 0,
+      "failed_count": 0,
+      "errors": [],
+      "cleanup": {
+        "papers_scanned": 3,
+        "papers_changed": 0,
+        "links_before": 133,
+        "links_after": 133,
+        "removed_count": 0,
+        "changes": []
+      },
+      "interval_seconds": 60,
+      "dedup_record_count": 0,
+      "paper_ids": [
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+      ]
+    },
+    {
+      "run_id": "34a02ec6b03e4894946cadc0c1774289",
+      "started_at": "2026-10-26T09:35:00.352438+00:00",
+      "finished_at": "2026-10-26T09:35:04.918768+00:00",
+      "status": "completed",
+      "duration_seconds": 4.566339,
+      "candidate_count": 1,
+      "candidates": [
+        {
+          "arxiv_id": "2610.32977v1",
+          "title": "UniAction: Unified Action Conditioning for World Models",
+          "metadata": {
+            "schema_version": "1.0.0",
+            "id": "arxiv-2610.32977v1",
+            "title": "UniAction: Unified Action Conditioning for World Models",
+            "authors": [
+              "Bowen Xue",
+              "Zizhang Li",
+              "Hong-Xing Yu",
+              "Jiajun Wu"
+            ],
+            "institutions": [],
+            "abstract": "Actions that condition world models are highly heterogeneous, and thus existing action-conditioned world models are typically built for individual action types, fragmenting already limited action-annotated data across separate models. We introduce UniAction, a unified action-conditioning framework that represents any action as a sparse set of action elements, each with a discrete semantic identity and a continuous spatiotemporal grounding coordinate. By mapping these coordinates directly into the pretrained video model's native positional space, UniAction allows heterogeneous actions to condition a shared world model within the same spatiotemporal structure. We further introduce cardinality-calibrated attention to address the bias from differing action representation granularities. We evaluate UniAction on four representative action forms: force, camera control, hand pose, and robot pose. UniAction outperforms conditioning alternatives in action following, and a single jointly trained model surpasses the action-specific experts, showing that heterogeneous action data benefit from unified model and joint training.",
+            "year": 2026,
+            "source": "https://arxiv.org/abs/2610.32977v1",
+            "arxiv_id": "2610.32977v1",
+            "doi": null,
+            "version": "v1",
+            "file_hash": null,
+            "page_count": null,
+            "has_text_layer": null
+          },
+          "related_to": [
+            {
+              "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+              "kind": "topic",
+              "matched_terms": [
+                "attention"
+              ],
+              "reason": "与库内论文主题词重合：attention",
+              "anchor": {
+                "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                "page_number": 1,
+                "section": [],
+                "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00002"
+              },
+              "reference_anchor": null
+            }
+          ],
+          "outcome": "deferred",
+          "import": null
+        }
+      ],
+      "queries": [
+        {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "query": "all:\"attention\"",
+          "kind": "topic",
+          "terms": [
+            "attention"
+          ],
+          "anchor": {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 1,
+            "section": [],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00002"
+          },
+          "returned_count": 1,
+          "error": null
+        },
+        {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "query": "ti:\"Neural machine translation by jointly learning to align and translate\"",
+          "kind": "citation",
+          "reference": {
+            "schema_version": "1.0.0",
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-2",
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "number": 2,
+            "authors": [
+              "Dzmitry Bahdanau",
+              "Kyunghyun Cho",
+              "Yoshua Bengio"
+            ],
+            "year": 2014,
+            "title": "Neural machine translation by jointly learning to align and translate",
+            "venue": "CoRR, abs/1409.0473, 2014",
+            "doi": null,
+            "arxiv_id": "1409.0473"
+          },
+          "terms": [
+            "align",
+            "jointly",
+            "learning",
+            "machine",
+            "neural",
+            "translate",
+            "translation"
+          ],
+          "reference_title_excerpt": "Neural machine translation by jointly learning to align and translate",
+          "reference_anchor": null,
+          "anchor": {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 2,
+            "section": [
+              "1 Introduction"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00016"
+          },
+          "returned_count": 1,
+          "error": null
+        }
+      ],
+      "imported_count": 0,
+      "duplicate_count": 0,
+      "failed_count": 0,
+      "errors": [],
+      "cleanup": {
+        "papers_scanned": 3,
+        "papers_changed": 0,
+        "links_before": 133,
+        "links_after": 133,
+        "removed_count": 0,
+        "changes": []
+      },
+      "interval_seconds": 60,
+      "dedup_record_count": 0,
+      "paper_ids": [
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+      ]
+    },
+    {
+      "run_id": "286ba968aedd49e0a705a8ab31997ba5",
+      "started_at": "2026-10-26T09:36:05.855546+00:00",
+      "finished_at": "2026-10-26T09:36:11.221763+00:00",
+      "status": "completed",
+      "duration_seconds": 5.366228,
+      "candidate_count": 1,
+      "candidates": [
+        {
+          "arxiv_id": "2610.32977v1",
+          "title": "UniAction: Unified Action Conditioning for World Models",
+          "metadata": {
+            "schema_version": "1.0.0",
+            "id": "arxiv-2610.32977v1",
+            "title": "UniAction: Unified Action Conditioning for World Models",
+            "authors": [
+              "Bowen Xue",
+              "Zizhang Li",
+              "Hong-Xing Yu",
+              "Jiajun Wu"
+            ],
+            "institutions": [],
+            "abstract": "Actions that condition world models are highly heterogeneous, and thus existing action-conditioned world models are typically built for individual action types, fragmenting already limited action-annotated data across separate models. We introduce UniAction, a unified action-conditioning framework that represents any action as a sparse set of action elements, each with a discrete semantic identity and a continuous spatiotemporal grounding coordinate. By mapping these coordinates directly into the pretrained video model's native positional space, UniAction allows heterogeneous actions to condition a shared world model within the same spatiotemporal structure. We further introduce cardinality-calibrated attention to address the bias from differing action representation granularities. We evaluate UniAction on four representative action forms: force, camera control, hand pose, and robot pose. UniAction outperforms conditioning alternatives in action following, and a single jointly trained model surpasses the action-specific experts, showing that heterogeneous action data benefit from unified model and joint training.",
+            "year": 2026,
+            "source": "https://arxiv.org/abs/2610.32977v1",
+            "arxiv_id": "2610.32977v1",
+            "doi": null,
+            "version": "v1",
+            "file_hash": null,
+            "page_count": null,
+            "has_text_layer": null
+          },
+          "related_to": [
+            {
+              "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+              "kind": "topic",
+              "matched_terms": [
+                "attention"
+              ],
+              "reason": "与库内论文主题词重合：attention",
+              "anchor": {
+                "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                "page_number": 1,
+                "section": [],
+                "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00002"
+              },
+              "reference_anchor": null
+            }
+          ],
+          "outcome": "deferred",
+          "import": null
+        }
+      ],
+      "queries": [
+        {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "query": "all:\"attention\"",
+          "kind": "topic",
+          "terms": [
+            "attention"
+          ],
+          "anchor": {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 1,
+            "section": [],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00002"
+          },
+          "returned_count": 1,
+          "error": null
+        },
+        {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "query": "ti:\"Neural machine translation by jointly learning to align and translate\"",
+          "kind": "citation",
+          "reference": {
+            "schema_version": "1.0.0",
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-2",
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "number": 2,
+            "authors": [
+              "Dzmitry Bahdanau",
+              "Kyunghyun Cho",
+              "Yoshua Bengio"
+            ],
+            "year": 2014,
+            "title": "Neural machine translation by jointly learning to align and translate",
+            "venue": "CoRR, abs/1409.0473, 2014",
+            "doi": null,
+            "arxiv_id": "1409.0473"
+          },
+          "terms": [
+            "align",
+            "jointly",
+            "learning",
+            "machine",
+            "neural",
+            "translate",
+            "translation"
+          ],
+          "reference_title_excerpt": "Neural machine translation by jointly learning to align and translate",
+          "reference_anchor": null,
+          "anchor": {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 2,
+            "section": [
+              "1 Introduction"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00016"
+          },
+          "returned_count": 1,
+          "error": null
+        }
+      ],
+      "imported_count": 0,
+      "duplicate_count": 0,
+      "failed_count": 0,
+      "errors": [],
+      "cleanup": {
+        "papers_scanned": 3,
+        "papers_changed": 0,
+        "links_before": 133,
+        "links_after": 133,
+        "removed_count": 0,
+        "changes": []
+      },
+      "interval_seconds": 60,
+      "dedup_record_count": 0,
+      "paper_ids": [
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+      ]
+    }
+  ],
+  "scheduler_events": [
+    {
+      "event": "scheduler_started",
+      "timestamp": "2026-10-26T07:40:20.897394+00:00",
+      "pid": 8,
+      "interval_seconds": 60
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T07:40:35.901689+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T07:41:35.929861+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T07:42:35.932778+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T07:43:35.932856+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T07:44:36.007735+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T07:45:36.177881+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T07:46:36.181342+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T07:47:36.184406+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T07:48:36.191340+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T07:49:36.200402+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T07:50:36.205141+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T07:51:36.305848+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T07:52:36.305732+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T07:53:36.320620+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T07:54:36.321655+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T07:55:36.341397+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T07:56:36.341735+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T07:57:36.344978+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T07:58:36.366309+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T07:59:36.352955+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:00:36.350001+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:01:36.435183+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:02:36.437744+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:03:36.537660+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:04:36.541872+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:05:36.582012+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:06:36.617836+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:07:36.686550+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:08:36.690121+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:09:36.722633+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:10:36.727063+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:11:36.837566+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:12:36.919489+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:13:36.962902+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:14:36.980897+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:15:37.060336+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:16:37.093009+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:17:37.092498+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:18:37.143004+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:19:37.142201+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:20:37.146111+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:21:37.144542+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:22:37.146204+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:23:37.145593+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:24:37.150379+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:25:37.154809+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:26:37.158658+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:27:37.162466+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:28:37.173286+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:29:37.177456+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:30:37.183208+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:31:37.232881+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:32:37.240733+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:33:37.254857+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:34:37.253590+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:35:37.353085+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:36:37.376843+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:37:37.426166+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:38:37.428345+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:39:37.432982+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:40:37.493094+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:41:37.515645+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:42:37.560384+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:43:37.569595+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:44:37.577841+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:45:37.605757+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:46:37.633369+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:47:37.673768+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:48:37.676587+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:49:37.686248+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:50:37.697507+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:51:37.741939+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:52:37.741856+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:53:37.828818+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:54:37.925467+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:55:37.938841+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:56:37.970248+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:57:37.993169+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:58:37.999003+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T08:59:38.003755+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T09:00:38.007822+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T09:01:38.062967+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T09:02:38.118280+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T09:03:38.118018+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T09:04:38.118548+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T09:05:38.125565+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T09:06:38.178445+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T09:07:38.153717+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T09:08:38.105453+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T09:09:38.138254+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T09:10:38.223232+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T09:11:38.223577+00:00",
+      "pid": 8
+    },
+    {
+      "event": "waiting_for_papers",
+      "timestamp": "2026-10-26T09:12:38.308907+00:00",
+      "pid": 8
+    },
+    {
+      "event": "run_started",
+      "timestamp": "2026-10-26T09:13:38.446566+00:00",
+      "pid": 8,
+      "scheduled_id": "1e8ee828d49b41bfb2a88c8d65a5ce4a",
+      "paper_ids": [
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+      ]
+    },
+    {
+      "event": "run_finished",
+      "timestamp": "2026-10-26T09:14:08.544868+00:00",
+      "pid": 8,
+      "scheduled_id": "1e8ee828d49b41bfb2a88c8d65a5ce4a",
+      "run_id": "a4958ea466d8409faebaf7a261c60fd3",
+      "status": "failed",
+      "reason": null,
+      "elapsed_seconds": 30.099215,
+      "candidate_count": 0,
+      "imported_count": 0,
+      "errors": [
+        {
+          "error_code": "VALIDATION_ERROR",
+          "message": "同一数据目录的操作正在执行，请稍后重试。",
+          "details": null
+        }
+      ]
+    },
+    {
+      "event": "run_started",
+      "timestamp": "2026-10-26T09:15:08.603657+00:00",
+      "pid": 8,
+      "scheduled_id": "74ad5ba7ac33410b934c66b5deac2b43",
+      "paper_ids": [
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+      ]
+    },
+    {
+      "event": "run_finished",
+      "timestamp": "2026-10-26T09:15:38.667087+00:00",
+      "pid": 8,
+      "scheduled_id": "74ad5ba7ac33410b934c66b5deac2b43",
+      "run_id": "69b1b9caba1c4318bab079bc8065be0c",
+      "status": "failed",
+      "reason": null,
+      "elapsed_seconds": 30.065616,
+      "candidate_count": 0,
+      "imported_count": 0,
+      "errors": [
+        {
+          "error_code": "VALIDATION_ERROR",
+          "message": "同一数据目录的操作正在执行，请稍后重试。",
+          "details": null
+        }
+      ]
+    },
+    {
+      "event": "run_started",
+      "timestamp": "2026-10-26T09:16:38.726307+00:00",
+      "pid": 8,
+      "scheduled_id": "c37e24fabcb543329155637b1bf121fd",
+      "paper_ids": [
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+      ]
+    },
+    {
+      "event": "run_finished",
+      "timestamp": "2026-10-26T09:17:08.795328+00:00",
+      "pid": 8,
+      "scheduled_id": "c37e24fabcb543329155637b1bf121fd",
+      "run_id": "24a12b19c3ef45b0a717a8ef996ac352",
+      "status": "failed",
+      "reason": null,
+      "elapsed_seconds": 30.070774,
+      "candidate_count": 0,
+      "imported_count": 0,
+      "errors": [
+        {
+          "error_code": "VALIDATION_ERROR",
+          "message": "同一数据目录的操作正在执行，请稍后重试。",
+          "details": null
+        }
+      ]
+    },
+    {
+      "event": "run_started",
+      "timestamp": "2026-10-26T09:18:08.679815+00:00",
+      "pid": 8,
+      "scheduled_id": "df49d9c8cf1e4a988856d1336134adae",
+      "paper_ids": [
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+      ]
+    },
+    {
+      "event": "run_finished",
+      "timestamp": "2026-10-26T09:18:38.962378+00:00",
+      "pid": 8,
+      "scheduled_id": "df49d9c8cf1e4a988856d1336134adae",
+      "run_id": "f843f3a3e9d5414b8ccc4509b1722f17",
+      "status": "failed",
+      "reason": null,
+      "elapsed_seconds": 30.088499,
+      "candidate_count": 0,
+      "imported_count": 0,
+      "errors": [
+        {
+          "error_code": "VALIDATION_ERROR",
+          "message": "同一数据目录的操作正在执行，请稍后重试。",
+          "details": null
+        }
+      ]
+    },
+    {
+      "event": "run_started",
+      "timestamp": "2026-10-26T09:19:39.023971+00:00",
+      "pid": 8,
+      "scheduled_id": "7572571dc7624ad0ad4c552991f93c75",
+      "paper_ids": [
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+      ]
+    },
+    {
+      "event": "run_finished",
+      "timestamp": "2026-10-26T09:20:09.102539+00:00",
+      "pid": 8,
+      "scheduled_id": "7572571dc7624ad0ad4c552991f93c75",
+      "run_id": "2f27e22b02d84de4a2a7bdd96b7f8e97",
+      "status": "failed",
+      "reason": null,
+      "elapsed_seconds": 30.080423,
+      "candidate_count": 0,
+      "imported_count": 0,
+      "errors": [
+        {
+          "error_code": "VALIDATION_ERROR",
+          "message": "同一数据目录的操作正在执行，请稍后重试。",
+          "details": null
+        }
+      ]
+    },
+    {
+      "event": "run_started",
+      "timestamp": "2026-10-26T09:21:09.160565+00:00",
+      "pid": 8,
+      "scheduled_id": "9c7721aec2744a6e970069d3ac21320d",
+      "paper_ids": [
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+      ]
+    },
+    {
+      "event": "run_finished",
+      "timestamp": "2026-10-26T09:21:39.299066+00:00",
+      "pid": 8,
+      "scheduled_id": "9c7721aec2744a6e970069d3ac21320d",
+      "run_id": "2e8b8095adff43c69ce3da83a353f2fc",
+      "status": "failed",
+      "reason": null,
+      "elapsed_seconds": 30.141433,
+      "candidate_count": 0,
+      "imported_count": 0,
+      "errors": [
+        {
+          "error_code": "VALIDATION_ERROR",
+          "message": "同一数据目录的操作正在执行，请稍后重试。",
+          "details": null
+        }
+      ]
+    },
+    {
+      "event": "run_started",
+      "timestamp": "2026-10-26T09:22:39.354944+00:00",
+      "pid": 8,
+      "scheduled_id": "2fafd87516964a6fa7d1fb65abb2d54b",
+      "paper_ids": [
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+      ]
+    },
+    {
+      "event": "run_finished",
+      "timestamp": "2026-10-26T09:23:09.490156+00:00",
+      "pid": 8,
+      "scheduled_id": "2fafd87516964a6fa7d1fb65abb2d54b",
+      "run_id": "a1754a64c87c4d55898c337c27e4c1e0",
+      "status": "failed",
+      "reason": null,
+      "elapsed_seconds": 30.137502,
+      "candidate_count": 0,
+      "imported_count": 0,
+      "errors": [
+        {
+          "error_code": "VALIDATION_ERROR",
+          "message": "同一数据目录的操作正在执行，请稍后重试。",
+          "details": null
+        }
+      ]
+    },
+    {
+      "event": "run_started",
+      "timestamp": "2026-10-26T09:24:09.580123+00:00",
+      "pid": 8,
+      "scheduled_id": "e4b28654a24c4f68b8829ec348189e56",
+      "paper_ids": [
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+      ]
+    },
+    {
+      "event": "run_finished",
+      "timestamp": "2026-10-26T09:24:39.639107+00:00",
+      "pid": 8,
+      "scheduled_id": "e4b28654a24c4f68b8829ec348189e56",
+      "run_id": "4f17479dab264ab39ff5d96e94054463",
+      "status": "failed",
+      "reason": null,
+      "elapsed_seconds": 30.060849,
+      "candidate_count": 0,
+      "imported_count": 0,
+      "errors": [
+        {
+          "error_code": "VALIDATION_ERROR",
+          "message": "同一数据目录的操作正在执行，请稍后重试。",
+          "details": null
+        }
+      ]
+    },
+    {
+      "event": "run_started",
+      "timestamp": "2026-10-26T09:25:39.760090+00:00",
+      "pid": 8,
+      "scheduled_id": "d5712f47f2dc446dac77ec1f157ee9ef",
+      "paper_ids": [
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+      ]
+    },
+    {
+      "event": "run_finished",
+      "timestamp": "2026-10-26T09:26:09.875669+00:00",
+      "pid": 8,
+      "scheduled_id": "d5712f47f2dc446dac77ec1f157ee9ef",
+      "run_id": "ff3da931101846aa945a2f6df8835b6f",
+      "status": "failed",
+      "reason": null,
+      "elapsed_seconds": 30.116518,
+      "candidate_count": 0,
+      "imported_count": 0,
+      "errors": [
+        {
+          "error_code": "VALIDATION_ERROR",
+          "message": "同一数据目录的操作正在执行，请稍后重试。",
+          "details": null
+        }
+      ]
+    },
+    {
+      "event": "run_started",
+      "timestamp": "2026-10-26T09:27:09.950015+00:00",
+      "pid": 8,
+      "scheduled_id": "cf810cf806b741c4ba4b72dad3b8ff5e",
+      "paper_ids": [
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+      ]
+    },
+    {
+      "event": "run_finished",
+      "timestamp": "2026-10-26T09:27:40.035415+00:00",
+      "pid": 8,
+      "scheduled_id": "cf810cf806b741c4ba4b72dad3b8ff5e",
+      "run_id": "83a73ef21c49458f8b91ea9fed604279",
+      "status": "failed",
+      "reason": null,
+      "elapsed_seconds": 30.088233,
+      "candidate_count": 0,
+      "imported_count": 0,
+      "errors": [
+        {
+          "error_code": "VALIDATION_ERROR",
+          "message": "同一数据目录的操作正在执行，请稍后重试。",
+          "details": null
+        }
+      ]
+    },
+    {
+      "event": "run_started",
+      "timestamp": "2026-10-26T09:28:40.094258+00:00",
+      "pid": 8,
+      "scheduled_id": "4a9d56b69e204560a9b9471b819a9401",
+      "paper_ids": [
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+      ]
+    },
+    {
+      "event": "run_finished",
+      "timestamp": "2026-10-26T09:29:10.209851+00:00",
+      "pid": 8,
+      "scheduled_id": "4a9d56b69e204560a9b9471b819a9401",
+      "run_id": "3b375af518794d19aee2357c27ea22ca",
+      "status": "failed",
+      "reason": null,
+      "elapsed_seconds": 30.117596,
+      "candidate_count": 0,
+      "imported_count": 0,
+      "errors": [
+        {
+          "error_code": "VALIDATION_ERROR",
+          "message": "同一数据目录的操作正在执行，请稍后重试。",
+          "details": null
+        }
+      ]
+    },
+    {
+      "event": "run_started",
+      "timestamp": "2026-10-26T09:30:10.265631+00:00",
+      "pid": 8,
+      "scheduled_id": "e6ea065cf44e467d97ab0608eae5befb",
+      "paper_ids": [
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+      ]
+    },
+    {
+      "event": "run_finished",
+      "timestamp": "2026-10-26T09:30:40.320559+00:00",
+      "pid": 8,
+      "scheduled_id": "e6ea065cf44e467d97ab0608eae5befb",
+      "run_id": "d76b0c84ac564e759c7433d05a42f152",
+      "status": "failed",
+      "reason": null,
+      "elapsed_seconds": 30.057493,
+      "candidate_count": 0,
+      "imported_count": 0,
+      "errors": [
+        {
+          "error_code": "VALIDATION_ERROR",
+          "message": "同一数据目录的操作正在执行，请稍后重试。",
+          "details": null
+        }
+      ]
+    },
+    {
+      "event": "run_started",
+      "timestamp": "2026-10-26T09:31:41.366241+00:00",
+      "pid": 8,
+      "scheduled_id": "9321267575bd494084e5cdc2e184de16",
+      "paper_ids": [
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+      ]
+    },
+    {
+      "event": "run_finished",
+      "timestamp": "2026-10-26T09:31:47.953158+00:00",
+      "pid": 8,
+      "scheduled_id": "9321267575bd494084e5cdc2e184de16",
+      "run_id": "429b2b3e143d4a3490615c5db8746997",
+      "status": "completed",
+      "reason": null,
+      "elapsed_seconds": 6.586891,
+      "candidate_count": 1,
+      "imported_count": 0,
+      "errors": []
+    },
+    {
+      "event": "run_started",
+      "timestamp": "2026-10-26T09:32:48.878455+00:00",
+      "pid": 8,
+      "scheduled_id": "54d227820fc7471f93ede76029213211",
+      "paper_ids": [
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+      ]
+    },
+    {
+      "event": "run_finished",
+      "timestamp": "2026-10-26T09:32:53.338883+00:00",
+      "pid": 8,
+      "scheduled_id": "54d227820fc7471f93ede76029213211",
+      "run_id": "427a011bd6f7437d800436d412067deb",
+      "status": "completed",
+      "reason": null,
+      "elapsed_seconds": 4.462869,
+      "candidate_count": 1,
+      "imported_count": 0,
+      "errors": []
+    },
+    {
+      "event": "run_started",
+      "timestamp": "2026-10-26T09:33:54.252560+00:00",
+      "pid": 8,
+      "scheduled_id": "17a8cb66dae84a01b4b8bc0f69db9692",
+      "paper_ids": [
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+      ]
+    },
+    {
+      "event": "run_finished",
+      "timestamp": "2026-10-26T09:33:59.419159+00:00",
+      "pid": 8,
+      "scheduled_id": "17a8cb66dae84a01b4b8bc0f69db9692",
+      "run_id": "347bd063d4654fc4bfc5e03988b960aa",
+      "status": "completed",
+      "reason": null,
+      "elapsed_seconds": 5.166592,
+      "candidate_count": 1,
+      "imported_count": 0,
+      "errors": []
+    },
+    {
+      "event": "run_started",
+      "timestamp": "2026-10-26T09:35:00.338752+00:00",
+      "pid": 8,
+      "scheduled_id": "2ea61f37053548118d5a8175f827b306",
+      "paper_ids": [
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+      ]
+    },
+    {
+      "event": "run_finished",
+      "timestamp": "2026-10-26T09:35:04.931588+00:00",
+      "pid": 8,
+      "scheduled_id": "2ea61f37053548118d5a8175f827b306",
+      "run_id": "34a02ec6b03e4894946cadc0c1774289",
+      "status": "completed",
+      "reason": null,
+      "elapsed_seconds": 4.592821,
+      "candidate_count": 1,
+      "imported_count": 0,
+      "errors": []
+    },
+    {
+      "event": "run_started",
+      "timestamp": "2026-10-26T09:36:05.850679+00:00",
+      "pid": 8,
+      "scheduled_id": "50babe9c88734cb9abf7a330984addc9",
+      "paper_ids": [
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+      ]
+    },
+    {
+      "event": "run_finished",
+      "timestamp": "2026-10-26T09:36:11.232164+00:00",
+      "pid": 8,
+      "scheduled_id": "50babe9c88734cb9abf7a330984addc9",
+      "run_id": "286ba968aedd49e0a705a8ab31997ba5",
+      "status": "completed",
+      "reason": null,
+      "elapsed_seconds": 5.381488,
+      "candidate_count": 1,
+      "imported_count": 0,
+      "errors": []
+    }
+  ]
+}

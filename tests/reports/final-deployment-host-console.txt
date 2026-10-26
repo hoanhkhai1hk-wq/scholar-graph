@@ -1,0 +1,21 @@
+{"public_ocr_preparation": true, "exit_code": 0, "error": null, "cache_directory": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\paddle-models", "elapsed_seconds": 8.9123, "weight_files": 2, "pdf_inputs": 0}
+........................................................................ [ 11%]
+................................................s....................... [ 23%]
+..............s......................................................... [ 35%]
+........................................................................ [ 46%]
+........................................................................ [ 58%]
+...s.................................................................... [ 70%]
+........................................................................ [ 82%]
+.........................................................s.............. [ 93%]
+.........s...........................                                    [100%]
+============================== warnings summary ===============================
+tests/test_full_layer_live.py::test_real_local_bge_m3_dense_sparse_chroma
+  tests\test_full_layer_live.py:16: PytestWarning: record_property is incompatible with junit_family 'xunit2' (use 'legacy' or 'xunit1')
+    @pytest.mark.real_vector
+
+tests/test_full_layer_live.py::test_official_541_page_longbook_full_layer
+  tests\test_full_layer_live.py:39: PytestWarning: record_property is incompatible with junit_family 'xunit2' (use 'legacy' or 'xunit1')
+    @pytest.mark.longbook
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+608 passed, 5 skipped, 2 warnings in 357.48s (0:05:57)

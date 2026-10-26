@@ -1,0 +1,461 @@
+{
+  "project": "sg-final-29fc813d71",
+  "remote": "https://github.com/hoanhkhai1hk-wq/scholar-graph.git",
+  "run_root": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\2653edb0cc1c4ef49c28b66bf89451e7",
+  "steps": [
+    {
+      "stage": "clone-main",
+      "argv": [
+        "git",
+        "clone",
+        "--branch",
+        "main",
+        "--single-branch",
+        "https://github.com/hoanhkhai1hk-wq/scholar-graph.git",
+        "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\2653edb0cc1c4ef49c28b66bf89451e7\\checkout"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 6.927945,
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\2653edb0cc1c4ef49c28b66bf89451e7\\clone-main.log",
+      "log_bytes": 124,
+      "log_sha256": "a212170d0e1f2292de9cf84a3d9b41f9bca1fa373dd4a2502aa45a8ef8a3c427",
+      "last_lines": [
+        "Cloning into 'D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\2653edb0cc1c4ef49c28b66bf89451e7\\checkout'..."
+      ]
+    },
+    {
+      "stage": "clone-head",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.055695,
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\2653edb0cc1c4ef49c28b66bf89451e7\\clone-head.log",
+      "log_bytes": 41,
+      "log_sha256": "588650d3e34ec1b3bdbff53e2aa3b85fdc9de4d6de535e2d17ede4cbbe089249",
+      "last_lines": [
+        "62dca5182b6098a883e0ffe8d72d9560f291e1ff"
+      ]
+    },
+    {
+      "stage": "clone-clean",
+      "argv": [
+        "git",
+        "status",
+        "--porcelain"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.161217,
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\2653edb0cc1c4ef49c28b66bf89451e7\\clone-clean.log",
+      "log_bytes": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "last_lines": []
+    },
+    {
+      "stage": "compose-config",
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "sg-final-29fc813d71",
+        "-f",
+        "docker-compose.yml",
+        "-f",
+        "services/docker-compose.acceptance.yml",
+        "-f",
+        "services/docker-compose.final-acceptance.yml",
+        "config"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.616158,
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\2653edb0cc1c4ef49c28b66bf89451e7\\compose-config.log",
+      "log_bytes": 2864,
+      "log_sha256": "b643216f3729f9da3881ad51e5fc61c3359396fcacb388d639aef89a21400912",
+      "last_lines": [
+        "        - CMD",
+        "        - node",
+        "        - -e",
+        "        - fetch('http://127.0.0.1:3000/api/backend/papers?page_size=1').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        "      timeout: 12s",
+        "      interval: 15s",
+        "      retries: 8",
+        "      start_period: 30s",
+        "    ports:",
+        "      - mode: ingress",
+        "        host_ip: 127.0.0.1",
+        "        target: 3000",
+        "        published: \"3000\"",
+        "        protocol: tcp",
+        "networks:",
+        "  default:",
+        "    name: sg-final-29fc813d71_default",
+        "volumes:",
+        "  backend-data:",
+        "    name: sg-final-29fc813d71_backend-data"
+      ]
+    },
+    {
+      "stage": "build-no-cache",
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "sg-final-29fc813d71",
+        "-f",
+        "docker-compose.yml",
+        "-f",
+        "services/docker-compose.acceptance.yml",
+        "-f",
+        "services/docker-compose.final-acceptance.yml",
+        "build",
+        "--no-cache"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 1525.450406,
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\2653edb0cc1c4ef49c28b66bf89451e7\\build-no-cache.log",
+      "log_bytes": 160174,
+      "log_sha256": "d11cd80729af63c7c7680796d61515e58a3965ab4c2a14dccf50e18353ef2173",
+      "last_lines": [
+        "#40 [backend backend 13/13] RUN useradd --uid 1000 --create-home --home-dir /home/scholar scholar     && mkdir -p /app/data/home /app/tests/reports     && chown -R scholar:scholar /app/data /app/tests/reports",
+        "#40 DONE 0.6s",
+        "",
+        "#41 [backend] exporting to image",
+        "#41 exporting layers",
+        "#41 exporting layers 62.0s done",
+        "#41 exporting manifest sha256:81905083e91d5e8e446ed471cb2f1d070587fc593a519d594aa9208befcf70fe 0.0s done",
+        "#41 exporting config sha256:5d024cab01c14ea9aee481b4bdc7577a58dbf421f816a98f29cf711b80199a26 0.0s done",
+        "#41 exporting attestation manifest sha256:b601813d335f8eb34b102ed9b955c0f7dc9b4e413a00e948929ad6fb12723173",
+        "#41 exporting attestation manifest sha256:b601813d335f8eb34b102ed9b955c0f7dc9b4e413a00e948929ad6fb12723173 0.1s done",
+        "#41 exporting manifest list sha256:cbe2f03a24c80bde427daf741dee700a91a4a5f64cc54b13835c086efb8f3dc6 0.0s done",
+        "#41 naming to docker.io/library/sg-final-29fc813d71-backend:latest done",
+        "#41 unpacking to docker.io/library/sg-final-29fc813d71-backend:latest",
+        "#41 unpacking to docker.io/library/sg-final-29fc813d71-backend:latest 45.0s done",
+        "#41 DONE 107.3s",
+        "",
+        "#42 [backend] resolving provenance for metadata file",
+        "#42 DONE 0.1s",
+        " Image sg-final-29fc813d71-backend Built ",
+        " Image sg-final-29fc813d71-frontend Built "
+      ]
+    },
+    {
+      "stage": "previous-backend-id",
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "sg-final-29fc813d71",
+        "-f",
+        "docker-compose.yml",
+        "-f",
+        "services/docker-compose.acceptance.yml",
+        "-f",
+        "services/docker-compose.final-acceptance.yml",
+        "ps",
+        "-q",
+        "backend"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.550034,
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\2653edb0cc1c4ef49c28b66bf89451e7\\previous-backend-id.log",
+      "log_bytes": 65,
+      "log_sha256": "0db3b1466a248723819c95852a73672184c2d370dc99b483a221b876a12ddb23",
+      "last_lines": [
+        "4b0c8db664c96ac6e12184614bc5f0691ecf3be7a7c5ece3c6ab71c2d068526c"
+      ]
+    },
+    {
+      "stage": "previous-data-mount",
+      "argv": [
+        "docker",
+        "inspect",
+        "4b0c8db664c96ac6e12184614bc5f0691ecf3be7a7c5ece3c6ab71c2d068526c"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.204497,
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\2653edb0cc1c4ef49c28b66bf89451e7\\previous-data-mount.log",
+      "log_bytes": 13473,
+      "log_sha256": "9036069448f2359f4e1b31cfb3a6aff74f52eeee0e93f65511652cbf4f01dc6f",
+      "last_lines": [
+        "                    \"GlobalIPv6PrefixLen\": 0,",
+        "                    \"DNSNames\": [",
+        "                        \"sg-final-29fc813d71-backend-1\",",
+        "                        \"backend\",",
+        "                        \"4b0c8db664c9\"",
+        "                    ]",
+        "                }",
+        "            }",
+        "        },",
+        "        \"ImageManifestDescriptor\": {",
+        "            \"mediaType\": \"application/vnd.oci.image.manifest.v1+json\",",
+        "            \"digest\": \"sha256:852a7ac9fd84a3638ef066374721ef956ffe3c9a9e07c0c566023e4588c3659a\",",
+        "            \"size\": 3349,",
+        "            \"platform\": {",
+        "                \"architecture\": \"amd64\",",
+        "                \"os\": \"linux\"",
+        "            }",
+        "        }",
+        "    }",
+        "]"
+      ]
+    },
+    {
+      "stage": "stop-previous-backend",
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "sg-final-29fc813d71",
+        "-f",
+        "docker-compose.yml",
+        "-f",
+        "services/docker-compose.acceptance.yml",
+        "-f",
+        "services/docker-compose.final-acceptance.yml",
+        "stop",
+        "backend"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 3.335026,
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\2653edb0cc1c4ef49c28b66bf89451e7\\stop-previous-backend.log",
+      "log_bytes": 101,
+      "log_sha256": "9bcc567ac561149fa6ce03af6bd93a5edebcf1a018d7b184525dd5f7d24c38a2",
+      "last_lines": [
+        " Container sg-final-29fc813d71-backend-1 Stopping ",
+        " Container sg-final-29fc813d71-backend-1 Stopped "
+      ]
+    },
+    {
+      "stage": "archive-first-run-records",
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--user",
+        "1000",
+        "--mount",
+        "type=volume,source=sg-final-29fc813d71_backend-data,target=/app/data",
+        "--entrypoint",
+        "python",
+        "sg-final-29fc813d71-backend",
+        "-c",
+        "from pathlib import Path; import json,shutil; root=Path('/app/data').resolve(); p=root/'records'; assert p.resolve().parent==root and p.is_dir(); p.rename(root/'records-before-runtime-fix-3bf85263527e4e8394168160cd5bf0ee'); src=root/'records-before-runtime-fix-3bf85263527e4e8394168160cd5bf0ee'/'models/paddlex'; dst=root/'paddle-models'; assert not list(src.rglob('*.pdf')); shutil.copytree(src,dst,dirs_exist_ok=True) if src.is_dir() else None; print(json.dumps({'archived':'records-before-runtime-fix-3bf85263527e4e8394168160cd5bf0ee','new_http_library_absent':not p.exists(),'retained_public_ocr_weight_files':len(list(dst.rglob('*.pdiparams')))}))"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 1.26999,
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\2653edb0cc1c4ef49c28b66bf89451e7\\archive-first-run-records.log",
+      "log_bytes": 148,
+      "log_sha256": "85229732fe1d845009bad9584e3705dc9aacde0cd8070a7a4a6d13888afa62a1",
+      "last_lines": [
+        "{\"archived\": \"records-before-runtime-fix-3bf85263527e4e8394168160cd5bf0ee\", \"new_http_library_absent\": true, \"retained_public_ocr_weight_files\": 2}"
+      ]
+    },
+    {
+      "stage": "up-healthy",
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "sg-final-29fc813d71",
+        "-f",
+        "docker-compose.yml",
+        "-f",
+        "services/docker-compose.acceptance.yml",
+        "-f",
+        "services/docker-compose.final-acceptance.yml",
+        "up",
+        "-d",
+        "--wait",
+        "--wait-timeout",
+        "300"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 20.668233,
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\2653edb0cc1c4ef49c28b66bf89451e7\\up-healthy.log",
+      "log_bytes": 714,
+      "log_sha256": "8f0e5c4eedf8316c61a82fd5073203c579969179315e2df501332dc7ec15e6fe",
+      "last_lines": [
+        " Container sg-final-29fc813d71-backend-1 Recreate ",
+        " Container sg-final-29fc813d71-backend-1 Recreated ",
+        " Container sg-final-29fc813d71-frontend-1 Recreate ",
+        " Container sg-final-29fc813d71-frontend-1 Recreated ",
+        " Container sg-final-29fc813d71-backend-1 Starting ",
+        " Container sg-final-29fc813d71-backend-1 Started ",
+        " Container sg-final-29fc813d71-backend-1 Waiting ",
+        " Container sg-final-29fc813d71-backend-1 Healthy ",
+        " Container sg-final-29fc813d71-frontend-1 Starting ",
+        " Container sg-final-29fc813d71-frontend-1 Started ",
+        " Container sg-final-29fc813d71-backend-1 Waiting ",
+        " Container sg-final-29fc813d71-frontend-1 Waiting ",
+        " Container sg-final-29fc813d71-backend-1 Healthy ",
+        " Container sg-final-29fc813d71-frontend-1 Healthy "
+      ]
+    }
+  ],
+  "credentials_forwarded": false,
+  "passed": false,
+  "reason": "Linux symlink-resolved worker used system Python without vector dependencies",
+  "clone": {
+    "commit": "62dca5182b6098a883e0ffe8d72d9560f291e1ff",
+    "clean": true,
+    "path": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\2653edb0cc1c4ef49c28b66bf89451e7\\checkout",
+    "host_artifacts_absent": {
+      "backend/.venv": true,
+      "frontend/node_modules": true,
+      "frontend/.next": true,
+      ".env": true,
+      "pdf": true,
+      "data": true
+    }
+  },
+  "build_completed": true,
+  "data_archive": {
+    "archived": "records-before-runtime-fix-3bf85263527e4e8394168160cd5bf0ee",
+    "new_http_library_absent": true,
+    "retained_public_ocr_weight_files": 2
+  },
+  "previous_runtime_source_commit": "000e8023a068c978138aece9aff8fbb2b8743e81",
+  "public_model_provenance": "Same fresh container volume; anonymous public download verified before rebuild; no host cache",
+  "previous_preparation_steps": [
+    {
+      "stage": "prepare-public-vector-model",
+      "exit_code": 143,
+      "elapsed_seconds": 272.825849,
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "sg-final-29fc813d71",
+        "-f",
+        "docker-compose.yml",
+        "-f",
+        "services/docker-compose.acceptance.yml",
+        "-f",
+        "services/docker-compose.final-acceptance.yml",
+        "exec",
+        "-T",
+        "backend",
+        "/opt/vector-venv/bin/python",
+        "backend/download_bge_m3.py"
+      ],
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\29fc813d718f47e3a2cf0ef0aa88c27b\\prepare-public-vector-model.log",
+      "log_bytes": 196,
+      "log_sha256": "298fd494885de9691899109d0152b6a605a407360e90910d755ad3ee9ba7692a",
+      "last_lines": [
+        "",
+        "Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads."
+      ]
+    },
+    {
+      "stage": "prepare-public-vector-model-range",
+      "exit_code": 143,
+      "elapsed_seconds": 500.511745,
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "sg-final-29fc813d71",
+        "-f",
+        "docker-compose.yml",
+        "-f",
+        "services/docker-compose.acceptance.yml",
+        "-f",
+        "services/docker-compose.final-acceptance.yml",
+        "exec",
+        "-T",
+        "backend",
+        "python",
+        "/app/data/prepare_bge_public.py"
+      ],
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\29fc813d718f47e3a2cf0ef0aa88c27b\\prepare-public-vector-model-range.log",
+      "log_bytes": 362,
+      "log_sha256": "43adebfcad85171ab5b0b1299f9f73767e7b17d8495ae3bb826833fcd543540d",
+      "last_lines": [
+        "{\"stage\": \"public_range_preparation\", \"revision\": \"5617a9f61b028005a4858fdac845db406aefb181\", \"reused_container_partial_bytes\": 1059061760}",
+        "{\"stage\": \"public_range_progress\", \"bytes\": 1126170624, \"total_bytes\": 2271145830, \"elapsed_seconds\": 170.471}",
+        "{\"stage\": \"public_range_progress\", \"bytes\": 1193279488, \"total_bytes\": 2271145830, \"elapsed_seconds\": 341.345}"
+      ]
+    },
+    {
+      "stage": "prepare-public-vector-model-range-parallel",
+      "exit_code": 0,
+      "elapsed_seconds": 2527.369403,
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "sg-final-29fc813d71",
+        "-f",
+        "docker-compose.yml",
+        "-f",
+        "services/docker-compose.acceptance.yml",
+        "-f",
+        "services/docker-compose.final-acceptance.yml",
+        "exec",
+        "-T",
+        "backend",
+        "python",
+        "/app/data/prepare_bge_public.py"
+      ],
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\29fc813d718f47e3a2cf0ef0aa88c27b\\prepare-public-vector-model-range-parallel.log",
+      "log_bytes": 2684,
+      "log_sha256": "fd36ca44008d87694268a4e8133d3d649401e3e69e10cbce4700fbb6793c238f",
+      "last_lines": [
+        "{\"stage\": \"public_range_preparation\", \"revision\": \"5617a9f61b028005a4858fdac845db406aefb181\", \"reused_container_partial_bytes\": 1255145472}",
+        "{\"stage\": \"public_range_progress\", \"completed_bytes\": 1322254336, \"total_bytes\": 2271145830, \"parallel_downloads\": 4, \"elapsed_seconds\": 737.032}",
+        "{\"stage\": \"public_range_progress\", \"completed_bytes\": 1389363200, \"total_bytes\": 2271145830, \"parallel_downloads\": 4, \"elapsed_seconds\": 737.569}",
+        "{\"stage\": \"public_range_progress\", \"completed_bytes\": 1456472064, \"total_bytes\": 2271145830, \"parallel_downloads\": 4, \"elapsed_seconds\": 737.602}",
+        "{\"stage\": \"public_range_progress\", \"completed_bytes\": 1523580928, \"total_bytes\": 2271145830, \"parallel_downloads\": 4, \"elapsed_seconds\": 737.706}",
+        "{\"stage\": \"public_range_progress\", \"completed_bytes\": 1590689792, \"total_bytes\": 2271145830, \"parallel_downloads\": 4, \"elapsed_seconds\": 1383.591}",
+        "{\"stage\": \"public_range_progress\", \"completed_bytes\": 1657798656, \"total_bytes\": 2271145830, \"parallel_downloads\": 4, \"elapsed_seconds\": 1384.138}",
+        "{\"stage\": \"public_range_progress\", \"completed_bytes\": 1724907520, \"total_bytes\": 2271145830, \"parallel_downloads\": 4, \"elapsed_seconds\": 1384.141}",
+        "{\"stage\": \"public_range_progress\", \"completed_bytes\": 1792016384, \"total_bytes\": 2271145830, \"parallel_downloads\": 4, \"elapsed_seconds\": 1384.147}",
+        "{\"stage\": \"public_range_progress\", \"completed_bytes\": 1859125248, \"total_bytes\": 2271145830, \"parallel_downloads\": 4, \"elapsed_seconds\": 2004.937}",
+        "{\"stage\": \"public_range_progress\", \"completed_bytes\": 1926234112, \"total_bytes\": 2271145830, \"parallel_downloads\": 4, \"elapsed_seconds\": 2012.226}",
+        "{\"stage\": \"public_range_progress\", \"completed_bytes\": 1993342976, \"total_bytes\": 2271145830, \"parallel_downloads\": 4, \"elapsed_seconds\": 2012.312}",
+        "{\"stage\": \"public_range_progress\", \"completed_bytes\": 2060451840, \"total_bytes\": 2271145830, \"parallel_downloads\": 4, \"elapsed_seconds\": 2012.645}",
+        "{\"stage\": \"public_range_progress\", \"completed_bytes\": 2069819238, \"total_bytes\": 2271145830, \"parallel_downloads\": 4, \"elapsed_seconds\": 2089.806}",
+        "{\"stage\": \"public_range_progress\", \"completed_bytes\": 2136928102, \"total_bytes\": 2271145830, \"parallel_downloads\": 4, \"elapsed_seconds\": 2501.533}",
+        "{\"stage\": \"public_range_progress\", \"completed_bytes\": 2204036966, \"total_bytes\": 2271145830, \"parallel_downloads\": 4, \"elapsed_seconds\": 2516.062}",
+        "{\"stage\": \"public_range_progress\", \"completed_bytes\": 2271145830, \"total_bytes\": 2271145830, \"parallel_downloads\": 4, \"elapsed_seconds\": 2516.874}",
+        "{\"verified\": true, \"sha256\": \"b5e0ce3470abf5ef3831aa1bd5553b486803e83251590ab7ff35a117cf6aad38\", \"bytes\": 2271145830, \"reused_container_partial_bytes\": 1255145472, \"elapsed_seconds\": 2526.246106}"
+      ]
+    },
+    {
+      "stage": "confirm-public-vector-model",
+      "exit_code": 0,
+      "elapsed_seconds": 4.04886,
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "sg-final-29fc813d71",
+        "-f",
+        "docker-compose.yml",
+        "-f",
+        "services/docker-compose.acceptance.yml",
+        "-f",
+        "services/docker-compose.final-acceptance.yml",
+        "exec",
+        "-T",
+        "backend",
+        "/opt/vector-venv/bin/python",
+        "backend/download_bge_m3.py"
+      ],
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\29fc813d718f47e3a2cf0ef0aa88c27b\\confirm-public-vector-model.log",
+      "log_bytes": 371,
+      "log_sha256": "fa34cf52f8eb5f8dcc35a311a0e63366bfe51e6076b5bea6633005b15bb35222",
+      "last_lines": [
+        "",
+        "Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.",
+        "",
+        "Fetching 11 files: 100%|██████████| 11/11 [00:02<00:00,  4.27it/s]",
+        "Fetching 11 files: 100%|██████████| 11/11 [00:02<00:00,  4.27it/s]"
+      ]
+    }
+  ]
+}

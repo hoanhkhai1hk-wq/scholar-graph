@@ -1,0 +1,136 @@
+{
+  "baseline": "8de7a907c212b49588fdf00ef9842e45863b273f",
+  "image_source_commit": "62dca5182b6098a883e0ffe8d72d9560f291e1ff",
+  "commits": [
+    {
+      "sha": "bff6d3e02c05647b32c5ecd906c6c510f373b560",
+      "message": "落地提交快速回归与含真向量长书的全量验收分层",
+      "files": [
+        ".github/workflows/backend-fast.yml",
+        "services/git-hooks/pre-commit",
+        "tests/conftest.py",
+        "tests/regression_layers.py",
+        "tests/run_regression.py",
+        "tests/test_full_layer_live.py",
+        "tests/test_regression_layers.py"
+      ]
+    },
+    {
+      "sha": "0aa87f85c44994f7d996990934e051f1199c8909",
+      "message": "注册后端自动追踪调度并持久记录定时运行与失败",
+      "files": [
+        "backend/scholar_graph/api.py",
+        "backend/scholar_graph/tracking_routes.py",
+        "backend/scholar_graph/tracking_scheduler.py",
+        "tests/test_tracking_scheduler.py"
+      ]
+    },
+    {
+      "sha": "000e8023a068c978138aece9aff8fbb2b8743e81",
+      "message": "更新双服务部署镜像并加入干净构建与容器官方验收入口",
+      "files": [
+        "Dockerfile",
+        "backend/README.md",
+        "docker-compose.yml",
+        "services/docker-compose.final-acceptance.yml",
+        "tests/deployment_checks.py",
+        "tests/reproduce_final_deployment.py",
+        "tests/run_final_deployment_container.py",
+        "tests/run_final_host_acceptance.py"
+      ]
+    },
+    {
+      "sha": "8a889c8bec37f0d1dae8ea9383501ae38ae798c4",
+      "message": "补充部署镜像隔离审计与双环境验收报告生成",
+      "files": [
+        "tests/audit_final_deployment.py",
+        "tests/inspect_final_deployment.py",
+        "tests/write_final_deployment_report.py"
+      ]
+    },
+    {
+      "sha": "112ab20be9313babbc440fb6e5faebcfc7154158",
+      "message": "隔离公开模型下载准备并保留容器续传与完整校验记录",
+      "files": [
+        "backend/README.md",
+        "tests/audit_final_deployment.py",
+        "tests/inspect_final_deployment.py",
+        "tests/prepare_bge_public.py",
+        "tests/reproduce_final_deployment.py",
+        "tests/resume_final_deployment.py",
+        "tests/write_final_deployment_report.py"
+      ]
+    },
+    {
+      "sha": "af5160bc7c577f7526b3370ad4ec55ab32ad7f25",
+      "message": "修正Linux向量虚拟环境符号链接导致worker丢失依赖",
+      "files": [
+        "Dockerfile",
+        "backend/README.md"
+      ]
+    },
+    {
+      "sha": "26804191cfdeb7e2c5f0bb8680c274bfb45531e4",
+      "message": "补齐容器校准证据并隔离调度用例的部署种子",
+      "files": [
+        ".dockerignore",
+        "tests/test_tracking_scheduler.py"
+      ]
+    },
+    {
+      "sha": "061863749807fa6340cbbfb4feb49f012bdbe6b9",
+      "message": "分离公开OCR模型准备与逐页推理预算并复用权重缓存",
+      "files": [
+        "backend/README.md",
+        "backend/prepare_ocr_models.py",
+        "backend/scholar_graph/_engine_worker.py",
+        "backend/scholar_graph/adapters.py",
+        "docker-compose.yml",
+        "tests/run_regression.py",
+        "tests/test_engine_cache.py"
+      ]
+    },
+    {
+      "sha": "4f87ad3f13fa04f353986750e90f4e8582015064",
+      "message": "为公共构建依赖下载增加有界重试与官方HTTPS源",
+      "files": [
+        "Dockerfile",
+        "backend/README.md"
+      ]
+    },
+    {
+      "sha": "62dca5182b6098a883e0ffe8d72d9560f291e1ff",
+      "message": "固定支持断点恢复的pip并保留大依赖哈希校验",
+      "files": [
+        "Dockerfile",
+        "backend/README.md"
+      ]
+    },
+    {
+      "sha": "cd20b1d28b9ee79f33dbcd6655db47762e923eb6",
+      "message": "保留失败重建证据并观察上传后两轮真实定时查询",
+      "files": [
+        "tests/audit_final_deployment.py",
+        "tests/deployment_timer.py",
+        "tests/inspect_final_deployment.py",
+        "tests/rebuild_final_runtime.py",
+        "tests/reproduce_final_deployment.py",
+        "tests/resume_final_deployment.py",
+        "tests/write_final_deployment_report.py"
+      ]
+    },
+    {
+      "sha": "3bc9a8c2972823c11c82d6a89ff21648e51a44fb",
+      "message": "隔离容器组件测试默认模式并核验生产向量配置不变",
+      "files": [
+        "backend/README.md",
+        "tests/audit_final_deployment.py",
+        "tests/finalize_container_test_environment.py",
+        "tests/reproduce_final_deployment.py",
+        "tests/resume_final_deployment.py",
+        "tests/write_final_deployment_report.py"
+      ]
+    }
+  ],
+  "note": "本清单列出验收证据提交之前的全部源码/配置提交；证据提交自身哈希见最终交付回报。"
+}

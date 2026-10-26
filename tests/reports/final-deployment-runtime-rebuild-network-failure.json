@@ -1,0 +1,204 @@
+{
+  "project": "sg-final-29fc813d71",
+  "remote": "https://github.com/hoanhkhai1hk-wq/scholar-graph.git",
+  "run_root": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\c664a5a443cc4cbeb4367f71c1a7b45e",
+  "steps": [
+    {
+      "stage": "clone-main",
+      "argv": [
+        "git",
+        "clone",
+        "--branch",
+        "main",
+        "--single-branch",
+        "https://github.com/hoanhkhai1hk-wq/scholar-graph.git",
+        "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\c664a5a443cc4cbeb4367f71c1a7b45e\\checkout"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 125.131686,
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\c664a5a443cc4cbeb4367f71c1a7b45e\\clone-main.log",
+      "log_bytes": 124,
+      "log_sha256": "0e197aa445a3f78ebd3b9e61f5a806214f97bc07ee5cad362934022d1edd4763",
+      "last_lines": [
+        "Cloning into 'D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\c664a5a443cc4cbeb4367f71c1a7b45e\\checkout'..."
+      ]
+    },
+    {
+      "stage": "clone-head",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.059525,
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\c664a5a443cc4cbeb4367f71c1a7b45e\\clone-head.log",
+      "log_bytes": 41,
+      "log_sha256": "70260ab804485e36b5c9f34eaa976f0d8864e7adb8b7d7503fd66adc78826d8d",
+      "last_lines": [
+        "26804191cfdeb7e2c5f0bb8680c274bfb45531e4"
+      ]
+    },
+    {
+      "stage": "clone-clean",
+      "argv": [
+        "git",
+        "status",
+        "--porcelain"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.148742,
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\c664a5a443cc4cbeb4367f71c1a7b45e\\clone-clean.log",
+      "log_bytes": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "last_lines": []
+    },
+    {
+      "stage": "compose-config",
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "sg-final-29fc813d71",
+        "-f",
+        "docker-compose.yml",
+        "-f",
+        "services/docker-compose.acceptance.yml",
+        "-f",
+        "services/docker-compose.final-acceptance.yml",
+        "config"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.432779,
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\c664a5a443cc4cbeb4367f71c1a7b45e\\compose-config.log",
+      "log_bytes": 2805,
+      "log_sha256": "a0ea105ef1a43fac8a0e44a967f95b66c944532639ab47977c7d273a0414ef44",
+      "last_lines": [
+        "        - CMD",
+        "        - node",
+        "        - -e",
+        "        - fetch('http://127.0.0.1:3000/api/backend/papers?page_size=1').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        "      timeout: 12s",
+        "      interval: 15s",
+        "      retries: 8",
+        "      start_period: 30s",
+        "    ports:",
+        "      - mode: ingress",
+        "        host_ip: 127.0.0.1",
+        "        target: 3000",
+        "        published: \"3000\"",
+        "        protocol: tcp",
+        "networks:",
+        "  default:",
+        "    name: sg-final-29fc813d71_default",
+        "volumes:",
+        "  backend-data:",
+        "    name: sg-final-29fc813d71_backend-data"
+      ]
+    },
+    {
+      "stage": "build-no-cache-network-failure",
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "sg-final-29fc813d71",
+        "-f",
+        "docker-compose.yml",
+        "-f",
+        "services/docker-compose.acceptance.yml",
+        "-f",
+        "services/docker-compose.final-acceptance.yml",
+        "build",
+        "--no-cache"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 329.919312,
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\c664a5a443cc4cbeb4367f71c1a7b45e\\build-no-cache.log",
+      "log_bytes": 10473,
+      "log_sha256": "73762056e70d48806e81c2de00f2cef67756e8fa1389c2c35448e7b6a5e71b08",
+      "last_lines": [
+        "323.5 npm error A complete log of this run can be found in: /root/.npm/_logs/2026-10-26T09_18_45_773Z-debug-0.log",
+        "------",
+        "Dockerfile:10",
+        "",
+        "--------------------",
+        "",
+        "   8 |     ENV NEXT_TELEMETRY_DISABLED=1",
+        "",
+        "   9 |     COPY frontend/package.json frontend/package-lock.json ./",
+        "",
+        "  10 | >>> RUN npm ci --no-audit --no-fund",
+        "",
+        "  11 |     ",
+        "",
+        "  12 |     FROM frontend-dependencies AS frontend-build",
+        "",
+        "--------------------",
+        "",
+        "target frontend: failed to solve: process \"/bin/sh -c npm ci --no-audit --no-fund\" did not complete successfully: exit code: 1",
+        ""
+      ]
+    },
+    {
+      "stage": "build-no-cache-network-retry",
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "sg-final-29fc813d71",
+        "-f",
+        "docker-compose.yml",
+        "-f",
+        "services/docker-compose.acceptance.yml",
+        "-f",
+        "services/docker-compose.final-acceptance.yml",
+        "build",
+        "--no-cache"
+      ],
+      "exit_code": 4294967295,
+      "elapsed_seconds": 261.743425,
+      "log": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\c664a5a443cc4cbeb4367f71c1a7b45e\\build-no-cache-network-retry.log",
+      "log_bytes": 6856,
+      "log_sha256": "bdadae9518de1ba440c45e3b6f3ce27441875030daaca7240a7cf76af51f29b1",
+      "last_lines": [
+        "#20 26.12   Downloading sympy-1.14.0-py3-none-any.whl.metadata (12 kB)",
+        "#20 29.09 Collecting networkx>=2.5.1 (from torch==2.14.1+cpu)",
+        "#20 29.34   Downloading networkx-3.6.1-py3-none-any.whl.metadata (6.8 kB)",
+        "#20 29.82 Collecting jinja2 (from torch==2.14.1+cpu)",
+        "#20 30.12   Downloading https://download.pytorch.org/whl/jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)",
+        "#20 32.10 Collecting fsspec>=0.8.5 (from torch==2.14.1+cpu)",
+        "#20 32.33   Downloading fsspec-2026.7.0-py3-none-any.whl.metadata (10 kB)",
+        "#20 33.60 Collecting mpmath<1.4,>=1.1.0 (from sympy>=1.13.3->torch==2.14.1+cpu)",
+        "#20 34.11   Downloading mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)",
+        "#20 36.21 Collecting MarkupSafe>=2.0 (from jinja2->torch==2.14.1+cpu)",
+        "#20 36.51   Downloading https://download.pytorch.org/whl/markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)",
+        "#20 36.76 Downloading https://download-r2.pytorch.org/whl/cpu/torch-2.14.1%2Bcpu-cp312-cp312-manylinux_2_28_x86_64.whl (196.3 MB)",
+        "#20 ...",
+        "",
+        "#19 [backend backend  2/13] RUN apt-get update     && apt-get install -y --no-install-recommends        ca-certificates fonts-dejavu-core libatomic1 libgl1 libglib2.0-0 libgomp1        libsm6 libxext6 libxrender1     && rm -rf /var/lib/apt/lists/*",
+        "#19 62.48 Ign:4 http://deb.debian.org/debian bookworm/main amd64 Packages",
+        "#19 62.96 Get:5 http://deb.debian.org/debian bookworm-updates/main amd64 Packages [6924 B]",
+        "#19 72.09 Get:6 http://deb.debian.org/debian-security bookworm-security/main amd64 Packages [357 kB]",
+        "#19 132.2 Ign:4 http://deb.debian.org/debian bookworm/main amd64 Packages",
+        "#19 194.3 Ign:4 http://deb.debian.org/debian bookworm/main amd64 Packages"
+      ]
+    }
+  ],
+  "credentials_forwarded": false,
+  "passed": false,
+  "reason": "Linux symlink-resolved worker used system Python without vector dependencies",
+  "clone": {
+    "commit": "26804191cfdeb7e2c5f0bb8680c274bfb45531e4",
+    "clean": true,
+    "path": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\final-deployment-build\\c664a5a443cc4cbeb4367f71c1a7b45e\\checkout",
+    "host_artifacts_absent": {
+      "backend/.venv": true,
+      "frontend/node_modules": true,
+      "frontend/.next": true,
+      ".env": true,
+      "pdf": true,
+      "data": true
+    }
+  }
+}

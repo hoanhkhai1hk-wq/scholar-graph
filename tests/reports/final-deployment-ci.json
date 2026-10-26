@@ -1,0 +1,49 @@
+{
+  "run_id": 40301904326,
+  "head_sha": "62dca5182b6098a883e0ffe8d72d9560f291e1ff",
+  "status": "completed",
+  "conclusion": "success",
+  "url": "https://github.com/hoanhkhai1hk-wq/scholar-graph/actions/runs/40301904326",
+  "jobs": [
+    {
+      "id": 121501560139,
+      "name": "fast",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run python -m pip install './backend[test]'",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run python tests/run_regression.py fast --no-key",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ]
+}

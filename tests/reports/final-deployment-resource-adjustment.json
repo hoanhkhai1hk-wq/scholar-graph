@@ -1,0 +1,9 @@
+{
+  "optional_service": "scholar-graph-grobid-grobid-1",
+  "observed_memory_before": "3.892 GiB",
+  "engine_memory": "7.568 GiB",
+  "reason": "给本轮默认前后端部署的真实向量/OCR验收释放内存；保留可选GROBID容器及配置。",
+  "stop_exit_code": 0,
+  "stop_output": " Container scholar-graph-grobid-grobid-1 Stopping \n Container scholar-graph-grobid-grobid-1 Stopped \n",
+  "state_after": "exited"
+}

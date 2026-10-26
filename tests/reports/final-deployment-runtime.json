@@ -1,0 +1,242 @@
+{
+  "project": "sg-final-29fc813d71",
+  "services": [
+    {
+      "name": "backend",
+      "container_id": "3bd88433cfee63bb84e2a8245443d33ae7f5c7daadc9161087aa22560ac94e2d",
+      "image_id": "sha256:cbe2f03a24c80bde427daf741dee700a91a4a5f64cc54b13835c086efb8f3dc6",
+      "healthy": true,
+      "revision": "62dca5182b6098a883e0ffe8d72d9560f291e1ff",
+      "size_bytes": 6865945421,
+      "ports": {
+        "8000/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "8000"
+          }
+        ]
+      },
+      "mounts": [
+        {
+          "type": "volume",
+          "destination": "/app/data",
+          "read_write": true
+        }
+      ],
+      "input_audit": {
+        "pdf_count": 0,
+        "private_paths_present": [],
+        "credential_names": [],
+        "passed": true
+      }
+    },
+    {
+      "name": "frontend",
+      "container_id": "2a6f80ceee697c3161ee2f20d2d491600f3f2f1f305bffc6939772a1f27794b5",
+      "image_id": "sha256:1132a1971614ba66ab28696ea927fbda597db7288afe1a0508ba8e1271034873",
+      "healthy": true,
+      "revision": "62dca5182b6098a883e0ffe8d72d9560f291e1ff",
+      "size_bytes": 1312356516,
+      "ports": {
+        "3000/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "3000"
+          }
+        ]
+      },
+      "mounts": [],
+      "input_audit": {
+        "pdf_count": 0,
+        "credential_names": [],
+        "private_paths_present": [],
+        "passed": true
+      }
+    }
+  ],
+  "daily_restore_output": "",
+  "daily_restore_seconds": 10.541861,
+  "http_status": {
+    "backend": 200,
+    "frontend": 200,
+    "proxy": 200
+  },
+  "scheduler": {
+    "latest_run": {
+      "run_id": "4a5c696bbc84428d83ef53e62736c496",
+      "started_at": "2026-10-26T12:06:31.969162+00:00",
+      "finished_at": "2026-10-26T12:06:36.780719+00:00",
+      "status": "completed",
+      "duration_seconds": 4.811556,
+      "candidate_count": 1,
+      "candidates": [
+        {
+          "arxiv_id": "2610.32977v1",
+          "title": "UniAction: Unified Action Conditioning for World Models",
+          "metadata": {
+            "schema_version": "1.0.0",
+            "id": "arxiv-2610.32977v1",
+            "title": "UniAction: Unified Action Conditioning for World Models",
+            "authors": [
+              "Bowen Xue",
+              "Zizhang Li",
+              "Hong-Xing Yu",
+              "Jiajun Wu"
+            ],
+            "institutions": [],
+            "abstract": "Actions that condition world models are highly heterogeneous, and thus existing action-conditioned world models are typically built for individual action types, fragmenting already limited action-annotated data across separate models. We introduce UniAction, a unified action-conditioning framework that represents any action as a sparse set of action elements, each with a discrete semantic identity and a continuous spatiotemporal grounding coordinate. By mapping these coordinates directly into the pretrained video model's native positional space, UniAction allows heterogeneous actions to condition a shared world model within the same spatiotemporal structure. We further introduce cardinality-calibrated attention to address the bias from differing action representation granularities. We evaluate UniAction on four representative action forms: force, camera control, hand pose, and robot pose. UniAction outperforms conditioning alternatives in action following, and a single jointly trained model surpasses the action-specific experts, showing that heterogeneous action data benefit from unified model and joint training.",
+            "year": 2026,
+            "source": "https://arxiv.org/abs/2610.32977v1",
+            "arxiv_id": "2610.32977v1",
+            "doi": null,
+            "version": "v1",
+            "file_hash": null,
+            "page_count": null,
+            "has_text_layer": null
+          },
+          "related_to": [
+            {
+              "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+              "kind": "topic",
+              "matched_terms": [
+                "attention"
+              ],
+              "reason": "与库内论文主题词重合：attention",
+              "anchor": {
+                "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                "page_number": 1,
+                "section": [],
+                "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00002"
+              },
+              "reference_anchor": null
+            }
+          ],
+          "outcome": "deferred",
+          "import": null
+        }
+      ],
+      "queries": [
+        {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "query": "all:\"attention\"",
+          "kind": "topic",
+          "terms": [
+            "attention"
+          ],
+          "anchor": {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 1,
+            "section": [],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00002"
+          },
+          "returned_count": 1,
+          "error": null
+        },
+        {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "query": "ti:\"Neural machine translation by jointly learning to align and translate\"",
+          "kind": "citation",
+          "reference": {
+            "schema_version": "1.0.0",
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-2",
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "number": 2,
+            "authors": [
+              "Dzmitry Bahdanau",
+              "Kyunghyun Cho",
+              "Yoshua Bengio"
+            ],
+            "year": 2014,
+            "title": "Neural machine translation by jointly learning to align and translate",
+            "venue": "CoRR, abs/1409.0473, 2014",
+            "doi": null,
+            "arxiv_id": "1409.0473"
+          },
+          "terms": [
+            "align",
+            "jointly",
+            "learning",
+            "machine",
+            "neural",
+            "translate",
+            "translation"
+          ],
+          "reference_title_excerpt": "Neural machine translation by jointly learning to align and translate",
+          "reference_anchor": null,
+          "anchor": {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 2,
+            "section": [
+              "1 Introduction"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00016"
+          },
+          "returned_count": 1,
+          "error": null
+        }
+      ],
+      "imported_count": 0,
+      "duplicate_count": 0,
+      "failed_count": 0,
+      "errors": [],
+      "cleanup": {
+        "papers_scanned": 4,
+        "papers_changed": 0,
+        "links_before": 197,
+        "links_after": 197,
+        "removed_count": 0,
+        "changes": []
+      },
+      "interval_seconds": 60,
+      "dedup_record_count": 0,
+      "paper_ids": [
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+      ]
+    },
+    "dedup_records": [],
+    "scheduler": "backend_interval",
+    "default_interval_seconds": 86400,
+    "scheduler_details": {
+      "enabled": true,
+      "mechanism": "backend_interval",
+      "active": true,
+      "interval_seconds": 86400,
+      "initial_delay_seconds": 15,
+      "max_imports": 1,
+      "run_count": 0,
+      "pid": 7,
+      "last_event": {
+        "event": "scheduler_started",
+        "timestamp": "2026-10-26T12:07:40.804378+00:00",
+        "pid": 7,
+        "interval_seconds": 86400
+      }
+    }
+  },
+  "versions": {
+    "python": "Python 3.12.15",
+    "node": "v22.23.4",
+    "api": "1.2.0"
+  },
+  "model_snapshot": {
+    "bytes": 2271145830,
+    "sha256": "b5e0ce3470abf5ef3831aa1bd5553b486803e83251590ab7ff35a117cf6aad38",
+    "matches_fixed_revision_weights": true
+  },
+  "vector_runtime": {
+    "resolved_executable": "/opt/vector-venv/bin/python",
+    "prefix": "/opt/vector-venv",
+    "isolated_after_resolution": true,
+    "versions": {
+      "torch": "2.14.1+cpu",
+      "chromadb": "1.5.9",
+      "FlagEmbedding": "1.4.2",
+      "transformers": "5.20.2"
+    }
+  },
+  "supplementary_source_sha256": {
+    "backend/prepare_ocr_models.py": "be8fa18a4d2ce4ac060c2c221a0d1f51aebb608a9c7cdf77ffe1a9f3be114885",
+    "tests/run_regression.py": "c43dc83d37e5e267f6b9e3813b10acec9b8b7c4d52755744803da731a9ac7c44",
+    "tests/test_engine_cache.py": "db1a6216c17e3e7dad6545ee735cb7f341fd7864cd375d5168e7ed02eeb27e47"
+  }
+}

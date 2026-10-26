@@ -1,0 +1,246 @@
+{
+  "passed": true,
+  "checks": {
+    "clean_remote_main_clone": true,
+    "clone_unchanged_after_build_and_cases": true,
+    "actual_no_cache_build": true,
+    "build_log_identity": true,
+    "image_sources_match_clean_clone": true,
+    "two_healthy_services_and_ports": true,
+    "both_image_revision_labels_match_clone": true,
+    "runtime_public_model_full_checksum_verified": true,
+    "resolved_vector_interpreter_keeps_venv": true,
+    "ocr_preparation_and_final_test_sources_match_clone": true,
+    "no_official_corpus_or_credentials_in_images": true,
+    "automatic_daily_configuration_active": true,
+    "first_container_three_failures_preserved": true,
+    "component_default_conflict_two_failures_preserved": true,
+    "production_vector_mode_not_disabled_for_component_tests": true,
+    "host_final_full_layer_passed": true,
+    "host_final_five_no_key_model_tests_skipped": true,
+    "container_full_layer_passed": true,
+    "container_five_no_key_model_tests_skipped": true,
+    "container_no_key_qa_passed": true,
+    "host_three_official_cases_passed": true,
+    "container_three_official_cases_passed": true,
+    "two_real_timer_runs_have_public_queries": true,
+    "query_runs_match_automatic_timer_journal": true,
+    "timer_did_not_invent_successful_candidates": true,
+    "contracts_and_frontend_protected_paths_unchanged": true,
+    "pdf_ignored": true,
+    "official_corpus_not_tracked": true,
+    "current_production_and_collected_tests_match_built_revision": true,
+    "key_absent_from_artifacts": true,
+    "known_key_absent_from_tracked_files": true
+  },
+  "regression": {
+    "host_final": {
+      "tests": 613,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 5,
+      "passed": 608,
+      "skipped_cases": [
+        {
+          "name": "test_live_3d_trend_caption_requires_real_model",
+          "reason": "real model disabled or environment credentials unset; never a fabricated live pass"
+        },
+        {
+          "name": "test_real_deepseek_connectivity_without_body_logging",
+          "reason": "real model disabled or environment credentials unset; never a fabricated live pass"
+        },
+        {
+          "name": "test_real_deepseek_sse_endpoint_when_credentials_available",
+          "reason": "real model disabled or environment credentials unset; never a fabricated live pass"
+        },
+        {
+          "name": "test_live_translation_uses_real_model_with_stored_chunk",
+          "reason": "real model disabled or environment credentials unset; never a fabricated live pass"
+        },
+        {
+          "name": "test_live_chinese_to_english_requires_actual_model",
+          "reason": "real model disabled or environment credentials unset; never a fabricated live pass"
+        }
+      ]
+    },
+    "host_initial": {
+      "tests": 610,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 5,
+      "passed": 604,
+      "skipped_cases": [
+        {
+          "name": "test_live_3d_trend_caption_requires_real_model",
+          "reason": "real model disabled or environment credentials unset; never a fabricated live pass"
+        },
+        {
+          "name": "test_real_deepseek_connectivity_without_body_logging",
+          "reason": "real model disabled or environment credentials unset; never a fabricated live pass"
+        },
+        {
+          "name": "test_real_deepseek_sse_endpoint_when_credentials_available",
+          "reason": "real model disabled or environment credentials unset; never a fabricated live pass"
+        },
+        {
+          "name": "test_live_translation_uses_real_model_with_stored_chunk",
+          "reason": "real model disabled or environment credentials unset; never a fabricated live pass"
+        },
+        {
+          "name": "test_live_chinese_to_english_requires_actual_model",
+          "reason": "real model disabled or environment credentials unset; never a fabricated live pass"
+        }
+      ]
+    },
+    "container_initial": {
+      "tests": 611,
+      "failures": 3,
+      "errors": 0,
+      "skipped": 10,
+      "passed": 598,
+      "skipped_cases": [
+        {
+          "name": "test_transient_lock_retries_with_backoff[5]",
+          "reason": "Windows error/backoff semantics"
+        },
+        {
+          "name": "test_transient_lock_retries_with_backoff[32]",
+          "reason": "Windows error/backoff semantics"
+        },
+        {
+          "name": "test_transient_lock_retries_with_backoff[33]",
+          "reason": "Windows error/backoff semantics"
+        },
+        {
+          "name": "test_permanent_access_error_is_not_swallowed",
+          "reason": "Windows error/backoff semantics"
+        },
+        {
+          "name": "test_real_directory_lock_blocks_native_rename_then_releases",
+          "reason": "Real native Windows handle test"
+        },
+        {
+          "name": "test_live_3d_trend_caption_requires_real_model",
+          "reason": "real model disabled or environment credentials unset; never a fabricated live pass"
+        },
+        {
+          "name": "test_real_deepseek_connectivity_without_body_logging",
+          "reason": "real model disabled or environment credentials unset; never a fabricated live pass"
+        },
+        {
+          "name": "test_real_deepseek_sse_endpoint_when_credentials_available",
+          "reason": "real model disabled or environment credentials unset; never a fabricated live pass"
+        },
+        {
+          "name": "test_live_translation_uses_real_model_with_stored_chunk",
+          "reason": "real model disabled or environment credentials unset; never a fabricated live pass"
+        },
+        {
+          "name": "test_live_chinese_to_english_requires_actual_model",
+          "reason": "real model disabled or environment credentials unset; never a fabricated live pass"
+        }
+      ]
+    },
+    "container_before_test_isolation": {
+      "tests": 613,
+      "failures": 2,
+      "errors": 0,
+      "skipped": 10,
+      "passed": 601,
+      "skipped_cases": [
+        {
+          "name": "test_transient_lock_retries_with_backoff[5]",
+          "reason": "Windows error/backoff semantics"
+        },
+        {
+          "name": "test_transient_lock_retries_with_backoff[32]",
+          "reason": "Windows error/backoff semantics"
+        },
+        {
+          "name": "test_transient_lock_retries_with_backoff[33]",
+          "reason": "Windows error/backoff semantics"
+        },
+        {
+          "name": "test_permanent_access_error_is_not_swallowed",
+          "reason": "Windows error/backoff semantics"
+        },
+        {
+          "name": "test_real_directory_lock_blocks_native_rename_then_releases",
+          "reason": "Real native Windows handle test"
+        },
+        {
+          "name": "test_live_3d_trend_caption_requires_real_model",
+          "reason": "real model disabled or environment credentials unset; never a fabricated live pass"
+        },
+        {
+          "name": "test_real_deepseek_connectivity_without_body_logging",
+          "reason": "real model disabled or environment credentials unset; never a fabricated live pass"
+        },
+        {
+          "name": "test_real_deepseek_sse_endpoint_when_credentials_available",
+          "reason": "real model disabled or environment credentials unset; never a fabricated live pass"
+        },
+        {
+          "name": "test_live_translation_uses_real_model_with_stored_chunk",
+          "reason": "real model disabled or environment credentials unset; never a fabricated live pass"
+        },
+        {
+          "name": "test_live_chinese_to_english_requires_actual_model",
+          "reason": "real model disabled or environment credentials unset; never a fabricated live pass"
+        }
+      ]
+    },
+    "container": {
+      "tests": 613,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 10,
+      "passed": 603,
+      "skipped_cases": [
+        {
+          "name": "test_transient_lock_retries_with_backoff[5]",
+          "reason": "Windows error/backoff semantics"
+        },
+        {
+          "name": "test_transient_lock_retries_with_backoff[32]",
+          "reason": "Windows error/backoff semantics"
+        },
+        {
+          "name": "test_transient_lock_retries_with_backoff[33]",
+          "reason": "Windows error/backoff semantics"
+        },
+        {
+          "name": "test_permanent_access_error_is_not_swallowed",
+          "reason": "Windows error/backoff semantics"
+        },
+        {
+          "name": "test_real_directory_lock_blocks_native_rename_then_releases",
+          "reason": "Real native Windows handle test"
+        },
+        {
+          "name": "test_live_3d_trend_caption_requires_real_model",
+          "reason": "real model disabled or environment credentials unset; never a fabricated live pass"
+        },
+        {
+          "name": "test_real_deepseek_connectivity_without_body_logging",
+          "reason": "real model disabled or environment credentials unset; never a fabricated live pass"
+        },
+        {
+          "name": "test_real_deepseek_sse_endpoint_when_credentials_available",
+          "reason": "real model disabled or environment credentials unset; never a fabricated live pass"
+        },
+        {
+          "name": "test_live_translation_uses_real_model_with_stored_chunk",
+          "reason": "real model disabled or environment credentials unset; never a fabricated live pass"
+        },
+        {
+          "name": "test_live_chinese_to_english_requires_actual_model",
+          "reason": "real model disabled or environment credentials unset; never a fabricated live pass"
+        }
+      ]
+    }
+  },
+  "opaque_key_value_scan_available": true,
+  "image_source_commit": "62dca5182b6098a883e0ffe8d72d9560f291e1ff",
+  "initial_host_failure_preserved": true
+}
