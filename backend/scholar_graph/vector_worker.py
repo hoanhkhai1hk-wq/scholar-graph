@@ -73,14 +73,19 @@ def hybrid_search(payload):
             "versions": {name: version(name) for name in ("chromadb", "FlagEmbedding", "torch", "transformers")}}
 
 
-def rerank(payload):
+def load_reranker(model_path):
     import torch
     from transformers import AutoModelForSequenceClassification, AutoTokenizer
     torch.set_num_threads(2)
     started = time.perf_counter()
-    tokenizer = AutoTokenizer.from_pretrained(payload["model_path"], local_files_only=True)
-    model = AutoModelForSequenceClassification.from_pretrained(payload["model_path"], local_files_only=True).eval()
-    loading = time.perf_counter() - started
+    tokenizer = AutoTokenizer.from_pretrained(model_path, local_files_only=True)
+    model = AutoModelForSequenceClassification.from_pretrained(model_path, local_files_only=True).eval()
+    return tokenizer, model, time.perf_counter() - started
+
+
+def rerank(payload, loaded=None):
+    import torch
+    tokenizer, model, loading = loaded or load_reranker(payload["model_path"])
     started = time.perf_counter()
     scores = {}
     with torch.inference_mode():
@@ -89,6 +94,21 @@ def rerank(payload):
             scores[item["id"]] = float(model(**inputs).logits.reshape(-1)[0])
     return {"scores": scores, "timing": {"model_load_seconds": loading, "rerank_seconds": time.perf_counter() - started},
             "model": "BAAI/bge-reranker-large", "revision": "55611d7bca2a7133960a6d3b71e083071bbfc312"}
+
+
+def reranker_server(model_path):
+    # JSONL is private local IPC. No paper text, credentials or queries are logged.
+    started = time.perf_counter()
+    with redirect_stdout(sys.stderr):
+        loaded = load_reranker(model_path)
+    print(json.dumps({"ready": True, "startup_seconds": time.perf_counter() - started,
+                      "model_load_seconds": loaded[2]}), flush=True)
+    for line in sys.stdin:
+        payload = json.loads(line)
+        with redirect_stdout(sys.stderr):
+            result = rerank(payload, loaded)
+        result['timing']['model_load_seconds'] = 0.0
+        print(json.dumps(result, allow_nan=False), flush=True)
 
 
 def paper_embeddings(payload):
@@ -109,6 +129,9 @@ def paper_embeddings(payload):
 
 if __name__ == "__main__":
     try:
+        if len(sys.argv) == 3 and sys.argv[1] == '--reranker-server':
+            reranker_server(sys.argv[2])
+            sys.exit(0)
         payload = json.loads(sys.stdin.read())
         with redirect_stdout(sys.stderr):
             result = (paper_embeddings(payload) if payload.get("operation") == "paper_embeddings" else
