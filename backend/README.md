@@ -27,6 +27,16 @@ OpenAPI 为 `http://127.0.0.1:8000/openapi.json`，Swagger 为 `/docs`。上传�
 
 完整请求、响应及 19 条草案端点的实施清单见 [API 草案](../docs/api-draft-v1.md)；HTTP 实测及可复现命令见 [本轮报告](../tests/reports/module-one-api-report.md)。新增响应只是本轮获批的传输封装，九份业务 Schema 未改。HTTP 默认工厂不启用 GROBID；独立容器联调的当前状态见 tests/reports/grobid-integration-acceptance.md。没有验证前端接通。
 
+## 原文 PDF 文件端点
+
+`GET /api/v1/papers/{paper_id}/file` 返回入库 PDF 原件，`Content-Type: application/pdf`，`Content-Disposition: inline; filename="paper.pdf"`。论文详情的 Link 头新增 `rel="file"`。支持 `Range: bytes=...`（206、Accept-Ranges、Content-Range、ETag），本地开发 CORS 放行 Range/If-Range 并暴露阅读器所需响应头。非法/越界范围返回400/416及既有三字段错误封装。前端可将此 URL 交给 pdf.js；本单没有修改或验收前端阅读器。
+
+成功的单个/批量上传和新的 arXiv PDF 下载入库都会在临时文件清理前保留原件。原件位于当前数据目录的 `original-pdfs/`，SQLite 索引以论文 id 查询服务器生成的随机文件名；不采用用户上传文件名或把请求 id 拼成文件路径。存储前对照 PaperMeta.file_hash，每次 GET 再以64 KiB块校验 SHA-256，然后由 FileResponse 按块发送；GET不加载全部 PDF或整篇Chunk。原件归档、完整性预检与发送均有界内存，原有解析器的 POST/抓取内存方式未因本端点改变。
+
+未知 id、未保留原件的历史记录、映射文件缺失均为404/PAPER_NOT_FOUND，正文明确说明缺原件；损坏或不安全的存储映射返回422/VALIDATION_ERROR。旧版本会删除上传/抓取临时 PDF，因此历史记录不会自动出现原件。可重新上传与已入库 file_hash 完全一致的 PDF补齐映射；不会根据用户路径、arXiv当前最新版或相近标题猜测原件。已有 arXiv身份的幂等抓取仍按原逻辑复用，不自动替旧版本补下另一个文件。CLI直接解析/手工导入旧记录不在本次 HTTP 原件保留入口内。
+
+原件及数据库放在忽略的 data/ 下，官方语料 pdf/ 仍不进Git。实测、哈希对照、穿越拒绝与 arXiv 元数据429限制见 [文件端点验收报告](../tests/reports/pdf-file-endpoint-acceptance.md)。
+
 ## 模块二：单篇问答与跨篇对比
 
 POST /api/v1/papers/{paper_id}/qa 的 JSON 为 `{ "question": "本文样本量是多少？" }`，返回完整 QAAnswer。POST /api/v1/compare 的 JSON 为 `{ "paper_ids": ["paper-a", "paper-b"], "question": "样本量分别是多少？" }`，返回 evidence_table、逐篇 QAAnswer 数组 per_paper、综合文本 synthesis。用真实已入库 paper id 替换示例 id。比较不是版本差异，也不更改去重记录。
