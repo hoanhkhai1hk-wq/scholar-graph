@@ -184,8 +184,9 @@ class Pipeline:
             windows_retry(lambda: os.replace(temporary, parent / "latest.json"))
         finally:
             temporary.unlink(missing_ok=True)
-        self.last_parse_metadata.update(paper_id=pid,job_id=self._parse_job_id,status='completed')
-        save_provenance(self.store.root,self._parse_job_id,self.last_parse_metadata)
+        if self.last_parse_metadata is not None:
+            self.last_parse_metadata.update(paper_id=pid,job_id=self._parse_job_id,status='completed')
+            save_provenance(self.store.root,self._parse_job_id,self.last_parse_metadata)
         job.move("completed", "四类记录与去重判定已通过校验并发布")
         return bundle
 
