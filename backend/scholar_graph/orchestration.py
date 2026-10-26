@@ -53,7 +53,7 @@ class EvidenceAgent:
         self.extractive_reason = extractive_reason
         self.retriever = retriever or qa_retriever(repository)
 
-    def run(self, paper_ids, question, *, emit=None, stream_tokens=False):
+    def run(self, paper_ids, question, *, emit=None, stream_tokens=False, require_vector=False):
         if not paper_ids or len(paper_ids) > 10 or len(set(paper_ids)) != len(paper_ids):
             raise PipelineError('VALIDATION_ERROR', 'Agent需要1到10篇不同的论文。')
         bundles = [self.repository.paper(pid) for pid in paper_ids]
@@ -110,8 +110,8 @@ class EvidenceAgent:
                     'validation_error': state.get('validation_error')}, ensure_ascii=False)}]
 
         def plan(state):
-            if missing:
-                return {'fallback_reason': missing, 'messages': []}
+            if missing or state.get('fallback_reason'):
+                return {'fallback_reason': missing or state['fallback_reason'], 'messages': []}
             messages = plan_messages(state)
             try:
                 message = client.complete(messages, phase='plan' if not state.get('attempt') else 'retrieve_retry',
@@ -146,8 +146,22 @@ class EvidenceAgent:
                     if item['anchor']['chunk_id'] not in seen:
                         evidence.append(item)
                         seen.add(item['anchor']['chunk_id'])
-            return {'attempt': attempt, 'messages': messages, 'evidence': evidence,
-                    'anchors': [e['anchor'] for e in evidence]}
+            update = {'attempt': attempt, 'messages': messages, 'evidence': evidence,
+                      'anchors': [e['anchor'] for e in evidence]}
+            if require_vector:
+                # Check the actual tool results, not merely configured model paths.
+                latest = {row['paper_id']: row for row in self.retriever.calls}
+                if any(latest.get(pid, {}).get('vector_status') != 'READY' for pid in paper_ids):
+                    update['fallback_reason'] = 'LOCAL_VECTOR_UNAVAILABLE'
+                    # Reuse this round's real evidence; absent papers get honest lexical recall.
+                    for bundle in bundles:
+                        if not any(e['anchor']['paper_id'] == bundle['paper_meta']['id'] for e in evidence):
+                            evidence.extend(self.retriever.extractive(bundle, question)[0])
+                    update['anchors'] = [e['anchor'] for e in evidence]
+                    if emit:
+                        emit('mode', {'mode': 'extractive', 'token_streaming': False,
+                            'fallback_reason': update['fallback_reason'], 'message': '回落模式、非 token 流式'})
+            return update
 
         def answer(state):
             def extractive_answers():

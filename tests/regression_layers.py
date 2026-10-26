@@ -6,6 +6,7 @@ FAST_FILES = frozenset({
     'test_docker_configuration.py', 'test_tracking_scheduler.py', 'test_citation_cleanup.py',
     'test_recommendations.py', 'test_recommendation_feedback.py', 'test_regression_layers.py',
     'test_grobid_default_path.py',
+    'test_qa_two_stage.py', 'test_compare_sse.py',
 })
 
 

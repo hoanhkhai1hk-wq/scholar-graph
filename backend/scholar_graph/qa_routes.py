@@ -16,7 +16,7 @@ from .errors import PipelineError
 from .deepseek_client import DeepSeekClient
 from .grounded_model import GroundedModelAnswerer
 from .orchestration import EvidenceAgent
-from .qa_sse import answer_stream
+from .qa_sse import answer_stream, comparison_stream
 from .qa_retrieval import qa_retriever
 
 Question = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=2000, strict=True)]
@@ -80,5 +80,14 @@ def question_routes(repository):
         value = compare_papers(bundles, body.question, service)
         response.headers['X-ScholarGraph-QA-Meta'] = quote(json.dumps(retriever.metadata(), ensure_ascii=False), safe='')
         return value
+
+    @router.post('/compare/stream', response_class=StreamingResponse,
+                 responses={200: {'content': {'text/event-stream': {'schema': {'type': 'string'}}}}})
+    async def stream_compare(body: CompareRequest):
+        if len(set(body.paper_ids)) != len(body.paper_ids):
+            raise PipelineError('VALIDATION_ERROR', '跨篇比较不接受重复论文。')
+        for paper_id in body.paper_ids:
+            await run_in_threadpool(repository.paper, paper_id)
+        return comparison_stream(repository, body.paper_ids, body.question)
 
     return router
