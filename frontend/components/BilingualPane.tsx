@@ -28,6 +28,7 @@ export default function BilingualPane({
   const rightRef = useRef<HTMLDivElement>(null);
   const lockRef = useRef<Side | null>(null);
   const [activeId, setActiveId] = useState<string | null>(null);
+  const [bottomAligned, setBottomAligned] = useState(false);
 
   /** 取容器内视口顶部最近的段 */
   const topChunkId = useCallback((container: HTMLElement | null) => {
@@ -47,17 +48,37 @@ export default function BilingualPane({
     return bestId;
   }, []);
 
-  /** 把目标栏滚到指定段 */
-  const scrollToChunk = useCallback((container: HTMLElement | null, chunkId: string) => {
-    if (!container) return;
-    const target = container.querySelector<HTMLElement>(
-      `[data-chunk-id="${CSS.escape(chunkId)}"]`,
-    );
-    if (!target) return;
-    const containerTop = container.getBoundingClientRect().top;
-    const targetTop = target.getBoundingClientRect().top;
-    container.scrollTop += targetTop - containerTop - 8;
-  }, []);
+  /**
+   * 把目标栏滚到指定段。
+   * 触底补偿：目标段顶不到顶部（已滚到底）时，改为两栏一起按底部对齐，
+   * 避免"一边到底、另一边还停在中间"的错配，并如实标注当前是底部对齐。
+   */
+  const scrollToChunk = useCallback(
+    (container: HTMLElement | null, chunkId: string, both?: HTMLElement | null) => {
+      if (!container) return;
+      const target = container.querySelector<HTMLElement>(
+        `[data-chunk-id="${CSS.escape(chunkId)}"]`,
+      );
+      if (!target) return;
+      const containerTop = container.getBoundingClientRect().top;
+      const targetTop = target.getBoundingClientRect().top;
+      const before = container.scrollTop;
+      container.scrollTop += targetTop - containerTop - 8;
+
+      const maxScroll = container.scrollHeight - container.clientHeight;
+      // 只要目标栏停在底部，就按底部对齐处理并把另一栏也带到底部。
+      // 不要求"本次才到底"——否则紧随其后的滚动回调会把状态又清掉。
+      if (container.scrollTop >= maxScroll - 1) {
+        container.scrollTop = maxScroll;
+        if (both) both.scrollTop = both.scrollHeight - both.clientHeight;
+        setBottomAligned(true);
+      } else {
+        setBottomAligned(false);
+      }
+      void before;
+    },
+    [],
+  );
 
   const sync = useCallback(
     (from: Side) => {
@@ -68,7 +89,7 @@ export default function BilingualPane({
       const chunkId = topChunkId(source);
       if (chunkId) {
         setActiveId(chunkId);
-        scrollToChunk(target, chunkId);
+        scrollToChunk(target, chunkId, source);
       }
       window.setTimeout(() => {
         lockRef.current = null;
@@ -81,7 +102,8 @@ export default function BilingualPane({
     lockRef.current = from;
     setActiveId(chunkId);
     const target = from === "left" ? rightRef.current : leftRef.current;
-    scrollToChunk(target, chunkId);
+    const source = from === "left" ? leftRef.current : rightRef.current;
+    scrollToChunk(target, chunkId, source);
     window.setTimeout(() => {
       lockRef.current = null;
     }, 160);
@@ -97,6 +119,12 @@ export default function BilingualPane({
 
   return (
     <div className="sg-bilingual">
+      {bottomAligned ? (
+        <p className="sg-mono">
+          该段已到栏底，无法顶到顶部；两栏改为按底部对齐（触底补偿），
+          对应段仍以高亮标出。
+        </p>
+      ) : null}
       <div className="sg-bilingual__col">
         <h4 className="sg-qa__sub">英文原文</h4>
         <div
