@@ -176,7 +176,9 @@ backend/.venv/Scripts/python.exe -m scholar_graph compare data/module-one/papers
 
 配置 `GROBID_URL` 或 `--grobid-url http://127.0.0.1:8070` 后，通过 multipart 调用 `/api/processFulltextDocument`，尝试将 TEI 元数据和参考文献归一化为现有契约。默认关闭，不影响 MinerU 本地直跑。配置后调用失败即输出 UPSTREAM_ERROR，不静默声称已经用到 GROBID。禁用服务端 Crossref consolidation，避免隐式联网补元数据。
 
-当前独立服务配置为 services/docker-compose.grobid.yml，使用 grobid/grobid:0.9.1-crf，启动命令与真实联调状态见 services/README.md、tests/reports/grobid-integration-acceptance.md。配置语法通过不等于容器解析通过；Mock HTTP/TEI 不算联调证据。只有显式 CLI 参数/环境变量或 Pipeline(grobid=...) 启用补充，默认 HTTP 上传与 arXiv 抓取不读取 GROBID_URL。GROBID 补 PaperMeta 与 ReferenceEntry，并重建 CitationLink；Chunk、物理页与 bbox 仍由 MinerU 负责，GROBID 正文结构不会替换 Chunk。 2026-10-26 官方 Attention v7 容器完整解析已实测，但 CRF 存在作者/机构误识别；现有可选转换因第1条参考文献 title/venue 为空字符串而被契约守门拒收，未发布业务记录。本轮服务实连成功不代表生产转换通过。
+当前独立服务配置为 services/docker-compose.grobid.yml，使用 grobid/grobid:0.9.1-crf，启动命令见 services/README.md。配置语法通过不等于容器解析通过；Mock HTTP/TEI 不算联调证据。只有显式 CLI 参数/环境变量或 Pipeline(grobid=...) 启用补充，默认 HTTP 上传与 arXiv 抓取不读取 GROBID_URL。GROBID 补 PaperMeta 与 ReferenceEntry，并重建 CitationLink；Chunk、物理页与 bbox 仍由 MinerU 负责，GROBID 正文结构不会替换 Chunk。
+
+2026-10-26 官方 Attention v7 容器全文解析已实测。早期联调曾因第 1 条参考文献 title/venue 空字符串被拒收；C-补将空节点归一为 null，并修复 persName 分量间距后，显式补充路径已通过原契约，成功发布 1 组论文、40 条参考文献。最新证据见 tests/reports/grobid-conversion-fix-acceptance.md；tests/reports/grobid-integration-acceptance.md 保留历史失败。默认 HTTP 上传与 arXiv 路径仍未启用 GROBID；CRF 作者/机构误识别仍存在，空值与间距修复不能解决该实体识别问题。
 
 ## 验证与范围
 
