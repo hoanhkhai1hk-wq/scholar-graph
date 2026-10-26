@@ -15,6 +15,9 @@ data/
 **/.next
 **/.pytest_cache
 tests/reports/
+!tests/reports/
+tests/reports/*
+!tests/reports/semantic-dedup-calibration.json
 dist/
 build/
 .coverage

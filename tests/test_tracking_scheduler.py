@@ -26,6 +26,7 @@ def test_invalid_schedule_configuration_fails_explicitly(monkeypatch, key, value
 def test_lifespan_automatically_runs_and_persists_without_trigger_endpoint(tmp_path, monkeypatch):
     monkeypatch.setenv('SCHOLAR_GRAPH_TRACKING_ENABLED', 'true')
     monkeypatch.setenv('SCHOLAR_GRAPH_TRACKING_INITIAL_DELAY_SECONDS', '0')
+    monkeypatch.setenv('SCHOLAR_GRAPH_TRACKING_PAPER_IDS', 'seed')
     app = create_app(data_dir=tmp_path)
     app.state.repository.papers = lambda: [{'id': 'seed'}]
     called = threading.Event()
