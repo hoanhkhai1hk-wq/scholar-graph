@@ -34,6 +34,8 @@ def audit():
         checks['official_file_'+key]=hashlib.sha256((ROOT/'pdf'/name).read_bytes()).hexdigest()==repo.paper(ids[key])['paper_meta']['file_hash']
     for path,digest in live['source_sha256_lf'].items():
         checks['source_'+path]=hashlib.sha256((ROOT/path).read_text(encoding='utf-8').encode()).hexdigest()==digest
+    checks['benchmark_worker_source']=bench['worker_source_sha256_lf']==hashlib.sha256(
+        (ROOT/'backend/scholar_graph/vector_worker.py').read_text(encoding='utf-8').encode()).hexdigest()
     reranks=[]
     checks['six_cases_present']=[row['case'] for row in live['cases']]==[1,2,3,4,5,6]
     for i,row in enumerate(live['cases']):
@@ -63,6 +65,14 @@ def audit():
         checks['stream_'+mode]=row['passed'] and events[-1]['event']=='done' and events[-1]['data']['verified'] is True
         tokens=[e for e in events if e['event']=='token']
         checks['stream_draft_'+mode]=(bool(tokens) and all(e['data']['verified'] is False and 'delta' not in e['data'] for e in tokens)) if mode=='deepseek' else not tokens
+        checks['stream_sequence_'+mode]=[e['id'] for e in events]==list(range(1,len(events)+1))
+        metadata=events[-1]['data']['metadata']
+        if mode=='deepseek':
+            calls=metadata['model_calls']
+            checks['stream_real_calls']=len(calls)>=2 and all(c['provider']=='deepseek' and c['status']=='succeeded' and c['total_tokens']>0 for c in calls)
+            checks['stream_real_tools']=bool(metadata['tool_calls']) and all(c['origin']=='model_function_call' for c in metadata['tool_calls'])
+        else:
+            checks['stream_no_key_no_calls']=not metadata['model_calls'] and not metadata['tool_calls'] and events[-1]['data']['token_streaming'] is False
     suites={}
     for layer in ('fast','full'):
         root=ET.parse(ROOT/f'tests/reports/reranker-compare-stream-{layer}.xml').getroot()
@@ -70,7 +80,21 @@ def audit():
         suites[layer]={k:int(suite.attrib[k]) for k in ('tests','failures','errors','skipped')}
         suites[layer]['passed']=suites[layer]['tests']-sum(suites[layer][k] for k in ('failures','errors','skipped'))
         checks['regression_'+layer]=suites[layer]['failures']==suites[layer]['errors']==0
+        if layer=='full':
+            for name in ('test_http_real_paddleocr_fallback','test_actual_paddleocr_scanned_pdf',
+                         'test_real_local_bge_m3_dense_sparse_chroma','test_official_541_page_longbook_full_layer'):
+                cases=[t for t in suite.iter('testcase') if t.attrib['name']==name]
+                checks['full_actual_'+name]=len(cases)==1 and all(cases[0].find(t) is None for t in ('failure','error','skipped'))
     checks['five_no_key_skips_retained']=suites['full']['skipped']==5
+    checks['full_count_complete']=suites['full']['tests']>=648
+    checks['fast_count_complete']=suites['fast']['tests']>=187
+    previous=ET.parse(ROOT/'tests/reports/reranker-compare-stream-before-route-count-fix-full.xml').getroot()
+    failures=[t for t in previous.iter('testcase') if t.find('failure') is not None]
+    checks['first_regression_failure_preserved']=len(failures)==1 and failures[0].attrib['name']=='test_nineteen_business_routes_including_module_six'
+    prior=ROOT/live['initial_transport_probe']['path']
+    checks['first_transport_probe_preserved']=hashlib.sha256(prior.read_bytes()).hexdigest()==live['initial_transport_probe']['sha256']
+    markdown=(ROOT/'tests/reports/reranker-compare-stream-acceptance.md').read_text(encoding='utf-8')
+    checks['report_completed']='{{' not in markdown
     protected=git('diff',BASE,'--name-only','--','contracts/','frontend/','docs/','prompts/','experiments/','test-records/')
     checks['protected_paths_unchanged']=not protected
     checks['official_pdf_ignored']=git('check-ignore','pdf/1706.03762v7.pdf')=='pdf/1706.03762v7.pdf'

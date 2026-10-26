@@ -1,0 +1,64 @@
+{
+  "scope": "官方 pdf/ 真文件Attention v7前10块，与live.json冷/温基准输入一致；非RRF实际top10质量测试。",
+  "purpose": "只量完整推理耗时；90秒诊断时限不进入HTTP，生产仍严格5秒、超过预算保留RRF。",
+  "question": "Which optimizer?",
+  "chunk_ids": [
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00001",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00002",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00003",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00004",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00005",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00006",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00007",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00008",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00009",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00010"
+  ],
+  "startup": {
+    "ready": true,
+    "startup_seconds": 27.32411259994842,
+    "model_load_seconds": 8.928842999972403,
+    "parent_wait_seconds": 27.453273500083014
+  },
+  "samples": [
+    {
+      "sample": 1,
+      "elapsed_seconds": 5.977314499905333,
+      "timing": {
+        "model_load_seconds": 0.0,
+        "rerank_seconds": 5.976725799962878
+      },
+      "model": "BAAI/bge-reranker-large",
+      "revision": "55611d7bca2a7133960a6d3b71e083071bbfc312",
+      "score_count": 10,
+      "scores_valid": true,
+      "fits_production_budget": false,
+      "cold_start": false,
+      "startup": {
+        "ready": true,
+        "startup_seconds": 27.32411259994842,
+        "model_load_seconds": 8.928842999972403
+      }
+    },
+    {
+      "sample": 2,
+      "elapsed_seconds": 6.880855599883944,
+      "timing": {
+        "model_load_seconds": 0.0,
+        "rerank_seconds": 6.8801647000946105
+      },
+      "model": "BAAI/bge-reranker-large",
+      "revision": "55611d7bca2a7133960a6d3b71e083071bbfc312",
+      "score_count": 10,
+      "scores_valid": true,
+      "fits_production_budget": false,
+      "cold_start": false,
+      "startup": {
+        "ready": true,
+        "startup_seconds": 27.32411259994842,
+        "model_load_seconds": 8.928842999972403
+      }
+    }
+  ],
+  "worker_source_sha256_lf": "9df927e77922cfe20082ed9ed2878bf1f77b0322f4d883b33a49aae6d01f3cb4"
+}
