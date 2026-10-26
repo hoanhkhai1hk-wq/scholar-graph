@@ -1,0 +1,94 @@
+{
+  "passed": true,
+  "checks": {
+    "live_probe_passed": true,
+    "enabled_all_endpoint_checks": true,
+    "enabled_counts_match_disk": true,
+    "enabled_saved_method_matches_response": true,
+    "unreachable_all_endpoint_checks": true,
+    "unreachable_counts_match_disk": true,
+    "unreachable_saved_method_matches_response": true,
+    "methods_are_explicit": true,
+    "unreachable_has_real_reason": true,
+    "mineru_chunks_and_anchors_unchanged": true,
+    "reference_identity_and_ordinals_preserved": true,
+    "source_pdf_hash_matches": true,
+    "core_sources_match_live_run": true,
+    "authors_have_original_page_text": true,
+    "known_org_false_authors_removed": true,
+    "unverified_version_date_not_published": true,
+    "full_regression_passed": true,
+    "five_no_key_skips_preserved": true,
+    "real_vector_ocr_and_longbook_ran": true,
+    "initial_failure_evidence_preserved": true,
+    "protected_paths_unchanged": true,
+    "official_corpus_ignored": true,
+    "official_corpus_not_tracked": true,
+    "known_key_absent_from_sources_and_evidence": true,
+    "actual_grobid_image": true
+  },
+  "regression": {
+    "tests": 628,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 5,
+    "passed": 623,
+    "skips": [
+      {
+        "name": "test_live_3d_trend_caption_requires_real_model",
+        "reason": "real model disabled or environment credentials unset; never a fabricated live pass"
+      },
+      {
+        "name": "test_real_deepseek_connectivity_without_body_logging",
+        "reason": "real model disabled or environment credentials unset; never a fabricated live pass"
+      },
+      {
+        "name": "test_real_deepseek_sse_endpoint_when_credentials_available",
+        "reason": "real model disabled or environment credentials unset; never a fabricated live pass"
+      },
+      {
+        "name": "test_live_translation_uses_real_model_with_stored_chunk",
+        "reason": "real model disabled or environment credentials unset; never a fabricated live pass"
+      },
+      {
+        "name": "test_live_chinese_to_english_requires_actual_model",
+        "reason": "real model disabled or environment credentials unset; never a fabricated live pass"
+      }
+    ],
+    "live_cases_passed": true
+  },
+  "initial_regression": {
+    "tests": 627,
+    "failures": 2,
+    "errors": 0,
+    "skipped": 5,
+    "passed": 620,
+    "skips": [
+      {
+        "name": "test_live_3d_trend_caption_requires_real_model",
+        "reason": "real model disabled or environment credentials unset; never a fabricated live pass"
+      },
+      {
+        "name": "test_real_deepseek_connectivity_without_body_logging",
+        "reason": "real model disabled or environment credentials unset; never a fabricated live pass"
+      },
+      {
+        "name": "test_real_deepseek_sse_endpoint_when_credentials_available",
+        "reason": "real model disabled or environment credentials unset; never a fabricated live pass"
+      },
+      {
+        "name": "test_live_translation_uses_real_model_with_stored_chunk",
+        "reason": "real model disabled or environment credentials unset; never a fabricated live pass"
+      },
+      {
+        "name": "test_live_chinese_to_english_requires_actual_model",
+        "reason": "real model disabled or environment credentials unset; never a fabricated live pass"
+      }
+    ],
+    "live_cases_passed": true
+  },
+  "baseline": "a7aacc3672bb8a58e3e723b0ce235ce3b9c19515",
+  "service_image": "grobid/grobid:0.9.1-crf",
+  "live_revision": "841949bde1de5cff257b9fd43f1f640fc15ada1c",
+  "opaque_key_scan_available": true
+}

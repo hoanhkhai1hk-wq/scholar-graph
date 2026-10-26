@@ -22,8 +22,10 @@ def stats(name):
     result={k:sum(int(s.get(k,0)) for s in suites) for k in ('tests','failures','errors','skipped')}
     result['passed']=result['tests']-result['failures']-result['errors']-result['skipped']
     result['skips']=[{'name':c.get('name'),'reason':c.find('skipped').get('message')} for c in tree.iter('testcase') if c.find('skipped') is not None]
-    result['live_cases_passed']=all(c.find('failure') is None and c.find('skipped') is None
-        for c in tree.iter('testcase') if c.get('name') in ('test_real_local_bge_m3_dense_sparse_chroma','test_official_541_page_longbook_full_layer','test_http_real_paddleocr_fallback','test_actual_paddleocr_scanned_pdf'))
+    names={'test_real_local_bge_m3_dense_sparse_chroma','test_official_541_page_longbook_full_layer',
+        'test_http_real_paddleocr_fallback','test_actual_paddleocr_scanned_pdf'}
+    cases=[c for c in tree.iter('testcase') if c.get('name') in names]
+    result['live_cases_passed']=len(cases)==len(names) and all(c.find('failure') is None and c.find('skipped') is None for c in cases)
     return result
 
 

@@ -1,0 +1,859 @@
+{
+  "input_kind": "官方 pdf/ 真文件",
+  "file": "1706.03762v7.pdf",
+  "bytes": 2215244,
+  "sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+  "run_root": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\grobid-default-live\\d5f03d9a136a459d95b78befaafe35b8",
+  "credentials": "未设置",
+  "groups": {
+    "enabled": {
+      "http_status": 201,
+      "elapsed_seconds": 32.206966,
+      "paper_meta": {
+        "schema_version": "1.0.0",
+        "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "title": "Attention Is All You Need",
+        "authors": [
+          "Ashish Vaswani",
+          "Google Brain",
+          "Noam Shazeer",
+          "Niki Parmar",
+          "Google Research",
+          "Jakob Uszkoreit",
+          "Llion Jones",
+          "Aidan N Gomez",
+          "Łukasz Kaiser",
+          "Illia Polosukhin"
+        ],
+        "institutions": [
+          "University of Toronto",
+          "Work performed while at Google Research. 31st Conference on Neural Information Processing Systems (NIPS 2017)"
+        ],
+        "abstract": "The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely. Experiments on two machine translation tasks show these models to be superior in quality while being more parallelizable and requiring significantly less time to train. Our model achieves 28.4 BLEU on the WMT 2014 Englishto-German translation task, improving over the existing best results, including ensembles, by over 2 BLEU. On the WMT 2014 English-to-French translation task, our model establishes a new single-model state-of-the-art BLEU score of 41.8 after training for 3.5 days on eight GPUs, a small fraction of the training costs of the best models from the literature. We show that the Transformer generalizes well to other tasks by applying it successfully to English constituency parsing both with large and limited training data.* Equal contribution. Listing order is random. Jakob proposed replacing RNNs with self-attention and started the effort to evaluate this idea. Ashish, with Illia, designed and implemented the first Transformer models and has been crucially involved in every aspect of this work. Noam proposed scaled dot-product attention, multi-head attention and the parameter-free position representation and became the other person involved in nearly every detail. Niki designed, implemented, tuned and evaluated countless model variants in our original codebase and tensor2tensor. Llion also experimented with novel model variants, was responsible for our initial codebase, and efficient inference and visualizations. Lukasz and Aidan spent countless long days designing various parts of and implementing tensor2tensor, replacing our earlier codebase, greatly improving results and massively accelerating our research.† Work performed while at Google Brain.",
+        "year": 2023,
+        "source": "local-upload",
+        "arxiv_id": "1706.03762v7",
+        "doi": null,
+        "version": "v7",
+        "file_hash": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "page_count": 15,
+        "has_text_layer": true
+      },
+      "parse_metadata": {
+        "method": "mineru+grobid",
+        "grobid_attempted": true,
+        "grobid_elapsed_seconds": 25.021248,
+        "fallback_reason": null,
+        "grobid_error": null,
+        "paper_fields": [
+          "title",
+          "authors",
+          "institutions",
+          "abstract",
+          "year"
+        ],
+        "references_enriched": 39,
+        "unmatched_grobid_references": 0,
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "job_id": "job-c4bf5934f54c4df888a713988950ef9f",
+        "status": "completed",
+        "reference_matches_count": 40
+      },
+      "full_parse_metadata": {
+        "method": "mineru+grobid",
+        "grobid_attempted": true,
+        "grobid_elapsed_seconds": 25.021248,
+        "fallback_reason": null,
+        "grobid_error": null,
+        "paper_fields": [
+          "title",
+          "authors",
+          "institutions",
+          "abstract",
+          "year"
+        ],
+        "reference_matches": [
+          {
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-1",
+            "method": "arxiv_id",
+            "fields": []
+          },
+          {
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-2",
+            "method": "arxiv_id",
+            "fields": [
+              "venue"
+            ]
+          },
+          {
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-3",
+            "method": "arxiv_id",
+            "fields": [
+              "authors",
+              "venue"
+            ]
+          },
+          {
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-4",
+            "method": "arxiv_id",
+            "fields": [
+              "venue"
+            ]
+          },
+          {
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-5",
+            "method": "arxiv_id",
+            "fields": [
+              "authors",
+              "venue"
+            ]
+          },
+          {
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-6",
+            "method": "arxiv_id",
+            "fields": [
+              "venue"
+            ]
+          },
+          {
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-7",
+            "method": "arxiv_id",
+            "fields": [
+              "venue"
+            ]
+          },
+          {
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-8",
+            "method": "title",
+            "fields": [
+              "authors",
+              "venue"
+            ]
+          },
+          {
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-9",
+            "method": "arxiv_id",
+            "fields": [
+              "authors",
+              "venue",
+              "arxiv_id"
+            ]
+          },
+          {
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-10",
+            "method": "arxiv_id",
+            "fields": [
+              "venue"
+            ]
+          },
+          {
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-11",
+            "method": "title",
+            "fields": [
+              "venue"
+            ]
+          },
+          {
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-12",
+            "method": "title",
+            "fields": [
+              "title",
+              "venue"
+            ]
+          },
+          {
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-13",
+            "method": "title",
+            "fields": [
+              "venue"
+            ]
+          },
+          {
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-14",
+            "method": "title",
+            "fields": [
+              "venue"
+            ]
+          },
+          {
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-15",
+            "method": "arxiv_id",
+            "fields": [
+              "venue"
+            ]
+          },
+          {
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-16",
+            "method": "title",
+            "fields": [
+              "title",
+              "venue"
+            ]
+          },
+          {
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-17",
+            "method": "title",
+            "fields": [
+              "venue"
+            ]
+          },
+          {
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-18",
+            "method": "arxiv_id",
+            "fields": [
+              "authors",
+              "venue",
+              "arxiv_id"
+            ]
+          },
+          {
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-19",
+            "method": "title",
+            "fields": [
+              "authors",
+              "venue"
+            ]
+          },
+          {
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-20",
+            "method": "title",
+            "fields": [
+              "venue"
+            ]
+          },
+          {
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-21",
+            "method": "arxiv_id",
+            "fields": [
+              "venue"
+            ]
+          },
+          {
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-22",
+            "method": "arxiv_id",
+            "fields": [
+              "authors",
+              "venue"
+            ]
+          },
+          {
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-23",
+            "method": "arxiv_id",
+            "fields": [
+              "authors",
+              "venue"
+            ]
+          },
+          {
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-24",
+            "method": "arxiv_id",
+            "fields": [
+              "venue"
+            ]
+          },
+          {
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-25",
+            "method": "title",
+            "fields": [
+              "authors",
+              "venue"
+            ]
+          },
+          {
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-26",
+            "method": "title",
+            "fields": [
+              "authors",
+              "venue"
+            ]
+          },
+          {
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-27",
+            "method": "title",
+            "fields": [
+              "venue"
+            ]
+          },
+          {
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-28",
+            "method": "arxiv_id",
+            "fields": [
+              "venue"
+            ]
+          },
+          {
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-29",
+            "method": "title",
+            "fields": [
+              "venue"
+            ]
+          },
+          {
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-30",
+            "method": "arxiv_id",
+            "fields": [
+              "venue"
+            ]
+          },
+          {
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-31",
+            "method": "arxiv_id",
+            "fields": [
+              "venue"
+            ]
+          },
+          {
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-32",
+            "method": "arxiv_id",
+            "fields": [
+              "venue"
+            ]
+          },
+          {
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-33",
+            "method": "title",
+            "fields": [
+              "venue"
+            ]
+          },
+          {
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-34",
+            "method": "title",
+            "fields": [
+              "venue"
+            ]
+          },
+          {
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-35",
+            "method": "title",
+            "fields": [
+              "authors",
+              "venue"
+            ]
+          },
+          {
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-36",
+            "method": "arxiv_id",
+            "fields": [
+              "venue"
+            ]
+          },
+          {
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-37",
+            "method": "title",
+            "fields": [
+              "authors",
+              "venue"
+            ]
+          },
+          {
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-38",
+            "method": "arxiv_id",
+            "fields": [
+              "authors",
+              "title",
+              "venue"
+            ]
+          },
+          {
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-39",
+            "method": "arxiv_id",
+            "fields": [
+              "venue"
+            ]
+          },
+          {
+            "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-40",
+            "method": "title",
+            "fields": [
+              "year",
+              "venue"
+            ]
+          }
+        ],
+        "references_enriched": 39,
+        "unmatched_grobid_references": 0,
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "job_id": "job-c4bf5934f54c4df888a713988950ef9f",
+        "status": "completed"
+      },
+      "parse_status": {
+        "schema_version": "1.1.0",
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "status": "completed",
+        "progress": 100,
+        "current_stage": "四类记录与去重判定已通过校验并发布",
+        "error_code": null,
+        "error_message": null
+      },
+      "checks": {
+        "http_201": true,
+        "parse_completed": true,
+        "real_chunks": true,
+        "schema_and_anchor_gate": true,
+        "expected_method": true,
+        "actually_attempted": true,
+        "detail_method_persisted": true,
+        "original_pdf_hash": true,
+        "enhanced_fields": true
+      },
+      "passed": true,
+      "counts": {
+        "chunks": 175,
+        "reference_entries": 40,
+        "citation_links": 69
+      },
+      "reference_samples": [
+        {
+          "schema_version": "1.0.0",
+          "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-1",
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "number": 1,
+          "authors": [
+            "Jimmy Lei Ba",
+            "Jamie Ryan Kiros",
+            "Geoffrey E Hinton"
+          ],
+          "year": 2016,
+          "title": "Layer normalization",
+          "venue": "arXiv preprint arXiv:1607.06450 , 2016",
+          "doi": null,
+          "arxiv_id": "1607.06450"
+        },
+        {
+          "schema_version": "1.0.0",
+          "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-2",
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "number": 2,
+          "authors": [
+            "Dzmitry Bahdanau",
+            "Kyunghyun Cho",
+            "Yoshua Bengio"
+          ],
+          "year": 2014,
+          "title": "Neural machine translation by jointly learning to align and translate",
+          "venue": "Neural machine translation by jointly learning to align and translate",
+          "doi": null,
+          "arxiv_id": "1409.0473"
+        },
+        {
+          "schema_version": "1.0.0",
+          "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-3",
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "number": 3,
+          "authors": [
+            "Denny Britz",
+            "Anna Goldie",
+            "Minh-Thang Luong",
+            "V Quoc",
+            "Le"
+          ],
+          "year": 2017,
+          "title": "Massive exploration of neural machine translation architectures",
+          "venue": "Massive exploration of neural machine translation architectures",
+          "doi": null,
+          "arxiv_id": "1703.03906"
+        }
+      ]
+    },
+    "unreachable": {
+      "http_status": 201,
+      "elapsed_seconds": 8.959847,
+      "paper_meta": {
+        "schema_version": "1.0.0",
+        "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "title": null,
+        "authors": [],
+        "institutions": [],
+        "abstract": null,
+        "year": null,
+        "source": "local-upload",
+        "arxiv_id": "1706.03762v7",
+        "doi": null,
+        "version": "v7",
+        "file_hash": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "page_count": 15,
+        "has_text_layer": true
+      },
+      "parse_metadata": {
+        "method": "mineru-fallback",
+        "grobid_attempted": true,
+        "grobid_elapsed_seconds": 2.03309,
+        "fallback_reason": "GROBID 服务不可达，未采用增强结果。",
+        "grobid_error": {
+          "error_code": "UPSTREAM_ERROR",
+          "message": "GROBID 服务不可达，未采用增强结果。",
+          "details": {
+            "failure_kind": "unavailable"
+          }
+        },
+        "paper_fields": [],
+        "references_enriched": 0,
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "job_id": "job-4f214d95e37b4c148502e8e5e5931ec3",
+        "status": "completed",
+        "reference_matches_count": 0
+      },
+      "full_parse_metadata": {
+        "method": "mineru-fallback",
+        "grobid_attempted": true,
+        "grobid_elapsed_seconds": 2.03309,
+        "fallback_reason": "GROBID 服务不可达，未采用增强结果。",
+        "grobid_error": {
+          "error_code": "UPSTREAM_ERROR",
+          "message": "GROBID 服务不可达，未采用增强结果。",
+          "details": {
+            "failure_kind": "unavailable"
+          }
+        },
+        "paper_fields": [],
+        "reference_matches": [],
+        "references_enriched": 0,
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "job_id": "job-4f214d95e37b4c148502e8e5e5931ec3",
+        "status": "completed"
+      },
+      "parse_status": {
+        "schema_version": "1.1.0",
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "status": "completed",
+        "progress": 100,
+        "current_stage": "四类记录与去重判定已通过校验并发布",
+        "error_code": null,
+        "error_message": null
+      },
+      "checks": {
+        "http_201": true,
+        "parse_completed": true,
+        "real_chunks": true,
+        "schema_and_anchor_gate": true,
+        "expected_method": true,
+        "actually_attempted": true,
+        "detail_method_persisted": true,
+        "original_pdf_hash": true,
+        "unavailable_reason": true
+      },
+      "passed": true,
+      "counts": {
+        "chunks": 175,
+        "reference_entries": 40,
+        "citation_links": 69
+      },
+      "reference_samples": [
+        {
+          "schema_version": "1.0.0",
+          "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-1",
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "number": 1,
+          "authors": [
+            "Jimmy Lei Ba",
+            "Jamie Ryan Kiros",
+            "Geoffrey E Hinton"
+          ],
+          "year": 2016,
+          "title": "Layer normalization",
+          "venue": "arXiv preprint arXiv:1607.06450 , 2016",
+          "doi": null,
+          "arxiv_id": "1607.06450"
+        },
+        {
+          "schema_version": "1.0.0",
+          "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-2",
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "number": 2,
+          "authors": [
+            "Dzmitry Bahdanau",
+            "Kyunghyun Cho",
+            "Yoshua Bengio"
+          ],
+          "year": 2014,
+          "title": "Neural machine translation by jointly learning to align and translate",
+          "venue": "CoRR, abs/1409.0473, 2014",
+          "doi": null,
+          "arxiv_id": "1409.0473"
+        },
+        {
+          "schema_version": "1.0.0",
+          "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-3",
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "number": 3,
+          "authors": [
+            "Denny Britz",
+            "Anna Goldie",
+            "Minh-Thang Luong",
+            "Quoc V. Le"
+          ],
+          "year": 2017,
+          "title": "Massive exploration of neural machine translation architectures",
+          "venue": "CoRR, abs/1703.03906, 2017",
+          "doi": null,
+          "arxiv_id": "1703.03906"
+        }
+      ]
+    }
+  },
+  "service": {
+    "alive": "true",
+    "version": {
+      "version": "0.9.1",
+      "revision": "0.9.1"
+    }
+  },
+  "mineru_chunks_identical": true,
+  "reference_changes": [
+    {
+      "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-2",
+      "fields": [
+        "venue"
+      ]
+    },
+    {
+      "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-3",
+      "fields": [
+        "authors",
+        "venue"
+      ]
+    },
+    {
+      "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-4",
+      "fields": [
+        "venue"
+      ]
+    },
+    {
+      "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-5",
+      "fields": [
+        "authors",
+        "venue"
+      ]
+    },
+    {
+      "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-6",
+      "fields": [
+        "venue"
+      ]
+    },
+    {
+      "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-7",
+      "fields": [
+        "venue"
+      ]
+    },
+    {
+      "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-8",
+      "fields": [
+        "authors",
+        "venue"
+      ]
+    },
+    {
+      "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-9",
+      "fields": [
+        "authors",
+        "venue",
+        "arxiv_id"
+      ]
+    },
+    {
+      "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-10",
+      "fields": [
+        "venue"
+      ]
+    },
+    {
+      "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-11",
+      "fields": [
+        "venue"
+      ]
+    },
+    {
+      "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-12",
+      "fields": [
+        "title",
+        "venue"
+      ]
+    },
+    {
+      "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-13",
+      "fields": [
+        "venue"
+      ]
+    },
+    {
+      "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-14",
+      "fields": [
+        "venue"
+      ]
+    },
+    {
+      "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-15",
+      "fields": [
+        "venue"
+      ]
+    },
+    {
+      "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-16",
+      "fields": [
+        "title",
+        "venue"
+      ]
+    },
+    {
+      "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-17",
+      "fields": [
+        "venue"
+      ]
+    },
+    {
+      "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-18",
+      "fields": [
+        "authors",
+        "venue",
+        "arxiv_id"
+      ]
+    },
+    {
+      "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-19",
+      "fields": [
+        "authors",
+        "venue"
+      ]
+    },
+    {
+      "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-20",
+      "fields": [
+        "venue"
+      ]
+    },
+    {
+      "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-21",
+      "fields": [
+        "venue"
+      ]
+    },
+    {
+      "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-22",
+      "fields": [
+        "authors",
+        "venue"
+      ]
+    },
+    {
+      "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-23",
+      "fields": [
+        "authors",
+        "venue"
+      ]
+    },
+    {
+      "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-24",
+      "fields": [
+        "venue"
+      ]
+    },
+    {
+      "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-25",
+      "fields": [
+        "authors",
+        "venue"
+      ]
+    },
+    {
+      "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-26",
+      "fields": [
+        "authors",
+        "venue"
+      ]
+    },
+    {
+      "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-27",
+      "fields": [
+        "venue"
+      ]
+    },
+    {
+      "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-28",
+      "fields": [
+        "venue"
+      ]
+    },
+    {
+      "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-29",
+      "fields": [
+        "venue"
+      ]
+    },
+    {
+      "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-30",
+      "fields": [
+        "venue"
+      ]
+    },
+    {
+      "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-31",
+      "fields": [
+        "venue"
+      ]
+    },
+    {
+      "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-32",
+      "fields": [
+        "venue"
+      ]
+    },
+    {
+      "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-33",
+      "fields": [
+        "venue"
+      ]
+    },
+    {
+      "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-34",
+      "fields": [
+        "venue"
+      ]
+    },
+    {
+      "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-35",
+      "fields": [
+        "authors",
+        "venue"
+      ]
+    },
+    {
+      "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-36",
+      "fields": [
+        "venue"
+      ]
+    },
+    {
+      "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-37",
+      "fields": [
+        "authors",
+        "venue"
+      ]
+    },
+    {
+      "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-38",
+      "fields": [
+        "authors",
+        "title",
+        "venue"
+      ]
+    },
+    {
+      "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-39",
+      "fields": [
+        "venue"
+      ]
+    },
+    {
+      "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-40",
+      "fields": [
+        "year",
+        "venue"
+      ]
+    }
+  ],
+  "passed": true
+}
