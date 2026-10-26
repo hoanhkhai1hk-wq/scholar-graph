@@ -4,14 +4,21 @@ services:
       context: .
       dockerfile: Dockerfile
       target: backend
+      args:
+        SCHOLAR_GRAPH_REVISION: ${SCHOLAR_GRAPH_REVISION:-unknown}
     platform: linux/amd64
     init: true
+    restart: unless-stopped
     ports:
       - "127.0.0.1:8000:8000"
     environment:
       SCHOLAR_GRAPH_DATA_DIR: /app/data/records
       SCHOLAR_GRAPH_QA_MODE: extractive
-      SCHOLAR_GRAPH_RETRIEVAL_MODE: lexical
+      SCHOLAR_GRAPH_RETRIEVAL_MODE: bge_m3_hybrid
+      SCHOLAR_GRAPH_QA_RETRIEVAL_MODE: hybrid
+      SCHOLAR_GRAPH_TRACKING_ENABLED: "true"
+      SCHOLAR_GRAPH_TRACKING_INTERVAL_SECONDS: "86400"
+      SCHOLAR_GRAPH_TRACKING_INITIAL_DELAY_SECONDS: "15"
     volumes:
       - backend-data:/app/data
     healthcheck:
@@ -26,8 +33,11 @@ services:
       context: .
       dockerfile: Dockerfile
       target: frontend
+      args:
+        SCHOLAR_GRAPH_REVISION: ${SCHOLAR_GRAPH_REVISION:-unknown}
     platform: linux/amd64
     init: true
+    restart: unless-stopped
     ports:
       - "127.0.0.1:3000:3000"
     environment:

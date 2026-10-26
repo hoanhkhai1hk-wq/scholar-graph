@@ -16,6 +16,8 @@ COPY frontend/ ./
 RUN npm run build
 
 FROM ${NODE_IMAGE} AS frontend
+ARG SCHOLAR_GRAPH_REVISION=unknown
+LABEL org.opencontainers.image.revision=${SCHOLAR_GRAPH_REVISION}
 WORKDIR /app/frontend
 ENV NODE_ENV=production NEXT_TELEMETRY_DISABLED=1 NEXT_PUBLIC_API_BASE_URL=http://backend:8000
 COPY --from=frontend-build --chown=node:node /app/frontend ./
@@ -23,11 +25,23 @@ USER node
 EXPOSE 3000
 CMD ["npm", "run", "start", "--", "--hostname", "0.0.0.0", "--port", "3000"]
 
+FROM ${PYTHON_IMAGE} AS vector-runtime
+COPY backend/requirements-retrieval.txt /tmp/requirements-retrieval.txt
+# Separate from PaddleOCR's dependencies; public CPU wheels only, no credentials.
+RUN python -m venv /opt/vector-venv \
+    && /opt/vector-venv/bin/python -m pip install --no-cache-dir --index-url https://download.pytorch.org/whl/cpu torch==2.14.1+cpu \
+    && /opt/vector-venv/bin/python -m pip install --no-cache-dir -r /tmp/requirements-retrieval.txt \
+    && /opt/vector-venv/bin/python -m pip check
+
 FROM ${PYTHON_IMAGE} AS backend
+ARG SCHOLAR_GRAPH_REVISION=unknown
+LABEL org.opencontainers.image.revision=${SCHOLAR_GRAPH_REVISION}
 ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=/app/backend \
     PIP_NO_CACHE_DIR=1 PIP_DISABLE_PIP_VERSION_CHECK=1 \
     SCHOLAR_GRAPH_DATA_DIR=/app/data/records SCHOLAR_GRAPH_QA_MODE=extractive \
     SCHOLAR_GRAPH_RETRIEVAL_MODE=lexical MPLCONFIGDIR=/app/data/matplotlib-cache \
+    SCHOLAR_GRAPH_VECTOR_PYTHON=/opt/vector-venv/bin/python \
+    SCHOLAR_GRAPH_BGE_M3_PATH=/app/data/module-four-models/bge-m3 \
     HOME=/app/data/home
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
@@ -38,6 +52,7 @@ WORKDIR /app
 COPY backend/ ./backend/
 COPY contracts/ ./contracts/
 RUN python -m pip install './backend[ocr,test]' && python -m pip check
+COPY --from=vector-runtime /opt/vector-venv /opt/vector-venv
 # Include independently built Node/TypeScript for the existing actual proxy test.
 COPY --from=frontend-dependencies /usr/local/bin/node /usr/local/bin/node
 COPY --from=frontend-build /app/frontend ./frontend/

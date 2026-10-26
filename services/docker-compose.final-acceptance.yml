@@ -1,0 +1,9 @@
+# Demo uses the SAME backend scheduler as deployment, with a short interval.
+services:
+  backend:
+    environment:
+      SCHOLAR_GRAPH_TRACKING_INTERVAL_SECONDS: "60"
+      SCHOLAR_GRAPH_TRACKING_INITIAL_DELAY_SECONDS: "15"
+      SCHOLAR_GRAPH_TRACKING_MAX_CANDIDATES: "1"
+      SCHOLAR_GRAPH_TRACKING_MAX_IMPORTS: "0"
+      SCHOLAR_GRAPH_TRACKING_PAPER_IDS: paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697

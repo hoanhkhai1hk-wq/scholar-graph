@@ -1,5 +1,35 @@
 # ScholarGraph 模块一、二、四、五、六后端
 
+## 最终 Docker 部署与回归分层
+
+最终部署配置沿用根 Dockerfile/docker-compose.yml：后端 8000、前端 3000，只绑定本机，两个服务配置健康检查和 `restart: unless-stopped`。镜像增加独立 `/opt/vector-venv`（固定 CPU torch、Chroma、FlagEmbedding），不混用 PaddleOCR 的依赖；公开 BGE-M3 权重在运行时下载进持久卷，PDF 与 Key 不进镜像。默认无 Key 摘录式问答；模型权重未准备好时向量明确降级，不把镜像内已安装依赖说成模型已就绪。
+
+```powershell
+$env:SCHOLAR_GRAPH_REVISION=(git rev-parse HEAD)
+docker compose build --no-cache
+docker compose up -d --wait
+docker compose exec -T backend python tests/run_regression.py fast --no-key
+```
+
+公开模型准备命令：`docker compose exec -T backend /opt/vector-venv/bin/python backend/download_bge_m3.py`，模型快照沿用既有固定版本；不需要 Key。只有准备后真实向量校验成功，才能宣称该运行环境向量已接通。
+
+**自动追踪机制是后端生命周期内调度。** Compose 默认 `SCHOLAR_GRAPH_TRACKING_ENABLED=true`、间隔 86400 秒、启动延迟 15 秒；可选 `SCHOLAR_GRAPH_TRACKING_MAX_CANDIDATES`（默认3）、`MAX_IMPORTS`（默认1）、`PAPER_IDS`（逗号分隔，默认库内第一篇）。同一数据目录用操作系统锁选一个调度实例，单轮结束后等待下一个间隔，不补跑重叠任务；空库或指定论文尚未上传时只记等待事件。调度线程有界等待关闭；尚在返回的上游请求不会被谎报为已停止。非 Compose 本地启动默认关闭，需要同样环境变量显式开启。
+
+`GET /api/v1/retrieval/tracking/status` 附加 `scheduler_details`（配置、active、进程号、运行数、最近事件），原手动端点保留。自动运行继续用原 TrackingService、公开 arXiv API、幂等与去重规则；记录候选和上游失败，不伪造成功。`tracking/scheduler-events.jsonl`、`scheduler-status.json` 与 `state.sqlite3` 位于持久数据目录，容器重建后日志保留。演示覆盖 `services/docker-compose.final-acceptance.yml` 使用同一调度机制，只将间隔设为60秒、固定官方 Attention 种子、max_imports=0（只追踪候选）；移除此覆盖即回到每日部署配置。
+
+回归统一入口：
+
+| 层 | 命令 | 范围与时机 |
+| --- | --- | --- |
+| 快速层 | `python tests/run_regression.py fast --no-key` | 每次提交；显式单元用例白名单，只测契约、状态、身份、图谱、传输、调度等；不调用模型/解析/OCR worker，不建大索引 |
+| 全量层 | `python tests/run_regression.py full --no-key --corpus-dir pdf` | 单子验收及部署前；全部回归、真实 OCR、真实本地 BGE-M3/Chroma、官方541页长书解析与索引；本单不使用 Key |
+
+全量层已有5项真实模型用例：无 Key 或模型名时跳过，跳过不计为通过；需要已授权真模型验收时，提供进程环境并去掉 `--no-key`，才会执行这些用例。显式全量层缺向量依赖/权重或长书则失败，不能靠跳过伪造覆盖。普通 `pytest` 保留按 opt-in 标记选择的行为；验收必须使用上述 full 入口。Linux 另有 Windows 专用锁测试跳过，报告逐项区分。
+
+提交钩子：`git config --local core.hooksPath services/git-hooks`，本工作区已启用；钩子每次提交实际运行快速层。干净克隆后执行同一配置即可启用，Git 不会自动信任克隆仓库里的钩子。`.github/workflows/backend-fast.yml` 同时在 push/PR 执行快速层，未把全量 OCR/模型任务塞进每次提交。
+
+官方容器验收：在全新 Compose 项目/空数据卷上，用 `services/docker-compose.acceptance.yml` 只读挂载现有官方 pdf/ 到 `/corpus`，再运行 `python tests/run_final_deployment_container.py`。此脚本在容器内下载公开模型、跑全量层、真实 HTTP 三用例、无 Key 问答和自动定时证据；不复用宿主机解析结果。干净远端克隆与无缓存构建入口为 `python tests/reproduce_final_deployment.py`。本轮真实结果与限制见 [最终部署验收报告](../tests/reports/final-deployment-acceptance.md)。
+
 本后端实现本地 PDF 解析、状态机、去重与版本差异，模块二问答/对比、模块四检索/公开抓取/推荐，模块五局域引用图谱，以及模块六综述框架、摘录草稿与CSV图表，原19条 HTTP 端点保持，另增问答SSE、双向翻译、拓扑脚本与三维CSV图表端点，共23条。Python 包为 `scholar_graph`。自由成文、文档导出、异步队列仍未实现。
 
 ## Windows 本地安装
@@ -373,7 +403,7 @@ metadata新增source_language、source_translation_sha256和source_input；前�
 backend/.venv/Scripts/python.exe -m scholar_graph.tracking_cli --data-dir data/module-one --due --interval-seconds 86400 --max-candidates 5 --max-imports 2
 ```
 
-Windows任务计划程序的程序填写D盘仓库内Python绝对路径；参数填写`-m scholar_graph.tracking_cli --data-dir D:/AI_Workspace/Tasks/scholar-graph/data/module-one --due --interval-seconds 86400`；起始目录填写D盘仓库根目录，触发器设为每天执行。Linux可用每日cron调用同一模块并指定容器/主机实际数据目录。`--due`在距最近一次运行开始不足间隔时返回`skipped=true,reason=NOT_DUE`，不发网络请求；手动端点force=true可立即运行。命令对partial/failed返回退出码1，正常或未到期返回0。本单提供并实测可触发任务，没有替用户在宿主机注册系统计划，也没有后台常驻调度线程；部署时需配置定时触发器。
+CLI 保留手动运维入口：`--due` 在距最近一次运行开始不足间隔时返回 `skipped=true,reason=NOT_DUE`，不发网络请求；手动端点 force=true 可立即运行。命令对 partial/failed 返回退出码 1，正常或未到期返回 0。最终部署已改用下述后端生命周期内调度，不依赖宿主机任务计划程序或 cron。
 
 默认从库内按id排序的前5篇取种子，可显式指定paper_ids或重复`--paper-id`。每篇最多两条查询：标题主题词查询，以及由真实CitationLink关联的首个可用ReferenceEntry标题查询。旧导入的PaperMeta.title或参考标题为空时，可从真实首屏短文本候选和可识别的参考文献原文摘取，并附对应锚点；短文本选择是启发式，不保证总是论文题名，不回填或修改业务记录。找不到任何可用种子明确失败。主题为英文词法启发式：去停用词、拆连字符、长词尾s归一化，取排序前4词；不是语义向量检索。中文标题无可识别英文主题且无可用引用时会明确失败。
 
