@@ -3,6 +3,8 @@ import { fetchPapers, MAX_PAGE_SIZE } from "@/lib/api";
 import type { Paged, PaperMeta } from "@/lib/types";
 import ErrorState from "@/components/ErrorState";
 import CapabilityIndex from "@/components/CapabilityIndex";
+import EmptyState from "@/components/EmptyState";
+import Diagnostics from "@/components/Diagnostics";
 
 type Loaded =
   | { kind: "ok"; data: Paged<PaperMeta>; page: number }
@@ -40,32 +42,106 @@ export default async function HomePage({
     return (
       <main className="sg-shell">
         <div className="sg-page-head">
-          <p className="sg-eyebrow">GET /api/v1/papers</p>
-          <h1 className="sg-title">论文库</h1>
+          <h1 className="sg-title">我的论文</h1>
           <p className="sg-lede">
-            数据来自模块一已落地的列表端点，使用统一分页壳
-            items / page / page_size / total / total_pages / has_next。
-            翻页完全按后端返回的 total_pages 与 has_next 控制，不自行推算总数。
+            上传论文后即可阅读、提问、对照引用。每一条回答都能点回原文的那一页。
           </p>
-          <p className="sg-back">
-            <Link href="/upload">上传 PDF →</Link>
-          </p>
+          <div className="sg-form">
+            <Link className="sg-btn" href="/upload">
+              上传论文
+            </Link>
+            <Link className="sg-btn sg-btn--ghost" href="/qa">
+              去提问
+            </Link>
+          </div>
+          <Diagnostics>
+            GET /api/v1/papers · 分页壳 items / page / page_size / total /
+            total_pages / has_next；翻页按后端返回的 total_pages 与 has_next 控制，
+            不自行推算总数。
+          </Diagnostics>
         </div>
 
         <section className="sg-section">
           <div className="sg-section__head">
-            <h2 className="sg-section__title">PaperMeta 分页列表</h2>
+            <h2 className="sg-section__title">工作台</h2>
             <span className="sg-section__hint">
-              第 {data.page} / {data.total_pages} 页 · 共 {data.total} 条 · 每页{" "}
-              {data.page_size} 条
+              共 {data.total} 篇 · 第 {data.page} / {data.total_pages} 页
+            </span>
+          </div>
+
+          <div className="sg-bento">
+            <div className="sg-bento__cell sg-bento__cell--third">
+              <p className="sg-bento__label">库内论文</p>
+              <p className="sg-bento__figure">{data.total}</p>
+              <p className="sg-mono">解析状态在下方列表逐篇可见</p>
+            </div>
+            <div className="sg-bento__cell sg-bento__cell--third">
+              <p className="sg-bento__label">本页条目</p>
+              <p className="sg-bento__figure">{data.items.length}</p>
+              <p className="sg-mono">每页 {data.page_size} 条</p>
+            </div>
+            <div className="sg-bento__cell sg-bento__cell--third">
+              <p className="sg-bento__label">有文本层</p>
+              <p className="sg-bento__figure">
+                {data.items.filter((paper) => paper.has_text_layer).length}
+              </p>
+              <p className="sg-mono">
+                无文本层 {data.items.filter((p) => !p.has_text_layer).length} 篇走 OCR
+              </p>
+            </div>
+
+            <div className="sg-bento__cell sg-bento__cell--full">
+              <p className="sg-bento__label">从这里开始</p>
+              <div className="sg-entries">
+                <Link className="sg-entry-card" href="/qa">
+                  <p className="sg-entry-card__title">单篇 / 跨篇问答</p>
+                  <p className="sg-entry-card__meta">答案带四字段原文锚点</p>
+                </Link>
+                <Link className="sg-entry-card" href="/graph">
+                  <p className="sg-entry-card__title">引用图谱</p>
+                  <p className="sg-entry-card__meta">只画已核验的引用边</p>
+                </Link>
+                <Link className="sg-entry-card" href="/retrieval">
+                  <p className="sg-entry-card__title">公开检索与追踪</p>
+                  <p className="sg-entry-card__meta">arXiv 抓取与每日追踪</p>
+                </Link>
+                <Link className="sg-entry-card" href="/writing">
+                  <p className="sg-entry-card__title">写作辅助</p>
+                  <p className="sg-entry-card__meta">框架、摘录草稿、CSV 图表</p>
+                </Link>
+                <Link className="sg-entry-card" href="/upload">
+                  <p className="sg-entry-card__title">上传论文</p>
+                  <p className="sg-entry-card__meta">支持批量与扫描件 OCR</p>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="sg-section">
+          <div className="sg-section__head">
+            <h2 className="sg-section__title">论文列表</h2>
+            <span className="sg-section__hint">
+              共 {data.total} 条 · 每页 {data.page_size} 条
             </span>
           </div>
 
           {data.items.length === 0 ? (
-            <p>
-              本页无记录（total={data.total}）。空集合时 total_pages 为 0、
-              has_next 为 false，页面不编造条目。
-            </p>
+            <EmptyState
+              title="库里还没有论文"
+              hint="上传第一篇 PDF 后，这里会显示标题、作者、年份与处理状态。也可以先上传命题提供的官方测试论文试一遍流程。"
+              aside={`total=${data.total} · total_pages=${data.total_pages} · has_next=${String(data.has_next)}`}
+              action={
+                <>
+                  <Link className="sg-btn" href="/upload">
+                    上传第一篇论文
+                  </Link>
+                  <Link className="sg-btn sg-btn--ghost" href="/upload">
+                    批量上传
+                  </Link>
+                </>
+              }
+            />
           ) : (
             <table className="sg-table">
               <thead>
@@ -157,7 +233,16 @@ export default async function HomePage({
           </div>
         </section>
 
-        <CapabilityIndex />
+        <div className="sg-diag">
+          <details className="sg-diag">
+            <summary className="sg-diag__summary">
+              能力端点总表（按模块列出已落地的接口）
+            </summary>
+            <div className="sg-diag__body">
+              <CapabilityIndex />
+            </div>
+          </details>
+        </div>
       </main>
     );
   }
@@ -165,7 +250,7 @@ export default async function HomePage({
   return (
     <main className="sg-shell">
       <div className="sg-page-head">
-        <p className="sg-eyebrow">GET /api/v1/papers</p>
+        <Diagnostics summary="技术信息（接口路径与分页字段）">GET /api/v1/papers</Diagnostics>
         <h1 className="sg-title">论文库</h1>
         <p className="sg-lede">
           请求第 {loaded.page} 页、每页 {loaded.pageSize} 条时后端未返回数据。
