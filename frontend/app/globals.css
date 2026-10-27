@@ -1209,3 +1209,241 @@ a:hover {
   font-size: 12px;
   color: var(--sg-text-secondary);
 }
+
+/* ==========================================================================
+   打磨 D：常驻导航 / 骨架屏 / 空状态 / 诊断折叠 / 紧凑仪表盘 Bento
+   动效档位：低（仅图谱与阅读器跳转有动效；骨架屏一层缓呼吸且尊重 reduced-motion）
+   ========================================================================== */
+
+/* 常驻顶部导航：nav 应当后退，当前项只用文字色 + 一条细线 */
+.sg-nav {
+  border-bottom: 1px solid var(--sg-border);
+  background: var(--sg-bg-surface);
+}
+
+.sg-nav__inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 var(--sg-space-4);
+  display: flex;
+  align-items: baseline;
+  gap: var(--sg-space-5);
+  min-height: 52px;
+}
+
+.sg-nav__brand {
+  font-family: var(--sg-font-serif);
+  font-size: 16px;
+  color: var(--sg-primary);
+  text-decoration: none;
+  padding: 14px 0;
+  letter-spacing: -0.01em;
+}
+
+.sg-nav__links {
+  display: flex;
+  gap: var(--sg-space-4);
+  flex-wrap: wrap;
+  margin-left: auto;
+}
+
+.sg-nav__link {
+  font-size: 13px;
+  color: var(--sg-text-secondary);
+  text-decoration: none;
+  padding: 16px 0 14px;
+  border-bottom: 2px solid transparent;
+}
+
+.sg-nav__link:hover {
+  color: var(--sg-text-primary);
+}
+
+.sg-nav__link--active {
+  color: var(--sg-primary);
+  border-bottom-color: var(--sg-primary);
+}
+
+/* 骨架屏 */
+.sg-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: var(--sg-space-3) 0;
+}
+
+.sg-skeleton__title {
+  display: block;
+  height: 20px;
+  width: 34%;
+  background: var(--sg-bg-subtle);
+  border-radius: var(--sg-radius-sm);
+}
+
+.sg-skeleton__line,
+.sg-skeleton__row {
+  display: block;
+  background: var(--sg-bg-subtle);
+  border-radius: var(--sg-radius-sm);
+}
+
+.sg-skeleton__row {
+  height: 44px;
+  width: 100%;
+}
+
+.sg-skeleton__title,
+.sg-skeleton__line,
+.sg-skeleton__row {
+  animation: sg-breathe 1.6s ease-in-out infinite;
+}
+
+@keyframes sg-breathe {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.62; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sg-skeleton__title,
+  .sg-skeleton__line,
+  .sg-skeleton__row {
+    animation: none;
+  }
+}
+
+/* 空状态 */
+.sg-empty {
+  display: flex;
+  gap: var(--sg-space-4);
+  align-items: flex-start;
+  border: 1px solid var(--sg-border);
+  border-radius: var(--sg-radius-md);
+  background: var(--sg-bg-surface);
+  padding: var(--sg-space-5);
+  color: var(--sg-border-strong);
+}
+
+.sg-empty__mark {
+  width: 72px;
+  height: 72px;
+  flex: 0 0 72px;
+  color: var(--sg-border-strong);
+}
+
+.sg-empty__title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--sg-text-primary);
+  margin: 0 0 4px;
+}
+
+.sg-empty__hint {
+  font-size: 13px;
+  color: var(--sg-text-secondary);
+  margin: 0;
+  max-width: 62ch;
+}
+
+.sg-empty__action {
+  margin-top: var(--sg-space-3);
+  display: flex;
+  gap: var(--sg-space-2);
+  flex-wrap: wrap;
+}
+
+/* 诊断折叠区（端点 eyebrow 收进来） */
+.sg-diag {
+  margin-top: var(--sg-space-2);
+  border-top: 1px solid var(--sg-border);
+  padding-top: var(--sg-space-2);
+}
+
+.sg-diag__summary {
+  font-size: 12px;
+  color: var(--sg-text-muted);
+  cursor: pointer;
+}
+
+.sg-diag__body {
+  font-family: var(--sg-font-mono);
+  font-size: 11.5px;
+  color: var(--sg-text-secondary);
+  padding-top: var(--sg-space-2);
+  word-break: break-all;
+}
+
+/* 紧凑仪表盘 Bento：数据 / 操作 / 内容同屏，密度高 */
+.sg-bento {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--sg-space-3);
+}
+
+.sg-bento__cell {
+  border: 1px solid var(--sg-border);
+  border-radius: var(--sg-radius-md);
+  background: var(--sg-bg-surface);
+  padding: var(--sg-space-3);
+  min-width: 0;
+}
+
+.sg-bento__cell--wide { grid-column: span 6; }
+.sg-bento__cell--third { grid-column: span 4; }
+.sg-bento__cell--half { grid-column: span 6; }
+.sg-bento__cell--full { grid-column: span 12; }
+
+@media (max-width: 900px) {
+  .sg-bento__cell--wide,
+  .sg-bento__cell--third,
+  .sg-bento__cell--half { grid-column: span 12; }
+}
+
+.sg-bento__label {
+  font-size: 11px;
+  color: var(--sg-text-muted);
+  margin: 0 0 var(--sg-space-2);
+}
+
+.sg-bento__figure {
+  font-size: 26px;
+  line-height: 1.1;
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+  color: var(--sg-text-primary);
+  margin: 0;
+}
+
+/* 入口清单（Bento 内的操作区）：视觉 → 标题 → 元信息 */
+.sg-entries {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--sg-space-2);
+}
+
+.sg-entry-card {
+  display: block;
+  text-decoration: none;
+  border: 1px solid var(--sg-border);
+  border-radius: var(--sg-radius-sm);
+  padding: var(--sg-space-3);
+  background: var(--sg-bg-surface);
+  transition: border-color 120ms ease, background 120ms ease;
+}
+
+.sg-entry-card:hover {
+  border-color: var(--sg-primary);
+  background: var(--sg-primary-subtle);
+}
+
+.sg-entry-card__title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--sg-text-primary);
+  margin: 0 0 2px;
+}
+
+.sg-entry-card__meta {
+  font-size: 12px;
+  color: var(--sg-text-secondary);
+  margin: 0;
+}
