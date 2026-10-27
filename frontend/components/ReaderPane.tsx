@@ -257,12 +257,11 @@ export default function ReaderPane({
         )}
 
         <div className="sg-note">
-          <span className="sg-tag sg-tag--warning">
-            翻译功能待后端模型接入
-          </span>
+          <span className="sg-tag sg-tag--info">划词不做逐词翻译</span>
           <p className="sg-note__text">
-            后端目前没有翻译端点，划词只展示原文与所属 Chunk 锚点，
-            不生成、不伪造任何译文。
+            划词只展示原文与所属 Chunk 锚点。翻译端点已落地，但按**整 Chunk**
+            计，不支持字符级选区；要翻译请切到顶部的「中英双语对照」视图，
+            那里可选摘要、章节、整 Chunk 选区与全文四种范围。
           </p>
         </div>
 
