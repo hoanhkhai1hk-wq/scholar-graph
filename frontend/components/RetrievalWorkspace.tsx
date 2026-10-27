@@ -16,6 +16,7 @@ import type {
 import PaperPicker from "@/components/PaperPicker";
 import ErrorState from "@/components/ErrorState";
 import TrackingPanel from "@/components/TrackingPanel";
+import EmptyState from "@/components/EmptyState";
 
 type SearchState =
   | { kind: "idle" }
@@ -189,7 +190,11 @@ export default function RetrievalWorkspace({
             </p>
 
             {search.data.items.length === 0 ? (
-              <p>后端返回 0 条证据（total={search.data.total}）。</p>
+              <EmptyState
+                title="没有命中任何段落"
+                hint="换一个更具体的关键词，或确认已经选中了论文。当前检索走本地词法（IDF 加权余弦），不做语义改写，冷门表述可能命中不到。"
+                aside={`total=${search.data.total} · mode=${search.meta.mode ?? "—"}`}
+              />
             ) : (
               <table className="sg-table">
                 <thead>
@@ -351,7 +356,11 @@ export default function RetrievalWorkspace({
             </div>
 
             {reco.data.items.length === 0 ? (
-              <p>后端返回 0 条推荐（total={reco.data.total}）。</p>
+              <EmptyState
+                title="暂时没有可推荐的论文"
+                hint="先选一篇种子论文：推荐从它的引用邻居与主题词出发。库里论文太少时也会没有候选。"
+                aside={`total=${reco.data.total}`}
+              />
             ) : (
               <table className="sg-table">
                 <thead>

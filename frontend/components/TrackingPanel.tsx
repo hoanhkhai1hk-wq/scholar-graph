@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { fetchTrackingStatus, runTracking } from "@/lib/api";
 import type { TrackingRun, TrackingStatus } from "@/lib/types";
 import ErrorState from "./ErrorState";
+import EmptyState from "./EmptyState";
 
 function statusTag(status: string | null) {
   if (!status) return <span className="sg-tag sg-tag--muted">尚未运行</span>;
@@ -125,8 +126,20 @@ export default function TrackingPanel({ paperIds }: { paperIds: string[] }) {
           ) : null}
         </div>
       ) : (
-        <p className="sg-mono">还没有运行记录，点上方按钮立即运行一次。</p>
+        <EmptyState
+          title="还没有运行记录"
+          hint="点「立即运行一次追踪」，系统会按库内论文的标题主题词与真实引用关系去公开 arXiv Atom 查询候选。种子取不到时会明确失败，不会凭空造候选。"
+          aside="latest_run=null"
+        />
       )}
+
+      {run && run.imported_count === 0 ? (
+        <EmptyState
+          title="本次没有新增论文"
+          hint="候选已找到但没有入库：max_imports 设为 0 时只追踪候选不入库；也可能候选与库内已有论文重复。提高 max_imports 才会真正下载入库。"
+          aside={`candidate_count=${run.candidate_count} · duplicate_count=${run.duplicate_count} · imported_count=0`}
+        />
+      ) : null}
 
       {error ? <ErrorState title="追踪状态取数失败" error={error} /> : null}
     </div>
