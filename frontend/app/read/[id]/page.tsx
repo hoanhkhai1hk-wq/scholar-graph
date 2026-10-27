@@ -7,6 +7,7 @@ import {
   fetchReferences,
 } from "@/lib/api";
 import ReaderWorkspace from "@/components/ReaderWorkspace";
+import Diagnostics from "@/components/Diagnostics";
 import ErrorState from "@/components/ErrorState";
 
 export default async function ReaderPage({
@@ -28,7 +29,7 @@ export default async function ReaderPage({
           <Link href="/">← 返回论文库</Link>
         </p>
         <div className="sg-page-head">
-          <p className="sg-eyebrow">GET /api/v1/papers/{id}</p>
+          <Diagnostics summary="技术信息（接口路径）">GET /api/v1/papers/{id}</Diagnostics>
           <h1 className="sg-title">阅读器</h1>
         </div>
         <section className="sg-section">
@@ -72,7 +73,7 @@ export default async function ReaderPage({
           <Link href="/">← 返回论文库</Link>
         </p>
         <div className="sg-page-head">
-          <p className="sg-eyebrow">阅读器</p>
+          
           <h1 className="sg-title">{paper.title ?? "（标题未提取）"}</h1>
         </div>
         {chunksResult.kind === "error" ? (
@@ -114,9 +115,9 @@ export default async function ReaderPage({
   return (
     <main className="sg-shell sg-shell--wide">
       <div className="sg-page-head">
-        <p className="sg-eyebrow">
+        <Diagnostics summary="技术信息（已落盘记录类型）">
           Chunk / ReferenceEntry / CitationLink 已落盘材料
-        </p>
+        </Diagnostics>
         <h1 className="sg-title">{paper.title ?? "（标题未提取）"}</h1>
         <p className="sg-lede">
           章节导航按 section_path 与物理页码组织；点正文引用跳到文末条目，

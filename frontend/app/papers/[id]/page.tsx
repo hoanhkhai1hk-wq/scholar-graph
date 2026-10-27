@@ -20,6 +20,7 @@ import type {
   ReferenceEntry,
 } from "@/lib/types";
 import ErrorState from "@/components/ErrorState";
+import Diagnostics from "@/components/Diagnostics";
 import ParseStatusLive from "@/components/ParseStatusLive";
 import PaperExtensions from "@/components/PaperExtensions";
 
@@ -133,7 +134,7 @@ export default async function PaperDetailPage({
           <Link href="/">← 返回论文库</Link>
         </p>
         <div className="sg-page-head">
-          <p className="sg-eyebrow">GET /api/v1/papers/{id}</p>
+          <Diagnostics summary="技术信息（接口路径与契约字段）">GET /api/v1/papers/{id}</Diagnostics>
           <h1 className="sg-title">论文详情</h1>
         </div>
         <section className="sg-section">
@@ -180,7 +181,7 @@ export default async function PaperDetailPage({
       </p>
 
       <div className="sg-page-head">
-        <p className="sg-eyebrow">GET /api/v1/papers/{id}</p>
+        <Diagnostics summary="技术信息（接口路径与契约字段）">GET /api/v1/papers/{id}</Diagnostics>
         <h1 className="sg-title">{paper.title ?? "（标题未提取）"}</h1>
         <p className="sg-lede">{paper.abstract ?? "（摘要未提供）"}</p>
         <p className="sg-back">
@@ -191,7 +192,7 @@ export default async function PaperDetailPage({
       {/* 解析状态：非终态时前端轮询，到达终态即停 */}
       <section className="sg-section">
         <div className="sg-section__head">
-          <h2 className="sg-section__title">解析状态 · ParseStatus</h2>
+          <h2 className="sg-section__title">解析状态</h2>
           <span className="sg-section__hint">
             GET /papers/{id}/parse-status · 非终态轮询，终态停止
           </span>
@@ -206,7 +207,7 @@ export default async function PaperDetailPage({
       {/* 分块 */}
       <section className="sg-section">
         <div className="sg-section__head">
-          <h2 className="sg-section__title">分块列表 · Chunk</h2>
+          <h2 className="sg-section__title">分块列表</h2>
           <span className="sg-section__hint">
             GET /papers/{id}/chunks · 每页 {SUB_PAGE_SIZE} 条（上限{" "}
             {MAX_PAGE_SIZE}）
@@ -267,7 +268,7 @@ export default async function PaperDetailPage({
       {/* 参考文献 */}
       <section className="sg-section">
         <div className="sg-section__head">
-          <h2 className="sg-section__title">参考文献 · ReferenceEntry</h2>
+          <h2 className="sg-section__title">参考文献</h2>
           <span className="sg-section__hint">
             GET /papers/{id}/references · 每页 {SUB_PAGE_SIZE} 条
           </span>
@@ -318,7 +319,7 @@ export default async function PaperDetailPage({
       <section className="sg-section">
         <div className="sg-section__head">
           <h2 className="sg-section__title">
-            正文 ↔ 文末 对应关系 · CitationLink
+            正文 ↔ 文末 对应关系
           </h2>
           <span className="sg-section__hint">
             GET /papers/{id}/citation-links · 每页 {SUB_PAGE_SIZE} 条

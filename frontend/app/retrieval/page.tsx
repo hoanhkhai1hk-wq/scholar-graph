@@ -1,5 +1,6 @@
 import { fetchPapers } from "@/lib/api";
 import RetrievalWorkspace from "@/components/RetrievalWorkspace";
+import Diagnostics from "@/components/Diagnostics";
 import ErrorState from "@/components/ErrorState";
 
 export default async function RetrievalPage() {
@@ -15,9 +16,9 @@ export default async function RetrievalPage() {
   return (
     <main className="sg-shell">
       <div className="sg-page-head">
-        <p className="sg-eyebrow">
+        <Diagnostics summary="技术信息（接口路径与评分口径）">
           POST /retrieval/search · /retrieval/fetch · GET /recommendations
-        </p>
+        </Diagnostics>
         <h1 className="sg-title">检索、公开抓取与推荐</h1>
         <p className="sg-lede">
           检索模式与结果原因按后端响应头原样展示，不把词法兜底说成向量检索；

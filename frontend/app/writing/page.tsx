@@ -1,5 +1,6 @@
 import { fetchPapers } from "@/lib/api";
 import WritingWorkspace from "@/components/WritingWorkspace";
+import Diagnostics from "@/components/Diagnostics";
 import ErrorState from "@/components/ErrorState";
 
 export default async function WritingPage() {
@@ -15,9 +16,9 @@ export default async function WritingPage() {
   return (
     <main className="sg-shell">
       <div className="sg-page-head">
-        <p className="sg-eyebrow">
+        <Diagnostics summary="技术信息（接口路径与图注口径）">
           POST /frameworks · /reviews · /charts/csv
-        </p>
+        </Diagnostics>
         <h1 className="sg-title">综述框架、摘录草稿与图表</h1>
         <p className="sg-lede">
           框架给出章节结构与待写要点（原文摘录）；摘录草稿逐条标注 verified /

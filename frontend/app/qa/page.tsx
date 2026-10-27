@@ -1,5 +1,6 @@
 import { fetchPapers } from "@/lib/api";
 import QaWorkspace from "@/components/QaWorkspace";
+import Diagnostics from "@/components/Diagnostics";
 import ErrorState from "@/components/ErrorState";
 
 export default async function QaPage() {
@@ -15,7 +16,7 @@ export default async function QaPage() {
   return (
     <main className="sg-shell">
       <div className="sg-page-head">
-        <p className="sg-eyebrow">POST /api/v1/papers/{`{id}`}/qa · /compare</p>
+        <Diagnostics summary="技术信息（接口路径与编排口径）">POST /api/v1/papers/{`{id}`}/qa · /compare</Diagnostics>
         <h1 className="sg-title">问答与跨篇对比</h1>
         <p className="sg-lede">
           选中一篇走单篇问答，选中多篇走跨篇对比。答案逐条对应 Chunk 锚点，

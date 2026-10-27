@@ -1,5 +1,6 @@
 import { fetchPapers } from "@/lib/api";
 import GraphWorkspace from "@/components/GraphWorkspace";
+import Diagnostics from "@/components/Diagnostics";
 import ErrorState from "@/components/ErrorState";
 
 export default async function GraphPage() {
@@ -15,7 +16,7 @@ export default async function GraphPage() {
   return (
     <main className="sg-shell">
       <div className="sg-page-head">
-        <p className="sg-eyebrow">GET /api/v1/graph</p>
+        <Diagnostics summary="技术信息（接口路径与算法口径）">GET /api/v1/graph</Diagnostics>
         <h1 className="sg-title">局域引用图谱</h1>
         <p className="sg-lede">
           只读本地已落盘记录：节点按 paper_id 排序，分层按 PageRank 降序；

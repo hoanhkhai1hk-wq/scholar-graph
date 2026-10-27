@@ -1,11 +1,12 @@
 import Link from "next/link";
 import UploadForm from "@/components/UploadForm";
+import Diagnostics from "@/components/Diagnostics";
 
 export default function UploadPage() {
   return (
     <main className="sg-shell">
       <div className="sg-page-head">
-        <p className="sg-eyebrow">POST /api/v1/papers · /papers/batch</p>
+        <Diagnostics summary="技术信息（接口路径与批量字段）">POST /api/v1/papers · /papers/batch</Diagnostics>
         <h1 className="sg-title">上传 PDF</h1>
         <p className="sg-lede">
           上传走模块一已落地的两个端点。批量响应按 succeeded / failed /
