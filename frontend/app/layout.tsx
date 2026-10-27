@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import ApiStatusBar from "@/components/ApiStatusBar";
+import SiteNav from "@/components/SiteNav";
 
 export const metadata: Metadata = {
   title: "ScholarGraph · 研枢",
@@ -27,6 +28,7 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <SiteNav />
         <ApiStatusBar />
         {children}
       </body>
