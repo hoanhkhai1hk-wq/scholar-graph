@@ -1,0 +1,28 @@
+started S1
+{"case": "S1", "seconds": 2.86, "refused": false, "error": null, "checks": {"has_final": true, "final_after_validation": true, "real_model_called": true, "nonrefused_answers_have_citations": true}}
+started S2
+{"case": "S2", "seconds": 3.765, "refused": false, "error": null, "checks": {"has_final": true, "final_after_validation": true, "real_model_called": true, "nonrefused_answers_have_citations": true}}
+started S3
+{"case": "S3", "seconds": 3.828, "refused": false, "error": null, "checks": {"has_final": true, "final_after_validation": true, "real_model_called": true, "nonrefused_answers_have_citations": true}}
+started S4
+{"case": "S4", "seconds": 4.891, "refused": false, "error": null, "checks": {"has_final": true, "final_after_validation": true, "real_model_called": true, "nonrefused_answers_have_citations": true}}
+started S5
+{"case": "S5", "seconds": 3.031, "refused": false, "error": null, "checks": {"has_final": true, "final_after_validation": true, "real_model_called": true, "nonrefused_answers_have_citations": true}}
+started M1
+{"case": "M1", "seconds": 4.296, "refused": false, "error": null, "checks": {"has_final": true, "final_after_validation": true, "real_model_called": true, "nonrefused_answers_have_citations": true}}
+started M2
+{"case": "M2", "seconds": 7.078, "refused": false, "error": null, "checks": {"has_final": true, "final_after_validation": true, "real_model_called": true, "nonrefused_answers_have_citations": true}}
+started M3
+{"case": "M3", "seconds": 4.266, "refused": false, "error": null, "checks": {"has_final": true, "final_after_validation": true, "real_model_called": true, "nonrefused_answers_have_citations": true}}
+started M4
+{"case": "M4", "seconds": 5.093, "refused": false, "error": null, "checks": {"has_final": true, "final_after_validation": true, "real_model_called": true, "nonrefused_answers_have_citations": true}}
+started H1
+{"case": "H1", "seconds": 3.469, "refused": true, "error": null, "checks": {"has_final": true, "final_after_validation": true, "real_model_called": true, "nonrefused_answers_have_citations": true}}
+started H2
+{"case": "H2", "seconds": 2.64, "refused": true, "error": null, "checks": {"has_final": true, "final_after_validation": true, "real_model_called": true, "nonrefused_answers_have_citations": true}}
+started P1
+{"case": "P1", "seconds": 2.579, "refused": false, "error": null, "checks": {"has_final": true, "final_after_validation": true, "real_model_called": true, "nonrefused_answers_have_citations": true}}
+started F1
+{"case": "F1", "seconds": 2.75, "refused": false, "error": null, "checks": {"has_final": true, "final_after_validation": true, "real_model_called": true, "nonrefused_answers_have_citations": true}}
+started H3
+{"case": "H3", "seconds": 3.297, "refused": true, "error": null, "checks": {"has_final": true, "final_after_validation": true, "real_model_called": true, "nonrefused_answers_have_citations": true}}

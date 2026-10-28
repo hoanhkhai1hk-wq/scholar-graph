@@ -1,0 +1,178 @@
+{
+  "mode": "real_host_bge_rrf_rerank_deepseek",
+  "warm_preparation": {
+    "ready": true,
+    "startup_seconds": 23.79445770010352,
+    "model_load_seconds": 8.698326100129634
+  },
+  "cases": [
+    {
+      "question": "其中Adam优化器的超参数β₁和β₂分别被设置为了多少？",
+      "seconds": 36.132834,
+      "refused": false,
+      "citations": [],
+      "retrieval": {
+        "method": "hybrid",
+        "ranking_method": "reranked",
+        "fallback_reasons": [],
+        "retrieval": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "method": "hybrid",
+            "vector_status": "READY",
+            "reason": "OK",
+            "lexical_recalled": 24,
+            "vector_recalled": 24,
+            "rerank": {
+              "method": "bge-reranker-large",
+              "reason": "OK",
+              "timing": {
+                "model_load_seconds": 0.0,
+                "rerank_seconds": 3.556528100045398,
+                "cpu_threads": 8
+              },
+              "worker_seconds": 3.5641938999760896,
+              "candidate_count": 10,
+              "budget_seconds": 5,
+              "model": "BAAI/bge-reranker-large",
+              "revision": "55611d7bca2a7133960a6d3b71e083071bbfc312",
+              "cold_start": false,
+              "startup": {
+                "ready": true,
+                "startup_seconds": 23.79445770010352,
+                "model_load_seconds": 8.698326100129634
+              }
+            },
+            "evidence_count": 24,
+            "union_recalled": 42,
+            "ranking_method": "reranked",
+            "vector_timing": {
+              "model_load_seconds": 3.0763739000540227,
+              "index_seconds": 0.3581419999245554,
+              "startup_to_model_ready_seconds": 21.91508170007728,
+              "query_seconds": 4.012290099868551
+            },
+            "worker_seconds": 29.584898399887607,
+            "indexed_chunks": 175,
+            "updated_chunks": 0,
+            "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+            "versions": {
+              "chromadb": "1.5.9",
+              "FlagEmbedding": "1.4.2",
+              "torch": "2.14.1+cpu",
+              "transformers": "5.20.2"
+            },
+            "fusion": {
+              "method": "equal_weight_rrf",
+              "k": 60,
+              "route_limit": 24,
+              "lexical_expansion": "existing_grounded_model_aliases",
+              "bge_sparse_scores_used": false
+            },
+            "fallback_reason": null,
+            "elapsed_seconds": 33.232658
+          }
+        ]
+      },
+      "model_calls": [
+        {
+          "provider": "deepseek",
+          "model": "deepseek-chat",
+          "phase": "qa",
+          "elapsed_seconds": 2.779839,
+          "prompt_tokens": 7556,
+          "completion_tokens": 162,
+          "total_tokens": 7718,
+          "http_status": 200,
+          "status": "succeeded",
+          "response_bytes": 902,
+          "finish_reason": "stop"
+        }
+      ]
+    },
+    {
+      "question": "Transformer的Base模型训练用了多少个GPU？具体型号是什么？",
+      "seconds": 32.976437,
+      "refused": false,
+      "citations": [],
+      "retrieval": {
+        "method": "hybrid",
+        "ranking_method": "reranked",
+        "fallback_reasons": [],
+        "retrieval": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "method": "hybrid",
+            "vector_status": "READY",
+            "reason": "OK",
+            "lexical_recalled": 24,
+            "vector_recalled": 24,
+            "rerank": {
+              "method": "bge-reranker-large",
+              "reason": "OK",
+              "timing": {
+                "model_load_seconds": 0.0,
+                "rerank_seconds": 3.8120279000140727,
+                "cpu_threads": 8
+              },
+              "worker_seconds": 3.8147754999808967,
+              "candidate_count": 10,
+              "budget_seconds": 5,
+              "model": "BAAI/bge-reranker-large",
+              "revision": "55611d7bca2a7133960a6d3b71e083071bbfc312",
+              "cold_start": false,
+              "startup": {
+                "ready": true,
+                "startup_seconds": 23.79445770010352,
+                "model_load_seconds": 8.698326100129634
+              }
+            },
+            "evidence_count": 24,
+            "union_recalled": 34,
+            "ranking_method": "reranked",
+            "vector_timing": {
+              "model_load_seconds": 2.7827884000726044,
+              "index_seconds": 0.1879539000801742,
+              "startup_to_model_ready_seconds": 20.370371700031683,
+              "query_seconds": 3.214822300011292
+            },
+            "worker_seconds": 26.264017699984834,
+            "indexed_chunks": 175,
+            "updated_chunks": 0,
+            "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+            "versions": {
+              "chromadb": "1.5.9",
+              "FlagEmbedding": "1.4.2",
+              "torch": "2.14.1+cpu",
+              "transformers": "5.20.2"
+            },
+            "fusion": {
+              "method": "equal_weight_rrf",
+              "k": 60,
+              "route_limit": 24,
+              "lexical_expansion": "existing_grounded_model_aliases",
+              "bge_sparse_scores_used": false
+            },
+            "fallback_reason": null,
+            "elapsed_seconds": 30.135212
+          }
+        ]
+      },
+      "model_calls": [
+        {
+          "provider": "deepseek",
+          "model": "deepseek-chat",
+          "phase": "qa",
+          "elapsed_seconds": 2.781479,
+          "prompt_tokens": 7748,
+          "completion_tokens": 170,
+          "total_tokens": 7918,
+          "http_status": 200,
+          "status": "succeeded",
+          "response_bytes": 989,
+          "finish_reason": "stop"
+        }
+      ]
+    }
+  ]
+}

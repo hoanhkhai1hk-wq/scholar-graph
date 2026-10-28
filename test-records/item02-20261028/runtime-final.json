@@ -1,0 +1,82 @@
+{
+  "at": "2026-10-28T09:31:09.099351+00:00",
+  "systems": {
+    "main": {
+      "api_version": "2.0",
+      "model_configured": true,
+      "qa_mode": "deepseek",
+      "research_retrieval": "lexical",
+      "data_class": "personal",
+      "papers": 0,
+      "frontend_qa_status": 200,
+      "backend_dns": "172.21.0.2      backend"
+    },
+    "item02": {
+      "api_version": "2.0",
+      "model_configured": true,
+      "qa_mode": "deepseek",
+      "research_retrieval": "hybrid",
+      "data_class": "acceptance",
+      "papers": 5,
+      "frontend_qa_status": 200,
+      "backend_dns": "172.23.0.2      backend"
+    }
+  },
+  "containers": {
+    "scholar-graph-backend-1": {
+      "running": true,
+      "health": "healthy",
+      "image_config_id": "sha256:08202d6dc62d358b225631eff9a007004183c0036af417a54763e5bd5a514a25"
+    },
+    "scholar-graph-frontend-1": {
+      "running": true,
+      "health": "healthy",
+      "image_config_id": "sha256:e7355d6d8080a1771150ec97d40f3781c2b9de31344132c221e7d93f265463a9"
+    },
+    "scholar-graph-item02-backend-1": {
+      "running": true,
+      "health": "healthy",
+      "image_config_id": "sha256:08202d6dc62d358b225631eff9a007004183c0036af417a54763e5bd5a514a25"
+    },
+    "scholar-graph-item02-frontend-1": {
+      "running": true,
+      "health": "not_configured",
+      "image_config_id": "sha256:e7355d6d8080a1771150ec97d40f3781c2b9de31344132c221e7d93f265463a9"
+    }
+  },
+  "source_hashes": {
+    "backend/scholar_graph/qa_sse.py": "fae8a7ce3894dd36d8f814bee0f2d0a8db6e645c8eb12cdb09b268dc9238737f",
+    "backend/scholar_graph/vector_worker.py": "a6e969e00f8d59996c1c64c673b0f0a0f66c69119122e497a0c75afbdac4e19c",
+    "backend/scholar_graph/workspace_research.py": "4c0e7c717c58cb5cda70ba10a9835dfc40f51d737616861740a5df96a1a2dcf8",
+    "frontend/app/qa/page.tsx": "8323d860f04217978706a76714ba269296f338ddad3a779830cf1ce34051e50a",
+    "frontend/components/LayoutViewer.tsx": "43c5e017b272deb1159dd0aaa4db80e5aca2485ed53f2a8168dde336c5f96173"
+  },
+  "input_hashes": [
+    {
+      "filename": "1706.03762v7.pdf",
+      "sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "unchanged": true
+    },
+    {
+      "filename": "N19-1423.pdf",
+      "sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+      "unchanged": true
+    },
+    {
+      "filename": "language_understanding_paper.pdf",
+      "sha256": "eb81a65e0856bd38e855e1f1de6ee12e7c3eb92ae05c8270d345a475beb631d0",
+      "unchanged": true
+    },
+    {
+      "filename": "language_models_are_unsupervised_multitask_learners.pdf",
+      "sha256": "d9d852e2894556e73f53cb22b7c605a9643d6f0b19bf604b429ed6192fa24f4e",
+      "unchanged": true
+    },
+    {
+      "filename": "2005.14165v4.pdf",
+      "sha256": "97fd272f1fdfc18677462d0292f5fbf26ca86b4d1b485c2dba03269b643a0e83",
+      "unchanged": true
+    }
+  ],
+  "passed": true
+}

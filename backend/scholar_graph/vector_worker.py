@@ -3,6 +3,7 @@
 import hashlib
 import json
 import math
+import os
 import sys
 import time
 from contextlib import redirect_stdout
@@ -73,10 +74,18 @@ def hybrid_search(payload):
             "versions": {name: version(name) for name in ("chromadb", "FlagEmbedding", "torch", "transformers")}}
 
 
+def reranker_thread_count(environment=None, logical_cpus=None):
+    environment = os.environ if environment is None else environment
+    count = int(environment.get('SCHOLAR_GRAPH_RERANKER_THREADS','8'))
+    if not 1 <= count <= 16:
+        raise ValueError('Reranker thread count must be between 1 and 16')
+    return min(count, logical_cpus or os.cpu_count() or 1)
+
+
 def load_reranker(model_path):
     import torch
     from transformers import AutoModelForSequenceClassification, AutoTokenizer
-    torch.set_num_threads(2)
+    torch.set_num_threads(reranker_thread_count())
     started = time.perf_counter()
     tokenizer = AutoTokenizer.from_pretrained(model_path, local_files_only=True)
     model = AutoModelForSequenceClassification.from_pretrained(model_path, local_files_only=True).eval()
@@ -92,7 +101,8 @@ def rerank(payload, loaded=None):
         for item in payload["items"]:
             inputs = tokenizer(payload["question"], item["text"], max_length=512, truncation=True, return_tensors="pt")
             scores[item["id"]] = float(model(**inputs).logits.reshape(-1)[0])
-    return {"scores": scores, "timing": {"model_load_seconds": loading, "rerank_seconds": time.perf_counter() - started},
+    return {"scores": scores, "timing": {"model_load_seconds": loading, "rerank_seconds": time.perf_counter() - started,
+                                         "cpu_threads":torch.get_num_threads()},
             "model": "BAAI/bge-reranker-large", "revision": "55611d7bca2a7133960a6d3b71e083071bbfc312"}
 
 

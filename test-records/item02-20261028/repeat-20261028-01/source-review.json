@@ -1,0 +1,89 @@
+{
+  "reviewer": "Codex逐题对照官方PDF源文；不是独立人工评审",
+  "cases": [
+    {
+      "case": "S1",
+      "passed": true,
+      "result_sha256": "ae1b582956d650c37d5a96decaa5161592464ae3c3f8351a4e563b4405c4d11c",
+      "notes": "核对Attention物理第1页作者顺序，第6人为Aidan N. Gomez，机构University of Toronto。回答中的机构和作者归属正确。"
+    },
+    {
+      "case": "S2",
+      "passed": true,
+      "result_sha256": "77f58bfaba34842195ab34a026d99f0bc486fc160b6d977383ec21b25d707ff1",
+      "notes": "核对Attention物理第7页，β1=0.9、β2=0.98、epsilon=10^-9，参数及各自数值绑定正确。"
+    },
+    {
+      "case": "S3",
+      "passed": true,
+      "result_sha256": "f9949e35c67de770125c0e02b8b482b6d17083d2c1dadd16f55259abe1c1d72b",
+      "notes": "核对Attention物理第7页Hardware and Schedule，一台机器8块NVIDIA P100；附带的100000步、约12小时亦有原文支持。"
+    },
+    {
+      "case": "S4",
+      "passed": true,
+      "result_sha256": "b2e53e1e3d45c370b5e835b1b4361fb4917884f77644679781f72ca3184d508d",
+      "notes": "核对Attention物理第8页Table 2，28.4对26.36，最佳比较对象含集成；系统计算2.04 BLEU，未混为相对百分比。"
+    },
+    {
+      "case": "S5",
+      "passed": true,
+      "result_sha256": "e96498136378f270bcf7480aca175b4d7db74423cb62396f8f2f0484d9f530e5",
+      "notes": "核对Attention物理第10页参考文献[1]，三位完整作者及2016正确。"
+    },
+    {
+      "case": "M1",
+      "passed": true,
+      "result_sha256": "9ccf6aa31467d027faabade3ddb5e236f271048c469e5a22438bed51ba00279e",
+      "notes": "核对BERT物理第3/4页及Attention第3页：双向Transformer编码器承袭关系正确；不含解码器为两篇架构对照推论，并非伪造BERT逐字声明。"
+    },
+    {
+      "case": "M2",
+      "passed": true,
+      "result_sha256": "c60cb212bef792a15fb0cf49d7f5ca5e97352967e2bc19745368729ae01f3bab",
+      "notes": "核对GPT-2物理第4页117M及最小模型等同原GPT、第1页最大1.5B；GPT-3第8页175 billion。回答明确117M的跨篇出处，数值及量级正确。"
+    },
+    {
+      "case": "M3",
+      "passed": true,
+      "result_sha256": "a522df69322a5de8aa34fb89895ffe5fc83fb384c56eff804747aad3eaf6b6cb",
+      "notes": "核对GPT-2物理第4页：LN移到每个子块输入，最后自注意力块后增加额外LN。未捏造GPT-1原有LN位置；出处限制说明恰当。"
+    },
+    {
+      "case": "M4",
+      "passed": true,
+      "result_sha256": "f3c7ee3e9cd78e1c14ab37d26f93528e2d23430c45b821b228695eca10b48015",
+      "notes": "核对GPT-1物理第5页训练序列512、GPT-2第4页明确上下文512到1024、GPT-3第8/10页2048。回答分三段给出各自数字及原文，递增关系正确；未使用特定连接词不构成错误，GPT-1标签限制的说明未否认后篇的显式旧到新数字。"
+    },
+    {
+      "case": "H1",
+      "passed": true,
+      "result_sha256": "61fe65c368d11c6640bb2a7811d86e5de3ef1afe5573be63db66c00dd2d71f66",
+      "notes": "对火星任务准确率声明检索证据未涉及，拒给数值；引用实际机器翻译和句法分析背景，未编造火星实验。"
+    },
+    {
+      "case": "H2",
+      "passed": true,
+      "result_sha256": "5fef2c9de6c50db6c4e25907c168bcbd133dbf1a9aa1b3b7a67f807e4c3c7593",
+      "notes": "明确否定0.5/0.6错误前提并给出原文0.9/0.98；否定中复述提问数字不等于认定为论文事实。"
+    },
+    {
+      "case": "P1",
+      "passed": true,
+      "result_sha256": "3365b43d2bd21f43be12a732cebcc23c0818634bdd29bda5cafb87a5880ef701",
+      "notes": "基础配置显卡改写问题答8块NVIDIA P100，Attention物理第7页引用支持。"
+    },
+    {
+      "case": "F1",
+      "passed": true,
+      "result_sha256": "bf58e879fc6cae2d990e494e0421b4ba445f7ae1dd4be942df8562fe9cd96cdb",
+      "notes": "同一会话追问这些显卡型号，仍答NVIDIA P100及8块，Attention物理第7页支持。"
+    },
+    {
+      "case": "H3",
+      "passed": true,
+      "result_sha256": "e6f8696b92d0e2c7ed2b41447c263ad07446132a0e6dab635d1a628d41fb47ba",
+      "notes": "明确证据中没有火星任务、97.3%及BERT对应值，拒绝给出差值；97.3%仅在被否定前提中出现，没有任何计算对象或正面准确率断言。"
+    }
+  ]
+}

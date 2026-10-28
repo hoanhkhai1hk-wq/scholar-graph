@@ -1,0 +1,86 @@
+{
+  "fast-baseline.xml": {
+    "tests": 188,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "seconds": 30.949
+  },
+  "fast-final.xml": {
+    "tests": 188,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "seconds": 30.411
+  },
+  "live-unit-02.xml": {
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "seconds": 5.853
+  },
+  "related-delivery.xml": {
+    "tests": 172,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "seconds": 47.969
+  },
+  "related-final.xml": {
+    "tests": 170,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "seconds": 41.926
+  },
+  "related-full.xml": {
+    "tests": 170,
+    "failures": 0,
+    "errors": 0,
+    "skips": 1,
+    "seconds": 39.039
+  },
+  "related-release.xml": {
+    "tests": 172,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "seconds": 40.569
+  },
+  "unit-01.xml": {
+    "tests": 12,
+    "failures": 1,
+    "errors": 0,
+    "skips": 0,
+    "seconds": 9.464
+  },
+  "unit-02.xml": {
+    "tests": 34,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "seconds": 6.942
+  },
+  "repeat-20261028-01/related-repeat-20261028-01.xml": {
+    "tests": 174,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "seconds": 38.904
+  },
+  "repeat-20261028-01/repeat-fast-final.xml": {
+    "tests": 188,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "seconds": 32.745
+  },
+  "repeat-20261028-01/repeat-fast.xml": {
+    "tests": 188,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "seconds": 34.965
+  }
+}

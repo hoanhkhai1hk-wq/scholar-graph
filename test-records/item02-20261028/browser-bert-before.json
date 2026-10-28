@@ -1,0 +1,6 @@
+{
+  "capture_kind": "extracted_from_actual_playwright_accessibility_snapshot",
+  "source_file": ".playwright-mcp/page-2026-10-28T09-20-03-791Z.yml",
+  "snapshot_sha256": "6ef46111c4ba4a3fd62c898e24bc8bb03d9fd61d37385361522e3e48762a4e83",
+  "note": "段落级定位未命中：第 3 页文本层没找到「答案证据」，已退回页首（页级定位）。"
+}

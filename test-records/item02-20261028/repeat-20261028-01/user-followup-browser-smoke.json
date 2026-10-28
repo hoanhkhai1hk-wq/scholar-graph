@@ -1,0 +1,14 @@
+{
+  "url": "http://127.0.0.1:3360/qa",
+  "answers": [
+    "依据原文回答\n\n该论文针对序列转导任务：主流模型依赖复杂的循环或卷积神经网络（含编码器与解码器），性能最好的模型还通过注意力机制连接编码器与解码器。作者提出一种新的简单网络架构 Transformer，完全基于注意力机制，彻底摒弃循环与卷积。\n\n查看本段原文依据（1）\n\n主要发现是：在两项机器翻译任务上的实验表明，该模型质量更优、更易并行化且训练时间显著更少；作者还将其成功应用于英语成分句法分析，说明 Transformer 能较好地泛化到其他任务。\n\n查看本段原文依据（1）\n诊断与核对范围"
+  ],
+  "evidenceLinks": [
+    "/read/paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697?page=1&chunk=paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00010",
+    "/read/paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697?page=1&chunk=paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00010"
+  ],
+  "status": [
+    "本次回答已完成"
+  ],
+  "errorCount": 0
+}

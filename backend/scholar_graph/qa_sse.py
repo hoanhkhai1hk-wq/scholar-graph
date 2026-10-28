@@ -11,7 +11,6 @@ from .deepseek_client import DeepSeekClient, StreamCancelled
 from .errors import PipelineError
 from .orchestration import EvidenceAgent
 from .qa_compare import validate_comparison
-from .vector_search import BgeChromaSearch
 
 
 def frame(sequence, kind, value):
@@ -33,11 +32,6 @@ def _agent_stream(repository, paper_ids, question, *, comparison=False):
     fallback = 'EXTRACTIVE_MODE' if mode == 'extractive' else (
         'MODEL_CONFIGURATION_UNAVAILABLE' if not os.environ.get('DEEPSEEK_API_KEY') or not os.environ.get('DEEPSEEK_MODEL') else None)
     agent = EvidenceAgent(repository, allow_fallback=False, extractive_reason=fallback)
-    vector = agent.retriever.vector
-    if comparison and not fallback and (vector is None or (isinstance(vector, BgeChromaSearch) and
-            (not vector.python.is_file() or not (vector.model_path / 'config.json').is_file()))):
-        fallback = 'LOCAL_VECTOR_NOT_CONFIGURED'
-        agent.extractive_reason = fallback
 
     async def events():
         loop = asyncio.get_running_loop()
@@ -65,7 +59,7 @@ def _agent_stream(repository, paper_ids, question, *, comparison=False):
                     active.append(client)
                 agent.client = client
                 value, metadata = agent.run(paper_ids, question, emit=emit,
-                    stream_tokens=not actual_fallback, require_vector=comparison)
+                    stream_tokens=not actual_fallback)
                 if comparison:
                     validate_comparison(value, [repository.paper(pid) for pid in paper_ids], repository.gate)
                     record = value

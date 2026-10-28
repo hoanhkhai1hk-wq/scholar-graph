@@ -493,14 +493,17 @@ export default function LayoutViewer({
     const origin: number[] = [];
     for (let i = 0; i < raw.length; i += 1) {
       for (const ch of raw[i].normalize("NFKC").toLowerCase()) {
-        if (/\s|\u00ad/.test(ch)) continue;
+        // PDF text layers retain printed line-break hyphens (architec-ture),
+        // while parsed source paragraphs join those words. Ignore hyphens in
+        // both search strings, retaining origin offsets for actual highlights.
+        if (/[\s\u00ad\-\u2010\u2011]/.test(ch)) continue;
         normalized += ch; origin.push(i);
       }
     }
 
     let matched: { start: number; end: number } | null = null;
     for (const query of queries) {
-      const needle = query.normalize("NFKC").replace(/\s|\u00ad/g, "").toLowerCase();
+      const needle = query.normalize("NFKC").replace(/[\s\u00ad\-\u2010\u2011]/g, "").toLowerCase();
       if (needle.length < 4) continue;
       const at = normalized.indexOf(needle);
       if (at >= 0) {

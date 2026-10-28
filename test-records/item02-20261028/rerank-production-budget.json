@@ -1,0 +1,135 @@
+{
+  "budget_seconds": 5,
+  "candidate_count": 10,
+  "samples": [
+    {
+      "phase": "cold",
+      "elapsed_seconds": 5.020258,
+      "accepted": false,
+      "metadata": {
+        "method": "rrf",
+        "reason": "LOCAL_RERANKER_COLD_START_BUDGET_EXCEEDED",
+        "candidate_count": 10,
+        "budget_seconds": 5,
+        "elapsed_seconds": 5.019876499893144
+      },
+      "order": null
+    },
+    {
+      "phase": "warm-1",
+      "elapsed_seconds": 2.825279,
+      "accepted": true,
+      "metadata": {
+        "method": "bge-reranker-large",
+        "reason": "OK",
+        "timing": {
+          "model_load_seconds": 0.0,
+          "rerank_seconds": 2.8234594999812543,
+          "cpu_threads": 8
+        },
+        "worker_seconds": 2.8246693999972194,
+        "candidate_count": 10,
+        "budget_seconds": 5,
+        "model": "BAAI/bge-reranker-large",
+        "revision": "55611d7bca2a7133960a6d3b71e083071bbfc312",
+        "cold_start": false,
+        "startup": {
+          "ready": true,
+          "startup_seconds": 23.071448100032285,
+          "model_load_seconds": 7.948302899952978
+        }
+      },
+      "order": [
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00088",
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00087",
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00116",
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00055",
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00147",
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00085",
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00106",
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00025",
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00028",
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00062"
+      ]
+    },
+    {
+      "phase": "warm-2",
+      "elapsed_seconds": 2.145697,
+      "accepted": true,
+      "metadata": {
+        "method": "bge-reranker-large",
+        "reason": "OK",
+        "timing": {
+          "model_load_seconds": 0.0,
+          "rerank_seconds": 2.1434797002002597,
+          "cpu_threads": 8
+        },
+        "worker_seconds": 2.14509389991872,
+        "candidate_count": 10,
+        "budget_seconds": 5,
+        "model": "BAAI/bge-reranker-large",
+        "revision": "55611d7bca2a7133960a6d3b71e083071bbfc312",
+        "cold_start": false,
+        "startup": {
+          "ready": true,
+          "startup_seconds": 23.071448100032285,
+          "model_load_seconds": 7.948302899952978
+        }
+      },
+      "order": [
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00088",
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00087",
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00116",
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00055",
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00147",
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00085",
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00106",
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00025",
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00028",
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00062"
+      ]
+    },
+    {
+      "phase": "warm-3",
+      "elapsed_seconds": 2.502087,
+      "accepted": true,
+      "metadata": {
+        "method": "bge-reranker-large",
+        "reason": "OK",
+        "timing": {
+          "model_load_seconds": 0.0,
+          "rerank_seconds": 2.50019419984892,
+          "cpu_threads": 8
+        },
+        "worker_seconds": 2.5015420999843627,
+        "candidate_count": 10,
+        "budget_seconds": 5,
+        "model": "BAAI/bge-reranker-large",
+        "revision": "55611d7bca2a7133960a6d3b71e083071bbfc312",
+        "cold_start": false,
+        "startup": {
+          "ready": true,
+          "startup_seconds": 23.071448100032285,
+          "model_load_seconds": 7.948302899952978
+        }
+      },
+      "order": [
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00088",
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00087",
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00116",
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00055",
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00147",
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00085",
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00106",
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00025",
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00028",
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00062"
+      ]
+    }
+  ],
+  "startup": {
+    "ready": true,
+    "startup_seconds": 23.071448100032285,
+    "model_load_seconds": 7.948302899952978
+  }
+}

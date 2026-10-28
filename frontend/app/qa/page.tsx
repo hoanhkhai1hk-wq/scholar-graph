@@ -1,5 +1,5 @@
 import { fetchPapers } from "@/lib/api";
-import QaWorkspace from "@/components/QaWorkspace";
+import QaWorkspace from "@/components/ResearchChat";
 import Diagnostics from "@/components/Diagnostics";
 import ErrorState from "@/components/ErrorState";
 
@@ -16,11 +16,10 @@ export default async function QaPage() {
   return (
     <main className="sg-shell">
       <div className="sg-page-head">
-        <Diagnostics summary="技术信息（接口路径与编排口径）">POST /api/v1/papers/{`{id}`}/qa · /compare</Diagnostics>
+        <Diagnostics summary="技术信息（接口路径与编排口径）">POST /api/v2/sessions/{`{id}`}/messages/stream</Diagnostics>
         <h1 className="sg-title">问答与跨篇对比</h1>
         <p className="sg-lede">
-          选中一篇走单篇问答，选中多篇走跨篇对比。答案逐条对应 Chunk 锚点，
-          refused=true 时原样展示拒答原因与原文纠错，不把拒答渲染成答案。
+          选择论文后直接提问，比较多篇研究的方法和结果。点击回答中的证据，可以查看对应原文。
         </p>
         <p className="sg-back">
           <a href="/">← 返回论文库</a>

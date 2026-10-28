@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "D:\AI_Workspace\Tasks\scholar-graph\tests\item02\hybrid_live.py", line 18, in <module>
+    from dotenv import dotenv_values
+ModuleNotFoundError: No module named 'dotenv'

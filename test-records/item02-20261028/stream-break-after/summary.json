@@ -1,0 +1,237 @@
+[
+  {
+    "path": "single-a",
+    "http_status": 200,
+    "seconds": 5.109,
+    "refused": false,
+    "per_paper_refused": [],
+    "citations": [],
+    "mode": null,
+    "done": {}
+  },
+  {
+    "path": "single-b",
+    "http_status": 200,
+    "seconds": 3.25,
+    "refused": false,
+    "per_paper_refused": [],
+    "citations": [],
+    "mode": null,
+    "done": {}
+  },
+  {
+    "path": "compare-stream",
+    "http_status": 200,
+    "seconds": 11.375,
+    "refused": null,
+    "per_paper_refused": [
+      false,
+      false
+    ],
+    "citations": [],
+    "mode": {
+      "mode": "deepseek",
+      "token_streaming": true,
+      "fallback_reason": null,
+      "draft_verified": false,
+      "final_verified": true,
+      "message": "真实上游token增量；增量为未校验JSON草稿，以通过校验的final为准。"
+    },
+    "done": {
+      "status": "completed",
+      "metadata": {
+        "engine": "langgraph",
+        "attempts": 1,
+        "max_attempts": 3,
+        "fallback_reason": null,
+        "trace": [
+          {
+            "node": "plan",
+            "elapsed_seconds": 2.428306,
+            "attempt": 0,
+            "evidence_count": 0,
+            "validation": null,
+            "validation_error": null,
+            "fallback_reason": null
+          },
+          {
+            "node": "retrieve",
+            "elapsed_seconds": 0.311546,
+            "attempt": 1,
+            "evidence_count": 24,
+            "validation": null,
+            "validation_error": null,
+            "fallback_reason": null,
+            "retrieval": {
+              "method": "lexical-fallback",
+              "ranking_method": "lexical",
+              "fallback_reasons": [
+                "LOCAL_VECTOR_UNAVAILABLE"
+              ],
+              "retrieval": [
+                {
+                  "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                  "method": "lexical-fallback",
+                  "vector_status": "UNAVAILABLE",
+                  "reason": "LOCAL_VECTOR_UNAVAILABLE",
+                  "lexical_recalled": 24,
+                  "vector_recalled": 0,
+                  "rerank": {
+                    "method": "none"
+                  },
+                  "evidence_count": 24,
+                  "ranking_method": "lexical",
+                  "fallback_reason": "LOCAL_VECTOR_UNAVAILABLE",
+                  "elapsed_seconds": 0.064733
+                },
+                {
+                  "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+                  "method": "lexical-fallback",
+                  "vector_status": "UNAVAILABLE",
+                  "reason": "LOCAL_VECTOR_UNAVAILABLE",
+                  "lexical_recalled": 24,
+                  "vector_recalled": 0,
+                  "rerank": {
+                    "method": "none"
+                  },
+                  "evidence_count": 24,
+                  "ranking_method": "lexical",
+                  "fallback_reason": "LOCAL_VECTOR_UNAVAILABLE",
+                  "elapsed_seconds": 0.088576
+                }
+              ]
+            }
+          },
+          {
+            "node": "qa",
+            "elapsed_seconds": 8.072114,
+            "attempt": 1,
+            "evidence_count": 24,
+            "validation": null,
+            "validation_error": null,
+            "fallback_reason": null
+          },
+          {
+            "node": "validate",
+            "elapsed_seconds": 0.013029,
+            "attempt": 1,
+            "evidence_count": 24,
+            "validation": true,
+            "validation_error": null,
+            "fallback_reason": null
+          }
+        ],
+        "tool_calls": [
+          {
+            "tool_name": "search",
+            "tool_call_id": "call_00_qwbrwMT7pOheEJ2kihd19098",
+            "attempt": 1,
+            "origin": "model_function_call",
+            "arguments_summary": {
+              "paper_ids": [
+                "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+              ],
+              "query_chars": 81,
+              "limit": 12
+            },
+            "return_summary": {
+              "evidence_count": 12,
+              "method": "lexical-fallback"
+            },
+            "elapsed_seconds": 0.128171,
+            "status": "succeeded"
+          },
+          {
+            "tool_name": "search",
+            "tool_call_id": "call_01_NmOscu9TX2uz5bdFmTni4939",
+            "attempt": 1,
+            "origin": "model_function_call",
+            "arguments_summary": {
+              "paper_ids": [
+                "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+              ],
+              "query_chars": 72,
+              "limit": 12
+            },
+            "return_summary": {
+              "evidence_count": 12,
+              "method": "lexical-fallback"
+            },
+            "elapsed_seconds": 0.178972,
+            "status": "succeeded"
+          }
+        ],
+        "model_calls": [
+          {
+            "provider": "deepseek",
+            "model": "deepseek-chat",
+            "phase": "plan",
+            "elapsed_seconds": 2.427737,
+            "prompt_tokens": 927,
+            "completion_tokens": 218,
+            "total_tokens": 1145,
+            "http_status": 200,
+            "status": "succeeded",
+            "response_bytes": 1114,
+            "finish_reason": "tool_calls"
+          },
+          {
+            "provider": "deepseek",
+            "model": "deepseek-chat",
+            "phase": "qa",
+            "elapsed_seconds": 8.071607,
+            "prompt_tokens": 15324,
+            "completion_tokens": 1591,
+            "total_tokens": 16915,
+            "http_status": 200,
+            "status": "succeeded"
+          }
+        ],
+        "checkpointing": false,
+        "external_tracing": false,
+        "validated": true,
+        "method": "lexical-fallback",
+        "ranking_method": "lexical",
+        "fallback_reasons": [
+          "LOCAL_VECTOR_UNAVAILABLE"
+        ],
+        "retrieval": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "method": "lexical-fallback",
+            "vector_status": "UNAVAILABLE",
+            "reason": "LOCAL_VECTOR_UNAVAILABLE",
+            "lexical_recalled": 24,
+            "vector_recalled": 0,
+            "rerank": {
+              "method": "none"
+            },
+            "evidence_count": 24,
+            "ranking_method": "lexical",
+            "fallback_reason": "LOCAL_VECTOR_UNAVAILABLE",
+            "elapsed_seconds": 0.064733
+          },
+          {
+            "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+            "method": "lexical-fallback",
+            "vector_status": "UNAVAILABLE",
+            "reason": "LOCAL_VECTOR_UNAVAILABLE",
+            "lexical_recalled": 24,
+            "vector_recalled": 0,
+            "rerank": {
+              "method": "none"
+            },
+            "evidence_count": 24,
+            "ranking_method": "lexical",
+            "fallback_reason": "LOCAL_VECTOR_UNAVAILABLE",
+            "elapsed_seconds": 0.088576
+          }
+        ]
+      },
+      "verified": true,
+      "answer_format": "comparison",
+      "token_streaming": true,
+      "fallback_reason": null
+    }
+  }
+]

@@ -69,7 +69,7 @@ def test_comparison_drafts_precede_validation_and_final_uses_existing_shape(tmp_
     assert model.cancelled
 
 
-@pytest.mark.parametrize('fallback', ['no_key', 'no_vector', 'failed_vector'])
+@pytest.mark.parametrize('fallback', ['no_key'])
 def test_non_token_fallback_is_explicit_and_has_no_fabricated_deltas(tmp_path, monkeypatch, fallback):
     client, repo, ids, model = api(tmp_path, monkeypatch, vector=fallback != 'no_vector', fail_vector=fallback == 'failed_vector')
     if fallback == 'no_key':
@@ -84,6 +84,20 @@ def test_non_token_fallback_is_explicit_and_has_no_fabricated_deltas(tmp_path, m
     assert not model.calls or all(c['phase'] == 'plan' for c in model.calls)
     if fallback != 'failed_vector':
         assert not any(e['event'].startswith('tool_') for e in events)
+
+
+@pytest.mark.parametrize('condition',['no_vector','failed_vector'])
+def test_missing_vector_keeps_real_model_path_and_validates_lexical_evidence(tmp_path,monkeypatch,condition):
+    client,repo,ids,model=api(tmp_path,monkeypatch,vector=condition!='no_vector',fail_vector=condition=='failed_vector')
+    events=run(client,ids)
+    final_record(events,repo,ids)
+    assert any(e['event']=='token' for e in events)
+    assert events[-1]['data']['token_streaming'] is True
+    metadata=events[-1]['data']['metadata']
+    assert metadata['method']=='lexical-fallback'
+    assert metadata['fallback_reasons']
+    assert any(c['phase']=='qa' for c in model.calls)
+    assert all(e['data']['verified'] is False for e in events if e['event']=='token')
 
 
 @pytest.mark.parametrize('phase', ['plan', 'qa'])
