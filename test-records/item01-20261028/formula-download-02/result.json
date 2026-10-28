@@ -1,0 +1,13 @@
+{
+  "source": "https://paddle-model-ecology.bj.bcebos.com/paddlex/official_inference_model/paddle3.0.0/PP-FormulaNet-S_infer.tar",
+  "started_at": "2026-10-28T02:33:41.534387+00:00",
+  "passed": true,
+  "bytes": 234434560,
+  "etag": "-1eb9125ad58ec193dc645e9b8fad4e2c",
+  "parallel_requests": 12,
+  "completed_parts": 448,
+  "sha256": "a3ea2c005abdbe525d9e46c1e2e96021d900b0dd45535a112260d46dd437612e",
+  "model_dir": "D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\repair-ocr-model-smoke\\models\\paddlex\\item01-formula\\PP-FormulaNet-S_infer",
+  "elapsed_seconds": 1453.547,
+  "finished_at": "2026-10-28T02:57:55.076045+00:00"
+}

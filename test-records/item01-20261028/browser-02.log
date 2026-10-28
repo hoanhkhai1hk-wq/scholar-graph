@@ -1,0 +1,15 @@
+
+Running 8 tests using 1 worker
+
+(node:55120) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 e2e\item01.spec.ts:6:5 › 第1项：真实网页修改、回收站和恢复 (7.6s)
+  ok 2 e2e\item01.spec.ts:29:5 › 第1项：官方文件批量上传网页入口（已入库缓存） (5.1s)
+  ok 3 e2e\item01.spec.ts:43:5 › 第1项：表格真实单元格、作者顺序与公式修正入口 (8.9s)
+  ok 4 e2e\workbench.spec.ts:6:7 › 导航、弹窗与正文 1440×900 (3.8s)
+  ok 5 e2e\workbench.spec.ts:6:7 › 导航、弹窗与正文 1366×768 (3.5s)
+  ok 6 e2e\workbench.spec.ts:6:7 › 导航、弹窗与正文 1024×768 (3.7s)
+  ok 7 e2e\workbench.spec.ts:6:7 › 导航、弹窗与正文 390×844 (3.9s)
+  ok 8 e2e\workbench.spec.ts:50:5 › 长书末页、分片请求与完整正文 (10.1s)
+
+  8 passed (48.4s)

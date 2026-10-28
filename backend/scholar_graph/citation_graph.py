@@ -14,13 +14,13 @@ def target_for(reference, papers):
     return result['target_paper_id'], result['reason']
 
 
-def citation_edges(bundles, gate, *, with_evidence=False):
+def citation_edges(bundles, gate, *, with_evidence=False, year_bases=None):
     for bundle in bundles:
         gate.bundle(bundle)
     papers = [bundle["paper_meta"] for bundle in bundles]
     if len({paper["id"] for paper in papers}) != len(papers):
         raise PipelineError("VALIDATION_ERROR", "图谱不能重复选择论文。")
-    profiles = [{'paper': bundle['paper_meta'], 'titles': paper_titles(bundle)} for bundle in bundles]
+    profiles = [{'paper': bundle['paper_meta'], 'titles': paper_titles(bundle), 'year_basis': (year_bases or {}).get(bundle['paper_meta']['id'])} for bundle in bundles]
     edges, unresolved, resolutions, proofs, seen = [], [], [], [], {}
     for bundle in sorted(bundles, key=lambda item: item["paper_meta"]["id"]):
         chunks = {item["chunk_id"]: item for item in bundle["chunks"]}

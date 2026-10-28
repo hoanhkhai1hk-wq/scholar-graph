@@ -82,19 +82,25 @@ def entry_metadata(entry, gate):
 
 
 class ArxivClient:
+    _public_lock = threading.Lock()
+    _public_last_request = 0.0
     def __init__(self, gate, *, transport=None, interval=3):
         self.gate, self.transport, self.interval = gate, transport, interval
         self._lock, self._last_request = threading.Lock(), 0.0
 
     def _bytes(self, url, *, params=None, maximum):
         # Fixed public hosts; no arbitrary URLs, API keys, credentials, or implicit redirects.
+        throttled = 0
         for _ in range(5):
             parsed = urlparse(url)
             if parsed.scheme != "https" or parsed.hostname not in {"arxiv.org", "export.arxiv.org"} or parsed.username or parsed.password:
                 raise PipelineError("UPSTREAM_ERROR", "拒绝非 arXiv 公共地址。")
-            with self._lock:
-                time.sleep(max(0, self.interval - (time.monotonic() - self._last_request)))
+            with self._public_lock if self.transport is None else self._lock:
+                previous = type(self)._public_last_request if self.transport is None else self._last_request
+                time.sleep(max(0, self.interval - (time.monotonic() - previous)))
                 self._last_request = time.monotonic()
+                if self.transport is None:
+                    type(self)._public_last_request = self._last_request
                 try:
                     with httpx.Client(transport=self.transport, timeout=30, follow_redirects=False) as client:
                         with client.stream("GET", url, params=params, headers={"User-Agent": "ScholarGraph/0.1 public research API client"}) as response:
@@ -103,6 +109,15 @@ class ArxivClient:
                                 params = None
                                 continue
                             if response.status_code != 200:
+                                if response.status_code == 429 and self.transport is None:
+                                    retry = response.headers.get('retry-after', '')
+                                    delay = int(retry) if retry.isdigit() else 10 * (throttled + 1)
+                                    if throttled < 2 and delay <= 60:
+                                        throttled += 1
+                                        time.sleep(max(3, delay))
+                                        continue
+                                    raise PipelineError('UPSTREAM_ERROR', 'arXiv 暂时限制请求频率，请稍后重试；未编造下载或检索结果。',
+                                                        details={'retry_after_seconds': delay})
                                 raise PipelineError("UPSTREAM_ERROR", f"arXiv 公共接口返回 HTTP {response.status_code}，未取得所需记录或文件。")
                             blocks, size = [], 0
                             for block in response.iter_bytes():

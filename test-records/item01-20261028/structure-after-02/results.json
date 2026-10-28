@@ -1,0 +1,25 @@
+{
+  "started_at": "2026-10-28T03:18:03.197346+00:00",
+  "passed_execution": false,
+  "tasks": [
+    {
+      "kind": "layout",
+      "id": "fee56e741c6b465eb7b44dc462acda62",
+      "status": "completed",
+      "elapsed_seconds": 2.406,
+      "error": null
+    },
+    {
+      "kind": "formula",
+      "id": "995819a267db4a06ae8fefda92561494",
+      "status": "partial",
+      "elapsed_seconds": 26.329,
+      "error": null
+    }
+  ],
+  "error": {
+    "type": "RuntimeError",
+    "message": "formula did not fully complete"
+  },
+  "finished_at": "2026-10-28T03:18:32.080553+00:00"
+}

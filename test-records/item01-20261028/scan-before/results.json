@@ -1,0 +1,180 @@
+{
+  "started_at": "2026-10-28T02:13:38.680992+00:00",
+  "phase": "scan",
+  "mode": "real_official_pdf_real_http_pipeline",
+  "passed": true,
+  "uploads": [
+    {
+      "filename": "1706.03762v1_img.pdf",
+      "input_bytes": 4672118,
+      "sha256": "64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+      "progress": [
+        {
+          "elapsed_seconds": 1.297,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "正在解析 1706.03762v1_img.pdf；取消将在当前文件处理结束后生效"
+          }
+        },
+        {
+          "elapsed_seconds": 37.75,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "1706.03762v1_img.pdf：已解析 1 / 15 页；检查点已保存"
+          }
+        },
+        {
+          "elapsed_seconds": 81.828,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "1706.03762v1_img.pdf：已解析 2 / 15 页；检查点已保存"
+          }
+        },
+        {
+          "elapsed_seconds": 104.89,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "1706.03762v1_img.pdf：已解析 3 / 15 页；检查点已保存"
+          }
+        },
+        {
+          "elapsed_seconds": 133.187,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "1706.03762v1_img.pdf：已解析 4 / 15 页；检查点已保存"
+          }
+        },
+        {
+          "elapsed_seconds": 161.453,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "1706.03762v1_img.pdf：已解析 5 / 15 页；检查点已保存"
+          }
+        },
+        {
+          "elapsed_seconds": 193.922,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "1706.03762v1_img.pdf：已解析 6 / 15 页；检查点已保存"
+          }
+        },
+        {
+          "elapsed_seconds": 221.187,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "1706.03762v1_img.pdf：已解析 7 / 15 页；检查点已保存"
+          }
+        },
+        {
+          "elapsed_seconds": 254.718,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "1706.03762v1_img.pdf：已解析 8 / 15 页；检查点已保存"
+          }
+        },
+        {
+          "elapsed_seconds": 287.375,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "1706.03762v1_img.pdf：已解析 9 / 15 页；检查点已保存"
+          }
+        },
+        {
+          "elapsed_seconds": 317.812,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "1706.03762v1_img.pdf：已解析 10 / 15 页；检查点已保存"
+          }
+        },
+        {
+          "elapsed_seconds": 346.0,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "1706.03762v1_img.pdf：已解析 11 / 15 页；检查点已保存"
+          }
+        },
+        {
+          "elapsed_seconds": 358.625,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "1706.03762v1_img.pdf：已解析 12 / 15 页；检查点已保存"
+          }
+        },
+        {
+          "elapsed_seconds": 374.422,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "1706.03762v1_img.pdf：已解析 13 / 15 页；检查点已保存"
+          }
+        },
+        {
+          "elapsed_seconds": 393.218,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "1706.03762v1_img.pdf：已解析 14 / 15 页；检查点已保存"
+          }
+        },
+        {
+          "elapsed_seconds": 412.031,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "1706.03762v1_img.pdf：已解析 15 / 15 页；检查点已保存"
+          }
+        },
+        {
+          "elapsed_seconds": 416.375,
+          "status": "completed",
+          "progress": {
+            "completed_units": 1,
+            "total_units": 1,
+            "label": "已处理 1 / 1 个文件"
+          }
+        }
+      ],
+      "task_id": "82acf1e63b2943e788c0ae8df958f243",
+      "status": "completed",
+      "elapsed_seconds": 416.375,
+      "error": null,
+      "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+      "physical_pages": 15,
+      "chunk_count": 989,
+      "empty_physical_pages": [],
+      "all_physical_page_endpoints_accessible": true,
+      "input_sha256_unchanged": true
+    }
+  ],
+  "initial_visible_papers": 2,
+  "finished_at": "2026-10-28T02:20:39.965752+00:00"
+}

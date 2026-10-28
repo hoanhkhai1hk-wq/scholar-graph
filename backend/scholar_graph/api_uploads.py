@@ -22,7 +22,7 @@ class UploadService:
         self.factory = pipeline_factory or (lambda: Pipeline(root, gate=gate,enhancement=DefaultGrobid()))
         self.lock = Lock()
 
-    def _one(self, upload):
+    def _one(self, upload, *, cancelled=None, on_page_progress=None):
         filename = upload.filename or "(unnamed)"
         if Path(filename).suffix.lower() != ".pdf":
             raise PipelineError("UNSUPPORTED_FILE_TYPE", "上传文件必须为 PDF。")
@@ -38,6 +38,10 @@ class UploadService:
                         raise PipelineError("FILE_TOO_LARGE", "PDF 超过 50 MiB 限制。")
                     output.write(block)
             pipeline = self.factory()
+            if cancelled is not None:
+                pipeline.cancel_requested = cancelled
+            if on_page_progress is not None:
+                pipeline.on_page_progress = on_page_progress
             bundle = pipeline.parse(path)
             self.gate.bundle(bundle)
             PdfFiles(self.root).retain(path, bundle["paper_meta"])

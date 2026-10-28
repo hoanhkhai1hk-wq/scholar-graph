@@ -449,7 +449,7 @@ export interface TranslateMetadata {
   model: string;
   elapsed_seconds: number | null;
   model_calls: unknown[];
-  terminology: string[];
+  terminology: string[] | Record<string, string>;
   alignment: string;
   layout_source: string;
 }

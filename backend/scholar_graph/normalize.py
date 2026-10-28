@@ -5,7 +5,8 @@ from __future__ import annotations
 import re
 
 from .errors import PipelineError
-from .reference_identity import DOI, doi, bibliography_sources, parse_reference, author_year_markers
+from .heading_rules import heading_candidate, post_reference_heading
+from .reference_identity import DOI, doi, bibliography_sources, parse_reference, author_year_matcher
 
 REFERENCE = re.compile(r"\[(\d+)\]\s*(.*?)(?=\s*\[\d+\]|$)", re.S)
 
@@ -39,7 +40,9 @@ def is_references(chunk: dict) -> bool:
 
 def citation_links(chunks: list[dict], references: list[dict]) -> list[dict]:
     by_number = {ref["number"]: ref for ref in references}
+    by_marker = {source['marker']: source['number'] for source in bibliography_sources(chunks) if source.get('marker')}
     links, seen = [], set()
+    match_author_year = author_year_matcher(references)
     for chunk in chunks:
         if is_references(chunk):
             continue
@@ -55,7 +58,9 @@ def citation_links(chunks: list[dict], references: list[dict]) -> list[dict]:
                     # Intersect with actual references instead of expanding attacker-sized ranges.
                     numbers.update(n for n in by_number if start <= n <= end)
             cited.update(numbers & by_number.keys())
-        cited.update(ref['number'] for ref, _ in author_year_markers(chunk['text'], references))
+        cited.update(ref['number'] for ref, _ in match_author_year(chunk['text']))
+        for marker in re.findall(r'\[([^\]\n]{1,150})\]', chunk['text']):
+            cited.update(by_marker[token.strip()] for token in re.split(r'[,;]', marker) if token.strip() in by_marker)
         for number in sorted(cited):
             key = (chunk["chunk_id"], number)
             if key in seen:
@@ -83,9 +88,13 @@ def normalize(native: dict, ocr: dict | None, paper: dict, ocr_pages: list[int],
             kind = block.get("type", "text")
             number = re.match(r"^(\d+(?:\.\d+)*)\s+\S", text)
             reference_heading = re.fullmatch(r"references|bibliography|参考文献", text, re.I)
+            supplement = post_reference_heading(text) if path and any(
+                re.fullmatch(r'(?:\d+(?:\.\d+)*\s+)?(?:references|bibliography|参考文献)', part.strip(), re.I) for part in path) else None
             if reference_heading:
                 path = [text]
-            elif kind in {"paragraph_title", "section_title", "title"} or number:
+            elif supplement:
+                path = [supplement]
+            elif (kind in {"paragraph_title", "section_title", "title"} or number) and heading_candidate(text):
                 depth = min(3, len(number[1].split("."))) if number else 1
                 # Never fabricate missing ancestor headings.
                 depth = min(depth, len(path) + 1)

@@ -1,0 +1,198 @@
+{
+  "started_at": "2026-10-28T03:10:38.852766+00:00",
+  "phase": "book",
+  "mode": "real_official_pdf_real_http_pipeline",
+  "passed": false,
+  "uploads": [
+    {
+      "filename": "UnderstandingDeepLearning_02_09_26_C.pdf",
+      "input_bytes": 22344992,
+      "sha256": "f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32",
+      "progress": [
+        {
+          "elapsed_seconds": 1.563,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "正在解析 UnderstandingDeepLearning_02_09_26_C.pdf；取消将在当前文件处理结束后生效"
+          }
+        },
+        {
+          "elapsed_seconds": 13.141,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "UnderstandingDeepLearning_02_09_26_C.pdf：已解析 32 / 541 页；检查点已保存"
+          }
+        },
+        {
+          "elapsed_seconds": 21.547,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "UnderstandingDeepLearning_02_09_26_C.pdf：已解析 64 / 541 页；检查点已保存"
+          }
+        },
+        {
+          "elapsed_seconds": 29.906,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "UnderstandingDeepLearning_02_09_26_C.pdf：已解析 96 / 541 页；检查点已保存"
+          }
+        },
+        {
+          "elapsed_seconds": 37.235,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "UnderstandingDeepLearning_02_09_26_C.pdf：已解析 128 / 541 页；检查点已保存"
+          }
+        },
+        {
+          "elapsed_seconds": 44.578,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "UnderstandingDeepLearning_02_09_26_C.pdf：已解析 160 / 541 页；检查点已保存"
+          }
+        },
+        {
+          "elapsed_seconds": 51.891,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "UnderstandingDeepLearning_02_09_26_C.pdf：已解析 192 / 541 页；检查点已保存"
+          }
+        },
+        {
+          "elapsed_seconds": 58.203,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "UnderstandingDeepLearning_02_09_26_C.pdf：已解析 224 / 541 页；检查点已保存"
+          }
+        },
+        {
+          "elapsed_seconds": 64.547,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "UnderstandingDeepLearning_02_09_26_C.pdf：已解析 256 / 541 页；检查点已保存"
+          }
+        },
+        {
+          "elapsed_seconds": 70.828,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "UnderstandingDeepLearning_02_09_26_C.pdf：已解析 288 / 541 页；检查点已保存"
+          }
+        },
+        {
+          "elapsed_seconds": 78.172,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "UnderstandingDeepLearning_02_09_26_C.pdf：已解析 320 / 541 页；检查点已保存"
+          }
+        },
+        {
+          "elapsed_seconds": 84.547,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "UnderstandingDeepLearning_02_09_26_C.pdf：已解析 352 / 541 页；检查点已保存"
+          }
+        },
+        {
+          "elapsed_seconds": 92.844,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "UnderstandingDeepLearning_02_09_26_C.pdf：已解析 384 / 541 页；检查点已保存"
+          }
+        },
+        {
+          "elapsed_seconds": 99.25,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "UnderstandingDeepLearning_02_09_26_C.pdf：已解析 416 / 541 页；检查点已保存"
+          }
+        },
+        {
+          "elapsed_seconds": 129.766,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "UnderstandingDeepLearning_02_09_26_C.pdf：已解析 448 / 541 页；检查点已保存"
+          }
+        },
+        {
+          "elapsed_seconds": 137.094,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "UnderstandingDeepLearning_02_09_26_C.pdf：已解析 480 / 541 页；检查点已保存"
+          }
+        },
+        {
+          "elapsed_seconds": 144.547,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "UnderstandingDeepLearning_02_09_26_C.pdf：已解析 512 / 541 页；检查点已保存"
+          }
+        },
+        {
+          "elapsed_seconds": 150.953,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "UnderstandingDeepLearning_02_09_26_C.pdf：已解析 541 / 541 页；检查点已保存"
+          }
+        },
+        {
+          "elapsed_seconds": 226.625,
+          "status": "completed",
+          "progress": {
+            "completed_units": 1,
+            "total_units": 1,
+            "label": "已处理 1 / 1 个文件"
+          }
+        }
+      ],
+      "task_id": "557b6eb7ece34677abda3090313474b5",
+      "status": "completed",
+      "elapsed_seconds": 226.625,
+      "error": null,
+      "paper_id": "paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32",
+      "physical_pages": 541
+    }
+  ],
+  "initial_visible_papers": 3,
+  "error": {
+    "type": "RemoteProtocolError",
+    "message": "Server disconnected without sending a response."
+  },
+  "finished_at": "2026-10-28T03:15:39.435735+00:00"
+}

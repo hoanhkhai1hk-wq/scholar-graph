@@ -1,4 +1,4 @@
-// Execute the actual, unchanged Next proxy route in memory; no frontend build or writes.
+// Execute the actual Next proxy and transport helpers in memory; no frontend build or writes.
 const fs = require('node:fs');
 const path = require('node:path');
 const crypto = require('node:crypto');
@@ -10,6 +10,13 @@ const compiled = ts.transpileModule(source, {compilerOptions: {module: ts.Module
 const loaded = {exports: {}};
 const apiRoot = process.argv[2] + '/api/v1';
 new Function('require', 'module', 'exports', compiled)((name) => {
+  if (name === '@/lib/server-transport') {
+    const helper = fs.readFileSync(path.join(root, 'frontend/lib/server-transport.ts'), 'utf8');
+    const js = ts.transpileModule(helper, {compilerOptions: {module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022}}).outputText;
+    const transport = {exports: {}};
+    new Function('module', 'exports', js)(transport, transport.exports);
+    return transport.exports;
+  }
   assert.equal(name, '@/lib/api');
   return {API_ROOT: apiRoot};
 }, loaded, loaded.exports);

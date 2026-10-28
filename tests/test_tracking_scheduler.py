@@ -35,7 +35,8 @@ def test_lifespan_automatically_runs_and_persists_without_trigger_endpoint(tmp_p
         called.set()
         return {'run_id': 'synthetic', 'status': 'failed', 'candidate_count': 0,
                 'errors': [{'error_code': 'UPSTREAM_ERROR', 'message': 'self-made upstream failure', 'details': None}]}
-    app.state.tracking.run = run
+    app.state.workspace_tracking.repository.papers = lambda: [{'id': 'seed'}]
+    app.state.workspace_tracking.run = run
     with TestClient(app) as client:
         assert called.wait(2)
         value = client.get('/api/v1/retrieval/tracking/status').json()

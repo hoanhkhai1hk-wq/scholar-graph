@@ -10,12 +10,15 @@ from .storage import FILES, write_json
 from .tracking_state import operation_lock, utc_now
 
 
-def clean_citations(repository, *, locked=False):
+def clean_citations(repository, *, locked=False, read_only=False):
     if not locked:
         with operation_lock(repository.root, "ingestion", timeout=30):
-            return clean_citations(repository, locked=True)
+            return clean_citations(repository, locked=True, read_only=read_only)
     result = {"papers_scanned": 0, "papers_changed": 0, "links_before": 0, "links_after": 0,
               "removed_count": 0, "changes": []}
+    if read_only:
+        result['mode'] = 'read_only_analysis'
+        result['unique_links'] = 0
     for directory in sorted((repository.root / "papers").glob("*")):
         if not directory.is_dir() or directory.name.startswith("."):
             continue
@@ -32,8 +35,12 @@ def clean_citations(repository, *, locked=False):
         repository.gate.bundle(bundle)  # Bad foreign keys/anchors still fail, never silently removed.
         result["papers_scanned"] += 1
         result["links_before"] += before
-        result["links_after"] += len(retained)
+        result["links_after"] += before if read_only else len(retained)
+        if read_only: result['unique_links'] += len(retained)
         if before == len(retained):
+            continue
+        if read_only:
+            result['duplicates_detected'] = result.get('duplicates_detected', 0) + before - len(retained)
             continue
         target = directory / FILES["citation_links"]
         temporary = directory / (".citations-" + uuid4().hex + ".tmp")

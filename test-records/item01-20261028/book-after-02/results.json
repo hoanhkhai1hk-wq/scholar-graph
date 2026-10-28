@@ -1,0 +1,12 @@
+{
+  "started_at": "2026-10-28T03:10:24.103052+00:00",
+  "phase": "book",
+  "mode": "real_official_pdf_real_http_pipeline",
+  "passed": false,
+  "uploads": [],
+  "error": {
+    "type": "RemoteProtocolError",
+    "message": "Server disconnected without sending a response."
+  },
+  "finished_at": "2026-10-28T03:10:24.162341+00:00"
+}

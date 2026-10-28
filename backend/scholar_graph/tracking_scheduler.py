@@ -48,6 +48,7 @@ class TrackingScheduler:
         self.service, self.config = service, config
         self.root = service.repository.root / 'tracking'
         self.stop_event, self.thread = threading.Event(), None
+        self.configuration_lock = threading.RLock()
         self.state = {'enabled': config.enabled, 'mechanism': 'backend_interval', 'active': False,
             'interval_seconds': config.interval_seconds, 'initial_delay_seconds': config.initial_delay_seconds,
             'max_imports': config.max_imports, 'run_count': 0, 'pid': os.getpid(), 'last_event': None}
@@ -126,3 +127,16 @@ class TrackingScheduler:
             # the thread stopped before it actually did.
             if self.thread.is_alive():
                 self.state['stopping'] = True
+
+    def reconfigure(self, config):
+        with self.configuration_lock:
+            self.stop()
+            if self.thread and self.thread.is_alive():
+                raise PipelineError('VALIDATION_ERROR', '当前追踪正在结束，请稍后保存计划。')
+            self.config = config
+            self.thread = None
+            self.stop_event.clear()
+            self.state.update(enabled=config.enabled, active=False, stopping=False,
+                              interval_seconds=config.interval_seconds, initial_delay_seconds=config.initial_delay_seconds,
+                              max_imports=config.max_imports)
+            self.start()

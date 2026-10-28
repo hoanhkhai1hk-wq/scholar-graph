@@ -80,21 +80,26 @@ def bibliography_sources(chunks):
         start = len(combined)
         combined += chunk['text'] + '\n'
         spans.append((start, len(combined) - 1, chunk))
-    markers = list(re.finditer(r'\[(\d+)\]\s*', combined))
+    markers = list(re.finditer(r'\[(\d+|[A-Za-z][A-Za-z0-9+.-]{0,18}\d[A-Za-z0-9+.-]*)\]\s*', combined))
+    symbolic = any(not match[1].isdigit() for match in markers)
     result = []
     if markers:
         for index, match in enumerate(markers):
             end = markers[index + 1].start() if index + 1 < len(markers) else len(combined)
             raw = combined[match.end():end].strip()
-            if int(match[1]) > 0 and raw:
-                result.append({'number': int(match[1]), 'raw': raw,
+            number = index + 1 if symbolic else int(match[1])
+            if number > 0 and raw:
+                result.append({'number': number, 'marker': match[1], 'raw': raw,
                     'chunks': [c for start, stop, c in spans if stop > match.start() and start < end]})
     else:
         for chunk in selected:
             raw = chunk['text'].strip()
             # Require an author prefix and a year sentence; do not turn arbitrary
             # appendix paragraphs or headings into references.
-            if re.match(r'^[^\d\W].{2,500}?\.\s+(?:18|19|20)\d{2}[a-z]?\.\s+\S', raw):
+            parsed = parse_reference(raw)
+            author_first = bool(re.match(r'^[^\d\W]', raw) and parsed['authors'] and parsed['title']
+                and parsed['year'] and len(raw) < 5000 and len(' '.join(parsed['authors'])) < 400)
+            if re.match(r'^[^\d\W].{2,500}?\.\s+(?:18|19|20)\d{2}[a-z]?\.\s+\S', raw) or author_first:
                 result.append({'number': len(result) + 1, 'raw': raw, 'chunks': [chunk]})
             elif result and raw[:1].islower() and len(raw.split()) >= 3:
                 # A lower-case continuation at a page/column boundary remains
@@ -114,8 +119,8 @@ def surnames(names):
     return result - {''}
 
 
-def author_year_markers(text, references):
-    """Only unique first-surname/year pairs, explicitly written in body text."""
+def author_year_matcher(references):
+    """Compile a document's unique author/year identities once, preserving order."""
     grouped = {}
     for ref in references:
         if not ref['authors'] or not ref['year']:
@@ -126,7 +131,7 @@ def author_year_markers(text, references):
             continue
         key = (surname.casefold(), ref['year'])
         grouped.setdefault(key, []).append(ref)
-    result = []
+    patterns = []
     for (surname, year), refs in grouped.items():
         if len(refs) != 1:
             continue
@@ -136,10 +141,23 @@ def author_year_markers(text, references):
         multiple = r'(?:\s+et\s+al\.?' + second + r')?' if len(people) > 1 else ''
         pattern = (r'(?<!\w)' + re.escape(surname) + multiple + r'\s*(?:,\s*|\(\s*)'
                    + str(year) + r'(?![\da-z])')
-        match = re.search(pattern, text, re.I)
-        if match:
-            result.append((refs[0], match[0]))
-    return result
+        patterns.append((str(year), re.compile(pattern, re.I), refs[0]))
+    def find(text):
+        result = []
+        for year, pattern, ref in patterns:
+            # An exact literal year is mandatory in the original expression too.
+            if year not in text:
+                continue
+            match = pattern.search(text)
+            if match:
+                result.append((ref, match[0]))
+        return result
+    return find
+
+
+def author_year_markers(text, references):
+    """Only unique first-surname/year pairs, explicitly written in body text."""
+    return author_year_matcher(references)(text)
 
 
 def paper_titles(bundle):
@@ -217,11 +235,12 @@ def resolve_reference(reference, profiles, raw=''):
             titles = []
         # Years and surnames support exact title matching; incomplete metadata is
         # explicitly unknown. They never rescue a conflicting nonempty title.
-        same_year = identity['year'] is not None and paper['year'] is not None and identity['year'] == paper['year']
+        submission_only = profile.get('year_basis') == 'arxiv_submission_identifier'
+        same_year = not submission_only and identity['year'] is not None and paper['year'] is not None and identity['year'] == paper['year']
         left, right = surnames(identity['authors'] or []), surnames(paper['authors'])
         overlap = sorted(left & right)
         if title:
-            if (identity['year'] and paper['year'] and not same_year) or (left and right and not overlap):
+            if (not submission_only and identity['year'] and paper['year'] and not same_year) or (left and right and not overlap):
                 auxiliary_conflict = True
                 continue
         else:
@@ -241,6 +260,7 @@ def resolve_reference(reference, profiles, raw=''):
         result['evidence'].append({'field': 'title' if title else 'authors_year', 'reference_value': identity['title'],
             'target_title': titles[0] if titles else None, 'normalized_title': title or None,
             'year_agrees': same_year, 'reference_year': identity['year'], 'target_year': profile['paper']['year'],
+            **({'target_year_basis': profile['year_basis']} if profile.get('year_basis') else {}),
             'shared_surnames': overlap, 'auxiliary_missing': [key for key in ('year', 'authors')
                 if not identity[key] or not profile['paper'][key]]})
     else:

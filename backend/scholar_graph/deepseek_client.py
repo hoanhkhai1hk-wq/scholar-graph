@@ -39,7 +39,7 @@ class DeepSeekClient:
             except Exception:
                 pass  # Disconnect cleanup only; not suppression of an answer error.
 
-    def stream_complete(self, messages, *, phase, on_delta, tools=None, tool_choice='none'):
+    def stream_complete(self, messages, *, phase, on_delta, tools=None, tool_choice='none', max_tokens=2400):
         """Forward real content deltas; retain only assembled JSON in memory for validation."""
         started = time.perf_counter()
         meta = {'provider': 'deepseek', 'model': self.model, 'phase': phase,
@@ -47,7 +47,7 @@ class DeepSeekClient:
                 'total_tokens': None, 'http_status': None, 'status': 'failed'}
         content, finished, done, size = [], False, False, 0
         try:
-            body = {'model': self.model, 'messages': messages, 'temperature': 0, 'max_tokens': 2400,
+            body = {'model': self.model, 'messages': messages, 'temperature': 0, 'max_tokens': max_tokens,
                     'thinking': {'type': 'disabled'}, 'stream': True, 'stream_options': {'include_usage': True},
                     'response_format': {'type': 'json_object'}}
             if tools:
@@ -152,12 +152,14 @@ class DeepSeekClient:
                 response = client.post(self.base_url + '/chat/completions', json=body,
                                        headers={'Authorization': 'Bearer ' + self._key})
                 meta['http_status'] = response.status_code
+                meta['response_bytes'] = len(response.content)
                 if response.status_code != 200:
                     raise PipelineError('UPSTREAM_ERROR', f'DeepSeek上游返回HTTP {response.status_code}，未生成答案。')
                 if len(response.content) > 2 * 1024 * 1024:
                     raise ValueError
                 payload = response.json()
             choice = payload['choices'][0]
+            meta['finish_reason'] = choice.get('finish_reason') if choice.get('finish_reason') in ('stop','tool_calls','length','content_filter','insufficient_system_resource') else 'unknown'
             if choice.get('finish_reason') not in ('stop', 'tool_calls'):
                 raise ValueError
             raw = choice['message']
@@ -186,7 +188,8 @@ class DeepSeekClient:
             return message
         except PipelineError:
             raise
-        except Exception:
+        except Exception as error:
+            meta['failure_kind'] = type(error).__name__
             raise PipelineError('UPSTREAM_ERROR', 'DeepSeek连接、超时或返回格式错误，未生成未核验答案。') from None
         finally:
             meta['elapsed_seconds'] = round(time.perf_counter() - started, 6)

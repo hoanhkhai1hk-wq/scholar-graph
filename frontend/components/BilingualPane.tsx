@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { TranslateSegment } from "@/lib/types";
 import MarkdownView from "./MarkdownView";
+import AnchorTag from "./AnchorTag";
 
 /**
  * 中英双栏对照视图。
@@ -19,10 +20,12 @@ export default function BilingualPane({
   segments,
   markdown,
   markdownMode,
+  target = "zh",
 }: {
   segments: TranslateSegment[];
   markdown: string | null;
   markdownMode: boolean;
+  target?: string;
 }) {
   const leftRef = useRef<HTMLDivElement>(null);
   const rightRef = useRef<HTMLDivElement>(null);
@@ -126,7 +129,7 @@ export default function BilingualPane({
         </p>
       ) : null}
       <div className="sg-bilingual__col">
-        <h4 className="sg-qa__sub">英文原文</h4>
+        <h4 className="sg-qa__sub">{target === "en" ? "中文原文" : "英文原文"}</h4>
         <div
           className="sg-bilingual__scroll"
           ref={leftRef}
@@ -144,16 +147,17 @@ export default function BilingualPane({
               onClick={() => jump("left", segment.source_chunk_id)}
             >
               <header className="sg-mono">
-                p.{segment.page_number} · {segment.source_chunk_id.slice(-12)}
+                第 {segment.page_number} 页
               </header>
               <p className="sg-prose">{segment.source_text}</p>
+              <AnchorTag anchor={{ paper_id: segment.paper_id, chunk_id: segment.source_chunk_id, page_number: segment.page_number, section: segment.section_path }} />
             </article>
           ))}
         </div>
       </div>
 
       <div className="sg-bilingual__col">
-        <h4 className="sg-qa__sub">中文译文</h4>
+        <h4 className="sg-qa__sub">{target === "en" ? "英文译文" : "中文译文"}</h4>
         <div
           className="sg-bilingual__scroll"
           ref={rightRef}
@@ -174,8 +178,7 @@ export default function BilingualPane({
                 onClick={() => jump("right", segment.source_chunk_id)}
               >
                 <header className="sg-mono">
-                  p.{segment.page_number} ·{" "}
-                  {segment.source_chunk_id.slice(-12)}
+                  第 {segment.page_number} 页
                 </header>
                 <p className="sg-prose">{segment.translated_text}</p>
               </article>

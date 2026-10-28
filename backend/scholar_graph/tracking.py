@@ -70,9 +70,10 @@ def seed_queries(repository, paper_ids):
 
 
 class TrackingService:
-    def __init__(self, repository, fetcher):
+    def __init__(self, repository, fetcher, *, read_only_sources=False):
         self.repository, self.fetcher = repository, fetcher
         self.state = TrackingState(repository.root)
+        self.read_only_sources = read_only_sources
 
     def status(self):
         return {"latest_run": self.state.latest(), "dedup_records": self.state.duplicates(),
@@ -95,7 +96,7 @@ class TrackingService:
             start = time.monotonic()
             self.state.run(run)
             try:
-                run["cleanup"] = clean_citations(self.repository)
+                run["cleanup"] = clean_citations(self.repository, read_only=True) if self.read_only_sources else clean_citations(self.repository)
                 ids = paper_ids if paper_ids is not None else [p["id"] for p in self.repository.papers()][:5]
                 if not ids or len(ids) > 5 or len(ids) != len(set(ids)):
                     raise PipelineError("VALIDATION_ERROR", "追踪需要 1 到 5 篇不重复的库内种子论文。")

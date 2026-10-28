@@ -1,0 +1,21 @@
+{
+  "source_sha256": "0a9bff1be3575cf9fe26a4a3d3a9175bc791ecec90de8b9deba4cff75d2b9476",
+  "reviewer": "Codex source-image review; not an independent human evaluation",
+  "source_pages": [
+    3,
+    4,
+    5,
+    7
+  ],
+  "regions": 6,
+  "source_reviewed_corrections": 6,
+  "automatic_semantic_acceptance_passed": false,
+  "observed_machine_errors": [
+    "p0004-r0012: missing or malformed closing expression",
+    "p0007-r0016: model subscript misrecognized"
+  ],
+  "corrections_exercised_in_browser": 1,
+  "corrections_saved_via_real_api": 5,
+  "frozen_json_files": 24,
+  "frozen_json_unchanged": true
+}

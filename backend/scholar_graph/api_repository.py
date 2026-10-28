@@ -46,7 +46,12 @@ class ApiRepository:
         if parent.exists():
             for directory in sorted(parent.iterdir()):
                 if directory.is_dir() and not directory.name.startswith("."):
-                    meta = self.paper(directory.name)["paper_meta"]
+                    metadata_path = directory / "paper-meta.json"
+                    try:
+                        meta = json.loads(metadata_path.read_text(encoding="utf-8"))
+                    except (OSError, ValueError):
+                        raise PipelineError("VALIDATION_ERROR", "论文基础信息不可读取。") from None
+                    self.gate.record("PaperMeta", meta)
                     if title is not None and title.casefold() not in (meta["title"] or "").casefold():
                         continue
                     if year is not None and year != meta["year"]:

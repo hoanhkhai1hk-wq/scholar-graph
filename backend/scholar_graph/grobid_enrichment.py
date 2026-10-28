@@ -8,6 +8,7 @@ from .errors import PipelineError
 from .grobid import GrobidClient
 from .normalize import citation_links
 from .reference_identity import title_key,arxiv_key,surnames,bibliography_sources
+from .author_metadata import source_author_profiles
 
 HEADER_FIELDS=('title','authors','institutions','abstract','doi')
 ORG_PERSON=re.compile(r'\b(?:google|university|research|institute|department|laboratory|laboratories)\b',re.I)
@@ -99,6 +100,13 @@ class DefaultGrobid:
             metadata['grobid_attempted']=True
             candidate=client.enrich(copy.deepcopy(bundle),raw)
             output,details=merge(bundle,candidate,gate,authority)
+            profiles = source_author_profiles(bundle, output['paper_meta']['authors'])
+            if profiles and all(profile['anchors'] for profile in profiles):
+                output['paper_meta']['authors'] = [profile['name'] for profile in profiles]
+                institutions = list(dict.fromkeys(org for profile in profiles for org in profile['institutions']))
+                if institutions:
+                    output['paper_meta']['institutions'] = institutions
+            metadata['author_profiles'] = profiles
             if output==bundle:
                 raise PipelineError('UPSTREAM_ERROR','GROBID 未提供可合并的增强字段，保留 MinerU 原结果。')
             metadata.update(details,method='mineru+grobid')

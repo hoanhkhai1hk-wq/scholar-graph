@@ -30,7 +30,10 @@ ALIASES = ((r'作者|机构|author|affiliation', 'author affiliation university 
            (r'GPU|显卡|训|硬件', 'training base hardware GPUs P100'),
            (r'BLEU|SOTA|提升', 'BLEU big English German French best results'),
            (r'Layer Normalization|层归一|引用', 'layer normalization Ba Kiros Hinton'),
-           (r'承袭|丢弃|继承|BERT|Transformer', 'BERT Transformer bidirectional encoder decoder Vaswani architecture'))
+           (r'承袭|丢弃|继承|BERT|Transformer', 'BERT Transformer bidirectional encoder decoder Vaswani architecture'),
+           (r'参数|parameter', 'parameter count parameters model size architecture largest smallest'),
+           (r'上下文|context|Token.*长度', 'context window context size maximum tokens nctx'),
+           (r'GPT.*LN|LN.*位置|归一化.*位置', 'layer normalization pre-activation input sub-block final self-attention block'))
 
 
 def evidence_candidates(bundle, question, *, limit=24):

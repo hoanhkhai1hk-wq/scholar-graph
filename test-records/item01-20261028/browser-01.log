@@ -1,0 +1,52 @@
+
+Running 8 tests using 1 worker
+
+(node:56712) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 e2e\item01.spec.ts:6:5 › 第1项：真实网页修改、回收站和恢复 (7.3s)
+  ok 2 e2e\item01.spec.ts:29:5 › 第1项：官方文件批量上传网页入口（已入库缓存） (5.6s)
+  x  3 e2e\item01.spec.ts:43:5 › 第1项：表格真实单元格、作者顺序与公式修正入口 (1.5m)
+(node:22740) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 4 e2e\workbench.spec.ts:6:7 › 导航、弹窗与正文 1440×900 (4.0s)
+  ok 5 e2e\workbench.spec.ts:6:7 › 导航、弹窗与正文 1366×768 (3.7s)
+  ok 6 e2e\workbench.spec.ts:6:7 › 导航、弹窗与正文 1024×768 (3.6s)
+  ok 7 e2e\workbench.spec.ts:6:7 › 导航、弹窗与正文 390×844 (3.2s)
+  ok 8 e2e\workbench.spec.ts:50:5 › 长书末页、分片请求与完整正文 (8.5s)
+
+
+  1) e2e\item01.spec.ts:43:5 › 第1项：表格真实单元格、作者顺序与公式修正入口 ─────────────────────────────────────────────
+
+    Test timeout of 90000ms exceeded.
+
+    Error: locator.selectOption: Test timeout of 90000ms exceeded.
+    Call log:
+      - waiting for getByLabel('内容类型', { exact: true })
+
+
+      46 |   const authors = page.locator("table").first().locator("tbody tr"); await expect(authors).toHaveCount(8);
+      47 |   await expect(authors.first()).toContainText("Ashish Vaswani"); await expect(authors.last()).toContainText("Illia Polosukhin");
+    > 48 |   await page.getByLabel("内容类型", { exact: true }).selectOption("table");
+         |                                                  ^
+      49 |   await expect(page.locator("article table")).toHaveCount(4);
+      50 |   expect(await page.locator("article table").evaluateAll(tables => tables.map(t => t.querySelectorAll("td,th").length))).toEqual([20,57,102,36]);
+      51 |   expect(await page.locator("main").innerText()).not.toContain("<table>");
+        at D:\AI_Workspace\Tasks\scholar-graph\frontend\e2e\item01.spec.ts:48:50
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\data\workbench-runtime\browser-runs\item01-browser-01\browser-artifacts\item01-第1项：表格真实单元格、作者顺序与公式修正入口\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\data\workbench-runtime\browser-runs\item01-browser-01\browser-artifacts\item01-第1项：表格真实单元格、作者顺序与公式修正入口\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\data\workbench-runtime\browser-runs\item01-browser-01\browser-artifacts\item01-第1项：表格真实单元格、作者顺序与公式修正入口\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\data\workbench-runtime\browser-runs\item01-browser-01\browser-artifacts\item01-第1项：表格真实单元格、作者顺序与公式修正入口\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    e2e\item01.spec.ts:43:5 › 第1项：表格真实单元格、作者顺序与公式修正入口 ──────────────────────────────────────────────
+  7 passed (2.2m)

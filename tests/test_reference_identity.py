@@ -65,6 +65,20 @@ def test_title_ignores_punctuation_space_case_with_initial_name_auxiliary():
     assert title_key(paper['title']) == title_key(ref['title'])
 
 
+def test_submission_year_does_not_conflict_with_later_journal_publication():
+    paper, ref = fixture()
+    ref['year'] = 2018
+    rows = profiles([paper])
+    assert resolve_reference(ref, rows)['reason'] == 'conflicting_auxiliary'
+    rows[0]['year_basis'] = 'arxiv_submission_identifier'
+    resolved = resolve_reference(ref, rows)
+    assert resolved['target_paper_id'] == 'target'
+    assert not resolved['evidence'][0]['year_agrees']
+    assert resolved['evidence'][0]['target_year_basis'] == 'arxiv_submission_identifier'
+    ref['title'] = None
+    assert resolve_reference(ref, rows)['target_paper_id'] is None
+
+
 @pytest.mark.parametrize('method', ['arxiv', 'doi'])
 def test_identifier_only_match_records_method_and_basis(method):
     paper, ref = fixture()

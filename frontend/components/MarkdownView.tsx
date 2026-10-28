@@ -1,4 +1,5 @@
 import { Fragment, type ReactNode } from "react";
+import sanitizeHtml from "sanitize-html";
 
 /**
  * 极简 Markdown 渲染器（全文翻译的版式视图）。
@@ -112,7 +113,11 @@ export default function MarkdownView({ markdown }: { markdown: string }) {
         <div
           className="sg-md-html"
           key={`raw${key++}`}
-          dangerouslySetInnerHTML={{ __html: body.join("\n") }}
+          dangerouslySetInnerHTML={{ __html: sanitizeHtml(body.join("\n"), {
+            allowedTags: ["table", "thead", "tbody", "tfoot", "tr", "th", "td", "caption", "div", "figure", "figcaption", "p", "br", "strong", "em", "sub", "sup", "code", "pre", "ul", "ol", "li"],
+            allowedAttributes: { th: ["colspan", "rowspan", "scope"], td: ["colspan", "rowspan"] },
+            allowedSchemes: [],
+          }) }}
         />,
       );
       continue;

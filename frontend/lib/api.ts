@@ -38,10 +38,15 @@ function normalizeBase(value: string): string {
 }
 
 const RAW_BASE =
-  process.env.NEXT_PUBLIC_API_BASE_URL?.trim() || DEFAULT_API_BASE_URL;
+  (typeof window === "undefined" ? process.env.SG_BACKEND_URL?.trim() : undefined) || process.env.NEXT_PUBLIC_API_BASE_URL?.trim() || DEFAULT_API_BASE_URL;
 
 export const API_BASE_URL = normalizeBase(RAW_BASE);
 export const API_ROOT = `${API_BASE_URL}/api/v1`;
+function transportHeaders(init?: RequestInit): Headers {
+  const headers = new Headers(init?.headers);
+  if (typeof window === "undefined" && process.env.SG_SERVICE_TOKEN) headers.set("x-scholargraph-service", process.env.SG_SERVICE_TOKEN);
+  return headers;
+}
 
 /** 浏览器侧经同源代理转发，避免后端未开 CORS 导致直连被拦 */
 export const PROXY_ROOT = "/api/backend";
@@ -76,7 +81,7 @@ async function requestJson<T>(
 ): Promise<T> {
   let response: Response;
   try {
-    response = await fetch(url, { cache: "no-store", ...init });
+    response = await fetch(url, { cache: "no-store", ...init, headers: transportHeaders(init) });
   } catch (cause) {
     const reason = cause instanceof Error ? cause.message : String(cause);
     throw new ApiFetchError({
@@ -134,7 +139,7 @@ export async function requestJsonWithHeaders<T>(
 ): Promise<{ data: T; headers: Headers }> {
   let response: Response;
   try {
-    response = await fetch(url, { cache: "no-store", ...init });
+    response = await fetch(url, { cache: "no-store", ...init, headers: transportHeaders(init) });
   } catch (cause) {
     const reason = cause instanceof Error ? cause.message : String(cause);
     throw new ApiFetchError({
@@ -252,11 +257,13 @@ export async function fetchPapers(
     year: query.year,
     source: query.source,
   });
-  return requestJson<Paged<PaperMeta>>(serverUrl(`/papers${qs}`));
+  const value = await requestJson<Paged<{ paper: PaperMeta }>>(`${API_BASE_URL}/api/v2/papers${qs}`);
+  return { ...value, items: value.items.map(item => item.paper) };
 }
 
 export async function fetchPaper(paperId: string): Promise<PaperMeta> {
-  return requestJson<PaperMeta>(serverUrl(`/papers/${paperId}`));
+  const view = await requestJson<{ paper: PaperMeta }>(`${API_BASE_URL}/api/v2/papers/${paperId}`);
+  return view.paper;
 }
 
 export async function fetchChunks(
@@ -501,7 +508,7 @@ export async function clientFetchGraph(
   for (const id of paperIds) {
     params.append("paper_ids", id);
   }
-  return requestJson<GraphView>(clientUrl(`/graph?${params.toString()}`));
+  return requestJson<GraphView>(`/api/workspace/graph?${params.toString()}`);
 }
 
 // ------------------------------------------------ 模块四：检索、抓取与推荐
@@ -592,7 +599,7 @@ export async function generateReview(payload: {
 
 export async function fetchTrackingStatus(): Promise<TrackingStatus> {
   // 与页面其它取数一致：走浏览器侧同源代理，避免服务端直连默认端口造成地址不一致
-  return requestJson<TrackingStatus>(clientUrl("/retrieval/tracking/status"), {
+  return requestJson<TrackingStatus>("/api/workspace/tracking/status", {
     cache: "no-store",
   });
 }
@@ -604,7 +611,7 @@ export async function runTracking(body: {
   interval_seconds?: number;
   force?: boolean;
 }): Promise<TrackingRun> {
-  return postJsonClient<TrackingRun>("/retrieval/tracking/run", body);
+  return requestJson<TrackingRun>("/api/workspace/tracking/run", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
 }
 
 // -------------------------------------------------- 模块三：英→中翻译

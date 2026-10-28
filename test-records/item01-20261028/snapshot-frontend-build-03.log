@@ -1,0 +1,222 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile.local-incremental
+#1 transferring dockerfile: 2.39kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/scholar-graph-frontend:baseline-20261028
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 380B 0.0s done
+#3 DONE 0.0s
+
+#4 [frontend-build 1/6] FROM docker.io/library/scholar-graph-frontend:baseline-20261028@sha256:219b4894cfea83a4d7b5c46c8e1a2909f9b8c2ed742e344e16e137746ab5fe74
+#4 resolve docker.io/library/scholar-graph-frontend:baseline-20261028@sha256:219b4894cfea83a4d7b5c46c8e1a2909f9b8c2ed742e344e16e137746ab5fe74 0.0s done
+#4 DONE 0.0s
+
+#5 [frontend-build 2/6] WORKDIR /app/frontend
+#5 CACHED
+
+#6 [internal] load build context
+#6 transferring context: 4.86kB 0.0s done
+#6 DONE 0.0s
+
+#7 [frontend-build 3/6] RUN rm -rf /app/frontend/app /app/frontend/components /app/frontend/lib     /app/frontend/scripts /app/frontend/public /app/frontend/e2e
+#7 DONE 0.3s
+
+#8 [frontend-build 4/6] COPY frontend/ ./
+#8 DONE 0.1s
+
+#9 [frontend-build 5/6] RUN --mount=type=cache,target=/root/.npm     sha256sum package-lock.json > /tmp/current-lock.sha256     && npm install --include=dev --ignore-scripts --no-audit --no-fund --prefer-offline          --fetch-retries=3 --fetch-timeout=600000     && sha256sum -c /tmp/current-lock.sha256     && npm ls --all --omit=optional
+#9 0.943 
+#9 0.943 up to date in 655ms
+#9 0.967 package-lock.json: OK
+#9 1.181 scholar-graph-frontend@0.1.0 /app/frontend
+#9 1.181 +-- @emnapi/runtime@1.11.3 extraneous
+#9 1.181 | `-- tslib@2.8.1
+#9 1.181 +-- @img/sharp-wasm32@0.35.5 extraneous
+#9 1.181 | `-- @emnapi/runtime@1.11.3 deduped
+#9 1.181 +-- @playwright/test@1.64.1
+#9 1.181 | `-- playwright@1.64.1
+#9 1.181 |   `-- playwright-core@1.64.1
+#9 1.181 +-- @types/node@22.20.5
+#9 1.181 | `-- undici-types@6.21.0
+#9 1.181 +-- @types/react-dom@19.3.0
+#9 1.181 | `-- @types/react@19.3.0 deduped
+#9 1.181 +-- @types/react@19.3.0
+#9 1.181 | `-- csstype@3.2.3
+#9 1.181 +-- @types/sanitize-html@2.16.2
+#9 1.181 | `-- htmlparser2@12.0.0
+#9 1.181 |   +-- domelementtype@3.0.0
+#9 1.181 |   +-- domhandler@6.0.1
+#9 1.181 |   | `-- domelementtype@3.0.0 deduped
+#9 1.181 |   +-- domutils@4.0.2
+#9 1.181 |   | +-- dom-serializer@3.1.1
+#9 1.181 |   | | +-- domelementtype@3.0.0 deduped
+#9 1.181 |   | | +-- domhandler@6.0.1 deduped
+#9 1.181 |   | | `-- entities@8.1.0 deduped
+#9 1.181 |   | +-- domelementtype@3.0.0 deduped
+#9 1.181 |   | `-- domhandler@6.0.1 deduped
+#9 1.181 |   `-- entities@8.1.0
+#9 1.181 +-- cytoscape@3.34.4
+#9 1.181 +-- next@15.5.28
+#9 1.181 | +-- @next/env@15.5.28
+#9 1.181 | +-- UNMET OPTIONAL DEPENDENCY @next/swc-darwin-arm64@15.5.28
+#9 1.181 | +-- UNMET OPTIONAL DEPENDENCY @next/swc-darwin-x64@15.5.28
+#9 1.181 | +-- UNMET OPTIONAL DEPENDENCY @next/swc-linux-arm64-gnu@15.5.28
+#9 1.181 | +-- UNMET OPTIONAL DEPENDENCY @next/swc-linux-arm64-musl@15.5.28
+#9 1.181 | +-- @next/swc-linux-x64-gnu@15.5.28
+#9 1.181 | +-- @next/swc-linux-x64-musl@15.5.28
+#9 1.181 | +-- UNMET OPTIONAL DEPENDENCY @next/swc-win32-arm64-msvc@15.5.28
+#9 1.181 | +-- UNMET OPTIONAL DEPENDENCY @next/swc-win32-x64-msvc@15.5.28
+#9 1.181 | +-- UNMET OPTIONAL DEPENDENCY @opentelemetry/api@^1.1.0
+#9 1.181 | +-- @playwright/test@1.64.1 deduped
+#9 1.181 | +-- @swc/helpers@0.5.15
+#9 1.181 | | `-- tslib@2.8.1 deduped
+#9 1.181 | +-- UNMET OPTIONAL DEPENDENCY babel-plugin-react-compiler@*
+#9 1.181 | +-- caniuse-lite@1.0.30001819
+#9 1.181 | +-- postcss@8.5.32 overridden
+#9 1.181 | | +-- nanoid@3.3.20
+#9 1.181 | | +-- picocolors@1.1.1
+#9 1.181 | | `-- source-map-js@1.2.2
+#9 1.181 | +-- react-dom@19.3.1 deduped
+#9 1.181 | +-- react@19.3.1 deduped
+#9 1.181 | +-- UNMET OPTIONAL DEPENDENCY sass@^1.3.0
+#9 1.181 | +-- sharp@0.35.5
+#9 1.181 | | +-- @img/colour@1.1.0
+#9 1.181 | | +-- UNMET OPTIONAL DEPENDENCY @img/sharp-darwin-arm64@0.35.5
+#9 1.181 | | +-- UNMET OPTIONAL DEPENDENCY @img/sharp-darwin-x64@0.35.5
+#9 1.181 | | +-- UNMET OPTIONAL DEPENDENCY @img/sharp-freebsd-wasm32@0.35.5
+#9 1.181 | | +-- UNMET OPTIONAL DEPENDENCY @img/sharp-libvips-darwin-arm64@1.3.4
+#9 1.181 | | +-- UNMET OPTIONAL DEPENDENCY @img/sharp-libvips-darwin-x64@1.3.4
+#9 1.181 | | +-- UNMET OPTIONAL DEPENDENCY @img/sharp-libvips-linux-arm@1.3.4
+#9 1.181 | | +-- UNMET OPTIONAL DEPENDENCY @img/sharp-libvips-linux-arm64@1.3.4
+#9 1.181 | | +-- UNMET OPTIONAL DEPENDENCY @img/sharp-libvips-linux-ppc64@1.3.4
+#9 1.181 | | +-- UNMET OPTIONAL DEPENDENCY @img/sharp-libvips-linux-riscv64@1.3.4
+#9 1.181 | | +-- UNMET OPTIONAL DEPENDENCY @img/sharp-libvips-linux-s390x@1.3.4
+#9 1.181 | | +-- @img/sharp-libvips-linux-x64@1.3.4
+#9 1.181 | | +-- UNMET OPTIONAL DEPENDENCY @img/sharp-libvips-linuxmusl-arm64@1.3.4
+#9 1.181 | | +-- @img/sharp-libvips-linuxmusl-x64@1.3.4
+#9 1.181 | | +-- UNMET OPTIONAL DEPENDENCY @img/sharp-linux-arm@0.35.5
+#9 1.181 | | +-- UNMET OPTIONAL DEPENDENCY @img/sharp-linux-arm64@0.35.5
+#9 1.181 | | +-- UNMET OPTIONAL DEPENDENCY @img/sharp-linux-ppc64@0.35.5
+#9 1.181 | | +-- UNMET OPTIONAL DEPENDENCY @img/sharp-linux-riscv64@0.35.5
+#9 1.181 | | +-- UNMET OPTIONAL DEPENDENCY @img/sharp-linux-s390x@0.35.5
+#9 1.181 | | +-- @img/sharp-linux-x64@0.35.5
+#9 1.181 | | | `-- @img/sharp-libvips-linux-x64@1.3.4 deduped
+#9 1.181 | | +-- UNMET OPTIONAL DEPENDENCY @img/sharp-linuxmusl-arm64@0.35.5
+#9 1.181 | | +-- @img/sharp-linuxmusl-x64@0.35.5
+#9 1.181 | | | `-- @img/sharp-libvips-linuxmusl-x64@1.3.4 deduped
+#9 1.181 | | +-- UNMET OPTIONAL DEPENDENCY @img/sharp-webcontainers-wasm32@0.35.5
+#9 1.181 | | +-- UNMET OPTIONAL DEPENDENCY @img/sharp-win32-arm64@0.35.5
+#9 1.181 | | +-- UNMET OPTIONAL DEPENDENCY @img/sharp-win32-ia32@0.35.5
+#9 1.181 | | +-- UNMET OPTIONAL DEPENDENCY @img/sharp-win32-x64@0.35.5
+#9 1.181 | | +-- detect-libc@2.1.2
+#9 1.181 | | `-- semver@7.8.5
+#9 1.181 | `-- styled-jsx@5.1.6
+#9 1.181 |   +-- client-only@0.0.1
+#9 1.181 |   `-- react@19.3.1 deduped
+#9 1.181 +-- pdfjs-dist@4.10.38
+#9 1.181 | `-- @napi-rs/canvas@0.1.100
+#9 1.181 |   +-- UNMET OPTIONAL DEPENDENCY @napi-rs/canvas-android-arm64@0.1.100
+#9 1.181 |   +-- UNMET OPTIONAL DEPENDENCY @napi-rs/canvas-darwin-arm64@0.1.100
+#9 1.181 |   +-- UNMET OPTIONAL DEPENDENCY @napi-rs/canvas-darwin-x64@0.1.100
+#9 1.181 |   +-- UNMET OPTIONAL DEPENDENCY @napi-rs/canvas-linux-arm-gnueabihf@0.1.100
+#9 1.181 |   +-- UNMET OPTIONAL DEPENDENCY @napi-rs/canvas-linux-arm64-gnu@0.1.100
+#9 1.181 |   +-- UNMET OPTIONAL DEPENDENCY @napi-rs/canvas-linux-arm64-musl@0.1.100
+#9 1.181 |   +-- UNMET OPTIONAL DEPENDENCY @napi-rs/canvas-linux-riscv64-gnu@0.1.100
+#9 1.181 |   +-- @napi-rs/canvas-linux-x64-gnu@0.1.100
+#9 1.181 |   +-- @napi-rs/canvas-linux-x64-musl@0.1.100
+#9 1.181 |   +-- UNMET OPTIONAL DEPENDENCY @napi-rs/canvas-win32-arm64-msvc@0.1.100
+#9 1.181 |   `-- UNMET OPTIONAL DEPENDENCY @napi-rs/canvas-win32-x64-msvc@0.1.100
+#9 1.181 +-- react-dom@19.3.1
+#9 1.181 | +-- react@19.3.1 deduped
+#9 1.181 | `-- scheduler@0.28.0
+#9 1.181 +-- react@19.3.1
+#9 1.181 +-- sanitize-html@2.18.1
+#9 1.181 | +-- escape-string-regexp@4.0.0
+#9 1.181 | +-- htmlparser2@12.0.0 deduped
+#9 1.181 | +-- is-plain-object@5.1.0
+#9 1.181 | +-- launder@1.7.2
+#9 1.181 | | `-- dayjs@1.11.23
+#9 1.181 | +-- parse-srcset@1.0.2
+#9 1.181 | `-- postcss@8.5.32 deduped
+#9 1.181 `-- typescript@5.9.3
+#9 1.181 
+#9 DONE 1.3s
+
+#10 [frontend-build 6/6] RUN rm -rf /app/frontend/.next && npm run build
+#10 0.577 
+#10 0.577 > scholar-graph-frontend@0.1.0 build
+#10 0.577 > npm run sync-pdf-worker && next build
+#10 0.577 
+#10 0.656 
+#10 0.656 > scholar-graph-frontend@0.1.0 sync-pdf-worker
+#10 0.656 > node scripts/copy-pdf-worker.mjs
+#10 0.656 
+#10 0.687 [pdf.worker] 已复制 -> public/pdf.worker.min.mjs
+#10 1.144    ▲ Next.js 15.5.28
+#10 1.144 
+#10 1.167    Creating an optimized production build ...
+#10 12.05  ✓ Compiled successfully in 9.0s
+#10 12.05    Linting and checking validity of types ...
+#10 18.46    Collecting page data ...
+#10 21.09    Generating static pages (0/5) ...
+#10 21.83    Generating static pages (1/5) 
+#10 21.83    Generating static pages (2/5) 
+#10 21.83    Generating static pages (3/5) 
+#10 21.83  ✓ Generating static pages (5/5)
+#10 22.66    Finalizing page optimization ...
+#10 22.66    Collecting build traces ...
+#10 28.58 
+#10 28.59 Route (app)                                 Size  First Load JS
+#10 28.59 ┌ ƒ /                                    3.25 kB         113 kB
+#10 28.59 ├ ○ /_not-found                            994 B         104 kB
+#10 28.59 ├ ƒ /api/backend/[...path]                 140 B         103 kB
+#10 28.59 ├ ƒ /api/workspace/[...path]               140 B         103 kB
+#10 28.59 ├ ƒ /graph                                139 kB         244 kB
+#10 28.59 ├ ○ /icon.svg                                0 B            0 B
+#10 28.59 ├ ○ /login                                  1 kB         104 kB
+#10 28.59 ├ ƒ /papers/[id]                         2.64 kB         109 kB
+#10 28.59 ├ ƒ /qa                                  8.11 kB         117 kB
+#10 28.59 ├ ƒ /read/[id]                           89.1 kB         199 kB
+#10 28.59 ├ ƒ /retrieval                           4.95 kB         110 kB
+#10 28.59 ├ ƒ /upload                              2.98 kB         113 kB
+#10 28.59 └ ƒ /writing                             2.79 kB         108 kB
+#10 28.59 + First Load JS shared by all             103 kB
+#10 28.59   ├ chunks/255-b1e2483a7e02feee.js       46.6 kB
+#10 28.59   ├ chunks/4bd1b696-c023c6e3521b1417.js  54.2 kB
+#10 28.59   └ other shared chunks (total)          1.97 kB
+#10 28.59 
+#10 28.59 
+#10 28.59 ƒ Middleware                             34.8 kB
+#10 28.59 
+#10 28.59 ○  (Static)   prerendered as static content
+#10 28.59 ƒ  (Dynamic)  server-rendered on demand
+#10 28.59 
+#10 28.62 npm notice
+#10 28.62 npm notice New major version of npm available! 10.9.9 -> 12.2.1
+#10 28.62 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+#10 28.62 npm notice To update run: npm install -g npm@12.2.1
+#10 28.62 npm notice
+#10 DONE 28.7s
+
+#11 [frontend 3/4] RUN rm -rf /app/frontend/.next
+#11 CACHED
+
+#12 [frontend 4/4] COPY --from=frontend-build --chown=node:node /app/frontend ./
+#12 DONE 3.8s
+
+#13 exporting to image
+#13 exporting layers
+#13 exporting layers 3.4s done
+#13 exporting manifest sha256:f3de5854802569c13ed8fc6a905949028c9c5e06a17cfd2c9da7742f8d37e9e2 0.0s done
+#13 exporting config sha256:ae6c79639645690044ee8fee77d65eb80620e3d31a32ddddba824dba11047e31 0.0s done
+#13 exporting attestation manifest sha256:7aa0ab806d94d9102f486e66c825579054cc0fa8a75bf1745c20ba4ed2bc22f7 0.0s done
+#13 exporting manifest list sha256:3c71757da27e7ab813204599c7857e1f55407ec52612e970cb6ac05c8c5cd458 0.0s done
+#13 naming to docker.io/library/scholar-graph-frontend:item01-source-snapshot
+#13 naming to docker.io/library/scholar-graph-frontend:item01-source-snapshot done
+#13 unpacking to docker.io/library/scholar-graph-frontend:item01-source-snapshot
+#13 unpacking to docker.io/library/scholar-graph-frontend:item01-source-snapshot 0.6s done
+#13 DONE 4.2s

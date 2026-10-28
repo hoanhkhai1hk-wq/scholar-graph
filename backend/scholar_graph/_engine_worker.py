@@ -2,6 +2,7 @@
 
 import contextlib
 import json
+import os
 import sys
 
 
@@ -17,7 +18,8 @@ def paddle_engine(language):
                        text_recognition_model_name=("en_PP-OCRv5_mobile_rec" if language == "en" else "PP-OCRv5_mobile_rec"),
                        text_recognition_batch_size=8,
                        use_doc_orientation_classify=False, use_doc_unwarping=False,
-                       use_textline_orientation=False, enable_mkldnn=False)
+                       use_textline_orientation=os.environ.get('SCHOLAR_GRAPH_TEXTLINE_ORIENTATION', 'true').casefold() in ('true', '1'),
+                       textline_orientation_model_name='PP-LCNet_x0_25_textline_ori', enable_mkldnn=False)
 
 
 def paddle_text(path, language, pages):
@@ -53,7 +55,9 @@ def paddle_text(path, language, pages):
                 page.close()
     finally:
         document.close()
-    return {"pages": result_pages}
+    return {"pages": result_pages, 'ocr_metadata': {
+        'textline_orientation': os.environ.get('SCHOLAR_GRAPH_TEXTLINE_ORIENTATION', 'true').casefold() in ('true', '1'),
+        'orientation_model': 'PP-LCNet_x0_25_textline_ori'}}
 
 
 if __name__ == "__main__":

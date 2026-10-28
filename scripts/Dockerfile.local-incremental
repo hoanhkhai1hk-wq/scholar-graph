@@ -6,6 +6,10 @@ ARG BACKEND_BASE=scholar-graph-backend:pre-baseline-20261028
 FROM ${FRONTEND_BASE} AS frontend-build
 USER root
 WORKDIR /app/frontend
+# Reuse installed dependencies only. Source removed from the checkout must not
+# survive in the base image and accidentally satisfy missing imports.
+RUN rm -rf /app/frontend/app /app/frontend/components /app/frontend/lib \
+    /app/frontend/scripts /app/frontend/public /app/frontend/e2e
 COPY frontend/ ./
 # npm reconciles against the current lock, retaining installed matching packages.
 # The lock must remain byte-identical. Existing Linux native dependencies stay in place.
@@ -33,6 +37,7 @@ COPY backend/pyproject.toml /tmp/current-backend-pyproject.toml
 # Refuse dependency reuse when the Python dependency declaration changed.
 RUN cmp /app/backend/pyproject.toml /tmp/current-backend-pyproject.toml \
     && python -m pip check
+RUN rm -rf /app/backend/scholar_graph /app/contracts /app/tests
 COPY --chown=scholar:scholar backend/ ./backend/
 COPY --chown=scholar:scholar contracts/ ./contracts/
 COPY --chown=scholar:scholar tests/ ./tests/

@@ -28,7 +28,8 @@ def github_signals(paper):
 def recommendations(repository, seed_id, as_of_year, *, profile_id=None):
     repository.paper(seed_id)  # Missing seed is a 404, not an empty recommendation record.
     bundles = load_bundles(repository)
-    edges, unresolved = citation_edges(bundles, repository.gate)
+    edges, unresolved = citation_edges(bundles, repository.gate,
+        year_bases=repository.year_bases() if hasattr(repository, 'year_bases') else None)
     nodes, _, _ = graph_nodes(bundles, edges, repository.gate)
     by_id = {node["paper_id"]: node for node in nodes}
     maximum = max(node["pagerank"] for node in nodes)

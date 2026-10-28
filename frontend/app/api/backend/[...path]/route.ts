@@ -1,4 +1,5 @@
 import { API_ROOT } from "@/lib/api";
+import { serviceHeaders, boundedBody, reviewMutationAllowed } from "@/lib/server-transport";
 
 export const dynamic = "force-dynamic";
 
@@ -24,26 +25,31 @@ async function forward(
   method: "GET" | "POST",
 ) {
   const incoming = new URL(request.url);
-  const target = `${API_ROOT}/${pathSegments.join("/")}${incoming.search}`;
+  if (!reviewMutationAllowed(request)) return Response.json({ message: "请求来源不合法。" }, { status: 403 });
+  if (pathSegments.some(segment => segment === "." || segment === ".." || segment.includes("/"))) return Response.json({ message: "请求路径不合法。" }, { status: 400 });
+  const target = `${API_ROOT}/${pathSegments.map(encodeURIComponent).join("/")}${incoming.search}`;
 
   let upstream: Response;
   try {
+    const requestHeaders = serviceHeaders();
+    for (const name of ["range", "if-range", "if-none-match", "accept"]) {
+      const value = request.headers.get(name);
+      if (value) requestHeaders.set(name, value);
+    }
+    if (method === "POST") requestHeaders.set("content-type", request.headers.get("content-type") ?? "application/octet-stream");
     upstream = await fetch(target, {
       method,
+      headers: requestHeaders,
       ...(method === "POST"
         ? {
-            headers: {
-              "content-type":
-                request.headers.get("content-type") ??
-                "application/octet-stream",
-              accept: request.headers.get("accept") ?? "application/json",
-            },
-            body: await request.arrayBuffer(),
+            body: await boundedBody(request),
           }
         : {}),
       cache: "no-store",
+      signal: request.signal,
     });
   } catch (cause) {
+    if (cause instanceof Error && cause.message === "REQUEST_TOO_LARGE") return Response.json({ error_code: "FILE_TOO_LARGE", message: "单次请求超过 100 MiB，请分批上传。", details: null }, { status: 413 });
     const reason = cause instanceof Error ? cause.message : String(cause);
     return Response.json(
       {
@@ -74,7 +80,7 @@ async function forward(
   const contentType = upstream.headers.get("content-type") ?? "";
 
   // 原文件端点按 Range 请求返回 206/416，相关头原样带回，pdf.js 才能用分片读取
-  for (const name of ["content-disposition", "accept-ranges", "etag", "content-range"]) {
+  for (const name of ["content-disposition", "accept-ranges", "etag", "content-range", ...(contentType.includes("application/pdf") ? ["content-length"] : [])]) {
     const value = upstream.headers.get(name);
     if (value) headers.set(name, value);
   }

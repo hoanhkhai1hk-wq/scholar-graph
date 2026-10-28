@@ -184,3 +184,15 @@ def test_invalid_ocr_physical_index_names_page_and_never_publishes(tmp_path):
     assert error.value.details['failed_pages'] == '1'
     pipeline.gate.error(error.value.envelope())
     assert pipeline.last_metrics['published_chunks'] == 0
+
+
+def test_cancel_during_native_fallback_stops_before_next_ocr_page(tmp_path):
+    engine = Pages(tmp_path/'records')
+    engine.text = lambda *a, **kw: (_ for _ in ()).throw(PipelineError('PARSE_FAILED','injected timeout'))
+    pipeline = Pipeline(tmp_path/'records',engines=engine,limits=ParseLimits(text_batch_pages=32))
+    pipeline.cancel_requested = lambda: bool(engine.ocr_calls)
+    with pytest.raises(PipelineError,match='已停止解析'):
+        pipeline.parse(native_pages(tmp_path/'cancel.pdf',33))
+    assert engine.ocr_calls == [0]
+    assert pipeline.last_metrics['completed_pages'] == [1]
+    assert pipeline.last_metrics['published_chunks'] == 1

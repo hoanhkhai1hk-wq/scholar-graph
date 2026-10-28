@@ -13,6 +13,14 @@ from .reference_identity import arxiv
 NS = {"t": "http://www.tei-c.org/ns/1.0"}
 
 
+def clean_abstract(value):
+    if not value:
+        return value
+    # Explicit author-note markers are occasionally merged into TEI abstracts.
+    # Keep the original scientific prose; never trim arbitrary mathematical stars.
+    return re.split(r'\s*[*∗†‡]+\s*(?=Equal contribution|These authors contributed|Corresponding author|Work performed)', value, maxsplit=1, flags=re.I)[0].strip()
+
+
 def text(node):
     if node is None:
         return None
@@ -40,6 +48,26 @@ def year(node):
     return int(match[1]) if match else None
 
 
+def header_author_profiles(root):
+    header = root.find('t:teiHeader', NS)
+    if header is None:
+        return []
+    nodes = header.findall('.//t:sourceDesc/t:biblStruct/t:analytic/t:author', NS)
+    if not nodes:
+        nodes = header.findall('.//t:titleStmt/t:author', NS)
+    result = []
+    for node in nodes:
+        person = node.find('t:persName', NS)
+        name = person_name(person) if person is not None else None
+        if not name:
+            continue
+        result.append({'order': len(result) + 1, 'name': name,
+            'institutions': list(dict.fromkeys(value for org in node.findall('.//t:affiliation/t:orgName', NS) if (value := text(org)))),
+            'emails': list(dict.fromkeys(value for email in node.findall('.//t:email', NS) if (value := text(email)))),
+            'source': 'grobid_header', 'review_status': 'extracted_not_human_verified'})
+    return result
+
+
 class GrobidClient:
     def __init__(self, base_url: str, *, timeout: float = 60, transport=None):
         parsed = urlsplit(base_url)
@@ -58,6 +86,7 @@ class GrobidClient:
                 if len(response.content) > 10 * 1024 * 1024:
                     raise ValueError("oversized TEI")
                 root = ET.fromstring(response.content)
+                self.last_author_profiles = header_author_profiles(root)
                 return self._convert(bundle, root)
         except PipelineError:
             raise
@@ -86,7 +115,7 @@ class GrobidClient:
             institutions = [value for item in header.findall(".//t:affiliation/t:orgName", NS) if (value := text(item))]
             if institutions:
                 paper["institutions"] = list(dict.fromkeys(institutions))
-            abstract = text(header.find(".//t:abstract", NS))
+            abstract = clean_abstract(text(header.find(".//t:abstract", NS)))
             if abstract:
                 paper["abstract"] = abstract
             if publication_year := year(header):

@@ -31,6 +31,10 @@ from .tracking_routes import tracking_routes
 from .tracking_scheduler import ScheduleConfig, TrackingScheduler
 from .pdf_files import PdfFiles
 from .pdf_response import PdfResponse
+from .workspace import Workspace
+from .workspace_routes import workspace_routes
+from .workspace_tasks import TaskRunner
+from .workspace_task_routes import task_routes
 from .parse_provenance import HEADER as PARSE_HEADER,response_header,latest as parse_metadata
 
 PREFIX = "/api/v1"
@@ -49,16 +53,20 @@ def create_app(*, data_dir=None, pipeline_factory=None):
     @asynccontextmanager
     async def lifespan(application):
         application.state.tracking_scheduler.start()
+        application.state.workspace_tasks.start()
         try:
             yield
         finally:
             application.state.tracking_scheduler.stop()
+            application.state.workspace_tasks.stop()
 
     app = FastAPI(title="ScholarGraph modules one, two, four, five and six", version="1.2.0", lifespan=lifespan)
+    from .workspace_security import install_service_boundary
+    install_service_boundary(app, root)
     app.add_middleware(
         CORSMiddleware,
         allow_origins=LOCAL_ORIGINS,
-        allow_methods=["GET", "POST"],
+        allow_methods=["GET", "POST", "PATCH", "DELETE"],
         allow_headers=["Content-Type", "Range", "If-Range"],
         expose_headers=["Location", "Link", *SEARCH_HEADERS, "X-ScholarGraph-Recommendation-Reason",
                         "X-ScholarGraph-Dedup-Warning", "X-ScholarGraph-Dedup-Warning-Encoding", "X-ScholarGraph-Dedup-Meta",
@@ -67,12 +75,17 @@ def create_app(*, data_dir=None, pipeline_factory=None):
         allow_credentials=False,
     )
     app.state.repository = repository
+    app.state.workspace = Workspace(repository)
     uploads = UploadService(root, gate, pipeline_factory)
     app.state.uploads = uploads
+    app.state.workspace_tasks = TaskRunner(app.state.workspace)
     app.state.search = SearchService(repository, vector_from_environment(root))
     app.state.arxiv_fetcher = ArxivFetcher(repository, lock=uploads.lock)
     app.state.tracking = TrackingService(repository, app.state.arxiv_fetcher)
-    app.state.tracking_scheduler = TrackingScheduler(app.state.tracking, ScheduleConfig.environment())
+    from .workspace_tracking import WorkspaceTracking
+    app.state.workspace_tracking = WorkspaceTracking(app.state.workspace, app.state.arxiv_fetcher)
+    saved_schedule = app.state.workspace.read('settings', 'tracking')
+    app.state.tracking_scheduler = TrackingScheduler(app.state.workspace_tracking, ScheduleConfig(**saved_schedule) if saved_schedule else ScheduleConfig.environment())
 
     def error_response(code, message, status):
         value = {"error_code": code, "message": message, "details": None}
@@ -188,4 +201,23 @@ def create_app(*, data_dir=None, pipeline_factory=None):
     app.include_router(translation_routes(repository))
     app.include_router(topology_routes(repository))
     app.include_router(tracking_routes())
+    app.include_router(workspace_routes(app.state.workspace))
+    app.include_router(task_routes(app.state.workspace, app.state.workspace_tasks, uploads))
+    from .workspace_translation import translation_task_routes
+    app.include_router(translation_task_routes(app.state.workspace, app.state.workspace_tasks))
+    from .workspace_writing import writing_task_routes
+    app.include_router(writing_task_routes(app.state.workspace, app.state.workspace_tasks))
+    from .workspace_charts import chart_workspace_routes
+    app.include_router(chart_workspace_routes())
+    from .workspace_discovery import discovery_routes
+    app.state.workspace_tasks.fetcher = app.state.arxiv_fetcher
+    app.include_router(discovery_routes(app.state.workspace, app.state.workspace_tasks, app.state.workspace_tracking))
+    from .workspace_structure import structure_routes
+    app.include_router(structure_routes(app.state.workspace))
+    from .workspace_recommendations import recommendation_routes
+    app.include_router(recommendation_routes(app.state.workspace))
+    from .workspace_layout import layout_routes
+    app.include_router(layout_routes(app.state.workspace, app.state.workspace_tasks))
+    from .workspace_formulas import formula_routes
+    app.include_router(formula_routes(app.state.workspace, app.state.workspace_tasks))
     return app

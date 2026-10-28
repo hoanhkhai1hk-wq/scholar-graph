@@ -137,9 +137,17 @@ def units(text, spans):
 
 
 def used_terms(text, glossary):
-    return {source: target for source, target in glossary.items()
-            if re.search(re.escape(source) if re.search(r'[\u3400-\u9fff]',source) else
-                         r'(?<![\w-])' + re.escape(source) + r'(?![\w-])', text, re.I)}
+    # Use the same longest non-overlapping phrases as substitution. A compound
+    # technical term may have an idiomatic translation that does not contain the
+    # standalone translation of every shorter term inside it.
+    if not glossary:
+        return {}
+    canonical = {source.casefold(): source for source in glossary}
+    pattern = '|'.join('(?:' + re.escape(term) + ')' if re.search(r'[\u3400-\u9fff]', term) else
+                       r'(?<![\w-])(?:' + re.escape(term) + r')(?![\w-])'
+                       for term in sorted(glossary, key=len, reverse=True))
+    return {canonical[m.group().casefold()]: glossary[canonical[m.group().casefold()]]
+            for m in re.finditer(pattern, text, re.I)}
 
 
 def term_variants(text):
@@ -326,8 +334,9 @@ def chinese_source(bundle,selected,value):
 
 
 class Translator:
-    def __init__(self, repository, client=None):
+    def __init__(self, repository, client=None, glossary=None):
         self.repository, self.client = repository, client
+        self.glossary = glossary
 
     def translate(self, paper_id, *, scope, target='zh', section_path=None, chunk_ids=None,source_translation=None):
         started = time.monotonic()
@@ -354,6 +363,8 @@ class Translator:
         if target=='en':
             for en,zh in TERMS.items():
                 if re.search(r'[\u3400-\u9fff]',zh): glossary.setdefault(zh,en)
+        if self.glossary:
+            glossary.update(self.glossary)
         prepared,pending=[],[]
         needs_translation=lambda text: bool(re.search(r'[A-Za-z]{2}' if target=='zh' else r'[\u3400-\u9fff]',text))
         for chunk in selected:
@@ -427,6 +438,10 @@ class Translator:
                                     for k in ('source', 'target'))):
                             rejected('术语项格式不合法')
                         source, target_text = term['source'], term['target']
+                        # A single Chinese character is polysemous inside ordinary
+                        # words (e.g. 键 in 关键). It is not a global phrase glossary.
+                        if target == 'en' and re.fullmatch(r'[\u3400-\u9fff]', source):
+                            continue
                         canonical = next((t for t in next_glossary if t.casefold() == source.casefold()), source)
                         if canonical in next_glossary and not term_variants(next_glossary[canonical]).intersection(term_variants(target_text)):
                             rejected('模型试图改写既有术语')

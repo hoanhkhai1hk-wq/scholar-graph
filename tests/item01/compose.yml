@@ -1,0 +1,47 @@
+services:
+  backend:
+    image: ${SG_ITEM01_BACKEND_IMAGE:-scholar-graph-backend:latest}
+    ports: ["127.0.0.1:8040:8000"]
+    environment:
+      SCHOLAR_GRAPH_DATA_DIR: /app/data/records
+      SCHOLAR_GRAPH_QA_MODE: extractive
+      SCHOLAR_GRAPH_DEDUP_MODE: "off"
+      SCHOLAR_GRAPH_TRACKING_ENABLED: "false"
+      SCHOLAR_GRAPH_GROBID_ENABLED: "true"
+      GROBID_URL: http://host.docker.internal:8070
+      SCHOLAR_GRAPH_OCR_CACHE_DIR: /models
+      SCHOLAR_GRAPH_FORMULA_MODEL_DIR: /models/item01-formula/PP-FormulaNet-S_infer
+      SG_DATA_CLASS: acceptance
+    volumes:
+      - type: bind
+        source: ../../backend
+        target: /app/backend
+        read_only: true
+      - type: bind
+        source: ../../contracts
+        target: /app/contracts
+        read_only: true
+      - type: bind
+        source: ${SG_ITEM01_DIR:?Set a new isolated evidence directory}/records
+        target: /app/data/records
+      - type: bind
+        source: ../../data/repair-ocr-model-smoke/models/paddlex
+        target: /models
+    mem_limit: 4g
+    cpus: 4.0
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; assert urllib.request.urlopen('http://127.0.0.1:8000/api/v2/system', timeout=5).status == 200"]
+      interval: 5s
+      timeout: 8s
+      retries: 15
+  frontend:
+    image: ${SG_ITEM01_FRONTEND_IMAGE:-scholar-graph-frontend:latest}
+    ports: ["127.0.0.1:3340:3000"]
+    environment:
+      SG_BACKEND_URL: http://backend:8000
+      NEXT_TELEMETRY_DISABLED: "1"
+    depends_on:
+      backend:
+        condition: service_healthy
+    mem_limit: 1g
+    cpus: 2.0

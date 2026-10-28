@@ -37,7 +37,7 @@ def response_header(response,metadata):
 
 def summary(metadata):
     if metadata is None:return None
-    result={k:v for k,v in metadata.items() if k not in ('reference_matches','discarded_header_values')}
+    result={k:v for k,v in metadata.items() if k not in ('reference_matches','discarded_header_values','author_profiles')}
     if 'reference_matches' in metadata:result['reference_matches_count']=len(metadata['reference_matches'])
     if 'discarded_header_values' in metadata:result['discarded_header_counts']={k:len(v) for k,v in metadata['discarded_header_values'].items()}
     return result

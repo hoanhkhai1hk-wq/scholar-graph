@@ -1,0 +1,28 @@
+{
+  "at": "2026-10-28T07:52:10.304342+00:00",
+  "passed": true,
+  "checks": {
+    "six_test_papers_persisted": true,
+    "both_versions_persisted": true,
+    "version_choice_and_history_persisted": true,
+    "six_source_corrections_persisted": true,
+    "last_page_after_restart": true,
+    "main_library_still_empty": true,
+    "site_icon_http_200": true,
+    "five_public_model_weights_match": true
+  },
+  "isolated_visible_papers": 6,
+  "version_history_count": 3,
+  "main_visible_papers": 0,
+  "images": {
+    "scholar-graph-backend:item01-20261028": "sha256:0f6cbd94a0f5544ec81843e70214be47769b05c3646074dd121f6ce837fc4bbe",
+    "scholar-graph-frontend:item01-20261028": "sha256:41e34ac4ba88434ea2684cf88bf379f1aefcb317a89ec5e46505e4eb9f2a2a0a"
+  },
+  "public_model_sha256": {
+    "en_PP-OCRv5_mobile_rec": "3ec8a97ed6cefe8568d3e2ee90bb193299b566a7661aa4fd52d224b96b59f66b",
+    "PP-OCRv5_mobile_det": "afa1820cb16c1fd0dad589d0f8b389139061c1ef6d68019685fd07be997dda5b",
+    "PP-LCNet_x0_25_textline_ori": "08ee1ce4bcdb30dd4e784862334d1df49d80a600294d75daae4ca4c70bc860e9",
+    "PP-DocLayout-S": "491c3382d84ca04d2033afbee0c105942ed82fea392bb4a19170646adebe088a",
+    "PP-FormulaNet-S": "b6392296d16e2a9f414c0a751d7ccbd1bd9d8272b68aab72df1d3875f35a7489"
+  }
+}

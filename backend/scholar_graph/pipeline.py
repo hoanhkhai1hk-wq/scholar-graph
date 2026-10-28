@@ -87,7 +87,15 @@ class Pipeline:
                 snapshot = Path(temporary) / "source.pdf"
                 snapshot.write_bytes(raw)  # Immutable parser input, not a project contract output.
                 if isinstance(self.engines, LocalEngines) and (ocr_pages or paper['page_count'] > self.limits.text_batch_pages):
-                    bundle = parse_batches(self, snapshot, paper, ocr_pages)
+                    if os.environ.get('SCHOLAR_GRAPH_PERSISTENT_PARSER', 'true').casefold() in ('true', '1'):
+                        with self.engines.session():
+                            try:
+                                bundle = parse_batches(self, snapshot, paper, ocr_pages)
+                            finally:
+                                if self.last_metrics is not None:
+                                    self.last_metrics['engine_session'] = dict(self.engines.session_metrics)
+                    else:
+                        bundle = parse_batches(self, snapshot, paper, ocr_pages)
                     job.move('indexing', '批次已发布；合并参考文献与引用锚点', progress=80)
                 else:
                     native = self.engines.text(snapshot)

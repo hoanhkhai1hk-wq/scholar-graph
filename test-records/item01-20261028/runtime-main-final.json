@@ -1,0 +1,67 @@
+{
+  "started_at": "2026-10-28T07:49:46.314451+00:00",
+  "passed": true,
+  "checks": {
+    "both_services_healthy": true,
+    "backend_dns_172_private": true,
+    "model_configuration_nonempty": true,
+    "backend_system": true,
+    "backend_system_release_and_capabilities": true,
+    "frontend_workspace_proxy": true,
+    "frontend_workspace_proxy_release_and_capabilities": true,
+    "frontend_legacy_proxy": true,
+    "sampled_runtime_source_matches_workspace": true
+  },
+  "services": [
+    {
+      "Service": "backend",
+      "State": "running",
+      "Health": "healthy",
+      "Image": "scholar-graph-backend"
+    },
+    {
+      "Service": "frontend",
+      "State": "running",
+      "Health": "healthy",
+      "Image": "scholar-graph-frontend"
+    }
+  ],
+  "dns": "172.21.0.2      backend",
+  "model_configuration_nonempty": {
+    "DEEPSEEK_API_KEY": true,
+    "DEEPSEEK_MODEL": true
+  },
+  "backend_system": {
+    "http_status": 200,
+    "workspace_release": "20261027-workbench-r2",
+    "qa_mode": "extractive",
+    "model_configured": true
+  },
+  "frontend_workspace_proxy": {
+    "http_status": 200,
+    "workspace_release": "20261027-workbench-r2",
+    "qa_mode": "extractive",
+    "model_configured": true
+  },
+  "frontend_legacy_proxy": {
+    "http_status": 200
+  },
+  "source_hashes": [
+    {
+      "file": "backend/scholar_graph/api.py",
+      "workspace_sha256": "4ea243322a7de364bd3903923aa0bfe1a90def35a7e25a86fa9b9aba72684b17",
+      "container_sha256": "4ea243322a7de364bd3903923aa0bfe1a90def35a7e25a86fa9b9aba72684b17"
+    },
+    {
+      "file": "backend/scholar_graph/workspace.py",
+      "workspace_sha256": "c846514f7cbfa8bd8ee5f3e916ab037375be02835da98a2d29742e4b036db717",
+      "container_sha256": "c846514f7cbfa8bd8ee5f3e916ab037375be02835da98a2d29742e4b036db717"
+    },
+    {
+      "file": "frontend/components/ResearchChat.tsx",
+      "workspace_sha256": "95d76ff301d92d52fa499017963ab983f72d8a12f2f8538f3446dcc4466c4655",
+      "container_sha256": "95d76ff301d92d52fa499017963ab983f72d8a12f2f8538f3446dcc4466c4655"
+    }
+  ],
+  "finished_at": "2026-10-28T07:49:50.470854+00:00"
+}

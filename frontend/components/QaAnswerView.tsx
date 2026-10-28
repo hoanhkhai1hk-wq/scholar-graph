@@ -31,7 +31,7 @@ export default function QaAnswerView({
               : "sg-tag sg-tag--info"
           }
         >
-          {answer.refused ? "拒答 refused=true" : "回答 refused=false"}
+          {answer.refused ? "证据不足，未形成答案" : "依据原文回答"}
         </span>
       </div>
 
@@ -39,7 +39,7 @@ export default function QaAnswerView({
         {answer.refused ? (
           <div>
             <p className="sg-qa__refused-label">
-              系统拒答，以下内容为拒答原因与原文纠错，不是答案：
+              当前材料不足以支持回答，下面说明缺少的证据或原文中的纠正信息：
             </p>
             <p className="sg-prose">{answer.answer}</p>
           </div>
@@ -61,10 +61,10 @@ export default function QaAnswerView({
         </ul>
       )}
 
-      <h4 className="sg-qa__sub">
+      <details className="sg-diag"><summary>数字与原文核对</summary><h4 className="sg-qa__sub">
         数字事实校验 ·{" "}
         <span className={CHECK_TAG[answer.numeric_fact_check.status] ?? "sg-tag"}>
-          {answer.numeric_fact_check.status}
+        {{ passed: "已回溯原文", failed: "核对未通过", unverifiable: "无法核实", not_applicable: "无须核对数字" }[answer.numeric_fact_check.status]}
         </span>
       </h4>
       {answer.numeric_fact_check.checks.length === 0 ? (
@@ -93,9 +93,7 @@ export default function QaAnswerView({
                 <td>
                   {check.evidence.length > 0 ? (
                     check.evidence.map((ev, i) => (
-                      <div key={i} className="sg-mono">
-                        p.{ev.page_number} · {ev.chunk_id}
-                      </div>
+                      <AnchorTag key={i} anchor={ev} />
                     ))
                   ) : (
                     <span className="sg-tag sg-tag--warning">无证据</span>
@@ -106,7 +104,7 @@ export default function QaAnswerView({
             ))}
           </tbody>
         </table>
-      )}
+      )}</details>
     </div>
   );
 }

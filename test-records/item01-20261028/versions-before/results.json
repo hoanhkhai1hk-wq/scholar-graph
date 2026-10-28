@@ -1,0 +1,84 @@
+{
+  "started_at": "2026-10-28T02:10:52.854411+00:00",
+  "phase": "versions",
+  "mode": "real_official_pdf_real_http_pipeline",
+  "passed": true,
+  "uploads": [
+    {
+      "filename": "1706.03762v7.pdf",
+      "input_bytes": 2215244,
+      "sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "progress": [
+        {
+          "elapsed_seconds": 1.547,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "正在解析 1706.03762v7.pdf；取消将在当前文件处理结束后生效"
+          }
+        },
+        {
+          "elapsed_seconds": 28.688,
+          "status": "completed",
+          "progress": {
+            "completed_units": 1,
+            "total_units": 1,
+            "label": "已处理 1 / 1 个文件"
+          }
+        }
+      ],
+      "task_id": "495d272e03f74a5a934896ec0cc832ae",
+      "status": "completed",
+      "elapsed_seconds": 28.688,
+      "error": null,
+      "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "physical_pages": 15,
+      "chunk_count": 175,
+      "empty_physical_pages": [],
+      "all_physical_page_endpoints_accessible": true,
+      "input_sha256_unchanged": true,
+      "dedup_comparisons": 0
+    },
+    {
+      "filename": "1706.03762v1.pdf",
+      "input_bytes": 2128686,
+      "sha256": "0a9bff1be3575cf9fe26a4a3d3a9175bc791ecec90de8b9deba4cff75d2b9476",
+      "progress": [
+        {
+          "elapsed_seconds": 1.406,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "正在解析 1706.03762v1.pdf；取消将在当前文件处理结束后生效"
+          }
+        },
+        {
+          "elapsed_seconds": 18.14,
+          "status": "completed",
+          "progress": {
+            "completed_units": 1,
+            "total_units": 1,
+            "label": "已处理 1 / 1 个文件"
+          }
+        }
+      ],
+      "task_id": "c6a04abae9ae4f098e56c1f99a230478",
+      "status": "completed",
+      "elapsed_seconds": 18.14,
+      "error": null,
+      "paper_id": "paper-0a9bff1be3575cf9fe26a4a3d3a9175bc791ecec90de8b9deba4cff75d2b9476",
+      "physical_pages": 15,
+      "chunk_count": 162,
+      "empty_physical_pages": [],
+      "all_physical_page_endpoints_accessible": true,
+      "input_sha256_unchanged": true,
+      "dedup_comparisons": 1,
+      "recommendation": "keep_old",
+      "similarity": 0.933224
+    }
+  ],
+  "initial_visible_papers": 0,
+  "finished_at": "2026-10-28T02:11:49.631301+00:00"
+}

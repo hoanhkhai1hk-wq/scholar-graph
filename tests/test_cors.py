@@ -10,7 +10,7 @@ def test_local_development_preflight_and_actual_response(tmp_path, origin):
         "Access-Control-Request-Method": "POST", "Access-Control-Request-Headers": "content-type"})
     assert response.status_code == 200
     assert response.headers["access-control-allow-origin"] == origin
-    assert set(response.headers["access-control-allow-methods"].split(", ")) == {"GET", "POST"}
+    assert set(response.headers["access-control-allow-methods"].split(", ")) == {"GET", "POST", "PATCH", "DELETE"}
     response = client.get("/api/v1/papers", headers={"Origin": origin})
     assert response.status_code == 200 and response.headers["access-control-allow-origin"] == origin
     assert "Location" in response.headers["access-control-expose-headers"]

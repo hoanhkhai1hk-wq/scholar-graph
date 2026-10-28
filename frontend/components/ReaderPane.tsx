@@ -82,10 +82,14 @@ export default function ReaderPane({
   chunks,
   references,
   links,
+  onNavigate,
+  onSelection,
 }: {
   chunks: Chunk[];
   references: ReferenceEntry[];
   links: CitationLink[];
+  onNavigate?: (page: number, chunkId: string) => void;
+  onSelection?: (selection: { text: string; page: number; kind: "selection" }) => void;
 }) {
   const chapters = useMemo(() => buildChapters(chunks), [chunks]);
   const [activeRef, setActiveRef] = useState<number | null>(null);
@@ -93,6 +97,7 @@ export default function ReaderPane({
   const [selection, setSelection] = useState("");
   const [selectionChunk, setSelectionChunk] = useState<Chunk | null>(null);
   const chunkRefs = useRef<Record<string, HTMLElement | null>>({});
+  const origins = useRef<Map<number, string>>(new Map());
 
   const refsByNumber = useMemo(() => {
     const map = new Map<number, ReferenceEntry>();
@@ -107,7 +112,8 @@ export default function ReaderPane({
   }, [chunks]);
 
   /** 点正文引用 → 跳到文末条目 */
-  function jumpToReference(number: number) {
+  function jumpToReference(number: number, chunkId?: string) {
+    if (chunkId) origins.current.set(number, chunkId);
     setActiveRef(number);
     setActiveChunk(null);
     const element = document.getElementById(`ref-${number}`);
@@ -118,14 +124,15 @@ export default function ReaderPane({
 
   /** 点文末条目 → 跳回引用它的 Chunk */
   function jumpToCitation(number: number) {
-    const target = links.find((link) => link.citation_number === number);
+    const origin = origins.current.get(number);
+    const target = links.find(link => link.citation_number === number && link.chunk_id === origin) ?? links.find((link) => link.citation_number === number);
     setActiveRef(number);
     if (target) {
       setActiveChunk(target.chunk_id);
       const element = chunkRefs.current[target.chunk_id];
       if (element) {
         element.scrollIntoView({ behavior: "smooth", block: "center" });
-      }
+      } else onNavigate?.(target.page_number, target.chunk_id);
     } else {
       setActiveChunk(null);
     }
@@ -137,6 +144,7 @@ export default function ReaderPane({
     if (!selected) return;
     setSelection(selected);
     setSelectionChunk(chunk);
+    onSelection?.({ text: selected, page: chunk.page_number, kind: "selection" });
   }
 
   return (
@@ -203,10 +211,9 @@ export default function ReaderPane({
 
       <div className="sg-reader__main">
         <div className="sg-note">
-          <span className="sg-tag sg-tag--info">本视图是文本 pane，不是版式原文</span>
+          <span className="sg-tag sg-tag--info">当前页解析文本</span>
           <p className="sg-note__text">
-            这里的阅读材料是已落盘的 Chunk 正文，不是 PDF 版式原文。
-            要看原排版（单栏/双栏以原件为准），请切到顶部的「版式原文（pdf.js）」视图。
+            当前显示该物理页的解析段落。查看原排版请切换到“原版式”；可选中文字进行翻译。
           </p>
         </div>
 
@@ -226,14 +233,13 @@ export default function ReaderPane({
           >
             <header className="sg-chunk__head">
               <span className="sg-mono">p.{chunk.page_number}</span>
-              <span className="sg-mono">{chunk.chunk_id}</span>
-              <span className="sg-tag">{chunk.type}</span>
+              <span className="sg-tag">{{ text: "正文", table: "表格", figure: "图表", formula: "公式" }[chunk.type] ?? chunk.type}</span>
             </header>
             {chunk.section_path.length > 0 ? (
               <p className="sg-mono">{chunk.section_path.join(" / ")}</p>
             ) : null}
             <p className="sg-prose">
-              {renderText(chunk.text, jumpToReference)}
+              {renderText(chunk.text, number => jumpToReference(number, chunk.chunk_id))}
             </p>
           </article>
         ))}
@@ -257,11 +263,9 @@ export default function ReaderPane({
         )}
 
         <div className="sg-note">
-          <span className="sg-tag sg-tag--info">划词不做逐词翻译</span>
+          <span className="sg-tag sg-tag--info">选区翻译</span>
           <p className="sg-note__text">
-            划词只展示原文与所属 Chunk 锚点。翻译端点已落地，但按**整 Chunk**
-            计，不支持字符级选区；要翻译请切到顶部的「中英双语对照」视图，
-            那里可选摘要、章节、整 Chunk 选区与全文四种范围。
+            选中文字后可在浮动选区卡片中翻译；摘要、章节和全文翻译在“双语与翻译”中使用。
           </p>
         </div>
 

@@ -119,11 +119,21 @@ export default function LayoutViewer({
   chunks,
   references,
   links,
+  onPageChange,
+  onSelection,
+  hoverTranslation = false,
+  bibliographyLocations = {},
+  outlineChunks,
 }: {
   paperId: string;
   chunks: Chunk[];
   references: ReferenceEntry[];
   links: CitationLink[];
+  onPageChange?: (page: number) => void;
+  onSelection?: (selection: { text: string; page: number; kind: "selection" | "hover" }) => void;
+  hoverTranslation?: boolean;
+  bibliographyLocations?: Record<string, { page_number: number; chunk_id: string; text: string }>;
+  outlineChunks?: Chunk[];
 }) {
   const [status, setStatus] = useState<"loading" | "ok" | "error">("loading");
   const [message, setMessage] = useState<string | null>(null);
@@ -137,12 +147,19 @@ export default function LayoutViewer({
   const canvasHostRef = useRef<HTMLDivElement>(null);
   const docRef = useRef<PdfDoc | null>(null);
   const renderedRef = useRef<Set<number>>(new Set());
+  const retainedPages = useRef<Set<number>>(new Set());
+  const renderTasks = useRef<Map<number, { cancel: () => void }>>(new Map());
+  const renderPromises = useRef<Map<number, Promise<void>>>(new Map());
   const pageRefs = useRef<Map<number, HTMLElement>>(new Map());
   const refItemRefs = useRef<Map<string, HTMLElement>>(new Map());
   const startRef = useRef<number>(0);
   const firstPaintRef = useRef(false);
+  const restoredRef = useRef(false);
+  const hoverTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const citationOrigin = useRef<Map<string, { page: number; top: number }>>(new Map());
+  const [jumpInput, setJumpInput] = useState("");
 
-  const tree = useMemo(() => buildTree(chunks), [chunks]);
+  const tree = useMemo(() => buildTree(outlineChunks ?? chunks), [outlineChunks, chunks]);
   const chunkById = useMemo(() => {
     const map = new Map<string, Chunk>();
     for (const chunk of chunks) map.set(chunk.chunk_id, chunk);
@@ -182,23 +199,10 @@ export default function LayoutViewer({
         const pdfjs = await import("pdfjs-dist");
         pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
 
-        const response = await fetch(`/api/backend/papers/${paperId}/file`, {
-          headers: { accept: "application/pdf" },
-        });
-        if (!response.ok) {
-          let detail = `HTTP ${response.status}`;
-          try {
-            const parsed = (await response.json()) as { message?: string };
-            if (parsed.message) detail = `${parsed.message}（HTTP ${response.status}）`;
-          } catch {
-            // 保留 HTTP 状态作为说明
-          }
-          throw new Error(detail);
-        }
-        const data = await response.arrayBuffer();
         if (cancelled) return;
-        const task = pdfjs.getDocument({ data });
+        const task = pdfjs.getDocument({ url: `/api/backend/papers/${paperId}/file`, rangeChunkSize: 65536, disableAutoFetch: true, disableStream: true });
         const doc = (await task.promise) as unknown as PdfDoc;
+        if (cancelled) { await doc.destroy(); return; }
         docRef.current = doc;
         setNumPages(doc.numPages);
         setTiming({ load: performance.now() - startRef.current, first: 0 });
@@ -221,6 +225,10 @@ export default function LayoutViewer({
       void docRef.current?.destroy();
       docRef.current = null;
       renderedRef.current.clear();
+      retainedPages.current.clear();
+      for (const task of renderTasks.current.values()) task.cancel();
+      renderTasks.current.clear();
+      if (hoverTimer.current) clearTimeout(hoverTimer.current);
     };
   }, [paperId]);
 
@@ -238,20 +246,35 @@ export default function LayoutViewer({
     const doc = docRef.current;
     if (!element || !doc || element.dataset.measured === "1") return;
     const pdfPage = await doc.getPage(page);
+    if (!retainedPages.current.has(page) || docRef.current !== doc) { await pdfPage.cleanup(); return; }
     const viewport = pdfPage.getViewport({ scale: SCALE });
     const width = element.clientWidth || 700;
     const ratio = viewport.height / viewport.width;
+    element.dataset.pageRatio = String(ratio);
     element.style.minHeight = `${Math.round(width * ratio) + 60}px`;
     element.dataset.measured = "1";
     await pdfPage.cleanup();
   }
 
-  async function renderPage(page: number, host: HTMLElement) {
+  function renderPage(page: number, host: HTMLElement): Promise<void> {
+    const active = renderPromises.current.get(page);
+    if (active) return active.then(() => {
+      // A page can re-enter while its earlier cancelled draw is still settling.
+      // Serialize the new draw after cancellation instead of leaving a blank canvas.
+      if (retainedPages.current.has(page) && host.dataset.rendered !== "true") return renderPage(page, host);
+    });
+    const job = drawPage(page, host).finally(() => renderPromises.current.delete(page));
+    renderPromises.current.set(page, job);
+    return job;
+  }
+
+  async function drawPage(page: number, host: HTMLElement) {
     const doc = docRef.current;
     if (!doc) return;
     const canvas = host.querySelector("canvas");
     if (!canvas) return;
     const pdfPage = await doc.getPage(page);
+    if (!retainedPages.current.has(page) || docRef.current !== doc) { renderedRef.current.delete(page); await pdfPage.cleanup(); return; }
     const viewport = pdfPage.getViewport({ scale: SCALE });
     canvas.width = Math.floor(viewport.width);
     canvas.height = Math.floor(viewport.height);
@@ -259,11 +282,56 @@ export default function LayoutViewer({
     canvas.style.height = "auto";
     const context = canvas.getContext("2d");
     if (!context) {
+      renderedRef.current.delete(page);
       await pdfPage.cleanup();
       return;
     }
-    await pdfPage.render({ canvasContext: context, viewport }).promise;
+    const task = pdfPage.render({ canvasContext: context, viewport });
+    renderTasks.current.set(page, task as typeof task & { cancel: () => void });
+    try { await task.promise; }
+    catch (cause) { renderedRef.current.delete(page); if (!(cause instanceof Error) || cause.name !== "RenderingCancelledException") setLocateNote("该页绘制未完成，请重新定位到此页重试。"); return; }
+    finally { renderTasks.current.delete(page); }
+    if (!retainedPages.current.has(page)) { canvas.width = 0; canvas.height = 0; renderedRef.current.delete(page); await pdfPage.cleanup(); return; }
+    const layer = host.querySelector<HTMLElement>(".sg-pdf-text");
+    if (layer) {
+      const pdfjs = await import("pdfjs-dist");
+      layer.replaceChildren();
+      layer.style.width = `${viewport.width}px`;
+      layer.style.height = `${viewport.height}px`;
+      layer.style.transform = `scale(${canvas.clientWidth / viewport.width})`;
+      layer.style.setProperty("--scale-factor", String(SCALE));
+      await new pdfjs.TextLayer({ textContentSource: await pdfPage.getTextContent() as never, container: layer, viewport: viewport as never }).render();
+      // PDF text runs often split brackets and digits into separate spans.
+      // Map matches back to the original digit glyphs; keep all source text and punctuation.
+      const numbers = new Set((refsOnPage.get(page) ?? []).map(item => item.number));
+      const spans = [...layer.querySelectorAll("span")].filter(span => !span.childElementCount);
+      const runs = spans.map(span => ({ span, text: span.textContent ?? "", start: 0 }));
+      let full = "";
+      for (const run of runs) { run.start = full.length; full += run.text; }
+      const marks: { start: number; end: number; refId: string; number: number }[] = [];
+      for (const match of full.matchAll(/\[\s*\d+(?:\s*[,;–-]\s*\d+)*\s*\]/g)) {
+        for (const token of match[0].matchAll(/\d+/g)) {
+          const number = Number(token[0]), ref = references.find(item => item.number === number);
+          if (ref && numbers.has(number)) marks.push({ start: match.index! + token.index!, end: match.index! + token.index! + token[0].length, refId: ref.ref_id, number });
+        }
+      }
+      for (const run of runs) {
+        const local = marks.filter(mark => mark.start < run.start + run.text.length && mark.end > run.start);
+        if (!local.length) continue;
+        const fragment = document.createDocumentFragment(); let cursor = 0;
+        for (const mark of local) {
+          const start = Math.max(0, mark.start - run.start), end = Math.min(run.text.length, mark.end - run.start);
+          fragment.append(run.text.slice(cursor, start));
+          const button = document.createElement("button"); button.type = "button"; button.textContent = run.text.slice(start, end);
+          button.dataset.referenceId = mark.refId; button.setAttribute("aria-label", `查看参考文献 ${mark.number}`);
+          button.title = `查看参考文献 ${mark.number}`; fragment.append(button); cursor = end;
+        }
+        fragment.append(run.text.slice(cursor)); run.span.replaceChildren(fragment);
+      }
+    }
     await pdfPage.cleanup();
+    if (!retainedPages.current.has(page)) { canvas.width = 0; canvas.height = 0; layer?.replaceChildren(); renderedRef.current.delete(page); return; }
+    host.dataset.rendered = "true";
     if (!firstPaintRef.current) {
       firstPaintRef.current = true;
       setTiming((value) => ({
@@ -281,18 +349,32 @@ export default function LayoutViewer({
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
-          if (!entry.isIntersecting) continue;
+          if (!entry.isIntersecting) {
+            const element = entry.target as HTMLElement;
+            retainedPages.current.delete(Number(element.dataset.page));
+            const canvas = element.querySelector("canvas");
+            if (canvas) {
+              renderTasks.current.get(Number(element.dataset.page))?.cancel();
+              canvas.width = 0; canvas.height = 0;
+              delete element.dataset.rendered;
+              element.querySelector(".sg-pdf-text")?.replaceChildren();
+              renderedRef.current.delete(Number(element.dataset.page));
+            }
+            continue;
+          }
           const element = entry.target as HTMLElement;
           const page = Number(element.dataset.page);
+          retainedPages.current.add(page);
           void (async () => {
             await measurePage(page);
-            if (renderedRef.current.has(page)) return;
+            if (!retainedPages.current.has(page)) return;
+            if (element.dataset.rendered === "true") return;
             renderedRef.current.add(page);
             await renderPage(page, element);
           })();
         }
       },
-      { rootMargin: "600px 0px" },
+      { root: host.closest("[data-document-scroll]"), rootMargin: "600px 0px" },
     );
 
     host.querySelectorAll<HTMLElement>("[data-page]").forEach((element) => {
@@ -306,6 +388,57 @@ export default function LayoutViewer({
 
   useEffect(() => {
     const host = canvasHostRef.current;
+    if (!host || status !== "ok") return;
+    let previousWidth = host.clientWidth;
+    const observer = new ResizeObserver(() => {
+      if (host.clientWidth === previousWidth) return;
+      previousWidth = host.clientWidth;
+      host.querySelectorAll<HTMLElement>("[data-page]").forEach(element => {
+        const canvas = element.querySelector("canvas"), layer = element.querySelector<HTMLElement>(".sg-pdf-text");
+        const ratio = Number(element.dataset.pageRatio || DEFAULT_RATIO);
+        element.style.minHeight = `${Math.round(element.clientWidth * ratio) + 60}px`;
+        if (canvas && canvas.width && layer) layer.style.transform = `scale(${canvas.clientWidth / canvas.width})`;
+      });
+      setHighlight(null);
+    });
+    observer.observe(host); return () => observer.disconnect();
+  }, [status, numPages]);
+
+  useEffect(() => {
+    if (status !== "ok" || !numPages || restoredRef.current) return;
+    restoredRef.current = true;
+    const params = new URLSearchParams(window.location.search);
+    const page = Math.min(numPages, Math.max(1, Number(params.get("page") || localStorage.getItem(`sg.reading.${paperId}`) || 1)));
+    const chunkId = params.get("chunk");
+    if (chunkId) void fetch(`/api/workspace/papers/${paperId}/evidence/${encodeURIComponent(chunkId)}`).then(async response => {
+      if (!response.ok) throw new Error("证据段落未找到，已定位到指定页。");
+      const chunk = await response.json() as Chunk;
+      await locateAndJump(chunk.page_number, [snippetOf(chunk.text)], "答案证据");
+    }).catch(() => { void locateAndJump(page, [], "指定页"); });
+    else if (page > 1) void locateAndJump(page, [], "上次阅读位置");
+  }, [status, numPages, paperId]);
+
+  useEffect(() => {
+    if (status !== "ok") return;
+    onPageChange?.(currentPage);
+    if (restoredRef.current) localStorage.setItem(`sg.reading.${paperId}`, String(currentPage));
+  }, [currentPage, status, paperId, onPageChange]);
+
+  useEffect(() => {
+    const locate = (event: Event) => {
+      const anchor = (event as CustomEvent<{ chunk_id: string; page_number: number }>).detail;
+      void fetch(`/api/workspace/papers/${paperId}/evidence/${encodeURIComponent(anchor.chunk_id)}`).then(async response => {
+        if (!response.ok) throw new Error();
+        const chunk = await response.json() as Chunk;
+        await locateAndJump(chunk.page_number, [snippetOf(chunk.text)], "答案证据");
+      }).catch(() => { void locateAndJump(anchor.page_number, [], "证据页"); });
+    };
+    window.addEventListener("sg:locate", locate);
+    return () => window.removeEventListener("sg:locate", locate);
+  }, [paperId, status]);
+
+  useEffect(() => {
+    const host = canvasHostRef.current;
     if (!host) return;
     const observer = new IntersectionObserver(
       (entries) => {
@@ -314,7 +447,7 @@ export default function LayoutViewer({
           .map((entry) => Number((entry.target as HTMLElement).dataset.page));
         if (visible.length > 0) setCurrentPage(Math.min(...visible));
       },
-      { rootMargin: "-20% 0px -70% 0px" },
+      { root: host.closest("[data-document-scroll]"), rootMargin: "-20% 0px -70% 0px" },
     );
     host.querySelectorAll<HTMLElement>("[data-page]").forEach((element) => {
       observer.observe(element);
@@ -326,8 +459,9 @@ export default function LayoutViewer({
     const element = pageRefs.current.get(page);
     if (!element) return;
     const go = () => {
-      const top = element.getBoundingClientRect().top + window.scrollY + (offsetY || 0) - 90;
-      window.scrollTo({ top: Math.max(0, top), behavior: "auto" });
+      const container = element.closest<HTMLElement>("[data-document-scroll]");
+      if (container) container.scrollTo({ top: element.getBoundingClientRect().top - container.getBoundingClientRect().top + container.scrollTop + (offsetY || 0) - 64, behavior: "auto" });
+      else window.scrollTo({ top: Math.max(0, element.getBoundingClientRect().top + window.scrollY + (offsetY || 0) - 90), behavior: "auto" });
     };
     go();
     requestAnimationFrame(() => {
@@ -357,25 +491,16 @@ export default function LayoutViewer({
     for (const item of items) raw += item.str ?? "";
     let normalized = "";
     const origin: number[] = [];
-    let pendingSpace = false;
     for (let i = 0; i < raw.length; i += 1) {
-      const ch = raw[i];
-      if (/\s/.test(ch)) {
-        if (normalized.length > 0) pendingSpace = true;
-        continue;
+      for (const ch of raw[i].normalize("NFKC").toLowerCase()) {
+        if (/\s|\u00ad/.test(ch)) continue;
+        normalized += ch; origin.push(i);
       }
-      if (pendingSpace) {
-        normalized += " ";
-        origin.push(i);
-        pendingSpace = false;
-      }
-      normalized += ch.toLowerCase();
-      origin.push(i);
     }
 
     let matched: { start: number; end: number } | null = null;
     for (const query of queries) {
-      const needle = query.replace(/\s+/g, " ").trim().toLowerCase();
+      const needle = query.normalize("NFKC").replace(/\s|\u00ad/g, "").toLowerCase();
       if (needle.length < 4) continue;
       const at = normalized.indexOf(needle);
       if (at >= 0) {
@@ -425,10 +550,17 @@ export default function LayoutViewer({
     setLocateNote(null);
     setHighlight(null);
     const element = pageRefs.current.get(page);
-    if (element && !renderedRef.current.has(page)) {
+    // Bring the target into the retained page window before drawing it.
+    scrollToPageOffset(page, 0);
+    if (element) {
+      retainedPages.current.add(page);
       await measurePage(page);
-      renderedRef.current.add(page);
-      await renderPage(page, element);
+      if (!renderedRef.current.has(page) || renderPromises.current.has(page)) {
+        renderedRef.current.add(page); await renderPage(page, element);
+      }
+      if (element.dataset.rendered !== "true") {
+        renderedRef.current.add(page); await renderPage(page, element);
+      }
     }
     const hit = await locateInPage(page, queries);
     if (hit) {
@@ -451,6 +583,14 @@ export default function LayoutViewer({
       setLocateNote("该条没有解析出正文引用位置，无法跳转。");
       return;
     }
+    const origin = citationOrigin.current.get(refId);
+    if (origin) {
+      setCurrentPage(origin.page);
+      const container = canvasHostRef.current?.closest<HTMLElement>("[data-document-scroll]");
+      if (container) container.scrollTo({ top: origin.top, behavior: "smooth" });
+      setLocateNote(`已返回第 ${origin.page} 页刚才的引用位置。`);
+      return;
+    }
     const link = entries[0];
     const chunk = chunkById.get(link.chunk_id);
     void locateAndJump(
@@ -461,9 +601,18 @@ export default function LayoutViewer({
   }
 
   function backToReference(refId: string) {
+    const container = canvasHostRef.current?.closest<HTMLElement>("[data-document-scroll]");
+    citationOrigin.current.set(refId, { page: currentPage, top: container?.scrollTop ?? window.scrollY });
     setActiveRef(refId);
+    const reference = references.find(item => item.ref_id === refId);
+    const location = reference ? bibliographyLocations[String(reference.number)] : undefined;
+    if (location) {
+      void locateAndJump(location.page_number, [snippetOf(location.text)], `参考文献 [${reference?.number}]`);
+      return;
+    }
     const element = refItemRefs.current.get(refId);
     if (element) element.scrollIntoView({ behavior: "smooth", block: "center" });
+    setLocateNote("文末物理位置未提取，已打开文献条目；原文位置已保存，可返回。");
   }
 
   if (status === "loading") {
@@ -542,6 +691,9 @@ export default function LayoutViewer({
           <span className="sg-mono">
             共 {numPages} 页 · 当前第 {currentPage} 页
           </span>
+          <label className="sg-field">跳页<input className="sg-input sg-input--narrow" type="number" min={1} max={numPages ?? 1} value={jumpInput} onChange={event => setJumpInput(event.target.value)} aria-label="跳转页码" /></label>
+          <button className="sg-btn sg-btn--ghost" onClick={() => { const page = Number(jumpInput); if (Number.isInteger(page) && page >= 1 && page <= (numPages ?? 1)) void locateAndJump(page, [], "指定页"); }}>前往</button>
+          {activeRef && citationOrigin.current.has(activeRef) ? <button className="sg-btn sg-btn--ghost" onClick={() => jumpToCitation(activeRef)}>返回刚才引用处</button> : null}
           {timing ? (
             <span className="sg-mono">
               载入 {timing.load.toFixed(0)} ms
@@ -572,7 +724,29 @@ export default function LayoutViewer({
           <p className="sg-mono sg-layout__note">{locateNote}</p>
         ) : null}
 
-        <div className="sg-layout__pages" ref={canvasHostRef}>
+        <div className="sg-layout__pages" ref={canvasHostRef} onClick={event => {
+          const button = (event.target as HTMLElement).closest<HTMLElement>("[data-reference-id]");
+          if (button?.dataset.referenceId) backToReference(button.dataset.referenceId);
+        }} onMouseUp={event => {
+          const selection = window.getSelection();
+          const text = selection?.toString().trim();
+          const host = (event.target as HTMLElement).closest<HTMLElement>("[data-page]");
+          if (text && host && text.length <= 4000) onSelection?.({ text, page: Number(host.dataset.page), kind: "selection" });
+        }} onMouseMove={event => {
+          if (hoverTimer.current) clearTimeout(hoverTimer.current);
+          if (!hoverTranslation || window.getSelection()?.toString().trim()) return;
+          const target = event.target as HTMLElement;
+          if (!target.closest(".sg-pdf-text")) return;
+          const host = target.closest<HTMLElement>("[data-page]");
+          const range = (document as Document & { caretRangeFromPoint?: (x: number, y: number) => Range | null }).caretRangeFromPoint?.(event.clientX, event.clientY);
+          if (!range || !host) return;
+          const text = range.startContainer.textContent ?? "";
+          let left = range.startOffset, right = range.startOffset;
+          while (left > 0 && /[A-Za-z'-]/.test(text[left - 1])) left--;
+          while (right < text.length && /[A-Za-z'-]/.test(text[right])) right++;
+          const word = text.slice(left, right);
+          if (word.length >= 2 && word.length < 60) hoverTimer.current = setTimeout(() => onSelection?.({ text: word, page: Number(host.dataset.page), kind: "hover" }), 800);
+        }} onMouseLeave={() => { if (hoverTimer.current) clearTimeout(hoverTimer.current); }}>
           {Array.from({ length: numPages ?? 0 }, (_, index) => index + 1).map((page) => (
             <section
               key={page}
@@ -587,7 +761,8 @@ export default function LayoutViewer({
             >
               <header className="sg-mono">第 {page} 页</header>
               <div className="sg-pdfpage__stage">
-                <canvas />
+                <canvas width={0} height={0} />
+                <div className="sg-pdf-text" />
                 {highlight && highlight.page === page ? (
                   <span
                     className="sg-pdfpage__hit"
@@ -604,11 +779,11 @@ export default function LayoutViewer({
           ))}
         </div>
 
-        <p className="sg-mono">
+        <details className="sg-diag"><summary>原文显示与定位说明</summary><p className="sg-mono">
           以上为文件端点返回的 PDF 原件逐页渲染（pdf.js），单栏/双栏以原件为准；
           不是解析后的 Markdown，也不重新排版。定位为段落级：在文本层搜到该段文字后滚动
           并高亮；搜不到时退回页首并如实写明。字符级坐标定位未实现。
-        </p>
+        </p></details>
       </div>
     </div>
   );

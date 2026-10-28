@@ -65,9 +65,13 @@ def parse_batches(pipeline, snapshot, paper, ocr_pages):
         partial.mkdir(parents=True, exist_ok=True)
         metrics.update(completed_pages=sorted(completed), failed_pages=failures,
                        published_chunks=len(chunks), indexing_seconds=round(index_seconds, 6))
+        if getattr(engines, '_session_enabled', False):
+            metrics['engine_session'] = dict(engines.session_metrics)
         temporary = checkpoint.with_suffix('.tmp')
         write_json(temporary, metrics)
         windows_retry(lambda: os.replace(temporary, checkpoint))
+        if callable(getattr(pipeline, 'on_page_progress', None)):
+            pipeline.on_page_progress(len(completed), paper['page_count'])
 
     def publish(pages, mode):
         nonlocal batches, index_seconds
@@ -100,10 +104,15 @@ def parse_batches(pipeline, snapshot, paper, ocr_pages):
         return min(seconds, remaining)
 
     def ocr_one(page_index):
+        if callable(getattr(pipeline, 'cancel_requested', None)) and pipeline.cancel_requested():
+            persist()
+            raise PipelineError('PARSE_FAILED', '已停止解析；已完成页和原始输入保留，重试将从检查点恢复。')
         if job.current['status'] == 'parsing':
             job.move('ocr', 'MinerU批次未完成，逐页PaddleOCR兜底')
         try:
             value = engines.ocr(snapshot, [page_index], timeout=timeout(limits.page_timeout))
+            if isinstance(value.get('ocr_metadata'), dict):
+                metrics['ocr_metadata'] = value['ocr_metadata']
             pages = value.get('pages')
             if (not isinstance(pages, list) or len(pages) != 1 or not isinstance(pages[0], dict)
                     or type(pages[0].get('page_idx')) is not int or pages[0]['page_idx'] != page_index or not any(
@@ -119,6 +128,9 @@ def parse_batches(pipeline, snapshot, paper, ocr_pages):
     try:
         cursor = 0
         while cursor < paper['page_count']:
+            if callable(getattr(pipeline, 'cancel_requested', None)) and pipeline.cancel_requested():
+                persist()
+                raise PipelineError('PARSE_FAILED', '已停止解析；已完成页和原始输入保留，重试将从检查点恢复。')
             if cursor + 1 in completed:
                 cursor += 1
                 continue

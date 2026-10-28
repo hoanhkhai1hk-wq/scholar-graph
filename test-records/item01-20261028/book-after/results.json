@@ -1,0 +1,85 @@
+{
+  "started_at": "2026-10-28T03:01:48.291118+00:00",
+  "phase": "book",
+  "mode": "real_official_pdf_real_http_pipeline",
+  "passed": false,
+  "uploads": [
+    {
+      "filename": "UnderstandingDeepLearning_02_09_26_C.pdf",
+      "input_bytes": 22344992,
+      "sha256": "f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32",
+      "progress": [
+        {
+          "elapsed_seconds": 2.266,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "正在解析 UnderstandingDeepLearning_02_09_26_C.pdf；取消将在当前文件处理结束后生效"
+          }
+        },
+        {
+          "elapsed_seconds": 141.797,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "UnderstandingDeepLearning_02_09_26_C.pdf：已解析 1 / 541 页；检查点已保存"
+          }
+        },
+        {
+          "elapsed_seconds": 150.172,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "UnderstandingDeepLearning_02_09_26_C.pdf：已解析 2 / 541 页；检查点已保存"
+          }
+        },
+        {
+          "elapsed_seconds": 164.813,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "UnderstandingDeepLearning_02_09_26_C.pdf：已解析 3 / 541 页；检查点已保存"
+          }
+        },
+        {
+          "elapsed_seconds": 182.625,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "UnderstandingDeepLearning_02_09_26_C.pdf：已解析 4 / 541 页；检查点已保存"
+          }
+        },
+        {
+          "elapsed_seconds": 201.469,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "UnderstandingDeepLearning_02_09_26_C.pdf：已解析 5 / 541 页；检查点已保存"
+          }
+        },
+        {
+          "elapsed_seconds": 218.297,
+          "status": "running",
+          "progress": {
+            "completed_units": 0,
+            "total_units": 1,
+            "label": "UnderstandingDeepLearning_02_09_26_C.pdf：已解析 6 / 541 页；检查点已保存"
+          }
+        }
+      ],
+      "task_id": "cfc4872acbda4167bf234a28e11e4de4"
+    }
+  ],
+  "initial_visible_papers": 3,
+  "error": {
+    "type": "RemoteProtocolError",
+    "message": "Server disconnected without sending a response."
+  },
+  "finished_at": "2026-10-28T03:05:39.557768+00:00"
+}

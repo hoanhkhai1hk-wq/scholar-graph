@@ -1,0 +1,66 @@
+warning: in the working copy of '.gitignore', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/scholar_graph/_engine_worker.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/scholar_graph/adapters.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/scholar_graph/api_repository.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/scholar_graph/api_uploads.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/scholar_graph/arxiv_fetch.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/scholar_graph/batching.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/scholar_graph/citation_cleanup.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/scholar_graph/citation_graph.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/scholar_graph/deepseek_client.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/scholar_graph/graph_service.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/scholar_graph/grobid.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/scholar_graph/grobid_enrichment.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/scholar_graph/grounded_model.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/scholar_graph/normalize.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/scholar_graph/parse_provenance.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/scholar_graph/recommendations.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/scholar_graph/reference_identity.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/scholar_graph/tracking.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/scholar_graph/tracking_scheduler.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/scholar_graph/translation.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend/app/api/backend/[...path]/route.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend/app/layout.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend/components/AnchorTag.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend/components/BilingualPane.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend/components/MarkdownView.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend/components/QaAnswerView.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend/components/ReaderPane.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend/components/SiteNav.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend/components/UploadForm.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend/components/WritingWorkspace.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend/lib/types.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend/next.config.mjs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend/package-lock.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend/package.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend/tsconfig.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'scripts/Dockerfile.local-incremental', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tests/test_api_comparison.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tests/test_cors.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tests/test_page_batches.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tests/test_reference_identity.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tests/test_tracking_scheduler.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tests/verify_proxy_compatibility.cjs', LF will be replaced by CRLF the next time Git touches it
+Traceback (most recent call last):
+  File "D:\AI_Workspace\Tasks\scholar-graph\tests\item01\prepare_source_snapshot.py", line 59, in <module>
+    if __name__=='__main__': main()
+                             ^^^^^^
+  File "D:\AI_Workspace\Tasks\scholar-graph\tests\item01\prepare_source_snapshot.py", line 51, in main
+    with tarfile.open(fileobj=io.BytesIO(archive)) as t: t.extractall(snapshot,filter='data')
+                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\1234\AppData\Roaming\uv\python\cpython-3.12.15-windows-x86_64-none\Lib\tarfile.py", line 2350, in extractall
+    tarinfo, unfiltered = self._get_extract_tarinfo(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\1234\AppData\Roaming\uv\python\cpython-3.12.15-windows-x86_64-none\Lib\tarfile.py", line 2440, in _get_extract_tarinfo
+    self._handle_fatal_error(e)
+  File "C:\Users\1234\AppData\Roaming\uv\python\cpython-3.12.15-windows-x86_64-none\Lib\tarfile.py", line 2438, in _get_extract_tarinfo
+    filtered = filter_function(unfiltered, path)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\1234\AppData\Roaming\uv\python\cpython-3.12.15-windows-x86_64-none\Lib\tarfile.py", line 860, in data_filter
+    new_attrs = _get_filtered_attrs(member, dest_path, True)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\1234\AppData\Roaming\uv\python\cpython-3.12.15-windows-x86_64-none\Lib\tarfile.py", line 772, in _get_filtered_attrs
+    dest_path = os.path.realpath(dest_path, strict=os.path.ALLOW_MISSING)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen ntpath>", line 695, in realpath
+PermissionError: [WinError 5] 拒绝访问。: 'D:\\AI_Workspace\\Tasks\\scholar-graph\\data\\item01-20261028\\source-snapshot-final'

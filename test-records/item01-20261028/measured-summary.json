@@ -1,0 +1,182 @@
+{
+  "book": {
+    "before_seconds": 1225.453,
+    "after_seconds": 226.625,
+    "reduction_percent": 81.507,
+    "physical_pages": 541,
+    "chunks": 6859,
+    "unchanged_frozen_outputs": {
+      "paper-meta.json": true,
+      "chunks.json": true,
+      "reference-entries.json": true,
+      "citation-links.json": true
+    },
+    "before_resources": {
+      "samples": 360,
+      "peak_observed_working_set_mib": 1402.88,
+      "first_sample": "2026-10-28T02:20:42.124266+00:00",
+      "last_sample": "2026-10-28T02:40:56.945397+00:00",
+      "sampling_scope": "Docker working-set samples inside actual task timestamps; not RSS or a continuous maximum"
+    },
+    "after_resources": {
+      "samples": 59,
+      "peak_observed_working_set_mib": 923.0,
+      "first_sample": "2026-10-28T03:10:43.474504+00:00",
+      "last_sample": "2026-10-28T03:14:16.983064+00:00",
+      "sampling_scope": "Docker working-set samples inside actual task timestamps; not RSS or a continuous maximum"
+    },
+    "engine_session": {
+      "requests": 17,
+      "worker_launches": 1
+    }
+  },
+  "reading": {
+    "passed": true,
+    "verified_pages": 571,
+    "last_page": {
+      "True": {
+        "bytes": 1371992,
+        "median_seconds": 0.437,
+        "requests": 3
+      },
+      "False": {
+        "bytes": 11734,
+        "median_seconds": 0.219,
+        "requests": 3
+      }
+    },
+    "bytes_reduction_percent": 99.145
+  },
+  "v1": {
+    "title": "Attention Is All You Need",
+    "author_count": 8,
+    "author_order_source_verified": true,
+    "institutions": [
+      "Google Brain",
+      "Google Research",
+      "University of Toronto"
+    ],
+    "author_profiles_with_email": 8,
+    "author_profiles_with_institution": 7,
+    "source_absent_institution": [
+      "Illia Polosukhin"
+    ],
+    "headings": {
+      "heading_1": [
+        "Abstract",
+        "1 Introduction",
+        "2 Background",
+        "3 Model Architecture",
+        "4 Why Self-Attention",
+        "5 Training",
+        "6 Results",
+        "7 Conclusion",
+        "References",
+        "Attention Visualizations"
+      ],
+      "heading_2": [
+        "3.1 Encoder and Decoder Stacks",
+        "3.2 Attention",
+        "3.3 Position-wise Feed-Forward Networks",
+        "3.4 Embeddings and Softmax",
+        "3.5 Positional Encoding",
+        "5.1 Training Data and Batching",
+        "5.2 Hardware and Schedule",
+        "5.3 Optimizer",
+        "5.4 Regularization",
+        "6.1 Machine Translation",
+        "6.2 Model Variations",
+        "6.3 English Constituency Parsing"
+      ],
+      "heading_3": [
+        "3.2.1 Scaled Dot-Product Attention",
+        "3.2.2 Multi-Head Attention",
+        "3.2.3 Applications of Attention in our Model"
+      ]
+    },
+    "native_type_counts": {
+      "text": 153,
+      "table": 4,
+      "figure": 5,
+      "formula": 0
+    },
+    "reference_count": 36,
+    "supplement_pages": [
+      13,
+      14,
+      15
+    ]
+  },
+  "formula": {
+    "source_sha256": "0a9bff1be3575cf9fe26a4a3d3a9175bc791ecec90de8b9deba4cff75d2b9476",
+    "reviewer": "Codex source-image review; not an independent human evaluation",
+    "source_pages": [
+      3,
+      4,
+      5,
+      7
+    ],
+    "regions": 6,
+    "source_reviewed_corrections": 6,
+    "automatic_semantic_acceptance_passed": false,
+    "observed_machine_errors": [
+      "p0004-r0012: missing or malformed closing expression",
+      "p0007-r0016: model subscript misrecognized"
+    ],
+    "corrections_exercised_in_browser": 1,
+    "corrections_saved_via_real_api": 5,
+    "frozen_json_files": 24,
+    "frozen_json_unchanged": true
+  },
+  "management": {
+    "passed": true,
+    "checks": {
+      "metadata_update_visible": true,
+      "metadata_restored": true,
+      "deleted_from_library": true,
+      "visible_in_recycle_bin": true,
+      "restored_to_library": true,
+      "all_three_version_choices": true,
+      "frozen_files_unchanged_after_management": true,
+      "two_official_files_batch_completed": true
+    },
+    "choices": [
+      {
+        "choice": "keep_old",
+        "visible": [
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+        ],
+        "passed": true
+      },
+      {
+        "choice": "keep_new",
+        "visible": [
+          "paper-0a9bff1be3575cf9fe26a4a3d3a9175bc791ecec90de8b9deba4cff75d2b9476"
+        ],
+        "passed": true
+      },
+      {
+        "choice": "keep_both",
+        "visible": [
+          "paper-0a9bff1be3575cf9fe26a4a3d3a9175bc791ecec90de8b9deba4cff75d2b9476",
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+        ],
+        "passed": true
+      }
+    ],
+    "frozen_file_count": 25,
+    "batch_elapsed_seconds": 66.047,
+    "batch_papers": [
+      {
+        "id": "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7",
+        "file_hash": "c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7",
+        "page_count": 14
+      },
+      {
+        "id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+        "file_hash": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+        "page_count": 16
+      }
+    ]
+  }
+}
