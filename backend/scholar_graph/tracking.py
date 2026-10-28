@@ -92,7 +92,9 @@ class TrackingService:
             run = {"run_id": uuid4().hex, "started_at": utc_now(), "finished_at": None, "status": "running",
                    "duration_seconds": None, "candidate_count": 0, "candidates": [], "queries": [],
                    "imported_count": 0, "duplicate_count": 0, "failed_count": 0, "errors": [],
-                   "cleanup": None, "interval_seconds": interval_seconds, "dedup_record_count": 0}
+                   "cleanup": None, "interval_seconds": interval_seconds, "dedup_record_count": 0,
+                   "query_failed_count": 0, "query_succeeded_count": 0, "discovered_count": 0,
+                   "polling_method": "arxiv_atom_api", "import_budget_basis": "new_download_attempts"}
             start = time.monotonic()
             self.state.run(run)
             try:
@@ -110,6 +112,7 @@ class TrackingService:
                     run["queries"].append(entry)
                     try:
                         papers = self.fetcher.client.search(query["query"], max_candidates)
+                        run['query_succeeded_count'] += 1
                         entry["returned_count"] = len(papers)
                         for paper in papers:
                             identity = base_identity(paper["arxiv_id"])
@@ -124,27 +127,36 @@ class TrackingService:
                                     "metadata": paper, "related_to": [], "outcome": "deferred", "import": None}
                             candidates[identity]["related_to"].append(relation)
                     except PipelineError as error:
+                        run['query_failed_count'] += 1
                         entry["error"] = error.envelope()
                         run["errors"].append({"query": query["query"], **error.envelope()})
                     self.state.run(run)
-                run["candidates"] = list(candidates.values())[:max_candidates]
+                local_arxiv = {base_identity(p['arxiv_id']) for p in self.repository.papers() if p['arxiv_id']}
+                run['discovered_count'] = len(candidates)
+                # Existing papers must not consume the download budget or hide new
+                # candidates merely because a citation query returned them first.
+                run["candidates"] = sorted(candidates.values(), key=lambda c: base_identity(c['arxiv_id']) in local_arxiv)[:max_candidates]
                 run["candidate_count"] = len(run["candidates"])
                 attempts = 0
                 for candidate in run["candidates"]:
-                    if attempts >= max_imports:
+                    known = base_identity(candidate['arxiv_id']) in local_arxiv
+                    if max_imports == 0 or (not known and attempts >= max_imports):
                         continue
-                    attempts += 1
+                    if not known:
+                        attempts += 1
                     result = self.fetcher.fetch_metadata(candidate["metadata"])
                     candidate["import"] = result
                     if not result["succeeded"]:
                         candidate["outcome"] = "failed"
                         run["failed_count"] += 1
+                        run['errors'].append({'arxiv_id':candidate['arxiv_id'], **result['error']})
                     elif result["already_present"]:
                         candidate["outcome"] = "duplicate"
                         run["duplicate_count"] += 1
                     else:
                         candidate["outcome"] = "imported"
                         run["imported_count"] += 1
+                        local_arxiv.add(base_identity(candidate['arxiv_id']))
                     self.state.run(run)
                 run["status"] = "partial" if run["errors"] or run["failed_count"] else "completed"
                 if run["errors"] and not run["candidate_count"]:

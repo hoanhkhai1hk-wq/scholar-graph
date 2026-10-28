@@ -1,0 +1,363 @@
+{
+  "event_id": 2,
+  "profile_id": "local",
+  "seed_paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+  "paper_id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e",
+  "vote": -1,
+  "at": "2026-10-28T15:14:14.019895+00:00",
+  "before": [
+    {
+      "paper_id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e",
+      "rank": 1,
+      "score": 70.85991237766187
+    },
+    {
+      "paper_id": "paper-84801c8410da51b449d379d2fa4939a416123f2c93991077a680f863026022a7",
+      "rank": 2,
+      "score": 32.314225890294644
+    },
+    {
+      "paper_id": "paper-5c74e1db863e2d61b869c9b0603494b34c41fb05db1a4fa7f9a83d5a42b7350f",
+      "rank": 3,
+      "score": 30.75
+    },
+    {
+      "paper_id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+      "rank": 4,
+      "score": 29.91050087468695
+    },
+    {
+      "paper_id": "paper-35acfcc574b37588ac0443ac65c9e2fccf794b24df9cf8522d6df5f09b82119c",
+      "rank": 5,
+      "score": 26.300318195221053
+    },
+    {
+      "paper_id": "paper-6de4937e4a78156e027742aeb047a7163c6ca69888905c9419a6cb356ed5c77c",
+      "rank": 6,
+      "score": 21.955809304931922
+    },
+    {
+      "paper_id": "paper-8e7e90ff0e4a7e88bd867868bde9c7c1eec0a52f1160805992af6c31acd09310",
+      "rank": 7,
+      "score": 21.3147610548505
+    },
+    {
+      "paper_id": "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161",
+      "rank": 8,
+      "score": 21.10158984659784
+    },
+    {
+      "paper_id": "paper-21dd02432f07d9bee1227090f0f64003da5ad2eb8d691b1ab7cfa94c25f23b5d",
+      "rank": 9,
+      "score": 20.817805085254403
+    },
+    {
+      "paper_id": "paper-9c9d8c490c5b87fcea266a7b16d238335372b00ba0a0dacde0e3016f52c0ff01",
+      "rank": 10,
+      "score": 20.58170533570383
+    },
+    {
+      "paper_id": "paper-1cb48e40e523d1994f38211edd30f92b0f01f0a25c2990bc8d84a9b684e95135",
+      "rank": 11,
+      "score": 19.97321049065981
+    },
+    {
+      "paper_id": "paper-8eddaf2a441092955d10aa34a9f2b690aaaecee9097a47693366e0c5b8ff36a0",
+      "rank": 12,
+      "score": 19.95819840597946
+    },
+    {
+      "paper_id": "paper-6ae9257b347f5982f29618fcd774a03b5eb8795881c017f889e90f7956bcb22a",
+      "rank": 13,
+      "score": 19.67559144304076
+    },
+    {
+      "paper_id": "paper-ccdcd1eb8b52dcdf40d716d7ba234e861edb8ea913778b92a1628fbb86158685",
+      "rank": 14,
+      "score": 19.48830023555735
+    },
+    {
+      "paper_id": "paper-5085f14d6a203ec934b512646e1aeed37802fee1e686a9b6a9fa99ca51a13b91",
+      "rank": 15,
+      "score": 19.089127580768285
+    },
+    {
+      "paper_id": "paper-9bc9b63e985a663420ad6dd172ec9353a79a90b16bbf3f15148a6c182dc8aefc",
+      "rank": 16,
+      "score": 18.76221673402885
+    },
+    {
+      "paper_id": "paper-b25dbbcd99230ff10d5e5838bdee2ef065b143b340a416fd878ccca049fd55e1",
+      "rank": 17,
+      "score": 18.303363162415533
+    },
+    {
+      "paper_id": "paper-57567c72c96fc255a98674520460665d013e11a8c77b962b1f90bce443de73d9",
+      "rank": 18,
+      "score": 18.151548857777822
+    },
+    {
+      "paper_id": "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7",
+      "rank": 19,
+      "score": 17.671206205021907
+    },
+    {
+      "paper_id": "paper-a9d6a10bab94667e60a2b52e64aaae0de454e72b39c46bf8b5a8547d31f394eb",
+      "rank": 20,
+      "score": 17.507763336188265
+    },
+    {
+      "paper_id": "paper-38095da0c38496d97fd6970d314b2fc5d0aa6ed3f9c50a1e67f85521af5d9af8",
+      "rank": 21,
+      "score": 16.539411536439
+    },
+    {
+      "paper_id": "paper-df7cd0ccd711c38c23544104311504bb1e200ebf0c354bb942ab4c189d046ef2",
+      "rank": 22,
+      "score": 16.391974516286275
+    },
+    {
+      "paper_id": "paper-8b89211db43f15bd836de3bb710dc61881f2f2439390c9d3f72e8838a4cec542",
+      "rank": 23,
+      "score": 13.918106708928494
+    },
+    {
+      "paper_id": "paper-83618dd2300ce30371320ebcb48db113d642a6a3035697efb2d8655e13aeda08",
+      "rank": 24,
+      "score": 13.01655357680192
+    },
+    {
+      "paper_id": "paper-f86a162404da6e8d6acbdc67878b578ae8ae67385eb14c318ddeef89f11278d6",
+      "rank": 25,
+      "score": 12.860637391244602
+    },
+    {
+      "paper_id": "paper-a5c2cad84e769520e7c66f3193fdd206505e322a2ca801a411581375d2c4b5e2",
+      "rank": 26,
+      "score": 11.506661884145938
+    },
+    {
+      "paper_id": "paper-1e0651b6810ecba34a3dbc5b5b0209226f889004607c1f203540a48d64e5a93a",
+      "rank": 27,
+      "score": 11.499666293324744
+    },
+    {
+      "paper_id": "paper-285fb4323972464ba0be4f7c76a0db1a3cc196d5e44be542152f085d47fe5812",
+      "rank": 28,
+      "score": 11.278223880174455
+    },
+    {
+      "paper_id": "paper-525470e65d6539917b11344a32d344e33eba482de60522b8f2f148dc462a7876",
+      "rank": 29,
+      "score": 11.254933576116164
+    },
+    {
+      "paper_id": "paper-dd1f80c0c4fd67cf9afddac3ec5d3b22bbf02864d04adad53eb286ce53e33ac3",
+      "rank": 30,
+      "score": 11.07475067602331
+    },
+    {
+      "paper_id": "paper-2567713d198a376b65b92f0c60b9f58c8c5f66755530b92203533a17c4ec4b8e",
+      "rank": 31,
+      "score": 9.008476944523503
+    },
+    {
+      "paper_id": "paper-14acb4c846f46646fca07c4b3d2263d509792fe627c8f84a2108a5d0189bab5f",
+      "rank": 32,
+      "score": 8.687749497752007
+    },
+    {
+      "paper_id": "paper-f4e5a6bbbe0d87459997fffe892f8be485e33903cc71f923c2884639fbf96401",
+      "rank": 33,
+      "score": 7.778766046215363
+    },
+    {
+      "paper_id": "paper-eab9c73ae2ceda884b94830bda99312254bac4806f6c9f045cbab90721ecda31",
+      "rank": 34,
+      "score": 7.733906187143362
+    },
+    {
+      "paper_id": "paper-80e30acdfa89bcb41a00c8b221cb9a1dc44256897e75af8762f171ec9dc77b85",
+      "rank": 35,
+      "score": 7.195586181267542
+    }
+  ],
+  "after": [
+    {
+      "paper_id": "paper-84801c8410da51b449d379d2fa4939a416123f2c93991077a680f863026022a7",
+      "rank": 1,
+      "score": 32.314225890294644
+    },
+    {
+      "paper_id": "paper-5c74e1db863e2d61b869c9b0603494b34c41fb05db1a4fa7f9a83d5a42b7350f",
+      "rank": 2,
+      "score": 30.75
+    },
+    {
+      "paper_id": "paper-35acfcc574b37588ac0443ac65c9e2fccf794b24df9cf8522d6df5f09b82119c",
+      "rank": 3,
+      "score": 26.300318195221053
+    },
+    {
+      "paper_id": "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161",
+      "rank": 4,
+      "score": 21.10158984659784
+    },
+    {
+      "paper_id": "paper-21dd02432f07d9bee1227090f0f64003da5ad2eb8d691b1ab7cfa94c25f23b5d",
+      "rank": 5,
+      "score": 20.817805085254403
+    },
+    {
+      "paper_id": "paper-9c9d8c490c5b87fcea266a7b16d238335372b00ba0a0dacde0e3016f52c0ff01",
+      "rank": 6,
+      "score": 20.58170533570383
+    },
+    {
+      "paper_id": "paper-1cb48e40e523d1994f38211edd30f92b0f01f0a25c2990bc8d84a9b684e95135",
+      "rank": 7,
+      "score": 19.97321049065981
+    },
+    {
+      "paper_id": "paper-8eddaf2a441092955d10aa34a9f2b690aaaecee9097a47693366e0c5b8ff36a0",
+      "rank": 8,
+      "score": 19.95819840597946
+    },
+    {
+      "paper_id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+      "rank": 9,
+      "score": 19.91050087468695
+    },
+    {
+      "paper_id": "paper-6ae9257b347f5982f29618fcd774a03b5eb8795881c017f889e90f7956bcb22a",
+      "rank": 10,
+      "score": 19.67559144304076
+    },
+    {
+      "paper_id": "paper-ccdcd1eb8b52dcdf40d716d7ba234e861edb8ea913778b92a1628fbb86158685",
+      "rank": 11,
+      "score": 19.48830023555735
+    },
+    {
+      "paper_id": "paper-5085f14d6a203ec934b512646e1aeed37802fee1e686a9b6a9fa99ca51a13b91",
+      "rank": 12,
+      "score": 19.089127580768285
+    },
+    {
+      "paper_id": "paper-9bc9b63e985a663420ad6dd172ec9353a79a90b16bbf3f15148a6c182dc8aefc",
+      "rank": 13,
+      "score": 18.76221673402885
+    },
+    {
+      "paper_id": "paper-b25dbbcd99230ff10d5e5838bdee2ef065b143b340a416fd878ccca049fd55e1",
+      "rank": 14,
+      "score": 18.303363162415533
+    },
+    {
+      "paper_id": "paper-57567c72c96fc255a98674520460665d013e11a8c77b962b1f90bce443de73d9",
+      "rank": 15,
+      "score": 18.151548857777822
+    },
+    {
+      "paper_id": "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7",
+      "rank": 16,
+      "score": 17.671206205021907
+    },
+    {
+      "paper_id": "paper-a9d6a10bab94667e60a2b52e64aaae0de454e72b39c46bf8b5a8547d31f394eb",
+      "rank": 17,
+      "score": 17.507763336188265
+    },
+    {
+      "paper_id": "paper-6de4937e4a78156e027742aeb047a7163c6ca69888905c9419a6cb356ed5c77c",
+      "rank": 18,
+      "score": 14.263501612624228
+    },
+    {
+      "paper_id": "paper-8e7e90ff0e4a7e88bd867868bde9c7c1eec0a52f1160805992af6c31acd09310",
+      "rank": 19,
+      "score": 12.98142772151717
+    },
+    {
+      "paper_id": "paper-a5c2cad84e769520e7c66f3193fdd206505e322a2ca801a411581375d2c4b5e2",
+      "rank": 20,
+      "score": 11.506661884145938
+    },
+    {
+      "paper_id": "paper-285fb4323972464ba0be4f7c76a0db1a3cc196d5e44be542152f085d47fe5812",
+      "rank": 21,
+      "score": 11.278223880174455
+    },
+    {
+      "paper_id": "paper-525470e65d6539917b11344a32d344e33eba482de60522b8f2f148dc462a7876",
+      "rank": 22,
+      "score": 11.254933576116164
+    },
+    {
+      "paper_id": "paper-dd1f80c0c4fd67cf9afddac3ec5d3b22bbf02864d04adad53eb286ce53e33ac3",
+      "rank": 23,
+      "score": 11.07475067602331
+    },
+    {
+      "paper_id": "paper-df7cd0ccd711c38c23544104311504bb1e200ebf0c354bb942ab4c189d046ef2",
+      "rank": 24,
+      "score": 10.141974516286275
+    },
+    {
+      "paper_id": "paper-2567713d198a376b65b92f0c60b9f58c8c5f66755530b92203533a17c4ec4b8e",
+      "rank": 25,
+      "score": 9.008476944523503
+    },
+    {
+      "paper_id": "paper-14acb4c846f46646fca07c4b3d2263d509792fe627c8f84a2108a5d0189bab5f",
+      "rank": 26,
+      "score": 8.687749497752007
+    },
+    {
+      "paper_id": "paper-f4e5a6bbbe0d87459997fffe892f8be485e33903cc71f923c2884639fbf96401",
+      "rank": 27,
+      "score": 7.778766046215363
+    },
+    {
+      "paper_id": "paper-eab9c73ae2ceda884b94830bda99312254bac4806f6c9f045cbab90721ecda31",
+      "rank": 28,
+      "score": 7.733906187143362
+    },
+    {
+      "paper_id": "paper-38095da0c38496d97fd6970d314b2fc5d0aa6ed3f9c50a1e67f85521af5d9af8",
+      "rank": 29,
+      "score": 7.44850244552991
+    },
+    {
+      "paper_id": "paper-80e30acdfa89bcb41a00c8b221cb9a1dc44256897e75af8762f171ec9dc77b85",
+      "rank": 30,
+      "score": 7.195586181267542
+    },
+    {
+      "paper_id": "paper-83618dd2300ce30371320ebcb48db113d642a6a3035697efb2d8655e13aeda08",
+      "rank": 31,
+      "score": 4.683220243468588
+    },
+    {
+      "paper_id": "paper-f86a162404da6e8d6acbdc67878b578ae8ae67385eb14c318ddeef89f11278d6",
+      "rank": 32,
+      "score": 4.5273040579112696
+    },
+    {
+      "paper_id": "paper-8b89211db43f15bd836de3bb710dc61881f2f2439390c9d3f72e8838a4cec542",
+      "rank": 33,
+      "score": 3.9181067089284944
+    },
+    {
+      "paper_id": "paper-1e0651b6810ecba34a3dbc5b5b0209226f889004607c1f203540a48d64e5a93a",
+      "rank": 34,
+      "score": 3.1663329599914123
+    },
+    {
+      "paper_id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e",
+      "rank": 35,
+      "score": 0
+    }
+  ],
+  "formula": "base_score = 100*(0.50*content_jaccard + 0.25*local_pagerank + 0.15*recency + 0.10*source_github_link); missing signals contribute 0; score = clamp(base_score + 50 * mean(vote * Jaccard(title_topics(candidate), title_topics(voted_paper))), 0, 100); empty profile adds 0"
+}

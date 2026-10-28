@@ -1,0 +1,25 @@
+{
+  "enabled": true,
+  "frequency": "weekly",
+  "paper_ids": [
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+  ],
+  "max_imports": 1,
+  "runtime": {
+    "enabled": true,
+    "mechanism": "backend_interval",
+    "active": true,
+    "interval_seconds": 604800,
+    "initial_delay_seconds": 15,
+    "max_imports": 1,
+    "run_count": 2,
+    "pid": 1,
+    "last_event": {
+      "event": "scheduler_started",
+      "timestamp": "2026-10-28T15:23:46.626979+00:00",
+      "pid": 1,
+      "interval_seconds": 604800
+    },
+    "stopping": false
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "correction": "原冻结草稿漏将[36]列入直接训练方法；原文5.4明确采用label smoothing。保留草稿分数，不把事后修订结果冒充独立准确率。",
+  "positive_numbers_after_review": [
+    1,
+    2,
+    3,
+    5,
+    9,
+    11,
+    20,
+    24,
+    25,
+    30,
+    31,
+    33,
+    35,
+    36,
+    37,
+    38
+  ],
+  "before": {
+    "top10_precision_against_revised_draft": 0.6,
+    "recall": 0.375,
+    "binary_accuracy_at_top10_cutoff": 0.65,
+    "tp": 6,
+    "fp": 4,
+    "fn": 10,
+    "tn": 20
+  },
+  "after": {
+    "top10_precision_against_revised_draft": 1.0,
+    "recall": 0.625,
+    "binary_accuracy_at_top10_cutoff": 0.85,
+    "tp": 10,
+    "fp": 0,
+    "fn": 6,
+    "tn": 24
+  },
+  "basis": {
+    "anchor": {
+      "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "page_number": 8,
+      "section": [
+        "5 Training",
+        "5.4 Regularization"
+      ],
+      "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00095"
+    },
+    "assessment": "Section 5.4 actual parsed citation [36]. Single reviewer, no external gold labels."
+  }
+}

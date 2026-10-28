@@ -80,7 +80,10 @@ def bibliography_sources(chunks):
         start = len(combined)
         combined += chunk['text'] + '\n'
         spans.append((start, len(combined) - 1, chunk))
-    markers = list(re.finditer(r'\[(\d+|[A-Za-z][A-Za-z0-9+.-]{0,18}\d[A-Za-z0-9+.-]*)\]\s*', combined))
+    # An entry begins at a source line/chunk boundary. A table caption after the
+    # bibliography can still inherit its section, but its inline "PBMT [15]"
+    # must not become a second reference 15 or abort an otherwise valid import.
+    markers = list(re.finditer(r'(?m)^[ \t]*\[(\d+|[A-Za-z][A-Za-z0-9+.-]{0,18}\d[A-Za-z0-9+.-]*)\]\s*', combined))
     symbolic = any(not match[1].isdigit() for match in markers)
     result = []
     if markers:

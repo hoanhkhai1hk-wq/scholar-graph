@@ -1,0 +1,287 @@
+{
+  "services": {
+    "main": {
+      "system": {
+        "api_version": "2.0",
+        "workspace_release": "20261027-workbench-r2",
+        "data_class": "personal",
+        "revision": "workspace",
+        "model_configured": true,
+        "qa_mode": "deepseek",
+        "research_retrieval": "lexical",
+        "tracking_enabled": true,
+        "limits": {
+          "upload_bytes": 52428800,
+          "pages": 2000,
+          "comparison_papers": 10
+        },
+        "capabilities": {
+          "paper_management": true,
+          "version_choice": true,
+          "reading_pages": true,
+          "sessions": true,
+          "translation": true,
+          "generated_writing": true,
+          "author_mapping": true,
+          "layout_regions": true,
+          "tracking_read_only": true,
+          "csv_provenance": true,
+          "translation_snapshots": true
+        }
+      },
+      "web_http_status": 200,
+      "papers": 0,
+      "backend_image": "sha256:5c2ec9da28b1f518455efadd3031ffe70d531431d95376ec4b3e8b8102ed7ac3",
+      "frontend_image": "sha256:1fa5841eeabd8329f8a6718c12fbe0e87c60b1452cde5a45756c118273743e82",
+      "backend_health": "healthy",
+      "dns": "172.21.0.2      backend",
+      "frontend_health": "healthy"
+    },
+    "item04": {
+      "system": {
+        "api_version": "2.0",
+        "workspace_release": "20261027-workbench-r2",
+        "data_class": "acceptance",
+        "revision": "workspace",
+        "model_configured": true,
+        "qa_mode": "deepseek",
+        "research_retrieval": "lexical",
+        "tracking_enabled": true,
+        "limits": {
+          "upload_bytes": 52428800,
+          "pages": 2000,
+          "comparison_papers": 10
+        },
+        "capabilities": {
+          "paper_management": true,
+          "version_choice": true,
+          "reading_pages": true,
+          "sessions": true,
+          "translation": true,
+          "generated_writing": true,
+          "author_mapping": true,
+          "layout_regions": true,
+          "tracking_read_only": true,
+          "csv_provenance": true,
+          "translation_snapshots": true
+        }
+      },
+      "web_http_status": 200,
+      "papers": 37,
+      "backend_image": "sha256:5c2ec9da28b1f518455efadd3031ffe70d531431d95376ec4b3e8b8102ed7ac3",
+      "frontend_image": "sha256:1fa5841eeabd8329f8a6718c12fbe0e87c60b1452cde5a45756c118273743e82",
+      "backend_health": "healthy",
+      "dns": "172.25.0.2      backend"
+    }
+  },
+  "source_checks": [
+    {
+      "project": "main",
+      "file": "backend/scholar_graph/arxiv_fetch.py",
+      "sha256": "7b7d1f9d7207ece1a1d9a903688f8582b0d06f61b36c8710b9e75e02c54ab3a6",
+      "matched": true
+    },
+    {
+      "project": "main",
+      "file": "backend/scholar_graph/author_metadata.py",
+      "sha256": "672f5c120b3d612ec5bbeca08ce4ac9ea087b8e579177cf59dd184e0f8d5f33d",
+      "matched": true
+    },
+    {
+      "project": "main",
+      "file": "backend/scholar_graph/normalize.py",
+      "sha256": "638fffba5823f0754c36c55c8719330f82755cb6c221c80d6956d9204478e9b9",
+      "matched": true
+    },
+    {
+      "project": "main",
+      "file": "backend/scholar_graph/reference_identity.py",
+      "sha256": "0254ba6ac51c5c9de81141c215cf0ab09bb5981ee5d26a823f44f1b77de2c5c3",
+      "matched": true
+    },
+    {
+      "project": "main",
+      "file": "backend/scholar_graph/reference_importance.py",
+      "sha256": "a4fda0900e0e2a3839497a4c187efb5bd1588fdeb80676c73814bc5915aa5a2d",
+      "matched": true
+    },
+    {
+      "project": "main",
+      "file": "backend/scholar_graph/reference_acquisition.py",
+      "sha256": "49e5c7011515e01b9de532587a305bd0e7175c26e8308aa6b59271d265b49df0",
+      "matched": true
+    },
+    {
+      "project": "main",
+      "file": "backend/scholar_graph/tracking.py",
+      "sha256": "f385a8b8edec2eac477e048483c770e3bfa5c4ee591bbd3de7b4b0831110de13",
+      "matched": true
+    },
+    {
+      "project": "main",
+      "file": "backend/scholar_graph/workspace_discovery.py",
+      "sha256": "cdb93df3c3721ae47e3c6fa8f37837ed8908598a185209f8ca0536af90c0ff73",
+      "matched": true
+    },
+    {
+      "project": "main",
+      "file": "backend/scholar_graph/workspace_recommendations.py",
+      "sha256": "4dca6861760da259b025c6135c8301fa794e8e1ca139dd71d361a25d5b599737",
+      "matched": true
+    },
+    {
+      "project": "main",
+      "file": "frontend/app/retrieval/page.tsx",
+      "sha256": "86384e3bbcc12a0b1b983c1ad8d67aa8a85e6022b36d812d65303d28d8209394",
+      "matched": true
+    },
+    {
+      "project": "main",
+      "file": "frontend/app/globals.css",
+      "sha256": "b3c8932952c3c36f8d1385ce0c2f70ff6e528944e51d644c665ed3bf9ec30672",
+      "matched": true
+    },
+    {
+      "project": "main",
+      "file": "frontend/components/RetrievalWorkspace.tsx",
+      "sha256": "a53b5772cb81e781c5de683795e9a9889dd211e8777d5176c49e90a62ac4f01d",
+      "matched": true
+    },
+    {
+      "project": "main",
+      "file": "frontend/components/AcquisitionPanel.tsx",
+      "sha256": "a6e99903d1048069ba29f774bc58d50f32966a73f486c65de04f9df14f4ca197",
+      "matched": true
+    },
+    {
+      "project": "main",
+      "file": "frontend/components/RecommendationsPanel.tsx",
+      "sha256": "a94fdd540f91b57af5a33c9e347600f94952c5356316deba5bb4ea7dcbe43070",
+      "matched": true
+    },
+    {
+      "project": "main",
+      "file": "frontend/components/RecommendationVote.tsx",
+      "sha256": "44ca90634616fdb04cd9b26b8eec20513856e689bb43cd3d59a5497d4ded2bf4",
+      "matched": true
+    },
+    {
+      "project": "main",
+      "file": "frontend/components/DiscoveryStatus.tsx",
+      "sha256": "94456c10c45ca05a01975a9c55f2007292b962930eb89895ec014fd6c5302ddd",
+      "matched": true
+    },
+    {
+      "project": "main",
+      "file": "frontend/components/TaskMonitor.tsx",
+      "sha256": "545a961fc0659d1434f3b5c1993478ebd7d5b4fc2b1b8b46519bfd2e29b3e277",
+      "matched": true
+    },
+    {
+      "project": "item04",
+      "file": "backend/scholar_graph/arxiv_fetch.py",
+      "sha256": "7b7d1f9d7207ece1a1d9a903688f8582b0d06f61b36c8710b9e75e02c54ab3a6",
+      "matched": true
+    },
+    {
+      "project": "item04",
+      "file": "backend/scholar_graph/author_metadata.py",
+      "sha256": "672f5c120b3d612ec5bbeca08ce4ac9ea087b8e579177cf59dd184e0f8d5f33d",
+      "matched": true
+    },
+    {
+      "project": "item04",
+      "file": "backend/scholar_graph/normalize.py",
+      "sha256": "638fffba5823f0754c36c55c8719330f82755cb6c221c80d6956d9204478e9b9",
+      "matched": true
+    },
+    {
+      "project": "item04",
+      "file": "backend/scholar_graph/reference_identity.py",
+      "sha256": "0254ba6ac51c5c9de81141c215cf0ab09bb5981ee5d26a823f44f1b77de2c5c3",
+      "matched": true
+    },
+    {
+      "project": "item04",
+      "file": "backend/scholar_graph/reference_importance.py",
+      "sha256": "a4fda0900e0e2a3839497a4c187efb5bd1588fdeb80676c73814bc5915aa5a2d",
+      "matched": true
+    },
+    {
+      "project": "item04",
+      "file": "backend/scholar_graph/reference_acquisition.py",
+      "sha256": "49e5c7011515e01b9de532587a305bd0e7175c26e8308aa6b59271d265b49df0",
+      "matched": true
+    },
+    {
+      "project": "item04",
+      "file": "backend/scholar_graph/tracking.py",
+      "sha256": "f385a8b8edec2eac477e048483c770e3bfa5c4ee591bbd3de7b4b0831110de13",
+      "matched": true
+    },
+    {
+      "project": "item04",
+      "file": "backend/scholar_graph/workspace_discovery.py",
+      "sha256": "cdb93df3c3721ae47e3c6fa8f37837ed8908598a185209f8ca0536af90c0ff73",
+      "matched": true
+    },
+    {
+      "project": "item04",
+      "file": "backend/scholar_graph/workspace_recommendations.py",
+      "sha256": "4dca6861760da259b025c6135c8301fa794e8e1ca139dd71d361a25d5b599737",
+      "matched": true
+    },
+    {
+      "project": "item04",
+      "file": "frontend/app/retrieval/page.tsx",
+      "sha256": "86384e3bbcc12a0b1b983c1ad8d67aa8a85e6022b36d812d65303d28d8209394",
+      "matched": true
+    },
+    {
+      "project": "item04",
+      "file": "frontend/app/globals.css",
+      "sha256": "b3c8932952c3c36f8d1385ce0c2f70ff6e528944e51d644c665ed3bf9ec30672",
+      "matched": true
+    },
+    {
+      "project": "item04",
+      "file": "frontend/components/RetrievalWorkspace.tsx",
+      "sha256": "a53b5772cb81e781c5de683795e9a9889dd211e8777d5176c49e90a62ac4f01d",
+      "matched": true
+    },
+    {
+      "project": "item04",
+      "file": "frontend/components/AcquisitionPanel.tsx",
+      "sha256": "a6e99903d1048069ba29f774bc58d50f32966a73f486c65de04f9df14f4ca197",
+      "matched": true
+    },
+    {
+      "project": "item04",
+      "file": "frontend/components/RecommendationsPanel.tsx",
+      "sha256": "a94fdd540f91b57af5a33c9e347600f94952c5356316deba5bb4ea7dcbe43070",
+      "matched": true
+    },
+    {
+      "project": "item04",
+      "file": "frontend/components/RecommendationVote.tsx",
+      "sha256": "44ca90634616fdb04cd9b26b8eec20513856e689bb43cd3d59a5497d4ded2bf4",
+      "matched": true
+    },
+    {
+      "project": "item04",
+      "file": "frontend/components/DiscoveryStatus.tsx",
+      "sha256": "94456c10c45ca05a01975a9c55f2007292b962930eb89895ec014fd6c5302ddd",
+      "matched": true
+    },
+    {
+      "project": "item04",
+      "file": "frontend/components/TaskMonitor.tsx",
+      "sha256": "545a961fc0659d1434f3b5c1993478ebd7d5b4fc2b1b8b46519bfd2e29b3e277",
+      "matched": true
+    }
+  ],
+  "official_pdf_count": 41,
+  "official_pdfs_unchanged": true,
+  "source_files_matched": 34,
+  "passed": true
+}

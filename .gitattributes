@@ -5,3 +5,4 @@ test-records/item01-20261028/**/*.log -text -whitespace
 # Code and the authored report keep the normal whitespace checks.
 test-records/item02-20261028/** -text -whitespace
 test-records/item03-20261028/** -text -whitespace
+test-records/item04-20261028/** -text -whitespace

@@ -91,6 +91,7 @@ class ArxivClient:
     def _bytes(self, url, *, params=None, maximum):
         # Fixed public hosts; no arbitrary URLs, API keys, credentials, or implicit redirects.
         throttled = 0
+        transient_retries = 0
         for _ in range(5):
             parsed = urlparse(url)
             if parsed.scheme != "https" or parsed.hostname not in {"arxiv.org", "export.arxiv.org"} or parsed.username or parsed.password:
@@ -109,6 +110,9 @@ class ArxivClient:
                                 params = None
                                 continue
                             if response.status_code != 200:
+                                if response.status_code in {500, 502, 503, 504} and self.transport is None and transient_retries < 1:
+                                    transient_retries += 1
+                                    continue
                                 if response.status_code == 429 and self.transport is None:
                                     retry = response.headers.get('retry-after', '')
                                     delay = int(retry) if retry.isdigit() else 10 * (throttled + 1)
@@ -129,6 +133,9 @@ class ArxivClient:
                 except PipelineError:
                     raise
                 except Exception:
+                    if self.transport is None and transient_retries < 1:
+                        transient_retries += 1
+                        continue
                     raise PipelineError("UPSTREAM_ERROR", "arXiv 公共接口连接失败，未编造记录。") from None
         raise PipelineError("UPSTREAM_ERROR", "arXiv 重定向次数超限。")
 

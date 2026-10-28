@@ -60,7 +60,8 @@ def citation_links(chunks: list[dict], references: list[dict]) -> list[dict]:
             cited.update(numbers & by_number.keys())
         cited.update(ref['number'] for ref, _ in match_author_year(chunk['text']))
         for marker in re.findall(r'\[([^\]\n]{1,150})\]', chunk['text']):
-            cited.update(by_marker[token.strip()] for token in re.split(r'[,;]', marker) if token.strip() in by_marker)
+            cited.update(by_marker[token.strip()] for token in re.split(r'[,;]', marker)
+                         if token.strip() in by_marker and by_marker[token.strip()] in by_number)
         for number in sorted(cited):
             key = (chunk["chunk_id"], number)
             if key in seen:

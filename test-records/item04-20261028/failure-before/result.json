@@ -1,0 +1,23 @@
+{
+  "fault": "Actual httpx outbound TCP connection to closed proxy 127.0.0.1:9; no response mocking",
+  "task_id": "e3c0f7b8724a470c806fb3cbba8c415c",
+  "outer_status": "completed",
+  "tracking_status": "failed",
+  "query_count": 2,
+  "errors": [
+    {
+      "query": "all:\"attention\"",
+      "error_code": "UPSTREAM_ERROR",
+      "message": "arXiv 公共接口连接失败，未编造记录。",
+      "details": null
+    },
+    {
+      "query": "ti:\"Neural machine translation by jointly learning to align and translate\"",
+      "error_code": "UPSTREAM_ERROR",
+      "message": "arXiv 公共接口连接失败，未编造记录。",
+      "details": null
+    }
+  ],
+  "elapsed_seconds": 4.641,
+  "passed": false
+}

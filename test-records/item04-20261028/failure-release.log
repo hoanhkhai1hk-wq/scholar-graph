@@ -1,0 +1,4 @@
+{"task_id": "5be52fe34b27433c8adf3a08d2a403c5", "elapsed_seconds": 0.062, "state": ["queued", 0, "等待处理"]}
+{"task_id": "5be52fe34b27433c8adf3a08d2a403c5", "elapsed_seconds": 1.094, "state": ["running", 0, "正在按原文主题检索新论文；当前公开接口请求结束后响应停止"]}
+{"task_id": "5be52fe34b27433c8adf3a08d2a403c5", "elapsed_seconds": 10.594, "state": ["failed", 1, "本次论文发现已结束，真实候选、重复和失败已记录"]}
+{"fault": "Actual httpx outbound TCP connection to closed proxy 127.0.0.1:9; no response mocking", "task_id": "5be52fe34b27433c8adf3a08d2a403c5", "outer_status": "failed", "tracking_status": "failed", "query_count": 2, "errors": [{"query": "all:\"attention\"", "error_code": "UPSTREAM_ERROR", "message": "arXiv 公共接口连接失败，未编造记录。", "details": null}, {"query": "ti:\"Neural machine translation by jointly learning to align and translate\"", "error_code": "UPSTREAM_ERROR", "message": "arXiv 公共接口连接失败，未编造记录。", "details": null}], "elapsed_seconds": 10.813, "passed": true}

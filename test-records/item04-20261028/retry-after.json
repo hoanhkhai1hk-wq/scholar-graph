@@ -1,0 +1,530 @@
+{
+  "id": "08cb1f43863345d8b6438c400476eb32",
+  "kind": "acquisition",
+  "status": "partial",
+  "created_at": "2026-10-28T15:00:24.995504+00:00",
+  "started_at": "2026-10-28T15:00:25.108131+00:00",
+  "finished_at": "2026-10-28T15:02:58.688521+00:00",
+  "cancel_requested": false,
+  "progress": {
+    "completed_units": 11,
+    "total_units": 11,
+    "label": "已处理 11 / 11 项"
+  },
+  "result": {
+    "succeeded": [
+      {
+        "paper_id": "paper-285fb4323972464ba0be4f7c76a0db1a3cc196d5e44be542152f085d47fe5812",
+        "filename": "Google's neural machine translation system: Bridging the gap between human and machine translation",
+        "already_present": false
+      },
+      {
+        "paper_id": "paper-83618dd2300ce30371320ebcb48db113d642a6a3035697efb2d8655e13aeda08",
+        "filename": "A decomposable attention model",
+        "already_present": false
+      },
+      {
+        "paper_id": "paper-1e0651b6810ecba34a3dbc5b5b0209226f889004607c1f203540a48d64e5a93a",
+        "filename": "Deep residual learning for image recognition",
+        "already_present": false
+      }
+    ],
+    "failed": [
+      {
+        "filename": "Gradient flow in recurrent nets: the difficulty of learning long-term dependencies",
+        "error_code": "PAPER_NOT_FOUND",
+        "message": "arXiv 未找到唯一匹配论文；未选取相似标题冒充结果。",
+        "details": null
+      },
+      {
+        "filename": "Learning accurate, compact, and interpretable tree annotation",
+        "error_code": "PAPER_NOT_FOUND",
+        "message": "arXiv 未找到唯一匹配论文；未选取相似标题冒充结果。",
+        "details": null
+      },
+      {
+        "filename": "Long short-term memory",
+        "error_code": "PAPER_NOT_FOUND",
+        "message": "arXiv 未找到唯一匹配论文；未选取相似标题冒充结果。",
+        "details": null
+      },
+      {
+        "filename": "Self-training PCFG grammars with latent annotations across languages",
+        "error_code": "PAPER_NOT_FOUND",
+        "message": "arXiv 未找到唯一匹配论文；未选取相似标题冒充结果。",
+        "details": null
+      },
+      {
+        "filename": "Building a large annotated corpus of english: The penn treebank",
+        "error_code": "PAPER_NOT_FOUND",
+        "message": "arXiv 未找到唯一匹配论文；未选取相似标题冒充结果。",
+        "details": null
+      },
+      {
+        "filename": "Effective self-training for parsing",
+        "error_code": "PAPER_NOT_FOUND",
+        "message": "arXiv 未找到唯一匹配论文；未选取相似标题冒充结果。",
+        "details": null
+      },
+      {
+        "filename": "Dropout: a simple way to prevent neural networks from overfitting",
+        "error_code": "PAPER_NOT_FOUND",
+        "message": "arXiv 未找到唯一匹配论文；未选取相似标题冒充结果。",
+        "details": null
+      },
+      {
+        "filename": "Fast and accurate shift-reduce constituent parsing",
+        "error_code": "PAPER_NOT_FOUND",
+        "message": "arXiv 未找到唯一匹配论文；未选取相似标题冒充结果。",
+        "details": null
+      }
+    ],
+    "items": [
+      {
+        "name": "Google's neural machine translation system: Bridging the gap between human and machine translation",
+        "succeeded": true,
+        "metadata": {
+          "schema_version": "1.0.0",
+          "id": "arxiv-1609.08144v2",
+          "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation",
+          "authors": [
+            "Yonghui Wu",
+            "Mike Schuster",
+            "Zhifeng Chen",
+            "Quoc V. Le",
+            "Mohammad Norouzi",
+            "Wolfgang Macherey",
+            "Maxim Krikun",
+            "Yuan Cao",
+            "Qin Gao",
+            "Klaus Macherey",
+            "Jeff Klingner",
+            "Apurva Shah",
+            "Melvin Johnson",
+            "Xiaobing Liu",
+            "Łukasz Kaiser",
+            "Stephan Gouws",
+            "Yoshikiyo Kato",
+            "Taku Kudo",
+            "Hideto Kazawa",
+            "Keith Stevens",
+            "George Kurian",
+            "Nishant Patil",
+            "Wei Wang",
+            "Cliff Young",
+            "Jason Smith",
+            "Jason Riesa",
+            "Alex Rudnick",
+            "Oriol Vinyals",
+            "Greg Corrado",
+            "Macduff Hughes",
+            "Jeffrey Dean"
+          ],
+          "institutions": [],
+          "year": 2016,
+          "source": "https://arxiv.org/abs/1609.08144v2",
+          "arxiv_id": "1609.08144v2",
+          "doi": null,
+          "version": "v2",
+          "file_hash": null,
+          "page_count": null,
+          "has_text_layer": null,
+          "abstract_present": true,
+          "abstract_characters": 1898,
+          "abstract_sha256": "2d597b5c01b418f055cfe4167910b047d80f78810eff1fd91e8662f5eb912b61"
+        },
+        "paper": {
+          "schema_version": "1.0.0",
+          "id": "paper-285fb4323972464ba0be4f7c76a0db1a3cc196d5e44be542152f085d47fe5812",
+          "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation",
+          "authors": [
+            "Yonghui Wu",
+            "Mike Schuster",
+            "Zhifeng Chen",
+            "Quoc V. Le",
+            "Mohammad Norouzi",
+            "Wolfgang Macherey",
+            "Maxim Krikun",
+            "Yuan Cao",
+            "Qin Gao",
+            "Klaus Macherey",
+            "Jeff Klingner",
+            "Apurva Shah",
+            "Melvin Johnson",
+            "Xiaobing Liu",
+            "Łukasz Kaiser",
+            "Stephan Gouws",
+            "Yoshikiyo Kato",
+            "Taku Kudo",
+            "Hideto Kazawa",
+            "Keith Stevens",
+            "George Kurian",
+            "Nishant Patil",
+            "Wei Wang",
+            "Cliff Young",
+            "Jason Smith",
+            "Jason Riesa",
+            "Alex Rudnick",
+            "Oriol Vinyals",
+            "Greg Corrado",
+            "Macduff Hughes",
+            "Jeffrey Dean"
+          ],
+          "institutions": [],
+          "year": 2016,
+          "source": "https://arxiv.org/abs/1609.08144v2",
+          "arxiv_id": "1609.08144v2",
+          "doi": null,
+          "version": "v2",
+          "file_hash": "285fb4323972464ba0be4f7c76a0db1a3cc196d5e44be542152f085d47fe5812",
+          "page_count": 23,
+          "has_text_layer": true,
+          "abstract_present": true,
+          "abstract_characters": 1898,
+          "abstract_sha256": "2d597b5c01b418f055cfe4167910b047d80f78810eff1fd91e8662f5eb912b61"
+        },
+        "initial_parse_status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-285fb4323972464ba0be4f7c76a0db1a3cc196d5e44be542152f085d47fe5812",
+          "status": "queued",
+          "progress": 0,
+          "current_stage": "等待解析",
+          "error_code": null,
+          "error_message": null
+        },
+        "parse_status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-285fb4323972464ba0be4f7c76a0db1a3cc196d5e44be542152f085d47fe5812",
+          "status": "completed",
+          "progress": 100,
+          "current_stage": "四类记录与去重判定已通过校验并发布",
+          "error_code": null,
+          "error_message": null
+        },
+        "error": null,
+        "already_present": false,
+        "dedup": null,
+        "parse_metadata": {
+          "method": "mineru+grobid",
+          "grobid_attempted": true,
+          "grobid_elapsed_seconds": 5.739962,
+          "fallback_reason": null,
+          "grobid_error": null,
+          "paper_fields": [],
+          "references_enriched": 44,
+          "withheld_header_fields": {},
+          "unmatched_grobid_references": 14,
+          "paper_id": "paper-285fb4323972464ba0be4f7c76a0db1a3cc196d5e44be542152f085d47fe5812",
+          "job_id": "job-bfd251a5ce94464eae74864b76a72476",
+          "status": "completed",
+          "reference_matches_count": 44,
+          "discarded_header_counts": {}
+        }
+      },
+      {
+        "name": "Gradient flow in recurrent nets: the difficulty of learning long-term dependencies",
+        "succeeded": false,
+        "metadata": null,
+        "paper": null,
+        "initial_parse_status": null,
+        "parse_status": null,
+        "error": {
+          "error_code": "PAPER_NOT_FOUND",
+          "message": "arXiv 未找到唯一匹配论文；未选取相似标题冒充结果。",
+          "details": null
+        }
+      },
+      {
+        "name": "A decomposable attention model",
+        "succeeded": true,
+        "metadata": {
+          "schema_version": "1.0.0",
+          "id": "arxiv-1606.01933v2",
+          "title": "A Decomposable Attention Model for Natural Language Inference",
+          "authors": [
+            "Ankur P. Parikh",
+            "Oscar Täckström",
+            "Dipanjan Das",
+            "Jakob Uszkoreit"
+          ],
+          "institutions": [],
+          "year": 2016,
+          "source": "https://arxiv.org/abs/1606.01933v2",
+          "arxiv_id": "1606.01933v2",
+          "doi": null,
+          "version": "v2",
+          "file_hash": null,
+          "page_count": null,
+          "has_text_layer": null,
+          "abstract_present": true,
+          "abstract_characters": 539,
+          "abstract_sha256": "bfcd1419b50f09aab526d4c40bea6919174e95f413b760f9b99bf68680ab4aea"
+        },
+        "paper": {
+          "schema_version": "1.0.0",
+          "id": "paper-83618dd2300ce30371320ebcb48db113d642a6a3035697efb2d8655e13aeda08",
+          "title": "A Decomposable Attention Model for Natural Language Inference",
+          "authors": [
+            "Ankur P. Parikh",
+            "Oscar Täckström",
+            "Dipanjan Das",
+            "Jakob Uszkoreit"
+          ],
+          "institutions": [
+            "Jakob Uszkoreit Google Mountain View"
+          ],
+          "year": 2016,
+          "source": "https://arxiv.org/abs/1606.01933v2",
+          "arxiv_id": "1606.01933v2",
+          "doi": null,
+          "version": "v2",
+          "file_hash": "83618dd2300ce30371320ebcb48db113d642a6a3035697efb2d8655e13aeda08",
+          "page_count": 7,
+          "has_text_layer": true,
+          "abstract_present": true,
+          "abstract_characters": 539,
+          "abstract_sha256": "bfcd1419b50f09aab526d4c40bea6919174e95f413b760f9b99bf68680ab4aea"
+        },
+        "initial_parse_status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-83618dd2300ce30371320ebcb48db113d642a6a3035697efb2d8655e13aeda08",
+          "status": "queued",
+          "progress": 0,
+          "current_stage": "等待解析",
+          "error_code": null,
+          "error_message": null
+        },
+        "parse_status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-83618dd2300ce30371320ebcb48db113d642a6a3035697efb2d8655e13aeda08",
+          "status": "completed",
+          "progress": 100,
+          "current_stage": "四类记录与去重判定已通过校验并发布",
+          "error_code": null,
+          "error_message": null
+        },
+        "error": null,
+        "already_present": false,
+        "dedup": null,
+        "parse_metadata": {
+          "method": "mineru+grobid",
+          "grobid_attempted": true,
+          "grobid_elapsed_seconds": 3.628026,
+          "fallback_reason": null,
+          "grobid_error": null,
+          "paper_fields": [
+            "institutions"
+          ],
+          "references_enriched": 0,
+          "withheld_header_fields": {},
+          "unmatched_grobid_references": 14,
+          "paper_id": "paper-83618dd2300ce30371320ebcb48db113d642a6a3035697efb2d8655e13aeda08",
+          "job_id": "job-2c66b97426f3418498312a011ac227d5",
+          "status": "completed",
+          "reference_matches_count": 0,
+          "discarded_header_counts": {}
+        },
+        "reference_resolution": {
+          "method": "unique_title_prefix_all_author_surnames_year",
+          "source_title": "A decomposable attention model",
+          "resolved_title": "A Decomposable Attention Model for Natural Language Inference",
+          "source_year": 2016,
+          "matched_surnames": [
+            "das",
+            "parikh",
+            "täckström",
+            "uszkoreit"
+          ],
+          "candidate_count": 1,
+          "notice": "原参考文献标题为缩写；已以完整作者姓氏集合、年份和唯一标题前缀核对。原引用记录未改写。"
+        }
+      },
+      {
+        "name": "Learning accurate, compact, and interpretable tree annotation",
+        "succeeded": false,
+        "metadata": null,
+        "paper": null,
+        "initial_parse_status": null,
+        "parse_status": null,
+        "error": {
+          "error_code": "PAPER_NOT_FOUND",
+          "message": "arXiv 未找到唯一匹配论文；未选取相似标题冒充结果。",
+          "details": null
+        }
+      },
+      {
+        "name": "Deep residual learning for image recognition",
+        "succeeded": true,
+        "metadata": {
+          "schema_version": "1.0.0",
+          "id": "arxiv-1512.03385v1",
+          "title": "Deep Residual Learning for Image Recognition",
+          "authors": [
+            "Kaiming He",
+            "Xiangyu Zhang",
+            "Shaoqing Ren",
+            "Jian Sun"
+          ],
+          "institutions": [],
+          "year": 2015,
+          "source": "https://arxiv.org/abs/1512.03385v1",
+          "arxiv_id": "1512.03385v1",
+          "doi": null,
+          "version": "v1",
+          "file_hash": null,
+          "page_count": null,
+          "has_text_layer": null,
+          "abstract_present": true,
+          "abstract_characters": 1287,
+          "abstract_sha256": "37cc294d52ef0292a0955214d189cb62b98a5073ae213897a00dcf94c132cbfc"
+        },
+        "paper": {
+          "schema_version": "1.0.0",
+          "id": "paper-1e0651b6810ecba34a3dbc5b5b0209226f889004607c1f203540a48d64e5a93a",
+          "title": "Deep Residual Learning for Image Recognition",
+          "authors": [
+            "Kaiming He",
+            "Xiangyu Zhang",
+            "Shaoqing Ren",
+            "Jian Sun"
+          ],
+          "institutions": [
+            "Microsoft Research"
+          ],
+          "year": 2015,
+          "source": "https://arxiv.org/abs/1512.03385v1",
+          "arxiv_id": "1512.03385v1",
+          "doi": null,
+          "version": "v1",
+          "file_hash": "1e0651b6810ecba34a3dbc5b5b0209226f889004607c1f203540a48d64e5a93a",
+          "page_count": 12,
+          "has_text_layer": true,
+          "abstract_present": true,
+          "abstract_characters": 1287,
+          "abstract_sha256": "37cc294d52ef0292a0955214d189cb62b98a5073ae213897a00dcf94c132cbfc"
+        },
+        "initial_parse_status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-1e0651b6810ecba34a3dbc5b5b0209226f889004607c1f203540a48d64e5a93a",
+          "status": "queued",
+          "progress": 0,
+          "current_stage": "等待解析",
+          "error_code": null,
+          "error_message": null
+        },
+        "parse_status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-1e0651b6810ecba34a3dbc5b5b0209226f889004607c1f203540a48d64e5a93a",
+          "status": "completed",
+          "progress": 100,
+          "current_stage": "四类记录与去重判定已通过校验并发布",
+          "error_code": null,
+          "error_message": null
+        },
+        "error": null,
+        "already_present": false,
+        "dedup": null,
+        "parse_metadata": {
+          "method": "mineru+grobid",
+          "grobid_attempted": true,
+          "grobid_elapsed_seconds": 7.314126,
+          "fallback_reason": null,
+          "grobid_error": null,
+          "paper_fields": [
+            "institutions"
+          ],
+          "references_enriched": 50,
+          "withheld_header_fields": {},
+          "unmatched_grobid_references": 0,
+          "paper_id": "paper-1e0651b6810ecba34a3dbc5b5b0209226f889004607c1f203540a48d64e5a93a",
+          "job_id": "job-f836637d7eed41a1858b07529118e265",
+          "status": "completed",
+          "reference_matches_count": 50,
+          "discarded_header_counts": {}
+        }
+      },
+      {
+        "name": "Long short-term memory",
+        "succeeded": false,
+        "metadata": null,
+        "paper": null,
+        "initial_parse_status": null,
+        "parse_status": null,
+        "error": {
+          "error_code": "PAPER_NOT_FOUND",
+          "message": "arXiv 未找到唯一匹配论文；未选取相似标题冒充结果。",
+          "details": null
+        }
+      },
+      {
+        "name": "Self-training PCFG grammars with latent annotations across languages",
+        "succeeded": false,
+        "metadata": null,
+        "paper": null,
+        "initial_parse_status": null,
+        "parse_status": null,
+        "error": {
+          "error_code": "PAPER_NOT_FOUND",
+          "message": "arXiv 未找到唯一匹配论文；未选取相似标题冒充结果。",
+          "details": null
+        }
+      },
+      {
+        "name": "Building a large annotated corpus of english: The penn treebank",
+        "succeeded": false,
+        "metadata": null,
+        "paper": null,
+        "initial_parse_status": null,
+        "parse_status": null,
+        "error": {
+          "error_code": "PAPER_NOT_FOUND",
+          "message": "arXiv 未找到唯一匹配论文；未选取相似标题冒充结果。",
+          "details": null
+        }
+      },
+      {
+        "name": "Effective self-training for parsing",
+        "succeeded": false,
+        "metadata": null,
+        "paper": null,
+        "initial_parse_status": null,
+        "parse_status": null,
+        "error": {
+          "error_code": "PAPER_NOT_FOUND",
+          "message": "arXiv 未找到唯一匹配论文；未选取相似标题冒充结果。",
+          "details": null
+        }
+      },
+      {
+        "name": "Dropout: a simple way to prevent neural networks from overfitting",
+        "succeeded": false,
+        "metadata": null,
+        "paper": null,
+        "initial_parse_status": null,
+        "parse_status": null,
+        "error": {
+          "error_code": "PAPER_NOT_FOUND",
+          "message": "arXiv 未找到唯一匹配论文；未选取相似标题冒充结果。",
+          "details": null
+        }
+      },
+      {
+        "name": "Fast and accurate shift-reduce constituent parsing",
+        "succeeded": false,
+        "metadata": null,
+        "paper": null,
+        "initial_parse_status": null,
+        "parse_status": null,
+        "error": {
+          "error_code": "PAPER_NOT_FOUND",
+          "message": "arXiv 未找到唯一匹配论文；未选取相似标题冒充结果。",
+          "details": null
+        }
+      }
+    ],
+    "succeeded_count": 3,
+    "failed_count": 8,
+    "duplicate_count": 0
+  },
+  "error": null
+}

@@ -1,0 +1,172 @@
+{
+  "http_status": 200,
+  "seconds": 6.016,
+  "source_record_unchanged": true,
+  "view": {
+    "paper": {
+      "schema_version": "1.0.0",
+      "id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e",
+      "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "authors": [
+        "Jacob Devlin",
+        "Ming-Wei Chang",
+        "Kenton Lee",
+        "Kristina Toutanova"
+      ],
+      "institutions": [
+        "Google AI Language"
+      ],
+      "year": 2018,
+      "source": "https://arxiv.org/abs/1810.04805v2",
+      "arxiv_id": "1810.04805v2",
+      "doi": null,
+      "version": "v2",
+      "file_hash": "5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e",
+      "page_count": 16,
+      "has_text_layer": true,
+      "abstract_present": true,
+      "abstract_characters": 1062,
+      "abstract_sha256": "a258abc223b04cacc9fd6c8ee9c1b265e83c4e1f8bb57765083b3aedbef4d7ba"
+    },
+    "original": {
+      "schema_version": "1.0.0",
+      "id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e",
+      "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "authors": [
+        "Jacob Devlin",
+        "Ming-Wei Chang",
+        "Kenton Lee",
+        "Kristina Toutanova"
+      ],
+      "institutions": [],
+      "year": 2018,
+      "source": "https://arxiv.org/abs/1810.04805v2",
+      "arxiv_id": "1810.04805v2",
+      "doi": null,
+      "version": "v2",
+      "file_hash": "5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e",
+      "page_count": 16,
+      "has_text_layer": true,
+      "abstract_present": true,
+      "abstract_characters": 1022,
+      "abstract_sha256": "fea4dc857ec30fd8b2745acffd87789b1e45a94f868b559d025883eea462fcb1"
+    },
+    "archived": false,
+    "year_source": "metadata",
+    "hidden_version": false,
+    "updated_at": "2026-10-28T15:09:19.289806+00:00",
+    "missing_fields": [],
+    "source": "grobid_enrichment_source_matched",
+    "author_profiles": [
+      {
+        "name": "Jacob Devlin",
+        "institutions": [
+          "Google AI Language"
+        ],
+        "emails": [],
+        "anchors": [
+          {
+            "paper_id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e",
+            "page_number": 1,
+            "section": [],
+            "chunk_id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e-p0001-c00002"
+          },
+          {
+            "paper_id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e",
+            "page_number": 1,
+            "section": [],
+            "chunk_id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e-p0001-c00006"
+          }
+        ],
+        "source": "matched_first_page_contact_block",
+        "missing_fields": [
+          "email"
+        ],
+        "review_status": "source_matched_semantic_review_required",
+        "order": 1
+      },
+      {
+        "name": "Ming-Wei Chang",
+        "institutions": [
+          "Google AI Language"
+        ],
+        "emails": [],
+        "anchors": [
+          {
+            "paper_id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e",
+            "page_number": 1,
+            "section": [],
+            "chunk_id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e-p0001-c00003"
+          },
+          {
+            "paper_id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e",
+            "page_number": 1,
+            "section": [],
+            "chunk_id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e-p0001-c00006"
+          }
+        ],
+        "source": "matched_first_page_contact_block",
+        "missing_fields": [
+          "email"
+        ],
+        "review_status": "source_matched_semantic_review_required",
+        "order": 2
+      },
+      {
+        "name": "Kenton Lee",
+        "institutions": [
+          "Google AI Language"
+        ],
+        "emails": [],
+        "anchors": [
+          {
+            "paper_id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e",
+            "page_number": 1,
+            "section": [],
+            "chunk_id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e-p0001-c00004"
+          },
+          {
+            "paper_id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e",
+            "page_number": 1,
+            "section": [],
+            "chunk_id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e-p0001-c00006"
+          }
+        ],
+        "source": "matched_first_page_contact_block",
+        "missing_fields": [
+          "email"
+        ],
+        "review_status": "source_matched_semantic_review_required",
+        "order": 3
+      },
+      {
+        "name": "Kristina Toutanova",
+        "institutions": [
+          "Google AI Language"
+        ],
+        "emails": [],
+        "anchors": [
+          {
+            "paper_id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e",
+            "page_number": 1,
+            "section": [],
+            "chunk_id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e-p0001-c00005"
+          },
+          {
+            "paper_id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e",
+            "page_number": 1,
+            "section": [],
+            "chunk_id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e-p0001-c00006"
+          }
+        ],
+        "source": "matched_first_page_contact_block",
+        "missing_fields": [
+          "email"
+        ],
+        "review_status": "source_matched_semantic_review_required",
+        "order": 4
+      }
+    ],
+    "filename": null
+  }
+}

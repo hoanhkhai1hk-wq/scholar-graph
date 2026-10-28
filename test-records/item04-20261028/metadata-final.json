@@ -1,0 +1,96 @@
+{
+  "elapsed_seconds": 25.5,
+  "result": {
+    "succeeded": true,
+    "metadata": {
+      "schema_version": "1.0.0",
+      "id": "arxiv-1810.04805v2",
+      "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "authors": [
+        "Jacob Devlin",
+        "Ming-Wei Chang",
+        "Kenton Lee",
+        "Kristina Toutanova"
+      ],
+      "institutions": [],
+      "year": 2018,
+      "source": "https://arxiv.org/abs/1810.04805v2",
+      "arxiv_id": "1810.04805v2",
+      "doi": null,
+      "version": "v2",
+      "file_hash": null,
+      "page_count": null,
+      "has_text_layer": null,
+      "abstract_present": true,
+      "abstract_characters": 1022,
+      "abstract_sha256": "fea4dc857ec30fd8b2745acffd87789b1e45a94f868b559d025883eea462fcb1"
+    },
+    "paper": {
+      "schema_version": "1.0.0",
+      "id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e",
+      "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "authors": [
+        "Jacob Devlin",
+        "Ming-Wei Chang",
+        "Kenton Lee",
+        "Kristina Toutanova"
+      ],
+      "institutions": [
+        "Google AI Language"
+      ],
+      "year": 2018,
+      "source": "https://arxiv.org/abs/1810.04805v2",
+      "arxiv_id": "1810.04805v2",
+      "doi": null,
+      "version": "v2",
+      "file_hash": "5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e",
+      "page_count": 16,
+      "has_text_layer": true,
+      "abstract_present": true,
+      "abstract_characters": 1022,
+      "abstract_sha256": "fea4dc857ec30fd8b2745acffd87789b1e45a94f868b559d025883eea462fcb1"
+    },
+    "initial_parse_status": {
+      "schema_version": "1.1.0",
+      "paper_id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e",
+      "status": "queued",
+      "progress": 0,
+      "current_stage": "等待解析",
+      "error_code": null,
+      "error_message": null
+    },
+    "parse_status": {
+      "schema_version": "1.1.0",
+      "paper_id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e",
+      "status": "completed",
+      "progress": 100,
+      "current_stage": "四类记录与去重判定已通过校验并发布",
+      "error_code": null,
+      "error_message": null
+    },
+    "error": null,
+    "already_present": false,
+    "dedup": null,
+    "parse_metadata": {
+      "method": "mineru+grobid",
+      "grobid_attempted": true,
+      "grobid_elapsed_seconds": 3.703051,
+      "fallback_reason": null,
+      "grobid_error": null,
+      "paper_fields": [],
+      "references_enriched": 31,
+      "withheld_header_fields": {
+        "year": {
+          "candidate": 2019,
+          "reason": "GROBID header日期未区分版本日期与发表年，不自动采用。"
+        }
+      },
+      "unmatched_grobid_references": 24,
+      "paper_id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e",
+      "job_id": "job-c9667bfe4d404f1195640f5d924c715f",
+      "status": "completed",
+      "reference_matches_count": 31,
+      "discarded_header_counts": {}
+    }
+  }
+}

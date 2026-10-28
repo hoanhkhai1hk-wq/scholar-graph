@@ -1,0 +1,42 @@
+{
+  "width": 390,
+  "scrollWidth": 675,
+  "overflow": [
+    {
+      "tag": "LABEL",
+      "cls": "sg-field",
+      "text": "研究主题论文\n请选择论文\nA Structured Self-attentive Sentence Embedding\nStructured",
+      "left": 37,
+      "right": 675,
+      "scroll": 638,
+      "client": 638
+    },
+    {
+      "tag": "SELECT",
+      "cls": "sg-input",
+      "text": "请选择论文\nA Structured Self-attentive Sentence Embedding\nStructured Attent",
+      "left": 37,
+      "right": 675,
+      "scroll": 636,
+      "client": 636
+    },
+    {
+      "tag": "P",
+      "cls": "sg-mono",
+      "text": "",
+      "left": 234,
+      "right": 402.75,
+      "scroll": 169,
+      "client": 169
+    },
+    {
+      "tag": "P",
+      "cls": "sg-mono",
+      "text": "",
+      "left": 234,
+      "right": 402.75,
+      "scroll": 169,
+      "client": 169
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 311B done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/scholar-graph-frontend:item03-20261028
+#2 DONE 0.3s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B 0.0s done
+#3 DONE 0.1s
+
+#4 [1/7] FROM docker.io/library/scholar-graph-frontend:item03-20261028@sha256:6203952cfc70c12114f5d2124d661a624e564855f7d8a290b6e1a380b78235fb
+#4 resolve docker.io/library/scholar-graph-frontend:item03-20261028@sha256:6203952cfc70c12114f5d2124d661a624e564855f7d8a290b6e1a380b78235fb 0.0s done
+#4 DONE 0.1s
+
+#5 [internal] load build context
+#5 transferring context: 6.78MB 0.4s done
+#5 DONE 0.4s
+
+#6 [2/7] WORKDIR /app/frontend
+#6 CACHED
+
+#7 [3/7] COPY --chown=node:node .next/ ./.next/
+#7 DONE 0.2s
+
+#8 [4/7] COPY --chown=node:node app/ ./app/
+#8 DONE 0.1s
+
+#9 [5/7] COPY --chown=node:node components/ ./components/
+#9 DONE 0.1s
+
+#10 [6/7] COPY --chown=node:node lib/ ./lib/
+#10 DONE 0.1s
+
+#11 [7/7] COPY --chown=node:node public/ ./public/
+#11 DONE 0.1s
+
+#12 exporting to image
+#12 exporting layers
+#12 exporting layers 0.4s done
+#12 exporting manifest sha256:58cb0defc69559bde57ce3d276b0320abc00af33ac070df4875dead107aafe3a 0.0s done
+#12 exporting config sha256:315f8116ffec502e1db8e76cd1533f2bbb091e988389f5bb5654ffaae02d5c29 0.0s done
+#12 exporting attestation manifest sha256:2d60b559a54917e00f8506860ac1cd1c4db0e60cb0bdf5e752a1e8262576ebea 0.0s done
+#12 exporting manifest list sha256:b41e3798c6f696cd40f1458408b40d7a2e2fbe9b8bba90c7a1bddbcb6dae2bee
+#12 exporting manifest list sha256:b41e3798c6f696cd40f1458408b40d7a2e2fbe9b8bba90c7a1bddbcb6dae2bee 0.1s done
+#12 naming to docker.io/library/scholar-graph-frontend:item04-20261028 0.1s done
+#12 unpacking to docker.io/library/scholar-graph-frontend:item04-20261028
+#12 unpacking to docker.io/library/scholar-graph-frontend:item04-20261028 0.4s done
+#12 DONE 1.1s
+{"service": "frontend", "tag": "scholar-graph-frontend:item04-20261028", "dependency_base": "scholar-graph-frontend:item03-20261028", "elapsed_seconds": 4.813, "exit_code": 0, "image_id": "sha256:b41e3798c6f696cd40f1458408b40d7a2e2fbe9b8bba90c7a1bddbcb6dae2bee"}

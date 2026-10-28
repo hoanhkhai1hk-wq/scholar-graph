@@ -1,5 +1,4 @@
 """Reference acquisition plans and persistent daily/weekly tracking controls."""
-from collections import Counter
 from typing import Literal
 
 from fastapi import APIRouter, Request
@@ -8,6 +7,8 @@ from pydantic import BaseModel, ConfigDict, Field
 from .errors import PipelineError
 from .tracking_scheduler import ScheduleConfig
 from .tracking_routes import TrackingRequest
+from .reference_importance import rank_references
+from .reference_acquisition import fetch_reference
 
 
 class ReferenceFetch(BaseModel):
@@ -29,13 +30,7 @@ class ScheduleRequest(BaseModel):
 
 
 def reference_plan(workspace, paper_id):
-    bundle = workspace.bundle(paper_id)
-    counts = Counter(link['ref_id'] for link in bundle['citation_links'])
-    return sorted([{'reference': ref, 'importance': counts[ref['ref_id']],
-        'basis': f"该论文中有 {counts[ref['ref_id']]} 个已解析正文段落引用此文献；这是本篇内的引用频次，不是全网引用数。",
-        'citation_chunks': [link['chunk_id'] for link in bundle['citation_links'] if link['ref_id'] == ref['ref_id']],
-        'acquisition_ready': bool(ref['title'] or ref['arxiv_id'] or ref['doi'])} for ref in bundle['reference_entries']],
-        key=lambda row: (-row['importance'], row['reference']['number']))
+    return rank_references(workspace.bundle(paper_id))
 
 
 def discovery_routes(workspace, tasks, tracking_service):
@@ -51,7 +46,7 @@ def discovery_routes(workspace, tasks, tracking_service):
                 break
             name = item.get('title_lookup') or item.get('title') or f"文献 [{item['number']}]"
             runner.progress(identity, index, len(items), '正在查找、下载和解析：' + name[:100])
-            value = fetcher.fetch(title=item['title_lookup']) if 'title_lookup' in item else fetcher.fetch(reference=item)
+            value = fetcher.fetch(title=item['title_lookup']) if 'title_lookup' in item else fetch_reference(fetcher, item)
             results.append({'name': name, **value})
             if value['succeeded']:
                 succeeded.append({'paper_id': value['paper']['id'], 'filename': name, 'already_present': value.get('already_present', False)})
@@ -69,8 +64,11 @@ def discovery_routes(workspace, tasks, tracking_service):
         runner.progress(identity, 0, 1, '正在按原文主题检索新论文；当前公开接口请求结束后响应停止')
         value = tracking_service.run(**parameters)
         runner.progress(identity, 1, 1, '本次论文发现已结束，真实候选、重复和失败已记录')
+        failures = max(value.get('failed_count', 0), len(value.get('errors', [])))
+        if value.get('status') == 'failed':
+            failures = max(1, failures)
         return {'tracking': value, 'succeeded_count': 1 if value.get('status') in ('completed','partial') else 0,
-                'failed_count': value.get('failed_count', 0)}
+                'failed_count': failures}
     tasks.handlers['tracking'] = run_tracking_task
 
     @router.get('/tracking/status')

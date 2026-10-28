@@ -1,0 +1,349 @@
+{
+  "latest_run": {
+    "run_id": "55537ccac3b245d29953a1c89e86e3ec",
+    "started_at": "2026-10-28T15:04:27.042069+00:00",
+    "finished_at": "2026-10-28T15:05:20.315509+00:00",
+    "status": "completed",
+    "duration_seconds": 53.283249,
+    "candidate_count": 3,
+    "candidates": [
+      {
+        "arxiv_id": "2610.37657v1",
+        "title": "Heads of Security: Learned Attention Gates Improve Prompt Injection Robustness",
+        "metadata": {
+          "schema_version": "1.0.0",
+          "id": "arxiv-2610.37657v1",
+          "title": "Heads of Security: Learned Attention Gates Improve Prompt Injection Robustness",
+          "authors": [
+            "Igor Shilov",
+            "Xiaoxue Yang",
+            "Alexander Panfilov",
+            "Evgenii Kortukov",
+            "Matthieu Meeus",
+            "Peter Romov",
+            "Wojciech Samek",
+            "Jonas Geiping",
+            "Yves-Alexandre de Montjoye"
+          ],
+          "institutions": [],
+          "year": 2026,
+          "source": "https://arxiv.org/abs/2610.37657v1",
+          "arxiv_id": "2610.37657v1",
+          "doi": null,
+          "version": "v1",
+          "file_hash": null,
+          "page_count": null,
+          "has_text_layer": null,
+          "abstract_present": true,
+          "abstract_characters": 1595,
+          "abstract_sha256": "16e53885bf75677a296a9a9ad8387cce65eaeafde55a579441a07590afc981a6"
+        },
+        "related_to": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "kind": "topic",
+            "matched_terms": [
+              "attention"
+            ],
+            "reason": "与库内论文主题词重合：attention",
+            "anchor": null,
+            "reference_anchor": null
+          }
+        ],
+        "outcome": "imported",
+        "import": {
+          "succeeded": true,
+          "metadata": {
+            "schema_version": "1.0.0",
+            "id": "arxiv-2610.37657v1",
+            "title": "Heads of Security: Learned Attention Gates Improve Prompt Injection Robustness",
+            "authors": [
+              "Igor Shilov",
+              "Xiaoxue Yang",
+              "Alexander Panfilov",
+              "Evgenii Kortukov",
+              "Matthieu Meeus",
+              "Peter Romov",
+              "Wojciech Samek",
+              "Jonas Geiping",
+              "Yves-Alexandre de Montjoye"
+            ],
+            "institutions": [],
+            "year": 2026,
+            "source": "https://arxiv.org/abs/2610.37657v1",
+            "arxiv_id": "2610.37657v1",
+            "doi": null,
+            "version": "v1",
+            "file_hash": null,
+            "page_count": null,
+            "has_text_layer": null,
+            "abstract_present": true,
+            "abstract_characters": 1595,
+            "abstract_sha256": "16e53885bf75677a296a9a9ad8387cce65eaeafde55a579441a07590afc981a6"
+          },
+          "paper": {
+            "schema_version": "1.0.0",
+            "id": "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161",
+            "title": "Heads of Security: Learned Attention Gates Improve Prompt Injection Robustness",
+            "authors": [
+              "Igor Shilov",
+              "Xiaoxue Yang",
+              "Alexander Panfilov",
+              "Evgenii Kortukov",
+              "Matthieu Meeus",
+              "Peter Romov",
+              "Wojciech Samek",
+              "Jonas Geiping",
+              "Yves-Alexandre de Montjoye"
+            ],
+            "institutions": [
+              "Imperial College London",
+              "Tübingen AI Center",
+              "ELLIS Institute Tübingen",
+              "Max Planck Institute for Intelligent Systems",
+              "Fraunhofer HHI"
+            ],
+            "year": 2026,
+            "source": "https://arxiv.org/abs/2610.37657v1",
+            "arxiv_id": "2610.37657v1",
+            "doi": null,
+            "version": "v1",
+            "file_hash": "75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161",
+            "page_count": 40,
+            "has_text_layer": true,
+            "abstract_present": true,
+            "abstract_characters": 1595,
+            "abstract_sha256": "16e53885bf75677a296a9a9ad8387cce65eaeafde55a579441a07590afc981a6"
+          },
+          "initial_parse_status": {
+            "schema_version": "1.1.0",
+            "paper_id": "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161",
+            "status": "queued",
+            "progress": 0,
+            "current_stage": "等待解析",
+            "error_code": null,
+            "error_message": null
+          },
+          "parse_status": {
+            "schema_version": "1.1.0",
+            "paper_id": "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161",
+            "status": "completed",
+            "progress": 100,
+            "current_stage": "四类记录与去重判定已通过校验并发布",
+            "error_code": null,
+            "error_message": null
+          },
+          "error": null,
+          "already_present": false,
+          "dedup": null,
+          "parse_metadata": {
+            "method": "mineru+grobid",
+            "grobid_attempted": true,
+            "grobid_elapsed_seconds": 10.563244,
+            "fallback_reason": null,
+            "grobid_error": null,
+            "paper_fields": [
+              "institutions"
+            ],
+            "references_enriched": 39,
+            "withheld_header_fields": {},
+            "unmatched_grobid_references": 28,
+            "paper_id": "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161",
+            "job_id": "job-e8c07d30b50f4ab9ab913f222b8a1f45",
+            "status": "completed",
+            "reference_matches_count": 39,
+            "discarded_header_counts": {}
+          }
+        }
+      },
+      {
+        "arxiv_id": "2610.37656v1",
+        "title": "Attention as Lattice Gauge Theory: Relations Interact Only Through Wilson Loops",
+        "metadata": {
+          "schema_version": "1.0.0",
+          "id": "arxiv-2610.37656v1",
+          "title": "Attention as Lattice Gauge Theory: Relations Interact Only Through Wilson Loops",
+          "authors": [
+            "Aakash Sarkar",
+            "Ananya Mukherjee",
+            "Motoshige Sato"
+          ],
+          "institutions": [],
+          "year": 2026,
+          "source": "https://arxiv.org/abs/2610.37656v1",
+          "arxiv_id": "2610.37656v1",
+          "doi": null,
+          "version": "v1",
+          "file_hash": null,
+          "page_count": null,
+          "has_text_layer": null,
+          "abstract_present": true,
+          "abstract_characters": 1645,
+          "abstract_sha256": "d3bffc9d7721dfa8010c42779847805313945cc084bb770a8d551ce206e482d6"
+        },
+        "related_to": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "kind": "topic",
+            "matched_terms": [
+              "attention"
+            ],
+            "reason": "与库内论文主题词重合：attention",
+            "anchor": null,
+            "reference_anchor": null
+          }
+        ],
+        "outcome": "deferred",
+        "import": null
+      },
+      {
+        "arxiv_id": "2610.37645v1",
+        "title": "Multi-State Linear Attention with Generalized Second-Order Routing",
+        "metadata": {
+          "schema_version": "1.0.0",
+          "id": "arxiv-2610.37645v1",
+          "title": "Multi-State Linear Attention with Generalized Second-Order Routing",
+          "authors": [
+            "Hee Seung Hwang",
+            "Sanghyuk Chun",
+            "Xindi Wu",
+            "Olga Russakovsky",
+            "Zhiwei Deng"
+          ],
+          "institutions": [],
+          "year": 2026,
+          "source": "https://arxiv.org/abs/2610.37645v1",
+          "arxiv_id": "2610.37645v1",
+          "doi": null,
+          "version": "v1",
+          "file_hash": null,
+          "page_count": null,
+          "has_text_layer": null,
+          "abstract_present": true,
+          "abstract_characters": 1573,
+          "abstract_sha256": "88349b676cd871da6690501a9c1dd4f89515a1aec1f6224c5e498632f3b425f5"
+        },
+        "related_to": [
+          {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "kind": "topic",
+            "matched_terms": [
+              "attention"
+            ],
+            "reason": "与库内论文主题词重合：attention",
+            "anchor": null,
+            "reference_anchor": null
+          }
+        ],
+        "outcome": "deferred",
+        "import": null
+      }
+    ],
+    "queries": [
+      {
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "query": "all:\"attention\"",
+        "kind": "topic",
+        "terms": [
+          "attention"
+        ],
+        "anchor": null,
+        "returned_count": 3,
+        "error": null
+      },
+      {
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "query": "ti:\"Neural machine translation by jointly learning to align and translate\"",
+        "kind": "citation",
+        "reference": {
+          "schema_version": "1.0.0",
+          "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-2",
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "number": 2,
+          "authors": [
+            "Dzmitry Bahdanau",
+            "Kyunghyun Cho",
+            "Yoshua Bengio"
+          ],
+          "year": 2014,
+          "title": "Neural machine translation by jointly learning to align and translate",
+          "venue": "Neural machine translation by jointly learning to align and translate",
+          "doi": null,
+          "arxiv_id": "1409.0473"
+        },
+        "terms": [
+          "align",
+          "jointly",
+          "learning",
+          "machine",
+          "neural",
+          "translate",
+          "translation"
+        ],
+        "reference_title_excerpt": "Neural machine translation by jointly learning to align and translate",
+        "reference_anchor": null,
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 2,
+          "section": [
+            "1 Introduction"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00016"
+        },
+        "returned_count": 1,
+        "error": null
+      }
+    ],
+    "imported_count": 1,
+    "duplicate_count": 0,
+    "failed_count": 0,
+    "errors": [],
+    "cleanup": {
+      "papers_scanned": 35,
+      "papers_changed": 0,
+      "links_before": 1620,
+      "links_after": 1620,
+      "removed_count": 0,
+      "changes": [],
+      "mode": "read_only_analysis",
+      "unique_links": 1620
+    },
+    "interval_seconds": 86400,
+    "dedup_record_count": 0,
+    "query_failed_count": 0,
+    "query_succeeded_count": 2,
+    "discovered_count": 4,
+    "polling_method": "arxiv_atom_api",
+    "import_budget_basis": "new_download_attempts",
+    "paper_ids": [
+      "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+    ]
+  },
+  "dedup_records": [],
+  "scheduler": "externally_triggered",
+  "default_interval_seconds": 86400,
+  "scheduler_details": {
+    "enabled": true,
+    "mechanism": "backend_interval",
+    "active": true,
+    "interval_seconds": 86400,
+    "initial_delay_seconds": 15,
+    "max_imports": 1,
+    "run_count": 1,
+    "pid": 1,
+    "last_event": {
+      "event": "run_finished",
+      "timestamp": "2026-10-28T15:05:20.370512+00:00",
+      "pid": 1,
+      "scheduled_id": "b2e0544020864bbd8c8bf4eed6578a5f",
+      "run_id": "55537ccac3b245d29953a1c89e86e3ec",
+      "status": "completed",
+      "reason": null,
+      "elapsed_seconds": 53.39201,
+      "candidate_count": 3,
+      "imported_count": 1,
+      "errors": []
+    },
+    "stopping": false
+  }
+}

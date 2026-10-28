@@ -19,10 +19,9 @@ export default async function RetrievalPage() {
         <Diagnostics summary="技术信息（接口路径与评分口径）">
           POST /retrieval/search · /retrieval/fetch · GET /recommendations
         </Diagnostics>
-        <h1 className="sg-title">检索、公开抓取与推荐</h1>
+        <h1 className="sg-title">发现与追踪</h1>
         <p className="sg-lede">
-          检索模式与结果原因按后端响应头原样展示，不把词法兜底说成向量检索；
-          推荐列出评分分项、理由与缺失项。
+          查找公开论文、批量获取参考文献，并按你的研究主题发现和追踪新工作。
         </p>
         <p className="sg-back">
           <a href="/">← 返回论文库</a>

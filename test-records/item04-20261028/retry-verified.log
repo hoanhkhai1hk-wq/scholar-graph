@@ -1,0 +1,16 @@
+{"task_id": "08cb1f43863345d8b6438c400476eb32", "elapsed_seconds": 0.047, "state": ["queued", 0, "等待处理"]}
+{"task_id": "08cb1f43863345d8b6438c400476eb32", "elapsed_seconds": 1.094, "state": ["running", 0, "正在查找、下载和解析：Google's neural machine translation system: Bridging the gap between human and machine translation"]}
+{"task_id": "08cb1f43863345d8b6438c400476eb32", "elapsed_seconds": 47.609, "state": ["running", 1, "正在查找、下载和解析：Gradient flow in recurrent nets: the difficulty of learning long-term dependencies"]}
+{"task_id": "08cb1f43863345d8b6438c400476eb32", "elapsed_seconds": 51.812, "state": ["running", 2, "正在查找、下载和解析：A decomposable attention model"]}
+{"task_id": "08cb1f43863345d8b6438c400476eb32", "elapsed_seconds": 77.094, "state": ["running", 3, "正在查找、下载和解析：Learning accurate, compact, and interpretable tree annotation"]}
+{"task_id": "08cb1f43863345d8b6438c400476eb32", "elapsed_seconds": 81.297, "state": ["running", 4, "已处理 4 / 11 项"]}
+{"task_id": "08cb1f43863345d8b6438c400476eb32", "elapsed_seconds": 82.359, "state": ["running", 4, "正在查找、下载和解析：Deep residual learning for image recognition"]}
+{"task_id": "08cb1f43863345d8b6438c400476eb32", "elapsed_seconds": 119.656, "state": ["running", 5, "正在查找、下载和解析：Long short-term memory"]}
+{"task_id": "08cb1f43863345d8b6438c400476eb32", "elapsed_seconds": 123.875, "state": ["running", 6, "正在查找、下载和解析：Self-training PCFG grammars with latent annotations across languages"]}
+{"task_id": "08cb1f43863345d8b6438c400476eb32", "elapsed_seconds": 131.219, "state": ["running", 7, "已处理 7 / 11 项"]}
+{"task_id": "08cb1f43863345d8b6438c400476eb32", "elapsed_seconds": 132.312, "state": ["running", 7, "正在查找、下载和解析：Building a large annotated corpus of english: The penn treebank"]}
+{"task_id": "08cb1f43863345d8b6438c400476eb32", "elapsed_seconds": 135.469, "state": ["running", 8, "正在查找、下载和解析：Effective self-training for parsing"]}
+{"task_id": "08cb1f43863345d8b6438c400476eb32", "elapsed_seconds": 141.781, "state": ["running", 9, "正在查找、下载和解析：Dropout: a simple way to prevent neural networks from overfitting"]}
+{"task_id": "08cb1f43863345d8b6438c400476eb32", "elapsed_seconds": 148.109, "state": ["running", 10, "正在查找、下载和解析：Fast and accurate shift-reduce constituent parsing"]}
+{"task_id": "08cb1f43863345d8b6438c400476eb32", "elapsed_seconds": 154.437, "state": ["partial", 11, "已处理 11 / 11 项"]}
+{"reference_numbers": [38, 12, 27, 29, 11, 13, 14, 25, 26, 33, 40], "elapsed_seconds": 154.843, "status": "partial"}

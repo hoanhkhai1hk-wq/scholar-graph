@@ -716,6 +716,24 @@ a:hover {
   color: var(--sg-text-secondary);
 }
 
+/* Long research titles must fit the discovery form on narrow screens. */
+.sg-discovery {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.sg-discovery .sg-field {
+  min-width: 0;
+  max-width: 100%;
+}
+.sg-discovery .sg-form > .sg-field {
+  flex: 1 1 220px;
+}
+.sg-discovery select {
+  min-width: 0;
+  max-width: 100%;
+  width: 100%;
+}
+
 .sg-input--area {
   min-width: 320px;
   min-height: 68px;

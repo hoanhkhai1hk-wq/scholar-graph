@@ -1,0 +1,76 @@
+{
+  "errors": [],
+  "title": {
+    "status": "completed",
+    "duplicate_count": 1,
+    "task_id": "62d9df83d3b84e2284cfbaee817e3372"
+  },
+  "frequency_selected": [
+    38,
+    3,
+    2,
+    9,
+    5,
+    8,
+    18,
+    37,
+    12,
+    27
+  ],
+  "weekly": {
+    "enabled": true,
+    "frequency": "weekly",
+    "paper_ids": [
+      "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+    ],
+    "max_imports": 1,
+    "runtime": {
+      "enabled": true,
+      "mechanism": "backend_interval",
+      "active": true,
+      "interval_seconds": 604800,
+      "initial_delay_seconds": 15,
+      "max_imports": 1,
+      "run_count": 1,
+      "pid": 1,
+      "last_event": {
+        "event": "scheduler_started",
+        "timestamp": "2026-10-28T15:20:01.301409+00:00",
+        "pid": 1,
+        "interval_seconds": 604800
+      },
+      "stopping": false
+    }
+  },
+  "daily_restored": {
+    "enabled": true,
+    "frequency": "daily",
+    "paper_ids": [
+      "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+    ],
+    "max_imports": 1,
+    "runtime": {
+      "enabled": true,
+      "mechanism": "backend_interval",
+      "active": true,
+      "interval_seconds": 86400,
+      "initial_delay_seconds": 15,
+      "max_imports": 1,
+      "run_count": 1,
+      "pid": 1,
+      "last_event": {
+        "event": "scheduler_started",
+        "timestamp": "2026-10-28T15:20:01.454508+00:00",
+        "pid": 1,
+        "interval_seconds": 86400
+      },
+      "stopping": false
+    }
+  },
+  "layout_1440": {
+    "width": 1440,
+    "scrollWidth": 1440
+  },
+  "passed": false,
+  "failure": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(geometry.scrollWidth<=geometry.width+1)\n\n    at D:\\AI_Workspace\\Tasks\\scholar-graph\\tests\\item04\\browser_secondary.cjs:23:229"
+}

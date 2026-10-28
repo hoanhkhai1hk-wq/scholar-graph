@@ -17,6 +17,9 @@ import PaperPicker from "@/components/PaperPicker";
 import ErrorState from "@/components/ErrorState";
 import TrackingPanel from "@/components/TrackingPanel";
 import EmptyState from "@/components/EmptyState";
+import AcquisitionPanel from "./AcquisitionPanel";
+import RecommendationVote from "./RecommendationVote";
+import RecommendationsPanel from "./RecommendationsPanel";
 
 type SearchState =
   | { kind: "idle" }
@@ -125,7 +128,9 @@ export default function RetrievalWorkspace({
 
   return (
     <>
-      {/* 检索 */}
+      <AcquisitionPanel papers={papers} />
+      <RecommendationsPanel papers={papers} />
+      <details className="sg-section"><summary>高级检索、手动追踪与兼容接口诊断</summary>{/* 检索 */}
       <section className="sg-section">
         <div className="sg-section__head">
           <h2 className="sg-section__title">检索</h2>
@@ -310,7 +315,7 @@ export default function RetrievalWorkspace({
         <TrackingPanel paperIds={papers.map((paper) => paper.id)} />
       </section>
 
-      {/* 推荐 */}
+      <details><summary>兼容版推荐诊断</summary>{/* 推荐 */}
       <section className="sg-section">
         <div className="sg-section__head">
           <h2 className="sg-section__title">智能推荐</h2>
@@ -377,7 +382,8 @@ export default function RetrievalWorkspace({
                     <tr key={item.paper.id}>
                       <td>
                         <div>{item.paper.title ?? "（标题未提取）"}</div>
-                        <div className="sg-mono">{item.paper.id}</div>
+                        <a href={`/read/${item.paper.id}`}>阅读原文</a>
+                        <RecommendationVote paperId={item.paper.id} seedId={seed[0]} onChanged={() => void runRecommend()} />
                         <div className="sg-mono">
                           {item.scoring_version} · as_of_year {item.as_of_year}
                         </div>
@@ -399,9 +405,9 @@ export default function RetrievalWorkspace({
                                 {reason.signal}
                               </span>{" "}
                               {reason.text}
-                              {reason.evidence.length > 0 ? (
+                              {Object.keys(reason.evidence).length > 0 ? (
                                 <div className="sg-mono">
-                                  {reason.evidence.join("；")}
+                                  {Array.isArray(reason.evidence) ? reason.evidence.join("；") : JSON.stringify(reason.evidence)}
                                 </div>
                               ) : null}
                             </div>
@@ -436,6 +442,8 @@ export default function RetrievalWorkspace({
           <ErrorState title="推荐请求失败" error={reco.error} />
         ) : null}
       </section>
+      </details>
+      </details>
     </>
   );
 }

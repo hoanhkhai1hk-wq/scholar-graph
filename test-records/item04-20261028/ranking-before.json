@@ -1,0 +1,2096 @@
+{
+  "computed_at": "2026-10-28T15:07:54.891681+00:00",
+  "diagnostics": null,
+  "votes": [],
+  "items": [
+    {
+      "rank": 1,
+      "paper": {
+        "schema_version": "1.0.0",
+        "id": "paper-84801c8410da51b449d379d2fa4939a416123f2c93991077a680f863026022a7",
+        "title": "Neural Machine Translation by Jointly Learning to Align and Translate",
+        "authors": [
+          "Dzmitry Bahdanau",
+          "KyungHyun Cho",
+          "Yoshua Bengio"
+        ],
+        "institutions": [
+          "Jacobs University",
+          "Université de Montréal"
+        ],
+        "year": 2014,
+        "source": "https://arxiv.org/abs/1409.0473v7",
+        "arxiv_id": "1409.0473v7",
+        "doi": null,
+        "version": "v7",
+        "file_hash": "84801c8410da51b449d379d2fa4939a416123f2c93991077a680f863026022a7",
+        "page_count": 15,
+        "has_text_layer": true,
+        "abstract_present": true,
+        "abstract_characters": 1180,
+        "abstract_sha256": "b526d5f57deb625299a67e35685083f1d3f04473f42722a268de7850ed41021d"
+      },
+      "score": 32.314225890294644,
+      "content_similarity": 0.15,
+      "matched_terms": [
+        "architecture",
+        "be",
+        "by",
+        "decoder",
+        "encoder",
+        "english-to-french",
+        "existing",
+        "from",
+        "improving",
+        "machine",
+        "model",
+        "models",
+        "network",
+        "neural",
+        "new",
+        "our"
+      ],
+      "code_links": [
+        {
+          "url": "https://github.com/lisa-groundhog/GroundHog",
+          "anchor": {
+            "paper_id": "paper-84801c8410da51b449d379d2fa4939a416123f2c93991077a680f863026022a7",
+            "page_number": 4,
+            "section": [
+              "4 EXPERIMENT SETTINGS",
+              "4.1 DATASET"
+            ],
+            "chunk_id": "paper-84801c8410da51b449d379d2fa4939a416123f2c93991077a680f863026022a7-p0004-c00066"
+          }
+        }
+      ],
+      "relationship_reason": "相对《Attention Is All You Need》，《Neural Machine Translation by Jointly Learning to Align and Translate》的标题与摘要共享主题词：architecture、be、by、decoder、encoder、english-to-french、existing、from。 两篇之间存在已核验的库内引用关系，可查看引用图谱。 原文提供可定位的GitHub链接，代码项增加10分；仓库内容和可运行性需另行核验。",
+      "code_priority_bonus": 10
+    },
+    {
+      "rank": 2,
+      "paper": {
+        "schema_version": "1.0.0",
+        "id": "paper-5c74e1db863e2d61b869c9b0603494b34c41fb05db1a4fa7f9a83d5a42b7350f",
+        "title": "Sequence to Sequence Learning with Neural Networks",
+        "authors": [
+          "Ilya Sutskever",
+          "Oriol Vinyals",
+          "Quoc V. Le"
+        ],
+        "institutions": [
+          "Google"
+        ],
+        "year": 2014,
+        "source": "https://arxiv.org/abs/1409.3215v3",
+        "arxiv_id": "1409.3215v3",
+        "doi": null,
+        "version": "v3",
+        "file_hash": "5c74e1db863e2d61b869c9b0603494b34c41fb05db1a4fa7f9a83d5a42b7350f",
+        "page_count": 9,
+        "has_text_layer": true,
+        "abstract_present": true,
+        "abstract_characters": 1634,
+        "abstract_sha256": "6d35c74881df4510f34d2dfd956e88b106fd551d21d2d240ed063edc4dc141a1"
+      },
+      "score": 30.75,
+      "content_similarity": 0.115,
+      "matched_terms": [
+        "achieves",
+        "all",
+        "also",
+        "be",
+        "best",
+        "bleu",
+        "by",
+        "english",
+        "from",
+        "large",
+        "models",
+        "networks",
+        "neural",
+        "our",
+        "sequence",
+        "task"
+      ],
+      "code_links": [],
+      "relationship_reason": "相对《Attention Is All You Need》，《Sequence to Sequence Learning with Neural Networks》的标题与摘要共享主题词：achieves、all、also、be、best、bleu、by、english。 两篇之间存在已核验的库内引用关系，可查看引用图谱。",
+      "code_priority_bonus": 0
+    },
+    {
+      "rank": 3,
+      "paper": {
+        "schema_version": "1.0.0",
+        "id": "paper-35acfcc574b37588ac0443ac65c9e2fccf794b24df9cf8522d6df5f09b82119c",
+        "title": "Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation",
+        "authors": [
+          "Kyunghyun Cho",
+          "Bart van Merrienboer",
+          "Dzmitry Bahdanau",
+          "Caglar Gulcehre",
+          "Fethi Bougares",
+          "Holger Schwenk",
+          "Yoshua Bengio"
+        ],
+        "institutions": [
+          "Jacobs University, Germany"
+        ],
+        "year": 2014,
+        "source": "https://arxiv.org/abs/1406.1078v3",
+        "arxiv_id": "1406.1078v3",
+        "doi": null,
+        "version": "v3",
+        "file_hash": "35acfcc574b37588ac0443ac65c9e2fccf794b24df9cf8522d6df5f09b82119c",
+        "page_count": 15,
+        "has_text_layer": true,
+        "abstract_present": true,
+        "abstract_characters": 821,
+        "abstract_sha256": "59f873bd85db30b7c495f203bef2bb5751849dcb7b20ba323f89c5e30d8a8c78"
+      },
+      "score": 26.300318195221053,
+      "content_similarity": 0.11888111888111888,
+      "matched_terms": [
+        "by",
+        "decoder",
+        "encoder",
+        "existing",
+        "machine",
+        "model",
+        "network",
+        "networks",
+        "neural",
+        "other",
+        "propose",
+        "recurrent",
+        "sequence",
+        "show",
+        "translation",
+        "two"
+      ],
+      "code_links": [],
+      "relationship_reason": "相对《Attention Is All You Need》，《Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation》的标题与摘要共享主题词：by、decoder、encoder、existing、machine、model、network、networks。 两篇之间存在已核验的库内引用关系，可查看引用图谱。",
+      "code_priority_bonus": 0
+    },
+    {
+      "rank": 4,
+      "paper": {
+        "schema_version": "1.0.0",
+        "id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+        "title": "Reformer: The Efficient Transformer",
+        "authors": [
+          "Nikita Kitaev",
+          "Łukasz Kaiser",
+          "Anselm Levskaya"
+        ],
+        "institutions": [
+          "Google Research"
+        ],
+        "year": 2020,
+        "source": "https://arxiv.org/abs/2001.04451v2",
+        "arxiv_id": "2001.04451v2",
+        "doi": null,
+        "version": "v2",
+        "file_hash": "f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+        "page_count": 12,
+        "has_text_layer": true,
+        "abstract_present": true,
+        "abstract_characters": 782,
+        "abstract_sha256": "79c5a62762828b84fdd579b6bc5f1e26cf436bab67268bab2af79f2b4713ed96"
+      },
+      "score": 24.91050087468695,
+      "content_similarity": 0.136986301369863,
+      "matched_terms": [
+        "attention",
+        "be",
+        "being",
+        "by",
+        "from",
+        "large",
+        "model",
+        "models",
+        "more",
+        "results",
+        "sequence",
+        "state-of-the-art",
+        "tasks",
+        "these",
+        "training",
+        "transformer"
+      ],
+      "code_links": [
+        {
+          "url": "https://github.com/google/trax",
+          "anchor": {
+            "paper_id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+            "page_number": 8,
+            "section": [
+              "5 EXPERIMENTS"
+            ],
+            "chunk_id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b-p0008-c00132"
+          }
+        }
+      ],
+      "relationship_reason": "相对《Attention Is All You Need》，《Reformer: The Efficient Transformer》的标题与摘要共享主题词：attention、be、being、by、from、large、model、models。 两篇之间存在已核验的库内引用关系，可查看引用图谱。 原文提供可定位的GitHub链接，代码项增加10分；仓库内容和可运行性需另行核验。",
+      "code_priority_bonus": 10
+    },
+    {
+      "rank": 5,
+      "paper": {
+        "schema_version": "1.0.0",
+        "id": "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161",
+        "title": "Heads of Security: Learned Attention Gates Improve Prompt Injection Robustness",
+        "authors": [
+          "Igor Shilov",
+          "Xiaoxue Yang",
+          "Alexander Panfilov",
+          "Evgenii Kortukov",
+          "Matthieu Meeus",
+          "Peter Romov",
+          "Wojciech Samek",
+          "Jonas Geiping",
+          "Yves-Alexandre de Montjoye"
+        ],
+        "institutions": [
+          "Imperial College London",
+          "Tübingen AI Center",
+          "ELLIS Institute Tübingen",
+          "Max Planck Institute for Intelligent Systems",
+          "Fraunhofer HHI"
+        ],
+        "year": 2026,
+        "source": "https://arxiv.org/abs/2610.37657v1",
+        "arxiv_id": "2610.37657v1",
+        "doi": null,
+        "version": "v1",
+        "file_hash": "75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161",
+        "page_count": 40,
+        "has_text_layer": true,
+        "abstract_present": true,
+        "abstract_characters": 1595,
+        "abstract_sha256": "16e53885bf75677a296a9a9ad8387cce65eaeafde55a579441a07590afc981a6"
+      },
+      "score": 21.10158984659784,
+      "content_similarity": 0.08080808080808081,
+      "matched_terms": [
+        "architecture",
+        "attention",
+        "be",
+        "model",
+        "models",
+        "more",
+        "or",
+        "over",
+        "results",
+        "show",
+        "small",
+        "state-of-the-art",
+        "these",
+        "through",
+        "we",
+        "with"
+      ],
+      "code_links": [],
+      "relationship_reason": "相对《Attention Is All You Need》，《Heads of Security: Learned Attention Gates Improve Prompt Injection Robustness》的标题与摘要共享主题词：architecture、attention、be、model、models、more、or、over。 两篇之间存在已核验的库内引用关系，可查看引用图谱。",
+      "code_priority_bonus": 0
+    },
+    {
+      "rank": 6,
+      "paper": {
+        "schema_version": "1.0.0",
+        "id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e",
+        "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+        "authors": [
+          "Jacob Devlin",
+          "Ming-Wei Chang",
+          "Kenton Lee",
+          "Kristina Toutanova"
+        ],
+        "institutions": [],
+        "year": 2018,
+        "source": "https://arxiv.org/abs/1810.04805v2",
+        "arxiv_id": "1810.04805v2",
+        "doi": null,
+        "version": "v2",
+        "file_hash": "5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e",
+        "page_count": 16,
+        "has_text_layer": true,
+        "abstract_present": true,
+        "abstract_characters": 1022,
+        "abstract_sha256": "fea4dc857ec30fd8b2745acffd87789b1e45a94f868b559d025883eea462fcb1"
+      },
+      "score": 20.991100400967035,
+      "content_similarity": 0.1069182389937107,
+      "matched_terms": [
+        "all",
+        "architecture",
+        "be",
+        "both",
+        "by",
+        "encoder",
+        "from",
+        "including",
+        "model",
+        "models",
+        "new",
+        "results",
+        "simple",
+        "state-of-the-art",
+        "tasks",
+        "we"
+      ],
+      "code_links": [
+        {
+          "url": "https://github.com/google-research/bert",
+          "anchor": {
+            "paper_id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e",
+            "page_number": 2,
+            "section": [
+              "1 Introduction"
+            ],
+            "chunk_id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e-p0002-c00020"
+          }
+        },
+        {
+          "url": "https://github.com/tensorflow/tensor2tensor",
+          "anchor": {
+            "paper_id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e",
+            "page_number": 3,
+            "section": [
+              "3 BERT"
+            ],
+            "chunk_id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e-p0003-c00040"
+          }
+        }
+      ],
+      "relationship_reason": "相对《Attention Is All You Need》，《BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding》的标题与摘要共享主题词：all、architecture、be、both、by、encoder、from、including。 两篇之间存在已核验的库内引用关系，可查看引用图谱。 原文提供可定位的GitHub链接，代码项增加10分；仓库内容和可运行性需另行核验。",
+      "code_priority_bonus": 10
+    },
+    {
+      "rank": 7,
+      "paper": {
+        "schema_version": "1.0.0",
+        "id": "paper-21dd02432f07d9bee1227090f0f64003da5ad2eb8d691b1ab7cfa94c25f23b5d",
+        "title": "Convolutional Sequence to Sequence Learning",
+        "authors": [
+          "Jonas Gehring",
+          "Michael Auli",
+          "David Grangier",
+          "Denis Yarats",
+          "Yann N. Dauphin"
+        ],
+        "institutions": [
+          "Facebook AI Research"
+        ],
+        "year": 2017,
+        "source": "https://arxiv.org/abs/1705.03122v2",
+        "arxiv_id": "1705.03122v2",
+        "doi": null,
+        "version": "v2",
+        "file_hash": "21dd02432f07d9bee1227090f0f64003da5ad2eb8d691b1ab7cfa94c25f23b5d",
+        "page_count": 15,
+        "has_text_layer": true,
+        "abstract_present": true,
+        "abstract_characters": 757,
+        "abstract_sha256": "223cc62dc0c79c35cd970409b7684f2a7d3b04634b54999b255e1ff69c008d62"
+      },
+      "score": 20.817805085254403,
+      "content_similarity": 0.14189189189189189,
+      "matched_terms": [
+        "all",
+        "architecture",
+        "attention",
+        "based",
+        "be",
+        "both",
+        "convolutional",
+        "decoder",
+        "entirely",
+        "models",
+        "networks",
+        "neural",
+        "our",
+        "over",
+        "recurrent",
+        "sequence"
+      ],
+      "code_links": [
+        {
+          "url": "https://github.com/facebookresearch/fairseq",
+          "anchor": {
+            "paper_id": "paper-21dd02432f07d9bee1227090f0f64003da5ad2eb8d691b1ab7cfa94c25f23b5d",
+            "page_number": 1,
+            "section": [
+              "Abstract"
+            ],
+            "chunk_id": "paper-21dd02432f07d9bee1227090f0f64003da5ad2eb8d691b1ab7cfa94c25f23b5d-p0001-c00008"
+          }
+        },
+        {
+          "url": "https://github.com/rsennrich/wmt16-scripts",
+          "anchor": {
+            "paper_id": "paper-21dd02432f07d9bee1227090f0f64003da5ad2eb8d691b1ab7cfa94c25f23b5d",
+            "page_number": 4,
+            "section": [
+              "Abstract"
+            ],
+            "chunk_id": "paper-21dd02432f07d9bee1227090f0f64003da5ad2eb8d691b1ab7cfa94c25f23b5d-p0004-c00055"
+          }
+        }
+      ],
+      "relationship_reason": "相对《Attention Is All You Need》，《Convolutional Sequence to Sequence Learning》的标题与摘要共享主题词：all、architecture、attention、based、be、both、convolutional、decoder。 两篇之间存在已核验的库内引用关系，可查看引用图谱。 原文提供可定位的GitHub链接，代码项增加10分；仓库内容和可运行性需另行核验。",
+      "code_priority_bonus": 10
+    },
+    {
+      "rank": 8,
+      "paper": {
+        "schema_version": "1.0.0",
+        "id": "paper-9c9d8c490c5b87fcea266a7b16d238335372b00ba0a0dacde0e3016f52c0ff01",
+        "title": "Generating Sequences With Recurrent Neural Networks",
+        "authors": [
+          "Alex Graves"
+        ],
+        "institutions": [
+          "Department of Computer Science",
+          "University of Toronto"
+        ],
+        "year": 2013,
+        "source": "https://arxiv.org/abs/1308.0850v5",
+        "arxiv_id": "1308.0850v5",
+        "doi": null,
+        "version": "v5",
+        "file_hash": "9c9d8c490c5b87fcea266a7b16d238335372b00ba0a0dacde0e3016f52c0ff01",
+        "page_count": 43,
+        "has_text_layer": true,
+        "abstract_present": true,
+        "abstract_characters": 535,
+        "abstract_sha256": "9defb7623a15c4716f8e3827c6d6032bbad4bdf95942b068d3bbeb28d530ca6c"
+      },
+      "score": 20.58170533570383,
+      "content_similarity": 0.08148148148148149,
+      "matched_terms": [
+        "be",
+        "by",
+        "complex",
+        "data",
+        "network",
+        "networks",
+        "neural",
+        "recurrent",
+        "sequence",
+        "time",
+        "with"
+      ],
+      "code_links": [],
+      "relationship_reason": "相对《Attention Is All You Need》，《Generating Sequences With Recurrent Neural Networks》的标题与摘要共享主题词：be、by、complex、data、network、networks、neural、recurrent。 两篇之间存在已核验的库内引用关系，可查看引用图谱。",
+      "code_priority_bonus": 0
+    },
+    {
+      "rank": 9,
+      "paper": {
+        "schema_version": "1.0.0",
+        "id": "paper-1cb48e40e523d1994f38211edd30f92b0f01f0a25c2990bc8d84a9b684e95135",
+        "title": "Structured Attention Networks",
+        "authors": [
+          "Yoon Kim",
+          "Carl Denton",
+          "Luong Hoang",
+          "Alexander M. Rush"
+        ],
+        "institutions": [
+          "School of Engineering and Applied Sciences",
+          "Harvard University Cambridge"
+        ],
+        "year": 2017,
+        "source": "https://arxiv.org/abs/1702.00887v3",
+        "arxiv_id": "1702.00887v3",
+        "doi": null,
+        "version": "v3",
+        "file_hash": "1cb48e40e523d1994f38211edd30f92b0f01f0a25c2990bc8d84a9b684e95135",
+        "page_count": 21,
+        "has_text_layer": true,
+        "abstract_present": true,
+        "abstract_characters": 1296,
+        "abstract_sha256": "86260ccd3eefd7a42a05fac7ac67e8ee156fcb3cc60658bb3e31e730250f03b0"
+      },
+      "score": 19.97321049065981,
+      "content_similarity": 0.125,
+      "matched_terms": [
+        "attention",
+        "be",
+        "experiments",
+        "machine",
+        "model",
+        "models",
+        "network",
+        "networks",
+        "neural",
+        "or",
+        "parsing",
+        "show",
+        "simple",
+        "tasks",
+        "these",
+        "training"
+      ],
+      "code_links": [
+        {
+          "url": "https://github.com/harvardnlp/struct-attn",
+          "anchor": {
+            "paper_id": "paper-1cb48e40e523d1994f38211edd30f92b0f01f0a25c2990bc8d84a9b684e95135",
+            "page_number": 2,
+            "section": [
+              "1 INTRODUCTION"
+            ],
+            "chunk_id": "paper-1cb48e40e523d1994f38211edd30f92b0f01f0a25c2990bc8d84a9b684e95135-p0002-c00021"
+          }
+        },
+        {
+          "url": "https://github.com/tensorflow/models",
+          "anchor": {
+            "paper_id": "paper-1cb48e40e523d1994f38211edd30f92b0f01f0a25c2990bc8d84a9b684e95135",
+            "page_number": 11,
+            "section": [
+              "4 EXPERIMENTS",
+              "4.4 NATURAL LANGUAGE INFERENCE"
+            ],
+            "chunk_id": "paper-1cb48e40e523d1994f38211edd30f92b0f01f0a25c2990bc8d84a9b684e95135-p0011-c00154"
+          }
+        },
+        {
+          "url": "https://github.com/moses-smt/mosesdecoder",
+          "anchor": {
+            "paper_id": "paper-1cb48e40e523d1994f38211edd30f92b0f01f0a25c2990bc8d84a9b684e95135",
+            "page_number": 17,
+            "section": [
+              "A.4 QUESTION ANSWERING"
+            ],
+            "chunk_id": "paper-1cb48e40e523d1994f38211edd30f92b0f01f0a25c2990bc8d84a9b684e95135-p0017-c00263"
+          }
+        }
+      ],
+      "relationship_reason": "相对《Attention Is All You Need》，《Structured Attention Networks》的标题与摘要共享主题词：attention、be、experiments、machine、model、models、network、networks。 两篇之间存在已核验的库内引用关系，可查看引用图谱。 原文提供可定位的GitHub链接，代码项增加10分；仓库内容和可运行性需另行核验。",
+      "code_priority_bonus": 10
+    },
+    {
+      "rank": 10,
+      "paper": {
+        "schema_version": "1.0.0",
+        "id": "paper-8eddaf2a441092955d10aa34a9f2b690aaaecee9097a47693366e0c5b8ff36a0",
+        "title": "End-To-End Memory Networks",
+        "authors": [
+          "Sainbayar Sukhbaatar",
+          "Arthur Szlam",
+          "Jason Weston",
+          "Rob Fergus"
+        ],
+        "institutions": [
+          "Courant Institute, New York University"
+        ],
+        "year": 2015,
+        "source": "https://arxiv.org/abs/1503.08895v5",
+        "arxiv_id": "1503.08895v5",
+        "doi": null,
+        "version": "v5",
+        "file_hash": "8eddaf2a441092955d10aa34a9f2b690aaaecee9097a47693366e0c5b8ff36a0",
+        "page_count": 11,
+        "has_text_layer": true,
+        "abstract_present": true,
+        "abstract_characters": 937,
+        "abstract_sha256": "1f7a118a8fc446220f78be5fe7918560728d42ade648a03f60a7f96e2f8bb114"
+      },
+      "score": 19.95819840597946,
+      "content_similarity": 0.13580246913580246,
+      "matched_terms": [
+        "also",
+        "architecture",
+        "attention",
+        "be",
+        "both",
+        "large",
+        "less",
+        "model",
+        "more",
+        "network",
+        "networks",
+        "neural",
+        "our",
+        "over",
+        "recurrent",
+        "results"
+      ],
+      "code_links": [
+        {
+          "url": "https://github.com/facebook/MemNN",
+          "anchor": {
+            "paper_id": "paper-8eddaf2a441092955d10aa34a9f2b690aaaecee9097a47693366e0c5b8ff36a0",
+            "page_number": 5,
+            "section": [
+              "4 Synthetic Question and Answering Experiments",
+              "4.3 Baselines"
+            ],
+            "chunk_id": "paper-8eddaf2a441092955d10aa34a9f2b690aaaecee9097a47693366e0c5b8ff36a0-p0005-c00081"
+          }
+        }
+      ],
+      "relationship_reason": "相对《Attention Is All You Need》，《End-To-End Memory Networks》的标题与摘要共享主题词：also、architecture、attention、be、both、large、less、model。 两篇之间存在已核验的库内引用关系，可查看引用图谱。 原文提供可定位的GitHub链接，代码项增加10分；仓库内容和可运行性需另行核验。",
+      "code_priority_bonus": 10
+    },
+    {
+      "rank": 11,
+      "paper": {
+        "schema_version": "1.0.0",
+        "id": "paper-6ae9257b347f5982f29618fcd774a03b5eb8795881c017f889e90f7956bcb22a",
+        "title": "Massive Exploration of Neural Machine Translation Architectures",
+        "authors": [
+          "Denny Britz",
+          "Anna Goldie",
+          "Minh-Thang Luong",
+          "Quoc Le"
+        ],
+        "institutions": [
+          "Google Brain",
+          "Work done as a member of the Google Brain Residency program (g.co/brainresidency)"
+        ],
+        "year": 2017,
+        "source": "https://arxiv.org/abs/1703.03906v2",
+        "arxiv_id": "1703.03906v2",
+        "doi": null,
+        "version": "v2",
+        "file_hash": "6ae9257b347f5982f29618fcd774a03b5eb8795881c017f889e90f7956bcb22a",
+        "page_count": 9,
+        "has_text_layer": true,
+        "abstract_present": true,
+        "abstract_characters": 975,
+        "abstract_sha256": "7181d76c31e0d70a4c5edd445cc7e45bbb75fdab534ab75500dcd835f73d4d48"
+      },
+      "score": 19.67559144304076,
+      "content_similarity": 0.11904761904761904,
+      "matched_terms": [
+        "architecture",
+        "being",
+        "days",
+        "english",
+        "experiments",
+        "machine",
+        "network",
+        "neural",
+        "other",
+        "our",
+        "over",
+        "requiring",
+        "results",
+        "task",
+        "time",
+        "train"
+      ],
+      "code_links": [
+        {
+          "url": "https://github.com/google/seq2seq",
+          "anchor": {
+            "paper_id": "paper-6ae9257b347f5982f29618fcd774a03b5eb8795881c017f889e90f7956bcb22a",
+            "page_number": 1,
+            "section": [
+              "1 Introduction"
+            ],
+            "chunk_id": "paper-6ae9257b347f5982f29618fcd774a03b5eb8795881c017f889e90f7956bcb22a-p0001-c00018"
+          }
+        },
+        {
+          "url": "https://github.com/moses-smt/mosesdecoder",
+          "anchor": {
+            "paper_id": "paper-6ae9257b347f5982f29618fcd774a03b5eb8795881c017f889e90f7956bcb22a",
+            "page_number": 2,
+            "section": [
+              "3 Experimental Setup",
+              "3.1 Datasets and Preprocessing"
+            ],
+            "chunk_id": "paper-6ae9257b347f5982f29618fcd774a03b5eb8795881c017f889e90f7956bcb22a-p0002-c00033"
+          }
+        }
+      ],
+      "relationship_reason": "相对《Attention Is All You Need》，《Massive Exploration of Neural Machine Translation Architectures》的标题与摘要共享主题词：architecture、being、days、english、experiments、machine、network、neural。 两篇之间存在已核验的库内引用关系，可查看引用图谱。 原文提供可定位的GitHub链接，代码项增加10分；仓库内容和可运行性需另行核验。",
+      "code_priority_bonus": 10
+    },
+    {
+      "rank": 12,
+      "paper": {
+        "schema_version": "1.0.0",
+        "id": "paper-ccdcd1eb8b52dcdf40d716d7ba234e861edb8ea913778b92a1628fbb86158685",
+        "title": "Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling",
+        "authors": [
+          "Junyoung Chung",
+          "Caglar Gulcehre",
+          "KyungHyun Cho",
+          "Yoshua Bengio"
+        ],
+        "institutions": [
+          "Université de Montréal",
+          "Université de Montréal CIFAR Senior Fellow"
+        ],
+        "year": 2014,
+        "source": "https://arxiv.org/abs/1412.3555v1",
+        "arxiv_id": "1412.3555v1",
+        "doi": null,
+        "version": "v1",
+        "file_hash": "ccdcd1eb8b52dcdf40d716d7ba234e861edb8ea913778b92a1628fbb86158685",
+        "page_count": 9,
+        "has_text_layer": true,
+        "abstract_present": true,
+        "abstract_characters": 563,
+        "abstract_sha256": "f21ebd7acf3c69a36076ac45f97a4e6c1e8ef54f886c1a66a6654b45501cdd70"
+      },
+      "score": 19.48830023555735,
+      "content_similarity": 0.09701492537313433,
+      "matched_terms": [
+        "also",
+        "be",
+        "experiments",
+        "mechanism",
+        "more",
+        "networks",
+        "neural",
+        "our",
+        "recurrent",
+        "sequence",
+        "tasks",
+        "these",
+        "we"
+      ],
+      "code_links": [
+        {
+          "url": "https://github.com/jych/librnn.git",
+          "anchor": {
+            "paper_id": "paper-ccdcd1eb8b52dcdf40d716d7ba234e861edb8ea913778b92a1628fbb86158685",
+            "page_number": 5,
+            "section": [
+              "4 Experiments Setting",
+              "4.1 Tasks and Datasets"
+            ],
+            "chunk_id": "paper-ccdcd1eb8b52dcdf40d716d7ba234e861edb8ea913778b92a1628fbb86158685-p0005-c00073"
+          }
+        }
+      ],
+      "relationship_reason": "相对《Attention Is All You Need》，《Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling》的标题与摘要共享主题词：also、be、experiments、mechanism、more、networks、neural、our。 两篇之间存在已核验的库内引用关系，可查看引用图谱。 原文提供可定位的GitHub链接，代码项增加10分；仓库内容和可运行性需另行核验。",
+      "code_priority_bonus": 10
+    },
+    {
+      "rank": 13,
+      "paper": {
+        "schema_version": "1.0.0",
+        "id": "paper-5085f14d6a203ec934b512646e1aeed37802fee1e686a9b6a9fa99ca51a13b91",
+        "title": "Long Short-Term Memory-Networks for Machine Reading",
+        "authors": [
+          "Jianpeng Cheng",
+          "Li Dong",
+          "Mirella Lapata"
+        ],
+        "institutions": [
+          "School of Informatics",
+          "University of Edinburgh"
+        ],
+        "year": 2016,
+        "source": "https://arxiv.org/abs/1601.06733v7",
+        "arxiv_id": "1601.06733v7",
+        "doi": null,
+        "version": "v7",
+        "file_hash": "5085f14d6a203ec934b512646e1aeed37802fee1e686a9b6a9fa99ca51a13b91",
+        "page_count": 11,
+        "has_text_layer": true,
+        "abstract_present": true,
+        "abstract_characters": 807,
+        "abstract_sha256": "753279c6abefcca567c9836d4b755f7be60d1ef8165bdeff4e78e4d077b23152"
+      },
+      "score": 19.089127580768285,
+      "content_similarity": 0.11842105263157894,
+      "matched_terms": [
+        "also",
+        "architecture",
+        "attention",
+        "experiments",
+        "from",
+        "machine",
+        "model",
+        "network",
+        "networks",
+        "neural",
+        "or",
+        "our",
+        "propose",
+        "recurrence",
+        "sequence",
+        "show"
+      ],
+      "code_links": [
+        {
+          "url": "https://github.com/cheng6076/SNLI-attention",
+          "anchor": {
+            "paper_id": "paper-5085f14d6a203ec934b512646e1aeed37802fee1e686a9b6a9fa99ca51a13b91",
+            "page_number": 5,
+            "section": [
+              "5 Experiments"
+            ],
+            "chunk_id": "paper-5085f14d6a203ec934b512646e1aeed37802fee1e686a9b6a9fa99ca51a13b91-p0005-c00056"
+          }
+        }
+      ],
+      "relationship_reason": "相对《Attention Is All You Need》，《Long Short-Term Memory-Networks for Machine Reading》的标题与摘要共享主题词：also、architecture、attention、experiments、from、machine、model、network。 两篇之间存在已核验的库内引用关系，可查看引用图谱。 原文提供可定位的GitHub链接，代码项增加10分；仓库内容和可运行性需另行核验。",
+      "code_priority_bonus": 10
+    },
+    {
+      "rank": 14,
+      "paper": {
+        "schema_version": "1.0.0",
+        "id": "paper-9bc9b63e985a663420ad6dd172ec9353a79a90b16bbf3f15148a6c182dc8aefc",
+        "title": "Neural GPUs Learn Algorithms",
+        "authors": [
+          "Łukasz Kaiser",
+          "Ilya Sutskever"
+        ],
+        "institutions": [],
+        "year": 2015,
+        "source": "https://arxiv.org/abs/1511.08228v3",
+        "arxiv_id": "1511.08228v3",
+        "doi": null,
+        "version": "v3",
+        "file_hash": "9bc9b63e985a663420ad6dd172ec9353a79a90b16bbf3f15148a6c182dc8aefc",
+        "page_count": 9,
+        "has_text_layer": true,
+        "abstract_present": true,
+        "abstract_characters": 1470,
+        "abstract_sha256": "6b861b22fabbb4b1c4bdf9dab58af908ac3ebbcf8faa43aec0da7eebe930e3d6"
+      },
+      "score": 18.76221673402885,
+      "content_similarity": 0.13402061855670103,
+      "matched_terms": [
+        "also",
+        "architecture",
+        "based",
+        "be",
+        "by",
+        "convolutional",
+        "from",
+        "gpus",
+        "including",
+        "large",
+        "network",
+        "networks",
+        "neural",
+        "recurrent",
+        "results",
+        "show"
+      ],
+      "code_links": [
+        {
+          "url": "https://github.com/tensorflow/models",
+          "anchor": {
+            "paper_id": "paper-9bc9b63e985a663420ad6dd172ec9353a79a90b16bbf3f15148a6c182dc8aefc",
+            "page_number": 6,
+            "section": [
+              "3 EXPERIMENTS",
+              "3.3 TRAINING TECHNIQUES",
+              "3.3.1 DROPOUT ON RECURRENT CONNECTIONS"
+            ],
+            "chunk_id": "paper-9bc9b63e985a663420ad6dd172ec9353a79a90b16bbf3f15148a6c182dc8aefc-p0006-c00086"
+          }
+        }
+      ],
+      "relationship_reason": "相对《Attention Is All You Need》，《Neural GPUs Learn Algorithms》的标题与摘要共享主题词：also、architecture、based、be、by、convolutional、from、gpus。 原文提供可定位的GitHub链接，代码项增加10分；仓库内容和可运行性需另行核验。",
+      "code_priority_bonus": 10
+    },
+    {
+      "rank": 15,
+      "paper": {
+        "schema_version": "1.0.0",
+        "id": "paper-b25dbbcd99230ff10d5e5838bdee2ef065b143b340a416fd878ccca049fd55e1",
+        "title": "Factorization tricks for LSTM networks",
+        "authors": [
+          "Oleksii Kuchaiev",
+          "Boris Ginsburg"
+        ],
+        "institutions": [
+          "NVIDIA"
+        ],
+        "year": 2017,
+        "source": "https://arxiv.org/abs/1703.10722v3",
+        "arxiv_id": "1703.10722v3",
+        "doi": null,
+        "version": "v3",
+        "file_hash": "b25dbbcd99230ff10d5e5838bdee2ef065b143b340a416fd878ccca049fd55e1",
+        "page_count": 6,
+        "has_text_layer": true,
+        "abstract_present": true,
+        "abstract_characters": 513,
+        "abstract_sha256": "a25e13d639608ff84a4ae68a73dfda0b763e1e4baa53ba3bfc6f21a0623790c0"
+      },
+      "score": 18.303363162415533,
+      "content_similarity": 0.0916030534351145,
+      "matched_terms": [
+        "both",
+        "by",
+        "large",
+        "less",
+        "networks",
+        "significantly",
+        "simple",
+        "train",
+        "training",
+        "two",
+        "we",
+        "while"
+      ],
+      "code_links": [
+        {
+          "url": "https://github.com/okuchaiev/f-lm",
+          "anchor": {
+            "paper_id": "paper-b25dbbcd99230ff10d5e5838bdee2ef065b143b340a416fd878ccca049fd55e1",
+            "page_number": 3,
+            "section": [
+              "3 EXPERIMENTS AND RESULTS"
+            ],
+            "chunk_id": "paper-b25dbbcd99230ff10d5e5838bdee2ef065b143b340a416fd878ccca049fd55e1-p0003-c00044"
+          }
+        }
+      ],
+      "relationship_reason": "相对《Attention Is All You Need》，《Factorization tricks for LSTM networks》的标题与摘要共享主题词：both、by、large、less、networks、significantly、simple、train。 两篇之间存在已核验的库内引用关系，可查看引用图谱。 原文提供可定位的GitHub链接，代码项增加10分；仓库内容和可运行性需另行核验。",
+      "code_priority_bonus": 10
+    },
+    {
+      "rank": 16,
+      "paper": {
+        "schema_version": "1.0.0",
+        "id": "paper-57567c72c96fc255a98674520460665d013e11a8c77b962b1f90bce443de73d9",
+        "title": "Can Active Memory Replace Attention?",
+        "authors": [
+          "Łukasz Kaiser",
+          "Samy Bengio"
+        ],
+        "institutions": [
+          "Google Brain"
+        ],
+        "year": 2016,
+        "source": "https://arxiv.org/abs/1610.08613v2",
+        "arxiv_id": "1610.08613v2",
+        "doi": null,
+        "version": "v2",
+        "file_hash": "57567c72c96fc255a98674520460665d013e11a8c77b962b1f90bce443de73d9",
+        "page_count": 9,
+        "has_text_layer": true,
+        "abstract_present": true,
+        "abstract_characters": 1232,
+        "abstract_sha256": "176f549d804f36f3a94b690918d4a90bb5bf1dda482895383b051f39c9554dbc"
+      },
+      "score": 18.151548857777822,
+      "content_similarity": 0.11377245508982035,
+      "matched_terms": [
+        "all",
+        "attention",
+        "be",
+        "existing",
+        "generalizes",
+        "machine",
+        "mechanism",
+        "mechanisms",
+        "model",
+        "models",
+        "network",
+        "neural",
+        "or",
+        "over",
+        "propose",
+        "successfully"
+      ],
+      "code_links": [
+        {
+          "url": "https://github.com/tensorflow/models",
+          "anchor": {
+            "paper_id": "paper-57567c72c96fc255a98674520460665d013e11a8c77b962b1f90bce443de73d9",
+            "page_number": 6,
+            "section": [
+              "3 Experiments"
+            ],
+            "chunk_id": "paper-57567c72c96fc255a98674520460665d013e11a8c77b962b1f90bce443de73d9-p0006-c00073"
+          }
+        }
+      ],
+      "relationship_reason": "相对《Attention Is All You Need》，《Can Active Memory Replace Attention?》的标题与摘要共享主题词：all、attention、be、existing、generalizes、machine、mechanism、mechanisms。 两篇之间存在已核验的库内引用关系，可查看引用图谱。 原文提供可定位的GitHub链接，代码项增加10分；仓库内容和可运行性需另行核验。",
+      "code_priority_bonus": 10
+    },
+    {
+      "rank": 17,
+      "paper": {
+        "schema_version": "1.0.0",
+        "id": "paper-6de4937e4a78156e027742aeb047a7163c6ca69888905c9419a6cb356ed5c77c",
+        "title": "Xception: Deep Learning with Depthwise Separable Convolutions",
+        "authors": [
+          "François Chollet"
+        ],
+        "institutions": [],
+        "year": 2016,
+        "source": "https://arxiv.org/abs/1610.02357v3",
+        "arxiv_id": "1610.02357v3",
+        "doi": null,
+        "version": "v3",
+        "file_hash": "6de4937e4a78156e027742aeb047a7163c6ca69888905c9419a6cb356ed5c77c",
+        "page_count": 8,
+        "has_text_layer": true,
+        "abstract_present": true,
+        "abstract_characters": 1059,
+        "abstract_sha256": "d51bd5ac2fcc712633f41c321d70ccf7a890cf1232fcea984e209dc45486de47"
+      },
+      "score": 18.109655458778075,
+      "content_similarity": 0.10828025477707007,
+      "matched_terms": [
+        "architecture",
+        "be",
+        "being",
+        "by",
+        "convolutional",
+        "convolutions",
+        "large",
+        "model",
+        "more",
+        "network",
+        "networks",
+        "neural",
+        "propose",
+        "show",
+        "significantly",
+        "we"
+      ],
+      "code_links": [
+        {
+          "url": "https://github.com/fchollet/keras",
+          "anchor": {
+            "paper_id": "paper-6de4937e4a78156e027742aeb047a7163c6ca69888905c9419a6cb356ed5c77c",
+            "page_number": 7,
+            "section": [
+              "1 A  variant of the process is to independently look at width-wise corre-",
+              "4.5.1 Classification performance",
+              "4.5.2 Size and speed"
+            ],
+            "chunk_id": "paper-6de4937e4a78156e027742aeb047a7163c6ca69888905c9419a6cb356ed5c77c-p0007-c00104"
+          }
+        }
+      ],
+      "relationship_reason": "相对《Attention Is All You Need》，《Xception: Deep Learning with Depthwise Separable Convolutions》的标题与摘要共享主题词：architecture、be、being、by、convolutional、convolutions、large、model。 两篇之间存在已核验的库内引用关系，可查看引用图谱。 原文提供可定位的GitHub链接，代码项增加10分；仓库内容和可运行性需另行核验。",
+      "code_priority_bonus": 10
+    },
+    {
+      "rank": 18,
+      "paper": {
+        "schema_version": "1.0.0",
+        "id": "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7",
+        "title": "Layer Normalization",
+        "authors": [
+          "Jimmy Lei Ba",
+          "Jamie Ryan Kiros",
+          "Geoffrey E. Hinton"
+        ],
+        "institutions": [
+          "University of Toronto",
+          "University of Toronto and Google Inc."
+        ],
+        "year": 2016,
+        "source": "https://arxiv.org/abs/1607.06450v1",
+        "arxiv_id": "1607.06450v1",
+        "doi": null,
+        "version": "v1",
+        "file_hash": "c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7",
+        "page_count": 14,
+        "has_text_layer": true,
+        "abstract_present": true,
+        "abstract_characters": 1510,
+        "abstract_sha256": "25070a2fa3c409b59f3ecd7bbfacfec4145b15d28b8fa9269bfaf8d4c034bb6b"
+      },
+      "score": 17.671206205021907,
+      "content_similarity": 0.09248554913294797,
+      "matched_terms": [
+        "after",
+        "all",
+        "also",
+        "by",
+        "from",
+        "networks",
+        "neural",
+        "over",
+        "recurrent",
+        "show",
+        "significantly",
+        "state-of-the-art",
+        "time",
+        "training",
+        "we",
+        "with"
+      ],
+      "code_links": [
+        {
+          "url": "https://github.com/ivendrov/order-embedding",
+          "anchor": {
+            "paper_id": "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7",
+            "page_number": 6,
+            "section": [
+              "6 Experimental results",
+              "6.1 Order embeddings of images and language"
+            ],
+            "chunk_id": "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7-p0006-c00076"
+          }
+        },
+        {
+          "url": "https://github.com/cooijmanstim/Attentive_reader",
+          "anchor": {
+            "paper_id": "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7",
+            "page_number": 7,
+            "section": [
+              "6 Experimental results",
+              "6.3 Skip-thought vectors"
+            ],
+            "chunk_id": "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7-p0007-c00086"
+          }
+        },
+        {
+          "url": "https://github.com/ryankiros/skip-thoughts",
+          "anchor": {
+            "paper_id": "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7",
+            "page_number": 8,
+            "section": [
+              "6 Experimental results",
+              "6.3 Skip-thought vectors"
+            ],
+            "chunk_id": "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7-p0008-c00094"
+          }
+        },
+        {
+          "url": "https://github.com/NVIDIA/cnmem",
+          "anchor": {
+            "paper_id": "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7",
+            "page_number": 8,
+            "section": [
+              "6 Experimental results",
+              "6.3 Skip-thought vectors"
+            ],
+            "chunk_id": "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7-p0008-c00095"
+          }
+        }
+      ],
+      "relationship_reason": "相对《Attention Is All You Need》，《Layer Normalization》的标题与摘要共享主题词：after、all、also、by、from、networks、neural、over。 两篇之间存在已核验的库内引用关系，可查看引用图谱。 原文提供可定位的GitHub链接，代码项增加10分；仓库内容和可运行性需另行核验。",
+      "code_priority_bonus": 10
+    },
+    {
+      "rank": 19,
+      "paper": {
+        "schema_version": "1.0.0",
+        "id": "paper-a9d6a10bab94667e60a2b52e64aaae0de454e72b39c46bf8b5a8547d31f394eb",
+        "title": "Recurrent Neural Network Grammars",
+        "authors": [
+          "Chris Dyer",
+          "Adhiguna Kuncoro",
+          "Miguel Ballesteros",
+          "Noah A. Smith"
+        ],
+        "institutions": [
+          "School of Computer Science",
+          "♦ NLP Group",
+          "Carnegie Mellon University",
+          "Pompeu Fabra University",
+          "Computer Science & Engineering",
+          "University of Washington"
+        ],
+        "year": 2016,
+        "source": "https://arxiv.org/abs/1602.07776v4",
+        "arxiv_id": "1602.07776v4",
+        "doi": null,
+        "version": "v4",
+        "file_hash": "a9d6a10bab94667e60a2b52e64aaae0de454e72b39c46bf8b5a8547d31f394eb",
+        "page_count": 13,
+        "has_text_layer": true,
+        "abstract_present": true,
+        "abstract_characters": 434,
+        "abstract_sha256": "92e7fca55f897b9aea3e392403963f18d52a4c9b153c8452d10f8cf6df2e9f56"
+      },
+      "score": 17.507763336188265,
+      "content_similarity": 0.10569105691056911,
+      "matched_terms": [
+        "both",
+        "english",
+        "experiments",
+        "model",
+        "models",
+        "network",
+        "neural",
+        "parsing",
+        "recurrent",
+        "show",
+        "state-of-the-art",
+        "we",
+        "with"
+      ],
+      "code_links": [
+        {
+          "url": "https://github.com/clab/rnng",
+          "anchor": {
+            "paper_id": "paper-a9d6a10bab94667e60a2b52e64aaae0de454e72b39c46bf8b5a8547d31f394eb",
+            "page_number": 1,
+            "section": [
+              "1 Introduction"
+            ],
+            "chunk_id": "paper-a9d6a10bab94667e60a2b52e64aaae0de454e72b39c46bf8b5a8547d31f394eb-p0001-c00015"
+          }
+        }
+      ],
+      "relationship_reason": "相对《Attention Is All You Need》，《Recurrent Neural Network Grammars》的标题与摘要共享主题词：both、english、experiments、model、models、network、neural、parsing。 两篇之间存在已核验的库内引用关系，可查看引用图谱。 原文提供可定位的GitHub链接，代码项增加10分；仓库内容和可运行性需另行核验。",
+      "code_priority_bonus": 10
+    },
+    {
+      "rank": 20,
+      "paper": {
+        "schema_version": "1.0.0",
+        "id": "paper-8e7e90ff0e4a7e88bd867868bde9c7c1eec0a52f1160805992af6c31acd09310",
+        "title": "Using the Output Embedding to Improve Language Models",
+        "authors": [
+          "Ofir Press",
+          "Lior Wolf"
+        ],
+        "institutions": [
+          "School of Computer Science",
+          "Tel-Aviv University"
+        ],
+        "year": 2016,
+        "source": "https://arxiv.org/abs/1608.05859v3",
+        "arxiv_id": "1608.05859v3",
+        "doi": null,
+        "version": "v3",
+        "file_hash": "8e7e90ff0e4a7e88bd867868bde9c7c1eec0a52f1160805992af6c31acd09310",
+        "page_count": 7,
+        "has_text_layer": true,
+        "abstract_present": true,
+        "abstract_characters": 756,
+        "abstract_sha256": "d64dc228372cfb5ded805d880394ceb4f02627826a0b68daef7c87498d9a2f60"
+      },
+      "score": 17.148094388183836,
+      "content_similarity": 0.09219858156028368,
+      "matched_terms": [
+        "also",
+        "less",
+        "model",
+        "models",
+        "more",
+        "network",
+        "neural",
+        "new",
+        "our",
+        "show",
+        "training",
+        "translation",
+        "we"
+      ],
+      "code_links": [
+        {
+          "url": "https://github.com/nyu-dl/dl4mt-tutorial",
+          "anchor": {
+            "paper_id": "paper-8e7e90ff0e4a7e88bd867868bde9c7c1eec0a52f1160805992af6c31acd09310",
+            "page_number": 5,
+            "section": [
+              "Table 8: Size (number of parameters) and BLEU score of",
+              "4.3 Neural Machine Translation"
+            ],
+            "chunk_id": "paper-8e7e90ff0e4a7e88bd867868bde9c7c1eec0a52f1160805992af6c31acd09310-p0005-c00120"
+          }
+        }
+      ],
+      "relationship_reason": "相对《Attention Is All You Need》，《Using the Output Embedding to Improve Language Models》的标题与摘要共享主题词：also、less、model、models、more、network、neural、new。 两篇之间存在已核验的库内引用关系，可查看引用图谱。 原文提供可定位的GitHub链接，代码项增加10分；仓库内容和可运行性需另行核验。",
+      "code_priority_bonus": 10
+    },
+    {
+      "rank": 21,
+      "paper": {
+        "schema_version": "1.0.0",
+        "id": "paper-df7cd0ccd711c38c23544104311504bb1e200ebf0c354bb942ab4c189d046ef2",
+        "title": "Deep Recurrent Models with Fast-Forward Connections for Neural Machine Translation",
+        "authors": [
+          "Jie Zhou",
+          "Ying Cao",
+          "Xuguang Wang",
+          "Peng Li",
+          "Wei Xu"
+        ],
+        "institutions": [
+          "Baidu Research -Institute of Deep Learning Baidu Inc"
+        ],
+        "year": 2016,
+        "source": "https://arxiv.org/abs/1606.04199v3",
+        "arxiv_id": "1606.04199v3",
+        "doi": null,
+        "version": "v3",
+        "file_hash": "df7cd0ccd711c38c23544104311504bb1e200ebf0c354bb942ab4c189d046ef2",
+        "page_count": 13,
+        "has_text_layer": true,
+        "abstract_present": true,
+        "abstract_characters": 1260,
+        "abstract_sha256": "9f60efc1816006d90c7c1d597532cd9b8b04f76aa306285cbfe703b6ce2be104"
+      },
+      "score": 13.266974516286275,
+      "content_similarity": 0.18012422360248448,
+      "matched_terms": [
+        "achieves",
+        "after",
+        "also",
+        "architecture",
+        "attention",
+        "based",
+        "best",
+        "bleu",
+        "by",
+        "english-to-french",
+        "existing",
+        "machine",
+        "mechanism",
+        "model",
+        "models",
+        "more"
+      ],
+      "code_links": [],
+      "relationship_reason": "相对《Attention Is All You Need》，《Deep Recurrent Models with Fast-Forward Connections for Neural Machine Translation》的标题与摘要共享主题词：achieves、after、also、architecture、attention、based、best、bleu。 两篇之间存在已核验的库内引用关系，可查看引用图谱。",
+      "code_priority_bonus": 0
+    },
+    {
+      "rank": 22,
+      "paper": {
+        "schema_version": "1.0.0",
+        "id": "paper-38095da0c38496d97fd6970d314b2fc5d0aa6ed3f9c50a1e67f85521af5d9af8",
+        "title": "Exploring the Limits of Language Modeling",
+        "authors": [
+          "Rafal Jozefowicz",
+          "Oriol Vinyals",
+          "Mike Schuster",
+          "Noam Shazeer",
+          "Yonghui Wu"
+        ],
+        "institutions": [
+          "Google Brain"
+        ],
+        "year": 2016,
+        "source": "https://arxiv.org/abs/1602.02410v2",
+        "arxiv_id": "1602.02410v2",
+        "doi": null,
+        "version": "v2",
+        "file_hash": "38095da0c38496d97fd6970d314b2fc5d0aa6ed3f9c50a1e67f85521af5d9af8",
+        "page_count": 11,
+        "has_text_layer": true,
+        "abstract_present": true,
+        "abstract_characters": 792,
+        "abstract_sha256": "07c5522e3d0b3c9295b64a8efd8d31d3a10ac87068e3fca8111e1a6a19b0f985"
+      },
+      "score": 11.993956990984456,
+      "content_similarity": 0.1610738255033557,
+      "matched_terms": [
+        "also",
+        "best",
+        "by",
+        "complex",
+        "convolutional",
+        "from",
+        "improving",
+        "large",
+        "model",
+        "models",
+        "networks",
+        "neural",
+        "new",
+        "or",
+        "our",
+        "recurrent"
+      ],
+      "code_links": [],
+      "relationship_reason": "相对《Attention Is All You Need》，《Exploring the Limits of Language Modeling》的标题与摘要共享主题词：also、best、by、complex、convolutional、from、improving、large。 两篇之间存在已核验的库内引用关系，可查看引用图谱。",
+      "code_priority_bonus": 0
+    },
+    {
+      "rank": 23,
+      "paper": {
+        "schema_version": "1.0.0",
+        "id": "paper-a5c2cad84e769520e7c66f3193fdd206505e322a2ca801a411581375d2c4b5e2",
+        "title": "Effective Approaches to Attention-based Neural Machine Translation",
+        "authors": [
+          "Minh-Thang Luong",
+          "Hieu Pham",
+          "Christopher D. Manning"
+        ],
+        "institutions": [
+          "Computer Science Department, Stanford University, Stanford, CA 94305"
+        ],
+        "year": 2015,
+        "source": "https://arxiv.org/abs/1508.04025v5",
+        "arxiv_id": "1508.04025v5",
+        "doi": null,
+        "version": "v5",
+        "file_hash": "a5c2cad84e769520e7c66f3193fdd206505e322a2ca801a411581375d2c4b5e2",
+        "page_count": 11,
+        "has_text_layer": true,
+        "abstract_present": true,
+        "abstract_characters": 1035,
+        "abstract_sha256": "480c2667b66398978e00bccdc4b4b5765d4cc69d3856919c0581ba8abe68a600"
+      },
+      "score": 11.506661884145938,
+      "content_similarity": 0.15723270440251572,
+      "matched_terms": [
+        "all",
+        "attention",
+        "best",
+        "bleu",
+        "both",
+        "by",
+        "english",
+        "existing",
+        "machine",
+        "mechanism",
+        "model",
+        "neural",
+        "new",
+        "our",
+        "over",
+        "simple"
+      ],
+      "code_links": [],
+      "relationship_reason": "相对《Attention Is All You Need》，《Effective Approaches to Attention-based Neural Machine Translation》的标题与摘要共享主题词：all、attention、best、bleu、both、by、english、existing。 两篇之间存在已核验的库内引用关系，可查看引用图谱。",
+      "code_priority_bonus": 0
+    },
+    {
+      "rank": 24,
+      "paper": {
+        "schema_version": "1.0.0",
+        "id": "paper-285fb4323972464ba0be4f7c76a0db1a3cc196d5e44be542152f085d47fe5812",
+        "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation",
+        "authors": [
+          "Yonghui Wu",
+          "Mike Schuster",
+          "Zhifeng Chen",
+          "Quoc V. Le",
+          "Mohammad Norouzi",
+          "Wolfgang Macherey",
+          "Maxim Krikun",
+          "Yuan Cao",
+          "Qin Gao",
+          "Klaus Macherey",
+          "Jeff Klingner",
+          "Apurva Shah",
+          "Melvin Johnson",
+          "Xiaobing Liu",
+          "Łukasz Kaiser",
+          "Stephan Gouws",
+          "Yoshikiyo Kato",
+          "Taku Kudo",
+          "Hideto Kazawa",
+          "Keith Stevens",
+          "George Kurian",
+          "Nishant Patil",
+          "Wei Wang",
+          "Cliff Young",
+          "Jason Smith",
+          "Jason Riesa",
+          "Alex Rudnick",
+          "Oriol Vinyals",
+          "Greg Corrado",
+          "Macduff Hughes",
+          "Jeffrey Dean"
+        ],
+        "institutions": [],
+        "year": 2016,
+        "source": "https://arxiv.org/abs/1609.08144v2",
+        "arxiv_id": "1609.08144v2",
+        "doi": null,
+        "version": "v2",
+        "file_hash": "285fb4323972464ba0be4f7c76a0db1a3cc196d5e44be542152f085d47fe5812",
+        "page_count": 23,
+        "has_text_layer": true,
+        "abstract_present": true,
+        "abstract_characters": 1898,
+        "abstract_sha256": "2d597b5c01b418f055cfe4167910b047d80f78810eff1fd91e8662f5eb912b61"
+      },
+      "score": 11.278223880174455,
+      "content_similarity": 0.1346153846153846,
+      "matched_terms": [
+        "achieves",
+        "all",
+        "also",
+        "attention",
+        "be",
+        "both",
+        "by",
+        "decoder",
+        "encoder",
+        "english-to-french",
+        "limited",
+        "machine",
+        "mechanism",
+        "model",
+        "models",
+        "network"
+      ],
+      "code_links": [],
+      "relationship_reason": "相对《Attention Is All You Need》，《Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation》的标题与摘要共享主题词：achieves、all、also、attention、be、both、by、decoder。 两篇之间存在已核验的库内引用关系，可查看引用图谱。",
+      "code_priority_bonus": 0
+    },
+    {
+      "rank": 25,
+      "paper": {
+        "schema_version": "1.0.0",
+        "id": "paper-525470e65d6539917b11344a32d344e33eba482de60522b8f2f148dc462a7876",
+        "title": "Multi-task Sequence to Sequence Learning",
+        "authors": [
+          "Minh-Thang Luong",
+          "Quoc V. Le",
+          "Ilya Sutskever",
+          "Oriol Vinyals",
+          "Lukasz Kaiser"
+        ],
+        "institutions": [
+          "Google Brain",
+          "Minh-Thang Luong is also a student at Stanford University"
+        ],
+        "year": 2015,
+        "source": "https://arxiv.org/abs/1511.06114v4",
+        "arxiv_id": "1511.06114v4",
+        "doi": null,
+        "version": "v4",
+        "file_hash": "525470e65d6539917b11344a32d344e33eba482de60522b8f2f148dc462a7876",
+        "page_count": 10,
+        "has_text_layer": true,
+        "abstract_present": true,
+        "abstract_characters": 1281,
+        "abstract_sha256": "f42d4869167c9dfb700a467cc339502f563e2703588966e7f40a1cf428750809"
+      },
+      "score": 11.254933576116164,
+      "content_similarity": 0.1695906432748538,
+      "matched_terms": [
+        "be",
+        "bleu",
+        "by",
+        "data",
+        "decoder",
+        "encoder",
+        "english",
+        "less",
+        "machine",
+        "models",
+        "more",
+        "new",
+        "our",
+        "over",
+        "parsing",
+        "quality"
+      ],
+      "code_links": [],
+      "relationship_reason": "相对《Attention Is All You Need》，《Multi-task Sequence to Sequence Learning》的标题与摘要共享主题词：be、bleu、by、data、decoder、encoder、english、less。 两篇之间存在已核验的库内引用关系，可查看引用图谱。",
+      "code_priority_bonus": 0
+    },
+    {
+      "rank": 26,
+      "paper": {
+        "schema_version": "1.0.0",
+        "id": "paper-dd1f80c0c4fd67cf9afddac3ec5d3b22bbf02864d04adad53eb286ce53e33ac3",
+        "title": "Neural Machine Translation in Linear Time",
+        "authors": [
+          "Nal Kalchbrenner",
+          "Lasse Espeholt",
+          "Karen Simonyan",
+          "Aaron van den Oord",
+          "Alex Graves",
+          "Koray Kavukcuoglu"
+        ],
+        "institutions": [
+          "Google Deepmind, London UK"
+        ],
+        "year": 2016,
+        "source": "https://arxiv.org/abs/1610.10099v2",
+        "arxiv_id": "1610.10099v2",
+        "doi": null,
+        "version": "v2",
+        "file_hash": "dd1f80c0c4fd67cf9afddac3ec5d3b22bbf02864d04adad53eb286ce53e33ac3",
+        "page_count": 9,
+        "has_text_layer": true,
+        "abstract_present": true,
+        "abstract_characters": 1389,
+        "abstract_sha256": "ac0bb26a757afd6bdc1753203b6decc126b0b039625a49eb58e3e8e380c13d28"
+      },
+      "score": 11.07475067602331,
+      "content_similarity": 0.17073170731707318,
+      "matched_terms": [
+        "achieves",
+        "also",
+        "based",
+        "best",
+        "by",
+        "convolutional",
+        "decoder",
+        "encoder",
+        "machine",
+        "mechanism",
+        "models",
+        "need",
+        "network",
+        "networks",
+        "neural",
+        "other"
+      ],
+      "code_links": [],
+      "relationship_reason": "相对《Attention Is All You Need》，《Neural Machine Translation in Linear Time》的标题与摘要共享主题词：achieves、also、based、best、by、convolutional、decoder、encoder。 两篇之间存在已核验的库内引用关系，可查看引用图谱。",
+      "code_priority_bonus": 0
+    },
+    {
+      "rank": 27,
+      "paper": {
+        "schema_version": "1.0.0",
+        "id": "paper-2567713d198a376b65b92f0c60b9f58c8c5f66755530b92203533a17c4ec4b8e",
+        "title": "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer",
+        "authors": [
+          "Noam Shazeer",
+          "Azalia Mirhoseini",
+          "Krzysztof Maziarz",
+          "Andy Davis",
+          "Quoc Le",
+          "Geoffrey Hinton",
+          "Jeff Dean"
+        ],
+        "institutions": [
+          "Work done as a member of the Google Brain Residency program (g.co/brainresidency)"
+        ],
+        "year": 2017,
+        "source": "https://arxiv.org/abs/1701.06538v1",
+        "arxiv_id": "1701.06538v1",
+        "doi": null,
+        "version": "v1",
+        "file_hash": "2567713d198a376b65b92f0c60b9f58c8c5f66755530b92203533a17c4ec4b8e",
+        "page_count": 19,
+        "has_text_layer": true,
+        "abstract_present": true,
+        "abstract_characters": 1343,
+        "abstract_sha256": "364b8fcac4cc2f5e735ad1f9e4a3c8d9eec81540db09a6139ca92ece8440cc0f"
+      },
+      "score": 9.008476944523503,
+      "content_similarity": 0.0962566844919786,
+      "matched_terms": [
+        "by",
+        "large",
+        "limited",
+        "machine",
+        "model",
+        "models",
+        "network",
+        "networks",
+        "neural",
+        "results",
+        "significantly",
+        "state-of-the-art",
+        "tasks",
+        "these",
+        "training",
+        "translation"
+      ],
+      "code_links": [],
+      "relationship_reason": "相对《Attention Is All You Need》，《Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer》的标题与摘要共享主题词：by、large、limited、machine、model、models、network、networks。 两篇之间存在已核验的库内引用关系，可查看引用图谱。",
+      "code_priority_bonus": 0
+    },
+    {
+      "rank": 28,
+      "paper": {
+        "schema_version": "1.0.0",
+        "id": "paper-8b89211db43f15bd836de3bb710dc61881f2f2439390c9d3f72e8838a4cec542",
+        "title": "Grammar as a Foreign Language",
+        "authors": [
+          "Oriol Vinyals",
+          "Lukasz Kaiser",
+          "Terry Koo",
+          "Slav Petrov",
+          "Ilya Sutskever",
+          "Geoffrey Hinton"
+        ],
+        "institutions": [
+          "Google"
+        ],
+        "year": 2014,
+        "source": "https://arxiv.org/abs/1412.7449v3",
+        "arxiv_id": "1412.7449v3",
+        "doi": null,
+        "version": "v3",
+        "file_hash": "8b89211db43f15bd836de3bb710dc61881f2f2439390c9d3f72e8838a4cec542",
+        "page_count": 10,
+        "has_text_layer": true,
+        "abstract_present": true,
+        "abstract_characters": 871,
+        "abstract_sha256": "ed2c336453f5cdb688e9cc54f3840ac5a23e7e781739d9556089133496bdc882"
+      },
+      "score": 8.918106708928494,
+      "content_similarity": 0.12837837837837837,
+      "matched_terms": [
+        "achieves",
+        "also",
+        "attention",
+        "complex",
+        "constituency",
+        "existing",
+        "large",
+        "mechanism",
+        "model",
+        "models",
+        "our",
+        "over",
+        "parsing",
+        "results",
+        "show",
+        "small"
+      ],
+      "code_links": [],
+      "relationship_reason": "相对《Attention Is All You Need》，《Grammar as a Foreign Language》的标题与摘要共享主题词：achieves、also、attention、complex、constituency、existing、large、mechanism。",
+      "code_priority_bonus": 0
+    },
+    {
+      "rank": 29,
+      "paper": {
+        "schema_version": "1.0.0",
+        "id": "paper-83618dd2300ce30371320ebcb48db113d642a6a3035697efb2d8655e13aeda08",
+        "title": "A Decomposable Attention Model for Natural Language Inference",
+        "authors": [
+          "Ankur P. Parikh",
+          "Oscar Täckström",
+          "Dipanjan Das",
+          "Jakob Uszkoreit"
+        ],
+        "institutions": [
+          "Jakob Uszkoreit Google Mountain View"
+        ],
+        "year": 2016,
+        "source": "https://arxiv.org/abs/1606.01933v2",
+        "arxiv_id": "1606.01933v2",
+        "doi": null,
+        "version": "v2",
+        "file_hash": "83618dd2300ce30371320ebcb48db113d642a6a3035697efb2d8655e13aeda08",
+        "page_count": 7,
+        "has_text_layer": true,
+        "abstract_present": true,
+        "abstract_characters": 539,
+        "abstract_sha256": "bfcd1419b50f09aab526d4c40bea6919174e95f413b760f9b99bf68680ab4aea"
+      },
+      "score": 8.849886910135254,
+      "content_similarity": 0.09558823529411764,
+      "matched_terms": [
+        "architecture",
+        "attention",
+        "be",
+        "model",
+        "neural",
+        "our",
+        "parallelizable",
+        "propose",
+        "results",
+        "simple",
+        "state-of-the-art",
+        "we",
+        "with"
+      ],
+      "code_links": [],
+      "relationship_reason": "相对《Attention Is All You Need》，《A Decomposable Attention Model for Natural Language Inference》的标题与摘要共享主题词：architecture、attention、be、model、neural、our、parallelizable、propose。",
+      "code_priority_bonus": 0
+    },
+    {
+      "rank": 30,
+      "paper": {
+        "schema_version": "1.0.0",
+        "id": "paper-f86a162404da6e8d6acbdc67878b578ae8ae67385eb14c318ddeef89f11278d6",
+        "title": "A Deep Reinforced Model for Abstractive Summarization",
+        "authors": [
+          "Romain Paulus",
+          "Caiming Xiong",
+          "Richard Socher"
+        ],
+        "institutions": [
+          "Salesforce Research"
+        ],
+        "year": 2017,
+        "source": "https://arxiv.org/abs/1705.04304v3",
+        "arxiv_id": "1705.04304v3",
+        "doi": null,
+        "version": "v3",
+        "file_hash": "f86a162404da6e8d6acbdc67878b578ae8ae67385eb14c318ddeef89f11278d6",
+        "page_count": 12,
+        "has_text_layer": true,
+        "abstract_present": true,
+        "abstract_characters": 1065,
+        "abstract_sha256": "95e0de700f2b5f9d6cad502aa9f5ebce619f0450cfe8c07bc6293efcf66efaa5"
+      },
+      "score": 8.693970724577936,
+      "content_similarity": 0.09941520467836257,
+      "matched_terms": [
+        "also",
+        "include",
+        "model",
+        "models",
+        "more",
+        "network",
+        "neural",
+        "new",
+        "our",
+        "over",
+        "quality",
+        "sequence",
+        "state-of-the-art",
+        "these",
+        "training",
+        "we"
+      ],
+      "code_links": [],
+      "relationship_reason": "相对《Attention Is All You Need》，《A Deep Reinforced Model for Abstractive Summarization》的标题与摘要共享主题词：also、include、model、models、more、network、neural、new。 两篇之间存在已核验的库内引用关系，可查看引用图谱。",
+      "code_priority_bonus": 0
+    },
+    {
+      "rank": 31,
+      "paper": {
+        "schema_version": "1.0.0",
+        "id": "paper-14acb4c846f46646fca07c4b3d2263d509792fe627c8f84a2108a5d0189bab5f",
+        "title": "A Structured Self-attentive Sentence Embedding",
+        "authors": [
+          "Zhouhan Lin",
+          "Minwei Feng",
+          "Cicero Nogueira dos Santos",
+          "Mo Yu",
+          "Bing Xiang",
+          "Bowen Zhou",
+          "Yoshua Bengio"
+        ],
+        "institutions": [
+          "IBM Watson ‡Montreal Institute for Learning Algorithms (MILA), Universite de Montreal ´ ´"
+        ],
+        "year": 2017,
+        "source": "https://arxiv.org/abs/1703.03130v1",
+        "arxiv_id": "1703.03130v1",
+        "doi": null,
+        "version": "v1",
+        "file_hash": "14acb4c846f46646fca07c4b3d2263d509792fe627c8f84a2108a5d0189bab5f",
+        "page_count": 15,
+        "has_text_layer": true,
+        "abstract_present": true,
+        "abstract_characters": 739,
+        "abstract_sha256": "9a60b4a3e4d8aaec8bc9a148aecc61fa87fb90391c0ff8e173bb392a2950ce6a"
+      },
+      "score": 8.687749497752007,
+      "content_similarity": 0.09929078014184398,
+      "matched_terms": [
+        "all",
+        "also",
+        "by",
+        "mechanism",
+        "model",
+        "new",
+        "other",
+        "our",
+        "propose",
+        "results",
+        "show",
+        "tasks",
+        "we",
+        "with"
+      ],
+      "code_links": [],
+      "relationship_reason": "相对《Attention Is All You Need》，《A Structured Self-attentive Sentence Embedding》的标题与摘要共享主题词：all、also、by、mechanism、model、new、other、our。 两篇之间存在已核验的库内引用关系，可查看引用图谱。",
+      "code_priority_bonus": 0
+    },
+    {
+      "rank": 32,
+      "paper": {
+        "schema_version": "1.0.0",
+        "id": "paper-f4e5a6bbbe0d87459997fffe892f8be485e33903cc71f923c2884639fbf96401",
+        "title": "Neural Machine Translation of Rare Words with Subword Units",
+        "authors": [
+          "Rico Sennrich",
+          "Barry Haddow",
+          "Alexandra Birch"
+        ],
+        "institutions": [
+          "School of Informatics",
+          "University of Edinburgh"
+        ],
+        "year": 2015,
+        "source": "https://arxiv.org/abs/1508.07909v5",
+        "arxiv_id": "1508.07909v5",
+        "doi": null,
+        "version": "v5",
+        "file_hash": "f4e5a6bbbe0d87459997fffe892f8be485e33903cc71f923c2884639fbf96401",
+        "page_count": 11,
+        "has_text_layer": true,
+        "abstract_present": true,
+        "abstract_characters": 1085,
+        "abstract_sha256": "38cc8964c2c46d35c362c4da845a6f57a43207a678ab2469154836a0e1b4800d"
+      },
+      "score": 7.778766046215363,
+      "content_similarity": 0.1111111111111111,
+      "matched_terms": [
+        "based",
+        "bleu",
+        "by",
+        "including",
+        "machine",
+        "model",
+        "models",
+        "more",
+        "neural",
+        "or",
+        "over",
+        "show",
+        "simple",
+        "tasks",
+        "translation",
+        "we"
+      ],
+      "code_links": [],
+      "relationship_reason": "相对《Attention Is All You Need》，《Neural Machine Translation of Rare Words with Subword Units》的标题与摘要共享主题词：based、bleu、by、including、machine、model、models、more。 两篇之间存在已核验的库内引用关系，可查看引用图谱。",
+      "code_priority_bonus": 0
+    },
+    {
+      "rank": 33,
+      "paper": {
+        "schema_version": "1.0.0",
+        "id": "paper-eab9c73ae2ceda884b94830bda99312254bac4806f6c9f045cbab90721ecda31",
+        "title": "Adam: A Method for Stochastic Optimization",
+        "authors": [
+          "Diederik P. Kingma",
+          "Jimmy Ba"
+        ],
+        "institutions": [
+          "University of Amsterdam",
+          "University of Toronto"
+        ],
+        "year": 2014,
+        "source": "https://arxiv.org/abs/1412.6980v9",
+        "arxiv_id": "1412.6980v9",
+        "doi": null,
+        "version": "v9",
+        "file_hash": "eab9c73ae2ceda884b94830bda99312254bac4806f6c9f045cbab90721ecda31",
+        "page_count": 15,
+        "has_text_layer": true,
+        "abstract_present": true,
+        "abstract_characters": 1109,
+        "abstract_sha256": "c5eb4db28270bf7ad397219b44b7829629eac8b984f4cd1b3a6bcf0a6d7134f6"
+      },
+      "score": 7.733906187143362,
+      "content_similarity": 0.06358381502890173,
+      "matched_terms": [
+        "also",
+        "based",
+        "best",
+        "data",
+        "large",
+        "or",
+        "other",
+        "results",
+        "we",
+        "well",
+        "with"
+      ],
+      "code_links": [],
+      "relationship_reason": "相对《Attention Is All You Need》，《Adam: A Method for Stochastic Optimization》的标题与摘要共享主题词：also、based、best、data、large、or、other、results。",
+      "code_priority_bonus": 0
+    },
+    {
+      "rank": 34,
+      "paper": {
+        "schema_version": "1.0.0",
+        "id": "paper-1e0651b6810ecba34a3dbc5b5b0209226f889004607c1f203540a48d64e5a93a",
+        "title": "Deep Residual Learning for Image Recognition",
+        "authors": [
+          "Kaiming He",
+          "Xiangyu Zhang",
+          "Shaoqing Ren",
+          "Jian Sun"
+        ],
+        "institutions": [
+          "Microsoft Research"
+        ],
+        "year": 2015,
+        "source": "https://arxiv.org/abs/1512.03385v1",
+        "arxiv_id": "1512.03385v1",
+        "doi": null,
+        "version": "v1",
+        "file_hash": "1e0651b6810ecba34a3dbc5b5b0209226f889004607c1f203540a48d64e5a93a",
+        "page_count": 12,
+        "has_text_layer": true,
+        "abstract_present": true,
+        "abstract_characters": 1287,
+        "abstract_sha256": "37cc294d52ef0292a0955214d189cb62b98a5073ae213897a00dcf94c132cbfc"
+      },
+      "score": 7.332999626658078,
+      "content_similarity": 0.08522727272727272,
+      "matched_terms": [
+        "achieves",
+        "also",
+        "from",
+        "more",
+        "networks",
+        "neural",
+        "our",
+        "solely",
+        "task",
+        "tasks",
+        "these",
+        "train",
+        "training",
+        "we",
+        "with"
+      ],
+      "code_links": [],
+      "relationship_reason": "相对《Attention Is All You Need》，《Deep Residual Learning for Image Recognition》的标题与摘要共享主题词：achieves、also、from、more、networks、neural、our、solely。",
+      "code_priority_bonus": 0
+    },
+    {
+      "rank": 35,
+      "paper": {
+        "schema_version": "1.0.0",
+        "id": "paper-80e30acdfa89bcb41a00c8b221cb9a1dc44256897e75af8762f171ec9dc77b85",
+        "title": "Rethinking the Inception Architecture for Computer Vision",
+        "authors": [
+          "Christian Szegedy",
+          "Vincent Vanhoucke",
+          "Sergey Ioffe",
+          "Jonathon Shlens",
+          "Zbigniew Wojna"
+        ],
+        "institutions": [
+          "Google Inc.",
+          "University College London"
+        ],
+        "year": 2015,
+        "source": "https://arxiv.org/abs/1512.00567v3",
+        "arxiv_id": "1512.00567v3",
+        "doi": null,
+        "version": "v3",
+        "file_hash": "80e30acdfa89bcb41a00c8b221cb9a1dc44256897e75af8762f171ec9dc77b85",
+        "page_count": 10,
+        "has_text_layer": true,
+        "abstract_present": true,
+        "abstract_characters": 1258,
+        "abstract_sha256": "60ace7f8d4cab3e1f673bdade4463da80854e0ed79ef1f73ebe86275a761bfee"
+      },
+      "score": 7.195586181267542,
+      "content_similarity": 0.09944751381215469,
+      "matched_terms": [
+        "architecture",
+        "by",
+        "convolutional",
+        "convolutions",
+        "data",
+        "less",
+        "model",
+        "models",
+        "network",
+        "networks",
+        "our",
+        "over",
+        "quality",
+        "state-of-the-art",
+        "tasks",
+        "training"
+      ],
+      "code_links": [],
+      "relationship_reason": "相对《Attention Is All You Need》，《Rethinking the Inception Architecture for Computer Vision》的标题与摘要共享主题词：architecture、by、convolutional、convolutions、data、less、model、models。 两篇之间存在已核验的库内引用关系，可查看引用图谱。",
+      "code_priority_bonus": 0
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 0.078, "state": ["running", 2, "正在查找、下载和解析：Neural machine translation by jointly learning to align and translate"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 20.109, "state": ["running", 3, "正在查找、下载和解析：Neural machine translation in linear time"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 66.813, "state": ["running", 4, "已处理 4 / 40 项"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 67.938, "state": ["running", 4, "正在查找、下载和解析：Grammar as a foreign language"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 87.969, "state": ["running", 5, "正在查找、下载和解析：Massive exploration of neural machine translation architectures"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 108.25, "state": ["running", 6, "正在查找、下载和解析：Learning phrase representations using rnn encoder-decoder for statistical machine translation"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 143.438, "state": ["running", 7, "已处理 7 / 40 项"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 144.5, "state": ["running", 7, "正在查找、下载和解析：Recurrent neural network grammars"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 176.469, "state": ["running", 8, "正在查找、下载和解析：Gradient flow in recurrent nets: the difficulty of learning long-term dependencies"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 177.516, "state": ["running", 9, "正在查找、下载和解析：A decomposable attention model"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 180.672, "state": ["running", 10, "正在查找、下载和解析：Learning accurate, compact, and interpretable tree annotation"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 183.953, "state": ["running", 11, "正在查找、下载和解析：Outrageously large neural networks: The sparsely-gated mixture-of-experts layer"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 239.078, "state": ["running", 12, "正在查找、下载和解析：Sequence to sequence learning with neural networks"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 258.172, "state": ["running", 13, "正在查找、下载和解析：Layer normalization"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 292.344, "state": ["running", 14, "正在查找、下载和解析：Long short-term memory-networks for machine reading"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 339.469, "state": ["running", 15, "已处理 15 / 40 项"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 340.547, "state": ["running", 15, "正在查找、下载和解析：Xception: Deep learning with depthwise separable convolutions"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 384.469, "state": ["running", 16, "已处理 16 / 40 项"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 385.516, "state": ["running", 16, "正在查找、下载和解析：Empirical evaluation of gated recurrent neural networks on sequence modeling"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 430.563, "state": ["running", 17, "正在查找、下载和解析：Generating sequences with recurrent neural networks"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 558.563, "state": ["running", 18, "已处理 18 / 40 项"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 561.563, "state": ["running", 18, "正在查找、下载和解析：Deep residual learning for image recognition"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 567.156, "state": ["running", 19, "已处理 19 / 40 项"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 568.281, "state": ["running", 19, "正在查找、下载和解析：Long short-term memory"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 573.578, "state": ["running", 20, "正在查找、下载和解析：Self-training PCFG grammars with latent annotations across languages"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 574.656, "state": ["running", 21, "正在查找、下载和解析：Exploring the limits of language modeling"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 611.359, "state": ["running", 22, "已处理 22 / 40 项"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 612.438, "state": ["running", 22, "正在查找、下载和解析：Can active memory replace attention?"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 644.453, "state": ["running", 23, "正在查找、下载和解析：Neural GPUs learn algorithms"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 666.234, "state": ["running", 24, "正在查找、下载和解析：Structured attention networks"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 749.031, "state": ["running", 25, "已处理 25 / 40 项"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 750.109, "state": ["running", 25, "正在查找、下载和解析：Adam: A method for stochastic optimization"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 805.609, "state": ["running", 26, "正在查找、下载和解析：Factorization tricks for LSTM networks"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 831.203, "state": ["running", 27, "正在查找、下载和解析：A structured self-attentive sentence embedding"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 887.766, "state": ["running", 28, "正在查找、下载和解析：Multi-task sequence to sequence learning"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 909.531, "state": ["running", 29, "已处理 29 / 40 项"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 910.578, "state": ["running", 29, "正在查找、下载和解析：Effective approaches to attentionbased neural machine translation"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 932.156, "state": ["running", 30, "正在查找、下载和解析：Building a large annotated corpus of english: The penn treebank"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 934.438, "state": ["running", 31, "正在查找、下载和解析：Effective self-training for parsing"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 936.563, "state": ["running", 32, "正在查找、下载和解析：A deep reinforced model for abstractive summarization"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 961.328, "state": ["running", 33, "正在查找、下载和解析：Using the output embedding to improve language models"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 980.766, "state": ["running", 34, "正在查找、下载和解析：Neural machine translation of rare words with subword units"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 1004.703, "state": ["running", 35, "正在查找、下载和解析：Dropout: a simple way to prevent neural networks from overfitting"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 1005.766, "state": ["running", 36, "已处理 36 / 40 项"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 1006.828, "state": ["running", 36, "正在查找、下载和解析：End-to-end memory networks"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 1041.406, "state": ["running", 37, "正在查找、下载和解析：Rethinking the inception architecture for computer vision"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 1066.328, "state": ["running", 38, "正在查找、下载和解析：Deep recurrent models with fast-forward connections for neural machine translation"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 1091.094, "state": ["running", 39, "正在查找、下载和解析：Fast and accurate shift-reduce constituent parsing"]}
+{"task_id": "0db6b62de5d74878b2509968ec295df2", "elapsed_seconds": 1092.234, "state": ["partial", 40, "已处理 40 / 40 项"]}
+partial

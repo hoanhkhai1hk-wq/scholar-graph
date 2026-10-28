@@ -1,0 +1,3386 @@
+{
+  "id": "bd415f07901c4e12a6b0e2d4b451411d",
+  "kind": "acquisition",
+  "status": "partial",
+  "created_at": "2026-10-28T15:13:43.880688+00:00",
+  "started_at": "2026-10-28T15:13:44.074410+00:00",
+  "finished_at": "2026-10-28T15:16:54.133020+00:00",
+  "cancel_requested": false,
+  "progress": {
+    "completed_units": 40,
+    "total_units": 40,
+    "label": "已处理 40 / 40 项"
+  },
+  "result": {
+    "succeeded": [
+      {
+        "paper_id": "paper-285fb4323972464ba0be4f7c76a0db1a3cc196d5e44be542152f085d47fe5812",
+        "filename": "Google's neural machine translation system: Bridging the gap between human and machine translation",
+        "already_present": true
+      },
+      {
+        "paper_id": "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7",
+        "filename": "Layer normalization",
+        "already_present": true
+      },
+      {
+        "paper_id": "paper-6ae9257b347f5982f29618fcd774a03b5eb8795881c017f889e90f7956bcb22a",
+        "filename": "Massive exploration of neural machine translation architectures",
+        "already_present": true
+      },
+      {
+        "paper_id": "paper-1e0651b6810ecba34a3dbc5b5b0209226f889004607c1f203540a48d64e5a93a",
+        "filename": "Deep residual learning for image recognition",
+        "already_present": true
+      },
+      {
+        "paper_id": "paper-eab9c73ae2ceda884b94830bda99312254bac4806f6c9f045cbab90721ecda31",
+        "filename": "Adam: A method for stochastic optimization",
+        "already_present": true
+      },
+      {
+        "paper_id": "paper-8e7e90ff0e4a7e88bd867868bde9c7c1eec0a52f1160805992af6c31acd09310",
+        "filename": "Using the output embedding to improve language models",
+        "already_present": true
+      },
+      {
+        "paper_id": "paper-84801c8410da51b449d379d2fa4939a416123f2c93991077a680f863026022a7",
+        "filename": "Neural machine translation by jointly learning to align and translate",
+        "already_present": true
+      },
+      {
+        "paper_id": "paper-21dd02432f07d9bee1227090f0f64003da5ad2eb8d691b1ab7cfa94c25f23b5d",
+        "filename": "Convolutional sequence to sequence learning",
+        "already_present": true
+      },
+      {
+        "paper_id": "paper-80e30acdfa89bcb41a00c8b221cb9a1dc44256897e75af8762f171ec9dc77b85",
+        "filename": "Rethinking the inception architecture for computer vision",
+        "already_present": true
+      },
+      {
+        "paper_id": "paper-35acfcc574b37588ac0443ac65c9e2fccf794b24df9cf8522d6df5f09b82119c",
+        "filename": "Learning phrase representations using rnn encoder-decoder for statistical machine translation",
+        "already_present": true
+      },
+      {
+        "paper_id": "paper-5c74e1db863e2d61b869c9b0603494b34c41fb05db1a4fa7f9a83d5a42b7350f",
+        "filename": "Sequence to sequence learning with neural networks",
+        "already_present": true
+      },
+      {
+        "paper_id": "paper-9c9d8c490c5b87fcea266a7b16d238335372b00ba0a0dacde0e3016f52c0ff01",
+        "filename": "Generating sequences with recurrent neural networks",
+        "already_present": true
+      },
+      {
+        "paper_id": "paper-f4e5a6bbbe0d87459997fffe892f8be485e33903cc71f923c2884639fbf96401",
+        "filename": "Neural machine translation of rare words with subword units",
+        "already_present": true
+      },
+      {
+        "paper_id": "paper-a9d6a10bab94667e60a2b52e64aaae0de454e72b39c46bf8b5a8547d31f394eb",
+        "filename": "Recurrent neural network grammars",
+        "already_present": true
+      },
+      {
+        "paper_id": "paper-dd1f80c0c4fd67cf9afddac3ec5d3b22bbf02864d04adad53eb286ce53e33ac3",
+        "filename": "Neural machine translation in linear time",
+        "already_present": true
+      },
+      {
+        "paper_id": "paper-8b89211db43f15bd836de3bb710dc61881f2f2439390c9d3f72e8838a4cec542",
+        "filename": "Grammar as a foreign language",
+        "already_present": true
+      },
+      {
+        "paper_id": "paper-6de4937e4a78156e027742aeb047a7163c6ca69888905c9419a6cb356ed5c77c",
+        "filename": "Xception: Deep learning with depthwise separable convolutions",
+        "already_present": true
+      },
+      {
+        "paper_id": "paper-2567713d198a376b65b92f0c60b9f58c8c5f66755530b92203533a17c4ec4b8e",
+        "filename": "Outrageously large neural networks: The sparsely-gated mixture-of-experts layer",
+        "already_present": true
+      },
+      {
+        "paper_id": "paper-ccdcd1eb8b52dcdf40d716d7ba234e861edb8ea913778b92a1628fbb86158685",
+        "filename": "Empirical evaluation of gated recurrent neural networks on sequence modeling",
+        "already_present": true
+      },
+      {
+        "paper_id": "paper-525470e65d6539917b11344a32d344e33eba482de60522b8f2f148dc462a7876",
+        "filename": "Multi-task sequence to sequence learning",
+        "already_present": true
+      },
+      {
+        "paper_id": "paper-8eddaf2a441092955d10aa34a9f2b690aaaecee9097a47693366e0c5b8ff36a0",
+        "filename": "End-to-end memory networks",
+        "already_present": true
+      },
+      {
+        "paper_id": "paper-df7cd0ccd711c38c23544104311504bb1e200ebf0c354bb942ab4c189d046ef2",
+        "filename": "Deep recurrent models with fast-forward connections for neural machine translation",
+        "already_present": true
+      },
+      {
+        "paper_id": "paper-83618dd2300ce30371320ebcb48db113d642a6a3035697efb2d8655e13aeda08",
+        "filename": "A decomposable attention model",
+        "already_present": true
+      },
+      {
+        "paper_id": "paper-b25dbbcd99230ff10d5e5838bdee2ef065b143b340a416fd878ccca049fd55e1",
+        "filename": "Factorization tricks for LSTM networks",
+        "already_present": true
+      },
+      {
+        "paper_id": "paper-f86a162404da6e8d6acbdc67878b578ae8ae67385eb14c318ddeef89f11278d6",
+        "filename": "A deep reinforced model for abstractive summarization",
+        "already_present": true
+      },
+      {
+        "paper_id": "paper-5085f14d6a203ec934b512646e1aeed37802fee1e686a9b6a9fa99ca51a13b91",
+        "filename": "Long short-term memory-networks for machine reading",
+        "already_present": true
+      },
+      {
+        "paper_id": "paper-38095da0c38496d97fd6970d314b2fc5d0aa6ed3f9c50a1e67f85521af5d9af8",
+        "filename": "Exploring the limits of language modeling",
+        "already_present": true
+      },
+      {
+        "paper_id": "paper-1cb48e40e523d1994f38211edd30f92b0f01f0a25c2990bc8d84a9b684e95135",
+        "filename": "Structured attention networks",
+        "already_present": true
+      },
+      {
+        "paper_id": "paper-14acb4c846f46646fca07c4b3d2263d509792fe627c8f84a2108a5d0189bab5f",
+        "filename": "A structured self-attentive sentence embedding",
+        "already_present": true
+      },
+      {
+        "paper_id": "paper-57567c72c96fc255a98674520460665d013e11a8c77b962b1f90bce443de73d9",
+        "filename": "Can active memory replace attention?",
+        "already_present": true
+      },
+      {
+        "paper_id": "paper-9bc9b63e985a663420ad6dd172ec9353a79a90b16bbf3f15148a6c182dc8aefc",
+        "filename": "Neural GPUs learn algorithms",
+        "already_present": true
+      },
+      {
+        "paper_id": "paper-a5c2cad84e769520e7c66f3193fdd206505e322a2ca801a411581375d2c4b5e2",
+        "filename": "Effective approaches to attentionbased neural machine translation",
+        "already_present": true
+      }
+    ],
+    "failed": [
+      {
+        "filename": "Dropout: a simple way to prevent neural networks from overfitting",
+        "error_code": "PAPER_NOT_FOUND",
+        "message": "arXiv 未找到唯一匹配论文；未选取相似标题冒充结果。",
+        "details": null
+      },
+      {
+        "filename": "Building a large annotated corpus of english: The penn treebank",
+        "error_code": "PAPER_NOT_FOUND",
+        "message": "arXiv 未找到唯一匹配论文；未选取相似标题冒充结果。",
+        "details": null
+      },
+      {
+        "filename": "Gradient flow in recurrent nets: the difficulty of learning long-term dependencies",
+        "error_code": "PAPER_NOT_FOUND",
+        "message": "arXiv 未找到唯一匹配论文；未选取相似标题冒充结果。",
+        "details": null
+      },
+      {
+        "filename": "Learning accurate, compact, and interpretable tree annotation",
+        "error_code": "PAPER_NOT_FOUND",
+        "message": "arXiv 未找到唯一匹配论文；未选取相似标题冒充结果。",
+        "details": null
+      },
+      {
+        "filename": "Long short-term memory",
+        "error_code": "PAPER_NOT_FOUND",
+        "message": "arXiv 未找到唯一匹配论文；未选取相似标题冒充结果。",
+        "details": null
+      },
+      {
+        "filename": "Self-training PCFG grammars with latent annotations across languages",
+        "error_code": "PAPER_NOT_FOUND",
+        "message": "arXiv 未找到唯一匹配论文；未选取相似标题冒充结果。",
+        "details": null
+      },
+      {
+        "filename": "Effective self-training for parsing",
+        "error_code": "PAPER_NOT_FOUND",
+        "message": "arXiv 未找到唯一匹配论文；未选取相似标题冒充结果。",
+        "details": null
+      },
+      {
+        "filename": "Fast and accurate shift-reduce constituent parsing",
+        "error_code": "PAPER_NOT_FOUND",
+        "message": "arXiv 未找到唯一匹配论文；未选取相似标题冒充结果。",
+        "details": null
+      }
+    ],
+    "items": [
+      {
+        "name": "Google's neural machine translation system: Bridging the gap between human and machine translation",
+        "succeeded": true,
+        "metadata": {
+          "schema_version": "1.0.0",
+          "id": "arxiv-1609.08144v2",
+          "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation",
+          "authors": [
+            "Yonghui Wu",
+            "Mike Schuster",
+            "Zhifeng Chen",
+            "Quoc V. Le",
+            "Mohammad Norouzi",
+            "Wolfgang Macherey",
+            "Maxim Krikun",
+            "Yuan Cao",
+            "Qin Gao",
+            "Klaus Macherey",
+            "Jeff Klingner",
+            "Apurva Shah",
+            "Melvin Johnson",
+            "Xiaobing Liu",
+            "Łukasz Kaiser",
+            "Stephan Gouws",
+            "Yoshikiyo Kato",
+            "Taku Kudo",
+            "Hideto Kazawa",
+            "Keith Stevens",
+            "George Kurian",
+            "Nishant Patil",
+            "Wei Wang",
+            "Cliff Young",
+            "Jason Smith",
+            "Jason Riesa",
+            "Alex Rudnick",
+            "Oriol Vinyals",
+            "Greg Corrado",
+            "Macduff Hughes",
+            "Jeffrey Dean"
+          ],
+          "institutions": [],
+          "year": 2016,
+          "source": "https://arxiv.org/abs/1609.08144v2",
+          "arxiv_id": "1609.08144v2",
+          "doi": null,
+          "version": "v2",
+          "file_hash": null,
+          "page_count": null,
+          "has_text_layer": null,
+          "abstract_present": true,
+          "abstract_characters": 1898,
+          "abstract_sha256": "2d597b5c01b418f055cfe4167910b047d80f78810eff1fd91e8662f5eb912b61"
+        },
+        "paper": {
+          "schema_version": "1.0.0",
+          "id": "paper-285fb4323972464ba0be4f7c76a0db1a3cc196d5e44be542152f085d47fe5812",
+          "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation",
+          "authors": [
+            "Yonghui Wu",
+            "Mike Schuster",
+            "Zhifeng Chen",
+            "Quoc V. Le",
+            "Mohammad Norouzi",
+            "Wolfgang Macherey",
+            "Maxim Krikun",
+            "Yuan Cao",
+            "Qin Gao",
+            "Klaus Macherey",
+            "Jeff Klingner",
+            "Apurva Shah",
+            "Melvin Johnson",
+            "Xiaobing Liu",
+            "Łukasz Kaiser",
+            "Stephan Gouws",
+            "Yoshikiyo Kato",
+            "Taku Kudo",
+            "Hideto Kazawa",
+            "Keith Stevens",
+            "George Kurian",
+            "Nishant Patil",
+            "Wei Wang",
+            "Cliff Young",
+            "Jason Smith",
+            "Jason Riesa",
+            "Alex Rudnick",
+            "Oriol Vinyals",
+            "Greg Corrado",
+            "Macduff Hughes",
+            "Jeffrey Dean"
+          ],
+          "institutions": [],
+          "year": 2016,
+          "source": "https://arxiv.org/abs/1609.08144v2",
+          "arxiv_id": "1609.08144v2",
+          "doi": null,
+          "version": "v2",
+          "file_hash": "285fb4323972464ba0be4f7c76a0db1a3cc196d5e44be542152f085d47fe5812",
+          "page_count": 23,
+          "has_text_layer": true,
+          "abstract_present": true,
+          "abstract_characters": 1898,
+          "abstract_sha256": "2d597b5c01b418f055cfe4167910b047d80f78810eff1fd91e8662f5eb912b61"
+        },
+        "initial_parse_status": null,
+        "parse_status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-285fb4323972464ba0be4f7c76a0db1a3cc196d5e44be542152f085d47fe5812",
+          "status": "completed",
+          "progress": 100,
+          "current_stage": "四类记录与去重判定已通过校验并发布",
+          "error_code": null,
+          "error_message": null
+        },
+        "error": null,
+        "already_present": true,
+        "dedup": {
+          "identity": "1609.08144",
+          "paper_id": "paper-285fb4323972464ba0be4f7c76a0db1a3cc196d5e44be542152f085d47fe5812",
+          "reason": "ARXIV_ID",
+          "similarity": null,
+          "first_seen": "2026-10-28T15:13:45.229416+00:00",
+          "occurrences": 1,
+          "last_seen": "2026-10-28T15:13:45.229440+00:00",
+          "record_created": true
+        },
+        "parse_metadata": {
+          "method": "mineru+grobid",
+          "grobid_attempted": true,
+          "grobid_elapsed_seconds": 5.739962,
+          "fallback_reason": null,
+          "grobid_error": null,
+          "paper_fields": [],
+          "references_enriched": 44,
+          "withheld_header_fields": {},
+          "unmatched_grobid_references": 14,
+          "paper_id": "paper-285fb4323972464ba0be4f7c76a0db1a3cc196d5e44be542152f085d47fe5812",
+          "job_id": "job-bfd251a5ce94464eae74864b76a72476",
+          "status": "completed",
+          "reference_matches_count": 44,
+          "discarded_header_counts": {}
+        }
+      },
+      {
+        "name": "Layer normalization",
+        "succeeded": true,
+        "metadata": {
+          "schema_version": "1.0.0",
+          "id": "arxiv-1607.06450v1",
+          "title": "Layer Normalization",
+          "authors": [
+            "Jimmy Lei Ba",
+            "Jamie Ryan Kiros",
+            "Geoffrey E. Hinton"
+          ],
+          "institutions": [],
+          "year": 2016,
+          "source": "https://arxiv.org/abs/1607.06450v1",
+          "arxiv_id": "1607.06450v1",
+          "doi": null,
+          "version": "v1",
+          "file_hash": null,
+          "page_count": null,
+          "has_text_layer": null,
+          "abstract_present": true,
+          "abstract_characters": 1510,
+          "abstract_sha256": "25070a2fa3c409b59f3ecd7bbfacfec4145b15d28b8fa9269bfaf8d4c034bb6b"
+        },
+        "paper": {
+          "schema_version": "1.0.0",
+          "id": "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7",
+          "title": "Layer Normalization",
+          "authors": [
+            "Jimmy Lei Ba",
+            "Jamie Ryan Kiros",
+            "Geoffrey E. Hinton"
+          ],
+          "institutions": [
+            "University of Toronto",
+            "University of Toronto and Google Inc."
+          ],
+          "year": 2016,
+          "source": "https://arxiv.org/abs/1607.06450v1",
+          "arxiv_id": "1607.06450v1",
+          "doi": null,
+          "version": "v1",
+          "file_hash": "c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7",
+          "page_count": 14,
+          "has_text_layer": true,
+          "abstract_present": true,
+          "abstract_characters": 1510,
+          "abstract_sha256": "25070a2fa3c409b59f3ecd7bbfacfec4145b15d28b8fa9269bfaf8d4c034bb6b"
+        },
+        "initial_parse_status": null,
+        "parse_status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7",
+          "status": "completed",
+          "progress": 100,
+          "current_stage": "四类记录与去重判定已通过校验并发布",
+          "error_code": null,
+          "error_message": null
+        },
+        "error": null,
+        "already_present": true,
+        "dedup": {
+          "identity": "1607.06450",
+          "paper_id": "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7",
+          "reason": "ARXIV_ID",
+          "similarity": null,
+          "first_seen": "2026-10-28T15:13:48.519247+00:00",
+          "occurrences": 1,
+          "last_seen": "2026-10-28T15:13:48.519281+00:00",
+          "record_created": true
+        },
+        "parse_metadata": {
+          "method": "mineru+grobid",
+          "grobid_attempted": true,
+          "grobid_elapsed_seconds": 5.731239,
+          "fallback_reason": null,
+          "grobid_error": null,
+          "paper_fields": [
+            "institutions"
+          ],
+          "references_enriched": 32,
+          "withheld_header_fields": {},
+          "unmatched_grobid_references": 0,
+          "paper_id": "paper-c464f839fb8d59f7fde92f9b4caa67c2d1f2f196b88f93fb60502249df0aaef7",
+          "job_id": "job-c46422e2a60448748a68c5ffd7e9621d",
+          "status": "completed",
+          "reference_matches_count": 32,
+          "discarded_header_counts": {}
+        }
+      },
+      {
+        "name": "Massive exploration of neural machine translation architectures",
+        "succeeded": true,
+        "metadata": {
+          "schema_version": "1.0.0",
+          "id": "arxiv-1703.03906v2",
+          "title": "Massive Exploration of Neural Machine Translation Architectures",
+          "authors": [
+            "Denny Britz",
+            "Anna Goldie",
+            "Minh-Thang Luong",
+            "Quoc Le"
+          ],
+          "institutions": [],
+          "year": 2017,
+          "source": "https://arxiv.org/abs/1703.03906v2",
+          "arxiv_id": "1703.03906v2",
+          "doi": null,
+          "version": "v2",
+          "file_hash": null,
+          "page_count": null,
+          "has_text_layer": null,
+          "abstract_present": true,
+          "abstract_characters": 975,
+          "abstract_sha256": "7181d76c31e0d70a4c5edd445cc7e45bbb75fdab534ab75500dcd835f73d4d48"
+        },
+        "paper": {
+          "schema_version": "1.0.0",
+          "id": "paper-6ae9257b347f5982f29618fcd774a03b5eb8795881c017f889e90f7956bcb22a",
+          "title": "Massive Exploration of Neural Machine Translation Architectures",
+          "authors": [
+            "Denny Britz",
+            "Anna Goldie",
+            "Minh-Thang Luong",
+            "Quoc Le"
+          ],
+          "institutions": [
+            "Google Brain",
+            "Work done as a member of the Google Brain Residency program (g.co/brainresidency)"
+          ],
+          "year": 2017,
+          "source": "https://arxiv.org/abs/1703.03906v2",
+          "arxiv_id": "1703.03906v2",
+          "doi": null,
+          "version": "v2",
+          "file_hash": "6ae9257b347f5982f29618fcd774a03b5eb8795881c017f889e90f7956bcb22a",
+          "page_count": 9,
+          "has_text_layer": true,
+          "abstract_present": true,
+          "abstract_characters": 975,
+          "abstract_sha256": "7181d76c31e0d70a4c5edd445cc7e45bbb75fdab534ab75500dcd835f73d4d48"
+        },
+        "initial_parse_status": null,
+        "parse_status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-6ae9257b347f5982f29618fcd774a03b5eb8795881c017f889e90f7956bcb22a",
+          "status": "completed",
+          "progress": 100,
+          "current_stage": "四类记录与去重判定已通过校验并发布",
+          "error_code": null,
+          "error_message": null
+        },
+        "error": null,
+        "already_present": true,
+        "dedup": {
+          "identity": "1703.03906",
+          "paper_id": "paper-6ae9257b347f5982f29618fcd774a03b5eb8795881c017f889e90f7956bcb22a",
+          "reason": "ARXIV_ID",
+          "similarity": null,
+          "first_seen": "2026-10-28T15:13:51.696290+00:00",
+          "occurrences": 1,
+          "last_seen": "2026-10-28T15:13:51.696311+00:00",
+          "record_created": true
+        },
+        "parse_metadata": {
+          "method": "mineru+grobid",
+          "grobid_attempted": true,
+          "grobid_elapsed_seconds": 3.518177,
+          "fallback_reason": null,
+          "grobid_error": null,
+          "paper_fields": [],
+          "references_enriched": 11,
+          "withheld_header_fields": {},
+          "unmatched_grobid_references": 12,
+          "paper_id": "paper-6ae9257b347f5982f29618fcd774a03b5eb8795881c017f889e90f7956bcb22a",
+          "job_id": "job-fc12dcacf3ea44c093e3cfc4b7846d22",
+          "status": "completed",
+          "reference_matches_count": 11,
+          "discarded_header_counts": {}
+        }
+      },
+      {
+        "name": "Deep residual learning for image recognition",
+        "succeeded": true,
+        "metadata": {
+          "schema_version": "1.0.0",
+          "id": "arxiv-1512.03385v1",
+          "title": "Deep Residual Learning for Image Recognition",
+          "authors": [
+            "Kaiming He",
+            "Xiangyu Zhang",
+            "Shaoqing Ren",
+            "Jian Sun"
+          ],
+          "institutions": [],
+          "year": 2015,
+          "source": "https://arxiv.org/abs/1512.03385v1",
+          "arxiv_id": "1512.03385v1",
+          "doi": null,
+          "version": "v1",
+          "file_hash": null,
+          "page_count": null,
+          "has_text_layer": null,
+          "abstract_present": true,
+          "abstract_characters": 1287,
+          "abstract_sha256": "37cc294d52ef0292a0955214d189cb62b98a5073ae213897a00dcf94c132cbfc"
+        },
+        "paper": {
+          "schema_version": "1.0.0",
+          "id": "paper-1e0651b6810ecba34a3dbc5b5b0209226f889004607c1f203540a48d64e5a93a",
+          "title": "Deep Residual Learning for Image Recognition",
+          "authors": [
+            "Kaiming He",
+            "Xiangyu Zhang",
+            "Shaoqing Ren",
+            "Jian Sun"
+          ],
+          "institutions": [
+            "Microsoft Research"
+          ],
+          "year": 2015,
+          "source": "https://arxiv.org/abs/1512.03385v1",
+          "arxiv_id": "1512.03385v1",
+          "doi": null,
+          "version": "v1",
+          "file_hash": "1e0651b6810ecba34a3dbc5b5b0209226f889004607c1f203540a48d64e5a93a",
+          "page_count": 12,
+          "has_text_layer": true,
+          "abstract_present": true,
+          "abstract_characters": 1287,
+          "abstract_sha256": "37cc294d52ef0292a0955214d189cb62b98a5073ae213897a00dcf94c132cbfc"
+        },
+        "initial_parse_status": null,
+        "parse_status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-1e0651b6810ecba34a3dbc5b5b0209226f889004607c1f203540a48d64e5a93a",
+          "status": "completed",
+          "progress": 100,
+          "current_stage": "四类记录与去重判定已通过校验并发布",
+          "error_code": null,
+          "error_message": null
+        },
+        "error": null,
+        "already_present": true,
+        "dedup": {
+          "identity": "1512.03385",
+          "paper_id": "paper-1e0651b6810ecba34a3dbc5b5b0209226f889004607c1f203540a48d64e5a93a",
+          "reason": "ARXIV_ID",
+          "similarity": null,
+          "first_seen": "2026-10-28T15:13:55.230427+00:00",
+          "occurrences": 1,
+          "last_seen": "2026-10-28T15:13:55.230472+00:00",
+          "record_created": true
+        },
+        "parse_metadata": {
+          "method": "mineru+grobid",
+          "grobid_attempted": true,
+          "grobid_elapsed_seconds": 7.314126,
+          "fallback_reason": null,
+          "grobid_error": null,
+          "paper_fields": [
+            "institutions"
+          ],
+          "references_enriched": 50,
+          "withheld_header_fields": {},
+          "unmatched_grobid_references": 0,
+          "paper_id": "paper-1e0651b6810ecba34a3dbc5b5b0209226f889004607c1f203540a48d64e5a93a",
+          "job_id": "job-f836637d7eed41a1858b07529118e265",
+          "status": "completed",
+          "reference_matches_count": 50,
+          "discarded_header_counts": {}
+        }
+      },
+      {
+        "name": "Adam: A method for stochastic optimization",
+        "succeeded": true,
+        "metadata": {
+          "schema_version": "1.0.0",
+          "id": "arxiv-1412.6980v9",
+          "title": "Adam: A Method for Stochastic Optimization",
+          "authors": [
+            "Diederik P. Kingma",
+            "Jimmy Ba"
+          ],
+          "institutions": [],
+          "year": 2014,
+          "source": "https://arxiv.org/abs/1412.6980v9",
+          "arxiv_id": "1412.6980v9",
+          "doi": null,
+          "version": "v9",
+          "file_hash": null,
+          "page_count": null,
+          "has_text_layer": null,
+          "abstract_present": true,
+          "abstract_characters": 1109,
+          "abstract_sha256": "c5eb4db28270bf7ad397219b44b7829629eac8b984f4cd1b3a6bcf0a6d7134f6"
+        },
+        "paper": {
+          "schema_version": "1.0.0",
+          "id": "paper-eab9c73ae2ceda884b94830bda99312254bac4806f6c9f045cbab90721ecda31",
+          "title": "Adam: A Method for Stochastic Optimization",
+          "authors": [
+            "Diederik P. Kingma",
+            "Jimmy Ba"
+          ],
+          "institutions": [
+            "University of Amsterdam",
+            "University of Toronto"
+          ],
+          "year": 2014,
+          "source": "https://arxiv.org/abs/1412.6980v9",
+          "arxiv_id": "1412.6980v9",
+          "doi": null,
+          "version": "v9",
+          "file_hash": "eab9c73ae2ceda884b94830bda99312254bac4806f6c9f045cbab90721ecda31",
+          "page_count": 15,
+          "has_text_layer": true,
+          "abstract_present": true,
+          "abstract_characters": 1109,
+          "abstract_sha256": "c5eb4db28270bf7ad397219b44b7829629eac8b984f4cd1b3a6bcf0a6d7134f6"
+        },
+        "initial_parse_status": null,
+        "parse_status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-eab9c73ae2ceda884b94830bda99312254bac4806f6c9f045cbab90721ecda31",
+          "status": "completed",
+          "progress": 100,
+          "current_stage": "四类记录与去重判定已通过校验并发布",
+          "error_code": null,
+          "error_message": null
+        },
+        "error": null,
+        "already_present": true,
+        "dedup": {
+          "identity": "1412.6980",
+          "paper_id": "paper-eab9c73ae2ceda884b94830bda99312254bac4806f6c9f045cbab90721ecda31",
+          "reason": "ARXIV_ID",
+          "similarity": null,
+          "first_seen": "2026-10-28T15:13:57.893124+00:00",
+          "occurrences": 1,
+          "last_seen": "2026-10-28T15:13:57.893247+00:00",
+          "record_created": true
+        },
+        "parse_metadata": {
+          "method": "mineru+grobid",
+          "grobid_attempted": true,
+          "grobid_elapsed_seconds": 5.220285,
+          "fallback_reason": null,
+          "grobid_error": null,
+          "paper_fields": [
+            "institutions"
+          ],
+          "references_enriched": 0,
+          "withheld_header_fields": {
+            "year": {
+              "candidate": 2017,
+              "reason": "GROBID header日期未区分版本日期与发表年，不自动采用。"
+            }
+          },
+          "unmatched_grobid_references": 23,
+          "paper_id": "paper-eab9c73ae2ceda884b94830bda99312254bac4806f6c9f045cbab90721ecda31",
+          "job_id": "job-c628d514773f47dc98f719d9a75c31be",
+          "status": "completed",
+          "reference_matches_count": 0,
+          "discarded_header_counts": {}
+        }
+      },
+      {
+        "name": "Using the output embedding to improve language models",
+        "succeeded": true,
+        "metadata": {
+          "schema_version": "1.0.0",
+          "id": "arxiv-1608.05859v3",
+          "title": "Using the Output Embedding to Improve Language Models",
+          "authors": [
+            "Ofir Press",
+            "Lior Wolf"
+          ],
+          "institutions": [],
+          "year": 2016,
+          "source": "https://arxiv.org/abs/1608.05859v3",
+          "arxiv_id": "1608.05859v3",
+          "doi": null,
+          "version": "v3",
+          "file_hash": null,
+          "page_count": null,
+          "has_text_layer": null,
+          "abstract_present": true,
+          "abstract_characters": 756,
+          "abstract_sha256": "d64dc228372cfb5ded805d880394ceb4f02627826a0b68daef7c87498d9a2f60"
+        },
+        "paper": {
+          "schema_version": "1.0.0",
+          "id": "paper-8e7e90ff0e4a7e88bd867868bde9c7c1eec0a52f1160805992af6c31acd09310",
+          "title": "Using the Output Embedding to Improve Language Models",
+          "authors": [
+            "Ofir Press",
+            "Lior Wolf"
+          ],
+          "institutions": [
+            "School of Computer Science",
+            "Tel-Aviv University"
+          ],
+          "year": 2016,
+          "source": "https://arxiv.org/abs/1608.05859v3",
+          "arxiv_id": "1608.05859v3",
+          "doi": null,
+          "version": "v3",
+          "file_hash": "8e7e90ff0e4a7e88bd867868bde9c7c1eec0a52f1160805992af6c31acd09310",
+          "page_count": 7,
+          "has_text_layer": true,
+          "abstract_present": true,
+          "abstract_characters": 756,
+          "abstract_sha256": "d64dc228372cfb5ded805d880394ceb4f02627826a0b68daef7c87498d9a2f60"
+        },
+        "initial_parse_status": null,
+        "parse_status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-8e7e90ff0e4a7e88bd867868bde9c7c1eec0a52f1160805992af6c31acd09310",
+          "status": "completed",
+          "progress": 100,
+          "current_stage": "四类记录与去重判定已通过校验并发布",
+          "error_code": null,
+          "error_message": null
+        },
+        "error": null,
+        "already_present": true,
+        "dedup": {
+          "identity": "1608.05859",
+          "paper_id": "paper-8e7e90ff0e4a7e88bd867868bde9c7c1eec0a52f1160805992af6c31acd09310",
+          "reason": "ARXIV_ID",
+          "similarity": null,
+          "first_seen": "2026-10-28T15:14:01.211593+00:00",
+          "occurrences": 1,
+          "last_seen": "2026-10-28T15:14:01.211617+00:00",
+          "record_created": true
+        },
+        "parse_metadata": {
+          "method": "mineru+grobid",
+          "grobid_attempted": true,
+          "grobid_elapsed_seconds": 2.752607,
+          "fallback_reason": null,
+          "grobid_error": null,
+          "paper_fields": [
+            "institutions"
+          ],
+          "references_enriched": 10,
+          "withheld_header_fields": {
+            "year": {
+              "candidate": 2017,
+              "reason": "GROBID header日期未区分版本日期与发表年，不自动采用。"
+            }
+          },
+          "unmatched_grobid_references": 29,
+          "paper_id": "paper-8e7e90ff0e4a7e88bd867868bde9c7c1eec0a52f1160805992af6c31acd09310",
+          "job_id": "job-30e2f3aea426493eb5ccc4bd595f7130",
+          "status": "completed",
+          "reference_matches_count": 10,
+          "discarded_header_counts": {}
+        }
+      },
+      {
+        "name": "Dropout: a simple way to prevent neural networks from overfitting",
+        "succeeded": false,
+        "metadata": null,
+        "paper": null,
+        "initial_parse_status": null,
+        "parse_status": null,
+        "error": {
+          "error_code": "PAPER_NOT_FOUND",
+          "message": "arXiv 未找到唯一匹配论文；未选取相似标题冒充结果。",
+          "details": null
+        }
+      },
+      {
+        "name": "Neural machine translation by jointly learning to align and translate",
+        "succeeded": true,
+        "metadata": {
+          "schema_version": "1.0.0",
+          "id": "arxiv-1409.0473v7",
+          "title": "Neural Machine Translation by Jointly Learning to Align and Translate",
+          "authors": [
+            "Dzmitry Bahdanau",
+            "Kyunghyun Cho",
+            "Yoshua Bengio"
+          ],
+          "institutions": [],
+          "year": 2014,
+          "source": "https://arxiv.org/abs/1409.0473v7",
+          "arxiv_id": "1409.0473v7",
+          "doi": null,
+          "version": "v7",
+          "file_hash": null,
+          "page_count": null,
+          "has_text_layer": null,
+          "abstract_present": true,
+          "abstract_characters": 1180,
+          "abstract_sha256": "b526d5f57deb625299a67e35685083f1d3f04473f42722a268de7850ed41021d"
+        },
+        "paper": {
+          "schema_version": "1.0.0",
+          "id": "paper-84801c8410da51b449d379d2fa4939a416123f2c93991077a680f863026022a7",
+          "title": "Neural Machine Translation by Jointly Learning to Align and Translate",
+          "authors": [
+            "Dzmitry Bahdanau",
+            "KyungHyun Cho",
+            "Yoshua Bengio"
+          ],
+          "institutions": [
+            "Jacobs University",
+            "Université de Montréal"
+          ],
+          "year": 2014,
+          "source": "https://arxiv.org/abs/1409.0473v7",
+          "arxiv_id": "1409.0473v7",
+          "doi": null,
+          "version": "v7",
+          "file_hash": "84801c8410da51b449d379d2fa4939a416123f2c93991077a680f863026022a7",
+          "page_count": 15,
+          "has_text_layer": true,
+          "abstract_present": true,
+          "abstract_characters": 1180,
+          "abstract_sha256": "b526d5f57deb625299a67e35685083f1d3f04473f42722a268de7850ed41021d"
+        },
+        "initial_parse_status": null,
+        "parse_status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-84801c8410da51b449d379d2fa4939a416123f2c93991077a680f863026022a7",
+          "status": "completed",
+          "progress": 100,
+          "current_stage": "四类记录与去重判定已通过校验并发布",
+          "error_code": null,
+          "error_message": null
+        },
+        "error": null,
+        "already_present": true,
+        "dedup": {
+          "identity": "1409.0473",
+          "paper_id": "paper-84801c8410da51b449d379d2fa4939a416123f2c93991077a680f863026022a7",
+          "reason": "ARXIV_ID",
+          "similarity": null,
+          "first_seen": "2026-10-28T15:14:10.169260+00:00",
+          "occurrences": 1,
+          "last_seen": "2026-10-28T15:14:10.169301+00:00",
+          "record_created": true
+        },
+        "parse_metadata": {
+          "method": "mineru+grobid",
+          "grobid_attempted": true,
+          "grobid_elapsed_seconds": 9.951856,
+          "fallback_reason": null,
+          "grobid_error": null,
+          "paper_fields": [
+            "institutions"
+          ],
+          "references_enriched": 10,
+          "withheld_header_fields": {
+            "year": {
+              "candidate": 2016,
+              "reason": "GROBID header日期未区分版本日期与发表年，不自动采用。"
+            }
+          },
+          "unmatched_grobid_references": 19,
+          "paper_id": "paper-84801c8410da51b449d379d2fa4939a416123f2c93991077a680f863026022a7",
+          "job_id": "job-6b85beb7bce74a4c8ab3f4ed84a74bc6",
+          "status": "completed",
+          "reference_matches_count": 10,
+          "discarded_header_counts": {}
+        }
+      },
+      {
+        "name": "Convolutional sequence to sequence learning",
+        "succeeded": true,
+        "metadata": {
+          "schema_version": "1.0.0",
+          "id": "arxiv-1705.03122v2",
+          "title": "Convolutional Sequence to Sequence Learning",
+          "authors": [
+            "Jonas Gehring",
+            "Michael Auli",
+            "David Grangier",
+            "Denis Yarats",
+            "Yann N. Dauphin"
+          ],
+          "institutions": [],
+          "year": 2017,
+          "source": "https://arxiv.org/abs/1705.03122v2",
+          "arxiv_id": "1705.03122v2",
+          "doi": null,
+          "version": "v2",
+          "file_hash": null,
+          "page_count": null,
+          "has_text_layer": null,
+          "abstract_present": true,
+          "abstract_characters": 757,
+          "abstract_sha256": "223cc62dc0c79c35cd970409b7684f2a7d3b04634b54999b255e1ff69c008d62"
+        },
+        "paper": {
+          "schema_version": "1.0.0",
+          "id": "paper-21dd02432f07d9bee1227090f0f64003da5ad2eb8d691b1ab7cfa94c25f23b5d",
+          "title": "Convolutional Sequence to Sequence Learning",
+          "authors": [
+            "Jonas Gehring",
+            "Michael Auli",
+            "David Grangier",
+            "Denis Yarats",
+            "Yann N. Dauphin"
+          ],
+          "institutions": [
+            "Facebook AI Research"
+          ],
+          "year": 2017,
+          "source": "https://arxiv.org/abs/1705.03122v2",
+          "arxiv_id": "1705.03122v2",
+          "doi": null,
+          "version": "v2",
+          "file_hash": "21dd02432f07d9bee1227090f0f64003da5ad2eb8d691b1ab7cfa94c25f23b5d",
+          "page_count": 15,
+          "has_text_layer": true,
+          "abstract_present": true,
+          "abstract_characters": 757,
+          "abstract_sha256": "223cc62dc0c79c35cd970409b7684f2a7d3b04634b54999b255e1ff69c008d62"
+        },
+        "initial_parse_status": null,
+        "parse_status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-21dd02432f07d9bee1227090f0f64003da5ad2eb8d691b1ab7cfa94c25f23b5d",
+          "status": "completed",
+          "progress": 100,
+          "current_stage": "四类记录与去重判定已通过校验并发布",
+          "error_code": null,
+          "error_message": null
+        },
+        "error": null,
+        "already_present": true,
+        "dedup": {
+          "identity": "1705.03122",
+          "paper_id": "paper-21dd02432f07d9bee1227090f0f64003da5ad2eb8d691b1ab7cfa94c25f23b5d",
+          "reason": "ARXIV_ID",
+          "similarity": null,
+          "first_seen": "2026-10-28T15:14:13.865584+00:00",
+          "occurrences": 1,
+          "last_seen": "2026-10-28T15:14:13.865676+00:00",
+          "record_created": true
+        },
+        "parse_metadata": {
+          "method": "mineru+grobid",
+          "grobid_attempted": true,
+          "grobid_elapsed_seconds": 5.957718,
+          "fallback_reason": null,
+          "grobid_error": null,
+          "paper_fields": [
+            "institutions"
+          ],
+          "references_enriched": 3,
+          "withheld_header_fields": {},
+          "unmatched_grobid_references": 45,
+          "paper_id": "paper-21dd02432f07d9bee1227090f0f64003da5ad2eb8d691b1ab7cfa94c25f23b5d",
+          "job_id": "job-e7cae202469c4ffe85e2577500f0eec1",
+          "status": "completed",
+          "reference_matches_count": 3,
+          "discarded_header_counts": {}
+        }
+      },
+      {
+        "name": "Rethinking the inception architecture for computer vision",
+        "succeeded": true,
+        "metadata": {
+          "schema_version": "1.0.0",
+          "id": "arxiv-1512.00567v3",
+          "title": "Rethinking the Inception Architecture for Computer Vision",
+          "authors": [
+            "Christian Szegedy",
+            "Vincent Vanhoucke",
+            "Sergey Ioffe",
+            "Jonathon Shlens",
+            "Zbigniew Wojna"
+          ],
+          "institutions": [],
+          "year": 2015,
+          "source": "https://arxiv.org/abs/1512.00567v3",
+          "arxiv_id": "1512.00567v3",
+          "doi": null,
+          "version": "v3",
+          "file_hash": null,
+          "page_count": null,
+          "has_text_layer": null,
+          "abstract_present": true,
+          "abstract_characters": 1258,
+          "abstract_sha256": "60ace7f8d4cab3e1f673bdade4463da80854e0ed79ef1f73ebe86275a761bfee"
+        },
+        "paper": {
+          "schema_version": "1.0.0",
+          "id": "paper-80e30acdfa89bcb41a00c8b221cb9a1dc44256897e75af8762f171ec9dc77b85",
+          "title": "Rethinking the Inception Architecture for Computer Vision",
+          "authors": [
+            "Christian Szegedy",
+            "Vincent Vanhoucke",
+            "Sergey Ioffe",
+            "Jonathon Shlens",
+            "Zbigniew Wojna"
+          ],
+          "institutions": [
+            "Google Inc.",
+            "University College London"
+          ],
+          "year": 2015,
+          "source": "https://arxiv.org/abs/1512.00567v3",
+          "arxiv_id": "1512.00567v3",
+          "doi": null,
+          "version": "v3",
+          "file_hash": "80e30acdfa89bcb41a00c8b221cb9a1dc44256897e75af8762f171ec9dc77b85",
+          "page_count": 10,
+          "has_text_layer": true,
+          "abstract_present": true,
+          "abstract_characters": 1258,
+          "abstract_sha256": "60ace7f8d4cab3e1f673bdade4463da80854e0ed79ef1f73ebe86275a761bfee"
+        },
+        "initial_parse_status": null,
+        "parse_status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-80e30acdfa89bcb41a00c8b221cb9a1dc44256897e75af8762f171ec9dc77b85",
+          "status": "completed",
+          "progress": 100,
+          "current_stage": "四类记录与去重判定已通过校验并发布",
+          "error_code": null,
+          "error_message": null
+        },
+        "error": null,
+        "already_present": true,
+        "dedup": {
+          "identity": "1512.00567",
+          "paper_id": "paper-80e30acdfa89bcb41a00c8b221cb9a1dc44256897e75af8762f171ec9dc77b85",
+          "reason": "ARXIV_ID",
+          "similarity": null,
+          "first_seen": "2026-10-28T15:14:16.265275+00:00",
+          "occurrences": 1,
+          "last_seen": "2026-10-28T15:14:16.265323+00:00",
+          "record_created": true
+        },
+        "parse_metadata": {
+          "method": "mineru+grobid",
+          "grobid_attempted": true,
+          "grobid_elapsed_seconds": 3.023436,
+          "fallback_reason": null,
+          "grobid_error": null,
+          "paper_fields": [
+            "institutions"
+          ],
+          "references_enriched": 22,
+          "withheld_header_fields": {},
+          "unmatched_grobid_references": 1,
+          "paper_id": "paper-80e30acdfa89bcb41a00c8b221cb9a1dc44256897e75af8762f171ec9dc77b85",
+          "job_id": "job-de3914d053fb45b59048cd9b3e84daac",
+          "status": "completed",
+          "reference_matches_count": 22,
+          "discarded_header_counts": {}
+        }
+      },
+      {
+        "name": "Learning phrase representations using rnn encoder-decoder for statistical machine translation",
+        "succeeded": true,
+        "metadata": {
+          "schema_version": "1.0.0",
+          "id": "arxiv-1406.1078v3",
+          "title": "Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation",
+          "authors": [
+            "Kyunghyun Cho",
+            "Bart van Merrienboer",
+            "Caglar Gulcehre",
+            "Dzmitry Bahdanau",
+            "Fethi Bougares",
+            "Holger Schwenk",
+            "Yoshua Bengio"
+          ],
+          "institutions": [],
+          "year": 2014,
+          "source": "https://arxiv.org/abs/1406.1078v3",
+          "arxiv_id": "1406.1078v3",
+          "doi": null,
+          "version": "v3",
+          "file_hash": null,
+          "page_count": null,
+          "has_text_layer": null,
+          "abstract_present": true,
+          "abstract_characters": 821,
+          "abstract_sha256": "59f873bd85db30b7c495f203bef2bb5751849dcb7b20ba323f89c5e30d8a8c78"
+        },
+        "paper": {
+          "schema_version": "1.0.0",
+          "id": "paper-35acfcc574b37588ac0443ac65c9e2fccf794b24df9cf8522d6df5f09b82119c",
+          "title": "Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation",
+          "authors": [
+            "Kyunghyun Cho",
+            "Bart van Merrienboer",
+            "Dzmitry Bahdanau",
+            "Caglar Gulcehre",
+            "Fethi Bougares",
+            "Holger Schwenk",
+            "Yoshua Bengio"
+          ],
+          "institutions": [
+            "Jacobs University, Germany"
+          ],
+          "year": 2014,
+          "source": "https://arxiv.org/abs/1406.1078v3",
+          "arxiv_id": "1406.1078v3",
+          "doi": null,
+          "version": "v3",
+          "file_hash": "35acfcc574b37588ac0443ac65c9e2fccf794b24df9cf8522d6df5f09b82119c",
+          "page_count": 15,
+          "has_text_layer": true,
+          "abstract_present": true,
+          "abstract_characters": 821,
+          "abstract_sha256": "59f873bd85db30b7c495f203bef2bb5751849dcb7b20ba323f89c5e30d8a8c78"
+        },
+        "initial_parse_status": null,
+        "parse_status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-35acfcc574b37588ac0443ac65c9e2fccf794b24df9cf8522d6df5f09b82119c",
+          "status": "completed",
+          "progress": 100,
+          "current_stage": "四类记录与去重判定已通过校验并发布",
+          "error_code": null,
+          "error_message": null
+        },
+        "error": null,
+        "already_present": true,
+        "dedup": {
+          "identity": "1406.1078",
+          "paper_id": "paper-35acfcc574b37588ac0443ac65c9e2fccf794b24df9cf8522d6df5f09b82119c",
+          "reason": "ARXIV_ID",
+          "similarity": null,
+          "first_seen": "2026-10-28T15:14:19.328859+00:00",
+          "occurrences": 1,
+          "last_seen": "2026-10-28T15:14:19.328882+00:00",
+          "record_created": true
+        },
+        "parse_metadata": {
+          "method": "mineru+grobid",
+          "grobid_attempted": true,
+          "grobid_elapsed_seconds": 4.94074,
+          "fallback_reason": null,
+          "grobid_error": null,
+          "paper_fields": [
+            "institutions"
+          ],
+          "references_enriched": 0,
+          "withheld_header_fields": {},
+          "unmatched_grobid_references": 24,
+          "paper_id": "paper-35acfcc574b37588ac0443ac65c9e2fccf794b24df9cf8522d6df5f09b82119c",
+          "job_id": "job-9759e327bc0f4de5a76980ec1c0f2e9d",
+          "status": "completed",
+          "reference_matches_count": 0,
+          "discarded_header_counts": {}
+        }
+      },
+      {
+        "name": "Sequence to sequence learning with neural networks",
+        "succeeded": true,
+        "metadata": {
+          "schema_version": "1.0.0",
+          "id": "arxiv-1409.3215v3",
+          "title": "Sequence to Sequence Learning with Neural Networks",
+          "authors": [
+            "Ilya Sutskever",
+            "Oriol Vinyals",
+            "Quoc V. Le"
+          ],
+          "institutions": [],
+          "year": 2014,
+          "source": "https://arxiv.org/abs/1409.3215v3",
+          "arxiv_id": "1409.3215v3",
+          "doi": null,
+          "version": "v3",
+          "file_hash": null,
+          "page_count": null,
+          "has_text_layer": null,
+          "abstract_present": true,
+          "abstract_characters": 1634,
+          "abstract_sha256": "6d35c74881df4510f34d2dfd956e88b106fd551d21d2d240ed063edc4dc141a1"
+        },
+        "paper": {
+          "schema_version": "1.0.0",
+          "id": "paper-5c74e1db863e2d61b869c9b0603494b34c41fb05db1a4fa7f9a83d5a42b7350f",
+          "title": "Sequence to Sequence Learning with Neural Networks",
+          "authors": [
+            "Ilya Sutskever",
+            "Oriol Vinyals",
+            "Quoc V. Le"
+          ],
+          "institutions": [
+            "Google"
+          ],
+          "year": 2014,
+          "source": "https://arxiv.org/abs/1409.3215v3",
+          "arxiv_id": "1409.3215v3",
+          "doi": null,
+          "version": "v3",
+          "file_hash": "5c74e1db863e2d61b869c9b0603494b34c41fb05db1a4fa7f9a83d5a42b7350f",
+          "page_count": 9,
+          "has_text_layer": true,
+          "abstract_present": true,
+          "abstract_characters": 1634,
+          "abstract_sha256": "6d35c74881df4510f34d2dfd956e88b106fd551d21d2d240ed063edc4dc141a1"
+        },
+        "initial_parse_status": null,
+        "parse_status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-5c74e1db863e2d61b869c9b0603494b34c41fb05db1a4fa7f9a83d5a42b7350f",
+          "status": "completed",
+          "progress": 100,
+          "current_stage": "四类记录与去重判定已通过校验并发布",
+          "error_code": null,
+          "error_message": null
+        },
+        "error": null,
+        "already_present": true,
+        "dedup": {
+          "identity": "1409.3215",
+          "paper_id": "paper-5c74e1db863e2d61b869c9b0603494b34c41fb05db1a4fa7f9a83d5a42b7350f",
+          "reason": "ARXIV_ID",
+          "similarity": null,
+          "first_seen": "2026-10-28T15:14:22.463612+00:00",
+          "occurrences": 1,
+          "last_seen": "2026-10-28T15:14:22.463640+00:00",
+          "record_created": true
+        },
+        "parse_metadata": {
+          "method": "mineru+grobid",
+          "grobid_attempted": true,
+          "grobid_elapsed_seconds": 4.789306,
+          "fallback_reason": null,
+          "grobid_error": null,
+          "paper_fields": [],
+          "references_enriched": 31,
+          "withheld_header_fields": {},
+          "unmatched_grobid_references": 0,
+          "paper_id": "paper-5c74e1db863e2d61b869c9b0603494b34c41fb05db1a4fa7f9a83d5a42b7350f",
+          "job_id": "job-a0698fb3cad4439889d9fc18245c238a",
+          "status": "completed",
+          "reference_matches_count": 31,
+          "discarded_header_counts": {}
+        }
+      },
+      {
+        "name": "Generating sequences with recurrent neural networks",
+        "succeeded": true,
+        "metadata": {
+          "schema_version": "1.0.0",
+          "id": "arxiv-1308.0850v5",
+          "title": "Generating Sequences With Recurrent Neural Networks",
+          "authors": [
+            "Alex Graves"
+          ],
+          "institutions": [],
+          "year": 2013,
+          "source": "https://arxiv.org/abs/1308.0850v5",
+          "arxiv_id": "1308.0850v5",
+          "doi": null,
+          "version": "v5",
+          "file_hash": null,
+          "page_count": null,
+          "has_text_layer": null,
+          "abstract_present": true,
+          "abstract_characters": 535,
+          "abstract_sha256": "9defb7623a15c4716f8e3827c6d6032bbad4bdf95942b068d3bbeb28d530ca6c"
+        },
+        "paper": {
+          "schema_version": "1.0.0",
+          "id": "paper-9c9d8c490c5b87fcea266a7b16d238335372b00ba0a0dacde0e3016f52c0ff01",
+          "title": "Generating Sequences With Recurrent Neural Networks",
+          "authors": [
+            "Alex Graves"
+          ],
+          "institutions": [
+            "Department of Computer Science",
+            "University of Toronto"
+          ],
+          "year": 2013,
+          "source": "https://arxiv.org/abs/1308.0850v5",
+          "arxiv_id": "1308.0850v5",
+          "doi": null,
+          "version": "v5",
+          "file_hash": "9c9d8c490c5b87fcea266a7b16d238335372b00ba0a0dacde0e3016f52c0ff01",
+          "page_count": 43,
+          "has_text_layer": true,
+          "abstract_present": true,
+          "abstract_characters": 535,
+          "abstract_sha256": "9defb7623a15c4716f8e3827c6d6032bbad4bdf95942b068d3bbeb28d530ca6c"
+        },
+        "initial_parse_status": null,
+        "parse_status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-9c9d8c490c5b87fcea266a7b16d238335372b00ba0a0dacde0e3016f52c0ff01",
+          "status": "completed",
+          "progress": 100,
+          "current_stage": "四类记录与去重判定已通过校验并发布",
+          "error_code": null,
+          "error_message": null
+        },
+        "error": null,
+        "already_present": true,
+        "dedup": {
+          "identity": "1308.0850",
+          "paper_id": "paper-9c9d8c490c5b87fcea266a7b16d238335372b00ba0a0dacde0e3016f52c0ff01",
+          "reason": "ARXIV_ID",
+          "similarity": null,
+          "first_seen": "2026-10-28T15:14:25.209569+00:00",
+          "occurrences": 1,
+          "last_seen": "2026-10-28T15:14:25.209606+00:00",
+          "record_created": true
+        },
+        "parse_metadata": {
+          "method": "mineru+grobid",
+          "grobid_attempted": true,
+          "grobid_elapsed_seconds": 9.947695,
+          "fallback_reason": null,
+          "grobid_error": null,
+          "paper_fields": [
+            "institutions"
+          ],
+          "references_enriched": 33,
+          "withheld_header_fields": {
+            "year": {
+              "candidate": 2014,
+              "reason": "GROBID header日期未区分版本日期与发表年，不自动采用。"
+            }
+          },
+          "unmatched_grobid_references": 0,
+          "paper_id": "paper-9c9d8c490c5b87fcea266a7b16d238335372b00ba0a0dacde0e3016f52c0ff01",
+          "job_id": "job-f1e9531c85f84c7dbb7acc7773d8472d",
+          "status": "completed",
+          "reference_matches_count": 33,
+          "discarded_header_counts": {}
+        }
+      },
+      {
+        "name": "Building a large annotated corpus of english: The penn treebank",
+        "succeeded": false,
+        "metadata": null,
+        "paper": null,
+        "initial_parse_status": null,
+        "parse_status": null,
+        "error": {
+          "error_code": "PAPER_NOT_FOUND",
+          "message": "arXiv 未找到唯一匹配论文；未选取相似标题冒充结果。",
+          "details": null
+        }
+      },
+      {
+        "name": "Neural machine translation of rare words with subword units",
+        "succeeded": true,
+        "metadata": {
+          "schema_version": "1.0.0",
+          "id": "arxiv-1508.07909v5",
+          "title": "Neural Machine Translation of Rare Words with Subword Units",
+          "authors": [
+            "Rico Sennrich",
+            "Barry Haddow",
+            "Alexandra Birch"
+          ],
+          "institutions": [],
+          "year": 2015,
+          "source": "https://arxiv.org/abs/1508.07909v5",
+          "arxiv_id": "1508.07909v5",
+          "doi": null,
+          "version": "v5",
+          "file_hash": null,
+          "page_count": null,
+          "has_text_layer": null,
+          "abstract_present": true,
+          "abstract_characters": 1085,
+          "abstract_sha256": "38cc8964c2c46d35c362c4da845a6f57a43207a678ab2469154836a0e1b4800d"
+        },
+        "paper": {
+          "schema_version": "1.0.0",
+          "id": "paper-f4e5a6bbbe0d87459997fffe892f8be485e33903cc71f923c2884639fbf96401",
+          "title": "Neural Machine Translation of Rare Words with Subword Units",
+          "authors": [
+            "Rico Sennrich",
+            "Barry Haddow",
+            "Alexandra Birch"
+          ],
+          "institutions": [
+            "School of Informatics",
+            "University of Edinburgh"
+          ],
+          "year": 2015,
+          "source": "https://arxiv.org/abs/1508.07909v5",
+          "arxiv_id": "1508.07909v5",
+          "doi": null,
+          "version": "v5",
+          "file_hash": "f4e5a6bbbe0d87459997fffe892f8be485e33903cc71f923c2884639fbf96401",
+          "page_count": 11,
+          "has_text_layer": true,
+          "abstract_present": true,
+          "abstract_characters": 1085,
+          "abstract_sha256": "38cc8964c2c46d35c362c4da845a6f57a43207a678ab2469154836a0e1b4800d"
+        },
+        "initial_parse_status": null,
+        "parse_status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-f4e5a6bbbe0d87459997fffe892f8be485e33903cc71f923c2884639fbf96401",
+          "status": "completed",
+          "progress": 100,
+          "current_stage": "四类记录与去重判定已通过校验并发布",
+          "error_code": null,
+          "error_message": null
+        },
+        "error": null,
+        "already_present": true,
+        "dedup": {
+          "identity": "1508.07909",
+          "paper_id": "paper-f4e5a6bbbe0d87459997fffe892f8be485e33903cc71f923c2884639fbf96401",
+          "reason": "ARXIV_ID",
+          "similarity": null,
+          "first_seen": "2026-10-28T15:14:34.436205+00:00",
+          "occurrences": 1,
+          "last_seen": "2026-10-28T15:14:34.436253+00:00",
+          "record_created": true
+        },
+        "parse_metadata": {
+          "method": "mineru+grobid",
+          "grobid_attempted": true,
+          "grobid_elapsed_seconds": 3.93585,
+          "fallback_reason": null,
+          "grobid_error": null,
+          "paper_fields": [
+            "institutions"
+          ],
+          "references_enriched": 13,
+          "withheld_header_fields": {
+            "year": {
+              "candidate": 2016,
+              "reason": "GROBID header日期未区分版本日期与发表年，不自动采用。"
+            }
+          },
+          "unmatched_grobid_references": 22,
+          "paper_id": "paper-f4e5a6bbbe0d87459997fffe892f8be485e33903cc71f923c2884639fbf96401",
+          "job_id": "job-47814ea55fa242b086a17bfe4afeea64",
+          "status": "completed",
+          "reference_matches_count": 13,
+          "discarded_header_counts": {}
+        }
+      },
+      {
+        "name": "Recurrent neural network grammars",
+        "succeeded": true,
+        "metadata": {
+          "schema_version": "1.0.0",
+          "id": "arxiv-1602.07776v4",
+          "title": "Recurrent Neural Network Grammars",
+          "authors": [
+            "Chris Dyer",
+            "Adhiguna Kuncoro",
+            "Miguel Ballesteros",
+            "Noah A. Smith"
+          ],
+          "institutions": [],
+          "year": 2016,
+          "source": "https://arxiv.org/abs/1602.07776v4",
+          "arxiv_id": "1602.07776v4",
+          "doi": null,
+          "version": "v4",
+          "file_hash": null,
+          "page_count": null,
+          "has_text_layer": null,
+          "abstract_present": true,
+          "abstract_characters": 434,
+          "abstract_sha256": "92e7fca55f897b9aea3e392403963f18d52a4c9b153c8452d10f8cf6df2e9f56"
+        },
+        "paper": {
+          "schema_version": "1.0.0",
+          "id": "paper-a9d6a10bab94667e60a2b52e64aaae0de454e72b39c46bf8b5a8547d31f394eb",
+          "title": "Recurrent Neural Network Grammars",
+          "authors": [
+            "Chris Dyer",
+            "Adhiguna Kuncoro",
+            "Miguel Ballesteros",
+            "Noah A. Smith"
+          ],
+          "institutions": [
+            "School of Computer Science",
+            "♦ NLP Group",
+            "Carnegie Mellon University",
+            "Pompeu Fabra University",
+            "Computer Science & Engineering",
+            "University of Washington"
+          ],
+          "year": 2016,
+          "source": "https://arxiv.org/abs/1602.07776v4",
+          "arxiv_id": "1602.07776v4",
+          "doi": null,
+          "version": "v4",
+          "file_hash": "a9d6a10bab94667e60a2b52e64aaae0de454e72b39c46bf8b5a8547d31f394eb",
+          "page_count": 13,
+          "has_text_layer": true,
+          "abstract_present": true,
+          "abstract_characters": 434,
+          "abstract_sha256": "92e7fca55f897b9aea3e392403963f18d52a4c9b153c8452d10f8cf6df2e9f56"
+        },
+        "initial_parse_status": null,
+        "parse_status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-a9d6a10bab94667e60a2b52e64aaae0de454e72b39c46bf8b5a8547d31f394eb",
+          "status": "completed",
+          "progress": 100,
+          "current_stage": "四类记录与去重判定已通过校验并发布",
+          "error_code": null,
+          "error_message": null
+        },
+        "error": null,
+        "already_present": true,
+        "dedup": {
+          "identity": "1602.07776",
+          "paper_id": "paper-a9d6a10bab94667e60a2b52e64aaae0de454e72b39c46bf8b5a8547d31f394eb",
+          "reason": "ARXIV_ID",
+          "similarity": null,
+          "first_seen": "2026-10-28T15:14:37.447649+00:00",
+          "occurrences": 1,
+          "last_seen": "2026-10-28T15:14:37.447692+00:00",
+          "record_created": true
+        },
+        "parse_metadata": {
+          "method": "mineru+grobid",
+          "grobid_attempted": true,
+          "grobid_elapsed_seconds": 4.930845,
+          "fallback_reason": null,
+          "grobid_error": null,
+          "paper_fields": [
+            "institutions"
+          ],
+          "references_enriched": 11,
+          "withheld_header_fields": {},
+          "unmatched_grobid_references": 43,
+          "paper_id": "paper-a9d6a10bab94667e60a2b52e64aaae0de454e72b39c46bf8b5a8547d31f394eb",
+          "job_id": "job-c6bca6b6495340299be04f6e4301732f",
+          "status": "completed",
+          "reference_matches_count": 11,
+          "discarded_header_counts": {}
+        }
+      },
+      {
+        "name": "Neural machine translation in linear time",
+        "succeeded": true,
+        "metadata": {
+          "schema_version": "1.0.0",
+          "id": "arxiv-1610.10099v2",
+          "title": "Neural Machine Translation in Linear Time",
+          "authors": [
+            "Nal Kalchbrenner",
+            "Lasse Espeholt",
+            "Karen Simonyan",
+            "Aaron van den Oord",
+            "Alex Graves",
+            "Koray Kavukcuoglu"
+          ],
+          "institutions": [],
+          "year": 2016,
+          "source": "https://arxiv.org/abs/1610.10099v2",
+          "arxiv_id": "1610.10099v2",
+          "doi": null,
+          "version": "v2",
+          "file_hash": null,
+          "page_count": null,
+          "has_text_layer": null,
+          "abstract_present": true,
+          "abstract_characters": 1389,
+          "abstract_sha256": "ac0bb26a757afd6bdc1753203b6decc126b0b039625a49eb58e3e8e380c13d28"
+        },
+        "paper": {
+          "schema_version": "1.0.0",
+          "id": "paper-dd1f80c0c4fd67cf9afddac3ec5d3b22bbf02864d04adad53eb286ce53e33ac3",
+          "title": "Neural Machine Translation in Linear Time",
+          "authors": [
+            "Nal Kalchbrenner",
+            "Lasse Espeholt",
+            "Karen Simonyan",
+            "Aaron van den Oord",
+            "Alex Graves",
+            "Koray Kavukcuoglu"
+          ],
+          "institutions": [
+            "Google Deepmind, London UK"
+          ],
+          "year": 2016,
+          "source": "https://arxiv.org/abs/1610.10099v2",
+          "arxiv_id": "1610.10099v2",
+          "doi": null,
+          "version": "v2",
+          "file_hash": "dd1f80c0c4fd67cf9afddac3ec5d3b22bbf02864d04adad53eb286ce53e33ac3",
+          "page_count": 9,
+          "has_text_layer": true,
+          "abstract_present": true,
+          "abstract_characters": 1389,
+          "abstract_sha256": "ac0bb26a757afd6bdc1753203b6decc126b0b039625a49eb58e3e8e380c13d28"
+        },
+        "initial_parse_status": null,
+        "parse_status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-dd1f80c0c4fd67cf9afddac3ec5d3b22bbf02864d04adad53eb286ce53e33ac3",
+          "status": "completed",
+          "progress": 100,
+          "current_stage": "四类记录与去重判定已通过校验并发布",
+          "error_code": null,
+          "error_message": null
+        },
+        "error": null,
+        "already_present": true,
+        "dedup": {
+          "identity": "1610.10099",
+          "paper_id": "paper-dd1f80c0c4fd67cf9afddac3ec5d3b22bbf02864d04adad53eb286ce53e33ac3",
+          "reason": "ARXIV_ID",
+          "similarity": null,
+          "first_seen": "2026-10-28T15:14:40.251941+00:00",
+          "occurrences": 1,
+          "last_seen": "2026-10-28T15:14:40.251967+00:00",
+          "record_created": true
+        },
+        "parse_metadata": {
+          "method": "mineru+grobid",
+          "grobid_attempted": true,
+          "grobid_elapsed_seconds": 4.293182,
+          "fallback_reason": null,
+          "grobid_error": null,
+          "paper_fields": [
+            "institutions"
+          ],
+          "references_enriched": 34,
+          "withheld_header_fields": {},
+          "unmatched_grobid_references": 0,
+          "paper_id": "paper-dd1f80c0c4fd67cf9afddac3ec5d3b22bbf02864d04adad53eb286ce53e33ac3",
+          "job_id": "job-2b81f2e5966640a2808c5787449cc589",
+          "status": "completed",
+          "reference_matches_count": 34,
+          "discarded_header_counts": {}
+        }
+      },
+      {
+        "name": "Grammar as a foreign language",
+        "succeeded": true,
+        "metadata": {
+          "schema_version": "1.0.0",
+          "id": "arxiv-1412.7449v3",
+          "title": "Grammar as a Foreign Language",
+          "authors": [
+            "Oriol Vinyals",
+            "Lukasz Kaiser",
+            "Terry Koo",
+            "Slav Petrov",
+            "Ilya Sutskever",
+            "Geoffrey Hinton"
+          ],
+          "institutions": [],
+          "year": 2014,
+          "source": "https://arxiv.org/abs/1412.7449v3",
+          "arxiv_id": "1412.7449v3",
+          "doi": null,
+          "version": "v3",
+          "file_hash": null,
+          "page_count": null,
+          "has_text_layer": null,
+          "abstract_present": true,
+          "abstract_characters": 871,
+          "abstract_sha256": "ed2c336453f5cdb688e9cc54f3840ac5a23e7e781739d9556089133496bdc882"
+        },
+        "paper": {
+          "schema_version": "1.0.0",
+          "id": "paper-8b89211db43f15bd836de3bb710dc61881f2f2439390c9d3f72e8838a4cec542",
+          "title": "Grammar as a Foreign Language",
+          "authors": [
+            "Oriol Vinyals",
+            "Lukasz Kaiser",
+            "Terry Koo",
+            "Slav Petrov",
+            "Ilya Sutskever",
+            "Geoffrey Hinton"
+          ],
+          "institutions": [
+            "Google"
+          ],
+          "year": 2014,
+          "source": "https://arxiv.org/abs/1412.7449v3",
+          "arxiv_id": "1412.7449v3",
+          "doi": null,
+          "version": "v3",
+          "file_hash": "8b89211db43f15bd836de3bb710dc61881f2f2439390c9d3f72e8838a4cec542",
+          "page_count": 10,
+          "has_text_layer": true,
+          "abstract_present": true,
+          "abstract_characters": 871,
+          "abstract_sha256": "ed2c336453f5cdb688e9cc54f3840ac5a23e7e781739d9556089133496bdc882"
+        },
+        "initial_parse_status": null,
+        "parse_status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-8b89211db43f15bd836de3bb710dc61881f2f2439390c9d3f72e8838a4cec542",
+          "status": "completed",
+          "progress": 100,
+          "current_stage": "四类记录与去重判定已通过校验并发布",
+          "error_code": null,
+          "error_message": null
+        },
+        "error": null,
+        "already_present": true,
+        "dedup": {
+          "identity": "1412.7449",
+          "paper_id": "paper-8b89211db43f15bd836de3bb710dc61881f2f2439390c9d3f72e8838a4cec542",
+          "reason": "ARXIV_ID",
+          "similarity": null,
+          "first_seen": "2026-10-28T15:14:43.260068+00:00",
+          "occurrences": 1,
+          "last_seen": "2026-10-28T15:14:43.260128+00:00",
+          "record_created": true
+        },
+        "parse_metadata": {
+          "method": "mineru+grobid",
+          "grobid_attempted": true,
+          "grobid_elapsed_seconds": 3.482269,
+          "fallback_reason": null,
+          "grobid_error": null,
+          "paper_fields": [],
+          "references_enriched": 32,
+          "withheld_header_fields": {
+            "year": {
+              "candidate": 2015,
+              "reason": "GROBID header日期未区分版本日期与发表年，不自动采用。"
+            }
+          },
+          "unmatched_grobid_references": 0,
+          "paper_id": "paper-8b89211db43f15bd836de3bb710dc61881f2f2439390c9d3f72e8838a4cec542",
+          "job_id": "job-aefdace9cb5f44f599763545932030d1",
+          "status": "completed",
+          "reference_matches_count": 32,
+          "discarded_header_counts": {}
+        }
+      },
+      {
+        "name": "Gradient flow in recurrent nets: the difficulty of learning long-term dependencies",
+        "succeeded": false,
+        "metadata": null,
+        "paper": null,
+        "initial_parse_status": null,
+        "parse_status": null,
+        "error": {
+          "error_code": "PAPER_NOT_FOUND",
+          "message": "arXiv 未找到唯一匹配论文；未选取相似标题冒充结果。",
+          "details": null
+        }
+      },
+      {
+        "name": "Xception: Deep learning with depthwise separable convolutions",
+        "succeeded": true,
+        "metadata": {
+          "schema_version": "1.0.0",
+          "id": "arxiv-1610.02357v3",
+          "title": "Xception: Deep Learning with Depthwise Separable Convolutions",
+          "authors": [
+            "François Chollet"
+          ],
+          "institutions": [],
+          "year": 2016,
+          "source": "https://arxiv.org/abs/1610.02357v3",
+          "arxiv_id": "1610.02357v3",
+          "doi": null,
+          "version": "v3",
+          "file_hash": null,
+          "page_count": null,
+          "has_text_layer": null,
+          "abstract_present": true,
+          "abstract_characters": 1059,
+          "abstract_sha256": "d51bd5ac2fcc712633f41c321d70ccf7a890cf1232fcea984e209dc45486de47"
+        },
+        "paper": {
+          "schema_version": "1.0.0",
+          "id": "paper-6de4937e4a78156e027742aeb047a7163c6ca69888905c9419a6cb356ed5c77c",
+          "title": "Xception: Deep Learning with Depthwise Separable Convolutions",
+          "authors": [
+            "François Chollet"
+          ],
+          "institutions": [],
+          "year": 2016,
+          "source": "https://arxiv.org/abs/1610.02357v3",
+          "arxiv_id": "1610.02357v3",
+          "doi": null,
+          "version": "v3",
+          "file_hash": "6de4937e4a78156e027742aeb047a7163c6ca69888905c9419a6cb356ed5c77c",
+          "page_count": 8,
+          "has_text_layer": true,
+          "abstract_present": true,
+          "abstract_characters": 1059,
+          "abstract_sha256": "d51bd5ac2fcc712633f41c321d70ccf7a890cf1232fcea984e209dc45486de47"
+        },
+        "initial_parse_status": null,
+        "parse_status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-6de4937e4a78156e027742aeb047a7163c6ca69888905c9419a6cb356ed5c77c",
+          "status": "completed",
+          "progress": 100,
+          "current_stage": "四类记录与去重判定已通过校验并发布",
+          "error_code": null,
+          "error_message": null
+        },
+        "error": null,
+        "already_present": true,
+        "dedup": {
+          "identity": "1610.02357",
+          "paper_id": "paper-6de4937e4a78156e027742aeb047a7163c6ca69888905c9419a6cb356ed5c77c",
+          "reason": "ARXIV_ID",
+          "similarity": null,
+          "first_seen": "2026-10-28T15:14:52.664491+00:00",
+          "occurrences": 1,
+          "last_seen": "2026-10-28T15:14:52.664518+00:00",
+          "record_created": true
+        },
+        "parse_metadata": {
+          "method": "mineru-fallback",
+          "grobid_attempted": true,
+          "grobid_elapsed_seconds": 3.750034,
+          "fallback_reason": "GROBID 未提供可合并的增强字段，保留 MinerU 原结果。",
+          "grobid_error": {
+            "error_code": "UPSTREAM_ERROR",
+            "message": "GROBID 未提供可合并的增强字段，保留 MinerU 原结果。",
+            "details": null
+          },
+          "paper_fields": [],
+          "references_enriched": 0,
+          "paper_id": "paper-6de4937e4a78156e027742aeb047a7163c6ca69888905c9419a6cb356ed5c77c",
+          "job_id": "job-98bb990292254ea09494ec3065fbe64e",
+          "status": "completed",
+          "reference_matches_count": 0
+        }
+      },
+      {
+        "name": "Learning accurate, compact, and interpretable tree annotation",
+        "succeeded": false,
+        "metadata": null,
+        "paper": null,
+        "initial_parse_status": null,
+        "parse_status": null,
+        "error": {
+          "error_code": "PAPER_NOT_FOUND",
+          "message": "arXiv 未找到唯一匹配论文；未选取相似标题冒充结果。",
+          "details": null
+        }
+      },
+      {
+        "name": "Outrageously large neural networks: The sparsely-gated mixture-of-experts layer",
+        "succeeded": true,
+        "metadata": {
+          "schema_version": "1.0.0",
+          "id": "arxiv-1701.06538v1",
+          "title": "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer",
+          "authors": [
+            "Noam Shazeer",
+            "Azalia Mirhoseini",
+            "Krzysztof Maziarz",
+            "Andy Davis",
+            "Quoc Le",
+            "Geoffrey Hinton",
+            "Jeff Dean"
+          ],
+          "institutions": [],
+          "year": 2017,
+          "source": "https://arxiv.org/abs/1701.06538v1",
+          "arxiv_id": "1701.06538v1",
+          "doi": null,
+          "version": "v1",
+          "file_hash": null,
+          "page_count": null,
+          "has_text_layer": null,
+          "abstract_present": true,
+          "abstract_characters": 1343,
+          "abstract_sha256": "364b8fcac4cc2f5e735ad1f9e4a3c8d9eec81540db09a6139ca92ece8440cc0f"
+        },
+        "paper": {
+          "schema_version": "1.0.0",
+          "id": "paper-2567713d198a376b65b92f0c60b9f58c8c5f66755530b92203533a17c4ec4b8e",
+          "title": "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer",
+          "authors": [
+            "Noam Shazeer",
+            "Azalia Mirhoseini",
+            "Krzysztof Maziarz",
+            "Andy Davis",
+            "Quoc Le",
+            "Geoffrey Hinton",
+            "Jeff Dean"
+          ],
+          "institutions": [
+            "Work done as a member of the Google Brain Residency program (g.co/brainresidency)"
+          ],
+          "year": 2017,
+          "source": "https://arxiv.org/abs/1701.06538v1",
+          "arxiv_id": "1701.06538v1",
+          "doi": null,
+          "version": "v1",
+          "file_hash": "2567713d198a376b65b92f0c60b9f58c8c5f66755530b92203533a17c4ec4b8e",
+          "page_count": 19,
+          "has_text_layer": true,
+          "abstract_present": true,
+          "abstract_characters": 1343,
+          "abstract_sha256": "364b8fcac4cc2f5e735ad1f9e4a3c8d9eec81540db09a6139ca92ece8440cc0f"
+        },
+        "initial_parse_status": null,
+        "parse_status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-2567713d198a376b65b92f0c60b9f58c8c5f66755530b92203533a17c4ec4b8e",
+          "status": "completed",
+          "progress": 100,
+          "current_stage": "四类记录与去重判定已通过校验并发布",
+          "error_code": null,
+          "error_message": null
+        },
+        "error": null,
+        "already_present": true,
+        "dedup": {
+          "identity": "1701.06538",
+          "paper_id": "paper-2567713d198a376b65b92f0c60b9f58c8c5f66755530b92203533a17c4ec4b8e",
+          "reason": "ARXIV_ID",
+          "similarity": null,
+          "first_seen": "2026-10-28T15:15:01.266719+00:00",
+          "occurrences": 1,
+          "last_seen": "2026-10-28T15:15:01.266737+00:00",
+          "record_created": true
+        },
+        "parse_metadata": {
+          "method": "mineru+grobid",
+          "grobid_attempted": true,
+          "grobid_elapsed_seconds": 7.172371,
+          "fallback_reason": null,
+          "grobid_error": null,
+          "paper_fields": [
+            "institutions"
+          ],
+          "references_enriched": 6,
+          "withheld_header_fields": {},
+          "unmatched_grobid_references": 35,
+          "paper_id": "paper-2567713d198a376b65b92f0c60b9f58c8c5f66755530b92203533a17c4ec4b8e",
+          "job_id": "job-962006bb64a240cdabc2b9e237cf623c",
+          "status": "completed",
+          "reference_matches_count": 6,
+          "discarded_header_counts": {}
+        }
+      },
+      {
+        "name": "Empirical evaluation of gated recurrent neural networks on sequence modeling",
+        "succeeded": true,
+        "metadata": {
+          "schema_version": "1.0.0",
+          "id": "arxiv-1412.3555v1",
+          "title": "Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling",
+          "authors": [
+            "Junyoung Chung",
+            "Caglar Gulcehre",
+            "KyungHyun Cho",
+            "Yoshua Bengio"
+          ],
+          "institutions": [],
+          "year": 2014,
+          "source": "https://arxiv.org/abs/1412.3555v1",
+          "arxiv_id": "1412.3555v1",
+          "doi": null,
+          "version": "v1",
+          "file_hash": null,
+          "page_count": null,
+          "has_text_layer": null,
+          "abstract_present": true,
+          "abstract_characters": 563,
+          "abstract_sha256": "f21ebd7acf3c69a36076ac45f97a4e6c1e8ef54f886c1a66a6654b45501cdd70"
+        },
+        "paper": {
+          "schema_version": "1.0.0",
+          "id": "paper-ccdcd1eb8b52dcdf40d716d7ba234e861edb8ea913778b92a1628fbb86158685",
+          "title": "Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling",
+          "authors": [
+            "Junyoung Chung",
+            "Caglar Gulcehre",
+            "KyungHyun Cho",
+            "Yoshua Bengio"
+          ],
+          "institutions": [
+            "Université de Montréal",
+            "Université de Montréal CIFAR Senior Fellow"
+          ],
+          "year": 2014,
+          "source": "https://arxiv.org/abs/1412.3555v1",
+          "arxiv_id": "1412.3555v1",
+          "doi": null,
+          "version": "v1",
+          "file_hash": "ccdcd1eb8b52dcdf40d716d7ba234e861edb8ea913778b92a1628fbb86158685",
+          "page_count": 9,
+          "has_text_layer": true,
+          "abstract_present": true,
+          "abstract_characters": 563,
+          "abstract_sha256": "f21ebd7acf3c69a36076ac45f97a4e6c1e8ef54f886c1a66a6654b45501cdd70"
+        },
+        "initial_parse_status": null,
+        "parse_status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-ccdcd1eb8b52dcdf40d716d7ba234e861edb8ea913778b92a1628fbb86158685",
+          "status": "completed",
+          "progress": 100,
+          "current_stage": "四类记录与去重判定已通过校验并发布",
+          "error_code": null,
+          "error_message": null
+        },
+        "error": null,
+        "already_present": true,
+        "dedup": {
+          "identity": "1412.3555",
+          "paper_id": "paper-ccdcd1eb8b52dcdf40d716d7ba234e861edb8ea913778b92a1628fbb86158685",
+          "reason": "ARXIV_ID",
+          "similarity": null,
+          "first_seen": "2026-10-28T15:15:04.352375+00:00",
+          "occurrences": 1,
+          "last_seen": "2026-10-28T15:15:04.352394+00:00",
+          "record_created": true
+        },
+        "parse_metadata": {
+          "method": "mineru+grobid",
+          "grobid_attempted": true,
+          "grobid_elapsed_seconds": 3.741516,
+          "fallback_reason": null,
+          "grobid_error": null,
+          "paper_fields": [
+            "institutions"
+          ],
+          "references_enriched": 20,
+          "withheld_header_fields": {},
+          "unmatched_grobid_references": 0,
+          "paper_id": "paper-ccdcd1eb8b52dcdf40d716d7ba234e861edb8ea913778b92a1628fbb86158685",
+          "job_id": "job-69e6435e9f424f82aaab1e6ee0918007",
+          "status": "completed",
+          "reference_matches_count": 20,
+          "discarded_header_counts": {}
+        }
+      },
+      {
+        "name": "Multi-task sequence to sequence learning",
+        "succeeded": true,
+        "metadata": {
+          "schema_version": "1.0.0",
+          "id": "arxiv-1511.06114v4",
+          "title": "Multi-task Sequence to Sequence Learning",
+          "authors": [
+            "Minh-Thang Luong",
+            "Quoc V. Le",
+            "Ilya Sutskever",
+            "Oriol Vinyals",
+            "Lukasz Kaiser"
+          ],
+          "institutions": [],
+          "year": 2015,
+          "source": "https://arxiv.org/abs/1511.06114v4",
+          "arxiv_id": "1511.06114v4",
+          "doi": null,
+          "version": "v4",
+          "file_hash": null,
+          "page_count": null,
+          "has_text_layer": null,
+          "abstract_present": true,
+          "abstract_characters": 1281,
+          "abstract_sha256": "f42d4869167c9dfb700a467cc339502f563e2703588966e7f40a1cf428750809"
+        },
+        "paper": {
+          "schema_version": "1.0.0",
+          "id": "paper-525470e65d6539917b11344a32d344e33eba482de60522b8f2f148dc462a7876",
+          "title": "Multi-task Sequence to Sequence Learning",
+          "authors": [
+            "Minh-Thang Luong",
+            "Quoc V. Le",
+            "Ilya Sutskever",
+            "Oriol Vinyals",
+            "Lukasz Kaiser"
+          ],
+          "institutions": [
+            "Google Brain",
+            "Minh-Thang Luong is also a student at Stanford University"
+          ],
+          "year": 2015,
+          "source": "https://arxiv.org/abs/1511.06114v4",
+          "arxiv_id": "1511.06114v4",
+          "doi": null,
+          "version": "v4",
+          "file_hash": "525470e65d6539917b11344a32d344e33eba482de60522b8f2f148dc462a7876",
+          "page_count": 10,
+          "has_text_layer": true,
+          "abstract_present": true,
+          "abstract_characters": 1281,
+          "abstract_sha256": "f42d4869167c9dfb700a467cc339502f563e2703588966e7f40a1cf428750809"
+        },
+        "initial_parse_status": null,
+        "parse_status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-525470e65d6539917b11344a32d344e33eba482de60522b8f2f148dc462a7876",
+          "status": "completed",
+          "progress": 100,
+          "current_stage": "四类记录与去重判定已通过校验并发布",
+          "error_code": null,
+          "error_message": null
+        },
+        "error": null,
+        "already_present": true,
+        "dedup": {
+          "identity": "1511.06114",
+          "paper_id": "paper-525470e65d6539917b11344a32d344e33eba482de60522b8f2f148dc462a7876",
+          "reason": "ARXIV_ID",
+          "similarity": null,
+          "first_seen": "2026-10-28T15:15:07.934393+00:00",
+          "occurrences": 1,
+          "last_seen": "2026-10-28T15:15:07.934414+00:00",
+          "record_created": true
+        },
+        "parse_metadata": {
+          "method": "mineru+grobid",
+          "grobid_attempted": true,
+          "grobid_elapsed_seconds": 3.009943,
+          "fallback_reason": null,
+          "grobid_error": null,
+          "paper_fields": [
+            "institutions"
+          ],
+          "references_enriched": 32,
+          "withheld_header_fields": {
+            "year": {
+              "candidate": 2016,
+              "reason": "GROBID header日期未区分版本日期与发表年，不自动采用。"
+            }
+          },
+          "unmatched_grobid_references": 0,
+          "paper_id": "paper-525470e65d6539917b11344a32d344e33eba482de60522b8f2f148dc462a7876",
+          "job_id": "job-eee7032c4b494975a9ec751d2af6ba14",
+          "status": "completed",
+          "reference_matches_count": 32,
+          "discarded_header_counts": {}
+        }
+      },
+      {
+        "name": "Long short-term memory",
+        "succeeded": false,
+        "metadata": null,
+        "paper": null,
+        "initial_parse_status": null,
+        "parse_status": null,
+        "error": {
+          "error_code": "PAPER_NOT_FOUND",
+          "message": "arXiv 未找到唯一匹配论文；未选取相似标题冒充结果。",
+          "details": null
+        }
+      },
+      {
+        "name": "Self-training PCFG grammars with latent annotations across languages",
+        "succeeded": false,
+        "metadata": null,
+        "paper": null,
+        "initial_parse_status": null,
+        "parse_status": null,
+        "error": {
+          "error_code": "PAPER_NOT_FOUND",
+          "message": "arXiv 未找到唯一匹配论文；未选取相似标题冒充结果。",
+          "details": null
+        }
+      },
+      {
+        "name": "Effective self-training for parsing",
+        "succeeded": false,
+        "metadata": null,
+        "paper": null,
+        "initial_parse_status": null,
+        "parse_status": null,
+        "error": {
+          "error_code": "PAPER_NOT_FOUND",
+          "message": "arXiv 未找到唯一匹配论文；未选取相似标题冒充结果。",
+          "details": null
+        }
+      },
+      {
+        "name": "End-to-end memory networks",
+        "succeeded": true,
+        "metadata": {
+          "schema_version": "1.0.0",
+          "id": "arxiv-1503.08895v5",
+          "title": "End-To-End Memory Networks",
+          "authors": [
+            "Sainbayar Sukhbaatar",
+            "Arthur Szlam",
+            "Jason Weston",
+            "Rob Fergus"
+          ],
+          "institutions": [],
+          "year": 2015,
+          "source": "https://arxiv.org/abs/1503.08895v5",
+          "arxiv_id": "1503.08895v5",
+          "doi": null,
+          "version": "v5",
+          "file_hash": null,
+          "page_count": null,
+          "has_text_layer": null,
+          "abstract_present": true,
+          "abstract_characters": 937,
+          "abstract_sha256": "1f7a118a8fc446220f78be5fe7918560728d42ade648a03f60a7f96e2f8bb114"
+        },
+        "paper": {
+          "schema_version": "1.0.0",
+          "id": "paper-8eddaf2a441092955d10aa34a9f2b690aaaecee9097a47693366e0c5b8ff36a0",
+          "title": "End-To-End Memory Networks",
+          "authors": [
+            "Sainbayar Sukhbaatar",
+            "Arthur Szlam",
+            "Jason Weston",
+            "Rob Fergus"
+          ],
+          "institutions": [
+            "Courant Institute, New York University"
+          ],
+          "year": 2015,
+          "source": "https://arxiv.org/abs/1503.08895v5",
+          "arxiv_id": "1503.08895v5",
+          "doi": null,
+          "version": "v5",
+          "file_hash": "8eddaf2a441092955d10aa34a9f2b690aaaecee9097a47693366e0c5b8ff36a0",
+          "page_count": 11,
+          "has_text_layer": true,
+          "abstract_present": true,
+          "abstract_characters": 937,
+          "abstract_sha256": "1f7a118a8fc446220f78be5fe7918560728d42ade648a03f60a7f96e2f8bb114"
+        },
+        "initial_parse_status": null,
+        "parse_status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-8eddaf2a441092955d10aa34a9f2b690aaaecee9097a47693366e0c5b8ff36a0",
+          "status": "completed",
+          "progress": 100,
+          "current_stage": "四类记录与去重判定已通过校验并发布",
+          "error_code": null,
+          "error_message": null
+        },
+        "error": null,
+        "already_present": true,
+        "dedup": {
+          "identity": "1503.08895",
+          "paper_id": "paper-8eddaf2a441092955d10aa34a9f2b690aaaecee9097a47693366e0c5b8ff36a0",
+          "reason": "ARXIV_ID",
+          "similarity": null,
+          "first_seen": "2026-10-28T15:15:28.939700+00:00",
+          "occurrences": 1,
+          "last_seen": "2026-10-28T15:15:28.939810+00:00",
+          "record_created": true
+        },
+        "parse_metadata": {
+          "method": "mineru+grobid",
+          "grobid_attempted": true,
+          "grobid_elapsed_seconds": 3.628165,
+          "fallback_reason": null,
+          "grobid_error": null,
+          "paper_fields": [
+            "institutions"
+          ],
+          "references_enriched": 25,
+          "withheld_header_fields": {},
+          "unmatched_grobid_references": 0,
+          "paper_id": "paper-8eddaf2a441092955d10aa34a9f2b690aaaecee9097a47693366e0c5b8ff36a0",
+          "job_id": "job-1ebf9af049c6486abbfda10030e8045d",
+          "status": "completed",
+          "reference_matches_count": 25,
+          "discarded_header_counts": {}
+        }
+      },
+      {
+        "name": "Deep recurrent models with fast-forward connections for neural machine translation",
+        "succeeded": true,
+        "metadata": {
+          "schema_version": "1.0.0",
+          "id": "arxiv-1606.04199v3",
+          "title": "Deep Recurrent Models with Fast-Forward Connections for Neural Machine Translation",
+          "authors": [
+            "Jie Zhou",
+            "Ying Cao",
+            "Xuguang Wang",
+            "Peng Li",
+            "Wei Xu"
+          ],
+          "institutions": [],
+          "year": 2016,
+          "source": "https://arxiv.org/abs/1606.04199v3",
+          "arxiv_id": "1606.04199v3",
+          "doi": null,
+          "version": "v3",
+          "file_hash": null,
+          "page_count": null,
+          "has_text_layer": null,
+          "abstract_present": true,
+          "abstract_characters": 1260,
+          "abstract_sha256": "9f60efc1816006d90c7c1d597532cd9b8b04f76aa306285cbfe703b6ce2be104"
+        },
+        "paper": {
+          "schema_version": "1.0.0",
+          "id": "paper-df7cd0ccd711c38c23544104311504bb1e200ebf0c354bb942ab4c189d046ef2",
+          "title": "Deep Recurrent Models with Fast-Forward Connections for Neural Machine Translation",
+          "authors": [
+            "Jie Zhou",
+            "Ying Cao",
+            "Xuguang Wang",
+            "Peng Li",
+            "Wei Xu"
+          ],
+          "institutions": [
+            "Baidu Research -Institute of Deep Learning Baidu Inc"
+          ],
+          "year": 2016,
+          "source": "https://arxiv.org/abs/1606.04199v3",
+          "arxiv_id": "1606.04199v3",
+          "doi": null,
+          "version": "v3",
+          "file_hash": "df7cd0ccd711c38c23544104311504bb1e200ebf0c354bb942ab4c189d046ef2",
+          "page_count": 13,
+          "has_text_layer": true,
+          "abstract_present": true,
+          "abstract_characters": 1260,
+          "abstract_sha256": "9f60efc1816006d90c7c1d597532cd9b8b04f76aa306285cbfe703b6ce2be104"
+        },
+        "initial_parse_status": null,
+        "parse_status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-df7cd0ccd711c38c23544104311504bb1e200ebf0c354bb942ab4c189d046ef2",
+          "status": "completed",
+          "progress": 100,
+          "current_stage": "四类记录与去重判定已通过校验并发布",
+          "error_code": null,
+          "error_message": null
+        },
+        "error": null,
+        "already_present": true,
+        "dedup": {
+          "identity": "1606.04199",
+          "paper_id": "paper-df7cd0ccd711c38c23544104311504bb1e200ebf0c354bb942ab4c189d046ef2",
+          "reason": "ARXIV_ID",
+          "similarity": null,
+          "first_seen": "2026-10-28T15:15:31.322696+00:00",
+          "occurrences": 1,
+          "last_seen": "2026-10-28T15:15:31.322725+00:00",
+          "record_created": true
+        },
+        "parse_metadata": {
+          "method": "mineru+grobid",
+          "grobid_attempted": true,
+          "grobid_elapsed_seconds": 2.936681,
+          "fallback_reason": null,
+          "grobid_error": null,
+          "paper_fields": [
+            "institutions"
+          ],
+          "references_enriched": 13,
+          "withheld_header_fields": {},
+          "unmatched_grobid_references": 15,
+          "paper_id": "paper-df7cd0ccd711c38c23544104311504bb1e200ebf0c354bb942ab4c189d046ef2",
+          "job_id": "job-8c35665384714872aa71b27b25706cd7",
+          "status": "completed",
+          "reference_matches_count": 13,
+          "discarded_header_counts": {}
+        }
+      },
+      {
+        "name": "Fast and accurate shift-reduce constituent parsing",
+        "succeeded": false,
+        "metadata": null,
+        "paper": null,
+        "initial_parse_status": null,
+        "parse_status": null,
+        "error": {
+          "error_code": "PAPER_NOT_FOUND",
+          "message": "arXiv 未找到唯一匹配论文；未选取相似标题冒充结果。",
+          "details": null
+        }
+      },
+      {
+        "name": "A decomposable attention model",
+        "succeeded": true,
+        "metadata": {
+          "schema_version": "1.0.0",
+          "id": "arxiv-1606.01933v2",
+          "title": "A Decomposable Attention Model for Natural Language Inference",
+          "authors": [
+            "Ankur P. Parikh",
+            "Oscar Täckström",
+            "Dipanjan Das",
+            "Jakob Uszkoreit"
+          ],
+          "institutions": [],
+          "year": 2016,
+          "source": "https://arxiv.org/abs/1606.01933v2",
+          "arxiv_id": "1606.01933v2",
+          "doi": null,
+          "version": "v2",
+          "file_hash": null,
+          "page_count": null,
+          "has_text_layer": null,
+          "abstract_present": true,
+          "abstract_characters": 539,
+          "abstract_sha256": "bfcd1419b50f09aab526d4c40bea6919174e95f413b760f9b99bf68680ab4aea"
+        },
+        "paper": {
+          "schema_version": "1.0.0",
+          "id": "paper-83618dd2300ce30371320ebcb48db113d642a6a3035697efb2d8655e13aeda08",
+          "title": "A Decomposable Attention Model for Natural Language Inference",
+          "authors": [
+            "Ankur P. Parikh",
+            "Oscar Täckström",
+            "Dipanjan Das",
+            "Jakob Uszkoreit"
+          ],
+          "institutions": [
+            "Jakob Uszkoreit Google Mountain View"
+          ],
+          "year": 2016,
+          "source": "https://arxiv.org/abs/1606.01933v2",
+          "arxiv_id": "1606.01933v2",
+          "doi": null,
+          "version": "v2",
+          "file_hash": "83618dd2300ce30371320ebcb48db113d642a6a3035697efb2d8655e13aeda08",
+          "page_count": 7,
+          "has_text_layer": true,
+          "abstract_present": true,
+          "abstract_characters": 539,
+          "abstract_sha256": "bfcd1419b50f09aab526d4c40bea6919174e95f413b760f9b99bf68680ab4aea"
+        },
+        "initial_parse_status": null,
+        "parse_status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-83618dd2300ce30371320ebcb48db113d642a6a3035697efb2d8655e13aeda08",
+          "status": "completed",
+          "progress": 100,
+          "current_stage": "四类记录与去重判定已通过校验并发布",
+          "error_code": null,
+          "error_message": null
+        },
+        "error": null,
+        "already_present": true,
+        "dedup": {
+          "identity": "1606.01933",
+          "paper_id": "paper-83618dd2300ce30371320ebcb48db113d642a6a3035697efb2d8655e13aeda08",
+          "reason": "ARXIV_ID",
+          "similarity": null,
+          "first_seen": "2026-10-28T15:15:43.519595+00:00",
+          "occurrences": 1,
+          "last_seen": "2026-10-28T15:15:43.519614+00:00",
+          "record_created": true
+        },
+        "parse_metadata": {
+          "method": "mineru+grobid",
+          "grobid_attempted": true,
+          "grobid_elapsed_seconds": 3.628026,
+          "fallback_reason": null,
+          "grobid_error": null,
+          "paper_fields": [
+            "institutions"
+          ],
+          "references_enriched": 0,
+          "withheld_header_fields": {},
+          "unmatched_grobid_references": 14,
+          "paper_id": "paper-83618dd2300ce30371320ebcb48db113d642a6a3035697efb2d8655e13aeda08",
+          "job_id": "job-2c66b97426f3418498312a011ac227d5",
+          "status": "completed",
+          "reference_matches_count": 0,
+          "discarded_header_counts": {}
+        },
+        "reference_resolution": {
+          "method": "unique_title_prefix_all_author_surnames_year",
+          "source_title": "A decomposable attention model",
+          "resolved_title": "A Decomposable Attention Model for Natural Language Inference",
+          "source_year": 2016,
+          "matched_surnames": [
+            "das",
+            "parikh",
+            "täckström",
+            "uszkoreit"
+          ],
+          "candidate_count": 1,
+          "notice": "原参考文献标题为缩写；已以完整作者姓氏集合、年份和唯一标题前缀核对。原引用记录未改写。"
+        }
+      },
+      {
+        "name": "Factorization tricks for LSTM networks",
+        "succeeded": true,
+        "metadata": {
+          "schema_version": "1.0.0",
+          "id": "arxiv-1703.10722v3",
+          "title": "Factorization tricks for LSTM networks",
+          "authors": [
+            "Oleksii Kuchaiev",
+            "Boris Ginsburg"
+          ],
+          "institutions": [],
+          "year": 2017,
+          "source": "https://arxiv.org/abs/1703.10722v3",
+          "arxiv_id": "1703.10722v3",
+          "doi": null,
+          "version": "v3",
+          "file_hash": null,
+          "page_count": null,
+          "has_text_layer": null,
+          "abstract_present": true,
+          "abstract_characters": 513,
+          "abstract_sha256": "a25e13d639608ff84a4ae68a73dfda0b763e1e4baa53ba3bfc6f21a0623790c0"
+        },
+        "paper": {
+          "schema_version": "1.0.0",
+          "id": "paper-b25dbbcd99230ff10d5e5838bdee2ef065b143b340a416fd878ccca049fd55e1",
+          "title": "Factorization tricks for LSTM networks",
+          "authors": [
+            "Oleksii Kuchaiev",
+            "Boris Ginsburg"
+          ],
+          "institutions": [
+            "NVIDIA"
+          ],
+          "year": 2017,
+          "source": "https://arxiv.org/abs/1703.10722v3",
+          "arxiv_id": "1703.10722v3",
+          "doi": null,
+          "version": "v3",
+          "file_hash": "b25dbbcd99230ff10d5e5838bdee2ef065b143b340a416fd878ccca049fd55e1",
+          "page_count": 6,
+          "has_text_layer": true,
+          "abstract_present": true,
+          "abstract_characters": 513,
+          "abstract_sha256": "a25e13d639608ff84a4ae68a73dfda0b763e1e4baa53ba3bfc6f21a0623790c0"
+        },
+        "initial_parse_status": null,
+        "parse_status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-b25dbbcd99230ff10d5e5838bdee2ef065b143b340a416fd878ccca049fd55e1",
+          "status": "completed",
+          "progress": 100,
+          "current_stage": "四类记录与去重判定已通过校验并发布",
+          "error_code": null,
+          "error_message": null
+        },
+        "error": null,
+        "already_present": true,
+        "dedup": {
+          "identity": "1703.10722",
+          "paper_id": "paper-b25dbbcd99230ff10d5e5838bdee2ef065b143b340a416fd878ccca049fd55e1",
+          "reason": "ARXIV_ID",
+          "similarity": null,
+          "first_seen": "2026-10-28T15:15:46.217478+00:00",
+          "occurrences": 1,
+          "last_seen": "2026-10-28T15:15:46.217504+00:00",
+          "record_created": true
+        },
+        "parse_metadata": {
+          "method": "mineru+grobid",
+          "grobid_attempted": true,
+          "grobid_elapsed_seconds": 2.074475,
+          "fallback_reason": null,
+          "grobid_error": null,
+          "paper_fields": [
+            "institutions"
+          ],
+          "references_enriched": 18,
+          "withheld_header_fields": {
+            "year": {
+              "candidate": 2018,
+              "reason": "GROBID header日期未区分版本日期与发表年，不自动采用。"
+            }
+          },
+          "unmatched_grobid_references": 0,
+          "paper_id": "paper-b25dbbcd99230ff10d5e5838bdee2ef065b143b340a416fd878ccca049fd55e1",
+          "job_id": "job-3c038727d1104897967ef31a5aeb672c",
+          "status": "completed",
+          "reference_matches_count": 18,
+          "discarded_header_counts": {}
+        }
+      },
+      {
+        "name": "A deep reinforced model for abstractive summarization",
+        "succeeded": true,
+        "metadata": {
+          "schema_version": "1.0.0",
+          "id": "arxiv-1705.04304v3",
+          "title": "A Deep Reinforced Model for Abstractive Summarization",
+          "authors": [
+            "Romain Paulus",
+            "Caiming Xiong",
+            "Richard Socher"
+          ],
+          "institutions": [],
+          "year": 2017,
+          "source": "https://arxiv.org/abs/1705.04304v3",
+          "arxiv_id": "1705.04304v3",
+          "doi": null,
+          "version": "v3",
+          "file_hash": null,
+          "page_count": null,
+          "has_text_layer": null,
+          "abstract_present": true,
+          "abstract_characters": 1065,
+          "abstract_sha256": "95e0de700f2b5f9d6cad502aa9f5ebce619f0450cfe8c07bc6293efcf66efaa5"
+        },
+        "paper": {
+          "schema_version": "1.0.0",
+          "id": "paper-f86a162404da6e8d6acbdc67878b578ae8ae67385eb14c318ddeef89f11278d6",
+          "title": "A Deep Reinforced Model for Abstractive Summarization",
+          "authors": [
+            "Romain Paulus",
+            "Caiming Xiong",
+            "Richard Socher"
+          ],
+          "institutions": [
+            "Salesforce Research"
+          ],
+          "year": 2017,
+          "source": "https://arxiv.org/abs/1705.04304v3",
+          "arxiv_id": "1705.04304v3",
+          "doi": null,
+          "version": "v3",
+          "file_hash": "f86a162404da6e8d6acbdc67878b578ae8ae67385eb14c318ddeef89f11278d6",
+          "page_count": 12,
+          "has_text_layer": true,
+          "abstract_present": true,
+          "abstract_characters": 1065,
+          "abstract_sha256": "95e0de700f2b5f9d6cad502aa9f5ebce619f0450cfe8c07bc6293efcf66efaa5"
+        },
+        "initial_parse_status": null,
+        "parse_status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-f86a162404da6e8d6acbdc67878b578ae8ae67385eb14c318ddeef89f11278d6",
+          "status": "completed",
+          "progress": 100,
+          "current_stage": "四类记录与去重判定已通过校验并发布",
+          "error_code": null,
+          "error_message": null
+        },
+        "error": null,
+        "already_present": true,
+        "dedup": {
+          "identity": "1705.04304",
+          "paper_id": "paper-f86a162404da6e8d6acbdc67878b578ae8ae67385eb14c318ddeef89f11278d6",
+          "reason": "ARXIV_ID",
+          "similarity": null,
+          "first_seen": "2026-10-28T15:15:52.156843+00:00",
+          "occurrences": 1,
+          "last_seen": "2026-10-28T15:15:52.156872+00:00",
+          "record_created": true
+        },
+        "parse_metadata": {
+          "method": "mineru+grobid",
+          "grobid_attempted": true,
+          "grobid_elapsed_seconds": 3.05516,
+          "fallback_reason": null,
+          "grobid_error": null,
+          "paper_fields": [
+            "institutions"
+          ],
+          "references_enriched": 39,
+          "withheld_header_fields": {},
+          "unmatched_grobid_references": 0,
+          "paper_id": "paper-f86a162404da6e8d6acbdc67878b578ae8ae67385eb14c318ddeef89f11278d6",
+          "job_id": "job-25222cdbbf9645f5a8a55f0469e8e8de",
+          "status": "completed",
+          "reference_matches_count": 39,
+          "discarded_header_counts": {}
+        }
+      },
+      {
+        "name": "Long short-term memory-networks for machine reading",
+        "succeeded": true,
+        "metadata": {
+          "schema_version": "1.0.0",
+          "id": "arxiv-1601.06733v7",
+          "title": "Long Short-Term Memory-Networks for Machine Reading",
+          "authors": [
+            "Jianpeng Cheng",
+            "Li Dong",
+            "Mirella Lapata"
+          ],
+          "institutions": [],
+          "year": 2016,
+          "source": "https://arxiv.org/abs/1601.06733v7",
+          "arxiv_id": "1601.06733v7",
+          "doi": null,
+          "version": "v7",
+          "file_hash": null,
+          "page_count": null,
+          "has_text_layer": null,
+          "abstract_present": true,
+          "abstract_characters": 807,
+          "abstract_sha256": "753279c6abefcca567c9836d4b755f7be60d1ef8165bdeff4e78e4d077b23152"
+        },
+        "paper": {
+          "schema_version": "1.0.0",
+          "id": "paper-5085f14d6a203ec934b512646e1aeed37802fee1e686a9b6a9fa99ca51a13b91",
+          "title": "Long Short-Term Memory-Networks for Machine Reading",
+          "authors": [
+            "Jianpeng Cheng",
+            "Li Dong",
+            "Mirella Lapata"
+          ],
+          "institutions": [
+            "School of Informatics",
+            "University of Edinburgh"
+          ],
+          "year": 2016,
+          "source": "https://arxiv.org/abs/1601.06733v7",
+          "arxiv_id": "1601.06733v7",
+          "doi": null,
+          "version": "v7",
+          "file_hash": "5085f14d6a203ec934b512646e1aeed37802fee1e686a9b6a9fa99ca51a13b91",
+          "page_count": 11,
+          "has_text_layer": true,
+          "abstract_present": true,
+          "abstract_characters": 807,
+          "abstract_sha256": "753279c6abefcca567c9836d4b755f7be60d1ef8165bdeff4e78e4d077b23152"
+        },
+        "initial_parse_status": null,
+        "parse_status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-5085f14d6a203ec934b512646e1aeed37802fee1e686a9b6a9fa99ca51a13b91",
+          "status": "completed",
+          "progress": 100,
+          "current_stage": "四类记录与去重判定已通过校验并发布",
+          "error_code": null,
+          "error_message": null
+        },
+        "error": null,
+        "already_present": true,
+        "dedup": {
+          "identity": "1601.06733",
+          "paper_id": "paper-5085f14d6a203ec934b512646e1aeed37802fee1e686a9b6a9fa99ca51a13b91",
+          "reason": "ARXIV_ID",
+          "similarity": null,
+          "first_seen": "2026-10-28T15:16:34.160815+00:00",
+          "occurrences": 1,
+          "last_seen": "2026-10-28T15:16:34.160833+00:00",
+          "record_created": true
+        },
+        "parse_metadata": {
+          "method": "mineru+grobid",
+          "grobid_attempted": true,
+          "grobid_elapsed_seconds": 6.451898,
+          "fallback_reason": null,
+          "grobid_error": null,
+          "paper_fields": [
+            "institutions"
+          ],
+          "references_enriched": 0,
+          "withheld_header_fields": {},
+          "unmatched_grobid_references": 26,
+          "paper_id": "paper-5085f14d6a203ec934b512646e1aeed37802fee1e686a9b6a9fa99ca51a13b91",
+          "job_id": "job-375ae95f123e4ee5ae56e4b63c02985e",
+          "status": "completed",
+          "reference_matches_count": 0,
+          "discarded_header_counts": {}
+        }
+      },
+      {
+        "name": "Exploring the limits of language modeling",
+        "succeeded": true,
+        "metadata": {
+          "schema_version": "1.0.0",
+          "id": "arxiv-1602.02410v2",
+          "title": "Exploring the Limits of Language Modeling",
+          "authors": [
+            "Rafal Jozefowicz",
+            "Oriol Vinyals",
+            "Mike Schuster",
+            "Noam Shazeer",
+            "Yonghui Wu"
+          ],
+          "institutions": [],
+          "year": 2016,
+          "source": "https://arxiv.org/abs/1602.02410v2",
+          "arxiv_id": "1602.02410v2",
+          "doi": null,
+          "version": "v2",
+          "file_hash": null,
+          "page_count": null,
+          "has_text_layer": null,
+          "abstract_present": true,
+          "abstract_characters": 792,
+          "abstract_sha256": "07c5522e3d0b3c9295b64a8efd8d31d3a10ac87068e3fca8111e1a6a19b0f985"
+        },
+        "paper": {
+          "schema_version": "1.0.0",
+          "id": "paper-38095da0c38496d97fd6970d314b2fc5d0aa6ed3f9c50a1e67f85521af5d9af8",
+          "title": "Exploring the Limits of Language Modeling",
+          "authors": [
+            "Rafal Jozefowicz",
+            "Oriol Vinyals",
+            "Mike Schuster",
+            "Noam Shazeer",
+            "Yonghui Wu"
+          ],
+          "institutions": [
+            "Google Brain"
+          ],
+          "year": 2016,
+          "source": "https://arxiv.org/abs/1602.02410v2",
+          "arxiv_id": "1602.02410v2",
+          "doi": null,
+          "version": "v2",
+          "file_hash": "38095da0c38496d97fd6970d314b2fc5d0aa6ed3f9c50a1e67f85521af5d9af8",
+          "page_count": 11,
+          "has_text_layer": true,
+          "abstract_present": true,
+          "abstract_characters": 792,
+          "abstract_sha256": "07c5522e3d0b3c9295b64a8efd8d31d3a10ac87068e3fca8111e1a6a19b0f985"
+        },
+        "initial_parse_status": null,
+        "parse_status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-38095da0c38496d97fd6970d314b2fc5d0aa6ed3f9c50a1e67f85521af5d9af8",
+          "status": "completed",
+          "progress": 100,
+          "current_stage": "四类记录与去重判定已通过校验并发布",
+          "error_code": null,
+          "error_message": null
+        },
+        "error": null,
+        "already_present": true,
+        "dedup": {
+          "identity": "1602.02410",
+          "paper_id": "paper-38095da0c38496d97fd6970d314b2fc5d0aa6ed3f9c50a1e67f85521af5d9af8",
+          "reason": "ARXIV_ID",
+          "similarity": null,
+          "first_seen": "2026-10-28T15:16:36.930001+00:00",
+          "occurrences": 1,
+          "last_seen": "2026-10-28T15:16:36.930028+00:00",
+          "record_created": true
+        },
+        "parse_metadata": {
+          "method": "mineru+grobid",
+          "grobid_attempted": true,
+          "grobid_elapsed_seconds": 9.925183,
+          "fallback_reason": null,
+          "grobid_error": null,
+          "paper_fields": [],
+          "references_enriched": 0,
+          "withheld_header_fields": {},
+          "unmatched_grobid_references": 53,
+          "paper_id": "paper-38095da0c38496d97fd6970d314b2fc5d0aa6ed3f9c50a1e67f85521af5d9af8",
+          "job_id": "job-3b8a6ae996b040dc9bddd9516c36d626",
+          "status": "completed",
+          "reference_matches_count": 0,
+          "discarded_header_counts": {}
+        }
+      },
+      {
+        "name": "Structured attention networks",
+        "succeeded": true,
+        "metadata": {
+          "schema_version": "1.0.0",
+          "id": "arxiv-1702.00887v3",
+          "title": "Structured Attention Networks",
+          "authors": [
+            "Yoon Kim",
+            "Carl Denton",
+            "Luong Hoang",
+            "Alexander M. Rush"
+          ],
+          "institutions": [],
+          "year": 2017,
+          "source": "https://arxiv.org/abs/1702.00887v3",
+          "arxiv_id": "1702.00887v3",
+          "doi": null,
+          "version": "v3",
+          "file_hash": null,
+          "page_count": null,
+          "has_text_layer": null,
+          "abstract_present": true,
+          "abstract_characters": 1296,
+          "abstract_sha256": "86260ccd3eefd7a42a05fac7ac67e8ee156fcb3cc60658bb3e31e730250f03b0"
+        },
+        "paper": {
+          "schema_version": "1.0.0",
+          "id": "paper-1cb48e40e523d1994f38211edd30f92b0f01f0a25c2990bc8d84a9b684e95135",
+          "title": "Structured Attention Networks",
+          "authors": [
+            "Yoon Kim",
+            "Carl Denton",
+            "Luong Hoang",
+            "Alexander M. Rush"
+          ],
+          "institutions": [
+            "School of Engineering and Applied Sciences",
+            "Harvard University Cambridge"
+          ],
+          "year": 2017,
+          "source": "https://arxiv.org/abs/1702.00887v3",
+          "arxiv_id": "1702.00887v3",
+          "doi": null,
+          "version": "v3",
+          "file_hash": "1cb48e40e523d1994f38211edd30f92b0f01f0a25c2990bc8d84a9b684e95135",
+          "page_count": 21,
+          "has_text_layer": true,
+          "abstract_present": true,
+          "abstract_characters": 1296,
+          "abstract_sha256": "86260ccd3eefd7a42a05fac7ac67e8ee156fcb3cc60658bb3e31e730250f03b0"
+        },
+        "initial_parse_status": null,
+        "parse_status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-1cb48e40e523d1994f38211edd30f92b0f01f0a25c2990bc8d84a9b684e95135",
+          "status": "completed",
+          "progress": 100,
+          "current_stage": "四类记录与去重判定已通过校验并发布",
+          "error_code": null,
+          "error_message": null
+        },
+        "error": null,
+        "already_present": true,
+        "dedup": {
+          "identity": "1702.00887",
+          "paper_id": "paper-1cb48e40e523d1994f38211edd30f92b0f01f0a25c2990bc8d84a9b684e95135",
+          "reason": "ARXIV_ID",
+          "similarity": null,
+          "first_seen": "2026-10-28T15:16:39.818744+00:00",
+          "occurrences": 1,
+          "last_seen": "2026-10-28T15:16:39.818759+00:00",
+          "record_created": true
+        },
+        "parse_metadata": {
+          "method": "mineru+grobid",
+          "grobid_attempted": true,
+          "grobid_elapsed_seconds": 5.146572,
+          "fallback_reason": null,
+          "grobid_error": null,
+          "paper_fields": [
+            "institutions"
+          ],
+          "references_enriched": 57,
+          "withheld_header_fields": {},
+          "unmatched_grobid_references": 0,
+          "paper_id": "paper-1cb48e40e523d1994f38211edd30f92b0f01f0a25c2990bc8d84a9b684e95135",
+          "job_id": "job-e46fb63a3c024c04bd496215c8e5c1e7",
+          "status": "completed",
+          "reference_matches_count": 57,
+          "discarded_header_counts": {}
+        }
+      },
+      {
+        "name": "A structured self-attentive sentence embedding",
+        "succeeded": true,
+        "metadata": {
+          "schema_version": "1.0.0",
+          "id": "arxiv-1703.03130v1",
+          "title": "A Structured Self-attentive Sentence Embedding",
+          "authors": [
+            "Zhouhan Lin",
+            "Minwei Feng",
+            "Cicero Nogueira dos Santos",
+            "Mo Yu",
+            "Bing Xiang",
+            "Bowen Zhou",
+            "Yoshua Bengio"
+          ],
+          "institutions": [],
+          "year": 2017,
+          "source": "https://arxiv.org/abs/1703.03130v1",
+          "arxiv_id": "1703.03130v1",
+          "doi": null,
+          "version": "v1",
+          "file_hash": null,
+          "page_count": null,
+          "has_text_layer": null,
+          "abstract_present": true,
+          "abstract_characters": 739,
+          "abstract_sha256": "9a60b4a3e4d8aaec8bc9a148aecc61fa87fb90391c0ff8e173bb392a2950ce6a"
+        },
+        "paper": {
+          "schema_version": "1.0.0",
+          "id": "paper-14acb4c846f46646fca07c4b3d2263d509792fe627c8f84a2108a5d0189bab5f",
+          "title": "A Structured Self-attentive Sentence Embedding",
+          "authors": [
+            "Zhouhan Lin",
+            "Minwei Feng",
+            "Cicero Nogueira dos Santos",
+            "Mo Yu",
+            "Bing Xiang",
+            "Bowen Zhou",
+            "Yoshua Bengio"
+          ],
+          "institutions": [
+            "IBM Watson ‡Montreal Institute for Learning Algorithms (MILA), Universite de Montreal ´ ´"
+          ],
+          "year": 2017,
+          "source": "https://arxiv.org/abs/1703.03130v1",
+          "arxiv_id": "1703.03130v1",
+          "doi": null,
+          "version": "v1",
+          "file_hash": "14acb4c846f46646fca07c4b3d2263d509792fe627c8f84a2108a5d0189bab5f",
+          "page_count": 15,
+          "has_text_layer": true,
+          "abstract_present": true,
+          "abstract_characters": 739,
+          "abstract_sha256": "9a60b4a3e4d8aaec8bc9a148aecc61fa87fb90391c0ff8e173bb392a2950ce6a"
+        },
+        "initial_parse_status": null,
+        "parse_status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-14acb4c846f46646fca07c4b3d2263d509792fe627c8f84a2108a5d0189bab5f",
+          "status": "completed",
+          "progress": 100,
+          "current_stage": "四类记录与去重判定已通过校验并发布",
+          "error_code": null,
+          "error_message": null
+        },
+        "error": null,
+        "already_present": true,
+        "dedup": {
+          "identity": "1703.03130",
+          "paper_id": "paper-14acb4c846f46646fca07c4b3d2263d509792fe627c8f84a2108a5d0189bab5f",
+          "reason": "ARXIV_ID",
+          "similarity": null,
+          "first_seen": "2026-10-28T15:16:43.389472+00:00",
+          "occurrences": 1,
+          "last_seen": "2026-10-28T15:16:43.389500+00:00",
+          "record_created": true
+        },
+        "parse_metadata": {
+          "method": "mineru+grobid",
+          "grobid_attempted": true,
+          "grobid_elapsed_seconds": 3.868406,
+          "fallback_reason": null,
+          "grobid_error": null,
+          "paper_fields": [
+            "institutions"
+          ],
+          "references_enriched": 37,
+          "withheld_header_fields": {},
+          "unmatched_grobid_references": 0,
+          "paper_id": "paper-14acb4c846f46646fca07c4b3d2263d509792fe627c8f84a2108a5d0189bab5f",
+          "job_id": "job-75a7116e29414b44b46c0f7cb3c371c0",
+          "status": "completed",
+          "reference_matches_count": 37,
+          "discarded_header_counts": {}
+        }
+      },
+      {
+        "name": "Can active memory replace attention?",
+        "succeeded": true,
+        "metadata": {
+          "schema_version": "1.0.0",
+          "id": "arxiv-1610.08613v2",
+          "title": "Can Active Memory Replace Attention?",
+          "authors": [
+            "Łukasz Kaiser",
+            "Samy Bengio"
+          ],
+          "institutions": [],
+          "year": 2016,
+          "source": "https://arxiv.org/abs/1610.08613v2",
+          "arxiv_id": "1610.08613v2",
+          "doi": null,
+          "version": "v2",
+          "file_hash": null,
+          "page_count": null,
+          "has_text_layer": null,
+          "abstract_present": true,
+          "abstract_characters": 1232,
+          "abstract_sha256": "176f549d804f36f3a94b690918d4a90bb5bf1dda482895383b051f39c9554dbc"
+        },
+        "paper": {
+          "schema_version": "1.0.0",
+          "id": "paper-57567c72c96fc255a98674520460665d013e11a8c77b962b1f90bce443de73d9",
+          "title": "Can Active Memory Replace Attention?",
+          "authors": [
+            "Łukasz Kaiser",
+            "Samy Bengio"
+          ],
+          "institutions": [
+            "Google Brain"
+          ],
+          "year": 2016,
+          "source": "https://arxiv.org/abs/1610.08613v2",
+          "arxiv_id": "1610.08613v2",
+          "doi": null,
+          "version": "v2",
+          "file_hash": "57567c72c96fc255a98674520460665d013e11a8c77b962b1f90bce443de73d9",
+          "page_count": 9,
+          "has_text_layer": true,
+          "abstract_present": true,
+          "abstract_characters": 1232,
+          "abstract_sha256": "176f549d804f36f3a94b690918d4a90bb5bf1dda482895383b051f39c9554dbc"
+        },
+        "initial_parse_status": null,
+        "parse_status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-57567c72c96fc255a98674520460665d013e11a8c77b962b1f90bce443de73d9",
+          "status": "completed",
+          "progress": 100,
+          "current_stage": "四类记录与去重判定已通过校验并发布",
+          "error_code": null,
+          "error_message": null
+        },
+        "error": null,
+        "already_present": true,
+        "dedup": {
+          "identity": "1610.08613",
+          "paper_id": "paper-57567c72c96fc255a98674520460665d013e11a8c77b962b1f90bce443de73d9",
+          "reason": "ARXIV_ID",
+          "similarity": null,
+          "first_seen": "2026-10-28T15:16:45.996065+00:00",
+          "occurrences": 1,
+          "last_seen": "2026-10-28T15:16:45.996086+00:00",
+          "record_created": true
+        },
+        "parse_metadata": {
+          "method": "mineru+grobid",
+          "grobid_attempted": true,
+          "grobid_elapsed_seconds": 5.580373,
+          "fallback_reason": null,
+          "grobid_error": null,
+          "paper_fields": [],
+          "references_enriched": 26,
+          "withheld_header_fields": {
+            "year": {
+              "candidate": 2017,
+              "reason": "GROBID header日期未区分版本日期与发表年，不自动采用。"
+            }
+          },
+          "unmatched_grobid_references": 0,
+          "paper_id": "paper-57567c72c96fc255a98674520460665d013e11a8c77b962b1f90bce443de73d9",
+          "job_id": "job-7cbf4fd231da4aa6a0d76e44f7fdeb5a",
+          "status": "completed",
+          "reference_matches_count": 27,
+          "discarded_header_counts": {}
+        }
+      },
+      {
+        "name": "Neural GPUs learn algorithms",
+        "succeeded": true,
+        "metadata": {
+          "schema_version": "1.0.0",
+          "id": "arxiv-1511.08228v3",
+          "title": "Neural GPUs Learn Algorithms",
+          "authors": [
+            "Łukasz Kaiser",
+            "Ilya Sutskever"
+          ],
+          "institutions": [],
+          "year": 2015,
+          "source": "https://arxiv.org/abs/1511.08228v3",
+          "arxiv_id": "1511.08228v3",
+          "doi": null,
+          "version": "v3",
+          "file_hash": null,
+          "page_count": null,
+          "has_text_layer": null,
+          "abstract_present": true,
+          "abstract_characters": 1470,
+          "abstract_sha256": "6b861b22fabbb4b1c4bdf9dab58af908ac3ebbcf8faa43aec0da7eebe930e3d6"
+        },
+        "paper": {
+          "schema_version": "1.0.0",
+          "id": "paper-9bc9b63e985a663420ad6dd172ec9353a79a90b16bbf3f15148a6c182dc8aefc",
+          "title": "Neural GPUs Learn Algorithms",
+          "authors": [
+            "Łukasz Kaiser",
+            "Ilya Sutskever"
+          ],
+          "institutions": [],
+          "year": 2015,
+          "source": "https://arxiv.org/abs/1511.08228v3",
+          "arxiv_id": "1511.08228v3",
+          "doi": null,
+          "version": "v3",
+          "file_hash": "9bc9b63e985a663420ad6dd172ec9353a79a90b16bbf3f15148a6c182dc8aefc",
+          "page_count": 9,
+          "has_text_layer": true,
+          "abstract_present": true,
+          "abstract_characters": 1470,
+          "abstract_sha256": "6b861b22fabbb4b1c4bdf9dab58af908ac3ebbcf8faa43aec0da7eebe930e3d6"
+        },
+        "initial_parse_status": null,
+        "parse_status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-9bc9b63e985a663420ad6dd172ec9353a79a90b16bbf3f15148a6c182dc8aefc",
+          "status": "completed",
+          "progress": 100,
+          "current_stage": "四类记录与去重判定已通过校验并发布",
+          "error_code": null,
+          "error_message": null
+        },
+        "error": null,
+        "already_present": true,
+        "dedup": {
+          "identity": "1511.08228",
+          "paper_id": "paper-9bc9b63e985a663420ad6dd172ec9353a79a90b16bbf3f15148a6c182dc8aefc",
+          "reason": "ARXIV_ID",
+          "similarity": null,
+          "first_seen": "2026-10-28T15:16:48.895921+00:00",
+          "occurrences": 1,
+          "last_seen": "2026-10-28T15:16:48.895949+00:00",
+          "record_created": true
+        },
+        "parse_metadata": {
+          "method": "mineru+grobid",
+          "grobid_attempted": true,
+          "grobid_elapsed_seconds": 4.188048,
+          "fallback_reason": null,
+          "grobid_error": null,
+          "paper_fields": [],
+          "references_enriched": 8,
+          "withheld_header_fields": {
+            "year": {
+              "candidate": 2016,
+              "reason": "GROBID header日期未区分版本日期与发表年，不自动采用。"
+            }
+          },
+          "unmatched_grobid_references": 25,
+          "paper_id": "paper-9bc9b63e985a663420ad6dd172ec9353a79a90b16bbf3f15148a6c182dc8aefc",
+          "job_id": "job-52bf3771177946ae9a74f1299e86cf3b",
+          "status": "completed",
+          "reference_matches_count": 8,
+          "discarded_header_counts": {}
+        }
+      },
+      {
+        "name": "Effective approaches to attentionbased neural machine translation",
+        "succeeded": true,
+        "metadata": {
+          "schema_version": "1.0.0",
+          "id": "arxiv-1508.04025v5",
+          "title": "Effective Approaches to Attention-based Neural Machine Translation",
+          "authors": [
+            "Minh-Thang Luong",
+            "Hieu Pham",
+            "Christopher D. Manning"
+          ],
+          "institutions": [],
+          "year": 2015,
+          "source": "https://arxiv.org/abs/1508.04025v5",
+          "arxiv_id": "1508.04025v5",
+          "doi": null,
+          "version": "v5",
+          "file_hash": null,
+          "page_count": null,
+          "has_text_layer": null,
+          "abstract_present": true,
+          "abstract_characters": 1035,
+          "abstract_sha256": "480c2667b66398978e00bccdc4b4b5765d4cc69d3856919c0581ba8abe68a600"
+        },
+        "paper": {
+          "schema_version": "1.0.0",
+          "id": "paper-a5c2cad84e769520e7c66f3193fdd206505e322a2ca801a411581375d2c4b5e2",
+          "title": "Effective Approaches to Attention-based Neural Machine Translation",
+          "authors": [
+            "Minh-Thang Luong",
+            "Hieu Pham",
+            "Christopher D. Manning"
+          ],
+          "institutions": [
+            "Computer Science Department, Stanford University, Stanford, CA 94305"
+          ],
+          "year": 2015,
+          "source": "https://arxiv.org/abs/1508.04025v5",
+          "arxiv_id": "1508.04025v5",
+          "doi": null,
+          "version": "v5",
+          "file_hash": "a5c2cad84e769520e7c66f3193fdd206505e322a2ca801a411581375d2c4b5e2",
+          "page_count": 11,
+          "has_text_layer": true,
+          "abstract_present": true,
+          "abstract_characters": 1035,
+          "abstract_sha256": "480c2667b66398978e00bccdc4b4b5765d4cc69d3856919c0581ba8abe68a600"
+        },
+        "initial_parse_status": null,
+        "parse_status": {
+          "schema_version": "1.1.0",
+          "paper_id": "paper-a5c2cad84e769520e7c66f3193fdd206505e322a2ca801a411581375d2c4b5e2",
+          "status": "completed",
+          "progress": 100,
+          "current_stage": "四类记录与去重判定已通过校验并发布",
+          "error_code": null,
+          "error_message": null
+        },
+        "error": null,
+        "already_present": true,
+        "dedup": {
+          "identity": "1508.04025",
+          "paper_id": "paper-a5c2cad84e769520e7c66f3193fdd206505e322a2ca801a411581375d2c4b5e2",
+          "reason": "ARXIV_ID",
+          "similarity": null,
+          "first_seen": "2026-10-28T15:16:52.711317+00:00",
+          "occurrences": 1,
+          "last_seen": "2026-10-28T15:16:52.711365+00:00",
+          "record_created": true
+        },
+        "parse_metadata": {
+          "method": "mineru+grobid",
+          "grobid_attempted": true,
+          "grobid_elapsed_seconds": 2.822333,
+          "fallback_reason": null,
+          "grobid_error": null,
+          "paper_fields": [
+            "institutions"
+          ],
+          "references_enriched": 0,
+          "withheld_header_fields": {},
+          "unmatched_grobid_references": 8,
+          "paper_id": "paper-a5c2cad84e769520e7c66f3193fdd206505e322a2ca801a411581375d2c4b5e2",
+          "job_id": "job-191551e90e0c4243a2e83a021bfa151a",
+          "status": "completed",
+          "reference_matches_count": 0,
+          "discarded_header_counts": {}
+        }
+      }
+    ],
+    "succeeded_count": 32,
+    "failed_count": 8,
+    "duplicate_count": 32
+  },
+  "error": null
+}

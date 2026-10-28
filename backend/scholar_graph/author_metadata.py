@@ -49,9 +49,13 @@ def source_author_profiles(bundle, names):
     chunks = [c for c in bundle['chunks'] if c['page_number'] == 1 and c['type'] == 'text']
     profiles = []
     abstract_y = min((c['bbox'][1] for c in chunks if c.get('bbox') and c['text'].strip().casefold() == 'abstract'), default=0)
-    author_bottom = max((c['bbox'][3] for c in chunks if c.get('bbox') and any(normalize(name) in normalize(c['text']) for name in names)), default=1)
+    # A grouped contact such as {jacobdevlin,...}@google.com contains the
+    # normalized author name too; it is not another author-name row.
+    author_bottom = max((c['bbox'][3] for c in chunks if c.get('bbox') and '@' not in c['text']
+                         and c['bbox'][1] < abstract_y and not ORG.search(c['text'])
+                         and any(normalize(name) in normalize(c['text']) for name in names)), default=1)
     shared = [c for c in chunks if c.get('bbox') and author_bottom <= c['bbox'][1] < abstract_y
-              and ORG.search(c['text']) and not EMAIL.search(c['text']) and len(c['text']) < 100
+              and ORG.search(c['text']) and '@' not in c['text'] and len(c['text']) < 100
               and not re.search(r'work performed|contribution|conference|copyright', c['text'], re.I)
               and not any(other.get('bbox') and EMAIL.fullmatch(other['text'].strip())
                           and 0 <= other['bbox'][1]-c['bbox'][3] < .025

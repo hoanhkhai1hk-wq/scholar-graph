@@ -1,0 +1,9 @@
+{
+  "run": "browser-final",
+  "browser": "own temporary Chrome profile",
+  "errors": [],
+  "steps": [],
+  "version": "156.0.8078.49",
+  "passed": false,
+  "failure": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: '按内容选择前十项', exact: true }) to be visible\u001b[22m\n\n    at D:\\AI_Workspace\\Tasks\\scholar-graph\\tests\\item04\\browser_acceptance.cjs:19:85"
+}

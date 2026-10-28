@@ -1,0 +1,9 @@
+# Explicit test fault: real outbound requests hit a closed local proxy port.
+# Keep frontend/backend connectivity and the user's other services unaffected.
+services:
+  backend:
+    environment:
+      HTTPS_PROXY: http://127.0.0.1:9
+      HTTP_PROXY: http://127.0.0.1:9
+      ALL_PROXY: http://127.0.0.1:9
+      NO_PROXY: localhost,127.0.0.1,backend,host.docker.internal

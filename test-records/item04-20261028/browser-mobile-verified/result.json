@@ -1,0 +1,104 @@
+{
+  "errors": [],
+  "title": {
+    "status": "completed",
+    "duplicate_count": 1,
+    "task_id": "74aff161096946faa54291e9a52c3206"
+  },
+  "frequency_selected": [
+    38,
+    3,
+    2,
+    9,
+    5,
+    8,
+    18,
+    37,
+    12,
+    27
+  ],
+  "weekly": {
+    "enabled": true,
+    "frequency": "weekly",
+    "paper_ids": [
+      "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+    ],
+    "max_imports": 1,
+    "runtime": {
+      "enabled": true,
+      "mechanism": "backend_interval",
+      "active": true,
+      "interval_seconds": 604800,
+      "initial_delay_seconds": 15,
+      "max_imports": 1,
+      "run_count": 2,
+      "pid": 1,
+      "last_event": {
+        "event": "scheduler_started",
+        "timestamp": "2026-10-28T15:23:46.626979+00:00",
+        "pid": 1,
+        "interval_seconds": 604800
+      },
+      "stopping": false
+    }
+  },
+  "daily_restored": {
+    "enabled": true,
+    "frequency": "daily",
+    "paper_ids": [
+      "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+    ],
+    "max_imports": 1,
+    "runtime": {
+      "enabled": true,
+      "mechanism": "backend_interval",
+      "active": true,
+      "interval_seconds": 86400,
+      "initial_delay_seconds": 15,
+      "max_imports": 1,
+      "run_count": 2,
+      "pid": 1,
+      "last_event": {
+        "event": "scheduler_started",
+        "timestamp": "2026-10-28T15:23:46.779076+00:00",
+        "pid": 1,
+        "interval_seconds": 86400
+      },
+      "stopping": false
+    }
+  },
+  "layout_1440": {
+    "width": 1440,
+    "scrollWidth": 1440
+  },
+  "layout_390": {
+    "width": 390,
+    "scrollWidth": 390
+  },
+  "code_anchor": {
+    "href": "/read/paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b?page=8&chunk=paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b-p0008-c00132",
+    "current_url": "http://127.0.0.1:3400/read/paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b?page=8&chunk=paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b-p0008-c00132",
+    "hit_count": 1
+  },
+  "fault_task": {
+    "id": "ad39401867f74b3a845bb7d3de32f935",
+    "kind": "tracking",
+    "status": "queued",
+    "created_at": "2026-10-28T15:24:11.761041+00:00",
+    "started_at": null,
+    "finished_at": null,
+    "cancel_requested": false,
+    "progress": {
+      "completed_units": 0,
+      "total_units": null,
+      "label": "等待处理"
+    },
+    "result": null,
+    "error": null
+  },
+  "fault_ui": {
+    "failed": "任务进度\n未完成\n\n本次论文发现已结束，真实候选、重复和失败已记录\n\n已处理 1 / 1 项\n\n开始：2026/10/28 23:24:11 · 结束：2026/10/28 23:24:22\n\n重试任务\n\n真实候选 0 篇 · 新增 0 篇 · 重复 0 篇 · 下载或解析失败 0 篇 · 查询失败 2 条\n\narXiv 公共接口连接失败，未编造记录。\n\narXiv 公共接口连接失败，未编造记录。",
+    "retry_visible": true
+  },
+  "passed": true
+}

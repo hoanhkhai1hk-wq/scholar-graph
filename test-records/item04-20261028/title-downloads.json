@@ -1,0 +1,300 @@
+[
+  {
+    "requested_title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+    "elapsed_seconds": 56.015,
+    "paper": {
+      "schema_version": "1.0.0",
+      "id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e",
+      "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "authors": [
+        "Jacob Devlin",
+        "Ming-Wei Chang",
+        "Kenton Lee",
+        "Kristina Toutanova"
+      ],
+      "institutions": [],
+      "year": 2018,
+      "source": "https://arxiv.org/abs/1810.04805v2",
+      "arxiv_id": "1810.04805v2",
+      "doi": null,
+      "version": "v2",
+      "file_hash": "5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e",
+      "page_count": 16,
+      "has_text_layer": true,
+      "abstract_present": true,
+      "abstract_characters": 1022,
+      "abstract_sha256": "fea4dc857ec30fd8b2745acffd87789b1e45a94f868b559d025883eea462fcb1"
+    },
+    "total_chunks": 261,
+    "task": {
+      "id": "d2afc63ffcc94d4fbd609331b7bb636f",
+      "kind": "acquisition",
+      "status": "completed",
+      "created_at": "2026-10-28T14:33:48.832494+00:00",
+      "started_at": "2026-10-28T14:33:48.955879+00:00",
+      "finished_at": "2026-10-28T14:34:44.060206+00:00",
+      "cancel_requested": false,
+      "progress": {
+        "completed_units": 1,
+        "total_units": 1,
+        "label": "已处理 1 / 1 项"
+      },
+      "result": {
+        "succeeded": [
+          {
+            "paper_id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e",
+            "filename": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+            "already_present": false
+          }
+        ],
+        "failed": [],
+        "items": [
+          {
+            "name": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+            "succeeded": true,
+            "metadata": {
+              "schema_version": "1.0.0",
+              "id": "arxiv-1810.04805v2",
+              "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+              "authors": [
+                "Jacob Devlin",
+                "Ming-Wei Chang",
+                "Kenton Lee",
+                "Kristina Toutanova"
+              ],
+              "institutions": [],
+              "year": 2018,
+              "source": "https://arxiv.org/abs/1810.04805v2",
+              "arxiv_id": "1810.04805v2",
+              "doi": null,
+              "version": "v2",
+              "file_hash": null,
+              "page_count": null,
+              "has_text_layer": null,
+              "abstract_present": true,
+              "abstract_characters": 1022,
+              "abstract_sha256": "fea4dc857ec30fd8b2745acffd87789b1e45a94f868b559d025883eea462fcb1"
+            },
+            "paper": {
+              "schema_version": "1.0.0",
+              "id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e",
+              "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+              "authors": [
+                "Jacob Devlin",
+                "Ming-Wei Chang",
+                "Kenton Lee",
+                "Kristina Toutanova"
+              ],
+              "institutions": [],
+              "year": 2018,
+              "source": "https://arxiv.org/abs/1810.04805v2",
+              "arxiv_id": "1810.04805v2",
+              "doi": null,
+              "version": "v2",
+              "file_hash": "5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e",
+              "page_count": 16,
+              "has_text_layer": true,
+              "abstract_present": true,
+              "abstract_characters": 1022,
+              "abstract_sha256": "fea4dc857ec30fd8b2745acffd87789b1e45a94f868b559d025883eea462fcb1"
+            },
+            "initial_parse_status": {
+              "schema_version": "1.1.0",
+              "paper_id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e",
+              "status": "queued",
+              "progress": 0,
+              "current_stage": "等待解析",
+              "error_code": null,
+              "error_message": null
+            },
+            "parse_status": {
+              "schema_version": "1.1.0",
+              "paper_id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e",
+              "status": "completed",
+              "progress": 100,
+              "current_stage": "四类记录与去重判定已通过校验并发布",
+              "error_code": null,
+              "error_message": null
+            },
+            "error": null,
+            "already_present": false,
+            "dedup": null,
+            "parse_metadata": {
+              "method": "mineru+grobid",
+              "grobid_attempted": true,
+              "grobid_elapsed_seconds": 24.463473,
+              "fallback_reason": null,
+              "grobid_error": null,
+              "paper_fields": [],
+              "references_enriched": 31,
+              "withheld_header_fields": {
+                "year": {
+                  "candidate": 2019,
+                  "reason": "GROBID header日期未区分版本日期与发表年，不自动采用。"
+                }
+              },
+              "unmatched_grobid_references": 24,
+              "paper_id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e",
+              "job_id": "job-c346c331fd0d4c1ca6940a77a03353d0",
+              "status": "completed",
+              "reference_matches_count": 31,
+              "discarded_header_counts": {}
+            }
+          }
+        ],
+        "succeeded_count": 1,
+        "failed_count": 0,
+        "duplicate_count": 0
+      },
+      "error": null
+    }
+  },
+  {
+    "requested_title": "Reformer: The Efficient Transformer",
+    "elapsed_seconds": 27.625,
+    "paper": {
+      "schema_version": "1.0.0",
+      "id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+      "title": "Reformer: The Efficient Transformer",
+      "authors": [
+        "Nikita Kitaev",
+        "Łukasz Kaiser",
+        "Anselm Levskaya"
+      ],
+      "institutions": [
+        "Google Research"
+      ],
+      "year": 2020,
+      "source": "https://arxiv.org/abs/2001.04451v2",
+      "arxiv_id": "2001.04451v2",
+      "doi": null,
+      "version": "v2",
+      "file_hash": "f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+      "page_count": 12,
+      "has_text_layer": true,
+      "abstract_present": true,
+      "abstract_characters": 782,
+      "abstract_sha256": "79c5a62762828b84fdd579b6bc5f1e26cf436bab67268bab2af79f2b4713ed96"
+    },
+    "total_chunks": 197,
+    "task": {
+      "id": "db32fcda0d4f434bbc08a9e32bcee06b",
+      "kind": "acquisition",
+      "status": "completed",
+      "created_at": "2026-10-28T14:34:45.230374+00:00",
+      "started_at": "2026-10-28T14:34:45.419252+00:00",
+      "finished_at": "2026-10-28T14:35:12.243550+00:00",
+      "cancel_requested": false,
+      "progress": {
+        "completed_units": 1,
+        "total_units": 1,
+        "label": "已处理 1 / 1 项"
+      },
+      "result": {
+        "succeeded": [
+          {
+            "paper_id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+            "filename": "Reformer: The Efficient Transformer",
+            "already_present": false
+          }
+        ],
+        "failed": [],
+        "items": [
+          {
+            "name": "Reformer: The Efficient Transformer",
+            "succeeded": true,
+            "metadata": {
+              "schema_version": "1.0.0",
+              "id": "arxiv-2001.04451v2",
+              "title": "Reformer: The Efficient Transformer",
+              "authors": [
+                "Nikita Kitaev",
+                "Łukasz Kaiser",
+                "Anselm Levskaya"
+              ],
+              "institutions": [],
+              "year": 2020,
+              "source": "https://arxiv.org/abs/2001.04451v2",
+              "arxiv_id": "2001.04451v2",
+              "doi": null,
+              "version": "v2",
+              "file_hash": null,
+              "page_count": null,
+              "has_text_layer": null,
+              "abstract_present": true,
+              "abstract_characters": 782,
+              "abstract_sha256": "79c5a62762828b84fdd579b6bc5f1e26cf436bab67268bab2af79f2b4713ed96"
+            },
+            "paper": {
+              "schema_version": "1.0.0",
+              "id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+              "title": "Reformer: The Efficient Transformer",
+              "authors": [
+                "Nikita Kitaev",
+                "Łukasz Kaiser",
+                "Anselm Levskaya"
+              ],
+              "institutions": [
+                "Google Research"
+              ],
+              "year": 2020,
+              "source": "https://arxiv.org/abs/2001.04451v2",
+              "arxiv_id": "2001.04451v2",
+              "doi": null,
+              "version": "v2",
+              "file_hash": "f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+              "page_count": 12,
+              "has_text_layer": true,
+              "abstract_present": true,
+              "abstract_characters": 782,
+              "abstract_sha256": "79c5a62762828b84fdd579b6bc5f1e26cf436bab67268bab2af79f2b4713ed96"
+            },
+            "initial_parse_status": {
+              "schema_version": "1.1.0",
+              "paper_id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+              "status": "queued",
+              "progress": 0,
+              "current_stage": "等待解析",
+              "error_code": null,
+              "error_message": null
+            },
+            "parse_status": {
+              "schema_version": "1.1.0",
+              "paper_id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+              "status": "completed",
+              "progress": 100,
+              "current_stage": "四类记录与去重判定已通过校验并发布",
+              "error_code": null,
+              "error_message": null
+            },
+            "error": null,
+            "already_present": false,
+            "dedup": null,
+            "parse_metadata": {
+              "method": "mineru+grobid",
+              "grobid_attempted": true,
+              "grobid_elapsed_seconds": 5.026925,
+              "fallback_reason": null,
+              "grobid_error": null,
+              "paper_fields": [
+                "institutions"
+              ],
+              "references_enriched": 25,
+              "withheld_header_fields": {},
+              "unmatched_grobid_references": 0,
+              "paper_id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+              "job_id": "job-fdb67d97f2be424cb2fd3dc6170e2638",
+              "status": "completed",
+              "reference_matches_count": 26,
+              "discarded_header_counts": {}
+            }
+          }
+        ],
+        "succeeded_count": 1,
+        "failed_count": 0,
+        "duplicate_count": 0
+      },
+      "error": null
+    }
+  }
+]

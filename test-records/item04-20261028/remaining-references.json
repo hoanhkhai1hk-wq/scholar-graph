@@ -1,0 +1,166 @@
+[
+  {
+    "schema_version": "1.0.0",
+    "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-33",
+    "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+    "number": 33,
+    "authors": [
+      "Nitish Srivastava",
+      "Geoffrey E Hinton",
+      "Alex Krizhevsky",
+      "Ilya Sutskever",
+      "Ruslan Salakhutdinov"
+    ],
+    "year": 2014,
+    "title": "Dropout: a simple way to prevent neural networks from overfitting",
+    "venue": "Journal of Machine Learning Research",
+    "doi": null,
+    "arxiv_id": null,
+    "error": {
+      "error_code": "PAPER_NOT_FOUND",
+      "message": "arXiv 未找到唯一匹配论文；未选取相似标题冒充结果。"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-25",
+    "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+    "number": 25,
+    "authors": [
+      "Mary Mitchell P Marcus",
+      "Ann Marcinkiewicz",
+      "Beatrice Santorini"
+    ],
+    "year": 1993,
+    "title": "Building a large annotated corpus of english: The penn treebank",
+    "venue": "Computational linguistics",
+    "doi": null,
+    "arxiv_id": null,
+    "error": {
+      "error_code": "PAPER_NOT_FOUND",
+      "message": "arXiv 未找到唯一匹配论文；未选取相似标题冒充结果。"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-12",
+    "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+    "number": 12,
+    "authors": [
+      "Sepp Hochreiter",
+      "Yoshua Bengio",
+      "Paolo Frasconi",
+      "Jürgen Schmidhuber"
+    ],
+    "year": 2001,
+    "title": "Gradient flow in recurrent nets: the difficulty of learning long-term dependencies",
+    "venue": "Gradient flow in recurrent nets: the difficulty of learning long-term dependencies",
+    "doi": null,
+    "arxiv_id": null,
+    "error": {
+      "error_code": "PAPER_NOT_FOUND",
+      "message": "arXiv 未找到唯一匹配论文；未选取相似标题冒充结果。"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-29",
+    "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+    "number": 29,
+    "authors": [
+      "Slav Petrov",
+      "Leon Barrett",
+      "Romain Thibaux",
+      "Dan Klein"
+    ],
+    "year": 2006,
+    "title": "Learning accurate, compact, and interpretable tree annotation",
+    "venue": "Proceedings of the 21st International Conference on Computational Linguistics and 44th Annual Meeting of the ACL",
+    "doi": null,
+    "arxiv_id": null,
+    "error": {
+      "error_code": "PAPER_NOT_FOUND",
+      "message": "arXiv 未找到唯一匹配论文；未选取相似标题冒充结果。"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-13",
+    "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+    "number": 13,
+    "authors": [
+      "Sepp Hochreiter",
+      "Jürgen Schmidhuber"
+    ],
+    "year": 1997,
+    "title": "Long short-term memory",
+    "venue": "Neural computation",
+    "doi": null,
+    "arxiv_id": null,
+    "error": {
+      "error_code": "PAPER_NOT_FOUND",
+      "message": "arXiv 未找到唯一匹配论文；未选取相似标题冒充结果。"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-14",
+    "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+    "number": 14,
+    "authors": [
+      "Zhongqiang Huang",
+      "Mary Harper"
+    ],
+    "year": 2009,
+    "title": "Self-training PCFG grammars with latent annotations across languages",
+    "venue": "Proceedings of the 2009 Conference on Empirical Methods in Natural Language Processing",
+    "doi": null,
+    "arxiv_id": null,
+    "error": {
+      "error_code": "PAPER_NOT_FOUND",
+      "message": "arXiv 未找到唯一匹配论文；未选取相似标题冒充结果。"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-26",
+    "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+    "number": 26,
+    "authors": [
+      "David Mcclosky",
+      "Eugene Charniak",
+      "Mark Johnson"
+    ],
+    "year": 2006,
+    "title": "Effective self-training for parsing",
+    "venue": "Proceedings of the Human Language Technology Conference of the NAACL, Main Conference",
+    "doi": null,
+    "arxiv_id": null,
+    "error": {
+      "error_code": "PAPER_NOT_FOUND",
+      "message": "arXiv 未找到唯一匹配论文；未选取相似标题冒充结果。"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-40",
+    "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+    "number": 40,
+    "authors": [
+      "Muhua Zhu",
+      "Yue Zhang",
+      "Wenliang Chen",
+      "Min Zhang",
+      "Jingbo Zhu"
+    ],
+    "year": 2013,
+    "title": "Fast and accurate shift-reduce constituent parsing",
+    "venue": "Proceedings of the 51st Annual Meeting of the ACL",
+    "doi": null,
+    "arxiv_id": null,
+    "error": {
+      "error_code": "PAPER_NOT_FOUND",
+      "message": "arXiv 未找到唯一匹配论文；未选取相似标题冒充结果。"
+    }
+  }
+]

@@ -1,0 +1,45 @@
+{
+  "title_downloads": [
+    {
+      "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "seconds": 56.015,
+      "pages": 16,
+      "chunks": 261
+    },
+    {
+      "title": "Reformer: The Efficient Transformer",
+      "seconds": 27.625,
+      "pages": 12,
+      "chunks": 197
+    }
+  ],
+  "batch_before": {
+    "seconds": 1166.412848,
+    "succeeded_count": 29,
+    "failed_count": 11,
+    "duplicate_count": 0
+  },
+  "retry": {
+    "seconds": 153.58039,
+    "succeeded_count": 3,
+    "failed_count": 8,
+    "duplicate_count": 0
+  },
+  "batch_final": {
+    "seconds": 190.05861,
+    "succeeded_count": 32,
+    "failed_count": 8,
+    "duplicate_count": 32
+  },
+  "missing_numbers": [
+    33,
+    25,
+    12,
+    29,
+    13,
+    14,
+    26,
+    40
+  ],
+  "verdict": "未通过完整下载验收：32/40取得，8条未取得唯一arXiv全文；已修复的网页与业务链路通过实测。"
+}

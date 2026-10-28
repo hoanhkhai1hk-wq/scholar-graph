@@ -1,0 +1,1340 @@
+{
+  "source": "Previously genuinely downloaded five-paper corpus; copied unmodified, no synthetic scores or papers",
+  "source_hashes": {
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697": {
+      "chunks.json": "a79170139c84898a74faa12f8ee2bacbbecec100297f5d996a1367d59b2cf01b",
+      "citation-links.json": "b5a041ab3359e01657e2f9204fd16110077d4263bc5f59030f9e88a45d234718",
+      "paper-meta.json": "73e30b50e368877aeabbf7c2b63f666b34a86d2fd55eeb4c5a5551e89e6a5fd0",
+      "reference-entries.json": "529c118422684657bbeac128a01a9a74ff9d2072e1d555d2e5aec9232b232e93"
+    },
+    "paper-7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10": {
+      "chunks.json": "4e4d77f3815f99345a57f3b8975f706adc7a8f77f9767f7359d4ee93e6cfa500",
+      "citation-links.json": "15522f10ccd35d2b84a22cbfc5a7a109575ace965b5f0c473f690afc2709b825",
+      "paper-meta.json": "8fd31d576c376c59acfd973bc3add2621de6fd1cbc00a485f01cf2180de70597",
+      "reference-entries.json": "ee357ad407ac637fac608194e4a47dc67e27ca856d25a1e876a449cb6d9590fb"
+    },
+    "paper-adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53": {
+      "chunks.json": "35beab611926da78ae4f609f9aa829007ad9437565c1a3f4c67880e9c264b8a3",
+      "citation-links.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "paper-meta.json": "d73030c88c2e875e37ca876de05029e6dd91d679b1b7b81c0fe70948d214873e",
+      "reference-entries.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b": {
+      "chunks.json": "52637c6444c9dde793085e1818c4d73733798f23cd9c26103b115d2e6a82698d",
+      "citation-links.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "paper-meta.json": "50fd4c7b1fbd6ab6bfd575babb9c726c895b89dcec183cd9287d7f5f3c8b8eaf",
+      "reference-entries.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4": {
+      "chunks.json": "943d8df89b8b2db7029970291856046a5918541f7bf6c35bec38fd0d86813fd4",
+      "citation-links.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "paper-meta.json": "3e24b55220a377be6d90efdb0f07b316eed1d2dd864bdcde323e4bf4591c3b69",
+      "reference-entries.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    }
+  },
+  "seed": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+  "target": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+  "interfaces": {
+    "v1": {
+      "ranks": {
+        "before": 4,
+        "liked": 2,
+        "disliked": 4
+      },
+      "before": {
+        "computed_at": null,
+        "diagnostics": null,
+        "votes": null,
+        "items": [
+          {
+            "rank": 1,
+            "paper": {
+              "schema_version": "1.0.0",
+              "id": "paper-7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+              "title": "BeNice! Closing Looping's Inference-Memory Gap via KV-Sharing",
+              "authors": [
+                "Hayden Prairie",
+                "Jacob M. Ryan",
+                "Taylor Berg-Kirkpatrick",
+                "Daniel Y. Fu"
+              ],
+              "institutions": [],
+              "year": 2026,
+              "source": "https://arxiv.org/abs/2610.31633v1",
+              "arxiv_id": "2610.31633v1",
+              "doi": null,
+              "version": "v1",
+              "file_hash": "7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+              "page_count": 37,
+              "has_text_layer": true,
+              "abstract_present": true,
+              "abstract_characters": 1763,
+              "abstract_sha256": "25cb93d0bd1de555c1fe64de58d73a55b2f75fb50b8ea905c7184d2c80a57ff2"
+            },
+            "score": 73.91891891892386
+          },
+          {
+            "rank": 2,
+            "paper": {
+              "schema_version": "1.0.0",
+              "id": "paper-adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+              "title": "Causal Chain of Thought: Mitigating Attention Leakage via Context Isolation",
+              "authors": [
+                "Gabriele Dominici",
+                "Teague McMillan",
+                "Fazl Barez",
+                "Marc Langheinrich",
+                "Martin Gjoreski"
+              ],
+              "institutions": [],
+              "year": 2026,
+              "source": "https://arxiv.org/abs/2610.31639v1",
+              "arxiv_id": "2610.31639v1",
+              "doi": null,
+              "version": "v1",
+              "file_hash": "adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+              "page_count": 38,
+              "has_text_layer": true,
+              "abstract_present": true,
+              "abstract_characters": 1274,
+              "abstract_sha256": "b46c653a6bf8da6b17928f6825f3f41c71481c0be6072ff156ea01a6ccbbf2a1"
+            },
+            "score": 33.918918918923865
+          },
+          {
+            "rank": 3,
+            "paper": {
+              "schema_version": "1.0.0",
+              "id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+              "title": "Reformer: The Efficient Transformer",
+              "authors": [
+                "Nikita Kitaev",
+                "Łukasz Kaiser",
+                "Anselm Levskaya"
+              ],
+              "institutions": [],
+              "year": 2020,
+              "source": "https://arxiv.org/abs/2001.04451v2",
+              "arxiv_id": "2001.04451v2",
+              "doi": null,
+              "version": "v2",
+              "file_hash": "f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+              "page_count": 12,
+              "has_text_layer": true,
+              "abstract_present": true,
+              "abstract_characters": 782,
+              "abstract_sha256": "79c5a62762828b84fdd579b6bc5f1e26cf436bab67268bab2af79f2b4713ed96"
+            },
+            "score": 24.918918918923865
+          },
+          {
+            "rank": 4,
+            "paper": {
+              "schema_version": "1.0.0",
+              "id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+              "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+              "authors": [
+                "Jacob Devlin ; Ming-Wei Chang ; Kenton Lee ; Kristina Toutanova"
+              ],
+              "institutions": [],
+              "year": null,
+              "source": "local-upload",
+              "arxiv_id": null,
+              "doi": null,
+              "version": null,
+              "file_hash": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+              "page_count": 16,
+              "has_text_layer": true,
+              "abstract_present": false,
+              "abstract_characters": 0,
+              "abstract_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            "score": 18.918918918923865
+          }
+        ]
+      },
+      "after_like": {
+        "computed_at": null,
+        "diagnostics": null,
+        "votes": null,
+        "items": [
+          {
+            "rank": 1,
+            "paper": {
+              "schema_version": "1.0.0",
+              "id": "paper-7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+              "title": "BeNice! Closing Looping's Inference-Memory Gap via KV-Sharing",
+              "authors": [
+                "Hayden Prairie",
+                "Jacob M. Ryan",
+                "Taylor Berg-Kirkpatrick",
+                "Daniel Y. Fu"
+              ],
+              "institutions": [],
+              "year": 2026,
+              "source": "https://arxiv.org/abs/2610.31633v1",
+              "arxiv_id": "2610.31633v1",
+              "doi": null,
+              "version": "v1",
+              "file_hash": "7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+              "page_count": 37,
+              "has_text_layer": true,
+              "abstract_present": true,
+              "abstract_characters": 1763,
+              "abstract_sha256": "25cb93d0bd1de555c1fe64de58d73a55b2f75fb50b8ea905c7184d2c80a57ff2"
+            },
+            "score": 73.91891891892386,
+            "base_score": 73.91891891892386,
+            "feedback_adjustment": 0.0
+          },
+          {
+            "rank": 2,
+            "paper": {
+              "schema_version": "1.0.0",
+              "id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+              "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+              "authors": [
+                "Jacob Devlin ; Ming-Wei Chang ; Kenton Lee ; Kristina Toutanova"
+              ],
+              "institutions": [],
+              "year": null,
+              "source": "local-upload",
+              "arxiv_id": null,
+              "doi": null,
+              "version": null,
+              "file_hash": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+              "page_count": 16,
+              "has_text_layer": true,
+              "abstract_present": false,
+              "abstract_characters": 0,
+              "abstract_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            "score": 68.91891891892386,
+            "base_score": 18.918918918923865,
+            "feedback_adjustment": 50.0
+          },
+          {
+            "rank": 3,
+            "paper": {
+              "schema_version": "1.0.0",
+              "id": "paper-adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+              "title": "Causal Chain of Thought: Mitigating Attention Leakage via Context Isolation",
+              "authors": [
+                "Gabriele Dominici",
+                "Teague McMillan",
+                "Fazl Barez",
+                "Marc Langheinrich",
+                "Martin Gjoreski"
+              ],
+              "institutions": [],
+              "year": 2026,
+              "source": "https://arxiv.org/abs/2610.31639v1",
+              "arxiv_id": "2610.31639v1",
+              "doi": null,
+              "version": "v1",
+              "file_hash": "adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+              "page_count": 38,
+              "has_text_layer": true,
+              "abstract_present": true,
+              "abstract_characters": 1274,
+              "abstract_sha256": "b46c653a6bf8da6b17928f6825f3f41c71481c0be6072ff156ea01a6ccbbf2a1"
+            },
+            "score": 33.918918918923865,
+            "base_score": 33.918918918923865,
+            "feedback_adjustment": 0.0
+          },
+          {
+            "rank": 4,
+            "paper": {
+              "schema_version": "1.0.0",
+              "id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+              "title": "Reformer: The Efficient Transformer",
+              "authors": [
+                "Nikita Kitaev",
+                "Łukasz Kaiser",
+                "Anselm Levskaya"
+              ],
+              "institutions": [],
+              "year": 2020,
+              "source": "https://arxiv.org/abs/2001.04451v2",
+              "arxiv_id": "2001.04451v2",
+              "doi": null,
+              "version": "v2",
+              "file_hash": "f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+              "page_count": 12,
+              "has_text_layer": true,
+              "abstract_present": true,
+              "abstract_characters": 782,
+              "abstract_sha256": "79c5a62762828b84fdd579b6bc5f1e26cf436bab67268bab2af79f2b4713ed96"
+            },
+            "score": 29.918918918923865,
+            "base_score": 24.918918918923865,
+            "feedback_adjustment": 5.0
+          }
+        ]
+      },
+      "after_dislike": {
+        "computed_at": null,
+        "diagnostics": null,
+        "votes": null,
+        "items": [
+          {
+            "rank": 1,
+            "paper": {
+              "schema_version": "1.0.0",
+              "id": "paper-7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+              "title": "BeNice! Closing Looping's Inference-Memory Gap via KV-Sharing",
+              "authors": [
+                "Hayden Prairie",
+                "Jacob M. Ryan",
+                "Taylor Berg-Kirkpatrick",
+                "Daniel Y. Fu"
+              ],
+              "institutions": [],
+              "year": 2026,
+              "source": "https://arxiv.org/abs/2610.31633v1",
+              "arxiv_id": "2610.31633v1",
+              "doi": null,
+              "version": "v1",
+              "file_hash": "7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+              "page_count": 37,
+              "has_text_layer": true,
+              "abstract_present": true,
+              "abstract_characters": 1763,
+              "abstract_sha256": "25cb93d0bd1de555c1fe64de58d73a55b2f75fb50b8ea905c7184d2c80a57ff2"
+            },
+            "score": 73.91891891892386,
+            "base_score": 73.91891891892386,
+            "feedback_adjustment": 0.0
+          },
+          {
+            "rank": 2,
+            "paper": {
+              "schema_version": "1.0.0",
+              "id": "paper-adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+              "title": "Causal Chain of Thought: Mitigating Attention Leakage via Context Isolation",
+              "authors": [
+                "Gabriele Dominici",
+                "Teague McMillan",
+                "Fazl Barez",
+                "Marc Langheinrich",
+                "Martin Gjoreski"
+              ],
+              "institutions": [],
+              "year": 2026,
+              "source": "https://arxiv.org/abs/2610.31639v1",
+              "arxiv_id": "2610.31639v1",
+              "doi": null,
+              "version": "v1",
+              "file_hash": "adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+              "page_count": 38,
+              "has_text_layer": true,
+              "abstract_present": true,
+              "abstract_characters": 1274,
+              "abstract_sha256": "b46c653a6bf8da6b17928f6825f3f41c71481c0be6072ff156ea01a6ccbbf2a1"
+            },
+            "score": 33.918918918923865,
+            "base_score": 33.918918918923865,
+            "feedback_adjustment": 0.0
+          },
+          {
+            "rank": 3,
+            "paper": {
+              "schema_version": "1.0.0",
+              "id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+              "title": "Reformer: The Efficient Transformer",
+              "authors": [
+                "Nikita Kitaev",
+                "Łukasz Kaiser",
+                "Anselm Levskaya"
+              ],
+              "institutions": [],
+              "year": 2020,
+              "source": "https://arxiv.org/abs/2001.04451v2",
+              "arxiv_id": "2001.04451v2",
+              "doi": null,
+              "version": "v2",
+              "file_hash": "f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+              "page_count": 12,
+              "has_text_layer": true,
+              "abstract_present": true,
+              "abstract_characters": 782,
+              "abstract_sha256": "79c5a62762828b84fdd579b6bc5f1e26cf436bab67268bab2af79f2b4713ed96"
+            },
+            "score": 19.918918918923865,
+            "base_score": 24.918918918923865,
+            "feedback_adjustment": -5.0
+          },
+          {
+            "rank": 4,
+            "paper": {
+              "schema_version": "1.0.0",
+              "id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+              "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+              "authors": [
+                "Jacob Devlin ; Ming-Wei Chang ; Kenton Lee ; Kristina Toutanova"
+              ],
+              "institutions": [],
+              "year": null,
+              "source": "local-upload",
+              "arxiv_id": null,
+              "doi": null,
+              "version": null,
+              "file_hash": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+              "page_count": 16,
+              "has_text_layer": true,
+              "abstract_present": false,
+              "abstract_characters": 0,
+              "abstract_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            "score": 0.0,
+            "base_score": 18.918918918923865,
+            "feedback_adjustment": -50.0
+          }
+        ]
+      },
+      "like_before_after": {
+        "before": [
+          {
+            "paper_id": "paper-7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+            "rank": 1,
+            "score": 73.91891891892386,
+            "base_score": 73.91891891892386,
+            "feedback_adjustment": 0
+          },
+          {
+            "paper_id": "paper-adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+            "rank": 2,
+            "score": 33.918918918923865,
+            "base_score": 33.918918918923865,
+            "feedback_adjustment": 0
+          },
+          {
+            "paper_id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+            "rank": 3,
+            "score": 24.918918918923865,
+            "base_score": 24.918918918923865,
+            "feedback_adjustment": 0
+          },
+          {
+            "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+            "rank": 4,
+            "score": 18.918918918923865,
+            "base_score": 18.918918918923865,
+            "feedback_adjustment": 0
+          }
+        ],
+        "after": [
+          {
+            "paper_id": "paper-7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+            "rank": 1,
+            "score": 73.91891891892386,
+            "base_score": 73.91891891892386,
+            "feedback_adjustment": 0.0
+          },
+          {
+            "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+            "rank": 2,
+            "score": 68.91891891892386,
+            "base_score": 18.918918918923865,
+            "feedback_adjustment": 50.0
+          },
+          {
+            "paper_id": "paper-adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+            "rank": 3,
+            "score": 33.918918918923865,
+            "base_score": 33.918918918923865,
+            "feedback_adjustment": 0.0
+          },
+          {
+            "paper_id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+            "rank": 4,
+            "score": 29.918918918923865,
+            "base_score": 24.918918918923865,
+            "feedback_adjustment": 5.0
+          }
+        ]
+      },
+      "dislike_before_after": {
+        "before": [
+          {
+            "paper_id": "paper-7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+            "rank": 1,
+            "score": 73.91891891892386,
+            "base_score": 73.91891891892386,
+            "feedback_adjustment": 0.0
+          },
+          {
+            "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+            "rank": 2,
+            "score": 68.91891891892386,
+            "base_score": 18.918918918923865,
+            "feedback_adjustment": 50.0
+          },
+          {
+            "paper_id": "paper-adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+            "rank": 3,
+            "score": 33.918918918923865,
+            "base_score": 33.918918918923865,
+            "feedback_adjustment": 0.0
+          },
+          {
+            "paper_id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+            "rank": 4,
+            "score": 29.918918918923865,
+            "base_score": 24.918918918923865,
+            "feedback_adjustment": 5.0
+          }
+        ],
+        "after": [
+          {
+            "paper_id": "paper-7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+            "rank": 1,
+            "score": 73.91891891892386,
+            "base_score": 73.91891891892386,
+            "feedback_adjustment": 0.0
+          },
+          {
+            "paper_id": "paper-adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+            "rank": 2,
+            "score": 33.918918918923865,
+            "base_score": 33.918918918923865,
+            "feedback_adjustment": 0.0
+          },
+          {
+            "paper_id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+            "rank": 3,
+            "score": 19.918918918923865,
+            "base_score": 24.918918918923865,
+            "feedback_adjustment": -5.0
+          },
+          {
+            "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+            "rank": 4,
+            "score": 0.0,
+            "base_score": 18.918918918923865,
+            "feedback_adjustment": -50.0
+          }
+        ]
+      }
+    },
+    "v2": {
+      "ranks": {
+        "before": 4,
+        "liked": 1,
+        "disliked": 4
+      },
+      "before": {
+        "computed_at": "2026-10-28T15:05:17.228075+00:00",
+        "diagnostics": null,
+        "votes": [],
+        "items": [
+          {
+            "rank": 1,
+            "paper": {
+              "schema_version": "1.0.0",
+              "id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+              "title": "Reformer: The Efficient Transformer",
+              "authors": [
+                "Nikita Kitaev",
+                "Łukasz Kaiser",
+                "Anselm Levskaya"
+              ],
+              "institutions": [],
+              "year": 2020,
+              "source": "https://arxiv.org/abs/2001.04451v2",
+              "arxiv_id": "2001.04451v2",
+              "doi": null,
+              "version": "v2",
+              "file_hash": "f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+              "page_count": 12,
+              "has_text_layer": true,
+              "abstract_present": true,
+              "abstract_characters": 782,
+              "abstract_sha256": "79c5a62762828b84fdd579b6bc5f1e26cf436bab67268bab2af79f2b4713ed96"
+            },
+            "score": 35.178538144058926,
+            "content_similarity": 0.11330049261083744,
+            "matched_terms": [
+              "attention",
+              "be",
+              "being",
+              "by",
+              "dot-product",
+              "efficient",
+              "from",
+              "large",
+              "long",
+              "model",
+              "models",
+              "more",
+              "results",
+              "sequence",
+              "state-of-the-art",
+              "tasks"
+            ],
+            "code_links": [
+              {
+                "url": "https://github.com/google/trax",
+                "anchor": {
+                  "paper_id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+                  "page_number": 8,
+                  "section": [
+                    "2 https://github.com/google/trax/tree/master/trax/models/reformer  3"
+                  ],
+                  "chunk_id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b-p0008-c00132"
+                }
+              }
+            ],
+            "relationship_reason": "相对《所选论文》，《Reformer: The Efficient Transformer》的标题与摘要共享主题词：attention、be、being、by、dot-product、efficient、from、large。 原文提供可定位的GitHub链接，代码项增加10分；仓库内容和可运行性需另行核验。",
+            "code_priority_bonus": 10
+          },
+          {
+            "rank": 2,
+            "paper": {
+              "schema_version": "1.0.0",
+              "id": "paper-7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+              "title": "BeNice! Closing Looping's Inference-Memory Gap via KV-Sharing",
+              "authors": [
+                "Hayden Prairie",
+                "Jacob M. Ryan",
+                "Taylor Berg-Kirkpatrick",
+                "Daniel Y. Fu"
+              ],
+              "institutions": [],
+              "year": 2026,
+              "source": "https://arxiv.org/abs/2610.31633v1",
+              "arxiv_id": "2610.31633v1",
+              "doi": null,
+              "version": "v1",
+              "file_hash": "7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+              "page_count": 37,
+              "has_text_layer": true,
+              "abstract_present": true,
+              "abstract_characters": 1763,
+              "abstract_sha256": "25cb93d0bd1de555c1fe64de58d73a55b2f75fb50b8ea905c7184d2c80a57ff2"
+            },
+            "score": 32.44208494208848,
+            "content_similarity": 0.07857142857142857,
+            "matched_terms": [
+              "attention",
+              "be",
+              "by",
+              "earlier",
+              "first",
+              "has",
+              "mechanisms",
+              "model",
+              "models",
+              "original",
+              "propose",
+              "proposed",
+              "quality",
+              "recurrence",
+              "sequence",
+              "show"
+            ],
+            "code_links": [],
+            "relationship_reason": "相对《所选论文》，《BeNice! Closing Looping's Inference-Memory Gap via KV-Sharing》的标题与摘要共享主题词：attention、be、by、earlier、first、has、mechanisms、model。 两篇之间存在已核验的库内引用关系，可查看引用图谱。",
+            "code_priority_bonus": 0
+          },
+          {
+            "rank": 3,
+            "paper": {
+              "schema_version": "1.0.0",
+              "id": "paper-adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+              "title": "Causal Chain of Thought: Mitigating Attention Leakage via Context Isolation",
+              "authors": [
+                "Gabriele Dominici",
+                "Teague McMillan",
+                "Fazl Barez",
+                "Marc Langheinrich",
+                "Martin Gjoreski"
+              ],
+              "institutions": [],
+              "year": 2026,
+              "source": "https://arxiv.org/abs/2610.31639v1",
+              "arxiv_id": "2610.31639v1",
+              "doi": null,
+              "version": "v1",
+              "file_hash": "adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+              "page_count": 38,
+              "has_text_layer": true,
+              "abstract_present": true,
+              "abstract_characters": 1274,
+              "abstract_sha256": "b46c653a6bf8da6b17928f6825f3f41c71481c0be6072ff156ea01a6ccbbf2a1"
+            },
+            "score": 30.237651444551528,
+            "content_similarity": 0.034482758620689655,
+            "matched_terms": [
+              "attention",
+              "by",
+              "improving",
+              "model",
+              "over",
+              "these",
+              "through",
+              "we",
+              "while"
+            ],
+            "code_links": [],
+            "relationship_reason": "相对《所选论文》，《Causal Chain of Thought: Mitigating Attention Leakage via Context Isolation》的标题与摘要共享主题词：attention、by、improving、model、over、these、through、we。",
+            "code_priority_bonus": 0
+          },
+          {
+            "rank": 4,
+            "paper": {
+              "schema_version": "1.0.0",
+              "id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+              "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+              "authors": [
+                "Jacob Devlin ; Ming-Wei Chang ; Kenton Lee ; Kristina Toutanova"
+              ],
+              "institutions": [],
+              "year": null,
+              "source": "local-upload",
+              "arxiv_id": null,
+              "doi": null,
+              "version": null,
+              "file_hash": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+              "page_count": 16,
+              "has_text_layer": true,
+              "abstract_present": false,
+              "abstract_characters": 0,
+              "abstract_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            "score": 27.567567567571103,
+            "content_similarity": 0.08108108108108109,
+            "matched_terms": [
+              "architecture",
+              "be",
+              "both",
+              "by",
+              "designed",
+              "encoder",
+              "from",
+              "including",
+              "model",
+              "models",
+              "new",
+              "representation",
+              "results",
+              "simple",
+              "state-of-the-art",
+              "tasks"
+            ],
+            "code_links": [
+              {
+                "url": "https://github.com/google-research/bert",
+                "anchor": {
+                  "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+                  "page_number": 2,
+                  "section": [
+                    "1 Introduction"
+                  ],
+                  "chunk_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0002-c00021"
+                }
+              },
+              {
+                "url": "https://github.com/tensorflow/tensor2tensor",
+                "anchor": {
+                  "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+                  "page_number": 3,
+                  "section": [
+                    "1  https://github.com/tensorflow/tensor2tensor"
+                  ],
+                  "chunk_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0003-c00042"
+                }
+              }
+            ],
+            "relationship_reason": "相对《所选论文》，《BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding》的标题与摘要共享主题词：architecture、be、both、by、designed、encoder、from、including。 原文提供可定位的GitHub链接，代码项增加10分；仓库内容和可运行性需另行核验。",
+            "code_priority_bonus": 10
+          }
+        ]
+      },
+      "after_like": {
+        "computed_at": "2026-10-28T15:05:19.162551+00:00",
+        "diagnostics": null,
+        "votes": [
+          {
+            "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+            "vote": 1,
+            "updated_at": "2026-10-28T15:05:18.464571+00:00"
+          }
+        ],
+        "items": [
+          {
+            "rank": 1,
+            "paper": {
+              "schema_version": "1.0.0",
+              "id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+              "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+              "authors": [
+                "Jacob Devlin ; Ming-Wei Chang ; Kenton Lee ; Kristina Toutanova"
+              ],
+              "institutions": [],
+              "year": null,
+              "source": "local-upload",
+              "arxiv_id": null,
+              "doi": null,
+              "version": null,
+              "file_hash": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+              "page_count": 16,
+              "has_text_layer": true,
+              "abstract_present": false,
+              "abstract_characters": 0,
+              "abstract_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            "score": 77.5675675675711,
+            "base_score": 27.567567567571103,
+            "feedback_adjustment": 50.0,
+            "content_similarity": 0.08108108108108109,
+            "matched_terms": [
+              "architecture",
+              "be",
+              "both",
+              "by",
+              "designed",
+              "encoder",
+              "from",
+              "including",
+              "model",
+              "models",
+              "new",
+              "representation",
+              "results",
+              "simple",
+              "state-of-the-art",
+              "tasks"
+            ],
+            "code_links": [
+              {
+                "url": "https://github.com/google-research/bert",
+                "anchor": {
+                  "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+                  "page_number": 2,
+                  "section": [
+                    "1 Introduction"
+                  ],
+                  "chunk_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0002-c00021"
+                }
+              },
+              {
+                "url": "https://github.com/tensorflow/tensor2tensor",
+                "anchor": {
+                  "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+                  "page_number": 3,
+                  "section": [
+                    "1  https://github.com/tensorflow/tensor2tensor"
+                  ],
+                  "chunk_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0003-c00042"
+                }
+              }
+            ],
+            "relationship_reason": "相对《所选论文》，《BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding》的标题与摘要共享主题词：architecture、be、both、by、designed、encoder、from、including。 原文提供可定位的GitHub链接，代码项增加10分；仓库内容和可运行性需另行核验。",
+            "code_priority_bonus": 10
+          },
+          {
+            "rank": 2,
+            "paper": {
+              "schema_version": "1.0.0",
+              "id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+              "title": "Reformer: The Efficient Transformer",
+              "authors": [
+                "Nikita Kitaev",
+                "Łukasz Kaiser",
+                "Anselm Levskaya"
+              ],
+              "institutions": [],
+              "year": 2020,
+              "source": "https://arxiv.org/abs/2001.04451v2",
+              "arxiv_id": "2001.04451v2",
+              "doi": null,
+              "version": "v2",
+              "file_hash": "f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+              "page_count": 12,
+              "has_text_layer": true,
+              "abstract_present": true,
+              "abstract_characters": 782,
+              "abstract_sha256": "79c5a62762828b84fdd579b6bc5f1e26cf436bab67268bab2af79f2b4713ed96"
+            },
+            "score": 40.178538144058926,
+            "base_score": 35.178538144058926,
+            "feedback_adjustment": 5.0,
+            "content_similarity": 0.11330049261083744,
+            "matched_terms": [
+              "attention",
+              "be",
+              "being",
+              "by",
+              "dot-product",
+              "efficient",
+              "from",
+              "large",
+              "long",
+              "model",
+              "models",
+              "more",
+              "results",
+              "sequence",
+              "state-of-the-art",
+              "tasks"
+            ],
+            "code_links": [
+              {
+                "url": "https://github.com/google/trax",
+                "anchor": {
+                  "paper_id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+                  "page_number": 8,
+                  "section": [
+                    "2 https://github.com/google/trax/tree/master/trax/models/reformer  3"
+                  ],
+                  "chunk_id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b-p0008-c00132"
+                }
+              }
+            ],
+            "relationship_reason": "相对《所选论文》，《Reformer: The Efficient Transformer》的标题与摘要共享主题词：attention、be、being、by、dot-product、efficient、from、large。 原文提供可定位的GitHub链接，代码项增加10分；仓库内容和可运行性需另行核验。",
+            "code_priority_bonus": 10
+          },
+          {
+            "rank": 3,
+            "paper": {
+              "schema_version": "1.0.0",
+              "id": "paper-7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+              "title": "BeNice! Closing Looping's Inference-Memory Gap via KV-Sharing",
+              "authors": [
+                "Hayden Prairie",
+                "Jacob M. Ryan",
+                "Taylor Berg-Kirkpatrick",
+                "Daniel Y. Fu"
+              ],
+              "institutions": [],
+              "year": 2026,
+              "source": "https://arxiv.org/abs/2610.31633v1",
+              "arxiv_id": "2610.31633v1",
+              "doi": null,
+              "version": "v1",
+              "file_hash": "7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+              "page_count": 37,
+              "has_text_layer": true,
+              "abstract_present": true,
+              "abstract_characters": 1763,
+              "abstract_sha256": "25cb93d0bd1de555c1fe64de58d73a55b2f75fb50b8ea905c7184d2c80a57ff2"
+            },
+            "score": 32.44208494208848,
+            "base_score": 32.44208494208848,
+            "feedback_adjustment": 0.0,
+            "content_similarity": 0.07857142857142857,
+            "matched_terms": [
+              "attention",
+              "be",
+              "by",
+              "earlier",
+              "first",
+              "has",
+              "mechanisms",
+              "model",
+              "models",
+              "original",
+              "propose",
+              "proposed",
+              "quality",
+              "recurrence",
+              "sequence",
+              "show"
+            ],
+            "code_links": [],
+            "relationship_reason": "相对《所选论文》，《BeNice! Closing Looping's Inference-Memory Gap via KV-Sharing》的标题与摘要共享主题词：attention、be、by、earlier、first、has、mechanisms、model。 两篇之间存在已核验的库内引用关系，可查看引用图谱。",
+            "code_priority_bonus": 0
+          },
+          {
+            "rank": 4,
+            "paper": {
+              "schema_version": "1.0.0",
+              "id": "paper-adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+              "title": "Causal Chain of Thought: Mitigating Attention Leakage via Context Isolation",
+              "authors": [
+                "Gabriele Dominici",
+                "Teague McMillan",
+                "Fazl Barez",
+                "Marc Langheinrich",
+                "Martin Gjoreski"
+              ],
+              "institutions": [],
+              "year": 2026,
+              "source": "https://arxiv.org/abs/2610.31639v1",
+              "arxiv_id": "2610.31639v1",
+              "doi": null,
+              "version": "v1",
+              "file_hash": "adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+              "page_count": 38,
+              "has_text_layer": true,
+              "abstract_present": true,
+              "abstract_characters": 1274,
+              "abstract_sha256": "b46c653a6bf8da6b17928f6825f3f41c71481c0be6072ff156ea01a6ccbbf2a1"
+            },
+            "score": 30.237651444551528,
+            "base_score": 30.237651444551528,
+            "feedback_adjustment": 0.0,
+            "content_similarity": 0.034482758620689655,
+            "matched_terms": [
+              "attention",
+              "by",
+              "improving",
+              "model",
+              "over",
+              "these",
+              "through",
+              "we",
+              "while"
+            ],
+            "code_links": [],
+            "relationship_reason": "相对《所选论文》，《Causal Chain of Thought: Mitigating Attention Leakage via Context Isolation》的标题与摘要共享主题词：attention、by、improving、model、over、these、through、we。",
+            "code_priority_bonus": 0
+          }
+        ]
+      },
+      "after_dislike": {
+        "computed_at": "2026-10-28T15:05:21.165746+00:00",
+        "diagnostics": null,
+        "votes": [
+          {
+            "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+            "vote": -1,
+            "updated_at": "2026-10-28T15:05:20.463780+00:00"
+          }
+        ],
+        "items": [
+          {
+            "rank": 1,
+            "paper": {
+              "schema_version": "1.0.0",
+              "id": "paper-7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+              "title": "BeNice! Closing Looping's Inference-Memory Gap via KV-Sharing",
+              "authors": [
+                "Hayden Prairie",
+                "Jacob M. Ryan",
+                "Taylor Berg-Kirkpatrick",
+                "Daniel Y. Fu"
+              ],
+              "institutions": [],
+              "year": 2026,
+              "source": "https://arxiv.org/abs/2610.31633v1",
+              "arxiv_id": "2610.31633v1",
+              "doi": null,
+              "version": "v1",
+              "file_hash": "7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+              "page_count": 37,
+              "has_text_layer": true,
+              "abstract_present": true,
+              "abstract_characters": 1763,
+              "abstract_sha256": "25cb93d0bd1de555c1fe64de58d73a55b2f75fb50b8ea905c7184d2c80a57ff2"
+            },
+            "score": 32.44208494208848,
+            "base_score": 32.44208494208848,
+            "feedback_adjustment": 0.0,
+            "content_similarity": 0.07857142857142857,
+            "matched_terms": [
+              "attention",
+              "be",
+              "by",
+              "earlier",
+              "first",
+              "has",
+              "mechanisms",
+              "model",
+              "models",
+              "original",
+              "propose",
+              "proposed",
+              "quality",
+              "recurrence",
+              "sequence",
+              "show"
+            ],
+            "code_links": [],
+            "relationship_reason": "相对《所选论文》，《BeNice! Closing Looping's Inference-Memory Gap via KV-Sharing》的标题与摘要共享主题词：attention、be、by、earlier、first、has、mechanisms、model。 两篇之间存在已核验的库内引用关系，可查看引用图谱。",
+            "code_priority_bonus": 0
+          },
+          {
+            "rank": 2,
+            "paper": {
+              "schema_version": "1.0.0",
+              "id": "paper-adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+              "title": "Causal Chain of Thought: Mitigating Attention Leakage via Context Isolation",
+              "authors": [
+                "Gabriele Dominici",
+                "Teague McMillan",
+                "Fazl Barez",
+                "Marc Langheinrich",
+                "Martin Gjoreski"
+              ],
+              "institutions": [],
+              "year": 2026,
+              "source": "https://arxiv.org/abs/2610.31639v1",
+              "arxiv_id": "2610.31639v1",
+              "doi": null,
+              "version": "v1",
+              "file_hash": "adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+              "page_count": 38,
+              "has_text_layer": true,
+              "abstract_present": true,
+              "abstract_characters": 1274,
+              "abstract_sha256": "b46c653a6bf8da6b17928f6825f3f41c71481c0be6072ff156ea01a6ccbbf2a1"
+            },
+            "score": 30.237651444551528,
+            "base_score": 30.237651444551528,
+            "feedback_adjustment": 0.0,
+            "content_similarity": 0.034482758620689655,
+            "matched_terms": [
+              "attention",
+              "by",
+              "improving",
+              "model",
+              "over",
+              "these",
+              "through",
+              "we",
+              "while"
+            ],
+            "code_links": [],
+            "relationship_reason": "相对《所选论文》，《Causal Chain of Thought: Mitigating Attention Leakage via Context Isolation》的标题与摘要共享主题词：attention、by、improving、model、over、these、through、we。",
+            "code_priority_bonus": 0
+          },
+          {
+            "rank": 3,
+            "paper": {
+              "schema_version": "1.0.0",
+              "id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+              "title": "Reformer: The Efficient Transformer",
+              "authors": [
+                "Nikita Kitaev",
+                "Łukasz Kaiser",
+                "Anselm Levskaya"
+              ],
+              "institutions": [],
+              "year": 2020,
+              "source": "https://arxiv.org/abs/2001.04451v2",
+              "arxiv_id": "2001.04451v2",
+              "doi": null,
+              "version": "v2",
+              "file_hash": "f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+              "page_count": 12,
+              "has_text_layer": true,
+              "abstract_present": true,
+              "abstract_characters": 782,
+              "abstract_sha256": "79c5a62762828b84fdd579b6bc5f1e26cf436bab67268bab2af79f2b4713ed96"
+            },
+            "score": 30.178538144058926,
+            "base_score": 35.178538144058926,
+            "feedback_adjustment": -5.0,
+            "content_similarity": 0.11330049261083744,
+            "matched_terms": [
+              "attention",
+              "be",
+              "being",
+              "by",
+              "dot-product",
+              "efficient",
+              "from",
+              "large",
+              "long",
+              "model",
+              "models",
+              "more",
+              "results",
+              "sequence",
+              "state-of-the-art",
+              "tasks"
+            ],
+            "code_links": [
+              {
+                "url": "https://github.com/google/trax",
+                "anchor": {
+                  "paper_id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+                  "page_number": 8,
+                  "section": [
+                    "2 https://github.com/google/trax/tree/master/trax/models/reformer  3"
+                  ],
+                  "chunk_id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b-p0008-c00132"
+                }
+              }
+            ],
+            "relationship_reason": "相对《所选论文》，《Reformer: The Efficient Transformer》的标题与摘要共享主题词：attention、be、being、by、dot-product、efficient、from、large。 原文提供可定位的GitHub链接，代码项增加10分；仓库内容和可运行性需另行核验。",
+            "code_priority_bonus": 10
+          },
+          {
+            "rank": 4,
+            "paper": {
+              "schema_version": "1.0.0",
+              "id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+              "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+              "authors": [
+                "Jacob Devlin ; Ming-Wei Chang ; Kenton Lee ; Kristina Toutanova"
+              ],
+              "institutions": [],
+              "year": null,
+              "source": "local-upload",
+              "arxiv_id": null,
+              "doi": null,
+              "version": null,
+              "file_hash": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+              "page_count": 16,
+              "has_text_layer": true,
+              "abstract_present": false,
+              "abstract_characters": 0,
+              "abstract_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            "score": 0.0,
+            "base_score": 27.567567567571103,
+            "feedback_adjustment": -50.0,
+            "content_similarity": 0.08108108108108109,
+            "matched_terms": [
+              "architecture",
+              "be",
+              "both",
+              "by",
+              "designed",
+              "encoder",
+              "from",
+              "including",
+              "model",
+              "models",
+              "new",
+              "representation",
+              "results",
+              "simple",
+              "state-of-the-art",
+              "tasks"
+            ],
+            "code_links": [
+              {
+                "url": "https://github.com/google-research/bert",
+                "anchor": {
+                  "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+                  "page_number": 2,
+                  "section": [
+                    "1 Introduction"
+                  ],
+                  "chunk_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0002-c00021"
+                }
+              },
+              {
+                "url": "https://github.com/tensorflow/tensor2tensor",
+                "anchor": {
+                  "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+                  "page_number": 3,
+                  "section": [
+                    "1  https://github.com/tensorflow/tensor2tensor"
+                  ],
+                  "chunk_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0003-c00042"
+                }
+              }
+            ],
+            "relationship_reason": "相对《所选论文》，《BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding》的标题与摘要共享主题词：architecture、be、both、by、designed、encoder、from、including。 原文提供可定位的GitHub链接，代码项增加10分；仓库内容和可运行性需另行核验。",
+            "code_priority_bonus": 10
+          }
+        ]
+      },
+      "like_before_after": {
+        "before": [
+          {
+            "paper_id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+            "rank": 1,
+            "score": 35.178538144058926
+          },
+          {
+            "paper_id": "paper-7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+            "rank": 2,
+            "score": 32.44208494208848
+          },
+          {
+            "paper_id": "paper-adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+            "rank": 3,
+            "score": 30.237651444551528
+          },
+          {
+            "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+            "rank": 4,
+            "score": 27.567567567571103
+          }
+        ],
+        "after": [
+          {
+            "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+            "rank": 1,
+            "score": 77.5675675675711
+          },
+          {
+            "paper_id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+            "rank": 2,
+            "score": 40.178538144058926
+          },
+          {
+            "paper_id": "paper-7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+            "rank": 3,
+            "score": 32.44208494208848
+          },
+          {
+            "paper_id": "paper-adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+            "rank": 4,
+            "score": 30.237651444551528
+          }
+        ]
+      },
+      "dislike_before_after": {
+        "before": [
+          {
+            "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+            "rank": 1,
+            "score": 77.5675675675711
+          },
+          {
+            "paper_id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+            "rank": 2,
+            "score": 40.178538144058926
+          },
+          {
+            "paper_id": "paper-7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+            "rank": 3,
+            "score": 32.44208494208848
+          },
+          {
+            "paper_id": "paper-adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+            "rank": 4,
+            "score": 30.237651444551528
+          }
+        ],
+        "after": [
+          {
+            "paper_id": "paper-7feb72f5f4e4902a785129bf559fd1bbd6803bb96d98a70ee1c5e8efb576ed10",
+            "rank": 1,
+            "score": 32.44208494208848
+          },
+          {
+            "paper_id": "paper-adf81661507b8614a4b3c475baa4b7b3a6346c799a7935ed7947e47bae8ace53",
+            "rank": 2,
+            "score": 30.237651444551528
+          },
+          {
+            "paper_id": "paper-f86f29116ea4a04321f4ab8727283096c544255bd31f7efbc10e56390a8b5e8b",
+            "rank": 3,
+            "score": 30.178538144058926
+          },
+          {
+            "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+            "rank": 4,
+            "score": 0.0
+          }
+        ]
+      }
+    }
+  },
+  "votes_after_restart": [
+    {
+      "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+      "vote": -1,
+      "updated_at": "2026-10-28T15:05:20.463780+00:00"
+    }
+  ]
+}

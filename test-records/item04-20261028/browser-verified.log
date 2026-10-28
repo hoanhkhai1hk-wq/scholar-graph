@@ -1,0 +1,4 @@
+{"step":"one-click-all","task":"bd415f07901c4e12a6b0e2d4b451411d"}
+{"step":"like","rank":1}
+{"step":"dislike","rank":35}
+{"passed":true,"ranks":{"before":6,"like":1,"dislike":35},"refresh":{"rank":35,"dislike_pressed":"true"},"batch":{"status":"partial","succeeded_count":32,"failed_count":8,"duplicate_count":32}}

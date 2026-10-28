@@ -1,0 +1,26 @@
+# A separate real service with blocked outbound arXiv connectivity.
+services:
+  backend:
+    image: ${SG_ITEM04_FAILURE_BACKEND_IMAGE:-scholar-graph-backend:item03-20261028}
+    ports: ["127.0.0.1:8110:8000"]
+    environment:
+      SCHOLAR_GRAPH_DATA_DIR: /app/data/records
+      SCHOLAR_GRAPH_TRACKING_ENABLED: "false"
+      HTTPS_PROXY: http://127.0.0.1:9
+      HTTP_PROXY: http://127.0.0.1:9
+      ALL_PROXY: http://127.0.0.1:9
+      NO_PROXY: localhost,127.0.0.1,backend,host.docker.internal
+    volumes:
+      - ../../data/item04-20261028/failure-records:/app/data/records
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; assert urllib.request.urlopen('http://127.0.0.1:8000/api/v2/system', timeout=5).status==200"]
+      interval: 3s
+      retries: 20
+  frontend:
+    image: ${SG_ITEM04_FAILURE_FRONTEND_IMAGE:-scholar-graph-frontend:item03-20261028}
+    ports: ["127.0.0.1:3410:3000"]
+    environment:
+      SG_BACKEND_URL: http://backend:8000
+    depends_on:
+      backend:
+        condition: service_healthy

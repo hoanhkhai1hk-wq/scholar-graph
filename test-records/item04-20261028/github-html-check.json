@@ -1,0 +1,8 @@
+{
+  "http_status": 200,
+  "url": "https://github.com/google/trax",
+  "body_sha256": "d90877f853872dabcb46b93e5862ec5ca67d47545e75ba8b550b9a551df7978c",
+  "bytes": 422887,
+  "contains_repository_name": true,
+  "code_execution_tested": false
+}
