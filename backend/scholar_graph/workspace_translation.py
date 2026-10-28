@@ -42,6 +42,17 @@ def selected_chunks(bundle, request):
     return select_chunks(bundle, request['scope'], request.get('section_path'), request.get('chunk_ids'))
 
 
+def validated_chinese_task(task, paper_id, scope, full_chunk_ids):
+    translation = ((task or {}).get('result') or {}).get('translation')
+    if (not translation or translation['paper_id'] != paper_id or translation['target'] != 'zh' or
+            task.get('status') != 'completed' or not translation.get('metadata', {}).get('complete')):
+        raise PipelineError('VALIDATION_ERROR', '请先完成同篇论文对应范围的中文翻译，再进行中译英。')
+    if scope == 'full' and (translation['scope'] != 'full' or
+            [s['source_chunk_id'] for s in translation['segments']] != list(full_chunk_ids)):
+        raise PipelineError('VALIDATION_ERROR', '当前中文来源不是完整全文；摘要或部分译文不能用于全文中译英。请先完成中文全文翻译。')
+    return translation
+
+
 def translation_task(workspace, identity, parameters, runner):
     paper_id = parameters['paper_id']
     snapshot = workspace.read('translation_source', parameters.get('source_snapshot_id', ''))
@@ -52,9 +63,8 @@ def translation_task(workspace, identity, parameters, runner):
     chinese = None
     if parameters.get('chinese_task_id'):
         task = workspace.read('task', parameters['chinese_task_id'])
-        chinese = ((task or {}).get('result') or {}).get('translation')
-        if not chinese or chinese['paper_id'] != paper_id or chinese['target'] != 'zh':
-            raise PipelineError('VALIDATION_ERROR', '请选择同篇论文已校验的中文翻译任务。')
+        chinese = validated_chinese_task(task, paper_id, parameters['scope'],
+                     [c['chunk_id'] for c in workspace.repository.paper(paper_id)['chunks']])
     batches, current, size = [], [], 0
     for chunk in selected:
         if current and size + len(chunk['text']) > 8000:
@@ -119,9 +129,8 @@ def translation_task_routes(workspace, tasks):
         bundle = workspace.bundle(paper_id)
         if body.target == 'en' and body.chinese_task_id:
             prior = workspace.read('task', body.chinese_task_id)
-            translation = ((prior or {}).get('result') or {}).get('translation')
-            if not translation or translation['paper_id'] != paper_id or translation['target'] != 'zh':
-                raise PipelineError('VALIDATION_ERROR', '请选择同篇论文已保存的中文译文。')
+            validated_chinese_task(prior, paper_id, body.scope,
+                [c['chunk_id'] for c in workspace.repository.paper(paper_id)['chunks']])
             snapshot = workspace.read('translation_source', prior.get('parameters', {}).get('source_snapshot_id', ''))
             bundle = snapshot['bundle'] if snapshot else {**workspace.repository.paper(paper_id), 'paper_meta': workspace.paper(paper_id)['paper']}
         selected = selected_chunks(bundle, body.model_dump())

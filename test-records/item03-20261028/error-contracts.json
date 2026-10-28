@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "case": "v1_en_section_rejected",
+      "http_status": 422,
+      "error": {
+        "error_code": "VALIDATION_ERROR",
+        "message": "请求参数不合法。",
+        "details": null
+      }
+    },
+    {
+      "case": "v2_en_section_rejected",
+      "http_status": 422,
+      "error": {
+        "error_code": "VALIDATION_ERROR",
+        "message": "请求参数不合法。",
+        "details": null
+      }
+    },
+    {
+      "case": "isolated_no_key_no_fabricated_translation",
+      "http_status": 502,
+      "error": {
+        "error_code": "UPSTREAM_ERROR",
+        "message": "DeepSeek环境变量未设置，未调用模型。",
+        "details": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "method": "actual DOM paragraph geometry and native input; clipped boundaries allowed",
+  "results": [
+    {
+      "name": "before",
+      "input": "baseline native wheel; unsuccessful scrollbar attempt did not move it",
+      "source_top": 350,
+      "target_top": 252,
+      "expected_target_top": 226.6936210576239,
+      "alignment_error_pixels": 25.306378942376114,
+      "source_max": 1755,
+      "target_max": 895
+    },
+    {
+      "name": "after_left",
+      "input": "native English scrollbar thumb drag; default scrollbar-hiding flag removed",
+      "source_top": 791,
+      "target_top": 534,
+      "expected_target_top": 534.221948390838,
+      "alignment_error_pixels": 0.2219483908379516,
+      "source_max": 1755,
+      "target_max": 895
+    },
+    {
+      "name": "after_right",
+      "input": "native Chinese scrollbar thumb drag; default scrollbar-hiding flag removed",
+      "source_top": 223,
+      "target_top": 345,
+      "expected_target_top": 344.8432378745241,
+      "alignment_error_pixels": 0.1567621254758933,
+      "source_max": 895,
+      "target_max": 1755
+    }
+  ]
+}

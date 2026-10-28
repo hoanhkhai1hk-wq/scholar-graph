@@ -33,12 +33,14 @@ export default function TranslatePanel({ paperId, chunks, pageCount = 1 }: { pap
   async function run() {
     setBusy(true); setError(""); setResponse(null);
     try {
+      const chineseSource = target === "en" ? (localStorage.getItem(`${key}.zh.${scope}`)
+        || (scope === "abstract" ? localStorage.getItem(`${key}.zh.full`) : null) || chineseTask) : null;
       const task = await workspacePost<WorkspaceTask>(`/papers/${paperId}/translation-tasks`, {
         scope, target, ...(scope === "section" ? { section_path: JSON.parse(section) } : {}),
-        ...(scope === "selection" ? { chunk_ids: selected } : {}), ...(target === "en" && chineseTask ? { chinese_task_id: chineseTask } : {}),
+        ...(scope === "selection" ? { chunk_ids: selected } : {}), ...(chineseSource ? { chinese_task_id: chineseSource } : {}),
       });
       remember(task.id);
-      if (target === "zh") { setChineseTask(task.id); localStorage.setItem(`${key}.zh`, task.id); }
+      if (target === "zh") { setChineseTask(task.id); localStorage.setItem(`${key}.zh`, task.id); localStorage.setItem(`${key}.zh.${scope}`, task.id); }
     } catch (cause) { setError(cause instanceof Error ? cause.message : "翻译任务未能开始。"); }
     finally { setBusy(false); }
   }

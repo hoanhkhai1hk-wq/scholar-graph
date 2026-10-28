@@ -138,7 +138,7 @@ export default function ReaderPane({
     }
   }
 
-  /** 划词：只展示原文与所属 Chunk 锚点，不生成译文 */
+  /** 选区交给阅读工作台调用翻译服务；无回调时仅展示原文来源。 */
   function captureSelection(chunk: Chunk) {
     const selected = window.getSelection()?.toString().trim() ?? "";
     if (!selected) return;

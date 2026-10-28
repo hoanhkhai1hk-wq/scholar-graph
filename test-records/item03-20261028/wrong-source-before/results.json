@@ -1,0 +1,7 @@
+{
+  "abstract_segments": 1,
+  "full_request_http_status": 202,
+  "full_task_status": "completed",
+  "claimed_full_segments": 1,
+  "passed": false
+}

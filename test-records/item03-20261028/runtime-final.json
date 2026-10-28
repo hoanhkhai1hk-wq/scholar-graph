@@ -1,0 +1,118 @@
+{
+  "systems": {
+    "main": {
+      "model_configured": true,
+      "qa_mode": "deepseek",
+      "papers": 0,
+      "frontend_status": 200,
+      "backend_dns": "172.21.0.2      backend",
+      "backend": {
+        "running": true,
+        "health": "healthy",
+        "image_config_id": "sha256:cb9503901b5f95e2566f8b2af1c03da9ae3714eb4213134ca2ceb7ca51630666"
+      },
+      "frontend": {
+        "running": true,
+        "health": "healthy",
+        "image_config_id": "sha256:6203952cfc70c12114f5d2124d661a624e564855f7d8a290b6e1a380b78235fb"
+      }
+    },
+    "item03": {
+      "model_configured": true,
+      "qa_mode": "deepseek",
+      "papers": 3,
+      "frontend_status": 200,
+      "backend_dns": "172.24.0.2      backend",
+      "backend": {
+        "running": true,
+        "health": "healthy",
+        "image_config_id": "sha256:cb9503901b5f95e2566f8b2af1c03da9ae3714eb4213134ca2ceb7ca51630666"
+      },
+      "frontend": {
+        "running": true,
+        "health": "not_configured",
+        "image_config_id": "sha256:6203952cfc70c12114f5d2124d661a624e564855f7d8a290b6e1a380b78235fb"
+      }
+    }
+  },
+  "source_hashes": {
+    "backend/scholar_graph/translation.py": "e6b878b4ece8d46dbb32f1226d53a444ea5d557486a9b32c486b7f5a79ecba8e",
+    "backend/scholar_graph/workspace_translation.py": "1c3bbed27323d48ab05895fa42ff3e8f3f64586e2598289579b10270419a4a3f",
+    "frontend/components/LayoutViewer.tsx": "d365777060e6daa712bfecc16e2db88ee80ba45448ee588d12cc505267799e85",
+    "frontend/components/BilingualPane.tsx": "014a1f920d4ee276236b3c53ecc52460c4c4d10923817c75a006b2bb91b87f8b",
+    "frontend/components/TranslatePanel.tsx": "14fef662448d55e12e45a3512d6cef957af3432883b262b83c0de988912367d0",
+    "frontend/lib/bilingual-scroll.ts": "4034759d5df499a1bc58ab28e7680fd5cea88c9a9f4b5e8827ca33005d1a66ef",
+    "frontend/app/globals.css": "75b544531cac65b90a7bbb2df88e561a3bfda9d7f0a01e940c66c941f44c1a39"
+  },
+  "selection_calls": [
+    {
+      "selection": {
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "page_number": 1,
+        "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00010",
+        "text": "models"
+      },
+      "model_calls": [
+        {
+          "provider": "deepseek",
+          "model": "deepseek-chat",
+          "phase": "translate_batch_1_attempt_1",
+          "elapsed_seconds": 1.59047,
+          "prompt_tokens": 524,
+          "completion_tokens": 20,
+          "total_tokens": 544,
+          "http_status": 200,
+          "status": "succeeded",
+          "response_bytes": 535,
+          "finish_reason": "stop"
+        }
+      ],
+      "segments": [
+        {
+          "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00010",
+          "page_number": 1,
+          "source_sha256": "8edcc26c0f6c7256a71a8ede6b954ad9ec8dabf88f127c5e9d34f13cadefe11a",
+          "translated_text": "模型"
+        }
+      ]
+    },
+    {
+      "selection": {
+        "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+        "page_number": 1,
+        "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00010",
+        "text": "The dominant sequence transduction models"
+      },
+      "model_calls": [
+        {
+          "provider": "deepseek",
+          "model": "deepseek-chat",
+          "phase": "translate_batch_1_attempt_1",
+          "elapsed_seconds": 2.353512,
+          "prompt_tokens": 534,
+          "completion_tokens": 25,
+          "total_tokens": 559,
+          "http_status": 200,
+          "status": "succeeded",
+          "response_bytes": 556,
+          "finish_reason": "stop"
+        }
+      ],
+      "segments": [
+        {
+          "source_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00010",
+          "page_number": 1,
+          "source_sha256": "9444197b5f7e2869414976bbd97e5fae543b9b069007e2a142150585e01d924d",
+          "translated_text": "主流的序列转导模型"
+        }
+      ]
+    }
+  ],
+  "export": {
+    "bytes": 54813,
+    "sha256": "d5e1550442e92cd63ec220853ac702407db9eeec9c620e6dbd7ad87e12c93e1a",
+    "matches_saved_full_translation": true
+  },
+  "official_pdf_unchanged": true,
+  "passed": true
+}

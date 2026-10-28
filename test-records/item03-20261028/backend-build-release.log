@@ -1,0 +1,259 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile.local-incremental
+#1 transferring dockerfile: 2.39kB 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/scholar-graph-frontend:item02-20261028
+#2 DONE 0.2s
+
+#3 [internal] load metadata for docker.io/library/scholar-graph-backend:item02-20261028
+#3 DONE 0.2s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 354B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 50.56kB 0.0s done
+#5 DONE 0.0s
+
+#6 [backend  1/11] FROM docker.io/library/scholar-graph-backend:item02-20261028@sha256:08202d6dc62d358b225631eff9a007004183c0036af417a54763e5bd5a514a25
+#6 resolve docker.io/library/scholar-graph-backend:item02-20261028@sha256:08202d6dc62d358b225631eff9a007004183c0036af417a54763e5bd5a514a25 0.1s done
+#6 DONE 0.1s
+
+#7 [frontend-build 1/6] FROM docker.io/library/scholar-graph-frontend:item02-20261028@sha256:e7355d6d8080a1771150ec97d40f3781c2b9de31344132c221e7d93f265463a9
+#7 resolve docker.io/library/scholar-graph-frontend:item02-20261028@sha256:e7355d6d8080a1771150ec97d40f3781c2b9de31344132c221e7d93f265463a9
+#7 resolve docker.io/library/scholar-graph-frontend:item02-20261028@sha256:e7355d6d8080a1771150ec97d40f3781c2b9de31344132c221e7d93f265463a9 0.1s done
+#7 DONE 0.1s
+
+#8 [backend  2/11] WORKDIR /app
+#8 CACHED
+
+#9 [backend  3/11] COPY backend/pyproject.toml /tmp/current-backend-pyproject.toml
+#9 CACHED
+
+#10 [backend  4/11] RUN cmp /app/backend/pyproject.toml /tmp/current-backend-pyproject.toml     && python -m pip check
+#10 CACHED
+
+#11 [backend  5/11] RUN rm -rf /app/backend/scholar_graph /app/contracts /app/tests
+#11 CACHED
+
+#12 [frontend-build 2/6] WORKDIR /app/frontend
+#12 CACHED
+
+#13 [frontend-build 3/6] RUN rm -rf /app/frontend/app /app/frontend/components /app/frontend/lib     /app/frontend/scripts /app/frontend/public /app/frontend/e2e
+#13 CACHED
+
+#14 [backend  6/11] COPY --chown=scholar:scholar backend/ ./backend/
+#14 DONE 0.1s
+
+#15 [backend  7/11] COPY --chown=scholar:scholar contracts/ ./contracts/
+#15 DONE 0.1s
+
+#16 [frontend-build 4/6] COPY frontend/ ./
+#16 DONE 0.1s
+
+#17 [frontend-build 5/6] RUN --mount=type=cache,target=/root/.npm     sha256sum package-lock.json > /tmp/current-lock.sha256     && npm install --include=dev --ignore-scripts --no-audit --no-fund --prefer-offline          --fetch-retries=3 --fetch-timeout=600000     && sha256sum -c /tmp/current-lock.sha256     && npm ls --all --omit=optional
+#17 ...
+
+#18 [backend  8/11] COPY --chown=scholar:scholar tests/ ./tests/
+#18 DONE 0.2s
+
+#17 [frontend-build 5/6] RUN --mount=type=cache,target=/root/.npm     sha256sum package-lock.json > /tmp/current-lock.sha256     && npm install --include=dev --ignore-scripts --no-audit --no-fund --prefer-offline          --fetch-retries=3 --fetch-timeout=600000     && sha256sum -c /tmp/current-lock.sha256     && npm ls --all --omit=optional
+#17 1.169 
+#17 1.169 up to date in 608ms
+#17 1.190 package-lock.json: OK
+#17 1.391 scholar-graph-frontend@0.1.0 /app/frontend
+#17 1.391 +-- @emnapi/runtime@1.11.3 extraneous
+#17 1.391 | `-- tslib@2.8.1
+#17 1.391 +-- @img/sharp-wasm32@0.35.5 extraneous
+#17 1.391 | `-- @emnapi/runtime@1.11.3 deduped
+#17 1.391 +-- @playwright/test@1.64.1
+#17 1.391 | `-- playwright@1.64.1
+#17 1.391 |   `-- playwright-core@1.64.1
+#17 1.391 +-- @types/node@22.20.5
+#17 1.391 | `-- undici-types@6.21.0
+#17 1.391 +-- @types/react-dom@19.3.0
+#17 1.391 | `-- @types/react@19.3.0 deduped
+#17 1.391 +-- @types/react@19.3.0
+#17 1.391 | `-- csstype@3.2.3
+#17 1.391 +-- @types/sanitize-html@2.16.2
+#17 1.391 | `-- htmlparser2@12.0.0
+#17 1.391 |   +-- domelementtype@3.0.0
+#17 1.391 |   +-- domhandler@6.0.1
+#17 1.391 |   | `-- domelementtype@3.0.0 deduped
+#17 1.391 |   +-- domutils@4.0.2
+#17 1.391 |   | +-- dom-serializer@3.1.1
+#17 1.391 |   | | +-- domelementtype@3.0.0 deduped
+#17 1.391 |   | | +-- domhandler@6.0.1 deduped
+#17 1.391 |   | | `-- entities@8.1.0 deduped
+#17 1.391 |   | +-- domelementtype@3.0.0 deduped
+#17 1.391 |   | `-- domhandler@6.0.1 deduped
+#17 1.391 |   `-- entities@8.1.0
+#17 1.391 +-- cytoscape@3.34.4
+#17 1.391 +-- next@15.5.28
+#17 1.391 | +-- @next/env@15.5.28
+#17 1.391 | +-- UNMET OPTIONAL DEPENDENCY @next/swc-darwin-arm64@15.5.28
+#17 1.391 | +-- UNMET OPTIONAL DEPENDENCY @next/swc-darwin-x64@15.5.28
+#17 1.391 | +-- UNMET OPTIONAL DEPENDENCY @next/swc-linux-arm64-gnu@15.5.28
+#17 1.391 | +-- UNMET OPTIONAL DEPENDENCY @next/swc-linux-arm64-musl@15.5.28
+#17 1.391 | +-- @next/swc-linux-x64-gnu@15.5.28
+#17 1.391 | +-- @next/swc-linux-x64-musl@15.5.28
+#17 1.391 | +-- UNMET OPTIONAL DEPENDENCY @next/swc-win32-arm64-msvc@15.5.28
+#17 1.391 | +-- UNMET OPTIONAL DEPENDENCY @next/swc-win32-x64-msvc@15.5.28
+#17 1.391 | +-- UNMET OPTIONAL DEPENDENCY @opentelemetry/api@^1.1.0
+#17 1.391 | +-- @playwright/test@1.64.1 deduped
+#17 1.391 | +-- @swc/helpers@0.5.15
+#17 1.391 | | `-- tslib@2.8.1 deduped
+#17 1.391 | +-- UNMET OPTIONAL DEPENDENCY babel-plugin-react-compiler@*
+#17 1.391 | +-- caniuse-lite@1.0.30001819
+#17 1.391 | +-- postcss@8.5.32 overridden
+#17 1.391 | | +-- nanoid@3.3.20
+#17 1.391 | | +-- picocolors@1.1.1
+#17 1.391 | | `-- source-map-js@1.2.2
+#17 1.391 | +-- react-dom@19.3.1 deduped
+#17 1.391 | +-- react@19.3.1 deduped
+#17 1.391 | +-- UNMET OPTIONAL DEPENDENCY sass@^1.3.0
+#17 1.391 | +-- sharp@0.35.5
+#17 1.391 | | +-- @img/colour@1.1.0
+#17 1.391 | | +-- UNMET OPTIONAL DEPENDENCY @img/sharp-darwin-arm64@0.35.5
+#17 1.391 | | +-- UNMET OPTIONAL DEPENDENCY @img/sharp-darwin-x64@0.35.5
+#17 1.391 | | +-- UNMET OPTIONAL DEPENDENCY @img/sharp-freebsd-wasm32@0.35.5
+#17 1.391 | | +-- UNMET OPTIONAL DEPENDENCY @img/sharp-libvips-darwin-arm64@1.3.4
+#17 1.391 | | +-- UNMET OPTIONAL DEPENDENCY @img/sharp-libvips-darwin-x64@1.3.4
+#17 1.391 | | +-- UNMET OPTIONAL DEPENDENCY @img/sharp-libvips-linux-arm@1.3.4
+#17 1.391 | | +-- UNMET OPTIONAL DEPENDENCY @img/sharp-libvips-linux-arm64@1.3.4
+#17 1.391 | | +-- UNMET OPTIONAL DEPENDENCY @img/sharp-libvips-linux-ppc64@1.3.4
+#17 1.391 | | +-- UNMET OPTIONAL DEPENDENCY @img/sharp-libvips-linux-riscv64@1.3.4
+#17 1.391 | | +-- UNMET OPTIONAL DEPENDENCY @img/sharp-libvips-linux-s390x@1.3.4
+#17 1.391 | | +-- @img/sharp-libvips-linux-x64@1.3.4
+#17 1.391 | | +-- UNMET OPTIONAL DEPENDENCY @img/sharp-libvips-linuxmusl-arm64@1.3.4
+#17 1.391 | | +-- @img/sharp-libvips-linuxmusl-x64@1.3.4
+#17 1.391 | | +-- UNMET OPTIONAL DEPENDENCY @img/sharp-linux-arm@0.35.5
+#17 1.391 | | +-- UNMET OPTIONAL DEPENDENCY @img/sharp-linux-arm64@0.35.5
+#17 1.391 | | +-- UNMET OPTIONAL DEPENDENCY @img/sharp-linux-ppc64@0.35.5
+#17 1.391 | | +-- UNMET OPTIONAL DEPENDENCY @img/sharp-linux-riscv64@0.35.5
+#17 1.391 | | +-- UNMET OPTIONAL DEPENDENCY @img/sharp-linux-s390x@0.35.5
+#17 1.391 | | +-- @img/sharp-linux-x64@0.35.5
+#17 1.391 | | | `-- @img/sharp-libvips-linux-x64@1.3.4 deduped
+#17 1.391 | | +-- UNMET OPTIONAL DEPENDENCY @img/sharp-linuxmusl-arm64@0.35.5
+#17 1.391 | | +-- @img/sharp-linuxmusl-x64@0.35.5
+#17 1.391 | | | `-- @img/sharp-libvips-linuxmusl-x64@1.3.4 deduped
+#17 1.391 | | +-- UNMET OPTIONAL DEPENDENCY @img/sharp-webcontainers-wasm32@0.35.5
+#17 1.391 | | +-- UNMET OPTIONAL DEPENDENCY @img/sharp-win32-arm64@0.35.5
+#17 1.391 | | +-- UNMET OPTIONAL DEPENDENCY @img/sharp-win32-ia32@0.35.5
+#17 1.391 | | +-- UNMET OPTIONAL DEPENDENCY @img/sharp-win32-x64@0.35.5
+#17 1.391 | | +-- detect-libc@2.1.2
+#17 1.391 | | `-- semver@7.8.5
+#17 1.391 | `-- styled-jsx@5.1.6
+#17 1.391 |   +-- client-only@0.0.1
+#17 1.391 |   `-- react@19.3.1 deduped
+#17 1.391 +-- pdfjs-dist@4.10.38
+#17 1.391 | `-- @napi-rs/canvas@0.1.100
+#17 1.391 |   +-- UNMET OPTIONAL DEPENDENCY @napi-rs/canvas-android-arm64@0.1.100
+#17 1.391 |   +-- UNMET OPTIONAL DEPENDENCY @napi-rs/canvas-darwin-arm64@0.1.100
+#17 1.391 |   +-- UNMET OPTIONAL DEPENDENCY @napi-rs/canvas-darwin-x64@0.1.100
+#17 1.391 |   +-- UNMET OPTIONAL DEPENDENCY @napi-rs/canvas-linux-arm-gnueabihf@0.1.100
+#17 1.391 |   +-- UNMET OPTIONAL DEPENDENCY @napi-rs/canvas-linux-arm64-gnu@0.1.100
+#17 1.391 |   +-- UNMET OPTIONAL DEPENDENCY @napi-rs/canvas-linux-arm64-musl@0.1.100
+#17 1.391 |   +-- UNMET OPTIONAL DEPENDENCY @napi-rs/canvas-linux-riscv64-gnu@0.1.100
+#17 1.391 |   +-- @napi-rs/canvas-linux-x64-gnu@0.1.100
+#17 1.391 |   +-- @napi-rs/canvas-linux-x64-musl@0.1.100
+#17 1.391 |   +-- UNMET OPTIONAL DEPENDENCY @napi-rs/canvas-win32-arm64-msvc@0.1.100
+#17 1.391 |   `-- UNMET OPTIONAL DEPENDENCY @napi-rs/canvas-win32-x64-msvc@0.1.100
+#17 1.391 +-- react-dom@19.3.1
+#17 1.391 | +-- react@19.3.1 deduped
+#17 1.391 | `-- scheduler@0.28.0
+#17 1.391 +-- react@19.3.1
+#17 1.391 +-- sanitize-html@2.18.1
+#17 1.391 | +-- escape-string-regexp@4.0.0
+#17 1.391 | +-- htmlparser2@12.0.0 deduped
+#17 1.391 | +-- is-plain-object@5.1.0
+#17 1.391 | +-- launder@1.7.2
+#17 1.391 | | `-- dayjs@1.11.23
+#17 1.391 | +-- parse-srcset@1.0.2
+#17 1.391 | `-- postcss@8.5.32 deduped
+#17 1.391 `-- typescript@5.9.3
+#17 1.391 
+#17 DONE 1.4s
+
+#19 [frontend-build 6/6] RUN rm -rf /app/frontend/.next && npm run build
+#19 0.516 
+#19 0.516 > scholar-graph-frontend@0.1.0 build
+#19 0.516 > npm run sync-pdf-worker && next build
+#19 0.516 
+#19 0.602 
+#19 0.602 > scholar-graph-frontend@0.1.0 sync-pdf-worker
+#19 0.602 > node scripts/copy-pdf-worker.mjs
+#19 0.602 
+#19 0.640 [pdf.worker] 已复制 -> public/pdf.worker.min.mjs
+#19 1.355    ▲ Next.js 15.5.28
+#19 1.355 
+#19 1.386    Creating an optimized production build ...
+#19 13.25  ✓ Compiled successfully in 9.5s
+#19 13.26    Linting and checking validity of types ...
+#19 19.41    Collecting page data ...
+#19 21.97    Generating static pages (0/7) ...
+#19 22.55    Generating static pages (1/7) 
+#19 22.67    Generating static pages (3/7) 
+#19 22.67    Generating static pages (5/7) 
+#19 22.67  ✓ Generating static pages (7/7)
+#19 23.44    Finalizing page optimization ...
+#19 23.44    Collecting build traces ...
+#19 29.61 
+#19 29.62 Route (app)                                 Size  First Load JS
+#19 29.62 ┌ ƒ /                                    3.25 kB         113 kB
+#19 29.62 ├ ○ /_not-found                            994 B         104 kB
+#19 29.62 ├ ƒ /api/backend/[...path]                 143 B         103 kB
+#19 29.62 ├ ƒ /api/review/login                      143 B         103 kB
+#19 29.62 ├ ƒ /api/workspace/[...path]               143 B         103 kB
+#19 29.62 ├ ƒ /graph                                140 kB         246 kB
+#19 29.62 ├ ○ /icon.svg                                0 B            0 B
+#19 29.62 ├ ○ /login                                  1 kB         104 kB
+#19 29.62 ├ ƒ /papers/[id]                         2.43 kB         109 kB
+#19 29.62 ├ ƒ /qa                                  2.21 kB         113 kB
+#19 29.62 ├ ƒ /read/[id]                           85.4 kB         200 kB
+#19 29.62 ├ ƒ /retrieval                           9.69 kB         119 kB
+#19 29.62 ├ ○ /settings                            3.23 kB         113 kB
+#19 29.62 ├ ƒ /upload                              2.98 kB         113 kB
+#19 29.62 └ ƒ /writing                             8.79 kB         118 kB
+#19 29.62 + First Load JS shared by all             103 kB
+#19 29.62   ├ chunks/255-b1e2483a7e02feee.js       46.6 kB
+#19 29.62   ├ chunks/4bd1b696-c023c6e3521b1417.js  54.2 kB
+#19 29.62   └ other shared chunks (total)          1.97 kB
+#19 29.62 
+#19 29.62 
+#19 29.62 ƒ Middleware                             34.8 kB
+#19 29.62 
+#19 29.62 ○  (Static)   prerendered as static content
+#19 29.62 ƒ  (Dynamic)  server-rendered on demand
+#19 29.62 
+#19 29.65 npm notice
+#19 29.65 npm notice New major version of npm available! 10.9.9 -> 12.2.1
+#19 29.65 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+#19 29.65 npm notice To update run: npm install -g npm@12.2.1
+#19 29.65 npm notice
+#19 DONE 29.7s
+
+#20 [backend  9/11] COPY --from=frontend-build --chown=scholar:scholar /app/frontend ./frontend/
+#20 DONE 4.8s
+
+#21 [backend 10/11] COPY Dockerfile docker-compose.yml .dockerignore README.md ./
+#21 DONE 0.2s
+
+#22 [backend 11/11] COPY services/docker-compose.acceptance.yml ./services/docker-compose.acceptance.yml
+#22 DONE 0.1s
+
+#23 exporting to image
+#23 exporting layers
+#23 exporting layers 4.3s done
+#23 exporting manifest sha256:a6fe46ef0026ce87b08f67f292be4df8dfb155b861d276e1fa3edfea40b6effe 0.0s done
+#23 exporting config sha256:e8ec3334856a9c81c0c4d9b7b6657557c4abe1841c2423e56306c182d80c7580 0.0s done
+#23 exporting attestation manifest sha256:b3aa016c78b4fe3758e84195b8d008507021e55d0c75f8fcdb9bd082c8d34140 0.0s done
+#23 exporting manifest list sha256:cb9503901b5f95e2566f8b2af1c03da9ae3714eb4213134ca2ceb7ca51630666
+#23 exporting manifest list sha256:cb9503901b5f95e2566f8b2af1c03da9ae3714eb4213134ca2ceb7ca51630666 0.0s done
+#23 naming to docker.io/library/scholar-graph-backend:item03-20261028 done
+#23 unpacking to docker.io/library/scholar-graph-backend:item03-20261028
+#23 unpacking to docker.io/library/scholar-graph-backend:item03-20261028 0.9s done
+#23 DONE 5.3s

@@ -1,0 +1,129 @@
+{
+  "input": "native Chinese scrollbar thumb drag; default scrollbar-hiding flag removed",
+  "columns": [
+    {
+      "top": 345,
+      "max": 1755,
+      "rows": [
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00001",
+          "top": 0
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00002",
+          "top": 155.78125
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00003",
+          "top": 263.5625
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00004",
+          "top": 395.34375
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00005",
+          "top": 527.125
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00006",
+          "top": 634.90625
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00007",
+          "top": 766.6875
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00008",
+          "top": 874.46875
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00009",
+          "top": 982.25
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00010",
+          "top": 1090.03125
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00011",
+          "top": 1581.8125
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00012",
+          "top": 1689.59375
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00013",
+          "top": 2109.375
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00014",
+          "top": 2241.15625
+        }
+      ]
+    },
+    {
+      "top": 223,
+      "max": 895,
+      "rows": [
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00001",
+          "top": 0
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00002",
+          "top": 94.390625
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00003",
+          "top": 164.78125
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00004",
+          "top": 259.171875
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00005",
+          "top": 353.5625
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00006",
+          "top": 423.953125
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00007",
+          "top": 518.34375
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00008",
+          "top": 588.734375
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00009",
+          "top": 659.125
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00010",
+          "top": 729.515625
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00011",
+          "top": 1039.90625
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00012",
+          "top": 1110.296875
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00013",
+          "top": 1372.6875
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00014",
+          "top": 1443.078125
+        }
+      ]
+    }
+  ]
+}

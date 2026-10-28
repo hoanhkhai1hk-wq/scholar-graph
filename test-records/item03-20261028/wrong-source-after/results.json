@@ -1,0 +1,10 @@
+{
+  "abstract_segments": 1,
+  "full_request_http_status": 422,
+  "error": {
+    "error_code": "VALIDATION_ERROR",
+    "message": "当前中文来源不是完整全文；摘要或部分译文不能用于全文中译英。请先完成中文全文翻译。",
+    "details": null
+  },
+  "passed": true
+}

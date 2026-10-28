@@ -1,0 +1,60 @@
+{
+  "paper_id": "paper-4710e325c26b95c188356abddce9691053a2a41e6e8fe9e3f552b2c6f1777488",
+  "scope": "abstract",
+  "target": "en",
+  "segments": [
+    {
+      "source_chunk_id": "paper-4710e325c26b95c188356abddce9691053a2a41e6e8fe9e3f552b2c6f1777488-p0001-c00001",
+      "source_text": "本样本用于核对真实翻译服务中的代码、公式和原文位置。它是一份人工构造的测试文档，不代表科研成果。",
+      "translated_text": "This sample is used to verify the code, formulas, and original text positions in a real translation service. It is a manually constructed test document and does not represent scientific research results.",
+      "paper_id": "paper-4710e325c26b95c188356abddce9691053a2a41e6e8fe9e3f552b2c6f1777488",
+      "page_number": 1,
+      "section_path": [
+        "摘要"
+      ],
+      "type": "text"
+    }
+  ],
+  "markdown": null,
+  "metadata": {
+    "provider": "deepseek",
+    "model": "deepseek-chat",
+    "elapsed_seconds": 1.876877,
+    "model_calls": [
+      {
+        "provider": "deepseek",
+        "model": "deepseek-chat",
+        "phase": "translate_batch_1_attempt_1",
+        "elapsed_seconds": 1.791004,
+        "prompt_tokens": 454,
+        "completion_tokens": 55,
+        "total_tokens": 509,
+        "http_status": 200,
+        "status": "succeeded",
+        "response_bytes": 732,
+        "finish_reason": "stop"
+      }
+    ],
+    "terminology": {
+      "自注意力": "self-attention",
+      "多头注意力": "multi-head attention",
+      "注意力": "attention",
+      "编码器": "encoder",
+      "解码器": "decoder",
+      "层归一化": "layer normalization",
+      "位置编码": "positional encoding",
+      "嵌入": "embedding",
+      "前馈": "feed-forward",
+      "循环": "recurrent",
+      "卷积": "convolutional",
+      "序列转导": "sequence transduction",
+      "转导": "transduction",
+      "最先进水平": "state of the art"
+    },
+    "alignment": "one_source_chunk_one_segment",
+    "layout_source": "stored_chunks",
+    "source_language": "zh",
+    "source_translation_sha256": "8462c62fe383a1eac1b2675649c184a99d30bdafbf6809d435603dfeecd371eb",
+    "source_input": "stored_chinese_chunks"
+  }
+}

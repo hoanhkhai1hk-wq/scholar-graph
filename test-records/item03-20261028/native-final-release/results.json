@@ -1,0 +1,38 @@
+{
+  "browser_version": "156.0.8078.49",
+  "viewport": {
+    "width": 1280,
+    "height": 900
+  },
+  "errors": [],
+  "passed": true,
+  "left": [
+    {
+      "top": 791,
+      "max": 1755
+    },
+    {
+      "top": 534,
+      "max": 895
+    }
+  ],
+  "right": [
+    {
+      "top": 345,
+      "max": 1755
+    },
+    {
+      "top": 223,
+      "max": 895
+    }
+  ],
+  "exported_filename": "论文译文.md",
+  "refreshed_translation_restored": true,
+  "scope_switch": {
+    "chinese_full_task": "e6a4e4a80864428987c218d9c70aeb00",
+    "chinese_abstract_task": "23be86b1f73649ac9acc65e63a255368",
+    "english_full_task": "9b0445f10560473599cd5584db444e4e",
+    "english_segments": 175,
+    "source_matches_full_chinese_by_every_chunk": true
+  }
+}

@@ -1,0 +1,3 @@
+{"case": "english_full", "http_status": 200, "seconds": 2.281, "checks": {"real_model": true, "actual_pdf_pages": true, "protected": {"0": true, "1": true, "2": true, "3": true, "4": true}, "correct_direction": true}, "passed": true}
+{"case": "chinese_abstract", "http_status": 200, "seconds": 2.25, "checks": {"real_model": true, "actual_pdf_pages": true, "protected": {}, "correct_direction": true}, "passed": true}
+{"case": "chinese_full", "http_status": 200, "seconds": 1.844, "checks": {"real_model": true, "actual_pdf_pages": true, "protected": {"0": true, "1": true, "2": true, "3": true, "4": true}, "correct_direction": true}, "passed": true}

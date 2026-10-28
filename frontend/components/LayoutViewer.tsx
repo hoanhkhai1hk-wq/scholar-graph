@@ -455,12 +455,12 @@ export default function LayoutViewer({
     return () => observer.disconnect();
   }, [status, numPages]);
 
-  function scrollToPageOffset(page: number, offsetY: number) {
+  function scrollToPageOffset(page: number, offsetY: number, restoreTop?: number) {
     const element = pageRefs.current.get(page);
     if (!element) return;
     const go = () => {
       const container = element.closest<HTMLElement>("[data-document-scroll]");
-      if (container) container.scrollTo({ top: element.getBoundingClientRect().top - container.getBoundingClientRect().top + container.scrollTop + (offsetY || 0) - 64, behavior: "auto" });
+      if (container) container.scrollTo({ top: restoreTop ?? element.getBoundingClientRect().top - container.getBoundingClientRect().top + container.scrollTop + (offsetY || 0) - 64, behavior: "auto" });
       else window.scrollTo({ top: Math.max(0, element.getBoundingClientRect().top + window.scrollY + (offsetY || 0) - 90), behavior: "auto" });
     };
     go();
@@ -504,7 +504,7 @@ export default function LayoutViewer({
     let matched: { start: number; end: number } | null = null;
     for (const query of queries) {
       const needle = query.normalize("NFKC").replace(/[\s\u00ad\-\u2010\u2011]/g, "").toLowerCase();
-      if (needle.length < 4) continue;
+      if (needle.length < 4 && !/^\[\d+\]$/.test(needle)) continue;
       const at = normalized.indexOf(needle);
       if (at >= 0) {
         matched = { start: origin[at], end: origin[at + needle.length - 1] };
@@ -549,12 +549,12 @@ export default function LayoutViewer({
     };
   }
 
-  async function locateAndJump(page: number, queries: string[], label: string) {
+  async function locateAndJump(page: number, queries: string[], label: string, restoreTop?: number) {
     setLocateNote(null);
     setHighlight(null);
     const element = pageRefs.current.get(page);
     // Bring the target into the retained page window before drawing it.
-    scrollToPageOffset(page, 0);
+    scrollToPageOffset(page, 0, restoreTop);
     if (element) {
       retainedPages.current.add(page);
       await measurePage(page);
@@ -569,16 +569,30 @@ export default function LayoutViewer({
     if (hit) {
       setHighlight({ page, ...hit });
       setLocateNote(`段落级定位：第 ${page} 页文本层命中「${label}」，已滚动并高亮。`);
-      scrollToPageOffset(page, hit.y);
+      scrollToPageOffset(page, hit.y, restoreTop);
     } else {
       setLocateNote(
         `段落级定位未命中：第 ${page} 页文本层没找到「${label}」，已退回页首（页级定位）。`,
       );
-      scrollToPageOffset(page, 0);
+      scrollToPageOffset(page, 0, restoreTop);
     }
+    return !!hit;
   }
 
-  function jumpToCitation(refId: string) {
+  async function citationQueries(refId: string, page: number) {
+    const entry = (linksByRefId.get(refId) ?? []).find(link => link.page_number === page);
+    let chunk = entry ? chunkById.get(entry.chunk_id) : undefined;
+    if (!chunk && entry) {
+      try {
+        const response = await fetch(`/api/workspace/papers/${paperId}/evidence/${encodeURIComponent(entry.chunk_id)}`);
+        if (response.ok) chunk = await response.json() as Chunk;
+      } catch { /* An exact citation marker can still locate the reference. */ }
+    }
+    const ref = references.find(item => item.ref_id === refId);
+    return [`[${ref?.number ?? ""}]`, chunk ? snippetOf(chunk.text) : ""];
+  }
+
+  async function jumpToCitation(refId: string) {
     setActiveRef(refId);
     const entries = linksByRefId.get(refId) ?? [];
     const ref = references.find((item) => item.ref_id === refId);
@@ -588,24 +602,22 @@ export default function LayoutViewer({
     }
     const origin = citationOrigin.current.get(refId);
     if (origin) {
-      setCurrentPage(origin.page);
-      const container = canvasHostRef.current?.closest<HTMLElement>("[data-document-scroll]");
-      if (container) container.scrollTo({ top: origin.top, behavior: "smooth" });
-      setLocateNote(`已返回第 ${origin.page} 页刚才的引用位置。`);
+      const queries = await citationQueries(refId, origin.page);
+      const hit = await locateAndJump(origin.page, queries, `文献 [${ref?.number}] 的引用处`, origin.top);
+      setLocateNote(`已返回第 ${origin.page} 页刚才的引用位置；${hit ? "原文已重新高亮" : "文本未命中，仅恢复页和阅读位置"}。`);
       return;
     }
     const link = entries[0];
-    const chunk = chunkById.get(link.chunk_id);
     void locateAndJump(
       link.page_number,
-      [`[${ref?.number ?? ""}]`, chunk ? snippetOf(chunk.text) : ""],
+      await citationQueries(refId, link.page_number),
       `文献 [${ref?.number ?? "?"}] 的引用处`,
     );
   }
 
-  function backToReference(refId: string) {
+  function backToReference(refId: string, sourcePage = currentPage) {
     const container = canvasHostRef.current?.closest<HTMLElement>("[data-document-scroll]");
-    citationOrigin.current.set(refId, { page: currentPage, top: container?.scrollTop ?? window.scrollY });
+    citationOrigin.current.set(refId, { page: sourcePage, top: container?.scrollTop ?? window.scrollY });
     setActiveRef(refId);
     const reference = references.find(item => item.ref_id === refId);
     const location = reference ? bibliographyLocations[String(reference.number)] : undefined;
@@ -648,7 +660,7 @@ export default function LayoutViewer({
             <TreeItem
               key={node.path.join("/")}
               node={node}
-              onJump={(page, queries) => locateAndJump(page, queries, node.label)}
+              onJump={(page, queries, label) => locateAndJump(page, queries, label)}
             />
           ))}
         </ul>
@@ -729,7 +741,7 @@ export default function LayoutViewer({
 
         <div className="sg-layout__pages" ref={canvasHostRef} onClick={event => {
           const button = (event.target as HTMLElement).closest<HTMLElement>("[data-reference-id]");
-          if (button?.dataset.referenceId) backToReference(button.dataset.referenceId);
+          if (button?.dataset.referenceId) backToReference(button.dataset.referenceId, Number(button.closest<HTMLElement>("[data-page]")?.dataset.page) || currentPage);
         }} onMouseUp={event => {
           const selection = window.getSelection();
           const text = selection?.toString().trim();
@@ -798,7 +810,7 @@ function TreeItem({
   depth = 0,
 }: {
   node: TreeNode;
-  onJump: (page: number, queries: string[]) => void;
+  onJump: (page: number, queries: string[], label: string) => void;
   depth?: number;
 }) {
   return (
@@ -807,7 +819,7 @@ function TreeItem({
         type="button"
         className="sg-nav-item"
         style={{ paddingLeft: `${8 + depth * 14}px` }}
-        onClick={() => onJump(node.page, node.queries)}
+        onClick={() => onJump(node.page, node.queries, node.label)}
       >
         <span className="sg-nav-item__title">{node.label}</span>
         <span className="sg-mono">p.{node.page}</span>

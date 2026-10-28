@@ -1,0 +1,104 @@
+{
+  "paper_id": "paper-4710e325c26b95c188356abddce9691053a2a41e6e8fe9e3f552b2c6f1777488",
+  "scope": "full",
+  "target": "en",
+  "segments": [
+    {
+      "source_chunk_id": "paper-4710e325c26b95c188356abddce9691053a2a41e6e8fe9e3f552b2c6f1777488-p0001-c00001",
+      "source_text": "本样本用于核对真实翻译服务中的代码、公式和原文位置。它是一份人工构造的测试文档，不代表科研成果。",
+      "translated_text": "This sample is used to verify the code, formulas, and original text positions in a real translation service. It is a manually constructed test document and does not represent scientific research results.",
+      "paper_id": "paper-4710e325c26b95c188356abddce9691053a2a41e6e8fe9e3f552b2c6f1777488",
+      "page_number": 1,
+      "section_path": [
+        "摘要"
+      ],
+      "type": "text"
+    },
+    {
+      "source_chunk_id": "paper-4710e325c26b95c188356abddce9691053a2a41e6e8fe9e3f552b2c6f1777488-p0001-c00002",
+      "source_text": "请翻译此段说明，保留以下行内代码和公式：`return x + 1` $x_1 + x_2$",
+      "translated_text": "Please translate this explanatory paragraph, preserving the following inline code and formulas:`return x + 1` $x_1 + x_2$",
+      "paper_id": "paper-4710e325c26b95c188356abddce9691053a2a41e6e8fe9e3f552b2c6f1777488",
+      "page_number": 1,
+      "section_path": [
+        "1 方法"
+      ],
+      "type": "text"
+    },
+    {
+      "source_chunk_id": "paper-4710e325c26b95c188356abddce9691053a2a41e6e8fe9e3f552b2c6f1777488-p0002-c00003",
+      "source_text": "下面是源代码：\n```python\ndef forward(x):\n    # Keep this English comment unchanged.\n    return x + 1\n```",
+      "translated_text": "Below is the source code:\n```python\ndef forward(x):\n    # Keep this English comment unchanged.\n    return x + 1\n```",
+      "paper_id": "paper-4710e325c26b95c188356abddce9691053a2a41e6e8fe9e3f552b2c6f1777488",
+      "page_number": 2,
+      "section_path": [
+        "2 保护片段"
+      ],
+      "type": "text"
+    },
+    {
+      "source_chunk_id": "paper-4710e325c26b95c188356abddce9691053a2a41e6e8fe9e3f552b2c6f1777488-p0002-c00004",
+      "source_text": "\\begin{aligned} f(x) &= \\frac{x^2+1}{2} \\\\ g(x) &= \\beta_1 + 0.98 \\end{aligned}",
+      "translated_text": "\\begin{aligned} f(x) &= \\frac{x^2+1}{2} \\\\ g(x) &= \\beta_1 + 0.98 \\end{aligned}",
+      "paper_id": "paper-4710e325c26b95c188356abddce9691053a2a41e6e8fe9e3f552b2c6f1777488",
+      "page_number": 2,
+      "section_path": [
+        "2 保护片段"
+      ],
+      "type": "formula"
+    },
+    {
+      "source_chunk_id": "paper-4710e325c26b95c188356abddce9691053a2a41e6e8fe9e3f552b2c6f1777488-p0002-c00005",
+      "source_text": "以下为HTML代码块：\n<pre><code>print(\"Keep English text unchanged\")\n# Do not translate this comment</code></pre>",
+      "translated_text": "The following is an HTML code block:\n<pre><code>print(\"Keep English text unchanged\")\n# Do not translate this comment</code></pre>",
+      "paper_id": "paper-4710e325c26b95c188356abddce9691053a2a41e6e8fe9e3f552b2c6f1777488",
+      "page_number": 2,
+      "section_path": [
+        "2 保护片段"
+      ],
+      "type": "text"
+    }
+  ],
+  "markdown": "# 人工自编翻译保护样本（非官方论文）\n\n## 摘要\n\n<a id=\"paper-4710e325c26b95c188356abddce9691053a2a41e6e8fe9e3f552b2c6f1777488-p0001-c00001\"></a>\n\nThis sample is used to verify the code, formulas, and original text positions in a real translation service. It is a manually constructed test document and does not represent scientific research results.\n\n## 1 方法\n\n<a id=\"paper-4710e325c26b95c188356abddce9691053a2a41e6e8fe9e3f552b2c6f1777488-p0001-c00002\"></a>\n\nPlease translate this explanatory paragraph, preserving the following inline code and formulas:`return x + 1` $x_1 + x_2$\n\n## 2 保护片段\n\n<a id=\"paper-4710e325c26b95c188356abddce9691053a2a41e6e8fe9e3f552b2c6f1777488-p0002-c00003\"></a>\n\nBelow is the source code:\n```python\ndef forward(x):\n    # Keep this English comment unchanged.\n    return x + 1\n```\n\n<a id=\"paper-4710e325c26b95c188356abddce9691053a2a41e6e8fe9e3f552b2c6f1777488-p0002-c00004\"></a>\n\n\\begin{aligned} f(x) &= \\frac{x^2+1}{2} \\\\ g(x) &= \\beta_1 + 0.98 \\end{aligned}\n\n<a id=\"paper-4710e325c26b95c188356abddce9691053a2a41e6e8fe9e3f552b2c6f1777488-p0002-c00005\"></a>\n\nThe following is an HTML code block:\n<pre><code>print(\"Keep English text unchanged\")\n# Do not translate this comment</code></pre>\n",
+  "metadata": {
+    "provider": "deepseek",
+    "model": "deepseek-chat",
+    "elapsed_seconds": 1.839378,
+    "model_calls": [
+      {
+        "provider": "deepseek",
+        "model": "deepseek-chat",
+        "phase": "translate_batch_1_attempt_1",
+        "elapsed_seconds": 1.800855,
+        "prompt_tokens": 575,
+        "completion_tokens": 107,
+        "total_tokens": 682,
+        "http_status": 200,
+        "status": "succeeded",
+        "response_bytes": 979,
+        "finish_reason": "stop"
+      }
+    ],
+    "terminology": {
+      "自注意力": "self-attention",
+      "多头注意力": "multi-head attention",
+      "注意力": "attention",
+      "编码器": "encoder",
+      "解码器": "decoder",
+      "层归一化": "layer normalization",
+      "位置编码": "positional encoding",
+      "嵌入": "embedding",
+      "前馈": "feed-forward",
+      "循环": "recurrent",
+      "卷积": "convolutional",
+      "序列转导": "sequence transduction",
+      "转导": "transduction",
+      "最先进水平": "state of the art"
+    },
+    "alignment": "one_source_chunk_one_segment",
+    "layout_source": "stored_chunks",
+    "source_language": "zh",
+    "source_translation_sha256": "762670252683c699dc287aafaa13319dd551fe85e17f5dd14557cc0074322b88",
+    "source_input": "stored_chinese_chunks"
+  }
+}

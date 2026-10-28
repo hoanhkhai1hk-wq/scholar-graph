@@ -1,0 +1,32 @@
+{
+  "english": {
+    "paper_id": "paper-5e96a3e5f9117941df782e04b7061fff90f2fc21309d0034101e17282daaafc9",
+    "file": "controlled-protection-en.pdf",
+    "sha256": "5e96a3e5f9117941df782e04b7061fff90f2fc21309d0034101e17282daaafc9",
+    "pages": 2,
+    "chunks": 5,
+    "source_method": "author-defined source segments verified against actual PDF text, not automatic parsing",
+    "expected_protected": [
+      "```python\ndef forward(x):\n    # Keep this English comment unchanged.\n    return x + 1\n```",
+      "\\begin{aligned} f(x) &= \\frac{x^2+1}{2} \\\\ g(x) &= \\beta_1 + 0.98 \\end{aligned}",
+      "<pre><code>print(\"Keep English text unchanged\")\n# Do not translate this comment</code></pre>",
+      "`return x + 1`",
+      "$x_1 + x_2$"
+    ]
+  },
+  "chinese": {
+    "paper_id": "paper-4710e325c26b95c188356abddce9691053a2a41e6e8fe9e3f552b2c6f1777488",
+    "file": "controlled-protection-zh.pdf",
+    "sha256": "4710e325c26b95c188356abddce9691053a2a41e6e8fe9e3f552b2c6f1777488",
+    "pages": 2,
+    "chunks": 5,
+    "source_method": "author-defined source segments verified against actual PDF text, not automatic parsing",
+    "expected_protected": [
+      "```python\ndef forward(x):\n    # Keep this English comment unchanged.\n    return x + 1\n```",
+      "\\begin{aligned} f(x) &= \\frac{x^2+1}{2} \\\\ g(x) &= \\beta_1 + 0.98 \\end{aligned}",
+      "<pre><code>print(\"Keep English text unchanged\")\n# Do not translate this comment</code></pre>",
+      "`return x + 1`",
+      "$x_1 + x_2$"
+    ]
+  }
+}

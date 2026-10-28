@@ -1,0 +1,3051 @@
+{
+  "run": "translations-after",
+  "passed": true,
+  "cases": [
+    {
+      "case": "full_zh",
+      "via": "real_direct_v1",
+      "task_id": null,
+      "seconds": 72.688,
+      "checks": {
+        "coverage": true,
+        "anchors": true,
+        "protected_spans": true,
+        "numbers": true,
+        "nonempty": true,
+        "markdown_coverage": true,
+        "real_model": true
+      },
+      "segments": 175,
+      "model_calls": [
+        {
+          "provider": "deepseek",
+          "model": "deepseek-chat",
+          "phase": "translate_batch_1_attempt_1",
+          "elapsed_seconds": 6.045519,
+          "prompt_tokens": 2304,
+          "completion_tokens": 891,
+          "total_tokens": 3195,
+          "http_status": 200,
+          "status": "succeeded",
+          "response_bytes": 4142,
+          "finish_reason": "stop"
+        },
+        {
+          "provider": "deepseek",
+          "model": "deepseek-chat",
+          "phase": "translate_batch_2_attempt_1",
+          "elapsed_seconds": 5.81586,
+          "prompt_tokens": 2268,
+          "completion_tokens": 843,
+          "total_tokens": 3111,
+          "http_status": 200,
+          "status": "succeeded",
+          "response_bytes": 4384,
+          "finish_reason": "stop"
+        },
+        {
+          "provider": "deepseek",
+          "model": "deepseek-chat",
+          "phase": "translate_batch_3_attempt_1",
+          "elapsed_seconds": 6.502087,
+          "prompt_tokens": 2466,
+          "completion_tokens": 907,
+          "total_tokens": 3373,
+          "http_status": 200,
+          "status": "succeeded",
+          "response_bytes": 4495,
+          "finish_reason": "stop"
+        },
+        {
+          "provider": "deepseek",
+          "model": "deepseek-chat",
+          "phase": "translate_batch_4_attempt_1",
+          "elapsed_seconds": 6.151798,
+          "prompt_tokens": 2768,
+          "completion_tokens": 1045,
+          "total_tokens": 3813,
+          "http_status": 200,
+          "status": "succeeded",
+          "response_bytes": 5015,
+          "finish_reason": "stop"
+        },
+        {
+          "provider": "deepseek",
+          "model": "deepseek-chat",
+          "phase": "translate_batch_5_attempt_1",
+          "elapsed_seconds": 5.814706,
+          "prompt_tokens": 2822,
+          "completion_tokens": 975,
+          "total_tokens": 3797,
+          "http_status": 200,
+          "status": "succeeded",
+          "response_bytes": 4945,
+          "finish_reason": "stop"
+        },
+        {
+          "provider": "deepseek",
+          "model": "deepseek-chat",
+          "phase": "translate_batch_6_attempt_1",
+          "elapsed_seconds": 7.317535,
+          "prompt_tokens": 3249,
+          "completion_tokens": 1182,
+          "total_tokens": 4431,
+          "http_status": 200,
+          "status": "succeeded",
+          "response_bytes": 5136,
+          "finish_reason": "stop"
+        },
+        {
+          "provider": "deepseek",
+          "model": "deepseek-chat",
+          "phase": "translate_batch_7_attempt_1",
+          "elapsed_seconds": 6.893121,
+          "prompt_tokens": 3182,
+          "completion_tokens": 1144,
+          "total_tokens": 4326,
+          "http_status": 200,
+          "status": "succeeded",
+          "response_bytes": 4950,
+          "finish_reason": "stop"
+        },
+        {
+          "provider": "deepseek",
+          "model": "deepseek-chat",
+          "phase": "translate_batch_8_attempt_1",
+          "elapsed_seconds": 4.900842,
+          "prompt_tokens": 2727,
+          "completion_tokens": 798,
+          "total_tokens": 3525,
+          "http_status": 200,
+          "status": "succeeded",
+          "response_bytes": 3343,
+          "finish_reason": "stop"
+        },
+        {
+          "provider": "deepseek",
+          "model": "deepseek-chat",
+          "phase": "translate_batch_9_attempt_1",
+          "elapsed_seconds": 9.114908,
+          "prompt_tokens": 3628,
+          "completion_tokens": 1311,
+          "total_tokens": 4939,
+          "http_status": 200,
+          "status": "succeeded",
+          "response_bytes": 5443,
+          "finish_reason": "stop"
+        },
+        {
+          "provider": "deepseek",
+          "model": "deepseek-chat",
+          "phase": "translate_batch_10_attempt_1",
+          "elapsed_seconds": 6.571851,
+          "prompt_tokens": 3857,
+          "completion_tokens": 1450,
+          "total_tokens": 5307,
+          "http_status": 200,
+          "status": "succeeded",
+          "response_bytes": 5679,
+          "finish_reason": "stop"
+        },
+        {
+          "provider": "deepseek",
+          "model": "deepseek-chat",
+          "phase": "translate_batch_11_attempt_1",
+          "elapsed_seconds": 6.670364,
+          "prompt_tokens": 3671,
+          "completion_tokens": 1172,
+          "total_tokens": 4843,
+          "http_status": 200,
+          "status": "succeeded",
+          "response_bytes": 4671,
+          "finish_reason": "stop"
+        }
+      ],
+      "segments_manifest": [
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00001",
+          "page": 1,
+          "type": "text",
+          "source_sha256": "cb3a9de8b5457dde64115f2fcd6e5b4093b228499af4ace633dfddb3c7c4ccd8",
+          "translation_sha256": "87506591bad92968defbd6f5a066b67213f8f6540b2bf95d96c32ba6b505cef7"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00002",
+          "page": 1,
+          "type": "text",
+          "source_sha256": "ab8508f26511d617d8cd58cf7d21103895b9180b46b48d8822d4f0a560d3e2e0",
+          "translation_sha256": "6fbb6727ffd04f9ca31ca080724a176fa100308c7f2c22f1f537ec7d5e2767d8"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00003",
+          "page": 1,
+          "type": "text",
+          "source_sha256": "cbad36042e27452166debff2f416d8bef577cd48494b7b3630aed886f5ed2b30",
+          "translation_sha256": "cbad36042e27452166debff2f416d8bef577cd48494b7b3630aed886f5ed2b30"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00004",
+          "page": 1,
+          "type": "text",
+          "source_sha256": "7ecb3a2f8cada846fdff6f3032d70e294d4833885baf41bf0969c42ed5547ed1",
+          "translation_sha256": "7ecb3a2f8cada846fdff6f3032d70e294d4833885baf41bf0969c42ed5547ed1"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00005",
+          "page": 1,
+          "type": "text",
+          "source_sha256": "f6bd93646209d244a6accece856b83e885013d6a6d836e7eaa4f731072de7ab5",
+          "translation_sha256": "f6bd93646209d244a6accece856b83e885013d6a6d836e7eaa4f731072de7ab5"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00006",
+          "page": 1,
+          "type": "text",
+          "source_sha256": "326e631d22f84f8c6a0250de1158db9d85c8ed6c2f9536c189ebbdfc44a649e3",
+          "translation_sha256": "326e631d22f84f8c6a0250de1158db9d85c8ed6c2f9536c189ebbdfc44a649e3"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00007",
+          "page": 1,
+          "type": "text",
+          "source_sha256": "81e7cfadaf5ff243b9cca257139c2da85916313e9d5e20fd6d837ee9e454742c",
+          "translation_sha256": "81e7cfadaf5ff243b9cca257139c2da85916313e9d5e20fd6d837ee9e454742c"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00008",
+          "page": 1,
+          "type": "text",
+          "source_sha256": "f2b4a94ae86d87ed314a584f6806547b2b3cd0d2d9d375293780d508b40b44ee",
+          "translation_sha256": "f2b4a94ae86d87ed314a584f6806547b2b3cd0d2d9d375293780d508b40b44ee"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00009",
+          "page": 1,
+          "type": "text",
+          "source_sha256": "d21b4a64a2d8656a0fdf7ab2e89a49164ac504686cfa2a3d442e87c209286330",
+          "translation_sha256": "21c04b2eeeb431f7722c4c144f95567e3bae94de9c743472072c84745d24367a"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00010",
+          "page": 1,
+          "type": "text",
+          "source_sha256": "3c3b8f01798c0ee27a07a93f1f79e2600717750b170e33709197c2aa400fe80c",
+          "translation_sha256": "300d8751f0f13df80d76039b3bb6a91bb3b14a653e731eca74ba77b7613d7e32"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00011",
+          "page": 1,
+          "type": "text",
+          "source_sha256": "bd4686878258fc51bca1cc5a8de4b0d75bb159bf23c0b7c8a040a55d4832100c",
+          "translation_sha256": "c1d5a8d5ea5e0dc3a1f6c4c0f1309e99153ef09e67d28ba7dc5cfe8101586e54"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00012",
+          "page": 1,
+          "type": "text",
+          "source_sha256": "0c13d69d738fb24bdfc02acc2bb8236fd57a99c0870c84ce9b96fcd6dbd039d8",
+          "translation_sha256": "c72946ff140439ba800c11d82d24cb4c5b5c650a0a724198efd65be067757c8f"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00013",
+          "page": 1,
+          "type": "text",
+          "source_sha256": "f94d40023ba94fb2c38e2a5c800ed1a4ec5078fd9dec900cd25ad3498f97c82c",
+          "translation_sha256": "d463e1c4137d0fc1f99366fb2b6349153e1741749dddcc36761df5ef2cf755e3"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00014",
+          "page": 1,
+          "type": "text",
+          "source_sha256": "139e38b53e60a76084a722ac1300e096bd02bbfb21c66a311f33178a7f45b635",
+          "translation_sha256": "4825aff85d1e0a4dad8fd2d827066e186f5f61fc28eb7ef458636ed83e4540de"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00015",
+          "page": 2,
+          "type": "text",
+          "source_sha256": "c9234967b670c32478644b4236ec8fd2f351225696cacbcd0fad1f1838b95170",
+          "translation_sha256": "76958d09e702c69e16621898d46d11240e5c899ee0969a5dec97552c2e7bd574"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00016",
+          "page": 2,
+          "type": "text",
+          "source_sha256": "2ce06fd8b1281c69103914b4bbb234529d85bdda797b10e44ff41000571c0fa0",
+          "translation_sha256": "a43bc07679088ed5096a47833d7c0a7cf8b51c7e7ee2cada84d0edea4cd25d43"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00017",
+          "page": 2,
+          "type": "text",
+          "source_sha256": "7d7e258055a2b37adcdf50a30e637792e13ba11190929afa801046fc7ee2c5e6",
+          "translation_sha256": "ad0b3d9ad271e64ff2fb8fd3cd34c25380ceec630b010d026ece44dc1beaa4da"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00018",
+          "page": 2,
+          "type": "text",
+          "source_sha256": "3383f719286f420021a5b32d092e99b0615b8c4ac9e7355398da6d3b4fba0412",
+          "translation_sha256": "85a6ffdc524df16745a5f7ab8320e949e8e2c03cf280cc53960964315945258f"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00019",
+          "page": 2,
+          "type": "text",
+          "source_sha256": "ea07473b48f37e4eeb4f615ef9e50958919bac1de2e0979f9402771589979fa9",
+          "translation_sha256": "91eaafa0e1f78a478ade54a94ff23aa0877b549f564168335e30f262c7de21f2"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00020",
+          "page": 2,
+          "type": "text",
+          "source_sha256": "b9cecd7cdf8e46c955bd793d1c2118df2e93b68fc2048da987e06cbd735e0efa",
+          "translation_sha256": "2ae321452976c4fd6b983fd064093fb8464261691008befb84a4651970b55bc0"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00021",
+          "page": 2,
+          "type": "text",
+          "source_sha256": "897cc62fb7f152d3bc4ebe70fe622e00d26633e171cea275d35bb929b8e73433",
+          "translation_sha256": "1743da9d775fa5c7e427797e0a07125d1c04782248f93212eedf6d430f988d11"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00022",
+          "page": 2,
+          "type": "text",
+          "source_sha256": "c3033fffceb6f53e83bf51997506f298768cf659138bf90bb764f03d0a510696",
+          "translation_sha256": "d663030ffc00969d06ce316d4656f4ee3df16109fc50d1045b90ff946f8a54c9"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00023",
+          "page": 2,
+          "type": "text",
+          "source_sha256": "02e62658b412829ce863e81b3d836b26e23d03086e4751a71d26ca5cdf00f9bb",
+          "translation_sha256": "c2eab46a0e93c21ffe2716f7a983ccb25abca6382c41c280e4c2bd78b7c0ef4c"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00024",
+          "page": 2,
+          "type": "text",
+          "source_sha256": "3857a00c99f96a397f3d950d0bee18cdbc6c821ce68312d6823fb18ac29b6f55",
+          "translation_sha256": "580eeb35854ef20df30e7da1d824b17a8e66c4e94a5928548a2e2c95835993d9"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00025",
+          "page": 2,
+          "type": "text",
+          "source_sha256": "e9bb00d1f8142f50855d0ae1260627e5fbf96bbad33fb5b35ba6eea276349138",
+          "translation_sha256": "820122ea5b793e0f0060782dff7dcd10e40de17b0789a61202cf59f03259a5ec"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00026",
+          "page": 2,
+          "type": "text",
+          "source_sha256": "711c985b9e6952c23a38c3d1e452777026be2a73d0b2ebca8efd2d446db739bc",
+          "translation_sha256": "6a325b9a24508fd8a29422ca2c179d23ab6c6a274de16a9876767a22cd636135"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00027",
+          "page": 2,
+          "type": "text",
+          "source_sha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+          "translation_sha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00028",
+          "page": 3,
+          "type": "figure",
+          "source_sha256": "b450df34723662e913831fdb0f3e00b1c7be41228490ce8ce272cf6d4d2dc6ae",
+          "translation_sha256": "61b85d0f81b8190e77499a3901ea299633c8639f32405a96e3475fda68c158cd"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00029",
+          "page": 3,
+          "type": "text",
+          "source_sha256": "ceb6081456e63bceb6616578fe27f926c0f1fd1e19bc9e5994b2c3175db22c2b",
+          "translation_sha256": "b717504d05b798a9e1939a3c532ac91e689c89359e787549532035195b7263b5"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00030",
+          "page": 3,
+          "type": "text",
+          "source_sha256": "00fdcac2bc8eb428c6c0d5da4372960413f9d6b85012570bbf4d063183835e5c",
+          "translation_sha256": "d7b64297566a0a861dfd8d2ed2e4c50b71a2a661736774264c658fcf5b349c9e"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031",
+          "page": 3,
+          "type": "text",
+          "source_sha256": "ff961baae2b7241479c6705bd1030264570138bfee71ae64c7ac2bbde04272e3",
+          "translation_sha256": "d469aba90189417182d8ef6274ef9a75d25b76cddd861719d21d10a7e77f1f26"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032",
+          "page": 3,
+          "type": "text",
+          "source_sha256": "2b34c87486b5a529546051df06a87b0b4fb2408c3c3f7fcce072c5ef1bea4af7",
+          "translation_sha256": "a068327b53d533505bf39f87af0c174433e670c03fd7b57426032a42ebfb9f1a"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00033",
+          "page": 3,
+          "type": "text",
+          "source_sha256": "989afe5c3c2f03760aa3e941a117169a6d6cf055feecc059e010da26869d405f",
+          "translation_sha256": "9563036a70f38e0c08c1ef5e5afabdf533a8deeaf16d6ce65763336019cd6e45"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00034",
+          "page": 3,
+          "type": "text",
+          "source_sha256": "a51e6aac2422e80f4705ba7bc96c6bbbb12cd497aaf6ad15a7bc1f4d79b814e5",
+          "translation_sha256": "cd9d2c4d742973b04ff176a6a13c85226fa037979e326e17895ed92f65284384"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00035",
+          "page": 3,
+          "type": "text",
+          "source_sha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
+          "translation_sha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0004-c00036",
+          "page": 4,
+          "type": "figure",
+          "source_sha256": "aaea961bad860ebf010b2655ae6d477e7cc4acce2300cb5874c7a754a14cd8fd",
+          "translation_sha256": "f738ad4cfd292ae900a348a63c0194ef0d7e3b06b67b6c0939511880a21f426a"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0004-c00037",
+          "page": 4,
+          "type": "text",
+          "source_sha256": "eb2a9841993d3656de86d4def14d0813b594d565db4eced4b7d220b659ee9cd1",
+          "translation_sha256": "a4e42c58794876cdcaa1cea7989c9c8dcbebee72a4684ecc811806cfa313626c"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0004-c00038",
+          "page": 4,
+          "type": "text",
+          "source_sha256": "679b616db609c012ad32f81767b12bc39d4a34f15468f8fe5454fd22d6b7f94c",
+          "translation_sha256": "5f1b6dc297010a0632b79e5c49e0a1ed4e96e93b3e4c9f7c264d83f921d9de1f"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0004-c00039",
+          "page": 4,
+          "type": "text",
+          "source_sha256": "2da8c887dd8fc3599ed319b3129f25c8125acb467f2fbc82db9a31ed09456940",
+          "translation_sha256": "889aff0aceb71bc68427e1f23901456d359f53c469c2c2a83ef85253a9933f84"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0004-c00040",
+          "page": 4,
+          "type": "text",
+          "source_sha256": "1fecb6ec48f0067a6d388ff21f38eab8de72018de10b511fb59abd958ebdf3c9",
+          "translation_sha256": "9a1a25609c188a9ddb829f720618f23ed6913088f670b1d63c2e25f2e07bd995"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0004-c00041",
+          "page": 4,
+          "type": "text",
+          "source_sha256": "aaf5e4dae676c88525ffc5262546eb78aaa015109058ed046c558e0459749974",
+          "translation_sha256": "d9a8d477ad21199f5ba7d38380f8e5abde0892c584e49fc43574b1a9c5be33d9"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0004-c00042",
+          "page": 4,
+          "type": "text",
+          "source_sha256": "3fab6ca3cd644199fb77b0f3f77de1930aaa42cbf8019a91c8de4dc8db3518b5",
+          "translation_sha256": "5ab1bca13a2f11854b6806bce7f7ae31bac9ccd9ec4541cd6638b2f3a2140aab"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0004-c00043",
+          "page": 4,
+          "type": "text",
+          "source_sha256": "c64898a3f1edcca10985220cf1fb68a246b72863e0e8de614b4f44a7a881f1b2",
+          "translation_sha256": "f4f16a595d90950f3b623b8d7ec908c67035688763671a3de22506922e867ac9"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0004-c00044",
+          "page": 4,
+          "type": "text",
+          "source_sha256": "660117f76571ea3db3dcd8a31e0bd7a4d1faa9d5cf55353e62c2c3a5634dfc0a",
+          "translation_sha256": "c522a50066ab626cc285f315d812810dd45df4229964e113482db2e8bc1a7bda"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0004-c00045",
+          "page": 4,
+          "type": "text",
+          "source_sha256": "41957244f5244b1fbc66ddba355286e6289b3c1ed8694e232b5e4fdb4494627b",
+          "translation_sha256": "b384da23722022c8c23e37d67f0b7efbb223081d52631beab0fd7d1f6e2afd37"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0004-c00046",
+          "page": 4,
+          "type": "text",
+          "source_sha256": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
+          "translation_sha256": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00047",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "259298f61f4d6456eb95121be01c03dc707ebdb0612c5bc79f1aea1d9a0b4d6c",
+          "translation_sha256": "1b306ab954f943ec10911063e06cfc851743112e44683e02dcd308792641951a"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00048",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "be50bef9d05264591898ec2a7afeabdf2249c09e51d2d19113f8aefab58546ce",
+          "translation_sha256": "3c037979e22e0e90ae8a21cfb16c7678e6c0652ea2217b8d61d0b4a5e0a31f86"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00049",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "1e49a3640ffb3be19ed2d993f418fa77e8f003054fb59a248f90172923125551",
+          "translation_sha256": "1e49a3640ffb3be19ed2d993f418fa77e8f003054fb59a248f90172923125551"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00050",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "8225b83fd924a6c875ae5e6f27cb2c7a36c1cdf15f8aaf5e5eba9161ca1c0bd7",
+          "translation_sha256": "b660a1378ab2b15a00b9321e1e2a7b3eaf55e2a153d36d71679a06055052248c"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00051",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "c3a800cafce18223e5e90c2ec57bb27f141e4d01893325a6a56883ed97b9d99c",
+          "translation_sha256": "c3a800cafce18223e5e90c2ec57bb27f141e4d01893325a6a56883ed97b9d99c"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00052",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "f6d789d2d6d8e3882a5c9985762df42a9c98d1216753008a1e49065924bb0fc6",
+          "translation_sha256": "f6d789d2d6d8e3882a5c9985762df42a9c98d1216753008a1e49065924bb0fc6"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00053",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "accfd5998875a89c8cdf2bd9c74bff26c4a56fcf9ddf0d20bfc53061d98c5740",
+          "translation_sha256": "accfd5998875a89c8cdf2bd9c74bff26c4a56fcf9ddf0d20bfc53061d98c5740"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00054",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "cd0793a501fd7aa66db8ec03f533836a0bccb7cc8faf7d4684d0c78816015afa",
+          "translation_sha256": "6b48b26bc0e35f8533d6736d77120c44da7d38a35b18511fe0d308bc2eb14d95"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00055",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "d31b9469d49a1d806388e85c09c96669824708dfe23240d8a3e133d4a1cdca89",
+          "translation_sha256": "eb909d539b7fdf1b35228628fa923a6104d5182d75a4e8a8867229d1dd153908"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00056",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "3a881c92f819fd398474f23105de039f92ea66dfe61272945c0cc13b6dc192ef",
+          "translation_sha256": "8246a1d631a6d4f3270c780bb1d463996ca459afe411fcf7e9e49d3e35c13afd"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00057",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "e765bc35cb42dc33b5a13663d6174b2a1c22ee9d7f1471a147917ab5179d0ff1",
+          "translation_sha256": "de3d10b7a2f3df610feeb9e8d6272ec0d78e0e09b94ac361f42f5d09f4fce46f"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00058",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "bd00582c13047fd4d28864e329837be52b994df549f1ad4409d210d2df4fe88f",
+          "translation_sha256": "3775e98dff832f9c14e229459c966b94b03300e8b0920add0c82d0e74b88a921"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00059",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "b4729448fb87b6c19cc2bed12cee19676d7c615f9b33ccdfc724b8c31cfef498",
+          "translation_sha256": "d12056d94fc695210c8092103256f01edf5a4132a67de0612ec677665532051f"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00060",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "5abe45658c9277b6f0ffa3080a007d73608bc27d7de5fa944a000da29aa1fc01",
+          "translation_sha256": "997a1f93754930a29078dd2453f6e46728ae5f9c1e423157f2622e352c13d29d"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00061",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "d25fe7951542a7487ea748861d01d8e8fc79a22f3a1602c14e84cec7439e7b93",
+          "translation_sha256": "0755a1778fa9c9f9412e47b24b342d32fbf118a2c2247fb05eab58e7393c3bb7"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00062",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "68f45c6d9f12377737eef78250d378255fad96e4d8282aa229850bf4677322f0",
+          "translation_sha256": "4cb2e4ecdd5665430e40aa3cd7307d55d8c9bdc55db7a915e8642ba9ba1da324"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00063",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "ee3bb63cce2f927a9195c1cf7ac06417a284a1be9df02ed4fe40c8f7ffcfc14d",
+          "translation_sha256": "94dd8f3a20f159ab93638fd23770dc5512b4c23faffdd1b8abf3b822a6d0a119"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "fa0020ecb7408b8ea739ea9bac86e8581401f1ab0e6fcd69d0677fb4059ffe09",
+          "translation_sha256": "6db8832bb8152af4f8d64063ab846a95089946be3fd03d764d589bd4d772e0d7"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00065",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d",
+          "translation_sha256": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00066",
+          "page": 6,
+          "type": "table",
+          "source_sha256": "14863e65adcbe86d64c95fb0a97afd580f3cd705a8a7b9c5598f9bb7a63dd995",
+          "translation_sha256": "2fe2d9cc2aec914868ed42b34dc052b85d85ca8c2f7b4c5de989139df8599309"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00067",
+          "page": 6,
+          "type": "text",
+          "source_sha256": "7cdb568f32e8ef05031656c2b1bf5db1f07c9893e420ac2e7c92591538b38fbb",
+          "translation_sha256": "a9806e080bf60401da9d61a5f76a1d36bf17d6b782ddacdedd8b3294a4c0cc90"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00068",
+          "page": 6,
+          "type": "text",
+          "source_sha256": "5adda638bc117a91be09deff539ffbb1edf104e90b324b349c7391b3dc856e78",
+          "translation_sha256": "016b104341473f9e403a2ca1ef4ccc09fa52ad87a0ac9ed34c3ccceeec45042d"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00069",
+          "page": 6,
+          "type": "text",
+          "source_sha256": "842bda1add649e63e6de03012e505b208617435d234ef0f29e09894f5ea8a8bd",
+          "translation_sha256": "a8b8f744e0db72b0cd10753953c0342874dac74330b145015a6dc9ad722262fe"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00070",
+          "page": 6,
+          "type": "text",
+          "source_sha256": "933e901dee9b7e7cb6f31aa025de13b1591ca24c0ca930fb2354ef3f0ed5d978",
+          "translation_sha256": "0435518c24b450120f0910b012f6a41e4e0e77ed2c0c57199110c65dbedba7a8"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00071",
+          "page": 6,
+          "type": "text",
+          "source_sha256": "7d1877b7255513f6dd09e4661d22d471954020f98251178aa4a7808e8a244cd4",
+          "translation_sha256": "498e621ae0a93af20174630c0a25914190e369acd6d6e4650c2c13198e4e8c87"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00072",
+          "page": 6,
+          "type": "text",
+          "source_sha256": "3a2c1b10f7e2feda875dbc59fe19ea23f21479a9eda02f756e3f426400eec44e",
+          "translation_sha256": "e6ac3807f9a2bb12b7189995da5ffd04648fdbc72aa2df24ac34b203a4dd9ae6"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00073",
+          "page": 6,
+          "type": "text",
+          "source_sha256": "a4bcbf677f36454f5c97d55b978df9d8f8018bdf1e3033fedfbed2d07a0f31dd",
+          "translation_sha256": "331f54b67f5df999a74dec5eaec74ac1f508ce417378f73a9c6b8691f5e8e442"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00074",
+          "page": 6,
+          "type": "text",
+          "source_sha256": "ac813d61288d01622b537ba957cbe52ae31665848d97aa4a4e9c425f4db31b23",
+          "translation_sha256": "ede650b40931bf173bac8f61bfff4ef05de7b90d89a8e730c3ef80a8c4a16654"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00075",
+          "page": 6,
+          "type": "text",
+          "source_sha256": "7167e7e2c76a1cfb7812cca25b34beff35f70cf36620fada6768dd5669144937",
+          "translation_sha256": "eb77444b241d21b4c10e868d12b40941093119f129e29389753a6c8419839f15"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00076",
+          "page": 6,
+          "type": "text",
+          "source_sha256": "d45cdf45f35ec1f49778bff99652db8cd9c7671689b77ae8760da293feb972c2",
+          "translation_sha256": "97619919b570028adbc0bea07d8262cf2f9e849b1235942527849176ca5fbf26"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00077",
+          "page": 6,
+          "type": "text",
+          "source_sha256": "e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683",
+          "translation_sha256": "e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00078",
+          "page": 7,
+          "type": "text",
+          "source_sha256": "227b5955c32a8c71af6c88d6637a016550c68d159cb23b5ef69673458a9e8a43",
+          "translation_sha256": "cc5e986b5ffcfbfa3972a812413d70d06b4e363cc18df3d0864e13b1b5d950ec"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00079",
+          "page": 7,
+          "type": "text",
+          "source_sha256": "9024feb286992d622943cf38638140a47410c48a6b8a21d0de065de75579d747",
+          "translation_sha256": "149f7b485849a891460e1304e805f25ab60e3b6bb9e8264aeefba627dc398b4c"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00080",
+          "page": 7,
+          "type": "text",
+          "source_sha256": "62e64cecf8406ae8d82a500bfe4bd5ee80ba0bf5ec5ddfb42b085b265dcc5175",
+          "translation_sha256": "d7a6430dd0eb9d9a466b8895122f243481a58f816fcbc3e12901ff6c0c6f0ece"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00081",
+          "page": 7,
+          "type": "text",
+          "source_sha256": "2296be7dbffd512d16ebf4eec600ab476826adb9e67a05f5ee6e776b3d9d3024",
+          "translation_sha256": "488b9236157a54ff8254bb2c6c475e5b3fce66aa2248338363e48ecb0a86bd10"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00082",
+          "page": 7,
+          "type": "text",
+          "source_sha256": "1e571c178bc81f0e69b07f8f489ea7a3a6d8f694e2020d2a79c09635ba08fd79",
+          "translation_sha256": "f821aa46167e4fdb7db75145242e67a2074c387541bab41e1cafd3ecfb4ae6b6"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00083",
+          "page": 7,
+          "type": "text",
+          "source_sha256": "2ee7ebe6ff0a05a5dd7b18bd987d99bc6172d16eb09386b514d5bfa6bf607d8b",
+          "translation_sha256": "e2acadf3bf06e52fecad0fcbeed2c27b3aa7a1e9d72694a4e75a3cc8285b4786"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00084",
+          "page": 7,
+          "type": "text",
+          "source_sha256": "739270db0e499cebed8f7097a29358e5175b4047506c17b47a1a44c281a56da5",
+          "translation_sha256": "35d3f981fd0cd18489ecd972fe6fea1c75996d369100f0fb080c200df4ba0f96"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00085",
+          "page": 7,
+          "type": "text",
+          "source_sha256": "a2d2a5f9885292f41e3304c063bb7e681ebe9441a0700b4c5c16d07e71a10ea1",
+          "translation_sha256": "4dc204ef5c7f59c71ca951197f022b5c1196fdaa6ebb14968605f882527baa1f"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00086",
+          "page": 7,
+          "type": "text",
+          "source_sha256": "432fef0b24ee043a1eafc168eb903af77642737aafd97d26b621045c0ac01a59",
+          "translation_sha256": "efc34c272f307484b567af2abeeb2714f511fa4feeeb64bfd29413658f23178a"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00087",
+          "page": 7,
+          "type": "text",
+          "source_sha256": "10b333eef88f36cd9aedf0923092d2afb83d4c8cef3486d1dc8770e1b9bb230d",
+          "translation_sha256": "81c0bc6b65fc3d1e15cff03c71e675b7262d3c187f8bdeec036bc05d3f516aff"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00088",
+          "page": 7,
+          "type": "text",
+          "source_sha256": "9a902605765ac1752a9ff3ff2a8cd540b45cb0aaa0442d2473478fd5dd8bb709",
+          "translation_sha256": "a14063e2fdbc89514ad3acc37fbbecf73e154b20f59b34e2fd639f894f29d3fa"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00089",
+          "page": 7,
+          "type": "text",
+          "source_sha256": "618a59c55973cd000b6e776ee6a9f079004c28792df6e17e4a3e8d8de71fe68c",
+          "translation_sha256": "bf27f2b51e2f0f7026acb72dc5edeb334be0e5bb47ff830e7fd19c06d161c506"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00090",
+          "page": 7,
+          "type": "text",
+          "source_sha256": "24cc518b8b91ab8c3293ad79375f104e3656a674819bbe64cacf31cd7509bcaa",
+          "translation_sha256": "ba3abc52b353c0521cc3b8782fe7cfc06dc4b14fbbb59425f19a819975537b84"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00091",
+          "page": 7,
+          "type": "text",
+          "source_sha256": "d46c1255a833153fc8366c0d1007bd19e6f4ff74c87d1cd09a97ead3f1464751",
+          "translation_sha256": "1328dbfefe03e2fe54978d9f3ad4b55f5a1100e1ba4ef017c4852cc5b16b7fad"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00092",
+          "page": 7,
+          "type": "text",
+          "source_sha256": "7902699be42c8a8e46fbbb4501726517e86b22c56a189f7625a6da49081b2451",
+          "translation_sha256": "7902699be42c8a8e46fbbb4501726517e86b22c56a189f7625a6da49081b2451"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00093",
+          "page": 8,
+          "type": "table",
+          "source_sha256": "d119bb570534f8c694dfef361ed7381757f0e0509fe092dd0d1faf6db4f15feb",
+          "translation_sha256": "9023cbc54007881a41cf9211830ffbb96cb4bbfc62e47d32fe4cd9c48120e517"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00094",
+          "page": 8,
+          "type": "text",
+          "source_sha256": "1463926a97c612dba347ca6fec6994bba3ee4957fa19e505dfe2d481ae655a2f",
+          "translation_sha256": "32909a9ce89962c01a9a961717ae52618b8a8646afc6940494e001af9705a1eb"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00095",
+          "page": 8,
+          "type": "text",
+          "source_sha256": "34780d955461c528a14742e5211792313cc1a591f7180148d50d4384ce89a390",
+          "translation_sha256": "e1639c377fbbfdb2ea739db0b78416d3a76f5798a0ccf82fd7188239fb8b776b"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00096",
+          "page": 8,
+          "type": "text",
+          "source_sha256": "c556d559e095d9d78d46593193e194538fbf9691c2493c331de82ea09845360e",
+          "translation_sha256": "b5a8ded77956ca8c2d7816f1a0acadb5d24a7667837e21e171255cfef7a9fd1b"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00097",
+          "page": 8,
+          "type": "text",
+          "source_sha256": "7e13509b99d08b31008353bc34cebd88ea9f29729098196ea7e92c77c89912b5",
+          "translation_sha256": "e1bd1cc3731ce89976e14813664e3d27658217d5d45068133f10abef171b0009"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00098",
+          "page": 8,
+          "type": "text",
+          "source_sha256": "720f3f61ad85d089e98c2974c61150f32b3114e5aed10e6a23c8ca104f23d3c2",
+          "translation_sha256": "643b4bc6eb7817f53030e4f250088cb698d3ab1e4e4d12e79ac3d8a0031e84c2"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00099",
+          "page": 8,
+          "type": "text",
+          "source_sha256": "296a08fffa919f6e1690b834d2aca45103c241a125c433b53417478282d058f2",
+          "translation_sha256": "2a5cf43962bcffa5a6d0af6ed5f119edda39a3a48c6b86e8bdc0ce2377451753"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00100",
+          "page": 8,
+          "type": "text",
+          "source_sha256": "e6c0531dbf025a61986454ec06cfc56f3e4eb097b89814d74134455c96297719",
+          "translation_sha256": "b4e80089c4c74748b7479c53e28746ca8b9ba1ce25540938545ab40b2567e865"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00101",
+          "page": 8,
+          "type": "text",
+          "source_sha256": "95f97d5afdf1658fee3fec08e63e488df0e0ddf94c38483d7af9197d984f254d",
+          "translation_sha256": "950c4526c5e5611c46b781586e769d79ff696ad700f23586f23f6ba8c486049a"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00102",
+          "page": 8,
+          "type": "text",
+          "source_sha256": "428f3a12f0379422aa4ca993907d64303627e056c8405da7d145167e6b78c7dd",
+          "translation_sha256": "5abd14f269abb2c34b2c9754249d950fad43699e62cb0ed35ed10b1a5e0a6e92"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00103",
+          "page": 8,
+          "type": "text",
+          "source_sha256": "f878a8524f8524bbfd5dd01bfdddeda9e6de18abdfd84850c7af9cb949cd1648",
+          "translation_sha256": "5353fa435eb9668ebf31aa4c0d9b6590d5cd6f9f7efeba73d2a91f17f88df785"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00104",
+          "page": 8,
+          "type": "text",
+          "source_sha256": "cd4779a3178a954ed3e6c3953db7fd4c7b43ffe9386f8a988eea1b12b725a63e",
+          "translation_sha256": "87440a339b25eaa776ec649eebdde34465ad06f9bbdac4fa0752cc4c5d5d8ee1"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00105",
+          "page": 8,
+          "type": "text",
+          "source_sha256": "2c624232cdd221771294dfbb310aca000a0df6ac8b66b696d90ef06fdefb64a3",
+          "translation_sha256": "2c624232cdd221771294dfbb310aca000a0df6ac8b66b696d90ef06fdefb64a3"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00106",
+          "page": 9,
+          "type": "table",
+          "source_sha256": "5c129c9f6bb20cc10c74c1cf33d48d78bf06694e5a641aea527fef912cc330d9",
+          "translation_sha256": "1acba82ef704e77f13d82dfd4c19c19948d84cdd7f7019fcd42dcf4768fb2bde"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00107",
+          "page": 9,
+          "type": "text",
+          "source_sha256": "82157abcbcf17f466b19d74af26d81b1149a05357edda5a7d4f0a6f4af24c561",
+          "translation_sha256": "a8798e4e4672937dc101f78a04b918b900631daac783841d23b5b115c6bcacde"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00108",
+          "page": 9,
+          "type": "text",
+          "source_sha256": "6b7a8c08a79833fe5e59e66ac23e03f1968f5e758a748377f26b148a1698fde1",
+          "translation_sha256": "7c882d57a9e4b747815fdc9dd21444657d4a9c44a461efb75b8b8b9ea45dc328"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00109",
+          "page": 9,
+          "type": "text",
+          "source_sha256": "ffec79be1695b7df87d38acf1e417e27483fa7ab1087007c7f9e1d8394779924",
+          "translation_sha256": "370c297fdeac721102bd4672b6f42a77ea287fb597bc49c8abf0c8c13d0c05cf"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00110",
+          "page": 9,
+          "type": "text",
+          "source_sha256": "a4549429a3546c4ce6561ac577881a8c3a58806b414fa6ff5c90bda5e3dfc1d7",
+          "translation_sha256": "76f9d66c36449ccc6158f8e271792b91bb5d9d193ca6b1a40f7eb82a5349e57a"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00111",
+          "page": 9,
+          "type": "text",
+          "source_sha256": "3e732285a015d63b4baf59a588e25ec9f2945fcffd695f52935def9c43002164",
+          "translation_sha256": "7c8dcfcd669a48e5c56c6fc30d212ab100c3c6eb5ed3a0f438aa20db298586d5"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00112",
+          "page": 9,
+          "type": "text",
+          "source_sha256": "e352b6c722549064feb5ff659c0980d3117acd253484be42f0296eadb6c6134c",
+          "translation_sha256": "e3f6d803da06f0cf3db97c17c3f8444b6d93ce5b1e18b069dfbc8d1544d399a8"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00113",
+          "page": 9,
+          "type": "text",
+          "source_sha256": "ef98d7dcfc40f45cfaf1ec081e93100d3fa222edb7115ad4eb90c7291df193c5",
+          "translation_sha256": "1d8d0650a242d4aa8cac4ae832b583f6ef0e3dfd48476b1c9014e3c7777b4a65"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00114",
+          "page": 9,
+          "type": "text",
+          "source_sha256": "19581e27de7ced00ff1ce50b2047e7a567c76b1cbaebabe5ef03f7c3017bb5b7",
+          "translation_sha256": "19581e27de7ced00ff1ce50b2047e7a567c76b1cbaebabe5ef03f7c3017bb5b7"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00115",
+          "page": 10,
+          "type": "table",
+          "source_sha256": "33738193c59aa345ab457d67b6e34f2c34b35c0103f4cf953c0b47c3690dd095",
+          "translation_sha256": "3f83b33ea808ef77a91d4c69b9dbe96dffb9645d016638295cb67385cf2b16f3"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00116",
+          "page": 10,
+          "type": "text",
+          "source_sha256": "d9326ad193029f6635027e762e7e8b04ff03851c14a9d2bc1b745228c0d036d5",
+          "translation_sha256": "bbbd6117395e785002a3c8eb5043d3727d3c7a76eaf8bc8e6131cd5c539a0f72"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00117",
+          "page": 10,
+          "type": "text",
+          "source_sha256": "b1b68cb453cc2d5fc95ffc0b771bbe36b3d463c25d53f1d7e6f4cf0941b0a7f5",
+          "translation_sha256": "ce50243ad509fdf4b33e350d0b23d301c05615cbcbe1f9e6e0869db6a7e2c345"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00118",
+          "page": 10,
+          "type": "text",
+          "source_sha256": "b0ba7e3b78d83be2c437cd2ba8769dc656978bb7d3861af2f209a8d9e0b007aa",
+          "translation_sha256": "20207f1a9c7cf7f3f0c4e2a5538e9fae31cd2182dd91aee5ee421c0354702b60"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00119",
+          "page": 10,
+          "type": "text",
+          "source_sha256": "a5e6fd6a5ad77cd6b11dc679ee3543c1e09b2af85fb19c2a5af082e629a61ecd",
+          "translation_sha256": "4a1fe993ca69ab93edac9093d3fea2e12e24bfe6043e8be21756730cd8fe0518"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00120",
+          "page": 10,
+          "type": "text",
+          "source_sha256": "0ebc3f37472899247a859876b412e4665622f0886e0c4cab6102d7dbb613da7f",
+          "translation_sha256": "7149b823e9c8b6d614e03db6d77cfbd27735360f09edb266422a607f3fdd23bd"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00121",
+          "page": 10,
+          "type": "text",
+          "source_sha256": "a23a22100218eb897ad9b5d026cc290c7c79b959871f9fc16c93d602ca3045eb",
+          "translation_sha256": "8ae7814be38d315827f0be9a4f98df14366ab2e7d5f4c714498251c4a8744c44"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00122",
+          "page": 10,
+          "type": "text",
+          "source_sha256": "ba4c49f1bb33ab6ae4aa53f4ae92801af221ed169ec5e0d767824d1130ac5ba2",
+          "translation_sha256": "ac569d04e1ab72dc574fdfb1a6c2d0c3d9d542be39153716e0a7f61dffcacd48"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00123",
+          "page": 10,
+          "type": "text",
+          "source_sha256": "65cb940befd16824de29c43eac7b3990d7f04d9622883715b26eeaec5dd5f0fb",
+          "translation_sha256": "f24545534d2330736180f7bc8926abee9cdde3b132d9b94842f811fd602d7a77"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00124",
+          "page": 10,
+          "type": "text",
+          "source_sha256": "27f59a02e105ab27373fe95f1cf42b3f3842dbf1eac5f22d21950a0c66e25832",
+          "translation_sha256": "962703f361a94e600cf27abc3ca66eb5174e8aaf898f32ca2afbfe0fa702ccae"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00125",
+          "page": 10,
+          "type": "text",
+          "source_sha256": "b1721cb5f65b97551f2f3593bf9abaa7214c7e8c83a4dd684a9ba4d09c8ea25f",
+          "translation_sha256": "2eb694272491ca396e8622c007918ff13eefe5572238ff2fc9504567521aafa3"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00126",
+          "page": 10,
+          "type": "text",
+          "source_sha256": "69824d3b0e70ca6aaa0da1613b65fd914c442bf1f7ad1bb22bcdfbdfe1a05e39",
+          "translation_sha256": "edc3efb149a25b9613ce36ac49d50fa08fbda9e7b7120a27b83d2c9a69b24a3f"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00127",
+          "page": 10,
+          "type": "text",
+          "source_sha256": "38181c31079a7194a90fb84e93813656806ae30cfc69a85511f4c8112e268e8d",
+          "translation_sha256": "f2f1b568bcd2cf7d7ec8f7da17acb0d06669b958109aade842b42278bc6fc104"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00128",
+          "page": 10,
+          "type": "text",
+          "source_sha256": "d3c4b96dbf57502ece6467523e7acb6d89992054475d6f1a3b15a7f8f2dc6a1b",
+          "translation_sha256": "a6c0782cf13440ca26f68d418ac44b0943bd52d3e773b852e19e632c803e0195"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00129",
+          "page": 10,
+          "type": "text",
+          "source_sha256": "65c43ef6e61f6c852b2bcd719221964b2f675a6f57eae21e81ce291c9d0429f9",
+          "translation_sha256": "fc98f5abacfd9c5f86e5fcfdcb9c9e04f98b167208f9e4d46aa86470dc3aa7a7"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00130",
+          "page": 10,
+          "type": "text",
+          "source_sha256": "6ce7ab4ca7ce2871f57ee5136ce8d956b57791af9cfc14f23ede22524bfbb8ae",
+          "translation_sha256": "78f79e71d72b91822993a0e4d28716f77f1e6d41516d05b6d60f4df50e2c6a6d"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00131",
+          "page": 10,
+          "type": "text",
+          "source_sha256": "4a44dc15364204a80fe80e9039455cc1608281820fe2b24f1e5233ade6af1dd5",
+          "translation_sha256": "4a44dc15364204a80fe80e9039455cc1608281820fe2b24f1e5233ade6af1dd5"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00132",
+          "page": 11,
+          "type": "text",
+          "source_sha256": "aab4daf7404e855cda537c160ffcc4de2076ff08c6fb8f0780eb7d845fac945b",
+          "translation_sha256": "951df3b2eeb461ab7e42c599845ba8c3a398d526e1c99c04cded6c87fda246ac"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00133",
+          "page": 11,
+          "type": "text",
+          "source_sha256": "85f7beee02e84700ea2c094298c9e0168ad18a265226285b43106b71235174cc",
+          "translation_sha256": "6bbd8d321a9cbf934f4305e83ab4602789268ee107a4da0e9925a687fdb3d8df"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00134",
+          "page": 11,
+          "type": "text",
+          "source_sha256": "ae23ede180ce3d2d0c6bc189c781230de804a385456b681c47e06883d810c9dc",
+          "translation_sha256": "b30179a0e1d8a21025a782695f78a3e5f31b5f58485b79e602fea76d4b239e9d"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00135",
+          "page": 11,
+          "type": "text",
+          "source_sha256": "368523a32b999a08bca7b0f942570b7e0fd186fc861842d57a4c33b4418aa0ea",
+          "translation_sha256": "c48f56f4a9856facffc9a4bd4e6c98ad0ff8ef36513f95e160d8bb3376e6baaf"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00136",
+          "page": 11,
+          "type": "text",
+          "source_sha256": "45152dec37085824ac8fd3fa1f9a71d2f30958a34dbca9bd61e5acac18cfce70",
+          "translation_sha256": "40a2d00b2b11dd792f02bae7eca8fe799936152b24dda55e597a0e8b40f2791f"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00137",
+          "page": 11,
+          "type": "text",
+          "source_sha256": "65860da430382a6c72eba4e8c2c36679351977a7e8dd02158d1f9bbbad2fecdf",
+          "translation_sha256": "f0506009496847fce43e4a613f0f3cdae9ba0ae9dbc05c3ba6f5c2b3434d006d"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00138",
+          "page": 11,
+          "type": "text",
+          "source_sha256": "0ffc5a8a3b27fb59109db59b2045ebc6a4f9305889cf1bf22160652bc382d85c",
+          "translation_sha256": "ae5582868eed13cac876c68dbfd04562bcfcbe989b4fb1c01c190007a0d42f32"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00139",
+          "page": 11,
+          "type": "text",
+          "source_sha256": "ae3b1cc3052b6022137bc54e562a9ac161f1e3d0f17c082596c257fad8e9840c",
+          "translation_sha256": "c6780a81d5b00d8c3d8d8b64574b8eba9a0d0440839e8292b5d87714e486bf92"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00140",
+          "page": 11,
+          "type": "text",
+          "source_sha256": "4d42e5970c394d6f077eecc6d03441308b2e40c2ad6fa3b01f03992a57260f7c",
+          "translation_sha256": "57c5a6323da5efe0ed05498f451cd8ef7d29e305e1387e4b097c7418ab9c4493"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00141",
+          "page": 11,
+          "type": "text",
+          "source_sha256": "813a040481bea6cec3dfae91514115ca30ffbedb0954cebbb27c3a98df1fd986",
+          "translation_sha256": "17e7bc713213bd73b8962a5bdba3d1d1988f2b3ac888cc2ac23b23935dc5714a"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00142",
+          "page": 11,
+          "type": "text",
+          "source_sha256": "359bb7a8dbc29b7ec3e58f2f2c8dd3631ae51e58bfc080f14fe7a133470e78e9",
+          "translation_sha256": "b2f0caa35fa6e807a6249917fb8bdf0d850e0d78bab51351c10b3e5cb345aaf6"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00143",
+          "page": 11,
+          "type": "text",
+          "source_sha256": "a59c17c9881ee5b3260944f5bd65e93b04939b257ee139834bfd855b1b34a734",
+          "translation_sha256": "f1bf1561c0b59da6839331afeb9d6f04629c42aac939570837cb313675ce5fc7"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00144",
+          "page": 11,
+          "type": "text",
+          "source_sha256": "c23059c0922f29c5e708f93760d4680ff7f92c403f61a4c4d60be583445789ce",
+          "translation_sha256": "efcff92b3ec2e13b983ef85114baa12bc0df22b207c7daf74697d3379bac196e"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00145",
+          "page": 11,
+          "type": "text",
+          "source_sha256": "0663014769cc914ebf97c8cbe0e6d0e920c9ee5010cbde47fe69cb1070a42a07",
+          "translation_sha256": "afae0cbd00308cde2d70d2f26ad166689be901f1b3a95d53fbff0249f1254731"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00146",
+          "page": 11,
+          "type": "text",
+          "source_sha256": "58e691c0a581e55da111700d820ffb0f17a141f76f0a411b797fb58746288a84",
+          "translation_sha256": "cccad1ca6ef87f5a9b28338a150140f37595f93ff8b5e4e352691d7a9d356c21"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00147",
+          "page": 11,
+          "type": "text",
+          "source_sha256": "d9c468deab0ccdbcbf4be951a61dcab91391a6bf05e5669d47cfcebb4a636799",
+          "translation_sha256": "0d2bbee942a58bb9b5dac3069ce24adfe6f9495b17369d81cbe2308a0e9bdccb"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00148",
+          "page": 11,
+          "type": "text",
+          "source_sha256": "f32616b24c6aeb75cc316376d47911ce3bcd983ca2344b7d95dad4657e946918",
+          "translation_sha256": "4f7031ec33519f908e872be03432654ad6777bcb0fb9231703ae1eb98f934194"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00149",
+          "page": 11,
+          "type": "text",
+          "source_sha256": "4ac3380134d9ecd4d68e04c0e6f06c3537fcb4624a8c86af49fe0c4d6653a5a1",
+          "translation_sha256": "a533c92363c9f067acb6f6938fbf2d5c93e8996f4e896f835f1d66825a1a3940"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00150",
+          "page": 11,
+          "type": "text",
+          "source_sha256": "9be8ba2272cadc452f965691915507c486e66d0ad21562b982bc78aba93ba30c",
+          "translation_sha256": "e2cdd6b660caf10117ed19307f20068ba896494c76f6184de23cc55556a9dcb5"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00151",
+          "page": 11,
+          "type": "text",
+          "source_sha256": "34387805a545baf32501210527c5363d85ac325e23939b18aa3ff7c126069873",
+          "translation_sha256": "2a71784406536353c93b253c6d259622cb024d10e07da7f3400cd2c2ce689d99"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00152",
+          "page": 11,
+          "type": "text",
+          "source_sha256": "4fc82b26aecb47d2868c4efbe3581732a3e7cbcc6c2efb32062c08170a05eeb8",
+          "translation_sha256": "4fc82b26aecb47d2868c4efbe3581732a3e7cbcc6c2efb32062c08170a05eeb8"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00153",
+          "page": 12,
+          "type": "text",
+          "source_sha256": "cac05d3504a478856b5b634ab28544a3ff370dc27974a2f52a4626ff640acde9",
+          "translation_sha256": "3bf98873b6e4924d50df2926d7e689c1850c7beb3e4bc5042a389010a9a68e8c"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00154",
+          "page": 12,
+          "type": "text",
+          "source_sha256": "8b5301cdbca1162146b17800f6f4a0334b676dae7e0ad1f2b32127b1579b32ca",
+          "translation_sha256": "8feaef0054ed36eab5029085bc21a3168610623c2fa07ccf8afc9f94f306056c"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00155",
+          "page": 12,
+          "type": "text",
+          "source_sha256": "ce7fa223c014cf831af74acea3ae97a6e97a07f99aaa1e99fb3ae2a7eee64ac5",
+          "translation_sha256": "9dbb41ee44aecfa9be60fef09675c580464241a0161b05a4e500a333310817f9"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00156",
+          "page": 12,
+          "type": "text",
+          "source_sha256": "b9f27d83262d48006e396943084c1977889e318c04a574c31fffdfdfbb00c291",
+          "translation_sha256": "59df84861ae13892e653aba0cdff7d26ece3e3d907b562cb1babb4939920d8f8"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00157",
+          "page": 12,
+          "type": "text",
+          "source_sha256": "130c777541a91fe74b20c3cb11ecdc99e188fa6227b3f40ff074387787c7f495",
+          "translation_sha256": "8a5be1b4f8c564b1be47b006c80d45697725cb9c39e3ed71d2e1eb44dc48519c"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00158",
+          "page": 12,
+          "type": "text",
+          "source_sha256": "8d5f173b7b423cc9fd440df3e6b634d953a6afec7f5fb7cfeb77601eb9c704e8",
+          "translation_sha256": "fef273f3a0483f43f48d0381da62201808c7f3bde955013aa2537e3bfe8319ff"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00159",
+          "page": 12,
+          "type": "text",
+          "source_sha256": "65638ec7c6736afaa20c940cfc1243b3bd2a9774a52d41ef152ef9cd4d54760a",
+          "translation_sha256": "f5f9e8bacf54e34cfd598950091bd29e999cf7124f66281ec8ac4a9b32f08e5e"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00160",
+          "page": 12,
+          "type": "text",
+          "source_sha256": "eb0a8332744a43f71f7f9607479d8bccdeb4617946bcd44cd2d874b30a7a02b9",
+          "translation_sha256": "c5a37929df8bd03ceb6421621295cd68ff82daceee62902c3a62b51386f6a7f9"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00161",
+          "page": 12,
+          "type": "text",
+          "source_sha256": "c37896d154f62f515c0e6b1ee92d867a3ef5e333e8fd997b43a483d17f1fbbc0",
+          "translation_sha256": "69eff632c85a35c5d3f1c085761848534c9482d20eed392fc6f1fefe3a9224d3"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00162",
+          "page": 12,
+          "type": "text",
+          "source_sha256": "76e12c0b4bfde91edc6be6fa678060706bef11668973cb408a49371f24b1b3c2",
+          "translation_sha256": "53b0bf7f8fcbc082ed1bae95b110354181f35d17ac0c9d9bda07016264c63ee5"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00163",
+          "page": 12,
+          "type": "text",
+          "source_sha256": "650f04bd6a2150cfa9bbb173d59a7f97c3fa0d6d498c014e62119589c76847f2",
+          "translation_sha256": "8db1b3e78636ad35e9495d083581e334fe9f8176cfe4784020bdb6cd027dfc68"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00164",
+          "page": 12,
+          "type": "text",
+          "source_sha256": "08c978b6e607ad44c6d1950e7972965be87b4fd831b70f8c82f303cbe3c07e29",
+          "translation_sha256": "7ca80dcc63aa4f90a1bf046856db1338e970229a1c55b79df6cd48f71738cf73"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00165",
+          "page": 12,
+          "type": "text",
+          "source_sha256": "43a3ac6d330f9a5ded2f6dfc1855b2ac65e5e230d46ebe8ad1f8986e7ce25736",
+          "translation_sha256": "01e38106e75a6f9f335810044b063529d9a55f9b9e059b70c53671d4ebea1b52"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00166",
+          "page": 12,
+          "type": "text",
+          "source_sha256": "0ac746325fd41171c69efd888b2a38fb261e6f65ebccd50dfc1d3ce53232fcab",
+          "translation_sha256": "9ca9c9844ed54514697058578281b1d1d0653e9baf265d196f6a44b235ef071f"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00167",
+          "page": 12,
+          "type": "text",
+          "source_sha256": "b82176653e5b1b3c989a1cbdf981febe951f60247af1b1588773f70e8be31496",
+          "translation_sha256": "784c3ef010c68bc96c689b1f60b1143396c362135620d0509660225e82a2f854"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00168",
+          "page": 12,
+          "type": "text",
+          "source_sha256": "6a793b7305b3a8cf4dbd10d48b89811a2d387933fa1ea2369333b63b5f1edf44",
+          "translation_sha256": "4954fa3592ab5d159d14f0c3f4fed6e1fcd65fab8bac3cfb62be4aa0a468ff36"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00169",
+          "page": 12,
+          "type": "text",
+          "source_sha256": "6b51d431df5d7f141cbececcf79edf3dd861c3b4069f0b11661a3eefacbba918",
+          "translation_sha256": "6b51d431df5d7f141cbececcf79edf3dd861c3b4069f0b11661a3eefacbba918"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0013-c00170",
+          "page": 13,
+          "type": "figure",
+          "source_sha256": "61700c70d9758f98ff61da6e7c97bbc08c2de1f7764ec3533891c03990c80602",
+          "translation_sha256": "979078e3ec46b057d97657a17a622b1680daa4835fbdf1f3d3118b0f758baf64"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0013-c00171",
+          "page": 13,
+          "type": "text",
+          "source_sha256": "3fdba35f04dc8c462986c992bcf875546257113072a909c162f7e470e581e278",
+          "translation_sha256": "3fdba35f04dc8c462986c992bcf875546257113072a909c162f7e470e581e278"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0014-c00172",
+          "page": 14,
+          "type": "figure",
+          "source_sha256": "606350c0d38e80352d8adac020f961cffda0985a1dfbc9ce7a86abbd6e0a050f",
+          "translation_sha256": "7ccbc6dbd4aad7c2ffcd13aad8bafe953694e7935f8d931e78b7add09e428dbe"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0014-c00173",
+          "page": 14,
+          "type": "text",
+          "source_sha256": "8527a891e224136950ff32ca212b45bc93f69fbb801c3b1ebedac52775f99e61",
+          "translation_sha256": "8527a891e224136950ff32ca212b45bc93f69fbb801c3b1ebedac52775f99e61"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0015-c00174",
+          "page": 15,
+          "type": "figure",
+          "source_sha256": "2024ff1b4c455caf0a2c29ffbd5685e3d0a9f45735545e1c5f54a27a62ee4126",
+          "translation_sha256": "91e234b882008344e0b95808d29e4c229510de050ba1111406803137eff50ef6"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0015-c00175",
+          "page": 15,
+          "type": "text",
+          "source_sha256": "e629fa6598d732768f7c726b4b621285f9c3b85303900aa912017db7617d8bdb",
+          "translation_sha256": "e629fa6598d732768f7c726b4b621285f9c3b85303900aa912017db7617d8bdb"
+        }
+      ],
+      "markdown_chars": 39072,
+      "markdown_sha256": "d91ac6dc135a7bc2b62dc3e0d366d7426362d18e1d8cc0f92dd9d2ed122a9bfd",
+      "translated_sample": "主流的序列转导模型基于复杂的循环或卷积神经网络，其中包含一个编码器和一个解码器。性能最好的模型还通过注意力机制连接编码器和解码器。我们提出了一种新的简单网络架构——Transformer，它完全基于注意力机制，彻底摒弃了循环和卷积。在两个机器翻译任务上的实验表明，这些模型在质量上更优，同时具有更强的并行性，且训练所需时间显著更少。我们的模型在 WMT 2014 英德翻译任务上达到 28.4 BLEU，比现有最佳结果（包括集成模型）高出 "
+    },
+    {
+      "case": "abstract_zh",
+      "status": 200,
+      "seconds": 3.937,
+      "segments": 6,
+      "checks": {
+        "coverage": true,
+        "anchors": true,
+        "protected_spans": true,
+        "numbers": true,
+        "nonempty": true,
+        "markdown_coverage": true,
+        "real_model": true
+      },
+      "model_calls": [
+        {
+          "provider": "deepseek",
+          "model": "deepseek-chat",
+          "phase": "translate_batch_1_attempt_1",
+          "elapsed_seconds": 3.86379,
+          "prompt_tokens": 1555,
+          "completion_tokens": 555,
+          "total_tokens": 2110,
+          "http_status": 200,
+          "status": "succeeded",
+          "response_bytes": 2885,
+          "finish_reason": "stop"
+        }
+      ],
+      "segments_manifest": [
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00009",
+          "page": 1,
+          "type": "text",
+          "source_sha256": "d21b4a64a2d8656a0fdf7ab2e89a49164ac504686cfa2a3d442e87c209286330",
+          "translation_sha256": "21c04b2eeeb431f7722c4c144f95567e3bae94de9c743472072c84745d24367a"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00010",
+          "page": 1,
+          "type": "text",
+          "source_sha256": "3c3b8f01798c0ee27a07a93f1f79e2600717750b170e33709197c2aa400fe80c",
+          "translation_sha256": "517a947b0ac198322ae55b553476e086f614dbc0759c5be6daab3ad98bce7c22"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00011",
+          "page": 1,
+          "type": "text",
+          "source_sha256": "bd4686878258fc51bca1cc5a8de4b0d75bb159bf23c0b7c8a040a55d4832100c",
+          "translation_sha256": "c1d5a8d5ea5e0dc3a1f6c4c0f1309e99153ef09e67d28ba7dc5cfe8101586e54"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00012",
+          "page": 1,
+          "type": "text",
+          "source_sha256": "0c13d69d738fb24bdfc02acc2bb8236fd57a99c0870c84ce9b96fcd6dbd039d8",
+          "translation_sha256": "007f6d341b1a3019ebfdf79905f36ba4fc1052250126bf429b03bf14d5b25c57"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00013",
+          "page": 1,
+          "type": "text",
+          "source_sha256": "f94d40023ba94fb2c38e2a5c800ed1a4ec5078fd9dec900cd25ad3498f97c82c",
+          "translation_sha256": "d463e1c4137d0fc1f99366fb2b6349153e1741749dddcc36761df5ef2cf755e3"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00014",
+          "page": 1,
+          "type": "text",
+          "source_sha256": "139e38b53e60a76084a722ac1300e096bd02bbfb21c66a311f33178a7f45b635",
+          "translation_sha256": "4825aff85d1e0a4dad8fd2d827066e186f5f61fc28eb7ef458636ed83e4540de"
+        }
+      ],
+      "markdown_chars": 0,
+      "markdown_sha256": null,
+      "translated_sample": "主流的序列转导模型基于复杂的循环或卷积神经网络，其中包含一个编码器和一个解码器。性能最好的模型还通过注意力机制将编码器和解码器连接起来。我们提出了一种新的简单网络架构——Transformer，它完全基于注意力机制，完全摒弃了循环和卷积。在两个机器翻译任务上的实验表明，这些模型在质量上更优，同时具有更强的并行性，且训练所需时间显著更少。我们的模型在 WMT 2014 英德翻译任务上达到 28.4 BLEU，比现有最佳结果（包括集成模型）"
+    },
+    {
+      "case": "section_zh",
+      "status": 200,
+      "seconds": 4.547,
+      "segments": 12,
+      "checks": {
+        "coverage": true,
+        "anchors": true,
+        "protected_spans": true,
+        "numbers": true,
+        "nonempty": true,
+        "markdown_coverage": true,
+        "real_model": true
+      },
+      "model_calls": [
+        {
+          "provider": "deepseek",
+          "model": "deepseek-chat",
+          "phase": "translate_batch_1_attempt_1",
+          "elapsed_seconds": 4.47243,
+          "prompt_tokens": 1413,
+          "completion_tokens": 416,
+          "total_tokens": 1829,
+          "http_status": 200,
+          "status": "succeeded",
+          "response_bytes": 2012,
+          "finish_reason": "stop"
+        }
+      ],
+      "segments_manifest": [
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0004-c00043",
+          "page": 4,
+          "type": "text",
+          "source_sha256": "c64898a3f1edcca10985220cf1fb68a246b72863e0e8de614b4f44a7a881f1b2",
+          "translation_sha256": "f4f16a595d90950f3b623b8d7ec908c67035688763671a3de22506922e867ac9"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0004-c00044",
+          "page": 4,
+          "type": "text",
+          "source_sha256": "660117f76571ea3db3dcd8a31e0bd7a4d1faa9d5cf55353e62c2c3a5634dfc0a",
+          "translation_sha256": "686f55d56ba10b9f31bb7940422aab1f31adbcb4bb8b93c631d4b71b0e639e6e"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0004-c00045",
+          "page": 4,
+          "type": "text",
+          "source_sha256": "41957244f5244b1fbc66ddba355286e6289b3c1ed8694e232b5e4fdb4494627b",
+          "translation_sha256": "b384da23722022c8c23e37d67f0b7efbb223081d52631beab0fd7d1f6e2afd37"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0004-c00046",
+          "page": 4,
+          "type": "text",
+          "source_sha256": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
+          "translation_sha256": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00047",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "259298f61f4d6456eb95121be01c03dc707ebdb0612c5bc79f1aea1d9a0b4d6c",
+          "translation_sha256": "8880cea43db81fad1b168ae5deb8fce7322ac6d8795ca51047b970770ef2c8f5"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00048",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "be50bef9d05264591898ec2a7afeabdf2249c09e51d2d19113f8aefab58546ce",
+          "translation_sha256": "4c7f5685a0c1185afde2f9572535550bcadfb6bad2e96b9e366a0654abb3224d"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00049",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "1e49a3640ffb3be19ed2d993f418fa77e8f003054fb59a248f90172923125551",
+          "translation_sha256": "1e49a3640ffb3be19ed2d993f418fa77e8f003054fb59a248f90172923125551"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00050",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "8225b83fd924a6c875ae5e6f27cb2c7a36c1cdf15f8aaf5e5eba9161ca1c0bd7",
+          "translation_sha256": "b660a1378ab2b15a00b9321e1e2a7b3eaf55e2a153d36d71679a06055052248c"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00051",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "c3a800cafce18223e5e90c2ec57bb27f141e4d01893325a6a56883ed97b9d99c",
+          "translation_sha256": "c3a800cafce18223e5e90c2ec57bb27f141e4d01893325a6a56883ed97b9d99c"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00052",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "f6d789d2d6d8e3882a5c9985762df42a9c98d1216753008a1e49065924bb0fc6",
+          "translation_sha256": "f6d789d2d6d8e3882a5c9985762df42a9c98d1216753008a1e49065924bb0fc6"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00053",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "accfd5998875a89c8cdf2bd9c74bff26c4a56fcf9ddf0d20bfc53061d98c5740",
+          "translation_sha256": "accfd5998875a89c8cdf2bd9c74bff26c4a56fcf9ddf0d20bfc53061d98c5740"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00054",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "cd0793a501fd7aa66db8ec03f533836a0bccb7cc8faf7d4684d0c78816015afa",
+          "translation_sha256": "324b41608c73afd5029ab2e84d67428737599ea69205c8dce224bc23828b3308"
+        }
+      ],
+      "markdown_chars": 0,
+      "markdown_sha256": null,
+      "translated_sample": "我们没有使用单个注意力函数处理 d model 维的键、值和查询，而是发现将查询、键和值分别用不同的、学习到的线性投影 h 次线性投影到 d k 、d k 和 d v 维是有益的。然后，在这些查询、键和值的每个投影版本上，我们并行地执行注意力函数，得到 d v 维的"
+    },
+    {
+      "case": "selection_zh",
+      "status": 200,
+      "seconds": 2.688,
+      "segments": 1,
+      "checks": {
+        "coverage": true,
+        "anchors": true,
+        "protected_spans": true,
+        "numbers": true,
+        "nonempty": true,
+        "markdown_coverage": true,
+        "real_model": true
+      },
+      "model_calls": [
+        {
+          "provider": "deepseek",
+          "model": "deepseek-chat",
+          "phase": "translate_batch_1_attempt_1",
+          "elapsed_seconds": 2.568097,
+          "prompt_tokens": 684,
+          "completion_tokens": 94,
+          "total_tokens": 778,
+          "http_status": 200,
+          "status": "succeeded",
+          "response_bytes": 848,
+          "finish_reason": "stop"
+        }
+      ],
+      "segments_manifest": [
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0004-c00044",
+          "page": 4,
+          "type": "text",
+          "source_sha256": "660117f76571ea3db3dcd8a31e0bd7a4d1faa9d5cf55353e62c2c3a5634dfc0a",
+          "translation_sha256": "bf4cc94dba05f0ed9e792b2598c1dd1fc35ef4d3e2e25a65ecbaca8be8c64aae"
+        }
+      ],
+      "markdown_chars": 0,
+      "markdown_sha256": null,
+      "translated_sample": "我们发现，与其使用 d model 维的键、值和查询执行单个注意力函数，不如用不同的、学习到的线性投影将查询、键和值分别线性投影 h 次到 d k 、d k 和 d v 维。然后，在这些投影后的查询、键和值版本上，我们并行执行注意力函数，得到 d v 维"
+    },
+    {
+      "case": "abstract_en",
+      "status": 200,
+      "seconds": 4.281,
+      "segments": 6,
+      "checks": {
+        "coverage": true,
+        "anchors": true,
+        "protected_spans": true,
+        "numbers": true,
+        "nonempty": true,
+        "markdown_coverage": true,
+        "real_model": true
+      },
+      "model_calls": [
+        {
+          "provider": "deepseek",
+          "model": "deepseek-chat",
+          "phase": "translate_batch_1_attempt_1",
+          "elapsed_seconds": 4.162614,
+          "prompt_tokens": 1427,
+          "completion_tokens": 561,
+          "total_tokens": 1988,
+          "http_status": 200,
+          "status": "succeeded",
+          "response_bytes": 3252,
+          "finish_reason": "stop"
+        }
+      ],
+      "segments_manifest": [
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00009",
+          "page": 1,
+          "type": "text",
+          "source_sha256": "21c04b2eeeb431f7722c4c144f95567e3bae94de9c743472072c84745d24367a",
+          "translation_sha256": "d21b4a64a2d8656a0fdf7ab2e89a49164ac504686cfa2a3d442e87c209286330"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00010",
+          "page": 1,
+          "type": "text",
+          "source_sha256": "300d8751f0f13df80d76039b3bb6a91bb3b14a653e731eca74ba77b7613d7e32",
+          "translation_sha256": "62de06e3f5e10679f8cf7951fc3df58e0a4d99fdb429eab0b982a5a55e429899"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00011",
+          "page": 1,
+          "type": "text",
+          "source_sha256": "c1d5a8d5ea5e0dc3a1f6c4c0f1309e99153ef09e67d28ba7dc5cfe8101586e54",
+          "translation_sha256": "bd4686878258fc51bca1cc5a8de4b0d75bb159bf23c0b7c8a040a55d4832100c"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00012",
+          "page": 1,
+          "type": "text",
+          "source_sha256": "c72946ff140439ba800c11d82d24cb4c5b5c650a0a724198efd65be067757c8f",
+          "translation_sha256": "0c13d69d738fb24bdfc02acc2bb8236fd57a99c0870c84ce9b96fcd6dbd039d8"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00013",
+          "page": 1,
+          "type": "text",
+          "source_sha256": "d463e1c4137d0fc1f99366fb2b6349153e1741749dddcc36761df5ef2cf755e3",
+          "translation_sha256": "f94d40023ba94fb2c38e2a5c800ed1a4ec5078fd9dec900cd25ad3498f97c82c"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00014",
+          "page": 1,
+          "type": "text",
+          "source_sha256": "4825aff85d1e0a4dad8fd2d827066e186f5f61fc28eb7ef458636ed83e4540de",
+          "translation_sha256": "139e38b53e60a76084a722ac1300e096bd02bbfb21c66a311f33178a7f45b635"
+        }
+      ],
+      "markdown_chars": 0,
+      "markdown_sha256": null,
+      "translated_sample": "The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an "
+    },
+    {
+      "case": "full_en",
+      "via": "real_direct_v1",
+      "http_status": 200,
+      "seconds": 59.25,
+      "segments": 175,
+      "checks": {
+        "coverage": true,
+        "anchors": true,
+        "protected_spans": true,
+        "numbers": true,
+        "nonempty": true,
+        "markdown_coverage": true,
+        "real_model": true
+      },
+      "model_calls": [
+        {
+          "provider": "deepseek",
+          "model": "deepseek-chat",
+          "phase": "translate_batch_1_attempt_1",
+          "elapsed_seconds": 12.449408,
+          "prompt_tokens": 4651,
+          "completion_tokens": 2273,
+          "total_tokens": 6924,
+          "http_status": 200,
+          "status": "succeeded",
+          "response_bytes": 11695,
+          "finish_reason": "stop"
+        },
+        {
+          "provider": "deepseek",
+          "model": "deepseek-chat",
+          "phase": "translate_batch_2_attempt_1",
+          "elapsed_seconds": 9.555118,
+          "prompt_tokens": 3498,
+          "completion_tokens": 1607,
+          "total_tokens": 5105,
+          "http_status": 200,
+          "status": "succeeded",
+          "response_bytes": 8139,
+          "finish_reason": "stop"
+        },
+        {
+          "provider": "deepseek",
+          "model": "deepseek-chat",
+          "phase": "translate_batch_3_attempt_1",
+          "elapsed_seconds": 8.945627,
+          "prompt_tokens": 3459,
+          "completion_tokens": 1629,
+          "total_tokens": 5088,
+          "http_status": 200,
+          "status": "succeeded",
+          "response_bytes": 8045,
+          "finish_reason": "stop"
+        },
+        {
+          "provider": "deepseek",
+          "model": "deepseek-chat",
+          "phase": "translate_batch_4_attempt_1",
+          "elapsed_seconds": 9.492141,
+          "prompt_tokens": 3858,
+          "completion_tokens": 1707,
+          "total_tokens": 5565,
+          "http_status": 200,
+          "status": "succeeded",
+          "response_bytes": 7916,
+          "finish_reason": "stop"
+        },
+        {
+          "provider": "deepseek",
+          "model": "deepseek-chat",
+          "phase": "translate_batch_5_attempt_1",
+          "elapsed_seconds": 7.218447,
+          "prompt_tokens": 3586,
+          "completion_tokens": 1477,
+          "total_tokens": 5063,
+          "http_status": 200,
+          "status": "succeeded",
+          "response_bytes": 6498,
+          "finish_reason": "stop"
+        },
+        {
+          "provider": "deepseek",
+          "model": "deepseek-chat",
+          "phase": "translate_batch_6_attempt_1",
+          "elapsed_seconds": 8.86246,
+          "prompt_tokens": 4183,
+          "completion_tokens": 1954,
+          "total_tokens": 6137,
+          "http_status": 200,
+          "status": "succeeded",
+          "response_bytes": 8283,
+          "finish_reason": "stop"
+        },
+        {
+          "provider": "deepseek",
+          "model": "deepseek-chat",
+          "phase": "translate_batch_7_attempt_1",
+          "elapsed_seconds": 2.369405,
+          "prompt_tokens": 1261,
+          "completion_tokens": 200,
+          "total_tokens": 1461,
+          "http_status": 200,
+          "status": "succeeded",
+          "response_bytes": 1314,
+          "finish_reason": "stop"
+        }
+      ],
+      "segments_manifest": [
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00001",
+          "page": 1,
+          "type": "text",
+          "source_sha256": "87506591bad92968defbd6f5a066b67213f8f6540b2bf95d96c32ba6b505cef7",
+          "translation_sha256": "d5034a88a177064f37817cb8589777b271661fa564d5edf484fa9682d6c369d7"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00002",
+          "page": 1,
+          "type": "text",
+          "source_sha256": "6fbb6727ffd04f9ca31ca080724a176fa100308c7f2c22f1f537ec7d5e2767d8",
+          "translation_sha256": "4a1c934d3d98f3cefede93ebb74d0c4c2bac7ac9cc4f467d253ef8f87a2d6aad"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00003",
+          "page": 1,
+          "type": "text",
+          "source_sha256": "cbad36042e27452166debff2f416d8bef577cd48494b7b3630aed886f5ed2b30",
+          "translation_sha256": "cbad36042e27452166debff2f416d8bef577cd48494b7b3630aed886f5ed2b30"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00004",
+          "page": 1,
+          "type": "text",
+          "source_sha256": "7ecb3a2f8cada846fdff6f3032d70e294d4833885baf41bf0969c42ed5547ed1",
+          "translation_sha256": "7ecb3a2f8cada846fdff6f3032d70e294d4833885baf41bf0969c42ed5547ed1"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00005",
+          "page": 1,
+          "type": "text",
+          "source_sha256": "f6bd93646209d244a6accece856b83e885013d6a6d836e7eaa4f731072de7ab5",
+          "translation_sha256": "f6bd93646209d244a6accece856b83e885013d6a6d836e7eaa4f731072de7ab5"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00006",
+          "page": 1,
+          "type": "text",
+          "source_sha256": "326e631d22f84f8c6a0250de1158db9d85c8ed6c2f9536c189ebbdfc44a649e3",
+          "translation_sha256": "326e631d22f84f8c6a0250de1158db9d85c8ed6c2f9536c189ebbdfc44a649e3"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00007",
+          "page": 1,
+          "type": "text",
+          "source_sha256": "81e7cfadaf5ff243b9cca257139c2da85916313e9d5e20fd6d837ee9e454742c",
+          "translation_sha256": "81e7cfadaf5ff243b9cca257139c2da85916313e9d5e20fd6d837ee9e454742c"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00008",
+          "page": 1,
+          "type": "text",
+          "source_sha256": "f2b4a94ae86d87ed314a584f6806547b2b3cd0d2d9d375293780d508b40b44ee",
+          "translation_sha256": "f2b4a94ae86d87ed314a584f6806547b2b3cd0d2d9d375293780d508b40b44ee"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00009",
+          "page": 1,
+          "type": "text",
+          "source_sha256": "21c04b2eeeb431f7722c4c144f95567e3bae94de9c743472072c84745d24367a",
+          "translation_sha256": "d21b4a64a2d8656a0fdf7ab2e89a49164ac504686cfa2a3d442e87c209286330"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00010",
+          "page": 1,
+          "type": "text",
+          "source_sha256": "300d8751f0f13df80d76039b3bb6a91bb3b14a653e731eca74ba77b7613d7e32",
+          "translation_sha256": "62de06e3f5e10679f8cf7951fc3df58e0a4d99fdb429eab0b982a5a55e429899"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00011",
+          "page": 1,
+          "type": "text",
+          "source_sha256": "c1d5a8d5ea5e0dc3a1f6c4c0f1309e99153ef09e67d28ba7dc5cfe8101586e54",
+          "translation_sha256": "b3a1b6bc4f86cfe0e8b605c1b30a5ff589d552320b1c9e5468f5522fada4877e"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00012",
+          "page": 1,
+          "type": "text",
+          "source_sha256": "c72946ff140439ba800c11d82d24cb4c5b5c650a0a724198efd65be067757c8f",
+          "translation_sha256": "0c13d69d738fb24bdfc02acc2bb8236fd57a99c0870c84ce9b96fcd6dbd039d8"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00013",
+          "page": 1,
+          "type": "text",
+          "source_sha256": "d463e1c4137d0fc1f99366fb2b6349153e1741749dddcc36761df5ef2cf755e3",
+          "translation_sha256": "f94d40023ba94fb2c38e2a5c800ed1a4ec5078fd9dec900cd25ad3498f97c82c"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00014",
+          "page": 1,
+          "type": "text",
+          "source_sha256": "4825aff85d1e0a4dad8fd2d827066e186f5f61fc28eb7ef458636ed83e4540de",
+          "translation_sha256": "139e38b53e60a76084a722ac1300e096bd02bbfb21c66a311f33178a7f45b635"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00015",
+          "page": 2,
+          "type": "text",
+          "source_sha256": "76958d09e702c69e16621898d46d11240e5c899ee0969a5dec97552c2e7bd574",
+          "translation_sha256": "c9234967b670c32478644b4236ec8fd2f351225696cacbcd0fad1f1838b95170"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00016",
+          "page": 2,
+          "type": "text",
+          "source_sha256": "a43bc07679088ed5096a47833d7c0a7cf8b51c7e7ee2cada84d0edea4cd25d43",
+          "translation_sha256": "2ce06fd8b1281c69103914b4bbb234529d85bdda797b10e44ff41000571c0fa0"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00017",
+          "page": 2,
+          "type": "text",
+          "source_sha256": "ad0b3d9ad271e64ff2fb8fd3cd34c25380ceec630b010d026ece44dc1beaa4da",
+          "translation_sha256": "ed4004d67a3ae19d0f956c7a102afa25b2eb74e6b87d74f852b04cbcfe75558e"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00018",
+          "page": 2,
+          "type": "text",
+          "source_sha256": "85a6ffdc524df16745a5f7ab8320e949e8e2c03cf280cc53960964315945258f",
+          "translation_sha256": "0bc302871e808c74795ecd3d6e0871ce7be74b773d3818441a525c0693832350"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00019",
+          "page": 2,
+          "type": "text",
+          "source_sha256": "91eaafa0e1f78a478ade54a94ff23aa0877b549f564168335e30f262c7de21f2",
+          "translation_sha256": "ea07473b48f37e4eeb4f615ef9e50958919bac1de2e0979f9402771589979fa9"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00020",
+          "page": 2,
+          "type": "text",
+          "source_sha256": "2ae321452976c4fd6b983fd064093fb8464261691008befb84a4651970b55bc0",
+          "translation_sha256": "b9cecd7cdf8e46c955bd793d1c2118df2e93b68fc2048da987e06cbd735e0efa"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00021",
+          "page": 2,
+          "type": "text",
+          "source_sha256": "1743da9d775fa5c7e427797e0a07125d1c04782248f93212eedf6d430f988d11",
+          "translation_sha256": "566a5145ed195df3c3d63f5c4560e264ef353f8c86a2b5fd5d2dd951b300f5eb"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00022",
+          "page": 2,
+          "type": "text",
+          "source_sha256": "d663030ffc00969d06ce316d4656f4ee3df16109fc50d1045b90ff946f8a54c9",
+          "translation_sha256": "ede393fc011318bd8efc0780a830a3c1d422d057d17f579b1cf57b82318e5b60"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00023",
+          "page": 2,
+          "type": "text",
+          "source_sha256": "c2eab46a0e93c21ffe2716f7a983ccb25abca6382c41c280e4c2bd78b7c0ef4c",
+          "translation_sha256": "c0ee8987103fae49d8e8b0bcb65870f15794b361cd01198c83934b232a241fa1"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00024",
+          "page": 2,
+          "type": "text",
+          "source_sha256": "580eeb35854ef20df30e7da1d824b17a8e66c4e94a5928548a2e2c95835993d9",
+          "translation_sha256": "f3542193052073cf60c05ba02167b3349fa6f18f959bcf6e2c69b92c360e6fcd"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00025",
+          "page": 2,
+          "type": "text",
+          "source_sha256": "820122ea5b793e0f0060782dff7dcd10e40de17b0789a61202cf59f03259a5ec",
+          "translation_sha256": "e9bb00d1f8142f50855d0ae1260627e5fbf96bbad33fb5b35ba6eea276349138"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00026",
+          "page": 2,
+          "type": "text",
+          "source_sha256": "6a325b9a24508fd8a29422ca2c179d23ab6c6a274de16a9876767a22cd636135",
+          "translation_sha256": "711c985b9e6952c23a38c3d1e452777026be2a73d0b2ebca8efd2d446db739bc"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00027",
+          "page": 2,
+          "type": "text",
+          "source_sha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+          "translation_sha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00028",
+          "page": 3,
+          "type": "figure",
+          "source_sha256": "61b85d0f81b8190e77499a3901ea299633c8639f32405a96e3475fda68c158cd",
+          "translation_sha256": "b450df34723662e913831fdb0f3e00b1c7be41228490ce8ce272cf6d4d2dc6ae"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00029",
+          "page": 3,
+          "type": "text",
+          "source_sha256": "b717504d05b798a9e1939a3c532ac91e689c89359e787549532035195b7263b5",
+          "translation_sha256": "ceb6081456e63bceb6616578fe27f926c0f1fd1e19bc9e5994b2c3175db22c2b"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00030",
+          "page": 3,
+          "type": "text",
+          "source_sha256": "d7b64297566a0a861dfd8d2ed2e4c50b71a2a661736774264c658fcf5b349c9e",
+          "translation_sha256": "61afb2cee97d20f3d70ca50dd5e7accb6288a00349e147b117a1e11bc9bba898"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031",
+          "page": 3,
+          "type": "text",
+          "source_sha256": "d469aba90189417182d8ef6274ef9a75d25b76cddd861719d21d10a7e77f1f26",
+          "translation_sha256": "d21d93668befec3ecd7fc5f20082bbdd50d86b7eaaac4a78512972234f0a2010"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032",
+          "page": 3,
+          "type": "text",
+          "source_sha256": "a068327b53d533505bf39f87af0c174433e670c03fd7b57426032a42ebfb9f1a",
+          "translation_sha256": "735739e8132459786bc1f7bf0e0b0e6449e60f05de0c69421b5f0a899bc5c4e7"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00033",
+          "page": 3,
+          "type": "text",
+          "source_sha256": "9563036a70f38e0c08c1ef5e5afabdf533a8deeaf16d6ce65763336019cd6e45",
+          "translation_sha256": "44f94ecdcbb74eed4226132592928815075693ee83bf7f56e721834221e86eff"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00034",
+          "page": 3,
+          "type": "text",
+          "source_sha256": "cd9d2c4d742973b04ff176a6a13c85226fa037979e326e17895ed92f65284384",
+          "translation_sha256": "a51e6aac2422e80f4705ba7bc96c6bbbb12cd497aaf6ad15a7bc1f4d79b814e5"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00035",
+          "page": 3,
+          "type": "text",
+          "source_sha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
+          "translation_sha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0004-c00036",
+          "page": 4,
+          "type": "figure",
+          "source_sha256": "f738ad4cfd292ae900a348a63c0194ef0d7e3b06b67b6c0939511880a21f426a",
+          "translation_sha256": "5fa37fd8a91c27810ab361e77407b004aa02297ba3c017b12e473cdc2697dd17"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0004-c00037",
+          "page": 4,
+          "type": "text",
+          "source_sha256": "a4e42c58794876cdcaa1cea7989c9c8dcbebee72a4684ecc811806cfa313626c",
+          "translation_sha256": "eb2a9841993d3656de86d4def14d0813b594d565db4eced4b7d220b659ee9cd1"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0004-c00038",
+          "page": 4,
+          "type": "text",
+          "source_sha256": "5f1b6dc297010a0632b79e5c49e0a1ed4e96e93b3e4c9f7c264d83f921d9de1f",
+          "translation_sha256": "69bf6a2b8337e26836ca96230c0f8f721e0912cc5acfc069123e5b86ee685767"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0004-c00039",
+          "page": 4,
+          "type": "text",
+          "source_sha256": "889aff0aceb71bc68427e1f23901456d359f53c469c2c2a83ef85253a9933f84",
+          "translation_sha256": "14da04ecde033c7900275471fe8c24a3527a9936516a330668cb365e7c5105e1"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0004-c00040",
+          "page": 4,
+          "type": "text",
+          "source_sha256": "9a1a25609c188a9ddb829f720618f23ed6913088f670b1d63c2e25f2e07bd995",
+          "translation_sha256": "1fecb6ec48f0067a6d388ff21f38eab8de72018de10b511fb59abd958ebdf3c9"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0004-c00041",
+          "page": 4,
+          "type": "text",
+          "source_sha256": "d9a8d477ad21199f5ba7d38380f8e5abde0892c584e49fc43574b1a9c5be33d9",
+          "translation_sha256": "ac41465c31f40a5f750f658b71f0d697df57a59f94df8c384bf05193c8fb8b6d"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0004-c00042",
+          "page": 4,
+          "type": "text",
+          "source_sha256": "5ab1bca13a2f11854b6806bce7f7ae31bac9ccd9ec4541cd6638b2f3a2140aab",
+          "translation_sha256": "2c9cbf1d111f8d36a2bf126577005c3e942a32dc5f89a8b94c006a4e98c2c3d0"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0004-c00043",
+          "page": 4,
+          "type": "text",
+          "source_sha256": "f4f16a595d90950f3b623b8d7ec908c67035688763671a3de22506922e867ac9",
+          "translation_sha256": "8a176ed7b2625b3f7b1456039a7e3669303ac9a336bdd2e0d4ff426738d3dc0f"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0004-c00044",
+          "page": 4,
+          "type": "text",
+          "source_sha256": "c522a50066ab626cc285f315d812810dd45df4229964e113482db2e8bc1a7bda",
+          "translation_sha256": "cb15e22c6cb8b8975586557a40a35ef2cb4f19fc60dd7b289062d7c0f3530471"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0004-c00045",
+          "page": 4,
+          "type": "text",
+          "source_sha256": "b384da23722022c8c23e37d67f0b7efbb223081d52631beab0fd7d1f6e2afd37",
+          "translation_sha256": "424f1b31dc5f8dc77213b9c9c187af0481beaa3a6f54ee1f74eda967639e0c9c"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0004-c00046",
+          "page": 4,
+          "type": "text",
+          "source_sha256": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
+          "translation_sha256": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00047",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "1b306ab954f943ec10911063e06cfc851743112e44683e02dcd308792641951a",
+          "translation_sha256": "259298f61f4d6456eb95121be01c03dc707ebdb0612c5bc79f1aea1d9a0b4d6c"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00048",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "3c037979e22e0e90ae8a21cfb16c7678e6c0652ea2217b8d61d0b4a5e0a31f86",
+          "translation_sha256": "4304167dbfb77ff7cf93235917c95d4b5179fd5561b2bddc9f88662c13e1c61d"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00049",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "1e49a3640ffb3be19ed2d993f418fa77e8f003054fb59a248f90172923125551",
+          "translation_sha256": "1e49a3640ffb3be19ed2d993f418fa77e8f003054fb59a248f90172923125551"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00050",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "b660a1378ab2b15a00b9321e1e2a7b3eaf55e2a153d36d71679a06055052248c",
+          "translation_sha256": "32436a109336a35447dc20eda56ab085c81871ba26b5236e9d8679bd6f36fefd"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00051",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "c3a800cafce18223e5e90c2ec57bb27f141e4d01893325a6a56883ed97b9d99c",
+          "translation_sha256": "c3a800cafce18223e5e90c2ec57bb27f141e4d01893325a6a56883ed97b9d99c"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00052",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "f6d789d2d6d8e3882a5c9985762df42a9c98d1216753008a1e49065924bb0fc6",
+          "translation_sha256": "f6d789d2d6d8e3882a5c9985762df42a9c98d1216753008a1e49065924bb0fc6"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00053",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "accfd5998875a89c8cdf2bd9c74bff26c4a56fcf9ddf0d20bfc53061d98c5740",
+          "translation_sha256": "accfd5998875a89c8cdf2bd9c74bff26c4a56fcf9ddf0d20bfc53061d98c5740"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00054",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "6b48b26bc0e35f8533d6736d77120c44da7d38a35b18511fe0d308bc2eb14d95",
+          "translation_sha256": "232879aa87b7e8d5718e990b1dd45c6de9f4f59a18516e874c5479c4af8549c6"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00055",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "eb909d539b7fdf1b35228628fa923a6104d5182d75a4e8a8867229d1dd153908",
+          "translation_sha256": "8d990777eb02c727505a5ab69e6aab7d372dc7fd50b5082a9d713d2f9ba77be4"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00056",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "8246a1d631a6d4f3270c780bb1d463996ca459afe411fcf7e9e49d3e35c13afd",
+          "translation_sha256": "3a881c92f819fd398474f23105de039f92ea66dfe61272945c0cc13b6dc192ef"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00057",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "de3d10b7a2f3df610feeb9e8d6272ec0d78e0e09b94ac361f42f5d09f4fce46f",
+          "translation_sha256": "e765bc35cb42dc33b5a13663d6174b2a1c22ee9d7f1471a147917ab5179d0ff1"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00058",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "3775e98dff832f9c14e229459c966b94b03300e8b0920add0c82d0e74b88a921",
+          "translation_sha256": "bd00582c13047fd4d28864e329837be52b994df549f1ad4409d210d2df4fe88f"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00059",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "d12056d94fc695210c8092103256f01edf5a4132a67de0612ec677665532051f",
+          "translation_sha256": "e690354615f56042e94c45dec286507b0655349676f65d8b70e214fdc27c78ea"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00060",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "997a1f93754930a29078dd2453f6e46728ae5f9c1e423157f2622e352c13d29d",
+          "translation_sha256": "a13e043d146f9d1ac5135919d06bd7ba274f5244d68a34e8e746464236437de1"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00061",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "0755a1778fa9c9f9412e47b24b342d32fbf118a2c2247fb05eab58e7393c3bb7",
+          "translation_sha256": "d25fe7951542a7487ea748861d01d8e8fc79a22f3a1602c14e84cec7439e7b93"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00062",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "4cb2e4ecdd5665430e40aa3cd7307d55d8c9bdc55db7a915e8642ba9ba1da324",
+          "translation_sha256": "64b44783889a460b3ac2f8c5eca2b7f92a12639c757e3538d7e53cfcc738c376"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00063",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "94dd8f3a20f159ab93638fd23770dc5512b4c23faffdd1b8abf3b822a6d0a119",
+          "translation_sha256": "419dc59fa9c62c24bdbd035691023e7cacd5e76cba1f92edb470a0d84806f0ef"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00064",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "6db8832bb8152af4f8d64063ab846a95089946be3fd03d764d589bd4d772e0d7",
+          "translation_sha256": "6d4843acd9a9d49126389fb9a26e0ec972a388096aec6f9fd912aedf63fd6d4f"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00065",
+          "page": 5,
+          "type": "text",
+          "source_sha256": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d",
+          "translation_sha256": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00066",
+          "page": 6,
+          "type": "table",
+          "source_sha256": "2fe2d9cc2aec914868ed42b34dc052b85d85ca8c2f7b4c5de989139df8599309",
+          "translation_sha256": "41325b8adbd94dc495b130b1d3cb089fa3610327b3ec3716ac2d310db84b1b7b"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00067",
+          "page": 6,
+          "type": "text",
+          "source_sha256": "a9806e080bf60401da9d61a5f76a1d36bf17d6b782ddacdedd8b3294a4c0cc90",
+          "translation_sha256": "e80426b426283d07fb27ccb1f2f3fbec81650b65f91ac70232d0f8b5b3de42d9"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00068",
+          "page": 6,
+          "type": "text",
+          "source_sha256": "016b104341473f9e403a2ca1ef4ccc09fa52ad87a0ac9ed34c3ccceeec45042d",
+          "translation_sha256": "42f09d0d2cf3cf53eb88c2128b12f97f402c9f70439f173d81a1d282c5c2a322"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00069",
+          "page": 6,
+          "type": "text",
+          "source_sha256": "a8b8f744e0db72b0cd10753953c0342874dac74330b145015a6dc9ad722262fe",
+          "translation_sha256": "842bda1add649e63e6de03012e505b208617435d234ef0f29e09894f5ea8a8bd"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00070",
+          "page": 6,
+          "type": "text",
+          "source_sha256": "0435518c24b450120f0910b012f6a41e4e0e77ed2c0c57199110c65dbedba7a8",
+          "translation_sha256": "4954916b3a9bc7a0dece43b44d7984408d3049c9eadfcf217a1acd21a77481bd"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00071",
+          "page": 6,
+          "type": "text",
+          "source_sha256": "498e621ae0a93af20174630c0a25914190e369acd6d6e4650c2c13198e4e8c87",
+          "translation_sha256": "4a45a6f41e6d845af364583b5a33a364d1a4fbaa261307ed08372b3e6708ab5b"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00072",
+          "page": 6,
+          "type": "text",
+          "source_sha256": "e6ac3807f9a2bb12b7189995da5ffd04648fdbc72aa2df24ac34b203a4dd9ae6",
+          "translation_sha256": "33303def5142cb24c62a190342d0c3410082ffe4db03325039fd715d4ce45738"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00073",
+          "page": 6,
+          "type": "text",
+          "source_sha256": "331f54b67f5df999a74dec5eaec74ac1f508ce417378f73a9c6b8691f5e8e442",
+          "translation_sha256": "5da6abd7c053973731ef9d012ca67446313ba278c43010e6dfa48ac7273cf836"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00074",
+          "page": 6,
+          "type": "text",
+          "source_sha256": "ede650b40931bf173bac8f61bfff4ef05de7b90d89a8e730c3ef80a8c4a16654",
+          "translation_sha256": "6b07e7521e5a5b9094eb627d19259579c9335fd7dc452dfc6c8d1bad852e1774"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00075",
+          "page": 6,
+          "type": "text",
+          "source_sha256": "eb77444b241d21b4c10e868d12b40941093119f129e29389753a6c8419839f15",
+          "translation_sha256": "1633c58cb3c4c3e2d55003cf44e2e7517c742779bacefc47ea2bd47865a1cba9"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00076",
+          "page": 6,
+          "type": "text",
+          "source_sha256": "97619919b570028adbc0bea07d8262cf2f9e849b1235942527849176ca5fbf26",
+          "translation_sha256": "beb21fe1ba2e7d64add3032abd779b239d4cc8fc50149d670ef1b5740fffc7e3"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00077",
+          "page": 6,
+          "type": "text",
+          "source_sha256": "e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683",
+          "translation_sha256": "e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00078",
+          "page": 7,
+          "type": "text",
+          "source_sha256": "cc5e986b5ffcfbfa3972a812413d70d06b4e363cc18df3d0864e13b1b5d950ec",
+          "translation_sha256": "e4078e801350c0f39b8a4c33343062726c0484d8ba57fd0e57ae46472ee48413"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00079",
+          "page": 7,
+          "type": "text",
+          "source_sha256": "149f7b485849a891460e1304e805f25ab60e3b6bb9e8264aeefba627dc398b4c",
+          "translation_sha256": "2287495b86930ee1807a2f22eeb154f9aad7666bfb52dabf37aae24a8763a3de"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00080",
+          "page": 7,
+          "type": "text",
+          "source_sha256": "d7a6430dd0eb9d9a466b8895122f243481a58f816fcbc3e12901ff6c0c6f0ece",
+          "translation_sha256": "3926531c4b62271124962593c8b256c2cc04d41e44243c048faea366f35f3ae0"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00081",
+          "page": 7,
+          "type": "text",
+          "source_sha256": "488b9236157a54ff8254bb2c6c475e5b3fce66aa2248338363e48ecb0a86bd10",
+          "translation_sha256": "2296be7dbffd512d16ebf4eec600ab476826adb9e67a05f5ee6e776b3d9d3024"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00082",
+          "page": 7,
+          "type": "text",
+          "source_sha256": "f821aa46167e4fdb7db75145242e67a2074c387541bab41e1cafd3ecfb4ae6b6",
+          "translation_sha256": "1e571c178bc81f0e69b07f8f489ea7a3a6d8f694e2020d2a79c09635ba08fd79"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00083",
+          "page": 7,
+          "type": "text",
+          "source_sha256": "e2acadf3bf06e52fecad0fcbeed2c27b3aa7a1e9d72694a4e75a3cc8285b4786",
+          "translation_sha256": "2ee7ebe6ff0a05a5dd7b18bd987d99bc6172d16eb09386b514d5bfa6bf607d8b"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00084",
+          "page": 7,
+          "type": "text",
+          "source_sha256": "35d3f981fd0cd18489ecd972fe6fea1c75996d369100f0fb080c200df4ba0f96",
+          "translation_sha256": "5a033e1ff88a065954efef310818d77f684d2b5b98382605c6913e553e458822"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00085",
+          "page": 7,
+          "type": "text",
+          "source_sha256": "4dc204ef5c7f59c71ca951197f022b5c1196fdaa6ebb14968605f882527baa1f",
+          "translation_sha256": "a2d2a5f9885292f41e3304c063bb7e681ebe9441a0700b4c5c16d07e71a10ea1"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00086",
+          "page": 7,
+          "type": "text",
+          "source_sha256": "efc34c272f307484b567af2abeeb2714f511fa4feeeb64bfd29413658f23178a",
+          "translation_sha256": "c581463f473d83006c04a9c179071512e58ae5518af73c0802a15c86d7b88396"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00087",
+          "page": 7,
+          "type": "text",
+          "source_sha256": "81c0bc6b65fc3d1e15cff03c71e675b7262d3c187f8bdeec036bc05d3f516aff",
+          "translation_sha256": "10b333eef88f36cd9aedf0923092d2afb83d4c8cef3486d1dc8770e1b9bb230d"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00088",
+          "page": 7,
+          "type": "text",
+          "source_sha256": "a14063e2fdbc89514ad3acc37fbbecf73e154b20f59b34e2fd639f894f29d3fa",
+          "translation_sha256": "848c2cd1b1360d38619f48b92da795ecf4d801e355207297c57db9708c1f217e"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00089",
+          "page": 7,
+          "type": "text",
+          "source_sha256": "bf27f2b51e2f0f7026acb72dc5edeb334be0e5bb47ff830e7fd19c06d161c506",
+          "translation_sha256": "6030921a4c8b5842de31b81695b5a30924c3f532a41c87118c5ced0097a38ad6"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00090",
+          "page": 7,
+          "type": "text",
+          "source_sha256": "ba3abc52b353c0521cc3b8782fe7cfc06dc4b14fbbb59425f19a819975537b84",
+          "translation_sha256": "24cc518b8b91ab8c3293ad79375f104e3656a674819bbe64cacf31cd7509bcaa"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00091",
+          "page": 7,
+          "type": "text",
+          "source_sha256": "1328dbfefe03e2fe54978d9f3ad4b55f5a1100e1ba4ef017c4852cc5b16b7fad",
+          "translation_sha256": "65fbe841a1885880023b7ed2baad27d696b3a0d6874fe220eeead5ee540e74fe"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00092",
+          "page": 7,
+          "type": "text",
+          "source_sha256": "7902699be42c8a8e46fbbb4501726517e86b22c56a189f7625a6da49081b2451",
+          "translation_sha256": "7902699be42c8a8e46fbbb4501726517e86b22c56a189f7625a6da49081b2451"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00093",
+          "page": 8,
+          "type": "table",
+          "source_sha256": "9023cbc54007881a41cf9211830ffbb96cb4bbfc62e47d32fe4cd9c48120e517",
+          "translation_sha256": "b1c00fb36cc2a468b6d8e6ab34fb34da14a905520f47ced2823af88a42b3679c"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00094",
+          "page": 8,
+          "type": "text",
+          "source_sha256": "32909a9ce89962c01a9a961717ae52618b8a8646afc6940494e001af9705a1eb",
+          "translation_sha256": "1463926a97c612dba347ca6fec6994bba3ee4957fa19e505dfe2d481ae655a2f"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00095",
+          "page": 8,
+          "type": "text",
+          "source_sha256": "e1639c377fbbfdb2ea739db0b78416d3a76f5798a0ccf82fd7188239fb8b776b",
+          "translation_sha256": "4b9ca1eeac9446a6ed02c13c0c8b5aae57be0aaf9f29312f2d3a7c19124baaa2"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00096",
+          "page": 8,
+          "type": "text",
+          "source_sha256": "b5a8ded77956ca8c2d7816f1a0acadb5d24a7667837e21e171255cfef7a9fd1b",
+          "translation_sha256": "c556d559e095d9d78d46593193e194538fbf9691c2493c331de82ea09845360e"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00097",
+          "page": 8,
+          "type": "text",
+          "source_sha256": "e1bd1cc3731ce89976e14813664e3d27658217d5d45068133f10abef171b0009",
+          "translation_sha256": "7e13509b99d08b31008353bc34cebd88ea9f29729098196ea7e92c77c89912b5"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00098",
+          "page": 8,
+          "type": "text",
+          "source_sha256": "643b4bc6eb7817f53030e4f250088cb698d3ab1e4e4d12e79ac3d8a0031e84c2",
+          "translation_sha256": "c83ffcfc9733ff402acff7de2e2504a8a71f4c6286f0e5908b05c665b68bf082"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00099",
+          "page": 8,
+          "type": "text",
+          "source_sha256": "2a5cf43962bcffa5a6d0af6ed5f119edda39a3a48c6b86e8bdc0ce2377451753",
+          "translation_sha256": "0e28835b6a4a9238be83e8b9f941d439afbb551aba597c1bcc1844bbd7895e3c"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00100",
+          "page": 8,
+          "type": "text",
+          "source_sha256": "b4e80089c4c74748b7479c53e28746ca8b9ba1ce25540938545ab40b2567e865",
+          "translation_sha256": "e6c0531dbf025a61986454ec06cfc56f3e4eb097b89814d74134455c96297719"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00101",
+          "page": 8,
+          "type": "text",
+          "source_sha256": "950c4526c5e5611c46b781586e769d79ff696ad700f23586f23f6ba8c486049a",
+          "translation_sha256": "95f97d5afdf1658fee3fec08e63e488df0e0ddf94c38483d7af9197d984f254d"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00102",
+          "page": 8,
+          "type": "text",
+          "source_sha256": "5abd14f269abb2c34b2c9754249d950fad43699e62cb0ed35ed10b1a5e0a6e92",
+          "translation_sha256": "428f3a12f0379422aa4ca993907d64303627e056c8405da7d145167e6b78c7dd"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00103",
+          "page": 8,
+          "type": "text",
+          "source_sha256": "5353fa435eb9668ebf31aa4c0d9b6590d5cd6f9f7efeba73d2a91f17f88df785",
+          "translation_sha256": "f878a8524f8524bbfd5dd01bfdddeda9e6de18abdfd84850c7af9cb949cd1648"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00104",
+          "page": 8,
+          "type": "text",
+          "source_sha256": "87440a339b25eaa776ec649eebdde34465ad06f9bbdac4fa0752cc4c5d5d8ee1",
+          "translation_sha256": "cd4779a3178a954ed3e6c3953db7fd4c7b43ffe9386f8a988eea1b12b725a63e"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00105",
+          "page": 8,
+          "type": "text",
+          "source_sha256": "2c624232cdd221771294dfbb310aca000a0df6ac8b66b696d90ef06fdefb64a3",
+          "translation_sha256": "2c624232cdd221771294dfbb310aca000a0df6ac8b66b696d90ef06fdefb64a3"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00106",
+          "page": 9,
+          "type": "table",
+          "source_sha256": "1acba82ef704e77f13d82dfd4c19c19948d84cdd7f7019fcd42dcf4768fb2bde",
+          "translation_sha256": "ce17abcb0d148bf4ff53b59279a3173edf78d49afaa9400be84d968f0e17cb8d"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00107",
+          "page": 9,
+          "type": "text",
+          "source_sha256": "a8798e4e4672937dc101f78a04b918b900631daac783841d23b5b115c6bcacde",
+          "translation_sha256": "6a3e0ebe49f8dfc8bc2a6c0730fdb4a5351749b179c47611ee1d23612fa24dd6"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00108",
+          "page": 9,
+          "type": "text",
+          "source_sha256": "7c882d57a9e4b747815fdc9dd21444657d4a9c44a461efb75b8b8b9ea45dc328",
+          "translation_sha256": "6b7a8c08a79833fe5e59e66ac23e03f1968f5e758a748377f26b148a1698fde1"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00109",
+          "page": 9,
+          "type": "text",
+          "source_sha256": "370c297fdeac721102bd4672b6f42a77ea287fb597bc49c8abf0c8c13d0c05cf",
+          "translation_sha256": "e5283b02e036b0518456c7614d260720703d3914b711bedcf1adbf553e748fe9"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00110",
+          "page": 9,
+          "type": "text",
+          "source_sha256": "76f9d66c36449ccc6158f8e271792b91bb5d9d193ca6b1a40f7eb82a5349e57a",
+          "translation_sha256": "a4549429a3546c4ce6561ac577881a8c3a58806b414fa6ff5c90bda5e3dfc1d7"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00111",
+          "page": 9,
+          "type": "text",
+          "source_sha256": "7c8dcfcd669a48e5c56c6fc30d212ab100c3c6eb5ed3a0f438aa20db298586d5",
+          "translation_sha256": "bf284f7fff8cb88cb869b07a5dc7834c469092479d97a3fcbc5358816bca765f"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00112",
+          "page": 9,
+          "type": "text",
+          "source_sha256": "e3f6d803da06f0cf3db97c17c3f8444b6d93ce5b1e18b069dfbc8d1544d399a8",
+          "translation_sha256": "621ef01a556d9e2fdb0eedf2e091eb2ac8df37d063bb7c69cd7a6c925d21b9e7"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00113",
+          "page": 9,
+          "type": "text",
+          "source_sha256": "1d8d0650a242d4aa8cac4ae832b583f6ef0e3dfd48476b1c9014e3c7777b4a65",
+          "translation_sha256": "035f675843d6b601bd8003b7a4ff6a29120c0af93551ca38535e62db6a251276"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00114",
+          "page": 9,
+          "type": "text",
+          "source_sha256": "19581e27de7ced00ff1ce50b2047e7a567c76b1cbaebabe5ef03f7c3017bb5b7",
+          "translation_sha256": "19581e27de7ced00ff1ce50b2047e7a567c76b1cbaebabe5ef03f7c3017bb5b7"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00115",
+          "page": 10,
+          "type": "table",
+          "source_sha256": "3f83b33ea808ef77a91d4c69b9dbe96dffb9645d016638295cb67385cf2b16f3",
+          "translation_sha256": "ead575cf39614d4584facf4a24b3ec8b28b3a6b9f7646dd214937ca4f9b69201"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00116",
+          "page": 10,
+          "type": "text",
+          "source_sha256": "bbbd6117395e785002a3c8eb5043d3727d3c7a76eaf8bc8e6131cd5c539a0f72",
+          "translation_sha256": "bc26dde713cdc066ee523cdde3cb509bf8213a840fc28f9641d6afa8e8ce717a"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00117",
+          "page": 10,
+          "type": "text",
+          "source_sha256": "ce50243ad509fdf4b33e350d0b23d301c05615cbcbe1f9e6e0869db6a7e2c345",
+          "translation_sha256": "3971f880c6d1a97d6a4af004baf78d64610a04a460f4000883c471b3a1267e88"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00118",
+          "page": 10,
+          "type": "text",
+          "source_sha256": "20207f1a9c7cf7f3f0c4e2a5538e9fae31cd2182dd91aee5ee421c0354702b60",
+          "translation_sha256": "2616d0fd36dae48ca60aa60ea2c758ac9b3b65934e00391a1ea3d1ec819dac72"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00119",
+          "page": 10,
+          "type": "text",
+          "source_sha256": "4a1fe993ca69ab93edac9093d3fea2e12e24bfe6043e8be21756730cd8fe0518",
+          "translation_sha256": "a5e6fd6a5ad77cd6b11dc679ee3543c1e09b2af85fb19c2a5af082e629a61ecd"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00120",
+          "page": 10,
+          "type": "text",
+          "source_sha256": "7149b823e9c8b6d614e03db6d77cfbd27735360f09edb266422a607f3fdd23bd",
+          "translation_sha256": "096873ff6bc16db011ad5ed726151c9dc408e5e62527335c1a4f0a2ad179a851"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00121",
+          "page": 10,
+          "type": "text",
+          "source_sha256": "8ae7814be38d315827f0be9a4f98df14366ab2e7d5f4c714498251c4a8744c44",
+          "translation_sha256": "e24a44477ece225ab714ed155d7f949b09c67bc9f705fcd9c3ae5f3dde1e8bbc"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00122",
+          "page": 10,
+          "type": "text",
+          "source_sha256": "ac569d04e1ab72dc574fdfb1a6c2d0c3d9d542be39153716e0a7f61dffcacd48",
+          "translation_sha256": "147edf2a2289048369b5803e234026aa2d18138fe83079a30dc983a112210c10"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00123",
+          "page": 10,
+          "type": "text",
+          "source_sha256": "f24545534d2330736180f7bc8926abee9cdde3b132d9b94842f811fd602d7a77",
+          "translation_sha256": "65cb940befd16824de29c43eac7b3990d7f04d9622883715b26eeaec5dd5f0fb"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00124",
+          "page": 10,
+          "type": "text",
+          "source_sha256": "962703f361a94e600cf27abc3ca66eb5174e8aaf898f32ca2afbfe0fa702ccae",
+          "translation_sha256": "3c76aee462e487d66539fb2e75dfb6b62f6a6960e1752f6b0e53e6844ba902d4"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00125",
+          "page": 10,
+          "type": "text",
+          "source_sha256": "2eb694272491ca396e8622c007918ff13eefe5572238ff2fc9504567521aafa3",
+          "translation_sha256": "b1721cb5f65b97551f2f3593bf9abaa7214c7e8c83a4dd684a9ba4d09c8ea25f"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00126",
+          "page": 10,
+          "type": "text",
+          "source_sha256": "edc3efb149a25b9613ce36ac49d50fa08fbda9e7b7120a27b83d2c9a69b24a3f",
+          "translation_sha256": "69824d3b0e70ca6aaa0da1613b65fd914c442bf1f7ad1bb22bcdfbdfe1a05e39"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00127",
+          "page": 10,
+          "type": "text",
+          "source_sha256": "f2f1b568bcd2cf7d7ec8f7da17acb0d06669b958109aade842b42278bc6fc104",
+          "translation_sha256": "51eaceee57e9f8a1ea330f1b9baab61a216962341102c548c7030a94a0361fc7"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00128",
+          "page": 10,
+          "type": "text",
+          "source_sha256": "a6c0782cf13440ca26f68d418ac44b0943bd52d3e773b852e19e632c803e0195",
+          "translation_sha256": "d3c4b96dbf57502ece6467523e7acb6d89992054475d6f1a3b15a7f8f2dc6a1b"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00129",
+          "page": 10,
+          "type": "text",
+          "source_sha256": "fc98f5abacfd9c5f86e5fcfdcb9c9e04f98b167208f9e4d46aa86470dc3aa7a7",
+          "translation_sha256": "65c43ef6e61f6c852b2bcd719221964b2f675a6f57eae21e81ce291c9d0429f9"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00130",
+          "page": 10,
+          "type": "text",
+          "source_sha256": "78f79e71d72b91822993a0e4d28716f77f1e6d41516d05b6d60f4df50e2c6a6d",
+          "translation_sha256": "6ce7ab4ca7ce2871f57ee5136ce8d956b57791af9cfc14f23ede22524bfbb8ae"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00131",
+          "page": 10,
+          "type": "text",
+          "source_sha256": "4a44dc15364204a80fe80e9039455cc1608281820fe2b24f1e5233ade6af1dd5",
+          "translation_sha256": "4a44dc15364204a80fe80e9039455cc1608281820fe2b24f1e5233ade6af1dd5"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00132",
+          "page": 11,
+          "type": "text",
+          "source_sha256": "951df3b2eeb461ab7e42c599845ba8c3a398d526e1c99c04cded6c87fda246ac",
+          "translation_sha256": "aab4daf7404e855cda537c160ffcc4de2076ff08c6fb8f0780eb7d845fac945b"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00133",
+          "page": 11,
+          "type": "text",
+          "source_sha256": "6bbd8d321a9cbf934f4305e83ab4602789268ee107a4da0e9925a687fdb3d8df",
+          "translation_sha256": "fd6212cd9fa4912e5445b2d3892cfbe32311e74a43ce5e70a5e0a3b56e9ef988"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00134",
+          "page": 11,
+          "type": "text",
+          "source_sha256": "b30179a0e1d8a21025a782695f78a3e5f31b5f58485b79e602fea76d4b239e9d",
+          "translation_sha256": "ae23ede180ce3d2d0c6bc189c781230de804a385456b681c47e06883d810c9dc"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00135",
+          "page": 11,
+          "type": "text",
+          "source_sha256": "c48f56f4a9856facffc9a4bd4e6c98ad0ff8ef36513f95e160d8bb3376e6baaf",
+          "translation_sha256": "953e6905e580f10c0033630059caea38f751b96e69ddf3dd8b357910772725bc"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00136",
+          "page": 11,
+          "type": "text",
+          "source_sha256": "40a2d00b2b11dd792f02bae7eca8fe799936152b24dda55e597a0e8b40f2791f",
+          "translation_sha256": "ce30546620cad7e684233c723e7df233d0e07e193f5f5d47bd128017d097526d"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00137",
+          "page": 11,
+          "type": "text",
+          "source_sha256": "f0506009496847fce43e4a613f0f3cdae9ba0ae9dbc05c3ba6f5c2b3434d006d",
+          "translation_sha256": "65860da430382a6c72eba4e8c2c36679351977a7e8dd02158d1f9bbbad2fecdf"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00138",
+          "page": 11,
+          "type": "text",
+          "source_sha256": "ae5582868eed13cac876c68dbfd04562bcfcbe989b4fb1c01c190007a0d42f32",
+          "translation_sha256": "0ffc5a8a3b27fb59109db59b2045ebc6a4f9305889cf1bf22160652bc382d85c"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00139",
+          "page": 11,
+          "type": "text",
+          "source_sha256": "c6780a81d5b00d8c3d8d8b64574b8eba9a0d0440839e8292b5d87714e486bf92",
+          "translation_sha256": "ae3b1cc3052b6022137bc54e562a9ac161f1e3d0f17c082596c257fad8e9840c"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00140",
+          "page": 11,
+          "type": "text",
+          "source_sha256": "57c5a6323da5efe0ed05498f451cd8ef7d29e305e1387e4b097c7418ab9c4493",
+          "translation_sha256": "4d42e5970c394d6f077eecc6d03441308b2e40c2ad6fa3b01f03992a57260f7c"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00141",
+          "page": 11,
+          "type": "text",
+          "source_sha256": "17e7bc713213bd73b8962a5bdba3d1d1988f2b3ac888cc2ac23b23935dc5714a",
+          "translation_sha256": "813a040481bea6cec3dfae91514115ca30ffbedb0954cebbb27c3a98df1fd986"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00142",
+          "page": 11,
+          "type": "text",
+          "source_sha256": "b2f0caa35fa6e807a6249917fb8bdf0d850e0d78bab51351c10b3e5cb345aaf6",
+          "translation_sha256": "e282cdcb212d9e6dafac99425c428c3b332e51427b1613993df87ba7fd725ae3"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00143",
+          "page": 11,
+          "type": "text",
+          "source_sha256": "f1bf1561c0b59da6839331afeb9d6f04629c42aac939570837cb313675ce5fc7",
+          "translation_sha256": "a59c17c9881ee5b3260944f5bd65e93b04939b257ee139834bfd855b1b34a734"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00144",
+          "page": 11,
+          "type": "text",
+          "source_sha256": "efcff92b3ec2e13b983ef85114baa12bc0df22b207c7daf74697d3379bac196e",
+          "translation_sha256": "96922cc18ac5234474a16fd9526f348fab44699a3a79bcbd08421576bba6be54"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00145",
+          "page": 11,
+          "type": "text",
+          "source_sha256": "afae0cbd00308cde2d70d2f26ad166689be901f1b3a95d53fbff0249f1254731",
+          "translation_sha256": "79d9faade9db8e0b2e130445b1d842c612400e1cdd9982e925b00aba623f69e0"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00146",
+          "page": 11,
+          "type": "text",
+          "source_sha256": "cccad1ca6ef87f5a9b28338a150140f37595f93ff8b5e4e352691d7a9d356c21",
+          "translation_sha256": "58e691c0a581e55da111700d820ffb0f17a141f76f0a411b797fb58746288a84"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00147",
+          "page": 11,
+          "type": "text",
+          "source_sha256": "0d2bbee942a58bb9b5dac3069ce24adfe6f9495b17369d81cbe2308a0e9bdccb",
+          "translation_sha256": "d9c468deab0ccdbcbf4be951a61dcab91391a6bf05e5669d47cfcebb4a636799"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00148",
+          "page": 11,
+          "type": "text",
+          "source_sha256": "4f7031ec33519f908e872be03432654ad6777bcb0fb9231703ae1eb98f934194",
+          "translation_sha256": "d7de2c3c3747312626c2d0ab2d906f62933ab0b3fdd09fd768b1b3865c20d15d"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00149",
+          "page": 11,
+          "type": "text",
+          "source_sha256": "a533c92363c9f067acb6f6938fbf2d5c93e8996f4e896f835f1d66825a1a3940",
+          "translation_sha256": "ab198a08af998381a75827a5619d405a0518a32b87a9f230c04c6161e8e97c35"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00150",
+          "page": 11,
+          "type": "text",
+          "source_sha256": "e2cdd6b660caf10117ed19307f20068ba896494c76f6184de23cc55556a9dcb5",
+          "translation_sha256": "cae04c17ffb83855d9ffb10939a000a4fd7f440f036a964af9d4ae2fe5cc7d77"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00151",
+          "page": 11,
+          "type": "text",
+          "source_sha256": "2a71784406536353c93b253c6d259622cb024d10e07da7f3400cd2c2ce689d99",
+          "translation_sha256": "81a5c350debc213a3fad7f1c99f89a4c7593fd189ab414379f133c61bb92f022"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0011-c00152",
+          "page": 11,
+          "type": "text",
+          "source_sha256": "4fc82b26aecb47d2868c4efbe3581732a3e7cbcc6c2efb32062c08170a05eeb8",
+          "translation_sha256": "4fc82b26aecb47d2868c4efbe3581732a3e7cbcc6c2efb32062c08170a05eeb8"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00153",
+          "page": 12,
+          "type": "text",
+          "source_sha256": "3bf98873b6e4924d50df2926d7e689c1850c7beb3e4bc5042a389010a9a68e8c",
+          "translation_sha256": "98e57a9a9c58610f9e73a37112af5732e02e0854dfa29adc3ce0128ab719ce38"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00154",
+          "page": 12,
+          "type": "text",
+          "source_sha256": "8feaef0054ed36eab5029085bc21a3168610623c2fa07ccf8afc9f94f306056c",
+          "translation_sha256": "8b5301cdbca1162146b17800f6f4a0334b676dae7e0ad1f2b32127b1579b32ca"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00155",
+          "page": 12,
+          "type": "text",
+          "source_sha256": "9dbb41ee44aecfa9be60fef09675c580464241a0161b05a4e500a333310817f9",
+          "translation_sha256": "ce7fa223c014cf831af74acea3ae97a6e97a07f99aaa1e99fb3ae2a7eee64ac5"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00156",
+          "page": 12,
+          "type": "text",
+          "source_sha256": "59df84861ae13892e653aba0cdff7d26ece3e3d907b562cb1babb4939920d8f8",
+          "translation_sha256": "3c6e711547735066f6689e707ce39cf2fec63af2a9de3e84e1283a515c81b574"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00157",
+          "page": 12,
+          "type": "text",
+          "source_sha256": "8a5be1b4f8c564b1be47b006c80d45697725cb9c39e3ed71d2e1eb44dc48519c",
+          "translation_sha256": "130c777541a91fe74b20c3cb11ecdc99e188fa6227b3f40ff074387787c7f495"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00158",
+          "page": 12,
+          "type": "text",
+          "source_sha256": "fef273f3a0483f43f48d0381da62201808c7f3bde955013aa2537e3bfe8319ff",
+          "translation_sha256": "12b22feafc65d6fbb0080694503c6dcfedafc4af63fa19be432bf90679ccfa98"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00159",
+          "page": 12,
+          "type": "text",
+          "source_sha256": "f5f9e8bacf54e34cfd598950091bd29e999cf7124f66281ec8ac4a9b32f08e5e",
+          "translation_sha256": "f6e0fbea0c71c87dfb14d0fb6208916604187ff2d9bbd453689e3f74de510ec6"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00160",
+          "page": 12,
+          "type": "text",
+          "source_sha256": "c5a37929df8bd03ceb6421621295cd68ff82daceee62902c3a62b51386f6a7f9",
+          "translation_sha256": "ff9db3e730a2241af4f3f351014b982bf641b2cda8203edbf37d22f4b391c821"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00161",
+          "page": 12,
+          "type": "text",
+          "source_sha256": "69eff632c85a35c5d3f1c085761848534c9482d20eed392fc6f1fefe3a9224d3",
+          "translation_sha256": "c37896d154f62f515c0e6b1ee92d867a3ef5e333e8fd997b43a483d17f1fbbc0"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00162",
+          "page": 12,
+          "type": "text",
+          "source_sha256": "53b0bf7f8fcbc082ed1bae95b110354181f35d17ac0c9d9bda07016264c63ee5",
+          "translation_sha256": "76e12c0b4bfde91edc6be6fa678060706bef11668973cb408a49371f24b1b3c2"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00163",
+          "page": 12,
+          "type": "text",
+          "source_sha256": "8db1b3e78636ad35e9495d083581e334fe9f8176cfe4784020bdb6cd027dfc68",
+          "translation_sha256": "650f04bd6a2150cfa9bbb173d59a7f97c3fa0d6d498c014e62119589c76847f2"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00164",
+          "page": 12,
+          "type": "text",
+          "source_sha256": "7ca80dcc63aa4f90a1bf046856db1338e970229a1c55b79df6cd48f71738cf73",
+          "translation_sha256": "7af95aff10fdb2434300a73c165b52eb01c30f9333e89542c4b32b21d70f7674"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00165",
+          "page": 12,
+          "type": "text",
+          "source_sha256": "01e38106e75a6f9f335810044b063529d9a55f9b9e059b70c53671d4ebea1b52",
+          "translation_sha256": "43a3ac6d330f9a5ded2f6dfc1855b2ac65e5e230d46ebe8ad1f8986e7ce25736"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00166",
+          "page": 12,
+          "type": "text",
+          "source_sha256": "9ca9c9844ed54514697058578281b1d1d0653e9baf265d196f6a44b235ef071f",
+          "translation_sha256": "ac5e0a0555f5787bac4bbda818fedc89a68c995a9eea58256e0971023cf557f8"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00167",
+          "page": 12,
+          "type": "text",
+          "source_sha256": "784c3ef010c68bc96c689b1f60b1143396c362135620d0509660225e82a2f854",
+          "translation_sha256": "b82176653e5b1b3c989a1cbdf981febe951f60247af1b1588773f70e8be31496"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00168",
+          "page": 12,
+          "type": "text",
+          "source_sha256": "4954fa3592ab5d159d14f0c3f4fed6e1fcd65fab8bac3cfb62be4aa0a468ff36",
+          "translation_sha256": "a80c606b78ad58b8c873eb96a9aac7208e269dcd39893bd1c923d478ec02d44c"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0012-c00169",
+          "page": 12,
+          "type": "text",
+          "source_sha256": "6b51d431df5d7f141cbececcf79edf3dd861c3b4069f0b11661a3eefacbba918",
+          "translation_sha256": "6b51d431df5d7f141cbececcf79edf3dd861c3b4069f0b11661a3eefacbba918"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0013-c00170",
+          "page": 13,
+          "type": "figure",
+          "source_sha256": "979078e3ec46b057d97657a17a622b1680daa4835fbdf1f3d3118b0f758baf64",
+          "translation_sha256": "44705de64ba299b6f8011f80624a7fb959e338f16552f46b306eb40db38563ea"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0013-c00171",
+          "page": 13,
+          "type": "text",
+          "source_sha256": "3fdba35f04dc8c462986c992bcf875546257113072a909c162f7e470e581e278",
+          "translation_sha256": "3fdba35f04dc8c462986c992bcf875546257113072a909c162f7e470e581e278"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0014-c00172",
+          "page": 14,
+          "type": "figure",
+          "source_sha256": "7ccbc6dbd4aad7c2ffcd13aad8bafe953694e7935f8d931e78b7add09e428dbe",
+          "translation_sha256": "719e8e4ab22c3ddd62839caca8d40d13daf8c6627111d0b9d059cfac5c372cd3"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0014-c00173",
+          "page": 14,
+          "type": "text",
+          "source_sha256": "8527a891e224136950ff32ca212b45bc93f69fbb801c3b1ebedac52775f99e61",
+          "translation_sha256": "8527a891e224136950ff32ca212b45bc93f69fbb801c3b1ebedac52775f99e61"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0015-c00174",
+          "page": 15,
+          "type": "figure",
+          "source_sha256": "91e234b882008344e0b95808d29e4c229510de050ba1111406803137eff50ef6",
+          "translation_sha256": "c896dbf0ac72f87c77ff66e2fd4ccf1eccb828ee34726ceeecdb5cece3857cb2"
+        },
+        {
+          "id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0015-c00175",
+          "page": 15,
+          "type": "text",
+          "source_sha256": "e629fa6598d732768f7c726b4b621285f9c3b85303900aa912017db7617d8bdb",
+          "translation_sha256": "e629fa6598d732768f7c726b4b621285f9c3b85303900aa912017db7617d8bdb"
+        }
+      ],
+      "markdown_chars": 59682,
+      "markdown_sha256": "3d953265c9392f3e32a4e2fecfc1b219fe84065ce03c22f5b76796cc0279c36c",
+      "translated_sample": "The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an "
+    }
+  ]
+}

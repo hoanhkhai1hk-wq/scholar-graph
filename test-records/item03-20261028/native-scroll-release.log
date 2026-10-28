@@ -1,0 +1,1 @@
+{"browser_version":"156.0.8078.49","viewport":{"width":1280,"height":900},"errors":[],"passed":false,"left":[{"top":791,"max":1755},{"top":534,"max":895}],"right":[{"top":345,"max":1755},{"top":223,"max":895}],"exported_filename":"论文译文.md","refreshed_translation_restored":true,"failure":"Cannot read properties of undefined (reading 'chinese_task_id')"}

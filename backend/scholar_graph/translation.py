@@ -55,13 +55,13 @@ def select_chunks(bundle, scope, section_path=None, chunk_ids=None):
         # Always document order, independent of the order of client selections.
         selected = [c for c in chunks if c['chunk_id'] in requested]
     else:
-        selected = [c for c in chunks if any(re.fullmatch(r'(?:\d+[.\s]*)?(?:abstract|摘要)', part,
+        abstract = bundle['paper_meta']['abstract']
+        normalize = lambda text: re.sub(r'\s+', '', text).casefold()
+        # A parser's Abstract path may also contain the page footer and author
+        # contribution notes. Prefer an exact, anchored abstract body first.
+        exact = [c for c in chunks if abstract and normalize(c['text']) == normalize(abstract)]
+        selected = exact[:1] or [c for c in chunks if any(re.fullmatch(r'(?:\d+[.\s]*)?(?:abstract|摘要)', part,
                     flags=re.I) for part in c['section_path'])]
-        if not selected:
-            abstract = bundle['paper_meta']['abstract']
-            normalize = lambda text: re.sub(r'\s+', '', text).casefold()
-            if abstract:
-                selected = [c for c in chunks if normalize(c['text']) == normalize(abstract)]
     if not selected:
         invalid('未找到该范围的原文Chunk；不能用无锚点元数据替代原文段。')
     if sum(len(c['text']) for c in selected) > MAX_SOURCE_CHARS:
@@ -82,6 +82,9 @@ def protect(text, *, formula=False, numbers=True):
         return key
     if formula:
         return save(text), spans
+    # HTML code/math bodies are opaque too; protecting only their tags would
+    # leave comments and string literals exposed to translation.
+    text = re.sub(r'(?is)<(pre|code|math)\b[^>]*>.*?</\1\s*>', save, text)
     # Fences first: mathematical-looking strings inside code must remain code.
     text = re.sub(r'(?ms)^[ \t]{0,3}(`{3,}|~{3,})[^\n]*(?:\n|$).*?^[ \t]{0,3}\1[ \t]*(?:\n|$)', save, text)
     text = re.sub(r'(?ms)^[ \t]{0,3}(?:`{3,}|~{3,})[^\n]*(?:\n|$).*\Z', save, text)

@@ -1,0 +1,54 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile.local-incremental
+#1 transferring dockerfile: 2.39kB 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/scholar-graph-frontend:item02-20261028
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 354B 0.0s done
+#3 DONE 0.0s
+
+#4 [frontend-build 1/6] FROM docker.io/library/scholar-graph-frontend:item02-20261028@sha256:e7355d6d8080a1771150ec97d40f3781c2b9de31344132c221e7d93f265463a9
+#4 resolve docker.io/library/scholar-graph-frontend:item02-20261028@sha256:e7355d6d8080a1771150ec97d40f3781c2b9de31344132c221e7d93f265463a9 0.0s done
+#4 DONE 0.0s
+
+#5 [frontend-build 2/6] WORKDIR /app/frontend
+#5 CACHED
+
+#6 [frontend 3/4] RUN rm -rf /app/frontend/.next
+#6 CACHED
+
+#7 [internal] load build context
+#7 transferring context: 5.90kB 0.0s done
+#7 DONE 0.0s
+
+#8 [frontend-build 3/6] RUN rm -rf /app/frontend/app /app/frontend/components /app/frontend/lib     /app/frontend/scripts /app/frontend/public /app/frontend/e2e
+#8 CACHED
+
+#9 [frontend-build 4/6] COPY frontend/ ./
+#9 CACHED
+
+#10 [frontend-build 5/6] RUN --mount=type=cache,target=/root/.npm     sha256sum package-lock.json > /tmp/current-lock.sha256     && npm install --include=dev --ignore-scripts --no-audit --no-fund --prefer-offline          --fetch-retries=3 --fetch-timeout=600000     && sha256sum -c /tmp/current-lock.sha256     && npm ls --all --omit=optional
+#10 CACHED
+
+#11 [frontend-build 6/6] RUN rm -rf /app/frontend/.next && npm run build
+#11 CACHED
+
+#12 [frontend 4/4] COPY --from=frontend-build --chown=node:node /app/frontend ./
+#12 DONE 3.8s
+
+#13 exporting to image
+#13 exporting layers
+#13 exporting layers 3.4s done
+#13 exporting manifest sha256:f78c960c31ae8c2bd6a4136bfd1421828a5d7ef145a0916e72a90c66605f8c18 0.0s done
+#13 exporting config sha256:c603183ef58853a677c58a20bf320fde4d363d74b4f815f7d7dc8529fdf742e3 0.0s done
+#13 exporting attestation manifest sha256:eb1bb8e8a4b129eddc171ee3feb9cff0526391039c51efd52de4b8362ef1db93 0.0s done
+#13 exporting manifest list sha256:bbd0dd4d50fbc9366d05eb616815d480701913b7d1143fb55ddbb1eac9723412 0.0s done
+#13 naming to docker.io/library/scholar-graph-frontend:item03-20261028
+#13 naming to docker.io/library/scholar-graph-frontend:item03-20261028 done
+#13 unpacking to docker.io/library/scholar-graph-frontend:item03-20261028
+#13 unpacking to docker.io/library/scholar-graph-frontend:item03-20261028 0.4s done
+#13 DONE 4.0s

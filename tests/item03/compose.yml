@@ -1,0 +1,39 @@
+services:
+  backend:
+    image: ${SG_ITEM03_BACKEND_IMAGE:-scholar-graph-backend:item03-20261028}
+    ports: ["127.0.0.1:8080:8000"]
+    environment:
+      SCHOLAR_GRAPH_DATA_DIR: /app/data/records
+      DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY:?Configure the local environment}
+      DEEPSEEK_MODEL: ${DEEPSEEK_MODEL:?Configure the local model}
+      SCHOLAR_GRAPH_QA_MODE: deepseek
+      SCHOLAR_GRAPH_WORKSPACE_RETRIEVAL: lexical
+      SCHOLAR_GRAPH_QA_RETRIEVAL_MODE: lexical
+      SCHOLAR_GRAPH_TRACKING_ENABLED: "false"
+      SCHOLAR_GRAPH_DEDUP_MODE: "off"
+      SCHOLAR_GRAPH_GROBID_ENABLED: "true"
+      GROBID_URL: http://host.docker.internal:8070
+      SCHOLAR_GRAPH_OCR_CACHE_DIR: /models
+      SG_DATA_CLASS: acceptance
+    volumes:
+      - ../../backend:/app/backend:ro
+      - ../../contracts:/app/contracts:ro
+      - ../../data/item03-20261028/records:/app/data/records
+      - ../../data/repair-ocr-model-smoke/models/paddlex:/models
+    cpus: 4.0
+    mem_limit: 4g
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; assert urllib.request.urlopen('http://127.0.0.1:8000/api/v2/system', timeout=5).status==200"]
+      interval: 5s
+      timeout: 8s
+      retries: 15
+  frontend:
+    image: ${SG_ITEM03_FRONTEND_IMAGE:-scholar-graph-frontend:item03-20261028}
+    ports: ["127.0.0.1:3380:3000"]
+    environment:
+      SG_BACKEND_URL: http://backend:8000
+      NEXT_TELEMETRY_DISABLED: "1"
+    depends_on:
+      backend:
+        condition: service_healthy
+    mem_limit: 1g
