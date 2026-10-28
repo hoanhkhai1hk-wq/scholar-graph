@@ -7,7 +7,8 @@ FROM ${NODE_IMAGE} AS frontend-dependencies
 WORKDIR /app/frontend
 ENV NEXT_TELEMETRY_DISABLED=1
 COPY frontend/package.json frontend/package-lock.json ./
-RUN for attempt in 1 2 3; do \
+RUN --mount=type=cache,target=/root/.npm \
+    for attempt in 1 2 3; do \
       npm ci --no-audit --no-fund --fetch-retries=3 --fetch-timeout=600000 && break; \
       if [ "$attempt" -eq 3 ]; then exit 1; fi; \
       echo "Public npm download failed; bounded retry $attempt/3"; sleep 5; \
@@ -58,7 +59,9 @@ RUN sed -i 's|http://deb.debian.org|https://deb.debian.org|g' /etc/apt/sources.l
 WORKDIR /app
 COPY backend/ ./backend/
 COPY contracts/ ./contracts/
-RUN python -m pip install --no-cache-dir --timeout 60 pip==26.2.2 \
+RUN --mount=type=cache,target=/root/.cache/pip \
+    unset PIP_NO_CACHE_DIR \
+    && python -m pip install --timeout 60 pip==26.2.2 \
     && python -m pip install './backend[ocr,test]' --timeout 60 --resume-retries 20 \
     && python -m pip check
 COPY --from=vector-runtime /opt/vector-venv /opt/vector-venv

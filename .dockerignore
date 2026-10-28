@@ -2,6 +2,7 @@
 **/.git
 .env
 .env.*
+docker-compose.override.yml
 **/.env
 **/.env.*
 pdf/
@@ -13,6 +14,7 @@ data/
 **/.venv
 **/venv
 **/.next
+**/.next-*
 **/.pytest_cache
 tests/reports/
 !tests/reports/

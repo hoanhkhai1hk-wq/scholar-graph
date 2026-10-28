@@ -1,0 +1,80 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile.local-incremental
+#1 transferring dockerfile: 2.03kB 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/scholar-graph-frontend:pre-baseline-20261028
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/scholar-graph-backend:pre-baseline-20261028
+#3 DONE 0.3s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 354B done
+#4 DONE 0.0s
+
+#5 [frontend-build 1/5] FROM docker.io/library/scholar-graph-frontend:pre-baseline-20261028@sha256:6ab9c62ddf2b82064cb6a9766e4a89781e81bfcd9a5698376b8116d9aff52d32
+#5 resolve docker.io/library/scholar-graph-frontend:pre-baseline-20261028@sha256:6ab9c62ddf2b82064cb6a9766e4a89781e81bfcd9a5698376b8116d9aff52d32 0.1s done
+#5 DONE 0.1s
+
+#6 [internal] load build context
+#6 transferring context: 1.66MB 0.2s done
+#6 DONE 0.2s
+
+#7 [backend  1/10] FROM docker.io/library/scholar-graph-backend:pre-baseline-20261028@sha256:450f47f4410487a8bdb6a585d34ee8ff179eb0e9690f76791bec1d5ad1172783
+#7 resolve docker.io/library/scholar-graph-backend:pre-baseline-20261028@sha256:450f47f4410487a8bdb6a585d34ee8ff179eb0e9690f76791bec1d5ad1172783 0.1s done
+#7 DONE 0.2s
+
+#8 [frontend-build 2/5] WORKDIR /app/frontend
+#8 CACHED
+
+#9 [frontend-build 3/5] COPY frontend/ ./
+#9 CACHED
+
+#10 [frontend-build 4/5] RUN --mount=type=cache,target=/root/.npm     sha256sum package-lock.json > /tmp/current-lock.sha256     && npm install --include=dev --ignore-scripts --no-audit --no-fund --prefer-offline          --fetch-retries=3 --fetch-timeout=600000     && sha256sum -c /tmp/current-lock.sha256     && npm ls --all --omit=optional
+#10 CACHED
+
+#11 [frontend-build 5/5] RUN rm -rf /app/frontend/.next && npm run build
+#11 CACHED
+
+#12 [backend  2/10] WORKDIR /app
+#12 DONE 0.1s
+
+#13 [backend  3/10] COPY backend/pyproject.toml /tmp/current-backend-pyproject.toml
+#13 DONE 0.1s
+
+#14 [backend  4/10] RUN cmp /app/backend/pyproject.toml /tmp/current-backend-pyproject.toml     && python -m pip check
+#14 1.787 No broken requirements found.
+#14 DONE 1.8s
+
+#15 [backend  5/10] COPY --chown=scholar:scholar backend/ ./backend/
+#15 DONE 0.1s
+
+#16 [backend  6/10] COPY --chown=scholar:scholar contracts/ ./contracts/
+#16 DONE 0.1s
+
+#17 [backend  7/10] COPY --chown=scholar:scholar tests/ ./tests/
+#17 DONE 0.1s
+
+#18 [backend  8/10] COPY --from=frontend-build --chown=scholar:scholar /app/frontend ./frontend/
+#18 DONE 4.0s
+
+#19 [backend  9/10] COPY Dockerfile docker-compose.yml .dockerignore README.md ./
+#19 DONE 0.2s
+
+#20 [backend 10/10] COPY services/docker-compose.acceptance.yml ./services/docker-compose.acceptance.yml
+#20 DONE 0.1s
+
+#21 exporting to image
+#21 exporting layers
+#21 exporting layers 25.6s done
+#21 exporting manifest sha256:f2caf2f2d465c02c0ecd2bd878fa62bacc5d156db6c7913bcef4973d70b2cfc2 0.0s done
+#21 exporting config sha256:74473ef2c9af2e9efbc58fa3e209666bd1347ce04b218dc3914d46eb2b3377d8 0.0s done
+#21 exporting attestation manifest sha256:7f06617ae66c84156bfb71d3c44c31575b3c154959534915da8ec5b1ea2c50a0 0.0s done
+#21 exporting manifest list sha256:9920bcf01a57d7c1d416518d93d8f08a711dbeaf473447db2925b0dbcb6de78b 0.0s done
+#21 naming to docker.io/library/scholar-graph-backend:baseline-20261028
+#21 naming to docker.io/library/scholar-graph-backend:baseline-20261028 0.0s done
+#21 unpacking to docker.io/library/scholar-graph-backend:baseline-20261028
+#21 unpacking to docker.io/library/scholar-graph-backend:baseline-20261028 5.2s done
+#21 DONE 30.9s

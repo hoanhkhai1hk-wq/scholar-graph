@@ -1,0 +1,44 @@
+# Local source refresh from previously tested Linux images. This is not a clean build.
+# Keep the named base images and record their IDs with each acceptance run.
+ARG FRONTEND_BASE=scholar-graph-frontend:pre-baseline-20261028
+ARG BACKEND_BASE=scholar-graph-backend:pre-baseline-20261028
+
+FROM ${FRONTEND_BASE} AS frontend-build
+USER root
+WORKDIR /app/frontend
+COPY frontend/ ./
+# npm reconciles against the current lock, retaining installed matching packages.
+# The lock must remain byte-identical. Existing Linux native dependencies stay in place.
+RUN --mount=type=cache,target=/root/.npm \
+    sha256sum package-lock.json > /tmp/current-lock.sha256 \
+    && npm install --include=dev --ignore-scripts --no-audit --no-fund --prefer-offline \
+         --fetch-retries=3 --fetch-timeout=600000 \
+    && sha256sum -c /tmp/current-lock.sha256 \
+    && npm ls --all --omit=optional
+RUN rm -rf /app/frontend/.next && npm run build
+
+FROM ${FRONTEND_BASE} AS frontend
+USER root
+WORKDIR /app/frontend
+RUN rm -rf /app/frontend/.next
+COPY --from=frontend-build --chown=node:node /app/frontend ./
+ARG WORKSPACE_REVISION=dirty-workspace
+LABEL org.opencontainers.image.revision=${WORKSPACE_REVISION}
+USER node
+
+FROM ${BACKEND_BASE} AS backend
+USER root
+WORKDIR /app
+COPY backend/pyproject.toml /tmp/current-backend-pyproject.toml
+# Refuse dependency reuse when the Python dependency declaration changed.
+RUN cmp /app/backend/pyproject.toml /tmp/current-backend-pyproject.toml \
+    && python -m pip check
+COPY --chown=scholar:scholar backend/ ./backend/
+COPY --chown=scholar:scholar contracts/ ./contracts/
+COPY --chown=scholar:scholar tests/ ./tests/
+COPY --from=frontend-build --chown=scholar:scholar /app/frontend ./frontend/
+COPY Dockerfile docker-compose.yml .dockerignore README.md ./
+COPY services/docker-compose.acceptance.yml ./services/docker-compose.acceptance.yml
+ARG WORKSPACE_REVISION=dirty-workspace
+LABEL org.opencontainers.image.revision=${WORKSPACE_REVISION}
+USER scholar
