@@ -1,0 +1,34 @@
+................................................................s....... [ 38%]
+........................................................................ [ 77%]
+...............F...........................                              [100%]
+================================== FAILURES ===================================
+____ test_zero_evidence_stream_refuses_without_model_calls_or_fake_tokens _____
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001EB92F37C20>
+
+    def test_zero_evidence_stream_refuses_without_model_calls_or_fake_tokens(monkeypatch):
+        bundle, _ = material()
+        class Repository:
+            gate = ContractGate()
+            def paper(self, identity): return bundle
+        class Workspace:
+            def read(self, kind, identity, default): return {}
+        from scholar_graph.deepseek_client import DeepSeekClient
+        def should_not_call(*args, **kwargs):
+            raise AssertionError('No model call is needed for an empty evidence list')
+        monkeypatch.setattr(DeepSeekClient, 'environment', should_not_call)
+        monkeypatch.setenv('SCHOLAR_GRAPH_WORKSPACE_RETRIEVAL', 'lexical')
+        async def collect():
+            response = research_stream(Workspace(), Repository(), [bundle['paper_meta']['id']], '论文里火星基地的建造预算是多少？')
+            return [frame async for frame in response.body_iterator]
+        frames = asyncio.run(collect())
+        assert not any('\nevent: draft\n' in frame for frame in frames)
+        modes = [json.loads(frame.split('\ndata: ',1)[1].strip()) for frame in frames if '\nevent: mode\n' in frame]
+>       final = next(json.loads(frame.split('\ndata: ',1)[1].strip()) for frame in frames if '\nevent: final\n' in frame)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+tests\test_workspace_research.py:142: StopIteration
+=========================== short test summary info ===========================
+FAILED tests/test_workspace_research.py::test_zero_evidence_stream_refuses_without_model_calls_or_fake_tokens
+1 failed, 185 passed, 1 skipped in 26.56s

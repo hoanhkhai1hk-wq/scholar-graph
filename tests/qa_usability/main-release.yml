@@ -1,0 +1,8 @@
+# Local 8000 is occupied by a separate host Python service; keep it untouched.
+# The frontend continues to use backend:8000 inside the Compose network.
+services:
+  backend:
+    image: scholar-graph-backend:qa-usability-20261029
+    ports: !override ["127.0.0.1:8030:8000"]
+  frontend:
+    image: scholar-graph-frontend:qa-usability-20261029

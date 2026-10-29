@@ -1,0 +1,102 @@
+{
+  "after-final": [
+    {
+      "question": "他们有什么关联",
+      "seconds": 12.484,
+      "error": {
+        "error_code": "VALIDATION_ERROR",
+        "message": "回答中的数值或单位无法回溯到引用原文：2；请为该段引用含这些数值的原文，或删去无依据数字及关联陈述。",
+        "details": null
+      }
+    },
+    {
+      "question": "这两篇研究有哪些共同点和区别？",
+      "seconds": 13.687,
+      "error": {
+        "error_code": "VALIDATION_ERROR",
+        "message": "回答中的数值或单位无法回溯到引用原文：2；请为该段引用含这些数值的原文，或删去无依据数字及关联陈述。",
+        "details": null
+      }
+    },
+    {
+      "question": "这两篇有什么关系？",
+      "seconds": 11.531,
+      "error": {
+        "error_code": "VALIDATION_ERROR",
+        "message": "回答中的数值或单位无法回溯到引用原文：2；请为该段引用含这些数值的原文，或删去无依据数字及关联陈述。",
+        "details": null
+      }
+    }
+  ],
+  "after-scope-final": [
+    {
+      "question": "主要讲了啥？",
+      "seconds": 8.547,
+      "error": {
+        "error_code": "UPSTREAM_ERROR",
+        "message": "DeepSeek流式连接、超时或返回格式错误，未返回未核验答案。",
+        "details": null
+      }
+    },
+    {
+      "question": "如何避免恶意输入影响模型？",
+      "seconds": 12.25,
+      "error": {
+        "error_code": "UPSTREAM_ERROR",
+        "message": "DeepSeek流式连接、超时或返回格式错误，未返回未核验答案。",
+        "details": null
+      }
+    },
+    {
+      "question": "这两篇有什么关系？",
+      "seconds": 9.843,
+      "error": {
+        "error_code": "UPSTREAM_ERROR",
+        "message": "DeepSeek流式连接、超时或返回格式错误，未返回未核验答案。",
+        "details": null
+      }
+    },
+    {
+      "question": "论文中火星基地的建造预算是多少？",
+      "seconds": 7.578,
+      "error": {
+        "error_code": "UPSTREAM_ERROR",
+        "message": "DeepSeek流式连接、超时或返回格式错误，未返回未核验答案。",
+        "details": null
+      }
+    }
+  ],
+  "deployed-final": [
+    {
+      "question": "这两篇研究有哪些共同点和区别？",
+      "seconds": 10.703,
+      "error": {
+        "error_code": "VALIDATION_ERROR",
+        "message": "回答段落格式不正确。",
+        "details": null
+      }
+    }
+  ],
+  "final-acceptance-ready": [
+    {
+      "question": "这两篇有什么关系？",
+      "seconds": 9.938,
+      "error": {
+        "error_code": "VALIDATION_ERROR",
+        "message": "回答中的数值或单位无法回溯到引用原文：2；请为该段引用含这些数值的原文，或删去无依据数字及关联陈述。",
+        "details": null
+      }
+    }
+  ],
+  "release-verified": [
+    {
+      "question": "这两篇研究有哪些共同点和区别？",
+      "seconds": 11.296,
+      "error": {
+        "error_code": "VALIDATION_ERROR",
+        "message": "回答中的数值或单位无法回溯到引用原文：1, 2；请为该段引用含这些数值的原文，或删去无依据数字及关联陈述。",
+        "details": null
+      }
+    }
+  ]
+}

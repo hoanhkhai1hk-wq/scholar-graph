@@ -1,0 +1,153 @@
+{
+  "services": {
+    "main": {
+      "system": {
+        "api_version": "2.0",
+        "workspace_release": "20261027-workbench-r2",
+        "data_class": "personal",
+        "revision": "workspace",
+        "model_configured": true,
+        "qa_mode": "deepseek",
+        "research_retrieval": "lexical",
+        "tracking_enabled": true,
+        "limits": {
+          "upload_bytes": 52428800,
+          "pages": 2000,
+          "comparison_papers": 10
+        },
+        "capabilities": {
+          "paper_management": true,
+          "version_choice": true,
+          "reading_pages": true,
+          "sessions": true,
+          "translation": true,
+          "generated_writing": true,
+          "author_mapping": true,
+          "layout_regions": true,
+          "tracking_read_only": true,
+          "csv_provenance": true,
+          "translation_snapshots": true
+        }
+      },
+      "papers": 0,
+      "api_origin": "http://127.0.0.1:8030",
+      "web_origin": "http://127.0.0.1:3000",
+      "web_status": 200,
+      "dns": "172.21.0.2      backend",
+      "backend_image": "sha256:66e3a3c181848b2892589ffd945110f074255334590c233408b7f1fe301ff3de",
+      "backend_restart_policy": "unless-stopped",
+      "backend_health": "healthy",
+      "frontend_image": "sha256:4ed36314872ef0dab7f152fb3736b85a50fc88b0ef8302f1ec6a3960959aff09",
+      "frontend_restart_policy": "unless-stopped",
+      "frontend_health": "healthy",
+      "build_id": "yKxYO3NwH_GME4YD9cWys"
+    },
+    "demo": {
+      "system": {
+        "api_version": "2.0",
+        "workspace_release": "20261027-workbench-r2",
+        "data_class": "acceptance",
+        "revision": "workspace",
+        "model_configured": true,
+        "qa_mode": "deepseek",
+        "research_retrieval": "lexical",
+        "tracking_enabled": true,
+        "limits": {
+          "upload_bytes": 52428800,
+          "pages": 2000,
+          "comparison_papers": 10
+        },
+        "capabilities": {
+          "paper_management": true,
+          "version_choice": true,
+          "reading_pages": true,
+          "sessions": true,
+          "translation": true,
+          "generated_writing": true,
+          "author_mapping": true,
+          "layout_regions": true,
+          "tracking_read_only": true,
+          "csv_provenance": true,
+          "translation_snapshots": true
+        }
+      },
+      "papers": 37,
+      "api_origin": "http://127.0.0.1:8100",
+      "web_origin": "http://127.0.0.1:3400",
+      "web_status": 200,
+      "dns": "172.25.0.2      backend",
+      "backend_image": "sha256:66e3a3c181848b2892589ffd945110f074255334590c233408b7f1fe301ff3de",
+      "backend_restart_policy": "unless-stopped",
+      "backend_health": "healthy",
+      "frontend_image": "sha256:4ed36314872ef0dab7f152fb3736b85a50fc88b0ef8302f1ec6a3960959aff09",
+      "frontend_restart_policy": "unless-stopped",
+      "frontend_health": "healthy",
+      "build_id": "yKxYO3NwH_GME4YD9cWys"
+    }
+  },
+  "artifacts": [
+    {
+      "service": "main",
+      "file": "backend/scholar_graph/workspace_research.py",
+      "sha256": "811e143026a110f79df9476722175abeb63b449465b6e056072baaf25e4d086b",
+      "matched": true
+    },
+    {
+      "service": "main",
+      "file": "backend/scholar_graph/workspace_query.py",
+      "sha256": "fbefda71de001b4d238fb3f97e9818fcfbd9496b86d169489fbb424964fcfd67",
+      "matched": true
+    },
+    {
+      "service": "main",
+      "file": "backend/scholar_graph/workspace_overview.py",
+      "sha256": "771b3a4b68ebb4d0ef3725cc0204e9d0cf49aed80e18805c21e128eb6a420013",
+      "matched": true
+    },
+    {
+      "service": "main",
+      "file": "frontend/components/ResearchChat.tsx",
+      "sha256": "1b3f8dc29acabe6e7f8e29c6f50177724ebb32244a7f41213533a84414655326",
+      "matched": true
+    },
+    {
+      "service": "main",
+      "file": "frontend/components/ReadingWorkbench.tsx",
+      "sha256": "227b17621e277dd2370a19066759b22e0e4dd912974a51eeb7b90e94220a5c4e",
+      "matched": true
+    },
+    {
+      "service": "demo",
+      "file": "backend/scholar_graph/workspace_research.py",
+      "sha256": "811e143026a110f79df9476722175abeb63b449465b6e056072baaf25e4d086b",
+      "matched": true
+    },
+    {
+      "service": "demo",
+      "file": "backend/scholar_graph/workspace_query.py",
+      "sha256": "fbefda71de001b4d238fb3f97e9818fcfbd9496b86d169489fbb424964fcfd67",
+      "matched": true
+    },
+    {
+      "service": "demo",
+      "file": "backend/scholar_graph/workspace_overview.py",
+      "sha256": "771b3a4b68ebb4d0ef3725cc0204e9d0cf49aed80e18805c21e128eb6a420013",
+      "matched": true
+    },
+    {
+      "service": "demo",
+      "file": "frontend/components/ResearchChat.tsx",
+      "sha256": "1b3f8dc29acabe6e7f8e29c6f50177724ebb32244a7f41213533a84414655326",
+      "matched": true
+    },
+    {
+      "service": "demo",
+      "file": "frontend/components/ReadingWorkbench.tsx",
+      "sha256": "227b17621e277dd2370a19066759b22e0e4dd912974a51eeb7b90e94220a5c4e",
+      "matched": true
+    }
+  ],
+  "official_pdfs_unchanged": 41,
+  "preexisting_files_unchanged": 833,
+  "passed": true
+}

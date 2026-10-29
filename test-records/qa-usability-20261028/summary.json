@@ -1,0 +1,14 @@
+{
+  "final-service": {
+    "count": 12,
+    "refused_as_expected": 2,
+    "errors": 0,
+    "source_checks": "verbatim chunk + physical page + selected paper"
+  },
+  "official-final-code": {
+    "count": 14,
+    "refused_as_expected": 3,
+    "errors": 0,
+    "source_checks": "verbatim chunk + physical page + selected paper"
+  }
+}

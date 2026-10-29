@@ -1,0 +1,42 @@
+{
+  "errors": [],
+  "historical_session_reused": "78a595a9d949481b8420d7d6e25e8e5c",
+  "history_source": "genuine pre-fix refused server session, not a fixture or fabricated DOM",
+  "browser": "156.0.8078.49",
+  "questions_before": 5,
+  "old_refusal_retained": true,
+  "retry_persisted_on_refresh": true,
+  "example_fills_without_sending": true,
+  "reader_scope_correct": true,
+  "clicked_evidence": "/read/paper-1cb48e40e523d1994f38211edd30f92b0f01f0a25c2990bc8d84a9b684e95135?page=1&chunk=paper-1cb48e40e523d1994f38211edd30f92b0f01f0a25c2990bc8d84a9b684e95135-p0001-c00009",
+  "reader_source_highlight": true,
+  "highlighted_page": 1,
+  "reader_history_restored": true,
+  "layout_1440": {
+    "viewport": 1440,
+    "document": 1440
+  },
+  "layout_390": {
+    "viewport": 390,
+    "document": 390
+  },
+  "passed": true,
+  "cases": [
+    {
+      "name": "retry-old-refusal",
+      "seconds": 5.469
+    },
+    {
+      "name": "native-screenshot-question",
+      "seconds": 3.572
+    },
+    {
+      "name": "reader-novelty",
+      "seconds": 2.068
+    },
+    {
+      "name": "reader-method",
+      "seconds": 5.104
+    }
+  ]
+}

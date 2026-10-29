@@ -44,12 +44,14 @@ export default function ReadingWorkbench({ initial }: { initial: ReadingContext 
     if (value.kind === "hover") void translate(value);
   }
 
-  return <main className="sg-shell sg-shell--wide" onClick={event => {
+  return <main className="sg-shell sg-shell--wide" onClickCapture={event => {
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     const link = (event.target as HTMLElement).closest<HTMLAnchorElement>("a.sg-anchor-inline");
     if (!link) return;
     const url = new URL(link.href);
     if (url.pathname !== `/read/${paper.id}`) return;
     event.preventDefault(); setView("pdf");
+    window.history.replaceState(window.history.state, "", url.pathname + url.search);
     window.setTimeout(() => window.dispatchEvent(new CustomEvent("sg:locate", { detail: { chunk_id: url.searchParams.get("chunk"), page_number: Number(url.searchParams.get("page")) } })), 100);
   }}>
     <div className="sg-page-head"><p className="sg-mono"><Link href="/">论文库</Link> / 阅读研究</p><h1 className="sg-title">{paper.title ?? paper.arxiv_id ?? "论文阅读"}</h1><p className="sg-lede">{paper.authors.join("、") || "作者信息待补齐"} · {paper.page_count} 页 · {initial.total_chunks} 个正文段落</p></div>

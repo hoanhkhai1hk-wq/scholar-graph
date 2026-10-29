@@ -1,0 +1,13 @@
+# Apply after tests/item04/compose.yml; the original item-four record is retained.
+services:
+  backend:
+    image: scholar-graph-backend:qa-usability-20261029
+    restart: unless-stopped
+  frontend:
+    image: scholar-graph-frontend:qa-usability-20261029
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/api/workspace/system').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 15s
+      timeout: 12s
+      retries: 8

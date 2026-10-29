@@ -1,0 +1,50 @@
+[
+  {
+    "question": "他们有什么关联",
+    "seconds": 0.656,
+    "refused": true,
+    "retrieval": {
+      "method": "lexical",
+      "reason": "EXPLICIT_LOW_LATENCY_POLICY",
+      "vector_evidence_used": false,
+      "overview_evidence_count": 0,
+      "evidence_count": 0
+    }
+  },
+  {
+    "question": "它是怎么防止提示注入攻击的？",
+    "seconds": 0.547,
+    "refused": true,
+    "retrieval": {
+      "method": "lexical",
+      "reason": "EXPLICIT_LOW_LATENCY_POLICY",
+      "vector_evidence_used": false,
+      "overview_evidence_count": 0,
+      "evidence_count": 0
+    }
+  },
+  {
+    "question": "这篇论文的创新点是什么？",
+    "seconds": 0.375,
+    "refused": true,
+    "retrieval": {
+      "method": "lexical",
+      "reason": "EXPLICIT_LOW_LATENCY_POLICY",
+      "vector_evidence_used": false,
+      "overview_evidence_count": 0,
+      "evidence_count": 0
+    }
+  },
+  {
+    "question": "这篇论文讲什么？",
+    "seconds": 4.719,
+    "refused": false,
+    "retrieval": {
+      "method": "lexical_with_source_overview",
+      "reason": "EXPLICIT_LOW_LATENCY_POLICY",
+      "vector_evidence_used": false,
+      "overview_evidence_count": 48,
+      "evidence_count": 48
+    }
+  }
+]

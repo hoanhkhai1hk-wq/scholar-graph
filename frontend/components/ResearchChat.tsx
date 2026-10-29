@@ -8,7 +8,7 @@ import QaAnswerView from "./QaAnswerView";
 import ResearchAnswerView, { type ResearchAnswer } from "./ResearchAnswerView";
 
 type Message = { question: string; answer?: QAAnswer; research?: ResearchAnswer; comparison?: CompareResult; error?: string };
-const stages: Record<string, string> = { plan: "确定需要查找的材料", retrieve: "检索论文原文", qa: "根据证据组织回答", validate: "检查原文引用和数字", refuse: "检查是否有足够证据" };
+const stages: Record<string, string> = { plan: "确定需要查找的材料", query: "理解中文问题，转换中英文检索词", retrieve: "检索论文原文", qa: "根据证据组织回答", validate: "检查原文引用和数字", refuse: "检查是否有足够证据" };
 
 export default function ResearchChat({ papers, initialPaperIds = [], compact = false }: { papers: PaperMeta[]; initialPaperIds?: string[]; compact?: boolean }) {
   const [selected, setSelected] = useState(initialPaperIds);
@@ -47,11 +47,11 @@ export default function ResearchChat({ papers, initialPaperIds = [], compact = f
     try { localStorage.setItem(storageKey, JSON.stringify(next.slice(-30))); } catch { /* Conversation remains available in memory if storage is full. */ }
   }
 
-  async function send() {
-    if (running || !selected.length || selected.length > 10 || !question.trim()) return;
-    const currentQuestion = question.trim();
+  async function send(retryQuestion?: string) {
+    const currentQuestion = (retryQuestion ?? question).trim();
+    if (running || !selected.length || selected.length > 10 || !currentQuestion) return;
     const next = [...messages, { question: currentQuestion }];
-    save(next); setQuestion(""); setRunning(true); setStatus("正在连接研究服务…");
+    save(next); setQuestion(""); setRunning(true); setMode(""); setStatus("正在连接研究服务…");
     const controller = new AbortController(); abort.current = controller;
     let finalReceived = false, refused = false;
     try {
@@ -101,9 +101,9 @@ export default function ResearchChat({ papers, initialPaperIds = [], compact = f
 
   return <div className="sg-chat">
     {!compact ? <div className="sg-chat__papers"><label className="sg-field">本次研究的论文（已选 {selected.length}，最多 10 篇）<input className="sg-input" placeholder="搜索论文标题" value={filter} onChange={e => setFilter(e.target.value)} /></label><div className="sg-chat__paper-list">{papers.filter(p => (p.title ?? p.arxiv_id ?? p.id).toLowerCase().includes(filter.toLowerCase())).map(p => <label className="sg-chat__paper" key={p.id}><input type="checkbox" checked={selected.includes(p.id)} disabled={running || (!selected.includes(p.id) && selected.length >= 10)} onChange={() => setSelected(ids => ids.includes(p.id) ? ids.filter(id => id !== p.id) : [...ids, p.id])} /><span>{p.title ?? p.arxiv_id ?? `未命名论文 · ${p.page_count ?? "未知"} 页`}</span></label>)}</div>{!papers.length ? <p>论文库为空，请先上传论文。</p> : null}</div> : null}
-    <div className="sg-chat__messages" aria-live="polite" aria-busy={running}>
-      {!messages.length ? <div className="sg-chat__empty"><strong>带着问题阅读原文</strong><p>可以询问研究方法、实验结果，或比较多篇论文。回答中的证据可直接打开原文。</p></div> : null}
-      {messages.map((message, i) => <div key={i}><div className="sg-chat__question">{message.question}</div><div className="sg-chat__answer">{message.research ? <ResearchAnswerView answer={message.research} /> : null}{message.answer ? <QaAnswerView answer={message.answer} /> : null}{message.comparison ? <><p className="sg-prose">{message.comparison.synthesis}</p>{message.comparison.per_paper.map((answer, n) => <QaAnswerView key={n} answer={answer} title={`论文 ${n + 1}`} />)}</> : null}{message.error ? <div role="alert" className="sg-error"><p>{message.error}</p><button className="sg-btn sg-btn--ghost" onClick={() => setQuestion(message.question)}>重新编辑问题</button></div> : null}</div></div>)}
+    <p className="sg-chat__scope">{compact ? "当前论文：" : `本次回答范围：${selected.length} 篇`}{compact ? papers.find(p=>p.id===selected[0])?.title : null}</p><div className="sg-form" aria-label="提问示例"><button className="sg-btn sg-btn--ghost" disabled={running || !selected.length} onClick={() => setQuestion(selected.length > 1 ? "这几篇论文各自研究什么？" : "这篇论文主要讲什么？")}>概括主要内容</button><button className="sg-btn sg-btn--ghost" disabled={running || !selected.length} onClick={() => setQuestion(selected.length > 1 ? "这几篇论文有哪些共同点和区别？" : "这篇论文的创新点是什么？")}>{selected.length > 1 ? "比较共同点与区别" : "了解创新点"}</button></div><div className="sg-chat__messages" aria-live="polite" aria-busy={running}>
+      {!messages.length ? <div className="sg-chat__empty"><strong>带着问题阅读原文</strong><p>{selected.length > 1 ? "已选多篇，可以直接问“它们有什么关联？”；系统会区分共同主题和有证据的承袭关系。" : "可以直接问“这篇论文讲什么？”或“创新点是什么？”，也可以提具体问题。"} 回答中的证据可点击查看原文。</p></div> : null}
+      {messages.map((message, i) => <div key={i}><div className="sg-chat__question">{message.question}</div><div className="sg-chat__answer">{message.research ? <ResearchAnswerView answer={message.research} /> : null}{message.answer ? <QaAnswerView answer={message.answer} /> : null}{message.comparison ? <><p className="sg-prose">{message.comparison.synthesis}</p>{message.comparison.per_paper.map((answer, n) => <QaAnswerView key={n} answer={answer} title={`论文 ${n + 1}`} />)}</> : null}{message.research?.refused ? <button className="sg-btn sg-btn--ghost" disabled={running} onClick={() => void send(message.question)}>重新检索此问题</button> : null}{message.error ? <div role="alert" className="sg-error"><p>{message.error}</p><button className="sg-btn sg-btn--ghost" onClick={() => setQuestion(message.question)}>重新编辑问题</button></div> : null}</div></div>)}
       {status ? <div className="sg-chat__status" role="status">{status}</div> : null}<div ref={end} />
     </div>
     <div className="sg-chat__composer"><textarea className="sg-input" aria-label="研究问题" placeholder={selected.length ? "输入你的问题…" : "先选择论文，再输入问题"} value={question} onChange={e => setQuestion(e.target.value)} disabled={running} onKeyDown={e => { if (e.key === "Enter" && !e.shiftKey && !e.nativeEvent.isComposing) { e.preventDefault(); void send(); } }} /><div className="sg-chat__actions"><span className="sg-mono">{mode || (selected.length > 1 ? "跨篇研究" : "单篇研究")}</span>{running ? <button className="sg-btn sg-btn--ghost" onClick={() => abort.current?.abort()}>停止回答</button> : <button className="sg-btn" disabled={!selected.length || !question.trim()} title={!selected.length ? "请先选择论文" : !question.trim() ? "请输入问题" : "发送问题"} onClick={() => void send()}>发送</button>}</div></div>

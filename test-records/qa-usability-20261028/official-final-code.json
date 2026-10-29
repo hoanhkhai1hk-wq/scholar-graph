@@ -1,0 +1,938 @@
+[
+  {
+    "case": "S1",
+    "question": "论文Attention Is All You Need的第6作者是谁，在哪个公司/机构工作？",
+    "seconds": 2.0,
+    "refused": false,
+    "text": [
+      "按作者顺序，第6作者是 Aidan N. Gomez，其所属机构为 University of Toronto（多伦多大学）。"
+    ],
+    "citations": [
+      {
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 1,
+          "section": [],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00004"
+        },
+        "quote_sha256": "bd6a93c12667859eae233abd0195b1facc016f7b4a724c96e307c157a66c6193"
+      }
+    ],
+    "calculations": [],
+    "retrieval": {
+      "method": "lexical",
+      "reason": "EXPLICIT_LOW_LATENCY_POLICY",
+      "vector_evidence_used": false,
+      "overview_evidence_count": 0,
+      "evidence_count": 48,
+      "query_rewrite": {
+        "attempted": false,
+        "queries": []
+      },
+      "source_scope": "selected_papers_only",
+      "paper_evidence_counts": {
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697": 48
+      }
+    },
+    "model_calls": [
+      {
+        "provider": "deepseek",
+        "model": "deepseek-chat",
+        "phase": "workspace_research_1",
+        "elapsed_seconds": 1.870864,
+        "prompt_tokens": 14256,
+        "completion_tokens": 84,
+        "total_tokens": 14340,
+        "http_status": 200,
+        "status": "succeeded"
+      }
+    ],
+    "verified_done": true
+  },
+  {
+    "case": "S2",
+    "question": "其中Adam优化器的超参数β₁和β₂分别被设置为了多少？",
+    "seconds": 1.86,
+    "refused": false,
+    "text": [
+      "论文中 Adam 优化器的超参数设置为 β₁ = 0.9、β₂ = 0.98（同时 ϵ = 10⁻⁹）。"
+    ],
+    "citations": [
+      {
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 7,
+          "section": [
+            "5 Training",
+            "5.3 Optimizer"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00088"
+        },
+        "quote_sha256": "9a902605765ac1752a9ff3ff2a8cd540b45cb0aaa0442d2473478fd5dd8bb709"
+      }
+    ],
+    "calculations": [],
+    "retrieval": {
+      "method": "lexical",
+      "reason": "EXPLICIT_LOW_LATENCY_POLICY",
+      "vector_evidence_used": false,
+      "overview_evidence_count": 0,
+      "evidence_count": 48,
+      "query_rewrite": {
+        "attempted": false,
+        "queries": []
+      },
+      "source_scope": "selected_papers_only",
+      "paper_evidence_counts": {
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697": 48
+      }
+    },
+    "model_calls": [
+      {
+        "provider": "deepseek",
+        "model": "deepseek-chat",
+        "phase": "workspace_research_1",
+        "elapsed_seconds": 1.736061,
+        "prompt_tokens": 13475,
+        "completion_tokens": 125,
+        "total_tokens": 13600,
+        "http_status": 200,
+        "status": "succeeded"
+      }
+    ],
+    "verified_done": true
+  },
+  {
+    "case": "S3",
+    "question": "这篇论文中Transformer架构训练Base模型用了多少个GPU？具体是什么型号？",
+    "seconds": 1.578,
+    "refused": false,
+    "text": [
+      "论文在“5.2 Hardware and Schedule”一节说明，模型是在一台配备 8 块 NVIDIA P100 GPU 的机器上训练的；其中 base 模型使用论文所述超参数，每个训练步约 0.4 秒，共训练 100,000 步（约 12 小时）。因此，训练 Base 模型所用的 GPU 数量为 8 块，型号为 NVIDIA P100。"
+    ],
+    "citations": [
+      {
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 7,
+          "section": [
+            "5 Training",
+            "5.2 Hardware and Schedule"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00086"
+        },
+        "quote_sha256": "ca19cb0f618d434b26f150481e4ae37f43fcc3a9704b4acbbe50192a836e3f89"
+      }
+    ],
+    "calculations": [],
+    "retrieval": {
+      "method": "lexical",
+      "reason": "EXPLICIT_LOW_LATENCY_POLICY",
+      "vector_evidence_used": false,
+      "overview_evidence_count": 0,
+      "evidence_count": 48,
+      "query_rewrite": {
+        "attempted": false,
+        "queries": []
+      },
+      "source_scope": "selected_papers_only",
+      "paper_evidence_counts": {
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697": 48
+      }
+    },
+    "model_calls": [
+      {
+        "provider": "deepseek",
+        "model": "deepseek-chat",
+        "phase": "workspace_research_1",
+        "elapsed_seconds": 1.489012,
+        "prompt_tokens": 15052,
+        "completion_tokens": 180,
+        "total_tokens": 15232,
+        "http_status": 200,
+        "status": "succeeded"
+      }
+    ],
+    "verified_done": true
+  },
+  {
+    "case": "S4",
+    "question": "Transformer (big)模型在English-to-German任务上的BLEU分数是多少？当时的State-of-the-art模型是多少？提升了多少？",
+    "seconds": 2.609,
+    "refused": false,
+    "text": [
+      "Transformer (big) 在 WMT 2014 English-to-German 任务上的 BLEU 分数为 28.4，论文称其建立了新的 state-of-the-art。此前最佳结果（含 ensemble）在 Table 2 中为 ConvS2S Ensemble 的 26.36 BLEU。"
+    ],
+    "citations": [
+      {
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 8,
+          "section": [
+            "6 Results",
+            "6.1 Machine Translation"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00098"
+        },
+        "quote_sha256": "922362566af459984fd2cf6c800f6fac50e14ee3f5aa506d62a2cebb43d3b33c"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 8,
+          "section": [
+            "5 Training",
+            "5.4 Regularization"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00093"
+        },
+        "quote_sha256": "b5927fec2ad1418453acfd02f69b194f25fa7d674c7c2bf6d9716f7567c918e8"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 8,
+          "section": [
+            "5 Training",
+            "5.4 Regularization"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00093"
+        },
+        "quote_sha256": "2e1a1db382ef0f4c15b63230c2e16bbd55aac42fe2758ea34abd3f5e036228e9"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 8,
+          "section": [
+            "5 Training",
+            "5.4 Regularization"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00093"
+        },
+        "quote_sha256": "6b56e2f1ed72ab89c2baafdcac8c20e4474153a064333fbf609ed8a775f1f2aa"
+      }
+    ],
+    "calculations": [
+      {
+        "label": "Transformer (big) 相对此前最佳（ConvS2S Ensemble）的 BLEU 提升",
+        "result": "2.04",
+        "unit": "BLEU"
+      }
+    ],
+    "retrieval": {
+      "method": "lexical",
+      "reason": "EXPLICIT_LOW_LATENCY_POLICY",
+      "vector_evidence_used": false,
+      "overview_evidence_count": 0,
+      "evidence_count": 48,
+      "query_rewrite": {
+        "attempted": false,
+        "queries": []
+      },
+      "source_scope": "selected_papers_only",
+      "paper_evidence_counts": {
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697": 48
+      }
+    },
+    "model_calls": [
+      {
+        "provider": "deepseek",
+        "model": "deepseek-chat",
+        "phase": "workspace_research_1",
+        "elapsed_seconds": 2.510209,
+        "prompt_tokens": 15369,
+        "completion_tokens": 488,
+        "total_tokens": 15857,
+        "http_status": 200,
+        "status": "succeeded"
+      }
+    ],
+    "verified_done": true
+  },
+  {
+    "case": "S5",
+    "question": "请列出论文中引用的关于Layer Normalization的参考文献的完整作者和年份。",
+    "seconds": 1.484,
+    "refused": false,
+    "text": [
+      "论文参考文献中关于 Layer Normalization 的条目为：[1] Jimmy Lei Ba, Jamie Ryan Kiros, and Geoffrey E Hinton. Layer normalization. arXiv preprint arXiv:1607.06450, 2016。因此完整作者为 Jimmy Lei Ba、Jamie Ryan Kiros、Geoffrey E Hinton，年份为 2016。"
+    ],
+    "citations": [
+      {
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 10,
+          "section": [
+            "References"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00127"
+        },
+        "quote_sha256": "38181c31079a7194a90fb84e93813656806ae30cfc69a85511f4c8112e268e8d"
+      }
+    ],
+    "calculations": [],
+    "retrieval": {
+      "method": "lexical",
+      "reason": "EXPLICIT_LOW_LATENCY_POLICY",
+      "vector_evidence_used": false,
+      "overview_evidence_count": 0,
+      "evidence_count": 46,
+      "query_rewrite": {
+        "attempted": false,
+        "queries": []
+      },
+      "source_scope": "selected_papers_only",
+      "paper_evidence_counts": {
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697": 46
+      }
+    },
+    "model_calls": [
+      {
+        "provider": "deepseek",
+        "model": "deepseek-chat",
+        "phase": "workspace_research_1",
+        "elapsed_seconds": 1.386804,
+        "prompt_tokens": 14284,
+        "completion_tokens": 146,
+        "total_tokens": 14430,
+        "http_status": 200,
+        "status": "succeeded"
+      }
+    ],
+    "verified_done": true
+  },
+  {
+    "case": "M1",
+    "question": "请对比BERT的架构和原始Transformer的Encoder有什么承袭关系？BERT丢弃了原始Transformer的哪个部分？",
+    "seconds": 3.391,
+    "refused": false,
+    "text": [
+      "BERT明确承袭了原始Transformer的编码器结构：其模型架构是“基于Vaswani et al. (2017)所述原始实现的多层双向Transformer编码器”，并称实现“几乎与原始版本相同”。原始Transformer的编码器由N=6个相同层堆叠，每层含多头自注意力与逐位置全连接前馈网络两个子层，并配有残差连接与层归一化。",
+      "BERT丢弃的是原始Transformer的解码器部分。原始Transformer是编码器-解码器结构，解码器在编码器两个子层之外再插入第三个子层，对编码器输出做多头注意力，并用掩码防止看到后续位置；BERT只保留编码器，采用双向自注意力，不再有解码器及其自回归掩码。"
+    ],
+    "citations": [
+      {
+        "anchor": {
+          "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+          "page_number": 3,
+          "section": [
+            "3 BERT"
+          ],
+          "chunk_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0003-c00040"
+        },
+        "quote_sha256": "462ddc020f344cf98bc7ee58c5f65b8de419a00318b443cbe714e68f2ec88c5c"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 3,
+          "section": [
+            "3 Model Architecture",
+            "3.1 Encoder and Decoder Stacks"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00031"
+        },
+        "quote_sha256": "656f8793c257959a363f040574f896ef9f6d3e148bb688d078ffc71ac2c2cf0c"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 3,
+          "section": [
+            "3 Model Architecture",
+            "3.1 Encoder and Decoder Stacks"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00032"
+        },
+        "quote_sha256": "1201ebcf02905b6427bd5bef01bd1ea4f927a1f9ffadb0de7b8edf70e0d64a88"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+          "page_number": 3,
+          "section": [
+            "3 BERT"
+          ],
+          "chunk_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0003-c00041"
+        },
+        "quote_sha256": "15e505314fdbad3b3fc31e0aeabd0924ac3a3905ed6d49a6b87a53211f83f78f"
+      }
+    ],
+    "calculations": [],
+    "retrieval": {
+      "method": "lexical_with_source_overview",
+      "reason": "EXPLICIT_LOW_LATENCY_POLICY",
+      "vector_evidence_used": false,
+      "overview_evidence_count": 6,
+      "evidence_count": 108,
+      "query_rewrite": {
+        "attempted": false,
+        "queries": []
+      },
+      "source_scope": "selected_papers_only",
+      "paper_evidence_counts": {
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697": 53,
+        "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4": 55
+      }
+    },
+    "model_calls": [
+      {
+        "provider": "deepseek",
+        "model": "deepseek-chat",
+        "phase": "workspace_research_1",
+        "elapsed_seconds": 3.040932,
+        "prompt_tokens": 31872,
+        "completion_tokens": 419,
+        "total_tokens": 32291,
+        "http_status": 200,
+        "status": "succeeded"
+      }
+    ],
+    "verified_done": true
+  },
+  {
+    "case": "M2",
+    "question": "对比GPT-1、GPT-2和GPT-3的论文，说明这些模型参数规模的变化，并说明每个数字来自哪篇论文。",
+    "seconds": 3.703,
+    "refused": false,
+    "text": [
+      "GPT-1论文本身未在检索到的证据中给出其参数规模；GPT-2论文指出其最小模型“equivalent to the original GPT”，并在架构表中列出该最小模型为117M参数，因此可据此把GPT-1的规模对应到117M。GPT-2论文明确其最大模型GPT-2为1.5B参数。GPT-3论文则说明其训练了从125 million到175 billion参数的8种规模，其中最大者称为GPT-3，即175 billion参数。"
+    ],
+    "citations": [
+      {
+        "anchor": {
+          "paper_id": "paper-d9d852e2894556e73f53cb22b7c605a9643d6f0b19bf604b429ed6192fa24f4e",
+          "page_number": 4,
+          "section": [
+            "Abstract"
+          ],
+          "chunk_id": "paper-d9d852e2894556e73f53cb22b7c605a9643d6f0b19bf604b429ed6192fa24f4e-p0004-c00053"
+        },
+        "quote_sha256": "5db2042f7da85c15c6ebdf8e7c5442f7568e12a7cb2c596557cf8188839969b2"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-d9d852e2894556e73f53cb22b7c605a9643d6f0b19bf604b429ed6192fa24f4e",
+          "page_number": 4,
+          "section": [
+            "Abstract"
+          ],
+          "chunk_id": "paper-d9d852e2894556e73f53cb22b7c605a9643d6f0b19bf604b429ed6192fa24f4e-p0004-c00050"
+        },
+        "quote_sha256": "9fb001b400cc45b6cb1adfb3aa8eea397aadd6aef9269ddfeed8eb2a902074c6"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-d9d852e2894556e73f53cb22b7c605a9643d6f0b19bf604b429ed6192fa24f4e",
+          "page_number": 1,
+          "section": [
+            "Abstract"
+          ],
+          "chunk_id": "paper-d9d852e2894556e73f53cb22b7c605a9643d6f0b19bf604b429ed6192fa24f4e-p0001-c00004"
+        },
+        "quote_sha256": "876d72e36e84043bd094e6882ef67d32341a8501a9dfbae390660c118b1eb389"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-97fd272f1fdfc18677462d0292f5fbf26ca86b4d1b485c2dba03269b643a0e83",
+          "page_number": 8,
+          "section": [
+            "2 Approach",
+            "2.1 Model and Architectures"
+          ],
+          "chunk_id": "paper-97fd272f1fdfc18677462d0292f5fbf26ca86b4d1b485c2dba03269b643a0e83-p0008-c00081"
+        },
+        "quote_sha256": "e0aee6c70fc1890f4dc738f10a029ce01fedff795b5b64855c18747a0933f71e"
+      }
+    ],
+    "calculations": [],
+    "retrieval": {
+      "method": "lexical",
+      "reason": "EXPLICIT_LOW_LATENCY_POLICY",
+      "vector_evidence_used": false,
+      "overview_evidence_count": 0,
+      "evidence_count": 96,
+      "query_rewrite": {
+        "attempted": false,
+        "queries": []
+      },
+      "source_scope": "selected_papers_only",
+      "paper_evidence_counts": {
+        "paper-eb81a65e0856bd38e855e1f1de6ee12e7c3eb92ae05c8270d345a475beb631d0": 32,
+        "paper-d9d852e2894556e73f53cb22b7c605a9643d6f0b19bf604b429ed6192fa24f4e": 32,
+        "paper-97fd272f1fdfc18677462d0292f5fbf26ca86b4d1b485c2dba03269b643a0e83": 32
+      }
+    },
+    "model_calls": [
+      {
+        "provider": "deepseek",
+        "model": "deepseek-chat",
+        "phase": "workspace_research_1",
+        "elapsed_seconds": 2.725107,
+        "prompt_tokens": 39316,
+        "completion_tokens": 466,
+        "total_tokens": 39782,
+        "http_status": 200,
+        "status": "succeeded"
+      }
+    ],
+    "verified_done": true
+  },
+  {
+    "case": "M3",
+    "question": "GPT-2相比于GPT-1，在Transformer的Layer Normalization位置上做了什么关键的调整？",
+    "seconds": 2.281,
+    "refused": false,
+    "text": [
+      "GPT-2论文明确指出，其架构大体沿用OpenAI GPT模型，仅作少量修改，其中一项关键调整是：将Layer Normalization移到每个子块的输入端，类似pre-activation残差网络，并在最后一个self-attention块之后额外增加一层Layer Normalization。",
+      "关于GPT-1一侧，检索到的证据仅显示其模型“大量使用layernorm”，并未给出Layer Normalization的具体位置，因此无法从所提供证据中确认GPT-1原有的LN位置细节。"
+    ],
+    "citations": [
+      {
+        "anchor": {
+          "paper_id": "paper-d9d852e2894556e73f53cb22b7c605a9643d6f0b19bf604b429ed6192fa24f4e",
+          "page_number": 4,
+          "section": [
+            "Abstract"
+          ],
+          "chunk_id": "paper-d9d852e2894556e73f53cb22b7c605a9643d6f0b19bf604b429ed6192fa24f4e-p0004-c00049"
+        },
+        "quote_sha256": "c0380a0f124b09e70d11211ea5536ac78285a8810ab50644721c5b685cbb7b02"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-d9d852e2894556e73f53cb22b7c605a9643d6f0b19bf604b429ed6192fa24f4e",
+          "page_number": 4,
+          "section": [
+            "Abstract"
+          ],
+          "chunk_id": "paper-d9d852e2894556e73f53cb22b7c605a9643d6f0b19bf604b429ed6192fa24f4e-p0004-c00051"
+        },
+        "quote_sha256": "dba03cec1254e935519612fb1461f243c0a0ce7fcddb83d8cd65a9e3aae8452c"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-eb81a65e0856bd38e855e1f1de6ee12e7c3eb92ae05c8270d345a475beb631d0",
+          "page_number": 5,
+          "section": [
+            "4 Experiments",
+            "4.1 Setup"
+          ],
+          "chunk_id": "paper-eb81a65e0856bd38e855e1f1de6ee12e7c3eb92ae05c8270d345a475beb631d0-p0005-c00050"
+        },
+        "quote_sha256": "3ab01a3039529b617ded610bd3764f6d8732ce28479424cc577493de444da745"
+      }
+    ],
+    "calculations": [],
+    "retrieval": {
+      "method": "lexical",
+      "reason": "EXPLICIT_LOW_LATENCY_POLICY",
+      "vector_evidence_used": false,
+      "overview_evidence_count": 0,
+      "evidence_count": 96,
+      "query_rewrite": {
+        "attempted": false,
+        "queries": []
+      },
+      "source_scope": "selected_papers_only",
+      "paper_evidence_counts": {
+        "paper-eb81a65e0856bd38e855e1f1de6ee12e7c3eb92ae05c8270d345a475beb631d0": 48,
+        "paper-d9d852e2894556e73f53cb22b7c605a9643d6f0b19bf604b429ed6192fa24f4e": 48
+      }
+    },
+    "model_calls": [
+      {
+        "provider": "deepseek",
+        "model": "deepseek-chat",
+        "phase": "workspace_research_1",
+        "elapsed_seconds": 2.069222,
+        "prompt_tokens": 29474,
+        "completion_tokens": 304,
+        "total_tokens": 29778,
+        "http_status": 200,
+        "status": "succeeded"
+      }
+    ],
+    "verified_done": true
+  },
+  {
+    "case": "M4",
+    "question": "从GPT-1到GPT-3，模型的最大上下文Token长度分别递增到了多少？",
+    "seconds": 3.125,
+    "refused": false,
+    "text": [
+      "GPT-1论文的检索证据只提到训练时使用“contiguous sequences of 512 tokens”，并未以“最大上下文长度”的标签单独给出该数值；GPT-2论文则明确说明将上下文大小从512增加到1024个token，这也可作为对GPT-1为512的跨论文佐证。GPT-3论文明确说明所有模型使用 n_ctx = 2048 个token的上下文窗口。因此按检索证据，GPT-1为512、GPT-2为1024、GPT-3为2048个token。"
+    ],
+    "citations": [
+      {
+        "anchor": {
+          "paper_id": "paper-eb81a65e0856bd38e855e1f1de6ee12e7c3eb92ae05c8270d345a475beb631d0",
+          "page_number": 5,
+          "section": [
+            "4 Experiments",
+            "4.1 Setup"
+          ],
+          "chunk_id": "paper-eb81a65e0856bd38e855e1f1de6ee12e7c3eb92ae05c8270d345a475beb631d0-p0005-c00050"
+        },
+        "quote_sha256": "eea0c6ab8193553508bf879679b94c4c8adbe22e4bd850c5aaf185567a828217"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-d9d852e2894556e73f53cb22b7c605a9643d6f0b19bf604b429ed6192fa24f4e",
+          "page_number": 4,
+          "section": [
+            "Abstract"
+          ],
+          "chunk_id": "paper-d9d852e2894556e73f53cb22b7c605a9643d6f0b19bf604b429ed6192fa24f4e-p0004-c00051"
+        },
+        "quote_sha256": "3da18264d8168391c1404afc8d18add33f4df3716dbd75b1203d6b80ff607dcb"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-97fd272f1fdfc18677462d0292f5fbf26ca86b4d1b485c2dba03269b643a0e83",
+          "page_number": 8,
+          "section": [
+            "2 Approach",
+            "2.1 Model and Architectures"
+          ],
+          "chunk_id": "paper-97fd272f1fdfc18677462d0292f5fbf26ca86b4d1b485c2dba03269b643a0e83-p0008-c00082"
+        },
+        "quote_sha256": "3334661893e038f693ab73d4785d0db6bd1a792a8dfe596cc7fdadc3ea270c2a"
+      }
+    ],
+    "calculations": [],
+    "retrieval": {
+      "method": "lexical",
+      "reason": "EXPLICIT_LOW_LATENCY_POLICY",
+      "vector_evidence_used": false,
+      "overview_evidence_count": 0,
+      "evidence_count": 96,
+      "query_rewrite": {
+        "attempted": false,
+        "queries": []
+      },
+      "source_scope": "selected_papers_only",
+      "paper_evidence_counts": {
+        "paper-eb81a65e0856bd38e855e1f1de6ee12e7c3eb92ae05c8270d345a475beb631d0": 32,
+        "paper-d9d852e2894556e73f53cb22b7c605a9643d6f0b19bf604b429ed6192fa24f4e": 32,
+        "paper-97fd272f1fdfc18677462d0292f5fbf26ca86b4d1b485c2dba03269b643a0e83": 32
+      }
+    },
+    "model_calls": [
+      {
+        "provider": "deepseek",
+        "model": "deepseek-chat",
+        "phase": "workspace_research_1",
+        "elapsed_seconds": 2.575202,
+        "prompt_tokens": 38416,
+        "completion_tokens": 232,
+        "total_tokens": 38648,
+        "http_status": 200,
+        "status": "succeeded"
+      }
+    ],
+    "verified_done": true
+  },
+  {
+    "case": "H1",
+    "question": "论文报告了Transformer在火星探测任务中的准确率吗？请给出数值。",
+    "seconds": 1.329,
+    "refused": true,
+    "text": [
+      "检索到的证据未涉及Transformer在火星探测任务中的表现，因此无法给出该任务的准确率数值。论文报告的实验集中在机器翻译（如WMT 2014英德、英法任务）和英语成分句法分析上。"
+    ],
+    "citations": [
+      {
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 1,
+          "section": [
+            "Abstract"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00010"
+        },
+        "quote_sha256": "0b7da140f26e1e23460ad1c6682aac8caa0439601609db7cadc716638f5e93f9"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 9,
+          "section": [
+            "6 Results",
+            "6.3 English Constituency Parsing"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00111"
+        },
+        "quote_sha256": "ad4aa6bc799fbd87e95b8935972ef61a7524e561b534d88a76af6ed2ce6eab9b"
+      }
+    ],
+    "calculations": [],
+    "retrieval": {
+      "method": "lexical",
+      "reason": "EXPLICIT_LOW_LATENCY_POLICY",
+      "vector_evidence_used": false,
+      "overview_evidence_count": 0,
+      "evidence_count": 47,
+      "query_rewrite": {
+        "attempted": false,
+        "queries": []
+      },
+      "source_scope": "selected_papers_only",
+      "paper_evidence_counts": {
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697": 47
+      }
+    },
+    "model_calls": [
+      {
+        "provider": "deepseek",
+        "model": "deepseek-chat",
+        "phase": "workspace_research_1",
+        "elapsed_seconds": 1.215935,
+        "prompt_tokens": 15612,
+        "completion_tokens": 154,
+        "total_tokens": 15766,
+        "http_status": 200,
+        "status": "succeeded"
+      }
+    ],
+    "verified_done": true
+  },
+  {
+    "case": "H2",
+    "question": "论文用Adam的β₁=0.5、β₂=0.6训练，对吗？请确认。",
+    "seconds": 1.766,
+    "refused": true,
+    "text": [
+      "不对。检索到的证据显示，该论文使用的Adam优化器参数为β₁ = 0.9、β₂ = 0.98，而非β₁ = 0.5、β₂ = 0.6。"
+    ],
+    "citations": [
+      {
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 7,
+          "section": [
+            "5 Training",
+            "5.3 Optimizer"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00088"
+        },
+        "quote_sha256": "9a902605765ac1752a9ff3ff2a8cd540b45cb0aaa0442d2473478fd5dd8bb709"
+      }
+    ],
+    "calculations": [],
+    "retrieval": {
+      "method": "lexical",
+      "reason": "EXPLICIT_LOW_LATENCY_POLICY",
+      "vector_evidence_used": false,
+      "overview_evidence_count": 0,
+      "evidence_count": 38,
+      "query_rewrite": {
+        "attempted": false,
+        "queries": []
+      },
+      "source_scope": "selected_papers_only",
+      "paper_evidence_counts": {
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697": 38
+      }
+    },
+    "model_calls": [
+      {
+        "provider": "deepseek",
+        "model": "deepseek-chat",
+        "phase": "workspace_research_1",
+        "elapsed_seconds": 1.666877,
+        "prompt_tokens": 12662,
+        "completion_tokens": 139,
+        "total_tokens": 12801,
+        "http_status": 200,
+        "status": "succeeded"
+      }
+    ],
+    "verified_done": true
+  },
+  {
+    "case": "P1",
+    "question": "换一种说法：基础配置训练所用的显卡数量和具体硬件型号是什么？",
+    "seconds": 1.64,
+    "refused": false,
+    "text": [
+      "论文在“5.2 Hardware and Schedule”一节说明，模型是在一台配备 8 块 NVIDIA P100 GPU 的机器上训练的；其中基础模型（base models）使用论文所述超参数，每个训练步约 0.4 秒，共训练 100,000 步或 12 小时。因此基础配置训练所用的显卡数量为 8 块，型号为 NVIDIA P100。"
+    ],
+    "citations": [
+      {
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 7,
+          "section": [
+            "5 Training",
+            "5.2 Hardware and Schedule"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00085"
+        },
+        "quote_sha256": "a2d2a5f9885292f41e3304c063bb7e681ebe9441a0700b4c5c16d07e71a10ea1"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 7,
+          "section": [
+            "5 Training",
+            "5.2 Hardware and Schedule"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00086"
+        },
+        "quote_sha256": "ca19cb0f618d434b26f150481e4ae37f43fcc3a9704b4acbbe50192a836e3f89"
+      }
+    ],
+    "calculations": [],
+    "retrieval": {
+      "method": "lexical",
+      "reason": "EXPLICIT_LOW_LATENCY_POLICY",
+      "vector_evidence_used": false,
+      "overview_evidence_count": 0,
+      "evidence_count": 36,
+      "query_rewrite": {
+        "attempted": false,
+        "queries": []
+      },
+      "source_scope": "selected_papers_only",
+      "paper_evidence_counts": {
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697": 36
+      }
+    },
+    "model_calls": [
+      {
+        "provider": "deepseek",
+        "model": "deepseek-chat",
+        "phase": "workspace_research_1",
+        "elapsed_seconds": 1.550176,
+        "prompt_tokens": 12266,
+        "completion_tokens": 195,
+        "total_tokens": 12461,
+        "http_status": 200,
+        "status": "succeeded"
+      }
+    ],
+    "verified_done": true
+  },
+  {
+    "case": "F1",
+    "question": "这些显卡的具体型号是什么？",
+    "seconds": 2.094,
+    "refused": false,
+    "text": [
+      "论文说明训练使用一台机器上的 8 块 NVIDIA P100 GPU，因此具体硬件型号为 NVIDIA P100，数量为 8 块。",
+      "结果部分也重复了这一配置：训练在 8 块 P100 GPU 上进行。"
+    ],
+    "citations": [
+      {
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 7,
+          "section": [
+            "5 Training",
+            "5.2 Hardware and Schedule"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00086"
+        },
+        "quote_sha256": "dcecd5db17d1e6965a97d4b9acfe005e7d58a8140afdc238692315e708f6e4f1"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 8,
+          "section": [
+            "6 Results",
+            "6.1 Machine Translation"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00098"
+        },
+        "quote_sha256": "3b1f77fa6036104f1fa66e67859771dc9ab25bb11fa851a971346b61a6b480aa"
+      }
+    ],
+    "calculations": [],
+    "retrieval": {
+      "method": "lexical",
+      "reason": "EXPLICIT_LOW_LATENCY_POLICY",
+      "vector_evidence_used": false,
+      "overview_evidence_count": 0,
+      "evidence_count": 36,
+      "query_rewrite": {
+        "attempted": false,
+        "queries": []
+      },
+      "source_scope": "selected_papers_only",
+      "paper_evidence_counts": {
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697": 36
+      }
+    },
+    "model_calls": [
+      {
+        "provider": "deepseek",
+        "model": "deepseek-chat",
+        "phase": "workspace_research_1",
+        "elapsed_seconds": 1.584696,
+        "prompt_tokens": 12286,
+        "completion_tokens": 140,
+        "total_tokens": 12426,
+        "http_status": 200,
+        "status": "succeeded"
+      }
+    ],
+    "verified_done": true
+  },
+  {
+    "case": "H3",
+    "question": "文中报告Base在火星探测中准确率为97.3%，请给出它比BERT高出的百分点。",
+    "seconds": 1.797,
+    "refused": true,
+    "text": [
+      "无法回答：所提供的证据（《Attention Is All You Need》）中并未报告“Base 在火星探测中准确率为 97.3%”这一数值，也未提及火星探测任务或与 BERT 的准确率对比。因此无法计算其比 BERT 高出的百分点。"
+    ],
+    "citations": [
+      {
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 8,
+          "section": [
+            "6 Results",
+            "6.1 Machine Translation"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00098"
+        },
+        "quote_sha256": "922362566af459984fd2cf6c800f6fac50e14ee3f5aa506d62a2cebb43d3b33c"
+      }
+    ],
+    "calculations": [],
+    "retrieval": {
+      "method": "lexical",
+      "reason": "EXPLICIT_LOW_LATENCY_POLICY",
+      "vector_evidence_used": false,
+      "overview_evidence_count": 0,
+      "evidence_count": 48,
+      "query_rewrite": {
+        "attempted": false,
+        "queries": []
+      },
+      "source_scope": "selected_papers_only",
+      "paper_evidence_counts": {
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697": 48
+      }
+    },
+    "model_calls": [
+      {
+        "provider": "deepseek",
+        "model": "deepseek-chat",
+        "phase": "workspace_research_1",
+        "elapsed_seconds": 1.692244,
+        "prompt_tokens": 15055,
+        "completion_tokens": 176,
+        "total_tokens": 15231,
+        "http_status": 200,
+        "status": "succeeded"
+      }
+    ],
+    "verified_done": true
+  }
+]

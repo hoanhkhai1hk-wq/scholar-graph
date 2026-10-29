@@ -1,0 +1,1032 @@
+[
+  {
+    "case": "他们有什么关联",
+    "question": "他们有什么关联",
+    "seconds": 4.562,
+    "refused": false,
+    "text": [
+      "两篇论文的研究问题与机制不同。HoS 论文关注提示注入防御，提出通过一小组可学习的逐头注意力门控来强制“指令—数据分离”，让每个头学习在可信与不可信 token 之间重新分配注意力，从而在推理不可信内容时不遵循注入指令。",
+      "Inception 论文关注计算机视觉卷积网络的扩展效率，目标是通过适当分解卷积与强正则化，在增加计算时尽可能高效地利用算力，并兼顾移动视觉、大数据等对计算效率和低参数量的需求。",
+      "就所给证据而言，两篇论文之间没有建立直接引用、继承或共享同一机制的关系：HoS 的注意力门控针对提示注入中的指令—数据分离，Inception 的分解卷积针对视觉网络的计算效率，二者含义不同。因此只能说明它们各自研究问题与机制不同，不能据此断言存在关联。"
+    ],
+    "citations": [
+      {
+        "anchor": {
+          "paper_id": "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161",
+          "page_number": 1,
+          "section": [
+            "ABSTRACT"
+          ],
+          "chunk_id": "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161-p0001-c00005"
+        },
+        "quote_sha256": "cb51314bb95eaf382d8e9dcd1ded289e9f98a9234476e57cfc6223a154eecc6b"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-80e30acdfa89bcb41a00c8b221cb9a1dc44256897e75af8762f171ec9dc77b85",
+          "page_number": 1,
+          "section": [
+            "Abstract"
+          ],
+          "chunk_id": "paper-80e30acdfa89bcb41a00c8b221cb9a1dc44256897e75af8762f171ec9dc77b85-p0001-c00016"
+        },
+        "quote_sha256": "056c7fd739990d2891e370bff22319b41f77239abe51b2825d41b697b663f58a"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-80e30acdfa89bcb41a00c8b221cb9a1dc44256897e75af8762f171ec9dc77b85",
+          "page_number": 1,
+          "section": [
+            "Abstract"
+          ],
+          "chunk_id": "paper-80e30acdfa89bcb41a00c8b221cb9a1dc44256897e75af8762f171ec9dc77b85-p0001-c00016"
+        },
+        "quote_sha256": "2f431d49a2c6f1cbbf7b9d51276a4d0dcbc90e96f69c1559344905aab4919e56"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161",
+          "page_number": 3,
+          "section": [
+            "2 RELATED WORK"
+          ],
+          "chunk_id": "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161-p0003-c00030"
+        },
+        "quote_sha256": "6690e95ffad991b3543eda66bca77e73f7bdfa5a03125dbde8217b0e380eec52"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-80e30acdfa89bcb41a00c8b221cb9a1dc44256897e75af8762f171ec9dc77b85",
+          "page_number": 4,
+          "section": [
+            "Abstract"
+          ],
+          "chunk_id": "paper-80e30acdfa89bcb41a00c8b221cb9a1dc44256897e75af8762f171ec9dc77b85-p0004-c00051"
+        },
+        "quote_sha256": "b59d853dea871669c7fc696d31517b5a25136b4cec7084c5beaddd2fd320e507"
+      }
+    ],
+    "calculations": [],
+    "retrieval": {
+      "method": "lexical_with_source_overview",
+      "reason": "EXPLICIT_LOW_LATENCY_POLICY",
+      "vector_evidence_used": false,
+      "overview_evidence_count": 7,
+      "evidence_count": 31,
+      "query_rewrite": {
+        "attempted": false,
+        "queries": []
+      },
+      "source_scope": "selected_papers_only",
+      "paper_evidence_counts": {
+        "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161": 14,
+        "paper-80e30acdfa89bcb41a00c8b221cb9a1dc44256897e75af8762f171ec9dc77b85": 17
+      }
+    },
+    "model_calls": [
+      {
+        "provider": "deepseek",
+        "model": "deepseek-chat",
+        "phase": "workspace_research_1",
+        "elapsed_seconds": 3.330524,
+        "prompt_tokens": 10052,
+        "completion_tokens": 478,
+        "total_tokens": 10530,
+        "http_status": 200,
+        "status": "succeeded"
+      }
+    ],
+    "verified_done": true
+  },
+  {
+    "case": "它是怎么防止提示注入攻击的？",
+    "question": "它是怎么防止提示注入攻击的？",
+    "seconds": 4.0,
+    "refused": false,
+    "text": [
+      "该方法名为 Heads of Security（HoS），它通过一小组可学习的逐头注意力门控来强制实现指令与数据的分离：HoS 学习每个注意力头应如何在可信 token 与不可信 token 之间重新分配注意力，使模型能够对不可信内容进行推理而不遵循其中注入的指令。分析显示，多数注意力头会把注意力从不可信内容上移开，少数头则转向不可信内容以支持提示注入检测。",
+      "其防护效果体现在：黑盒 RL-Hammer 攻击对 GPT-OSS-20B 的成功率为 97%、对 SecAlign 为 85%，而对 HoS 仅为 10%；针对 HoS 强化后的白盒攻击 Claudini 达到相同成功率所需 FLOPs 是 GPT-OSS-20B 或 SecAlign 的 3 倍。"
+    ],
+    "citations": [
+      {
+        "anchor": {
+          "paper_id": "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161",
+          "page_number": 1,
+          "section": [
+            "ABSTRACT"
+          ],
+          "chunk_id": "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161-p0001-c00005"
+        },
+        "quote_sha256": "cb51314bb95eaf382d8e9dcd1ded289e9f98a9234476e57cfc6223a154eecc6b"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161",
+          "page_number": 8,
+          "section": [
+            "5 ANALYZING THE LEARNED ATTENTION GATES"
+          ],
+          "chunk_id": "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161-p0008-c00083"
+        },
+        "quote_sha256": "7270cf53aee3980c8c8d4c8b236327fbe02595c57aa862d96a691532087a5b6b"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161",
+          "page_number": 1,
+          "section": [
+            "ABSTRACT"
+          ],
+          "chunk_id": "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161-p0001-c00005"
+        },
+        "quote_sha256": "d4fb5e30049959191fed31910d9d362c4ba374844dac573434036b610a37bde0"
+      }
+    ],
+    "calculations": [],
+    "retrieval": {
+      "method": "lexical_bilingual_query",
+      "reason": "EXPLICIT_LOW_LATENCY_POLICY",
+      "vector_evidence_used": false,
+      "overview_evidence_count": 0,
+      "evidence_count": 48,
+      "query_rewrite": {
+        "attempted": true,
+        "status": "succeeded",
+        "queries": [
+          "How does it prevent prompt injection attacks?",
+          "learned attention gates prompt injection robustness"
+        ],
+        "generated_text_is_evidence": false
+      },
+      "source_scope": "selected_papers_only",
+      "paper_evidence_counts": {
+        "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161": 48
+      }
+    },
+    "model_calls": [
+      {
+        "provider": "deepseek",
+        "model": "deepseek-chat",
+        "phase": "workspace_query_rewrite",
+        "elapsed_seconds": 0.646386,
+        "prompt_tokens": 196,
+        "completion_tokens": 23,
+        "total_tokens": 219,
+        "http_status": 200,
+        "status": "succeeded"
+      },
+      {
+        "provider": "deepseek",
+        "model": "deepseek-chat",
+        "phase": "workspace_research_1",
+        "elapsed_seconds": 2.492825,
+        "prompt_tokens": 14079,
+        "completion_tokens": 405,
+        "total_tokens": 14484,
+        "http_status": 200,
+        "status": "succeeded"
+      }
+    ],
+    "verified_done": true
+  },
+  {
+    "case": "这篇论文的创新点是什么？",
+    "question": "这篇论文的创新点是什么？",
+    "seconds": 2.266,
+    "refused": false,
+    "text": [
+      "该论文关注的问题是：在深度卷积网络规模与计算成本不断增长的情况下，如何以尽可能高效的方式扩展网络，同时保持较低参数量与计算开销，以适应移动视觉和大数据等场景。",
+      "其主要方法是通过合适的因式分解卷积（factorized convolutions）与激进的正则化（aggressive regularization）来扩展网络，使增加的计算量得到尽可能高效的利用。"
+    ],
+    "citations": [
+      {
+        "anchor": {
+          "paper_id": "paper-80e30acdfa89bcb41a00c8b221cb9a1dc44256897e75af8762f171ec9dc77b85",
+          "page_number": 1,
+          "section": [
+            "Abstract"
+          ],
+          "chunk_id": "paper-80e30acdfa89bcb41a00c8b221cb9a1dc44256897e75af8762f171ec9dc77b85-p0001-c00016"
+        },
+        "quote_sha256": "2cf9e9d68841a34d4082bbbb2574f3bb6ec9efde759518a4922b9c0d7c206049"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-80e30acdfa89bcb41a00c8b221cb9a1dc44256897e75af8762f171ec9dc77b85",
+          "page_number": 1,
+          "section": [
+            "Abstract"
+          ],
+          "chunk_id": "paper-80e30acdfa89bcb41a00c8b221cb9a1dc44256897e75af8762f171ec9dc77b85-p0001-c00016"
+        },
+        "quote_sha256": "d145d9171be126d6c6cd82c0072bcbcf4138163188def2070a2d0eae3fecea87"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-80e30acdfa89bcb41a00c8b221cb9a1dc44256897e75af8762f171ec9dc77b85",
+          "page_number": 1,
+          "section": [
+            "Abstract"
+          ],
+          "chunk_id": "paper-80e30acdfa89bcb41a00c8b221cb9a1dc44256897e75af8762f171ec9dc77b85-p0001-c00016"
+        },
+        "quote_sha256": "d145d9171be126d6c6cd82c0072bcbcf4138163188def2070a2d0eae3fecea87"
+      }
+    ],
+    "calculations": [],
+    "retrieval": {
+      "method": "lexical_with_source_overview",
+      "reason": "EXPLICIT_LOW_LATENCY_POLICY",
+      "vector_evidence_used": false,
+      "overview_evidence_count": 5,
+      "evidence_count": 5,
+      "query_rewrite": {
+        "attempted": false,
+        "queries": []
+      },
+      "source_scope": "selected_papers_only",
+      "paper_evidence_counts": {
+        "paper-80e30acdfa89bcb41a00c8b221cb9a1dc44256897e75af8762f171ec9dc77b85": 5
+      }
+    },
+    "model_calls": [
+      {
+        "provider": "deepseek",
+        "model": "deepseek-chat",
+        "phase": "workspace_research_1",
+        "elapsed_seconds": 1.745348,
+        "prompt_tokens": 2674,
+        "completion_tokens": 140,
+        "total_tokens": 2814,
+        "http_status": 200,
+        "status": "succeeded"
+      }
+    ],
+    "verified_done": true
+  },
+  {
+    "case": "这篇论文讲什么？",
+    "question": "这篇论文讲什么？",
+    "seconds": 2.375,
+    "refused": false,
+    "text": [
+      "这篇论文关注卷积网络在计算效率与参数量受限场景下的扩展问题：虽然增大模型规模和计算成本通常能带来质量提升，但移动视觉和大数据等场景仍需要高效、低参数的网络。作者提出通过合适的因子化卷积和激进的正则化来扩展网络，使增加的计算尽可能被高效利用。",
+      "论文在 ILSVRC 2012 分类挑战验证集上评测所提方法，并报告其相对当时最优结果取得显著提升。"
+    ],
+    "citations": [
+      {
+        "anchor": {
+          "paper_id": "paper-80e30acdfa89bcb41a00c8b221cb9a1dc44256897e75af8762f171ec9dc77b85",
+          "page_number": 1,
+          "section": [
+            "Abstract"
+          ],
+          "chunk_id": "paper-80e30acdfa89bcb41a00c8b221cb9a1dc44256897e75af8762f171ec9dc77b85-p0001-c00016"
+        },
+        "quote_sha256": "2cf9e9d68841a34d4082bbbb2574f3bb6ec9efde759518a4922b9c0d7c206049"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-80e30acdfa89bcb41a00c8b221cb9a1dc44256897e75af8762f171ec9dc77b85",
+          "page_number": 1,
+          "section": [
+            "Abstract"
+          ],
+          "chunk_id": "paper-80e30acdfa89bcb41a00c8b221cb9a1dc44256897e75af8762f171ec9dc77b85-p0001-c00016"
+        },
+        "quote_sha256": "d145d9171be126d6c6cd82c0072bcbcf4138163188def2070a2d0eae3fecea87"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-80e30acdfa89bcb41a00c8b221cb9a1dc44256897e75af8762f171ec9dc77b85",
+          "page_number": 1,
+          "section": [
+            "Abstract"
+          ],
+          "chunk_id": "paper-80e30acdfa89bcb41a00c8b221cb9a1dc44256897e75af8762f171ec9dc77b85-p0001-c00016"
+        },
+        "quote_sha256": "d145d9171be126d6c6cd82c0072bcbcf4138163188def2070a2d0eae3fecea87"
+      }
+    ],
+    "calculations": [],
+    "retrieval": {
+      "method": "lexical_with_source_overview",
+      "reason": "EXPLICIT_LOW_LATENCY_POLICY",
+      "vector_evidence_used": false,
+      "overview_evidence_count": 5,
+      "evidence_count": 5,
+      "query_rewrite": {
+        "attempted": false,
+        "queries": []
+      },
+      "source_scope": "selected_papers_only",
+      "paper_evidence_counts": {
+        "paper-80e30acdfa89bcb41a00c8b221cb9a1dc44256897e75af8762f171ec9dc77b85": 5
+      }
+    },
+    "model_calls": [
+      {
+        "provider": "deepseek",
+        "model": "deepseek-chat",
+        "phase": "workspace_research_1",
+        "elapsed_seconds": 1.683645,
+        "prompt_tokens": 2673,
+        "completion_tokens": 159,
+        "total_tokens": 2832,
+        "http_status": 200,
+        "status": "succeeded"
+      }
+    ],
+    "verified_done": true
+  },
+  {
+    "case": "这两篇研究有哪些共同点和区别？",
+    "question": "这两篇研究有哪些共同点和区别？",
+    "seconds": 3.063,
+    "refused": false,
+    "text": [
+      "第一篇论文研究提示注入防御问题，提出 Heads of Security（HoS）：通过一小组可学习的逐头注意力门控来强制实现指令与数据的分离，让每个注意力头学习在可信与不可信 token 之间重新分配注意力，从而在推理不可信内容时不遵循注入指令。",
+      "第二篇论文研究计算机视觉卷积网络的扩展问题，目标是在利用增加的计算量时尽可能高效，具体机制是合适的因式分解卷积与激进的正则化，并在 ILSVRC 2012 分类任务上评测。",
+      "两篇论文的研究问题、具体机制和目标均不同：一篇面向提示注入安全与指令-数据分离，另一篇面向视觉网络的效率与精度。所给证据未显示二者之间存在引用、继承或共享同一机制的关系。"
+    ],
+    "citations": [
+      {
+        "anchor": {
+          "paper_id": "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161",
+          "page_number": 1,
+          "section": [
+            "ABSTRACT"
+          ],
+          "chunk_id": "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161-p0001-c00005"
+        },
+        "quote_sha256": "649d55a1517df24b4f15b19e2afac0b6b329917e6cc80884e2e693b0028c9a8d"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-80e30acdfa89bcb41a00c8b221cb9a1dc44256897e75af8762f171ec9dc77b85",
+          "page_number": 1,
+          "section": [
+            "Abstract"
+          ],
+          "chunk_id": "paper-80e30acdfa89bcb41a00c8b221cb9a1dc44256897e75af8762f171ec9dc77b85-p0001-c00016"
+        },
+        "quote_sha256": "2cf9e9d68841a34d4082bbbb2574f3bb6ec9efde759518a4922b9c0d7c206049"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-80e30acdfa89bcb41a00c8b221cb9a1dc44256897e75af8762f171ec9dc77b85",
+          "page_number": 1,
+          "section": [
+            "Abstract"
+          ],
+          "chunk_id": "paper-80e30acdfa89bcb41a00c8b221cb9a1dc44256897e75af8762f171ec9dc77b85-p0001-c00016"
+        },
+        "quote_sha256": "d145d9171be126d6c6cd82c0072bcbcf4138163188def2070a2d0eae3fecea87"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161",
+          "page_number": 1,
+          "section": [
+            "ABSTRACT"
+          ],
+          "chunk_id": "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161-p0001-c00005"
+        },
+        "quote_sha256": "649d55a1517df24b4f15b19e2afac0b6b329917e6cc80884e2e693b0028c9a8d"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-80e30acdfa89bcb41a00c8b221cb9a1dc44256897e75af8762f171ec9dc77b85",
+          "page_number": 1,
+          "section": [
+            "Abstract"
+          ],
+          "chunk_id": "paper-80e30acdfa89bcb41a00c8b221cb9a1dc44256897e75af8762f171ec9dc77b85-p0001-c00016"
+        },
+        "quote_sha256": "d145d9171be126d6c6cd82c0072bcbcf4138163188def2070a2d0eae3fecea87"
+      }
+    ],
+    "calculations": [],
+    "retrieval": {
+      "method": "lexical_with_source_overview",
+      "reason": "EXPLICIT_LOW_LATENCY_POLICY",
+      "vector_evidence_used": false,
+      "overview_evidence_count": 7,
+      "evidence_count": 31,
+      "query_rewrite": {
+        "attempted": false,
+        "queries": []
+      },
+      "source_scope": "selected_papers_only",
+      "paper_evidence_counts": {
+        "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161": 14,
+        "paper-80e30acdfa89bcb41a00c8b221cb9a1dc44256897e75af8762f171ec9dc77b85": 17
+      }
+    },
+    "model_calls": [
+      {
+        "provider": "deepseek",
+        "model": "deepseek-chat",
+        "phase": "workspace_research_1",
+        "elapsed_seconds": 2.210428,
+        "prompt_tokens": 10057,
+        "completion_tokens": 246,
+        "total_tokens": 10303,
+        "http_status": 200,
+        "status": "succeeded"
+      }
+    ],
+    "verified_done": true
+  },
+  {
+    "case": "主要讲了啥？",
+    "question": "主要讲了啥？",
+    "seconds": 2.328,
+    "refused": false,
+    "text": [
+      "该论文针对提示注入攻击，提出 Heads of Security（HoS）防御方法：通过一小组可学习的逐头注意力门控来强制实现指令与数据的分离，让每个注意力头学习如何在可信与不可信 token 之间重新分配注意力，从而使模型能够推理不可信内容而不遵循其中注入的指令。作者在 Llama-3.3-70B-Instruct 和 GPT-OSS-20B 上评估 HoS，并与基于微调的 SecAlign++ 以及同样在架构中内建指令—数据分离的 ASIDE 进行比较。",
+      "主要发现是：HoS 对自适应攻击具有更强的鲁棒性，在标准效用基准上表现更好，并在标准智能体提示注入基准上达到顶尖水平。"
+    ],
+    "citations": [
+      {
+        "anchor": {
+          "paper_id": "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161",
+          "page_number": 1,
+          "section": [
+            "ABSTRACT"
+          ],
+          "chunk_id": "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161-p0001-c00005"
+        },
+        "quote_sha256": "649d55a1517df24b4f15b19e2afac0b6b329917e6cc80884e2e693b0028c9a8d"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161",
+          "page_number": 1,
+          "section": [
+            "ABSTRACT"
+          ],
+          "chunk_id": "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161-p0001-c00005"
+        },
+        "quote_sha256": "1ddaf2bbae615a08982389ebc596cf2305b6232db2ce790a6ccc212862583c4c"
+      }
+    ],
+    "calculations": [],
+    "retrieval": {
+      "method": "lexical_with_source_overview",
+      "reason": "EXPLICIT_LOW_LATENCY_POLICY",
+      "vector_evidence_used": false,
+      "overview_evidence_count": 2,
+      "evidence_count": 2,
+      "query_rewrite": {
+        "attempted": false,
+        "queries": []
+      },
+      "source_scope": "selected_papers_only",
+      "paper_evidence_counts": {
+        "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161": 2
+      }
+    },
+    "model_calls": [
+      {
+        "provider": "deepseek",
+        "model": "deepseek-chat",
+        "phase": "workspace_research_1",
+        "elapsed_seconds": 1.825771,
+        "prompt_tokens": 2036,
+        "completion_tokens": 209,
+        "total_tokens": 2245,
+        "http_status": 200,
+        "status": "succeeded"
+      }
+    ],
+    "verified_done": true
+  },
+  {
+    "case": "如何避免恶意输入影响模型？",
+    "question": "如何避免恶意输入影响模型？",
+    "seconds": 8.672,
+    "refused": false,
+    "text": [
+      "该论文提出的 Heads of Security（HoS）通过“指令—数据分离”来抵御恶意输入：为每个注意力头学习按通道的注意力门控，使负责遵循指令的头可以降低对不可信内容的注意力，同时保留对可信指令的访问，其他头仍可处理不可信内容以维持推理能力。",
+      "具体做法是给每个头在 softmax 前的注意力 logits 加上可学习的按通道偏置：门控值 σ(g) 接近 1 表示正常关注该通道，接近 0 表示关闭；若所有 key 得到相同门控，softmax 会抵消共同偏移，因此全为单一通道的输入与基座模型处理一致。通道分为 TRUSTED、UNTRUSTED、TEMPLATE，系统与用户提示及模型自身生成属可信，工具输出属不可信。",
+      "论文报告 HoS 对白盒攻击比 SecAlign 和未防御模型更稳健，即使经过专门针对 HoS 的 autoresearch 循环后仍如此。"
+    ],
+    "citations": [
+      {
+        "anchor": {
+          "paper_id": "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161",
+          "page_number": 4,
+          "section": [
+            "3 METHOD",
+            "3.2 CHANNEL-CONDITIONED ATTENTION GATES"
+          ],
+          "chunk_id": "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161-p0004-c00040"
+        },
+        "quote_sha256": "e82ef04b710888d5d273f6ab53e5882fd1f928cccb4c3d8b53e0bda7786a1231"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161",
+          "page_number": 17,
+          "section": [
+            "CONTENTS"
+          ],
+          "chunk_id": "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161-p0017-c00194"
+        },
+        "quote_sha256": "75f559b5a941df7c360e5cbbb7aae8524e8d89f7bd768ee565abc232d21d488b"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161",
+          "page_number": 4,
+          "section": [
+            "3 METHOD",
+            "3.2 CHANNEL-CONDITIONED ATTENTION GATES"
+          ],
+          "chunk_id": "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161-p0004-c00042"
+        },
+        "quote_sha256": "9c05c5ec1ae4b25b8958bcd6a0b9c7b6e09b2d47cf559bca67ab54598a70cef9"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161",
+          "page_number": 4,
+          "section": [
+            "3 METHOD",
+            "3.2 CHANNEL-CONDITIONED ATTENTION GATES"
+          ],
+          "chunk_id": "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161-p0004-c00043"
+        },
+        "quote_sha256": "f5ddfde827c36bb3ab198ce028a89c50e33391c88ab84c10aaf0ac8f31b3e203"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161",
+          "page_number": 4,
+          "section": [
+            "3 METHOD",
+            "3.1 PRELIMINARIES"
+          ],
+          "chunk_id": "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161-p0004-c00038"
+        },
+        "quote_sha256": "a01ad63b984c6c7e68752920d53d900f21a52f5f0cd300818145fbfc4a3cbb75"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161",
+          "page_number": 5,
+          "section": [
+            "4 RESULTS",
+            "4.1 ADAPTIVE ATTACKS"
+          ],
+          "chunk_id": "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161-p0005-c00056"
+        },
+        "quote_sha256": "0553d977b5df3dbef6f74d4700e47e194127003fe2a6365ef2ee51c0ef8f03b6"
+      }
+    ],
+    "calculations": [],
+    "retrieval": {
+      "method": "lexical_bilingual_query",
+      "reason": "EXPLICIT_LOW_LATENCY_POLICY",
+      "vector_evidence_used": false,
+      "overview_evidence_count": 0,
+      "evidence_count": 48,
+      "query_rewrite": {
+        "attempted": true,
+        "status": "succeeded",
+        "queries": [
+          "How to prevent malicious input from affecting the model?",
+          "defense against prompt injection malicious input robustness"
+        ],
+        "generated_text_is_evidence": false
+      },
+      "source_scope": "selected_papers_only",
+      "paper_evidence_counts": {
+        "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161": 48
+      }
+    },
+    "model_calls": [
+      {
+        "provider": "deepseek",
+        "model": "deepseek-chat",
+        "phase": "workspace_query_rewrite",
+        "elapsed_seconds": 1.068384,
+        "prompt_tokens": 195,
+        "completion_tokens": 26,
+        "total_tokens": 221,
+        "http_status": 200,
+        "status": "succeeded"
+      },
+      {
+        "provider": "deepseek",
+        "model": "deepseek-chat",
+        "phase": "workspace_research_1",
+        "elapsed_seconds": 3.870694,
+        "prompt_tokens": 14729,
+        "completion_tokens": 750,
+        "total_tokens": 15479,
+        "http_status": 200,
+        "status": "succeeded"
+      },
+      {
+        "provider": "deepseek",
+        "model": "deepseek-chat",
+        "phase": "workspace_research_2",
+        "elapsed_seconds": 3.043749,
+        "prompt_tokens": 15583,
+        "completion_tokens": 704,
+        "total_tokens": 16287,
+        "http_status": 200,
+        "status": "succeeded"
+      }
+    ],
+    "verified_done": true
+  },
+  {
+    "case": "这两篇有什么关系？",
+    "question": "这两篇有什么关系？",
+    "seconds": 2.422,
+    "refused": false,
+    "text": [
+      "《Attention Is All You Need》提出 Transformer 架构，完全基于注意力机制、摒弃循环与卷积，用于序列转导任务。",
+      "《BERT》提出一种语言表示模型，其模型架构是基于 Vaswani et al. (2017) 原始实现的多层双向 Transformer 编码器，并明确引用该文。",
+      "因此两篇的关系是：BERT 在架构上明确继承并引用了 Transformer 论文，但研究问题不同——前者面向序列转导，后者面向预训练语言表示。"
+    ],
+    "citations": [
+      {
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 1,
+          "section": [
+            "Abstract"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00010"
+        },
+        "quote_sha256": "c3abf84dd2eccd0e9456cc2a71301a32795d979e508274daefd619c8c61a4d9e"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 10,
+          "section": [
+            "7 Conclusion"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00120"
+        },
+        "quote_sha256": "0ebc3f37472899247a859876b412e4665622f0886e0c4cab6102d7dbb613da7f"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e",
+          "page_number": 1,
+          "section": [
+            "Abstract"
+          ],
+          "chunk_id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e-p0001-c00010"
+        },
+        "quote_sha256": "d60780049f57ed9f89bc79bbe913559bf9d9cee62e998c7c947e0a94f14d4b58"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e",
+          "page_number": 3,
+          "section": [
+            "3 BERT"
+          ],
+          "chunk_id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e-p0003-c00038"
+        },
+        "quote_sha256": "0e5be952bcd8026926a05477004bcd46bd650675d41c0c1f1d06585253fd0a5b"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e",
+          "page_number": 3,
+          "section": [
+            "3 BERT"
+          ],
+          "chunk_id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e-p0003-c00038"
+        },
+        "quote_sha256": "0e5be952bcd8026926a05477004bcd46bd650675d41c0c1f1d06585253fd0a5b"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e",
+          "page_number": 1,
+          "section": [
+            "Abstract"
+          ],
+          "chunk_id": "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e-p0001-c00010"
+        },
+        "quote_sha256": "d60780049f57ed9f89bc79bbe913559bf9d9cee62e998c7c947e0a94f14d4b58"
+      }
+    ],
+    "calculations": [],
+    "retrieval": {
+      "method": "lexical_with_source_overview",
+      "reason": "EXPLICIT_LOW_LATENCY_POLICY",
+      "vector_evidence_used": false,
+      "overview_evidence_count": 6,
+      "evidence_count": 29,
+      "query_rewrite": {
+        "attempted": false,
+        "queries": []
+      },
+      "source_scope": "selected_papers_only",
+      "paper_evidence_counts": {
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697": 14,
+        "paper-5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e": 15
+      }
+    },
+    "model_calls": [
+      {
+        "provider": "deepseek",
+        "model": "deepseek-chat",
+        "phase": "workspace_research_1",
+        "elapsed_seconds": 1.522602,
+        "prompt_tokens": 11653,
+        "completion_tokens": 200,
+        "total_tokens": 11853,
+        "http_status": 200,
+        "status": "succeeded"
+      }
+    ],
+    "verified_done": true
+  },
+  {
+    "case": "论文中火星基地的建造预算是多少？",
+    "question": "论文中火星基地的建造预算是多少？",
+    "seconds": 1.844,
+    "refused": true,
+    "text": [
+      "当前未检索到足够的原文证据，暂时无法回答；这不能证明论文中没有相关内容。"
+    ],
+    "citations": [],
+    "calculations": [],
+    "retrieval": {
+      "method": "lexical_bilingual_query",
+      "reason": "EXPLICIT_LOW_LATENCY_POLICY",
+      "vector_evidence_used": false,
+      "overview_evidence_count": 0,
+      "evidence_count": 0,
+      "query_rewrite": {
+        "attempted": true,
+        "status": "discarded",
+        "queries": [],
+        "reason": "检索词包含无依据数字或无效内容，未用于回答。",
+        "generated_text_is_evidence": false
+      },
+      "source_scope": "selected_papers_only",
+      "paper_evidence_counts": {
+        "paper-75959e0e926b74f9f6a80dabd93ac830edb56c91c0e2f0f17a52de45a13fe161": 0
+      }
+    },
+    "model_calls": [
+      {
+        "provider": "deepseek",
+        "model": "deepseek-chat",
+        "phase": "workspace_query_rewrite",
+        "elapsed_seconds": 0.776953,
+        "prompt_tokens": 198,
+        "completion_tokens": 11,
+        "total_tokens": 209,
+        "http_status": 200,
+        "status": "succeeded"
+      }
+    ],
+    "verified_done": true
+  },
+  {
+    "case": "论文是不是说Adam的β1=0.98、β2=0.9？",
+    "question": "论文是不是说Adam的β1=0.98、β2=0.9？",
+    "seconds": 1.984,
+    "refused": true,
+    "text": [
+      "不是。该论文在优化器部分明确写的是 Adam 优化器的 β1 = 0.9、β2 = 0.98（以及 ϵ = 10⁻⁹），并非 β1 = 0.98、β2 = 0.9，提问中的两个数值被对调了。"
+    ],
+    "citations": [
+      {
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 7,
+          "section": [
+            "5 Training",
+            "5.3 Optimizer"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00088"
+        },
+        "quote_sha256": "9a902605765ac1752a9ff3ff2a8cd540b45cb0aaa0442d2473478fd5dd8bb709"
+      }
+    ],
+    "calculations": [],
+    "retrieval": {
+      "method": "lexical",
+      "reason": "EXPLICIT_LOW_LATENCY_POLICY",
+      "vector_evidence_used": false,
+      "overview_evidence_count": 0,
+      "evidence_count": 43,
+      "query_rewrite": {
+        "attempted": false,
+        "queries": []
+      },
+      "source_scope": "selected_papers_only",
+      "paper_evidence_counts": {
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697": 43
+      }
+    },
+    "model_calls": [
+      {
+        "provider": "deepseek",
+        "model": "deepseek-chat",
+        "phase": "workspace_research_1",
+        "elapsed_seconds": 1.478644,
+        "prompt_tokens": 13771,
+        "completion_tokens": 163,
+        "total_tokens": 13934,
+        "http_status": 200,
+        "status": "succeeded"
+      }
+    ],
+    "verified_done": true
+  },
+  {
+    "case": "这篇论文的创新点是什么？",
+    "question": "这篇论文的创新点是什么？",
+    "seconds": 2.719,
+    "refused": false,
+    "text": [
+      "该论文针对标准注意力只能做软选择、难以建模更丰富结构依赖的问题，提出将图模型编码的结构化分布引入深度网络，形成结构化注意力网络。其方法把线性链条件随机场和图基句法分析模型实现为神经网络层，作为基本注意力过程的简单扩展，使注意力可扩展到部分切分或子树等对象。",
+      "主要发现是这种结构化注意力能有效引入结构偏置，并在多种合成与真实任务上优于基线注意力模型。"
+    ],
+    "citations": [
+      {
+        "anchor": {
+          "paper_id": "paper-1cb48e40e523d1994f38211edd30f92b0f01f0a25c2990bc8d84a9b684e95135",
+          "page_number": 1,
+          "section": [
+            "ABSTRACT"
+          ],
+          "chunk_id": "paper-1cb48e40e523d1994f38211edd30f92b0f01f0a25c2990bc8d84a9b684e95135-p0001-c00009"
+        },
+        "quote_sha256": "054a2d173069b7121e307d64ea985825734c1991b93a78a4d8783e4eb14102ec"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-1cb48e40e523d1994f38211edd30f92b0f01f0a25c2990bc8d84a9b684e95135",
+          "page_number": 1,
+          "section": [
+            "ABSTRACT"
+          ],
+          "chunk_id": "paper-1cb48e40e523d1994f38211edd30f92b0f01f0a25c2990bc8d84a9b684e95135-p0001-c00009"
+        },
+        "quote_sha256": "f693cd106d71d117ef105748c9a0cda2012ad6c4cfbc9d69f93a3b4f5c07ef25"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-1cb48e40e523d1994f38211edd30f92b0f01f0a25c2990bc8d84a9b684e95135",
+          "page_number": 1,
+          "section": [
+            "ABSTRACT"
+          ],
+          "chunk_id": "paper-1cb48e40e523d1994f38211edd30f92b0f01f0a25c2990bc8d84a9b684e95135-p0001-c00009"
+        },
+        "quote_sha256": "f693cd106d71d117ef105748c9a0cda2012ad6c4cfbc9d69f93a3b4f5c07ef25"
+      }
+    ],
+    "calculations": [],
+    "retrieval": {
+      "method": "lexical_with_source_overview",
+      "reason": "EXPLICIT_LOW_LATENCY_POLICY",
+      "vector_evidence_used": false,
+      "overview_evidence_count": 2,
+      "evidence_count": 2,
+      "query_rewrite": {
+        "attempted": false,
+        "queries": []
+      },
+      "source_scope": "selected_papers_only",
+      "paper_evidence_counts": {
+        "paper-1cb48e40e523d1994f38211edd30f92b0f01f0a25c2990bc8d84a9b684e95135": 2
+      }
+    },
+    "model_calls": [
+      {
+        "provider": "deepseek",
+        "model": "deepseek-chat",
+        "phase": "workspace_research_1",
+        "elapsed_seconds": 1.659511,
+        "prompt_tokens": 1763,
+        "completion_tokens": 159,
+        "total_tokens": 1922,
+        "http_status": 200,
+        "status": "succeeded"
+      }
+    ],
+    "verified_done": true
+  },
+  {
+    "case": "它是怎么建模结构依赖的？",
+    "question": "它是怎么建模结构依赖的？",
+    "seconds": 5.391,
+    "refused": false,
+    "text": [
+      "该工作通过在注意力层内部引入图模型来建模结构依赖：把标准注意力中的隐变量选择分布替换为结构化分布，从而在注意力层直接指定可能的结构依赖，而不是依赖网络隐层隐式学习。具体地，可以用线性链条件随机场（CRF）对选择变量 z 的分布建模并加入成对边，从而在 z 之间引入结构依赖。",
+      "对于更复杂的结构，作者用依存树作为结构偏置：依存树要求源句每个词恰好有一个父词（head），且这些指派不交叉（投射结构），从而鼓励系统基于学到的句法依存做软选择，而无需语言标注或流水线决策。实现上，前向-后向算法被用作参数化池化（而非输出计算），可视为对标准注意力 softmax 的推广，且是一系列可微步骤，因此能端到端训练。"
+    ],
+    "citations": [
+      {
+        "anchor": {
+          "paper_id": "paper-1cb48e40e523d1994f38211edd30f92b0f01f0a25c2990bc8d84a9b684e95135",
+          "page_number": 1,
+          "section": [
+            "1 INTRODUCTION"
+          ],
+          "chunk_id": "paper-1cb48e40e523d1994f38211edd30f92b0f01f0a25c2990bc8d84a9b684e95135-p0001-c00014"
+        },
+        "quote_sha256": "0cdc2b43b0da03bba99970b6e28784c8cf84cc2f6a3bce3c8d0a6e0854b2d7e9"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-1cb48e40e523d1994f38211edd30f92b0f01f0a25c2990bc8d84a9b684e95135",
+          "page_number": 4,
+          "section": [
+            "3 STRUCTURED ATTENTION",
+            "3.1 EXAMPLE 1: SUBSEQUENCE SELECTION"
+          ],
+          "chunk_id": "paper-1cb48e40e523d1994f38211edd30f92b0f01f0a25c2990bc8d84a9b684e95135-p0004-c00042"
+        },
+        "quote_sha256": "c34c24303f40cf24ba329298a130a1cd14e421ae604bf85d6c531696b859c994"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-1cb48e40e523d1994f38211edd30f92b0f01f0a25c2990bc8d84a9b684e95135",
+          "page_number": 4,
+          "section": [
+            "3 STRUCTURED ATTENTION",
+            "3.2 EXAMPLE 2: SYNTACTIC TREE SELECTION"
+          ],
+          "chunk_id": "paper-1cb48e40e523d1994f38211edd30f92b0f01f0a25c2990bc8d84a9b684e95135-p0004-c00047"
+        },
+        "quote_sha256": "575aaeff3210be7f184d23788c02db7af5a7a408b22521eee41221f034f07660"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-1cb48e40e523d1994f38211edd30f92b0f01f0a25c2990bc8d84a9b684e95135",
+          "page_number": 4,
+          "section": [
+            "3 STRUCTURED ATTENTION",
+            "3.1 EXAMPLE 1: SUBSEQUENCE SELECTION"
+          ],
+          "chunk_id": "paper-1cb48e40e523d1994f38211edd30f92b0f01f0a25c2990bc8d84a9b684e95135-p0004-c00045"
+        },
+        "quote_sha256": "6711599c6defb6af312cf04e740891cc00c4621d368df9cfd308902864ec9ae1"
+      }
+    ],
+    "calculations": [],
+    "retrieval": {
+      "method": "lexical_bilingual_query",
+      "reason": "EXPLICIT_LOW_LATENCY_POLICY",
+      "vector_evidence_used": false,
+      "overview_evidence_count": 0,
+      "evidence_count": 48,
+      "query_rewrite": {
+        "attempted": true,
+        "status": "succeeded",
+        "queries": [
+          "how does it model structural dependencies",
+          "structured attention model structural dependencies"
+        ],
+        "generated_text_is_evidence": false
+      },
+      "source_scope": "selected_papers_only",
+      "paper_evidence_counts": {
+        "paper-1cb48e40e523d1994f38211edd30f92b0f01f0a25c2990bc8d84a9b684e95135": 48
+      }
+    },
+    "model_calls": [
+      {
+        "provider": "deepseek",
+        "model": "deepseek-chat",
+        "phase": "workspace_query_rewrite",
+        "elapsed_seconds": 0.981482,
+        "prompt_tokens": 186,
+        "completion_tokens": 19,
+        "total_tokens": 205,
+        "http_status": 200,
+        "status": "succeeded"
+      },
+      {
+        "provider": "deepseek",
+        "model": "deepseek-chat",
+        "phase": "workspace_research_1",
+        "elapsed_seconds": 3.516187,
+        "prompt_tokens": 14259,
+        "completion_tokens": 506,
+        "total_tokens": 14765,
+        "http_status": 200,
+        "status": "succeeded"
+      }
+    ],
+    "verified_done": true
+  }
+]
