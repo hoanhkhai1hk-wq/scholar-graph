@@ -1,0 +1,210 @@
+{
+  "deployments": [
+    {
+      "project": "scholar-graph",
+      "web_port": 3000,
+      "api_port": 8030,
+      "services": {
+        "backend": {
+          "health": "healthy",
+          "oom_killed": false,
+          "verified_source_files": 99,
+          "image": "sha256:5405b1a40277c6e4118750232e8423343bd58b7d7c7875b3a06f496610f3ae53",
+          "nano_cpus": 0,
+          "memory_limit_bytes": 0,
+          "restart": "unless-stopped"
+        },
+        "frontend": {
+          "health": "healthy",
+          "oom_killed": false,
+          "verified_source_files": 82,
+          "image": "sha256:884d7bffeddac80e785c6cd80df9b4bb154a44ea7b709405f9a0661ed222e880",
+          "nano_cpus": 0,
+          "memory_limit_bytes": 0,
+          "restart": "unless-stopped"
+        }
+      },
+      "dns": "172.21.0.2      backend",
+      "model_configured": true,
+      "paper_count": 0
+    },
+    {
+      "project": "scholar-graph-item04",
+      "web_port": 3400,
+      "api_port": 8100,
+      "services": {
+        "backend": {
+          "health": "healthy",
+          "oom_killed": false,
+          "verified_source_files": 99,
+          "image": "sha256:5405b1a40277c6e4118750232e8423343bd58b7d7c7875b3a06f496610f3ae53",
+          "nano_cpus": 4000000000,
+          "memory_limit_bytes": 4294967296,
+          "restart": "unless-stopped"
+        },
+        "frontend": {
+          "health": "healthy",
+          "oom_killed": false,
+          "verified_source_files": 82,
+          "image": "sha256:884d7bffeddac80e785c6cd80df9b4bb154a44ea7b709405f9a0661ed222e880",
+          "nano_cpus": 0,
+          "memory_limit_bytes": 1073741824,
+          "restart": "unless-stopped"
+        }
+      },
+      "dns": "172.25.0.2      backend",
+      "model_configured": true,
+      "paper_count": 37
+    },
+    {
+      "project": "scholar-graph-item05",
+      "web_port": 3420,
+      "api_port": 8120,
+      "services": {
+        "backend": {
+          "health": "healthy",
+          "oom_killed": false,
+          "verified_source_files": 99,
+          "image": "sha256:5405b1a40277c6e4118750232e8423343bd58b7d7c7875b3a06f496610f3ae53",
+          "nano_cpus": 4000000000,
+          "memory_limit_bytes": 4294967296,
+          "restart": "unless-stopped"
+        },
+        "frontend": {
+          "health": "healthy",
+          "oom_killed": false,
+          "verified_source_files": 82,
+          "image": "sha256:884d7bffeddac80e785c6cd80df9b4bb154a44ea7b709405f9a0661ed222e880",
+          "nano_cpus": 0,
+          "memory_limit_bytes": 1073741824,
+          "restart": "unless-stopped"
+        }
+      },
+      "dns": "172.26.0.2      backend",
+      "model_configured": true,
+      "paper_count": 20
+    },
+    {
+      "project": "scholar-graph-item06",
+      "web_port": 3440,
+      "api_port": 8140,
+      "services": {
+        "backend": {
+          "health": "healthy",
+          "oom_killed": false,
+          "verified_source_files": 99,
+          "image": "sha256:5405b1a40277c6e4118750232e8423343bd58b7d7c7875b3a06f496610f3ae53",
+          "nano_cpus": 4000000000,
+          "memory_limit_bytes": 4294967296,
+          "restart": "unless-stopped"
+        },
+        "frontend": {
+          "health": "healthy",
+          "oom_killed": false,
+          "verified_source_files": 82,
+          "image": "sha256:884d7bffeddac80e785c6cd80df9b4bb154a44ea7b709405f9a0661ed222e880",
+          "nano_cpus": 0,
+          "memory_limit_bytes": 1073741824,
+          "restart": "unless-stopped"
+        }
+      },
+      "dns": "172.27.0.2      backend",
+      "model_configured": true,
+      "paper_count": 21
+    },
+    {
+      "project": "scholar-graph-code-order",
+      "web_port": 3460,
+      "api_port": 8160,
+      "services": {
+        "backend": {
+          "health": "healthy",
+          "oom_killed": false,
+          "verified_source_files": 99,
+          "image": "sha256:5405b1a40277c6e4118750232e8423343bd58b7d7c7875b3a06f496610f3ae53",
+          "nano_cpus": 4000000000,
+          "memory_limit_bytes": 4294967296,
+          "restart": "unless-stopped"
+        },
+        "frontend": {
+          "health": "healthy",
+          "oom_killed": false,
+          "verified_source_files": 82,
+          "image": "sha256:884d7bffeddac80e785c6cd80df9b4bb154a44ea7b709405f9a0661ed222e880",
+          "nano_cpus": 0,
+          "memory_limit_bytes": 1073741824,
+          "restart": "unless-stopped"
+        }
+      },
+      "dns": "172.28.0.2      backend",
+      "model_configured": true,
+      "paper_count": 2
+    },
+    {
+      "project": "scholar-graph-ui",
+      "web_port": 3500,
+      "api_port": 8180,
+      "services": {
+        "backend": {
+          "health": "healthy",
+          "oom_killed": false,
+          "verified_source_files": 99,
+          "image": "sha256:5405b1a40277c6e4118750232e8423343bd58b7d7c7875b3a06f496610f3ae53",
+          "nano_cpus": 1250000000,
+          "memory_limit_bytes": 3221225472,
+          "restart": "unless-stopped"
+        },
+        "frontend": {
+          "health": "healthy",
+          "oom_killed": false,
+          "verified_source_files": 82,
+          "image": "sha256:884d7bffeddac80e785c6cd80df9b4bb154a44ea7b709405f9a0661ed222e880",
+          "nano_cpus": 750000000,
+          "memory_limit_bytes": 1073741824,
+          "restart": "unless-stopped"
+        }
+      },
+      "dns": "172.29.0.2      backend",
+      "model_configured": true,
+      "paper_count": 21
+    }
+  ],
+  "container_limits_boundary": "Frontend+backend combined 2 CPU/4 GiB. Chrome and other project containers run on host; not whole-machine performance certification.",
+  "docker_stats_sample": [
+    {
+      "BlockIO": "15.2MB / 32.8kB",
+      "CPUPerc": "0.41%",
+      "Container": "scholar-graph-ui-backend-1",
+      "ID": "58fa1f5ff2ce",
+      "MemPerc": "8.36%",
+      "MemUsage": "256.9MiB / 3GiB",
+      "Name": "scholar-graph-ui-backend-1",
+      "NetIO": "1.05MB / 71.4MB",
+      "PIDs": "22"
+    },
+    {
+      "BlockIO": "0B / 36.9kB",
+      "CPUPerc": "3.91%",
+      "Container": "scholar-graph-ui-frontend-1",
+      "ID": "c2119a3277ca",
+      "MemPerc": "13.02%",
+      "MemUsage": "133.3MiB / 1GiB",
+      "Name": "scholar-graph-ui-frontend-1",
+      "NetIO": "4.7MB / 3.97MB",
+      "PIDs": "30"
+    }
+  ],
+  "files_unchanged": 870,
+  "pdfs_unchanged": 41,
+  "source_records_unchanged": 312,
+  "isolated_immutable_files_unchanged": 106,
+  "warm_home_http_ms_five_samples": [
+    12.968,
+    10.481,
+    14.838,
+    14.298,
+    134.98
+  ],
+  "warm_home_http_html_bytes": 9797,
+  "passed": true
+}

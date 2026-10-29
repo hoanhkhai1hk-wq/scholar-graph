@@ -1,9 +1,4 @@
-/* ==========================================================================
-   拟议配色 token（PROVISIONAL，待总指挥确认）
-   定位：学术研究工具、冷静、可读、数据密集
-   禁止：默认企业蓝、紫蓝渐变、圆角阴影卡片堆砌、emoji 当图标
-   若总指挥确认或驳回，下一单只改本文件与 README 第 2 节的 token 值，不重建页面
-   ========================================================================== */
+/* Base component compatibility. User-selected celadon tokens and layout load last. */
 
 :root {
   /* 背景 */
@@ -221,7 +216,7 @@ a:hover {
   border-radius: var(--sg-radius-sm);
   font-size: 12px;
   line-height: 18px;
-  border-left: 3px solid var(--sg-border-strong);
+  border-left: 1px solid var(--sg-border-strong);
   background: var(--sg-bg-subtle);
   color: var(--sg-text-primary);
   white-space: nowrap;
@@ -400,7 +395,7 @@ a:hover {
 /* 错误态：左侧色条 + 明细，不静默回落 */
 .sg-error {
   border: 1px solid var(--sg-border);
-  border-left: 3px solid var(--sg-error);
+  border-left: 1px solid var(--sg-error);
   background: var(--sg-error-subtle);
   border-radius: var(--sg-radius-md);
   padding: var(--sg-space-4);
@@ -561,7 +556,7 @@ a:hover {
   text-align: left;
   background: transparent;
   border: 0;
-  border-left: 3px solid transparent;
+  border-left: 1px solid transparent;
   border-bottom: 1px solid var(--sg-border);
   padding: var(--sg-space-2) var(--sg-space-2);
   cursor: pointer;
@@ -591,7 +586,7 @@ a:hover {
 
 /* 阅读区块 */
 .sg-chunk {
-  border-left: 3px solid transparent;
+  border-left: 1px solid transparent;
   border-bottom: 1px solid var(--sg-border);
   padding: var(--sg-space-3) var(--sg-space-4);
   scroll-margin-top: var(--sg-space-5);
@@ -643,7 +638,7 @@ a:hover {
 
 .sg-selection {
   border: 1px solid var(--sg-border);
-  border-left: 3px solid var(--sg-accent);
+  border-left: 1px solid var(--sg-accent);
   background: var(--sg-bg-subtle);
   border-radius: var(--sg-radius-md);
   padding: var(--sg-space-3);
@@ -834,7 +829,7 @@ a:hover {
 
 .sg-progress-note {
   border: 1px solid var(--sg-border);
-  border-left: 3px solid var(--sg-primary);
+  border-left: 1px solid var(--sg-primary);
   background: var(--sg-primary-subtle);
   border-radius: var(--sg-radius-md);
   padding: var(--sg-space-3);
@@ -970,7 +965,7 @@ a:hover {
   margin: var(--sg-space-1) 0 0;
   font-size: 13px;
   color: var(--sg-error);
-  border-left: 3px solid var(--sg-error);
+  border-left: 1px solid var(--sg-error);
   background: var(--sg-error-subtle);
   padding: var(--sg-space-2);
 }
@@ -979,7 +974,7 @@ a:hover {
 
 .sg-warning {
   border: 1px solid var(--sg-border);
-  border-left: 3px solid var(--sg-warning);
+  border-left: 1px solid var(--sg-warning);
   background: var(--sg-warning-subtle);
   border-radius: var(--sg-radius-md);
   padding: var(--sg-space-3);
@@ -1021,7 +1016,7 @@ a:hover {
   flex-wrap: wrap;
   align-items: baseline;
   gap: var(--sg-space-2);
-  border-left: 3px solid var(--sg-border-strong);
+  border-left: 1px solid var(--sg-border-strong);
   background: var(--sg-bg-subtle);
   border-radius: var(--sg-radius-md);
   padding: var(--sg-space-3);
@@ -1068,7 +1063,7 @@ a:hover {
 
 .sg-seg {
   border-bottom: 1px solid var(--sg-border);
-  border-left: 3px solid transparent;
+  border-left: 1px solid transparent;
   padding: var(--sg-space-3) var(--sg-space-4);
   cursor: pointer;
 }
@@ -1175,7 +1170,7 @@ a:hover {
 
 .sg-pdfpage {
   border: 1px solid var(--sg-border);
-  border-left: 3px solid transparent;
+  border-left: 1px solid transparent;
   background: var(--sg-bg-surface);
   padding: var(--sg-space-2);
   scroll-margin-top: var(--sg-space-3);
@@ -1207,7 +1202,7 @@ a:hover {
 }
 
 .sg-layout__note {
-  border-left: 3px solid var(--sg-accent);
+  border-left: 1px solid var(--sg-accent);
   background: var(--sg-bg-subtle);
   padding: var(--sg-space-2) var(--sg-space-3);
   margin-bottom: var(--sg-space-2);

@@ -17,6 +17,8 @@ import PaperPicker from "@/components/PaperPicker";
 import ErrorState from "@/components/ErrorState";
 import TrackingPanel from "@/components/TrackingPanel";
 import EmptyState from "@/components/EmptyState";
+import AsyncStatus from "./AsyncStatus";
+import Diagnostics from "./Diagnostics";
 import AcquisitionPanel from "./AcquisitionPanel";
 import RecommendationVote from "./RecommendationVote";
 import RecommendationsPanel from "./RecommendationsPanel";
@@ -175,9 +177,10 @@ export default function RetrievalWorkspace({
           </button>
         </div>
 
+        {search.kind === "loading" ? <AsyncStatus label="正在检索论文原文…" rows={4} /> : null}
         {search.kind === "ok" ? (
           <>
-            <div className="sg-response-meta">
+            <Diagnostics summary="检索诊断（实际模式与响应口径）"><div className="sg-response-meta">
               <span className="sg-tag sg-tag--info">
                 检索模式：{modeLabel(search.meta.mode)}
               </span>
@@ -192,10 +195,11 @@ export default function RetrievalWorkspace({
               以上三项直接取自后端响应头 X-ScholarGraph-Search-Mode /
               Vector-Status / Search-Reason，前端不改写；
               relevance 是排序分值，不是正确性概率。
-            </p>
+            </p></Diagnostics>
 
             {search.data.items.length === 0 ? (
               <EmptyState
+                variant="search"
                 title="没有命中任何段落"
                 hint="换一个更具体的关键词，或确认已经选中了论文。当前检索走本地词法（IDF 加权余弦），不做语义改写，冷门表述可能命中不到。"
                 aside={`total=${search.data.total} · mode=${search.meta.mode ?? "—"}`}
@@ -260,6 +264,7 @@ export default function RetrievalWorkspace({
           </button>
         </div>
 
+        {fetched.kind === "loading" ? <AsyncStatus label="正在获取并解析公开论文…" rows={4} /> : null}
         {fetched.kind === "ok" ? (
           <dl className="sg-kv">
             <dt>succeeded</dt>
@@ -352,6 +357,7 @@ export default function RetrievalWorkspace({
           </button>
         </div>
 
+        {reco.kind === "loading" ? <AsyncStatus label="正在核对推荐依据…" rows={4} /> : null}
         {reco.kind === "ok" ? (
           <>
             <div className="sg-response-meta">

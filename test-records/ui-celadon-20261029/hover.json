@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "buttons": [
+    {
+      "cls": "sg-btn--text",
+      "style": {
+        "color": "rgb(16, 94, 86)",
+        "background": "rgb(228, 241, 237)",
+        "label": "阅读原文"
+      },
+      "contrast": 6.565317431118796
+    },
+    {
+      "cls": "sg-btn--danger",
+      "style": {
+        "color": "rgb(117, 43, 32)",
+        "background": "rgb(252, 235, 230)",
+        "label": "移入回收站"
+      },
+      "contrast": 8.55716416209263
+    }
+  ]
+}

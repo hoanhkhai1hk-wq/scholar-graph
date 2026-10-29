@@ -1,0 +1,16 @@
+{
+  "steps": [
+    {
+      "name": "原文检索真实结果、骨架和空状态",
+      "passed": true,
+      "ms": 57136,
+      "evidence": {
+        "realResultRows": 20,
+        "firstRow": 0,
+        "noHitsGuidance": true
+      }
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

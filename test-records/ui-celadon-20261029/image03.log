@@ -1,0 +1,53 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 373B done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/scholar-graph-frontend:code-order-20261029
+#2 DONE 0.2s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.1s
+
+#4 [1/8] FROM docker.io/library/scholar-graph-frontend:code-order-20261029@sha256:1276f911339adb195b09ef1c988db51430057bdea6237aff9e6aa3632dabfb33
+#4 resolve docker.io/library/scholar-graph-frontend:code-order-20261029@sha256:1276f911339adb195b09ef1c988db51430057bdea6237aff9e6aa3632dabfb33 0.0s done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 6.89MB 0.5s done
+#5 DONE 0.6s
+
+#6 [2/8] WORKDIR /app/frontend
+#6 CACHED
+
+#7 [3/8] COPY --chown=node:node .next/ ./.next/
+#7 DONE 0.2s
+
+#8 [4/8] COPY --chown=node:node app/ ./app/
+#8 DONE 0.1s
+
+#9 [5/8] COPY --chown=node:node components/ ./components/
+#9 DONE 0.1s
+
+#10 [6/8] COPY --chown=node:node lib/ ./lib/
+#10 DONE 0.1s
+
+#11 [7/8] COPY --chown=node:node public/ ./public/
+#11 DONE 0.1s
+
+#12 [8/8] COPY --chown=node:node next.config.mjs ./next.config.mjs
+#12 DONE 0.2s
+
+#13 exporting to image
+#13 exporting layers
+#13 exporting layers 0.4s done
+#13 exporting manifest sha256:eb15468c3f0d2a5701bc798298a6ae610f57c4f5f72643bc10b1cafcf77dba55 0.0s done
+#13 exporting config sha256:682973d4562dbe6e6fd2ab8284be6038e78302dcc828a0bb47ecc119df1fe2e7 0.0s done
+#13 exporting attestation manifest sha256:708416e34dfa040770665adc1104823082f7e5b2baec3c89f4cc2ca0ec8c1e58 0.0s done
+#13 exporting manifest list sha256:b54d496074e5052b8b3f2a3873268482a7d8b3c9d22d3a2f0861bf2140b7b3b9 0.0s done
+#13 naming to docker.io/library/scholar-graph-frontend:celadon-20261029 done
+#13 unpacking to docker.io/library/scholar-graph-frontend:celadon-20261029
+#13 unpacking to docker.io/library/scholar-graph-frontend:celadon-20261029 0.2s done
+#13 DONE 0.8s

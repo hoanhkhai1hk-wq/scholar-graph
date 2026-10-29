@@ -1,0 +1,46 @@
+{
+  "web": "http://127.0.0.1:3500",
+  "steps": [
+    {
+      "name": "真实20篇图谱与等待骨架",
+      "passed": true,
+      "ms": 25767,
+      "evidence": {
+        "canvas": "引用网络画布：20个节点，99条关系",
+        "paperIds": [
+          "paper-1df284ce95f783002074bfe8f21d47c646b396ceb1736ea3ec0ea212fc070d91",
+          "paper-775ff8d09b6e5b06314135d87c194ce3535a821eeaee4be9051b331162c5fefd",
+          "paper-7d9f878c23b460e4566aa4ec9201b1abfb3b8faefb2b1356e411cb90fef72a12",
+          "paper-82d5b9634b3d2601b3eb494dcc9e2189132f5d6e479233b91c7ce411dbdfcfa4",
+          "paper-92cb3a2b71362acda98a789b03d88688fd33cf5fcf13f81d2b1de30ee7d3b67a",
+          "paper-97fd272f1fdfc18677462d0292f5fbf26ca86b4d1b485c2dba03269b643a0e83",
+          "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+          "paper-a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494",
+          "paper-a67e18a4ca6e2c81abc030239a3ee53705f656b79efab8ce1d6b5ac25630c2a5",
+          "paper-ad07e47cedf437a4156419ce5d3076e08a3e59bbfd6dac7cc53df1009cdcbe7f",
+          "paper-b191b0a365a64b4ab2791d117069ed17a2933d03554a662ced58b37df52018f4",
+          "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "paper-c1984bb50a5b90fddb895fdc3a0f72e5bc977148c9f63ef6040cbe7a3e1f0d98",
+          "paper-c531734c7d9ee647fda9b4f0e1a6abd6d58ad34e862bc945451b09032be3167e",
+          "paper-ca7f9fda10b90fc05dd291a3accc85e9c1a4a860b99b31928dab03ed3fcb14e4",
+          "paper-d9d852e2894556e73f53cb22b7c605a9643d6f0b19bf604b429ed6192fa24f4e",
+          "paper-e9a0d3128767db616085dc0f4e6e455e672e89af823e8ed1282793682787395a",
+          "paper-eb81a65e0856bd38e855e1f1de6ee12e7c3eb92ae05c8270d345a475beb631d0",
+          "paper-ebae72ea0e8a5eb2ecbccdb985aec6cc1254a7c4d29e6d4de7866db1e66c4855",
+          "paper-f340f6ace31abf7d0730ef461404279f40d3c890e9cc2daeb7068b3304afdbd6"
+        ],
+        "scope": "20 real research papers; authored Chinese fixture explicitly excluded",
+        "note": "800ms transport delay around genuine API result for loading capture"
+      }
+    }
+  ],
+  "errors": [],
+  "network": [
+    {
+      "path": "/api/workspace/graph/rebuild",
+      "status": 200
+    }
+  ],
+  "browser": "156.0.8078.49",
+  "passed": true
+}

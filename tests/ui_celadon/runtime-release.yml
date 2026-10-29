@@ -1,0 +1,3 @@
+services:
+  frontend:
+    image: scholar-graph-frontend:celadon-20261029

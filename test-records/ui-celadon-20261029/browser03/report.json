@@ -1,0 +1,144 @@
+{
+  "web": "http://127.0.0.1:3500",
+  "steps": [
+    {
+      "name": "常驻五模块导航和全局真实搜索",
+      "passed": true,
+      "ms": 3456,
+      "evidence": {
+        "count": 1,
+        "url": "http://127.0.0.1:3500/?q=Attention%20Is%20All%20You%20Need"
+      }
+    },
+    {
+      "name": "无结果引导、原文预览、编辑取消与焦点",
+      "passed": true,
+      "ms": 3716,
+      "evidence": {
+        "previewTitle": "矩阵运算计时与科研文稿溯源测试",
+        "cancelled": true
+      }
+    },
+    {
+      "name": "移动抽屉键盘约束、关闭恢复、预览返回",
+      "passed": true,
+      "ms": 530,
+      "evidence": {
+        "width": 390,
+        "drawerClosedOnNavigation": true
+      }
+    },
+    {
+      "name": "玻璃和缓慢流动可关闭且刷新保留",
+      "passed": true,
+      "ms": 2139,
+      "evidence": {
+        "motion": "off",
+        "transparency": "reduced",
+        "blur": "none"
+      }
+    },
+    {
+      "name": "系统减少动态和实际流动状态",
+      "passed": true,
+      "ms": 32,
+      "evidence": {
+        "reduced": "none",
+        "normal": {
+          "name": "sg-celadon-flow",
+          "duration": "26s"
+        }
+      }
+    },
+    {
+      "name": "真实20篇图谱与等待骨架",
+      "passed": true,
+      "ms": 14405,
+      "evidence": {
+        "canvas": "引用网络画布：20个节点，90条关系",
+        "note": "800ms transport delay around genuine API result for loading capture"
+      }
+    },
+    {
+      "name": "真实研究问答、最终答案和可点击原文依据",
+      "passed": true,
+      "ms": 6387,
+      "evidence": {
+        "answer": "依据原文回答\n\n该论文在优化器部分明确给出：使用 Adam 优化器，β1 = 0.9，β2 = 0.98（同时 ϵ = 10⁻⁹）。\n\n查看本段原文依据（1）\n诊断与核对范围",
+        "href": "/read/paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697?page=7&chunk=paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00088",
+        "highlight": true
+      }
+    },
+    {
+      "name": "段落目录和引用往返",
+      "passed": false,
+      "ms": 33647,
+      "error": "locator.innerText: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.sg-layout__toolbar')\u001b[22m\n"
+    },
+    {
+      "name": "真实划词翻译与悬停翻译",
+      "passed": true,
+      "ms": 3985,
+      "evidence": {
+        "selected": "The Transformer follows this overall architecture using stacked self-attention and point-wise, fully",
+        "selection": "选区翻译 · 第 3 页\n关闭\n\nThe Transformer follows this overall architecture using stacked self-attention and point-wise, fully\n\nTransformer 采用这一整体架构，使用堆叠的自注意力和逐点、全",
+        "hover": "悬停翻译 · 第 3 页\n关闭\n\nusing\n\n使用"
+      }
+    },
+    {
+      "name": "双语真实摘要任务与导出",
+      "passed": true,
+      "ms": 3751,
+      "evidence": {
+        "lengths": [
+          1163,
+          389
+        ],
+        "exported": "论文译文.md"
+      }
+    },
+    {
+      "name": "手机原文优先、研究助手可开关",
+      "passed": true,
+      "ms": 561,
+      "evidence": {
+        "documentVisible": true,
+        "width": 390
+      }
+    },
+    {
+      "name": "断网错误分支明确提示并能恢复（注入网络失败）",
+      "passed": true,
+      "ms": 3512,
+      "evidence": {
+        "injected": "internetdisconnected on library API only",
+        "recoveredCount": 20
+      }
+    }
+  ],
+  "errors": [],
+  "network": [
+    {
+      "path": "/api/workspace/graph/rebuild",
+      "status": 200
+    },
+    {
+      "path": "/api/workspace/sessions/50c96764bc244d5dafbca4fec5d5a558/messages/stream",
+      "status": 200
+    },
+    {
+      "path": "/api/workspace/papers/paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697/translate-selection",
+      "status": 200
+    },
+    {
+      "path": "/api/workspace/papers/paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697/translate-selection",
+      "status": 200
+    },
+    {
+      "path": "/api/workspace/papers/paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697/translation-tasks",
+      "status": 202
+    }
+  ],
+  "browser": "156.0.8078.49",
+  "passed": false
+}

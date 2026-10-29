@@ -127,6 +127,7 @@ export default function TrackingPanel({ paperIds }: { paperIds: string[] }) {
         </div>
       ) : (
         <EmptyState
+          variant="tracking"
           title="还没有运行记录"
           hint="点「立即运行一次追踪」，系统会按库内论文的标题主题词与真实引用关系去公开 arXiv Atom 查询候选。种子取不到时会明确失败，不会凭空造候选。"
           aside="latest_run=null"

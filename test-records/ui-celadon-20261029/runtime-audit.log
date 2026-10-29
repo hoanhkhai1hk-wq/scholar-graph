@@ -1,0 +1,1 @@
+{"passed": true, "healthy_services": 12, "paper_counts": [0, 37, 20, 21, 2, 21], "warm_home_http_ms": [12.968, 10.481, 14.838, 14.298, 134.98], "unchanged": {"files_unchanged": 870, "pdfs_unchanged": 41, "source_records_unchanged": 312, "isolated_immutable_files_unchanged": 106}}

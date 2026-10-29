@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "./workbench.css";
+import "./celadon.css";
 import SiteNav from "@/components/SiteNav";
 import ServiceGate from "@/components/ServiceGate";
 

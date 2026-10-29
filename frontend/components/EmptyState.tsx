@@ -9,11 +9,13 @@ export default function EmptyState({
   hint,
   action,
   aside,
+  variant = "library",
 }: {
   title: string;
   hint: string;
   action?: ReactNode;
   aside?: ReactNode;
+  variant?: "library" | "search" | "tracking" | "graph";
 }) {
   return (
     <div className="sg-empty">
@@ -23,38 +25,12 @@ export default function EmptyState({
         role="img"
         aria-label="空状态图示"
       >
-        <circle
-          cx="36"
-          cy="36"
-          r="27"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1"
-        />
-        <circle
-          cx="36"
-          cy="36"
-          r="18"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="0.5"
-        />
-        <line
-          x1="18"
-          y1="36"
-          x2="54"
-          y2="36"
-          stroke="currentColor"
-          strokeWidth="0.5"
-        />
-        <line
-          x1="36"
-          y1="18"
-          x2="36"
-          y2="54"
-          stroke="currentColor"
-          strokeWidth="0.5"
-        />
+        <g fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          {variant === "library" ? <><path d="M17 15h34v44H17z M24 9h34v44M10 22v43h34" /><path d="M25 26h18M25 33h18M25 40h11" /></> : null}
+          {variant === "search" ? <><circle cx="31" cy="30" r="19" /><path d="m45 44 16 17M22 26h18M22 33h12" /></> : null}
+          {variant === "tracking" ? <><path d="M10 37h52M22 24v6M48 43v6" /><circle cx="17" cy="37" r="4" /><circle cx="36" cy="37" r="4" /><circle cx="56" cy="37" r="4" /><path d="M45 13h13v13M58 13 44 27" /></> : null}
+          {variant === "graph" ? <><path d="m21 22 30 3-13 28z" /><circle cx="21" cy="22" r="7" /><circle cx="51" cy="25" r="6" /><circle cx="38" cy="53" r="8" /></> : null}
+        </g>
       </svg>
       <div className="sg-empty__body">
         <p className="sg-empty__title">{title}</p>

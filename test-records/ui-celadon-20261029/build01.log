@@ -1,0 +1,38 @@
+
+> scholar-graph-frontend@0.1.0 build
+> npm run sync-pdf-worker && next build
+
+
+> scholar-graph-frontend@0.1.0 sync-pdf-worker
+> node scripts/copy-pdf-worker.mjs
+
+[pdf.worker] 已复制 -> public/pdf.worker.min.mjs
+   ▲ Next.js 15.5.28
+   - Experiments (use with caution):
+     · middlewareClientMaxBodySize: 104857600
+
+   Creating an optimized production build ...
+Failed to compile.
+
+./app/papers/[id]/page.tsx
+Error:   x Expected '</', got 'jsx text (
+  |           )'
+     ,-[D:\AI_Workspace\Tasks\scholar-graph\frontend\app\papers\[id]\page.tsx:143:1]
+ 140 |             <section className="sg-section">
+ 141 |               <div className="sg-section__head">
+ 142 |                 <h2 className="sg-section__title">取数失败</h2>
+ 143 | ,->             <Diagnostics summary="接口与分页信息">未取得该论文</span>
+ 144 | `->           </div>
+ 145 |               <ErrorState title="论文详情取数失败" error={paperResult.error} />
+ 146 |             </section>
+ 146 |           </main>
+     `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./app/papers/[id]/page.tsx
+
+
+> Build failed because of webpack errors

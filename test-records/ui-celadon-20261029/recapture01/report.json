@@ -1,0 +1,32 @@
+{
+  "web": "http://127.0.0.1:3500",
+  "steps": [
+    {
+      "name": "真实20篇图谱与等待骨架",
+      "passed": true,
+      "ms": 14329,
+      "evidence": {
+        "canvas": "引用网络画布：20个节点，90条关系",
+        "note": "800ms transport delay around genuine API result for loading capture"
+      }
+    },
+    {
+      "name": "手机原文优先、研究助手可开关",
+      "passed": true,
+      "ms": 2020,
+      "evidence": {
+        "documentVisible": true,
+        "width": 380
+      }
+    }
+  ],
+  "errors": [],
+  "network": [
+    {
+      "path": "/api/workspace/graph/rebuild",
+      "status": 200
+    }
+  ],
+  "browser": "156.0.8078.49",
+  "passed": true
+}

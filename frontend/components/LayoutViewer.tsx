@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { Chunk, CitationLink, ReferenceEntry } from "@/lib/types";
+import AsyncStatus from "./AsyncStatus";
 
 type TextItem = { str: string; transform: number[]; width: number; height: number };
 
@@ -391,7 +392,9 @@ export default function LayoutViewer({
     if (!host || status !== "ok") return;
     let previousWidth = host.clientWidth;
     const observer = new ResizeObserver(() => {
-      if (host.clientWidth === previousWidth) return;
+      // Hidden mobile panes have width zero. Re-measuring their page placeholders
+      // would collapse the whole book and shift the saved scroll position.
+      if (!host.clientWidth || host.clientWidth === previousWidth) return;
       previousWidth = host.clientWidth;
       host.querySelectorAll<HTMLElement>("[data-page]").forEach(element => {
         const canvas = element.querySelector("canvas"), layer = element.querySelector<HTMLElement>(".sg-pdf-text");
@@ -631,7 +634,7 @@ export default function LayoutViewer({
   }
 
   if (status === "loading") {
-    return <p className="sg-mono">正在载入 PDF 原件…</p>;
+    return <div className="sg-pdf-loading"><AsyncStatus label="正在载入 PDF 原件…" rows={8} /></div>;
   }
 
   if (status === "error") {
@@ -650,7 +653,7 @@ export default function LayoutViewer({
 
   return (
     <div className="sg-layout">
-      <aside className="sg-layout__nav">
+      <aside id="paper-outline" className="sg-layout__nav" aria-label="本篇目录与参考文献">
         <h3 className="sg-qa__sub">标题树（段落级定位）</h3>
         <p className="sg-mono">
           点标题会在 PDF 文本层搜索该段文字并高亮；搜不到时退回页首并写明。

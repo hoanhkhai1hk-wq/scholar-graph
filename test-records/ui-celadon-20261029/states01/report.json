@@ -1,0 +1,57 @@
+{
+  "steps": [
+    {
+      "name": "PDF载入骨架（真实原件响应延迟）",
+      "passed": true,
+      "ms": 20645,
+      "evidence": {
+        "fault": "2s transport delay only; same genuine PDF response"
+      }
+    },
+    {
+      "name": "平板目录助手切换保留原文位置",
+      "passed": true,
+      "ms": 1279,
+      "evidence": {
+        "scrollBefore": 2635,
+        "scrollAfter": 12998,
+        "current": "共 15 页 · 当前第 11 页\n跳页\n前往\n载入 17399 ms · 首屏渲染 19876 ms\n本页没有解析出的正文引用标记"
+      }
+    },
+    {
+      "name": "手机解析表格可读且局部横向滚动",
+      "passed": true,
+      "ms": 908,
+      "evidence": {
+        "viewport": 390,
+        "pageWidth": 390,
+        "client": 316,
+        "scroll": 1107,
+        "textWidth": 360,
+        "height": 24221
+      }
+    },
+    {
+      "name": "真实CSV绘图保留趋势图注和数值溯源",
+      "passed": true,
+      "ms": 5239,
+      "evidence": {
+        "caption": [
+          "按CSV记录顺序，accuracy从65变为86，净变化21；在所给数据中呈单调上升趋势，且相邻记录变化幅度逐步增大，变化正在加快。"
+        ],
+        "image": {
+          "width": 1350,
+          "height": 825
+        }
+      }
+    },
+    {
+      "name": "原文检索真实结果、骨架和空状态",
+      "passed": false,
+      "error": "locator.fill: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByPlaceholder('检索问题，例如：样本量')\u001b[22m\n\u001b[2m    - locator resolved to <input value=\"\" type=\"text\" class=\"sg-input\" placeholder=\"检索问题，例如：样本量\"/>\u001b[22m\n\u001b[2m    - fill(\"attention\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    58 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying fill action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+      "ms": 33672
+    }
+  ],
+  "errors": [],
+  "passed": false
+}

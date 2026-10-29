@@ -1,0 +1,13 @@
+// Production build, actual service data, independent Chrome profile.
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
+const {chromium}=require('../../frontend/node_modules/playwright');
+const base=path.resolve(__dirname,'../../data/ui-celadon-20261029'),run=process.argv[2],out=path.join(base,run);fs.mkdirSync(out);
+const images=path.resolve(__dirname,'../../docs/images/ui-celadon-20261029',run);fs.mkdirSync(images,{recursive:true});
+const save=(name,value)=>fs.writeFileSync(path.join(out,name),JSON.stringify(value,null,2));
+(async()=>{const browser=await chromium.launch({headless:true,executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe'}),ctx=await browser.newContext({viewport:{width:1440,height:900}}),page=await ctx.newPage(),report={pages:[],errors:[]};page.on('pageerror',e=>report.errors.push(e.message));const p=JSON.parse(fs.readFileSync(path.join(base,'attention.json')));
+for(const [name,route] of [['home','/'],['qa','/qa'],['graph','/graph'],['retrieval','/retrieval'],['writing','/writing'],['upload','/upload'],['paper','/papers/'+p.id],['reader','/read/'+p.id],['settings','/settings']]){
+ try{const start=Date.now(),r=await page.goto('http://127.0.0.1:3500'+route,{waitUntil:'domcontentloaded',timeout:60000});await page.locator('h1').first().waitFor();await page.waitForLoadState('networkidle',{timeout:10000}).catch(()=>{});if(name==='home')await page.locator('.sg-paper-card').first().waitFor();if(name==='reader')await page.locator('[data-rendered=true]').first().waitFor({timeout:30000});
+ const sizes=[];for(const [width,height] of [[1440,900],[1366,768],[1024,768],[390,844]]){await page.setViewportSize({width,height});await page.waitForTimeout(150);const value=await page.evaluate(()=>({viewport:innerWidth,width:document.documentElement.scrollWidth,title:document.querySelector('h1')?.textContent,culprits:[...document.querySelectorAll('main *')].filter(e=>e.getBoundingClientRect().right>innerWidth+2&&getComputedStyle(e).position!=='absolute').slice(0,6).map(e=>({tag:e.tagName,cls:e.className,right:e.getBoundingClientRect().right}))}));sizes.push(value);await page.evaluate(()=>window.scrollTo(0,0));await page.screenshot({path:path.join(images,name+'-'+width+'.png'),fullPage:true});}
+ report.pages.push({name,http_status:r.status(),settle_ms:Date.now()-start,sizes});save('report.json',report);await page.setViewportSize({width:1440,height:900});
+ }catch(e){report.pages.push({name,error:e.message});save('report.json',report);}
+}await ctx.close();await browser.close();console.log(JSON.stringify(report));})().catch(e=>{console.error(e);process.exitCode=1});

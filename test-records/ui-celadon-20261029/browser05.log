@@ -1,0 +1,41 @@
+常驻五模块导航和全局真实搜索: true
+无结果引导、原文预览、编辑取消与焦点: true
+移动抽屉键盘约束、关闭恢复、预览返回: true
+玻璃和缓慢流动可关闭且刷新保留: true
+系统减少动态和实际流动状态: true
+node:internal/process/promises:394
+    triggerUncaughtException(err, true /* fromPromise */);
+    ^
+
+route.fetch: Timeout 30000ms exceeded.
+Call log:
+  - → POST http://127.0.0.1:3500/api/workspace/graph/rebuild
+    - user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36
+    - accept: */*
+    - accept-encoding: gzip,deflate,br
+    - origin: http://127.0.0.1:3500
+    - referer: http://127.0.0.1:3500/graph
+    - content-type: application/json
+    - sec-ch-ua: "Not:A-Brand";v="8", "Chromium";v="156", "Google Chrome";v="156"
+    - sec-ch-ua-mobile: ?0
+    - sec-ch-ua-platform: "Windows"
+    - content-length: 1490
+
+    at D:\AI_Workspace\Tasks\scholar-graph\tests\ui_celadon\browser_acceptance.cjs:21:324 {
+  log: [
+    '  - → POST http://127.0.0.1:3500/api/workspace/graph/rebuild',
+    '    - user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36',
+    '    - accept: */*',
+    '    - accept-encoding: gzip,deflate,br',
+    '    - origin: http://127.0.0.1:3500',
+    '    - referer: http://127.0.0.1:3500/graph',
+    '    - content-type: application/json',
+    '    - sec-ch-ua: "Not:A-Brand";v="8", "Chromium";v="156", "Google Chrome";v="156"',
+    '    - sec-ch-ua-mobile: ?0',
+    '    - sec-ch-ua-platform: "Windows"',
+    '    - content-length: 1490'
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v24.21.0

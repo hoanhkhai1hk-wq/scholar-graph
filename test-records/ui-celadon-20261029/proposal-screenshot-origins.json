@@ -1,0 +1,187 @@
+[
+  {
+    "file": "docs/images/ui-design-20261029/before-empty-library-1440.png",
+    "sha256": "86136814e7a16750421e8c006150db8d04975e33593f531c28cbe93fd47bad38",
+    "origin": "Actual before/proposal/reference-browser capture; exact scene described by docs/ui-design-audit-before.md and docs/ui-design-proposals.md; not a production bitmap asset"
+  },
+  {
+    "file": "docs/images/ui-design-20261029/before-empty-library-390.png",
+    "sha256": "a4b7dc025baeec71a7c876f700d4807396f0a87b7831ab727f9a738097b47733",
+    "origin": "Actual before/proposal/reference-browser capture; exact scene described by docs/ui-design-audit-before.md and docs/ui-design-proposals.md; not a production bitmap asset"
+  },
+  {
+    "file": "docs/images/ui-design-20261029/before-graph-1440.png",
+    "sha256": "427b0425e2dd0b80e3eb8987084c104862c73bbec060cd9dd7e478cb712f9486",
+    "origin": "Actual before/proposal/reference-browser capture; exact scene described by docs/ui-design-audit-before.md and docs/ui-design-proposals.md; not a production bitmap asset"
+  },
+  {
+    "file": "docs/images/ui-design-20261029/before-graph-390.png",
+    "sha256": "65701ee64887e4a2f494a2d458e7445812ff6724131054e66f39dda73bd7702e",
+    "origin": "Actual before/proposal/reference-browser capture; exact scene described by docs/ui-design-audit-before.md and docs/ui-design-proposals.md; not a production bitmap asset"
+  },
+  {
+    "file": "docs/images/ui-design-20261029/before-home-1440.png",
+    "sha256": "1302820f88f24a48800df829a33cd85fd6ff1d76e068b02bf3903c4ae1f1f62a",
+    "origin": "Actual before/proposal/reference-browser capture; exact scene described by docs/ui-design-audit-before.md and docs/ui-design-proposals.md; not a production bitmap asset"
+  },
+  {
+    "file": "docs/images/ui-design-20261029/before-home-390.png",
+    "sha256": "a4cc9fda6355fced1d5ba2557e17abf2f0326d5a4717e5a6dc5a2beb9aec6039",
+    "origin": "Actual before/proposal/reference-browser capture; exact scene described by docs/ui-design-audit-before.md and docs/ui-design-proposals.md; not a production bitmap asset"
+  },
+  {
+    "file": "docs/images/ui-design-20261029/before-paper-1440.png",
+    "sha256": "725250e983179f36c9846f545f8c8d19f4fe0d56bf709da1e6f0fc4d1de303d2",
+    "origin": "Actual before/proposal/reference-browser capture; exact scene described by docs/ui-design-audit-before.md and docs/ui-design-proposals.md; not a production bitmap asset"
+  },
+  {
+    "file": "docs/images/ui-design-20261029/before-paper-390.png",
+    "sha256": "c20723f3997bbf257c0f44117dea4886b3940bd020ffb75cee71a1db9e23023d",
+    "origin": "Actual before/proposal/reference-browser capture; exact scene described by docs/ui-design-audit-before.md and docs/ui-design-proposals.md; not a production bitmap asset"
+  },
+  {
+    "file": "docs/images/ui-design-20261029/before-qa-1440.png",
+    "sha256": "d31b57e65b84e3d0ca7d529f6500dd7742131b14d02a6abfb09112e82057b099",
+    "origin": "Actual before/proposal/reference-browser capture; exact scene described by docs/ui-design-audit-before.md and docs/ui-design-proposals.md; not a production bitmap asset"
+  },
+  {
+    "file": "docs/images/ui-design-20261029/before-qa-390.png",
+    "sha256": "2a9bf54aa249ccb360a4ee5d353599d6bd71021b97e8e2d665e04df90b7ef5f8",
+    "origin": "Actual before/proposal/reference-browser capture; exact scene described by docs/ui-design-audit-before.md and docs/ui-design-proposals.md; not a production bitmap asset"
+  },
+  {
+    "file": "docs/images/ui-design-20261029/before-reader-1440.png",
+    "sha256": "1eb4ec135198aec177f1e8297f9138dd2d94474ef1148fe752a69c1e6ced5702",
+    "origin": "Actual before/proposal/reference-browser capture; exact scene described by docs/ui-design-audit-before.md and docs/ui-design-proposals.md; not a production bitmap asset"
+  },
+  {
+    "file": "docs/images/ui-design-20261029/before-reader-390.png",
+    "sha256": "7d28211b683a29901a35c063b8f2b3d422830a2abe2d996c696429f0e9fc003e",
+    "origin": "Actual before/proposal/reference-browser capture; exact scene described by docs/ui-design-audit-before.md and docs/ui-design-proposals.md; not a production bitmap asset"
+  },
+  {
+    "file": "docs/images/ui-design-20261029/before-retrieval-1440.png",
+    "sha256": "0e0f6c85de4eb8c4a6064faddfeca0f89f1a008a609b226cf840d5278d8c0bc0",
+    "origin": "Actual before/proposal/reference-browser capture; exact scene described by docs/ui-design-audit-before.md and docs/ui-design-proposals.md; not a production bitmap asset"
+  },
+  {
+    "file": "docs/images/ui-design-20261029/before-retrieval-390.png",
+    "sha256": "1f78be350d104ab5eac6b4661e42f60e30082f463596837c33e6f4594cf2acb5",
+    "origin": "Actual before/proposal/reference-browser capture; exact scene described by docs/ui-design-audit-before.md and docs/ui-design-proposals.md; not a production bitmap asset"
+  },
+  {
+    "file": "docs/images/ui-design-20261029/before-settings-1440.png",
+    "sha256": "a9da677e7da727e8fe9ff18b61cfb84991bb2c920afd2924028569a35580d7c3",
+    "origin": "Actual before/proposal/reference-browser capture; exact scene described by docs/ui-design-audit-before.md and docs/ui-design-proposals.md; not a production bitmap asset"
+  },
+  {
+    "file": "docs/images/ui-design-20261029/before-settings-390.png",
+    "sha256": "d38da45a5de332b66db3a24ed8c8b8dbbcbc1b849c62c1c5e53646e8e580c957",
+    "origin": "Actual before/proposal/reference-browser capture; exact scene described by docs/ui-design-audit-before.md and docs/ui-design-proposals.md; not a production bitmap asset"
+  },
+  {
+    "file": "docs/images/ui-design-20261029/before-upload-1440.png",
+    "sha256": "7046e797264974285de682f07896b9ab316a59cb2a015fdf094377bad12dc112",
+    "origin": "Actual before/proposal/reference-browser capture; exact scene described by docs/ui-design-audit-before.md and docs/ui-design-proposals.md; not a production bitmap asset"
+  },
+  {
+    "file": "docs/images/ui-design-20261029/before-upload-390.png",
+    "sha256": "8f9e48a4eea34c6e83bf953a2f586c8eaf56f2b401543b5c26f9310b6a4a6a16",
+    "origin": "Actual before/proposal/reference-browser capture; exact scene described by docs/ui-design-audit-before.md and docs/ui-design-proposals.md; not a production bitmap asset"
+  },
+  {
+    "file": "docs/images/ui-design-20261029/before-writing-1440.png",
+    "sha256": "4a932a6a42679841d90b382b7a52f372a0322a022dfafa4c7b48512c62885bf6",
+    "origin": "Actual before/proposal/reference-browser capture; exact scene described by docs/ui-design-audit-before.md and docs/ui-design-proposals.md; not a production bitmap asset"
+  },
+  {
+    "file": "docs/images/ui-design-20261029/before-writing-390.png",
+    "sha256": "075da65950e0585532204c459a41574caa1b1a55bf47231929d2399e6d8d81d6",
+    "origin": "Actual before/proposal/reference-browser capture; exact scene described by docs/ui-design-audit-before.md and docs/ui-design-proposals.md; not a production bitmap asset"
+  },
+  {
+    "file": "docs/images/ui-design-20261029/proposal-a-1024.png",
+    "sha256": "92f2df9e8cd28538c3aad7a23341d285857445afe808bf75953b9f077f45e1d1",
+    "origin": "Actual before/proposal/reference-browser capture; exact scene described by docs/ui-design-audit-before.md and docs/ui-design-proposals.md; not a production bitmap asset"
+  },
+  {
+    "file": "docs/images/ui-design-20261029/proposal-a-1366.png",
+    "sha256": "2dcc6c2f204d1c6606bd7c6766aa46900084c5664ee67c802650fd01e9c40b78",
+    "origin": "Actual before/proposal/reference-browser capture; exact scene described by docs/ui-design-audit-before.md and docs/ui-design-proposals.md; not a production bitmap asset"
+  },
+  {
+    "file": "docs/images/ui-design-20261029/proposal-a-1440.png",
+    "sha256": "7a8a3b84d997281c0fbc7d8b88201b06aa5521a483e03bb7e908bc488db8b01e",
+    "origin": "Actual before/proposal/reference-browser capture; exact scene described by docs/ui-design-audit-before.md and docs/ui-design-proposals.md; not a production bitmap asset"
+  },
+  {
+    "file": "docs/images/ui-design-20261029/proposal-a-390.png",
+    "sha256": "7860fb5760cf56fcec325e50fcc90f790fd73a25155cde5118ac7220aa83c8f7",
+    "origin": "Actual before/proposal/reference-browser capture; exact scene described by docs/ui-design-audit-before.md and docs/ui-design-proposals.md; not a production bitmap asset"
+  },
+  {
+    "file": "docs/images/ui-design-20261029/proposal-b-1024.png",
+    "sha256": "88f5c7d24f802756129a790c0fe9bf7db631c25959d25109d5ef02ffe0c2952c",
+    "origin": "Actual before/proposal/reference-browser capture; exact scene described by docs/ui-design-audit-before.md and docs/ui-design-proposals.md; not a production bitmap asset"
+  },
+  {
+    "file": "docs/images/ui-design-20261029/proposal-b-1366.png",
+    "sha256": "5ce1bae5d20bf32e9acb59a73984b7c3f122a0c77681569c718b77e12ebb8741",
+    "origin": "Actual before/proposal/reference-browser capture; exact scene described by docs/ui-design-audit-before.md and docs/ui-design-proposals.md; not a production bitmap asset"
+  },
+  {
+    "file": "docs/images/ui-design-20261029/proposal-b-1440.png",
+    "sha256": "92baa6d82e4ca9380df8a64bea42799ed84f7bd709875e260610d13710612682",
+    "origin": "Actual before/proposal/reference-browser capture; exact scene described by docs/ui-design-audit-before.md and docs/ui-design-proposals.md; not a production bitmap asset"
+  },
+  {
+    "file": "docs/images/ui-design-20261029/proposal-b-390.png",
+    "sha256": "cdddda0445c6461ce0cf8eb350b19550c018586c673dea2406d4ff75d37c3e5a",
+    "origin": "Actual before/proposal/reference-browser capture; exact scene described by docs/ui-design-audit-before.md and docs/ui-design-proposals.md; not a production bitmap asset"
+  },
+  {
+    "file": "docs/images/ui-design-20261029/proposal-c-1024.png",
+    "sha256": "8f5571c0176b947e99b6e903e37745a9bf274b4118dae98b0d1ec53f8b75301a",
+    "origin": "Actual before/proposal/reference-browser capture; exact scene described by docs/ui-design-audit-before.md and docs/ui-design-proposals.md; not a production bitmap asset"
+  },
+  {
+    "file": "docs/images/ui-design-20261029/proposal-c-1366.png",
+    "sha256": "c2424d121bf647afc3151c1450c3b443a0247efeacf14fa6d838d1717417acdf",
+    "origin": "Actual before/proposal/reference-browser capture; exact scene described by docs/ui-design-audit-before.md and docs/ui-design-proposals.md; not a production bitmap asset"
+  },
+  {
+    "file": "docs/images/ui-design-20261029/proposal-c-1440.png",
+    "sha256": "ad5f90d93e898687a011477382c7c413afaafc9ac6dbe47a350f6a28e58ec632",
+    "origin": "Actual before/proposal/reference-browser capture; exact scene described by docs/ui-design-audit-before.md and docs/ui-design-proposals.md; not a production bitmap asset"
+  },
+  {
+    "file": "docs/images/ui-design-20261029/proposal-c-390.png",
+    "sha256": "7aa1cb423683145e723045ea1c5644441a3c560631ea99b0f8d348ce1aaaa4e0",
+    "origin": "Actual before/proposal/reference-browser capture; exact scene described by docs/ui-design-audit-before.md and docs/ui-design-proposals.md; not a production bitmap asset"
+  },
+  {
+    "file": "docs/images/ui-design-20261029/reference-bilibili.png",
+    "sha256": "a83e34ed42a0c157cefe4968324a8d67f92d3d645b48fa7ccd3db3d2101b42f9",
+    "origin": "Actual before/proposal/reference-browser capture; exact scene described by docs/ui-design-audit-before.md and docs/ui-design-proposals.md; not a production bitmap asset"
+  },
+  {
+    "file": "docs/images/ui-design-20261029/reference-federico.png",
+    "sha256": "0e0336b77401b93efe83c4c1f59bab0bdd32d58dfa25a237dc24ee6074e0c62d",
+    "origin": "Actual before/proposal/reference-browser capture; exact scene described by docs/ui-design-audit-before.md and docs/ui-design-proposals.md; not a production bitmap asset"
+  },
+  {
+    "file": "docs/images/ui-design-20261029/reference-linear.png",
+    "sha256": "ff6f987a7df7987f26d91d18832636377603c1328991bad2fbd22d56cf702d79",
+    "origin": "Actual before/proposal/reference-browser capture; exact scene described by docs/ui-design-audit-before.md and docs/ui-design-proposals.md; not a production bitmap asset"
+  },
+  {
+    "file": "docs/images/ui-design-20261029/reference-video-420.png",
+    "sha256": "1999c781b5bbc6107beaf75269ae9c23e879dd3fdea0c3891fa24157722b994c",
+    "origin": "Actual before/proposal/reference-browser capture; exact scene described by docs/ui-design-audit-before.md and docs/ui-design-proposals.md; not a production bitmap asset"
+  },
+  {
+    "file": "docs/images/ui-design-20261029/reference-video-60.png",
+    "sha256": "d57f0bc453fc3759fe6863194020808dcfcb82e53f43bb3760ae1c58c2d5788e",
+    "origin": "Actual before/proposal/reference-browser capture; exact scene described by docs/ui-design-audit-before.md and docs/ui-design-proposals.md; not a production bitmap asset"
+  }
+]

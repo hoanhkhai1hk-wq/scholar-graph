@@ -1,0 +1,57 @@
+{
+  "web": "http://127.0.0.1:3500",
+  "steps": [
+    {
+      "name": "常驻五模块导航和全局真实搜索",
+      "passed": true,
+      "ms": 3632,
+      "evidence": {
+        "count": 1,
+        "url": "http://127.0.0.1:3500/?q=Attention%20Is%20All%20You%20Need"
+      }
+    },
+    {
+      "name": "无结果引导、原文预览、编辑取消与焦点",
+      "passed": true,
+      "ms": 4066,
+      "evidence": {
+        "previewTitle": "矩阵运算计时与科研文稿溯源测试",
+        "cancelled": true
+      }
+    },
+    {
+      "name": "移动抽屉键盘约束、关闭恢复、预览返回",
+      "passed": true,
+      "ms": 392,
+      "evidence": {
+        "width": 390,
+        "drawerClosedOnNavigation": true
+      }
+    },
+    {
+      "name": "玻璃和缓慢流动可关闭且刷新保留",
+      "passed": true,
+      "ms": 2351,
+      "evidence": {
+        "motion": "off",
+        "transparency": "reduced",
+        "blur": "none"
+      }
+    },
+    {
+      "name": "系统减少动态和实际流动状态",
+      "passed": true,
+      "ms": 145,
+      "evidence": {
+        "reduced": "none",
+        "normal": {
+          "name": "sg-celadon-flow",
+          "duration": "26s"
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "network": [],
+  "browser": "156.0.8078.49"
+}

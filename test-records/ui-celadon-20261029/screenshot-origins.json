@@ -1,0 +1,1242 @@
+[
+  {
+    "file": "docs/images/ui-celadon-20261029/browser01/graph-loading.png",
+    "sha256": "61bb68292971e70daa1c1415b2f339c059b93b12e9de6a4e93274be63701c4b9",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/browser02/graph-loading.png",
+    "sha256": "6b44bb45216144a32f859a06bba6d0045ba966c8c863f73280f1496831167ceb",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/browser02/graph-real-20.png",
+    "sha256": "3e01295b6c3a423fd827c621d355e23ae342f45860484893b94d3c5a8268d0fa",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/browser02/library-network-error.png",
+    "sha256": "b53f79ce8416cc7ac66f3d53b465f928dc80c943eca4ce793ed86f0884a94c21",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/browser02/library-no-results.png",
+    "sha256": "1c75e152b52316dadc4b9f167d6b506223fa16fcc75558808008f4044a357270",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/browser02/qa-loading.png",
+    "sha256": "e1bf5a98f9bf7507316da44669c4b96bb779786a291a9bb690d517345b463202",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/browser02/qa-real-answer.png",
+    "sha256": "e599815c18b7bb4b8dcc8d3d5d48a14d9f3efc8fd5c3be592d8ab36af7fca0dc",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/browser02/reader-bilingual.png",
+    "sha256": "11343d8052cdc816b3948e5888db5e327951c0c3dd925344dcd4bdc08b16ef9d",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/browser02/reader-mobile-document.png",
+    "sha256": "152fc03c409d8fa3d01a3d2724812999dca9c51f63167386a5dfb56cec15451a",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/browser02/reader-selection-translation.png",
+    "sha256": "75cd2cb12c4b1f4ae5f19a036d31375e169c7373a3f4a26db63e0ab2a21f074b",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/browser03/graph-loading.png",
+    "sha256": "a4d3db8caa965337a6af6bf5db52fa12de2c3e8daec99f86150776a01970419b",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/browser03/graph-real-20.png",
+    "sha256": "26073d1b48f41372aee2a9065a9328bd793551c327bd26f19b5cc130b3490894",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/browser03/library-network-error.png",
+    "sha256": "ba1d87e4b205e871668d263c0918f79789440785c28f01950b8eab75c3085a4e",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/browser03/library-no-results.png",
+    "sha256": "c2c3565f3cd93640d343f644a8eb7b12d8f661630eee6f2d1f05677bd302c2bd",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/browser03/qa-loading.png",
+    "sha256": "f88b3feab3816270fbd963bbecdc77e136de6447888b5cc4334e6fed69115afb",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/browser03/qa-real-answer.png",
+    "sha256": "b7a1c3437f701a1b5e65363dca05f716230f01c032f143618ffb10fa9c99471a",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/browser03/reader-bilingual.png",
+    "sha256": "fd036ddaa0150175e4fc44eeb0f43f94ff4c598691183a3ccb2f3e6c0ee98124",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/browser03/reader-mobile-document.png",
+    "sha256": "d6a78ec3cd6fd6e4b1f4cdbe582ae0d2fc6de7e40a63a07c4d36fac2c14204ca",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/browser03/reader-selection-translation.png",
+    "sha256": "4b850e45994af77e8378d6a5c1a07d8fa3178647c10c6f8a34f9435dcffa2d37",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/browser04/graph-loading.png",
+    "sha256": "b9633f5967e339698b772c97c2ceeeb212ce4619e51dd8cce3bd81ad3be4c48a",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/browser04/graph-real-20.png",
+    "sha256": "61c5e477ad34f1ac110f60e4c27b93f2180e1c59e2ef8aa6e29066107c2cad26",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/browser04/library-network-error.png",
+    "sha256": "2a57bf0ca9ee09e9703ddd8fa7dcb9166099f878e305e4469afdcf3e5f3b7c31",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/browser04/library-no-results.png",
+    "sha256": "e6732b76298670bc6c41e7a9688b7d33819d18145568fcd017b7036b06434de7",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/browser04/qa-loading.png",
+    "sha256": "55f393dd07547d4340ddcad7155feef482f3c8e60a2100946ef3bcc51354e848",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/browser04/qa-real-answer.png",
+    "sha256": "e948299160b568c3336ef9d70b2a036be0bbdbd8fe05945107212064845ca80d",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/browser04/reader-bilingual.png",
+    "sha256": "09f416e8e6d3bf692ca272dad3a811dac4cc66a7786c19c37b67581cc09b96b0",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/browser04/reader-chapter-highlight.png",
+    "sha256": "75b0e3f3e3e43012eb2cc32b2541a02a4d97be45f12774ac8b3892826e4dda15",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/browser04/reader-mobile-document.png",
+    "sha256": "d19a606e627f7453262a13d7eac043ab7c143096f8360c3567ccc7097118d265",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/browser04/reader-selection-translation.png",
+    "sha256": "3c84336989d8b1e167f553b5c79631179abb57d441df06a9f045a79b9ecc30b2",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/browser05/graph-loading.png",
+    "sha256": "6d37aea0438203112bdeceb55ff2e0ddf74a58b9d460bd5a523ff33cc710937e",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/browser05/library-no-results.png",
+    "sha256": "4475d7ef867e3edd898ee6685bef26a03557ef6f2533c7d3fba4a041e8712a59",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/browser06/graph-loading.png",
+    "sha256": "a64d4c4290619598a50a37edf05eed5e101942ce3f6ce6cec746fa9af6c2c9be",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/browser06/graph-real-20.png",
+    "sha256": "ee018f14d783f2bd00545c0fd35acc209bf7bf7ce3547ec6305e05107f6cbefe",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/browser06/library-network-error.png",
+    "sha256": "5d9cb0e17471056d15c74e48b9dcb98413c89b97c71042007fa3099bac41e106",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/browser06/library-no-results.png",
+    "sha256": "f42f4543e43a8cc830d90a6b567e27a0967fb4c5ed47b42d8b2ffb4806e4c873",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/browser06/qa-loading.png",
+    "sha256": "0e474ca5682925c32340bd22db33cb4ef23a06f0bb2549aa42a0ba764feea9e8",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/browser06/qa-real-answer.png",
+    "sha256": "4773f98df1162c0d49b46a811b567eabb103aa95ce920aff6617672abf15eb0c",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/browser06/reader-bilingual.png",
+    "sha256": "f3b02b5d0bd6757fa87a6c2d669e9ba4dfab3239a6b07c20e5ec2dd4a15ee723",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/browser06/reader-chapter-highlight.png",
+    "sha256": "2beb1d4f6f582f1728319ade9760507e0c2d535feed8fe8713dce28c385cac12",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/browser06/reader-mobile-document.png",
+    "sha256": "5d6c5b9979ee90e4616a937e344f896420cd58e6d9132b3b4916519e98c2c02a",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/browser06/reader-selection-translation.png",
+    "sha256": "709bcca297bc67a3a14c39104165ae5e660471a3a5dd5fa74f65fd104aa71080",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/deployed/assistant-real-3400.png",
+    "sha256": "8e39bac1e522f299705eba6e88663b97554f0d59ebebbcd017214cd913734b3c",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/deployed/empty-library-3000.png",
+    "sha256": "73bdee0b259ad2c1aa6bb3d857674ce29aabca78ae5176630b027feb9e80a176",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/deployed/library-3400.png",
+    "sha256": "0a6e9e36e12a9107c4c01c1998b2fb6fe4af5be7f1d63a0eef68b881a970d7fe",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/final-capture/graph-1024.png",
+    "sha256": "7402221b1681cb7912e83a50ca62c0493a31c8fbf47bc7d8130b8b725c9d71c7",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/final-capture/graph-1366.png",
+    "sha256": "697c4676a17387213be2eebca4e26d17f056122f8f72de559a49099114e756bb",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/final-capture/graph-1440.png",
+    "sha256": "c3a799e6ddecb0c5f353a0db1a7daa19cf852291f9cc37b6ba04f4a8916a6ec0",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/final-capture/graph-390.png",
+    "sha256": "4f76d9508e4906e19ffcf0cca9431b43bf3c274a979672415777036f8d69e72b",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/final-capture/home-1024.png",
+    "sha256": "9c0b763af4cb966228e0df5c730dccd05f71749dce81f80abafa9368b3fe23eb",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/final-capture/home-1366.png",
+    "sha256": "1252eb5641018eecca9aad3225f662c3fc90f3be0432432bff0c548b7f3c2b0d",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/final-capture/home-1440.png",
+    "sha256": "b701aee092893da65d329a8ef78de5f17b952056fabb31aa21bf738b9fef8c0c",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/final-capture/home-390.png",
+    "sha256": "181980a32dc71d3f7e377ce26ae9fb815e089e058edea2ac766c0fe9267c8ca1",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/final-capture/paper-1024.png",
+    "sha256": "b99272bc694d187e9bcced86e0a03afb6c778a4d27c76728cfc02d27c5b93937",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/final-capture/paper-1366.png",
+    "sha256": "842e2f416f72b796670bc57811482d1d88479509f3a4f568e47c32d8356cfa6c",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/final-capture/paper-1440.png",
+    "sha256": "8023caf5f48eb7f094d2380d8bf0260e28b8cb5b83565f2df30cf94d29366142",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/final-capture/paper-390.png",
+    "sha256": "e332eb9881a5837ed56913568c7fa3db9f1f5f70e66c13546ee1d59976767d8d",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/final-capture/qa-1024.png",
+    "sha256": "c14b82f978099cd8db5f0bce9e8d985d60bc38a731fa869575bc7e552490c693",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/final-capture/qa-1366.png",
+    "sha256": "8ad80060eefa350ab56da898609fc47d600cf25cbaf29ad9532d053f882bdf99",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/final-capture/qa-1440.png",
+    "sha256": "8a8d46376afeeffebf8c0f158e4a5c30345fcc67afd339ac045d4d8a60fea1b0",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/final-capture/qa-390.png",
+    "sha256": "3c77033fc8c7140812882785d032c38d4e1881fe6e6e50cf593fbaa7adc8376f",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/final-capture/reader-1024.png",
+    "sha256": "27654bdd5b9ceafef09f8e693861ad5f47fd828f63f08e4a6dff6beb49f2ba69",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/final-capture/reader-1366.png",
+    "sha256": "c5748c75a82dab8a6f66ce4fdc98228e3b239da59eb06c1f4c56210e57dc9484",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/final-capture/reader-1440.png",
+    "sha256": "b0856211a73c19ec10c0e98c33cc00f2a9768480ac950a9a3f1254f72aaf6168",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/final-capture/reader-390.png",
+    "sha256": "f95d940fdbb1b78aa7840d42ead2c89a10dc2032b060f90e4d31e69be5201433",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/final-capture/retrieval-1024.png",
+    "sha256": "30f54d4f32a967c6c685f3069f5315997385f2b5c8cdf6abac1b97d0296aea4a",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/final-capture/retrieval-1366.png",
+    "sha256": "ee7fbc2bdc6ad2a103da87b26e1cafb11f4f0460599cb578e4b206e4a67e8bf5",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/final-capture/retrieval-1440.png",
+    "sha256": "5a66a27191d8dec9d5faac6c91d5a300cc804feb08f0c96d2685690c570ed2eb",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/final-capture/retrieval-390.png",
+    "sha256": "630291f6129079c2a2d6c0f5407bcf9b8a239ef905d15bfada441fb182f0d81c",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/final-capture/settings-1024.png",
+    "sha256": "75ed9fff78bd201a121276e9ddc717bef63c007c86f8ac0b64d4defd2ed0af0a",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/final-capture/settings-1366.png",
+    "sha256": "203bbf302fc8c632d10df6b1d4b9574b8e477b65fe9aa99b77c1c584d756fdf7",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/final-capture/settings-1440.png",
+    "sha256": "e04aa1cc70b53f1da96ae439193a3215de33b0e6f847edad7ed225397c07b891",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/final-capture/settings-390.png",
+    "sha256": "c416e11bdbc4d0976e7f97d40ea56bae40fa1da8a02d75dc6e380b731d4ad722",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/final-capture/upload-1024.png",
+    "sha256": "2896e902877f10632ae8b46d48aed3d4f21b6eb8b6f4d74363d6c5154bec8bd6",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/final-capture/upload-1366.png",
+    "sha256": "727bb9391172dbeb49fa4af7af85c21ca2c3d7827ef97217a5bdfa892cd20972",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/final-capture/upload-1440.png",
+    "sha256": "c1e1dad57ae6fd5bf0e5a2439f68c91517d481cdeceb99aac139e35892d78263",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/final-capture/upload-390.png",
+    "sha256": "07299e9945737a46d51ba249e8599fbbefed7db558b5597d287d3f6c073b38b2",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/final-capture/writing-1024.png",
+    "sha256": "0cd5de526192595afb1f52b5bf7b79fd83423e46e946e16e4fb9933259b18c46",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/final-capture/writing-1366.png",
+    "sha256": "db2a32d0a3036e36ca6434975b370f490042a273438ae365b817ef3cebf0f61d",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/final-capture/writing-1440.png",
+    "sha256": "b13863828823493277dae4a8a5d18900720b5b09a06bc0e1f59a974f2846f6cc",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/final-capture/writing-390.png",
+    "sha256": "2f849531550b7d748d5fa55c8b53301e1df3d888d0ca8bea4d63081c94aad56f",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/graph-real20-final/graph-loading.png",
+    "sha256": "5dd5c17674a970e73d4f89a4fc7275450b8a441e8a9e1bc6147f8ca0a29a6b55",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/graph-real20-final/graph-real-20.png",
+    "sha256": "dfa7dced861b3aa68a9716bc5017c89735ad06f556346433a4183a15101c962a",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/hover/sg-btn--danger.png",
+    "sha256": "989a2e4383b3932479784e6a3dc3de7131857c55d8178ac7def572deca0bf338",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/hover/sg-btn--text.png",
+    "sha256": "d3788867c7ab105a4075703ca36966ba8f9e45789bb64e241b6d641789aba097",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/navigation01/reader-chapter-highlight.png",
+    "sha256": "e4d81bdb1495276850f608985c2dc2951a38469b7ca90e18df069c92b560aa21",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/preview-desktop.png",
+    "sha256": "19793b17baf318828a9004d47e1a0bc83c77f69f23d9455ea4389a7fed167284",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/preview-mobile.png",
+    "sha256": "91fe8bb38ee7fb37af7caa3ce60e01dbb2c0274b3810a765d843b380d4686ff1",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/recapture01/graph-loading.png",
+    "sha256": "ffab8f3f5b16d7111add5b5c103e6f5caa30584c187321d6391745b37e9278f5",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/recapture01/graph-real-20.png",
+    "sha256": "c4f2d2c31ba55c609acc14c70d34a19ea92a667f7787942948f123d737bc5fcc",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/recapture01/reader-mobile-document.png",
+    "sha256": "60cc1551de1802f0cb4d8c70e46c3f5200dfd4e09346872404c638cc5f8686b3",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/retrieval-final/retrieval-empty.png",
+    "sha256": "b273669622d3e38c725830a822b557cede0d3358d66de20946fbcdf67167f75e",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/retrieval-final/retrieval-loading.png",
+    "sha256": "f2644fb0a0b74d1339eada1dd60ab7f300fd64a7289774a4a035dbf22c5a3616",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-before/paper-390.png",
+    "sha256": "d9baae0c64afd0acb49f452cd34d5bab6b2a17a77abd3265d654f2eaa0e73aa2",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-before/reader-1024.png",
+    "sha256": "e7f9d9968a5e999c302edf5faa987ebb9aea31f459f857a65484021b69ddfb1a",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-before/reader-390.png",
+    "sha256": "a00a80ec730fef773ba402d1f1e997e8c2440f6f43990b7befa0c101e849345b",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix01/graph-1024.png",
+    "sha256": "d7afc95380d0dbe7e2be9a60f1d88255c1b42bbbf491a9b8118ff4a74b37e30b",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix01/graph-1366.png",
+    "sha256": "e54e5ecff379893e39fee4297d04bd3951b6ffef6b6af4bedf85a674ee51df39",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix01/graph-1440.png",
+    "sha256": "c495181aee18a08edad0495855b8222893a76f863d9faddeb45aa3039f6dd504",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix01/graph-390.png",
+    "sha256": "3f94e9fdeafaa59b3d9ba71c437a87f84ee912972218d48b31899368eac8a2f3",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix01/home-1024.png",
+    "sha256": "d2c2b3b3800665917efe0e42e1121974ac213a8ce92630c002ae8732bec45a4a",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix01/home-1366.png",
+    "sha256": "3f9c89477d207c977278917300916896f74691e1a6c8ccc481efc0718151f8a2",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix01/home-1440.png",
+    "sha256": "3485a7ff3fc564747f822c0011a3e15f524fa8d4a82fa27e2a9c8e694b9990fb",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix01/home-390.png",
+    "sha256": "57f5987718b1c53062f7ca654eaff2b1d414b539773b70a7437785426a72fd75",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix01/paper-1024.png",
+    "sha256": "6dd6a4c45947adefbb62e998c2ce036f65e205c38e9d9aa78382e90261197007",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix01/paper-1366.png",
+    "sha256": "5a786fc03bf557dbc80c323616b56d4b0f35dedf84acc69f288dfb94d86efd1d",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix01/paper-1440.png",
+    "sha256": "d45eb902aa6f2a336e2cf0050a5b6d958f57a0c20900b9c8348c5754062e009f",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix01/paper-390.png",
+    "sha256": "cf7330b801d79bdb5318f61b4135316f259dae803f8ee5bad4dfe89ea6b079c3",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix01/qa-1024.png",
+    "sha256": "0aee561d8207bdcf8ce3271a09a6da085931c559610070614f8d8495f91599a5",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix01/qa-1366.png",
+    "sha256": "24cb9a26744c66df3938a53e478e3c58377eb16a8a9626008deb3d8ab6dac7dc",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix01/qa-1440.png",
+    "sha256": "1b98d9997be6ca6537542227a7ca6778e556cb9b19443e888b5e818be00454fb",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix01/qa-390.png",
+    "sha256": "6378334d374653084a2bf57aec918de9c9fe1d669a715c3b15b61437d3622257",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix01/reader-1024.png",
+    "sha256": "878729df489b152deac5a296f5769f8545567bc08fc6790da5d37a5523b5c03e",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix01/reader-1366.png",
+    "sha256": "374e8a3f3972c9953dfa6e5e292555b5327ab3d099143184cc9a1d4bb113019a",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix01/reader-1440.png",
+    "sha256": "6705ff55fd79a694d0fcdfd5b3ce919b0adcd20b0df3f042ba70f7683fa74bc1",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix01/reader-390.png",
+    "sha256": "ad05d32ddc467c94e5a30b2d52aac2b915bba8de5e675a259af66bf203ee124a",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix01/retrieval-1024.png",
+    "sha256": "bd3a8ec6b4125f4e87a5a9719b28c5da9d5a82c8a5f0088ff62eb1b456dc4e3a",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix01/retrieval-1366.png",
+    "sha256": "4bbd1c919cb4181cc1c3d4faf6dc92338d5c3a2a9352080ca2a499814648fb1d",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix01/retrieval-1440.png",
+    "sha256": "44e89bf1233e893c897e57ae69e5f1334c135d266a19841cc09157c3557931b4",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix01/retrieval-390.png",
+    "sha256": "de7553c1faa9ff06084036243a7365dfa258559845992dddda4168b21ecf2023",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix01/settings-1024.png",
+    "sha256": "4886154a9efac3ab702094db06e13955ae2c872ad8b894e13051e58290a982e1",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix01/settings-1366.png",
+    "sha256": "494435eab1a1ccea142cd7563aea6d701f9bfb14b0984c8ce1ee2cfaf58958fc",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix01/settings-1440.png",
+    "sha256": "09cbe527df9924209b71028d0adc6d1f2d34d4676bcd20f26102405ecda204b3",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix01/settings-390.png",
+    "sha256": "42131f35358377faa247e18353bb55e66ba84ee1f1631fb852ff73d352d4b35f",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix01/upload-1024.png",
+    "sha256": "80ff5728ec01fb55cf88146fefa7fa8d3a9ba7289631274f8ac0c40ce966cd48",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix01/upload-1366.png",
+    "sha256": "a33163a85f5cbb3f44181f1b6a5b66fe17f874cafda5df31808377ff9606c83e",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix01/upload-1440.png",
+    "sha256": "527d3ec2bf88fd66e9843dcd96431b1c727dd96974f13d6913afdf3791d15ab3",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix01/upload-390.png",
+    "sha256": "89cb9ff3343a42a2ad3fc1d5b58cddf54a262fb43ad856819b91342e4faf1805",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix01/writing-1024.png",
+    "sha256": "275bfc99e42a2f898944e9e5a03d8aa5e3dd22afc6471f9952110b580429f88e",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix01/writing-1366.png",
+    "sha256": "4121c62c83aa7de4871ae56fe03134a57a15e729763475b6dbc5c33699690a99",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix01/writing-1440.png",
+    "sha256": "8cbc5201a032db5d016a441d3ec297c354feb55b4f67b14bbfccfc0125bec76c",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix01/writing-390.png",
+    "sha256": "eb48a97e0196b629c1173d03a6d64b3af6453c84d85f543c794c264aad43ac38",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix02/graph-1024.png",
+    "sha256": "79ea6500dc50fbe275942d202c27084a1150a863cd851e7d64419dc709cc309b",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix02/graph-1366.png",
+    "sha256": "badcf95aad61b538b3b8ac91a4fbca3704c8a5abcd825613908b5b002f854d73",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix02/graph-1440.png",
+    "sha256": "53c343b2bca1c8b0aef61218cb54815388fb56f48c9bbe4204f9d5c78e034d16",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix02/graph-390.png",
+    "sha256": "72aa7a278fd56d28a17b7432ae6d28e03ea5e7f9629141d6e8b8b2f5a9b3df4c",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix02/home-1024.png",
+    "sha256": "745105ec98b726e6445ff4add3aaa94b511267e7ebc7aa8bb6ee0c318afbc984",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix02/home-1366.png",
+    "sha256": "645881beba33272d1c3d249e343d2ea61fe0f403035cfaeb0dc5d704fb39c4f3",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix02/home-1440.png",
+    "sha256": "fa0315838ca079621349bee68ad772e3507f8370d35b8fcad153e1b75abedf7b",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix02/home-390.png",
+    "sha256": "30b5f1da65bfd0c825b6be87ae20b7fd92c3f8d374592766924bae7ce683cca8",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix02/paper-1024.png",
+    "sha256": "6e533bfce0f7d64c06bb31dd7c717b9862139da0a29e29a64441494fc8bfa5a2",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix02/paper-1366.png",
+    "sha256": "c8119673d672123a03b58be72f6d35e3a19bdf034f6f0f633ef99e7a12ab5504",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix02/paper-1440.png",
+    "sha256": "19912c3f78dfda8be278e75f082b745d5eec6bbd9d0535bc266b4f76f8489317",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix02/paper-390.png",
+    "sha256": "c83e7d1721606806dc8e33c63f3240493f713d233d8556e7dee56b433ec5ecb3",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix02/qa-1024.png",
+    "sha256": "9b9bb695ffa0fbb1c8b74db25e22e2c52d2ed2b18f9f9d08f735fb76878e2c83",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix02/qa-1366.png",
+    "sha256": "2e8b5c175ebc7ab81e4fb5e35340c342f5a359183a3c36df08b29530f2622439",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix02/qa-1440.png",
+    "sha256": "26a3cf4b9d4e633291203dea00b4dceddcebd002a7c3147ab6ce4bf3e529df0b",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix02/qa-390.png",
+    "sha256": "9f5c824304216eb9091be26391ba59c2b29f9d5287d531b45216e480fb69596b",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix02/reader-1024.png",
+    "sha256": "be9912a38815584d9a4838648316e5fb57ba2d7b1d03bab67583b338ef66a920",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix02/reader-1366.png",
+    "sha256": "9639a9e204386879f13431276747aea670fb5fd84465751ea48af47aa35c90cd",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix02/reader-1440.png",
+    "sha256": "b6c67758987b2599f39894985cf4994917d5235151429d442ae11d8442fcd808",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix02/reader-390.png",
+    "sha256": "7c5f79ae971c961aebf8e361c349f3a65bfd3a048bc22db1bf109bb7f7f2ffb1",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix02/retrieval-1024.png",
+    "sha256": "d237bf60ea803bb31ac5a5cc343e75d2fd0dff57e15059e06f280ea381646878",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix02/retrieval-1366.png",
+    "sha256": "fb02cecf7841ae8aa01d732e8e04d2ac75203af9c51545ab4d563eb64bb10226",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix02/retrieval-1440.png",
+    "sha256": "3fc5c052340de2e93aef541ac29cf8559dd7560e6820f20dffd52bd1c428b7d9",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix02/retrieval-390.png",
+    "sha256": "910ea23b52f89f72fc48ba5937be166c3e1471bb52c834521382dfddb121ee01",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix02/settings-1024.png",
+    "sha256": "ce4052e0dbb8672780e729fa652002efe964f2a212eb0e49ad00260a711847ae",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix02/settings-1366.png",
+    "sha256": "45033306c97410feaed7563f51d8ecf433937d0a07ddbacdd804502bd28010c0",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix02/settings-1440.png",
+    "sha256": "0695e8224e2888a6d6fd114f7c375ff6c2fff40cff92efe95e0601c6b5c291b9",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix02/settings-390.png",
+    "sha256": "f6a5935bd53066900be6aca5ea9b711518167f51fbb67e26e44788a37fe7f989",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix02/upload-1024.png",
+    "sha256": "1f72ee2402723b686383e87306fa8d2fdab59ae1b570f54fbb2b209bea1bffd4",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix02/upload-1366.png",
+    "sha256": "2b6dcddabf2650f2409745f02ae36fe569b55796f3029ef677f40393de7b7e1b",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix02/upload-1440.png",
+    "sha256": "d32c601c1d0783dbc49d3bc4da27a27453eab006835b1c8484e6f56f33ac7fb4",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix02/upload-390.png",
+    "sha256": "3a180ae47b0b233c9a9605aaf71129e1cd2d8401e8f0720d60da4a466046a6a1",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix02/writing-1024.png",
+    "sha256": "d5667ef3a7a61c3e577c2a3a8c95a19d4be49d9ea609757c87f71e446fc3a862",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix02/writing-1366.png",
+    "sha256": "27a9fd7d8ff06eb0c3184fe26cb88550eceed32f952d55c40421ab8f473f0c91",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix02/writing-1440.png",
+    "sha256": "fa96a93d7cfefd59a0153b839ebc02c505376dd266770b545625f55a1484987b",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/review-fix02/writing-390.png",
+    "sha256": "e82b8d41e29bde810db180dc73dc753f7cbaab1c37d3a43b1b3f5d9ac81dc30c",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round01/graph-1024.png",
+    "sha256": "5ef1e73f9de90d4184db09ca912c087e182dfd0ab8d045c6f26de441c04da6e3",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round01/graph-1366.png",
+    "sha256": "ad13b7ba2ef0164c8b5d5698315c22c35ccc00ac4124478c61ac1bb02faca352",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round01/graph-1440.png",
+    "sha256": "c6ff6b77984088f7edae1b893169651ecdbadc7cf79864c03d3970f007f4c854",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round01/graph-390.png",
+    "sha256": "9ca15d0c1287b86bd59ecf7cec19fd0778e6655198c633865028245910b6f4f0",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round01/home-1024.png",
+    "sha256": "60dd7e8a1394558abe138a487786760de74748a06350cc2612ba9708e694a80f",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round01/home-1366.png",
+    "sha256": "a179e948b6ab2c5e3ebf5c8c2dfdbb0bb17f0d21b4b64d8bb2ff0bac334a9361",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round01/home-1440.png",
+    "sha256": "d70d998d17172281ca3ff8bae4e8bb434cfc5a0418a6a7ec820022e872cbd389",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round01/home-390.png",
+    "sha256": "a9341708638e8c5ce81da13fcb0198790a2df7474a7bad60789ab201bda1e4ed",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round01/paper-1024.png",
+    "sha256": "643861bb03f91bc1bce3c387d4d7ef49961ecd2b25626c5ee08e1ca8209d3557",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round01/paper-1366.png",
+    "sha256": "e9a02c82ed69a6fe2c5e9a4b970f8dbbb22055027fad3ffd931ed3843fda75f8",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round01/paper-1440.png",
+    "sha256": "d2a1e80470fa8ceb0451acd364315bce6d0c3a47c6b203ff406b27fc0ce20a9f",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round01/paper-390.png",
+    "sha256": "cbc2840dfc42279f7827efde7c43a57ca6069791324b22b0104dbc2e0322fb9f",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round01/qa-1024.png",
+    "sha256": "1a24e9f15019e91403aa21db3883d6866b3afdcc694f7ad6be51770b70907404",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round01/qa-1366.png",
+    "sha256": "db1b4808a99035b10277909c0aeaaf1aa7291f93cc8fa7754529c1ff7048e8cd",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round01/qa-1440.png",
+    "sha256": "6a19cb422eec28c74946c777a6afe5b82e4320442f1c1588f148d9d44ca3e228",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round01/qa-390.png",
+    "sha256": "78fd0dde4101e657e3038f95e769367b6e1da710d8e6ae747867cc1f466f5770",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round01/reader-1024.png",
+    "sha256": "088b0d478bd84ef71dd02839c7f4da21f4eb035c70949084c8abc43df60e626d",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round01/reader-1366.png",
+    "sha256": "22cae58c6c7b7e7688f2b3a868f34b839d718555f7e08a92fad9fc1bd7a035b6",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round01/reader-1440.png",
+    "sha256": "5514a2b6caad82df0ca1ea43f97297b18e3fe0ee5b9b3c06227f892533c0df78",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round01/reader-390.png",
+    "sha256": "4f334d0cb50d8c64d1ac8c5bb2be66dbd3d438faed7ed44e3fcfe0b94edf88b5",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round01/retrieval-1024.png",
+    "sha256": "8b23fe2359a20ca03af4588c212f4c1ade37752c6e0ed8277e1bb48d8701c5b9",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round01/retrieval-1366.png",
+    "sha256": "37ceee5e2b424e7220aaf9882ce5f1ba7682351a510592d18456a36fd18803ba",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round01/retrieval-1440.png",
+    "sha256": "e24c604893b5473e5d88198fc499ef2f80bf9e8482e2b866ac8603301f2f3fab",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round01/retrieval-390.png",
+    "sha256": "75f42895adae725a6eef5f2c712cd96dd45812bcdef2927785a1781caddbbce4",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round01/settings-1024.png",
+    "sha256": "bba8863934c3ff1e8975959b5bdf5892181f814f08633e82d3ed5185f409bb26",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round01/settings-1366.png",
+    "sha256": "4b27e94f3b1c6513b60a1347e3a164a3773acd64bd56ab242335baf29e80b8b8",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round01/settings-1440.png",
+    "sha256": "f519d135658532a08497cc7c99aa528bb775eeebe96cd143dfb8f222b437f1a2",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round01/settings-390.png",
+    "sha256": "ef2895ec2d7db9a022aa9447c8f427eecb8517305b225bc5aefac0c317368a54",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round01/upload-1024.png",
+    "sha256": "85efda28b2be3ca4628c5c2c5396c4f5d4150ee672fdaceba83e152dbd2956f3",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round01/upload-1366.png",
+    "sha256": "740acc7b64fa70e5ac42f47c3f9df769f3b77d86e2dd6855eb7e31cfec0eec39",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round01/upload-1440.png",
+    "sha256": "ae4c14fbff95c3706be0a40d4a3f4e082bfd46e5b298a726a9f89186fb68e595",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round01/upload-390.png",
+    "sha256": "9839ae54cac2cc277f655727514517fbf35cf5463c3d10e8e9022f9239c86cb8",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round01/writing-1024.png",
+    "sha256": "df5da827f925e8ad16dbda021d815ca71088b720afc09b63233eaa6fbea50cd9",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round01/writing-1366.png",
+    "sha256": "fce0c391b0cd6ec207f8a982821c9e4ae4d86bd68489f573d6a9b65aaeb45c78",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round01/writing-1440.png",
+    "sha256": "669f6a2fdb4fac8934fcbe7e3f61ced3b94841d2e5e66b6a70b8c3c23ace9fec",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round01/writing-390.png",
+    "sha256": "4160ed445a7cedee253c148d09c4767a9971feaced624aadac7e2bb2f74f1c6f",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round02/graph-1024.png",
+    "sha256": "7402221b1681cb7912e83a50ca62c0493a31c8fbf47bc7d8130b8b725c9d71c7",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round02/graph-1366.png",
+    "sha256": "697c4676a17387213be2eebca4e26d17f056122f8f72de559a49099114e756bb",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round02/graph-1440.png",
+    "sha256": "c3a799e6ddecb0c5f353a0db1a7daa19cf852291f9cc37b6ba04f4a8916a6ec0",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round02/graph-390.png",
+    "sha256": "4f76d9508e4906e19ffcf0cca9431b43bf3c274a979672415777036f8d69e72b",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round02/home-1024.png",
+    "sha256": "9c0b763af4cb966228e0df5c730dccd05f71749dce81f80abafa9368b3fe23eb",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round02/home-1366.png",
+    "sha256": "1252eb5641018eecca9aad3225f662c3fc90f3be0432432bff0c548b7f3c2b0d",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round02/home-1440.png",
+    "sha256": "b701aee092893da65d329a8ef78de5f17b952056fabb31aa21bf738b9fef8c0c",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round02/home-390.png",
+    "sha256": "181980a32dc71d3f7e377ce26ae9fb815e089e058edea2ac766c0fe9267c8ca1",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round02/paper-1024.png",
+    "sha256": "b99272bc694d187e9bcced86e0a03afb6c778a4d27c76728cfc02d27c5b93937",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round02/paper-1366.png",
+    "sha256": "842e2f416f72b796670bc57811482d1d88479509f3a4f568e47c32d8356cfa6c",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round02/paper-1440.png",
+    "sha256": "8023caf5f48eb7f094d2380d8bf0260e28b8cb5b83565f2df30cf94d29366142",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round02/paper-390.png",
+    "sha256": "e332eb9881a5837ed56913568c7fa3db9f1f5f70e66c13546ee1d59976767d8d",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round02/qa-1024.png",
+    "sha256": "c14b82f978099cd8db5f0bce9e8d985d60bc38a731fa869575bc7e552490c693",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round02/qa-1366.png",
+    "sha256": "8ad80060eefa350ab56da898609fc47d600cf25cbaf29ad9532d053f882bdf99",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round02/qa-1440.png",
+    "sha256": "8a8d46376afeeffebf8c0f158e4a5c30345fcc67afd339ac045d4d8a60fea1b0",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round02/qa-390.png",
+    "sha256": "3c77033fc8c7140812882785d032c38d4e1881fe6e6e50cf593fbaa7adc8376f",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round02/reader-1024.png",
+    "sha256": "27654bdd5b9ceafef09f8e693861ad5f47fd828f63f08e4a6dff6beb49f2ba69",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round02/reader-1366.png",
+    "sha256": "c5748c75a82dab8a6f66ce4fdc98228e3b239da59eb06c1f4c56210e57dc9484",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round02/reader-1440.png",
+    "sha256": "b0856211a73c19ec10c0e98c33cc00f2a9768480ac950a9a3f1254f72aaf6168",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round02/reader-390.png",
+    "sha256": "f95d940fdbb1b78aa7840d42ead2c89a10dc2032b060f90e4d31e69be5201433",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round02/retrieval-1024.png",
+    "sha256": "30f54d4f32a967c6c685f3069f5315997385f2b5c8cdf6abac1b97d0296aea4a",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round02/retrieval-1366.png",
+    "sha256": "ee7fbc2bdc6ad2a103da87b26e1cafb11f4f0460599cb578e4b206e4a67e8bf5",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round02/retrieval-1440.png",
+    "sha256": "5a66a27191d8dec9d5faac6c91d5a300cc804feb08f0c96d2685690c570ed2eb",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round02/retrieval-390.png",
+    "sha256": "630291f6129079c2a2d6c0f5407bcf9b8a239ef905d15bfada441fb182f0d81c",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round02/settings-1024.png",
+    "sha256": "75ed9fff78bd201a121276e9ddc717bef63c007c86f8ac0b64d4defd2ed0af0a",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round02/settings-1366.png",
+    "sha256": "203bbf302fc8c632d10df6b1d4b9574b8e477b65fe9aa99b77c1c584d756fdf7",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round02/settings-1440.png",
+    "sha256": "e04aa1cc70b53f1da96ae439193a3215de33b0e6f847edad7ed225397c07b891",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round02/settings-390.png",
+    "sha256": "c416e11bdbc4d0976e7f97d40ea56bae40fa1da8a02d75dc6e380b731d4ad722",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round02/upload-1024.png",
+    "sha256": "2896e902877f10632ae8b46d48aed3d4f21b6eb8b6f4d74363d6c5154bec8bd6",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round02/upload-1366.png",
+    "sha256": "727bb9391172dbeb49fa4af7af85c21ca2c3d7827ef97217a5bdfa892cd20972",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round02/upload-1440.png",
+    "sha256": "c1e1dad57ae6fd5bf0e5a2439f68c91517d481cdeceb99aac139e35892d78263",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round02/upload-390.png",
+    "sha256": "07299e9945737a46d51ba249e8599fbbefed7db558b5597d287d3f6c073b38b2",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round02/writing-1024.png",
+    "sha256": "0cd5de526192595afb1f52b5bf7b79fd83423e46e946e16e4fb9933259b18c46",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round02/writing-1366.png",
+    "sha256": "db2a32d0a3036e36ca6434975b370f490042a273438ae365b817ef3cebf0f61d",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round02/writing-1440.png",
+    "sha256": "b13863828823493277dae4a8a5d18900720b5b09a06bc0e1f59a974f2846f6cc",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/round02/writing-390.png",
+    "sha256": "2f849531550b7d748d5fa55c8b53301e1df3d888d0ca8bea4d63081c94aad56f",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/states01/paper-mobile-readable-table.png",
+    "sha256": "29f9375f40ae12f7dfc7731f49de7dfb103e8818a4c18bb05b14caca00257374",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/states01/pdf-loading.png",
+    "sha256": "f6f45e58c090372d4749d999c96e79a52bd2777327426c60f788195d9d3c7c5e",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/states01/reader-tablet-page.png",
+    "sha256": "ad4afe2bafb682361e4cf08e6f6db9557bfb8ba6ab13b79a22cb9ae4c2efc086",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/states01/writing-real-csv.png",
+    "sha256": "7590c8606a0afe25aac1aa99be0b47831868d3a697557303aa602f9ca3f942a3",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/states02/paper-mobile-readable-table.png",
+    "sha256": "db06fc194b56f8f09e8a36bf9dca6535bafb5036f8302c93396d064dc288d25e",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/states02/pdf-loading.png",
+    "sha256": "9da751df6ba0adeb8a4af74eac09110e94c6f90f88539612ea84ab6f0f888cea",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/states02/reader-tablet-page.png",
+    "sha256": "3e07ddfeba8ecca00de9599b5481d58e71e6bece0384ab898a20e1104b208097",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/states02/retrieval-loading.png",
+    "sha256": "66d92b4c40ad1a4c604b78130bf16aef2a49e9ed76ac6b789a5d8a93f1244c5b",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  },
+  {
+    "file": "docs/images/ui-celadon-20261029/states02/writing-real-csv.png",
+    "sha256": "244b70d9d33ce8d737d5f086e4c2ea0a956a64f014b050b18432dc1cfe712280",
+    "origin": "Actual Chrome screenshot; folder distinguishes attempts/final/pre-fix. Final route captures: round02; actual 20 real papers: graph-real20-final; no generated UI bitmap."
+  }
+]

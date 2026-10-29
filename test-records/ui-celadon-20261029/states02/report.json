@@ -1,0 +1,59 @@
+{
+  "steps": [
+    {
+      "name": "PDF载入骨架（真实原件响应延迟）",
+      "passed": true,
+      "ms": 20605,
+      "evidence": {
+        "fault": "2s transport delay only; same genuine PDF response"
+      }
+    },
+    {
+      "name": "平板目录助手切换保留原文位置",
+      "passed": true,
+      "ms": 2593,
+      "evidence": {
+        "scrollBefore": 2667,
+        "scrollAfter": 2667,
+        "current": "共 15 页 · 当前第 3 页\n跳页\n前往\n载入 17187 ms · 首屏渲染 19601 ms\n本页引用：[1][11]（点击回到该条参考文献）"
+      }
+    },
+    {
+      "name": "手机解析表格可读且局部横向滚动",
+      "passed": true,
+      "ms": 1556,
+      "evidence": {
+        "viewport": 390,
+        "pageWidth": 390,
+        "client": 316,
+        "scroll": 1107,
+        "textWidth": 360,
+        "height": 24221
+      }
+    },
+    {
+      "name": "真实CSV绘图保留趋势图注和数值溯源",
+      "passed": true,
+      "ms": 3743,
+      "evidence": {
+        "caption": [
+          "按CSV记录顺序，accuracy从65变为86，净变化21；在所给数据中呈单调上升趋势，且相邻记录变化幅度逐步增大，变化正在加快。"
+        ],
+        "image": {
+          "width": 1350,
+          "height": 825
+        }
+      }
+    },
+    {
+      "name": "原文检索真实结果、骨架和空状态",
+      "passed": true,
+      "ms": 59681,
+      "evidence": {
+        "visibleAttention": true
+      }
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

@@ -9,7 +9,12 @@ export function workspaceUrl(path: string): string { return typeof window === "u
 export async function workspaceRequest<T>(path: string, init?: RequestInit): Promise<T> {
   const headers = new Headers(init?.headers);
   if (typeof window === "undefined" && process.env.SG_SERVICE_TOKEN) headers.set("x-scholargraph-service", process.env.SG_SERVICE_TOKEN);
-  const response = await fetch(workspaceUrl(path), { cache: "no-store", ...init, headers });
+  let response: Response;
+  try { response = await fetch(workspaceUrl(path), { cache: "no-store", ...init, headers }); }
+  catch (cause) {
+    if (cause instanceof Error && cause.name === "AbortError") throw cause;
+    throw new Error("无法连接研究服务，请检查网络或服务状态后重试。", { cause });
+  }
   const value = await response.json().catch(() => null);
   if (!response.ok) throw new Error(value?.message ?? `工作台服务暂时不可用（${response.status}）。请在设置中检查服务版本。`);
   if (value === null) throw new Error("服务返回的数据不完整。");

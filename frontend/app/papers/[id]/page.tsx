@@ -129,7 +129,7 @@ export default async function PaperDetailPage({
 
   if (paperResult.kind === "error") {
     return (
-      <main className="sg-shell">
+      <main className="sg-shell sg-paper-detail">
         <p className="sg-back">
           <Link href="/">← 返回论文库</Link>
         </p>
@@ -140,7 +140,7 @@ export default async function PaperDetailPage({
         <section className="sg-section">
           <div className="sg-section__head">
             <h2 className="sg-section__title">取数失败</h2>
-            <span className="sg-section__hint">未取得该论文</span>
+            <Diagnostics summary="接口与分页信息">未取得该论文</Diagnostics>
           </div>
           <ErrorState title="论文详情取数失败" error={paperResult.error} />
         </section>
@@ -175,7 +175,7 @@ export default async function PaperDetailPage({
   }
 
   return (
-    <main className="sg-shell">
+    <main className="sg-shell sg-paper-detail">
       <p className="sg-back">
         <Link href="/">← 返回论文库</Link>
       </p>
@@ -193,9 +193,9 @@ export default async function PaperDetailPage({
       <section className="sg-section">
         <div className="sg-section__head">
           <h2 className="sg-section__title">解析状态</h2>
-          <span className="sg-section__hint">
+          <Diagnostics summary="接口与分页信息">
             GET /papers/{id}/parse-status · 非终态轮询，终态停止
-          </span>
+          </Diagnostics>
         </div>
         {statusResult.kind === "ok" ? (
           <ParseStatusLive paperId={id} initial={statusResult.value} />
@@ -208,17 +208,17 @@ export default async function PaperDetailPage({
       <section className="sg-section">
         <div className="sg-section__head">
           <h2 className="sg-section__title">分块列表</h2>
-          <span className="sg-section__hint">
+          <Diagnostics summary="接口与分页信息">
             GET /papers/{id}/chunks · 每页 {SUB_PAGE_SIZE} 条（上限{" "}
             {MAX_PAGE_SIZE}）
-          </span>
+          </Diagnostics>
         </div>
         {chunksResult.kind === "error" ? (
           <ErrorState title="分块列表取数失败" error={chunksResult.error} />
         ) : chunksResult.value.items.length === 0 ? (
-          <p>本页无分块（total={chunksResult.value.total}）。</p>
+          <p>本页没有正文分块，共 {chunksResult.value.total} 条。</p>
         ) : (
-          <table className="sg-table">
+          <div className="sg-table-scroll" role="region" aria-label="论文解析数据表，可横向滚动" tabIndex={0}><table className="sg-table">
             <thead>
               <tr>
                 <th className="sg-num">页码</th>
@@ -253,7 +253,7 @@ export default async function PaperDetailPage({
                 </tr>
               ))}
             </tbody>
-          </table>
+          </table></div>
         )}
         {chunksResult.kind === "ok" ? (
           <SubPagination
@@ -269,16 +269,16 @@ export default async function PaperDetailPage({
       <section className="sg-section">
         <div className="sg-section__head">
           <h2 className="sg-section__title">参考文献</h2>
-          <span className="sg-section__hint">
+          <Diagnostics summary="接口与分页信息">
             GET /papers/{id}/references · 每页 {SUB_PAGE_SIZE} 条
-          </span>
+          </Diagnostics>
         </div>
         {refsResult.kind === "error" ? (
           <ErrorState title="参考文献取数失败" error={refsResult.error} />
         ) : refsResult.value.items.length === 0 ? (
-          <p>本页无参考文献条目（total={refsResult.value.total}）。</p>
+          <p>本页没有参考文献条目，共 {refsResult.value.total} 条。</p>
         ) : (
-          <table className="sg-table">
+          <div className="sg-table-scroll" role="region" aria-label="论文解析数据表，可横向滚动" tabIndex={0}><table className="sg-table">
             <thead>
               <tr>
                 <th className="sg-num">编号</th>
@@ -303,7 +303,7 @@ export default async function PaperDetailPage({
                 </tr>
               ))}
             </tbody>
-          </table>
+          </table></div>
         )}
         {refsResult.kind === "ok" ? (
           <SubPagination
@@ -321,16 +321,16 @@ export default async function PaperDetailPage({
           <h2 className="sg-section__title">
             正文 ↔ 文末 对应关系
           </h2>
-          <span className="sg-section__hint">
+          <Diagnostics summary="接口与分页信息">
             GET /papers/{id}/citation-links · 每页 {SUB_PAGE_SIZE} 条
-          </span>
+          </Diagnostics>
         </div>
         {linksResult.kind === "error" ? (
           <ErrorState title="引用对应取数失败" error={linksResult.error} />
         ) : linksResult.value.items.length === 0 ? (
-          <p>本页无引用对应关系（total={linksResult.value.total}）。</p>
+          <p>本页没有引用对应关系，共 {linksResult.value.total} 条。</p>
         ) : (
-          <table className="sg-table">
+          <div className="sg-table-scroll" role="region" aria-label="论文解析数据表，可横向滚动" tabIndex={0}><table className="sg-table">
             <thead>
               <tr>
                 <th className="sg-num">引用序号</th>
@@ -364,7 +364,7 @@ export default async function PaperDetailPage({
                 );
               })}
             </tbody>
-          </table>
+          </table></div>
         )}
         {linksResult.kind === "ok" ? (
           <>
@@ -386,9 +386,9 @@ export default async function PaperDetailPage({
       <section className="sg-section">
         <div className="sg-section__head">
           <h2 className="sg-section__title">去重与版本差异</h2>
-          <span className="sg-section__hint">
+          <Diagnostics summary="接口与分页信息">
             GET /dedup-decision 与 /diff-summary · 路径参数为新版 id
-          </span>
+          </Diagnostics>
         </div>
 
         <h3 className="sg-subhead">版本裁决 · DedupDecision</h3>
@@ -397,7 +397,7 @@ export default async function PaperDetailPage({
         ) : dedupResult.value === null ? (
           <p>暂无去重记录（后端返回 404，该论文不是新版）。</p>
         ) : (
-          <table className="sg-table">
+          <div className="sg-table-scroll" role="region" aria-label="论文解析数据表，可横向滚动" tabIndex={0}><table className="sg-table">
             <thead>
               <tr>
                 <th>旧版本</th>
@@ -433,7 +433,7 @@ export default async function PaperDetailPage({
                 </td>
               </tr>
             </tbody>
-          </table>
+          </table></div>
         )}
 
         <h3 className="sg-subhead">版本差异摘要 · DiffSummary</h3>
@@ -442,7 +442,7 @@ export default async function PaperDetailPage({
         ) : diffResult.value === null ? (
           <p>暂无差异记录（后端返回 404，该论文不是新版）。</p>
         ) : (
-          <table className="sg-table">
+          <div className="sg-table-scroll" role="region" aria-label="论文解析数据表，可横向滚动" tabIndex={0}><table className="sg-table">
             <thead>
               <tr>
                 <th>变化章节</th>
@@ -488,7 +488,7 @@ export default async function PaperDetailPage({
                 </td>
               </tr>
             </tbody>
-          </table>
+          </table></div>
         )}
       </section>
 
