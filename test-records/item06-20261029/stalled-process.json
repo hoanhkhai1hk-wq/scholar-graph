@@ -1,0 +1,1 @@
+{"ProcessId":55380,"ParentProcessId":42396,"CommandLine":"\"C:\\Users\\1234\\AppData\\Roaming\\uv\\python\\cpython-3.12.15-windows-x86_64-none\\python.exe\" -m pytest tests/test_item06_writing_artifacts.py tests/test_topology.py tests/test_workspace_research.py -q --basetemp data/item06-20261029/repair-temp --junitxml data/item06-20261029/repair-tests.xml"}

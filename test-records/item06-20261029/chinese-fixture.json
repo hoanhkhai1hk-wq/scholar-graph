@@ -1,0 +1,10 @@
+{
+  "file": "chinese-acceptance.pdf",
+  "sha256": "0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110",
+  "pages": 2,
+  "origin": "authored acceptance document using actual local matrix timing data; not a published paper",
+  "page_images": [
+    "chinese-source-page-1.png",
+    "chinese-source-page-2.png"
+  ]
+}

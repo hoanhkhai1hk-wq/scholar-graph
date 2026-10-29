@@ -1,0 +1,17 @@
+# Apply to an existing stack without changing its data mount or credentials.
+services:
+  backend:
+    image: scholar-graph-backend:item06-20261029
+    restart: unless-stopped
+    environment:
+      SCHOLAR_GRAPH_FONT: /app/fonts/cjk.ttc
+    volumes:
+      - ${SG_CJK_FONT_PATH:-C:/Windows/Fonts/msyh.ttc}:/app/fonts/cjk.ttc:ro
+  frontend:
+    image: scholar-graph-frontend:item06-20261029
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/api/workspace/system').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 5s
+      timeout: 8s
+      retries: 15

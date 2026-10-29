@@ -19,11 +19,10 @@ export default async function WritingPage() {
         <Diagnostics summary="技术信息（接口路径与图注口径）">
           POST /frameworks · /reviews · /charts/csv
         </Diagnostics>
-        <h1 className="sg-title">综述框架、摘录草稿与图表</h1>
+        <h1 className="sg-title">写作工作台</h1>
         <p className="sg-lede">
-          框架给出章节结构与待写要点（原文摘录）；摘录草稿逐条标注 verified /
-          unverifiable；CSV 图表展示图注数字与 CSV 单元格的回溯关系。
-          全部为摘录与回溯结果，不是模型自由成文。
+          从研究想法生成论文框架、文献综述和方法拓扑，结合原文核对依据；
+          上传 CSV 生成表格、折线图、柱状图和三维雷达图。
         </p>
         <p className="sg-back">
           <a href="/">← 返回论文库</a>

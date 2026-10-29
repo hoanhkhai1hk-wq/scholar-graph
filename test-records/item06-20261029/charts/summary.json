@@ -1,0 +1,30 @@
+[
+  {
+    "kind": "table",
+    "rows": 5,
+    "source_cell_checks": 15,
+    "captions": 3,
+    "traceable_endpoint_and_difference_facts": 9
+  },
+  {
+    "kind": "line",
+    "rows": 5,
+    "source_cell_checks": 15,
+    "captions": 3,
+    "traceable_endpoint_and_difference_facts": 9
+  },
+  {
+    "kind": "bar",
+    "rows": 5,
+    "source_cell_checks": 15,
+    "captions": 3,
+    "traceable_endpoint_and_difference_facts": 9
+  },
+  {
+    "kind": "radar3d",
+    "rows": 5,
+    "source_cell_checks": 15,
+    "captions": 3,
+    "traceable_endpoint_and_difference_facts": 9
+  }
+]

@@ -1,0 +1,7 @@
+{
+  "same_nodes_edges_labels_in_four_formats": true,
+  "nodes": 10,
+  "edges": 11,
+  "matplotlib_render_exit": 0,
+  "tikz_compiled": false
+}

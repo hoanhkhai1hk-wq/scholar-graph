@@ -1,0 +1,7 @@
+# Use this machine's licensed local font; never copy it into Git or a distributed image.
+services:
+  backend:
+    environment:
+      SCHOLAR_GRAPH_FONT: /app/fonts/cjk.ttc
+    volumes:
+      - ${SG_CJK_FONT_PATH:-C:/Windows/Fonts/msyh.ttc}:/app/fonts/cjk.ttc:ro

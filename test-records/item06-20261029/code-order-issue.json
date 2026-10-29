@@ -1,0 +1,31 @@
+{
+  "status": "not_passed",
+  "scope": "extra source-PDF cross-chunk code-order check; distinct from requested terminology/numeric checks",
+  "closing_fence_segment_index": 14,
+  "return_segment_index": 15,
+  "original_pdf_visual_return_precedes_closing_fence": true,
+  "source_pdf_page_image_sha256": "c8c7720b18662168cb0b957c7462d42e83e408423334ab57f0468cc236848a5f",
+  "affected_chunks": [
+    {
+      "chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0002-c00015",
+      "text": "```",
+      "source_bbox": [
+        0.094,
+        0.293,
+        0.124,
+        0.306
+      ]
+    },
+    {
+      "chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0002-c00016",
+      "text": "return x + 1",
+      "source_bbox": [
+        0.134,
+        0.274,
+        0.255,
+        0.287
+      ]
+    }
+  ],
+  "next_action": "Repair PDF code-region reading order in parsing acceptance, then rerun translation and Markdown checks."
+}

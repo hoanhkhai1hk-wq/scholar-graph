@@ -174,7 +174,8 @@ Include every requested index exactly once. Delete unsupported claims and unsupp
     for row in repairs:
         flat[row['index']].clear()
         flat[row['index']].update(row['paragraph'])
-    return updated
+    # An unchanged repair must not consume every remaining attempt with the same draft.
+    return updated if updated!=draft else None
 
 
 def writing_task(workspace, identity, parameters, runner):
@@ -201,6 +202,8 @@ def writing_task(workspace, identity, parameters, runner):
     system = LOGIC_SYSTEM if parameters['kind']=='topology' else SYSTEM
     if parameters['kind']=='review':
         system += ''' This is a SHORT review, not an exhaustive survey. Use exactly the five required sections, with exactly ONE paragraph per section and at most 180 Chinese characters per paragraph. Cover only a small set of specific contributions directly supported by the supplied quotations. Do not name or count overarching research strands. Do not claim universal origins or consensus. It is acceptable to cite only the selected papers actually discussed; list no fabricated references. The comparison paragraph may use the provided local graph, with its limited scope explicitly stated.'''
+    if parameters['kind']=='outline':
+        system += ''' Generate a concise research PLAN with abstract, introduction, related_work, method and limitations. Abstract/method/limitations must describe proposed actions or questions, not unquoted past facts or claims that a combination has never been studied. Use one short paragraph in these sections. Introduction and related_work must separate each paper's specific supported contribution into short synthesis paragraphs, each with its own source IDs. Keep every paragraph below 180 Chinese characters and no more than two factual claims. Do not repeat all contributions in every section. References are assembled by software from selected source metadata; never invent a bibliography in the prose.'''
     messages = [{'role':'system','content':system}, {'role':'user','content':json.dumps(payload,ensure_ascii=False)}]
     repaired = None
     for attempt in range(5):
@@ -232,7 +235,8 @@ def writing_task(workspace, identity, parameters, runner):
                     if not isinstance(ids, list) or not ids or any(eid not in lookup for eid in ids):
                         raise PipelineError('VALIDATION_ERROR', '拓扑引用了未知原文证据。')
                     item['source_chunk_ids'] = list(dict.fromkeys(lookup[eid] for eid in ids))
-                body = TopologyRequest.model_validate({'paper_ids': parameters['paper_ids'], 'logic': logic})
+                body = TopologyRequest.model_validate({'paper_ids': parameters['paper_ids'], 'logic': logic,
+                    'formats':['tikz','dot','mermaid','matplotlib']})
                 class EffectiveRepository:
                     gate = workspace.repository.gate
                     def paper(self, pid):

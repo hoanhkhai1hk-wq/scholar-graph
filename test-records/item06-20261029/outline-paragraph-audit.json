@@ -1,0 +1,429 @@
+[
+  {
+    "run": "live-repaired",
+    "section": "abstract",
+    "type": "proposal",
+    "text": "本方案拟在有限算力条件下，构建以Transformer为骨干、以低秩适配进行参数高效微调、并以人类反馈校准回答质量的科研问答系统，并设计一套可复现的验证流程。方案不预设上述组合必然有效，而是把架构选择、适配方式与反馈对齐分别作为待检验的设计变量，通过对照实验与人工评价判断其在科研问答场景中的适用边界。",
+    "citations": []
+  },
+  {
+    "run": "live-repaired",
+    "section": "introduction",
+    "type": "synthesis",
+    "text": "Transformer以纯注意力机制取代循环与卷积，在机器翻译任务上取得更优质量，并显著提升并行性、缩短训练时间。该工作还报告模型可迁移到英语成分句法分析等其他任务。",
+    "citations": [
+      {
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 1,
+          "section": [
+            "Abstract"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00010"
+        },
+        "quote_sha256": "c3abf84dd2eccd0e9456cc2a71301a32795d979e508274daefd619c8c61a4d9e"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 9,
+          "section": [
+            "6 Results",
+            "6.3 English Constituency Parsing"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00111"
+        },
+        "quote_sha256": "3e732285a015d63b4baf59a588e25ec9f2945fcffd695f52935def9c43002164"
+      }
+    ]
+  },
+  {
+    "run": "live-repaired",
+    "section": "introduction",
+    "type": "synthesis",
+    "text": "LoRA冻结预训练权重，在Transformer各层注入可训练的低秩分解矩阵，从而大幅减少下游任务的可训练参数。作者报告其在多个模型上质量与全量微调相当或更好，且不引入额外推理延迟。",
+    "citations": [
+      {
+        "anchor": {
+          "paper_id": "paper-e9a0d3128767db616085dc0f4e6e455e672e89af823e8ed1282793682787395a",
+          "page_number": 1,
+          "section": [
+            "ABSTRACT"
+          ],
+          "chunk_id": "paper-e9a0d3128767db616085dc0f4e6e455e672e89af823e8ed1282793682787395a-p0001-c00009"
+        },
+        "quote_sha256": "aa0aa055680d821899846184c28f16cafe50a9aea6884f49445ff44be4e39567"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-e9a0d3128767db616085dc0f4e6e455e672e89af823e8ed1282793682787395a",
+          "page_number": 4,
+          "section": [
+            "4 OUR METHOD",
+            "4.1 LOW-RANK-PARAMETRIZED UPDATE MATRICES"
+          ],
+          "chunk_id": "paper-e9a0d3128767db616085dc0f4e6e455e672e89af823e8ed1282793682787395a-p0004-c00050"
+        },
+        "quote_sha256": "dfd88a6678bf728afa0113e2ef6bde5312cd65cc6cba850c4bd313e13c2ea98c"
+      }
+    ]
+  },
+  {
+    "run": "live-repaired",
+    "section": "introduction",
+    "type": "synthesis",
+    "text": "InstructGPT先用示范数据做监督微调，再基于人类对模型输出的排序训练奖励模型，并用强化学习进一步优化策略。作者报告经人类反馈微调的模型在真实性上有改善、有害输出减少，但仍会犯简单错误。",
+    "citations": [
+      {
+        "anchor": {
+          "paper_id": "paper-c1984bb50a5b90fddb895fdc3a0f72e5bc977148c9f63ef6040cbe7a3e1f0d98",
+          "page_number": 6,
+          "section": [
+            "3 Methods and experimental details",
+            "3.1 High-level methodology"
+          ],
+          "chunk_id": "paper-c1984bb50a5b90fddb895fdc3a0f72e5bc977148c9f63ef6040cbe7a3e1f0d98-p0006-c00065"
+        },
+        "quote_sha256": "cf2a0ea7618bb8b86abeea1f5cad1de0adc2f6c74c24263f30af6e25d6016148"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-c1984bb50a5b90fddb895fdc3a0f72e5bc977148c9f63ef6040cbe7a3e1f0d98",
+          "page_number": 6,
+          "section": [
+            "3 Methods and experimental details",
+            "3.1 High-level methodology"
+          ],
+          "chunk_id": "paper-c1984bb50a5b90fddb895fdc3a0f72e5bc977148c9f63ef6040cbe7a3e1f0d98-p0006-c00066"
+        },
+        "quote_sha256": "9e957f4002996507668b5e3c60272731366432a161bbdb23fb6a3c9e5ced217f"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-c1984bb50a5b90fddb895fdc3a0f72e5bc977148c9f63ef6040cbe7a3e1f0d98",
+          "page_number": 1,
+          "section": [
+            "Abstract"
+          ],
+          "chunk_id": "paper-c1984bb50a5b90fddb895fdc3a0f72e5bc977148c9f63ef6040cbe7a3e1f0d98-p0001-c00025"
+        },
+        "quote_sha256": "cb1572fd8ea73499eb2a2896a8becf97ff0e50768c9eb8e3ef43e592bfd946a5"
+      }
+    ]
+  },
+  {
+    "run": "live-repaired",
+    "section": "introduction",
+    "type": "proposal",
+    "text": "本方案拟将上述三类设计要素组合到科研问答系统中，重点考察在算力受限时，低秩适配能否在保持回答质量的同时降低训练开销，以及人类反馈能否改善回答的真实性与有用性。上述组合在科研问答中的效果属于待验证设想，方案不预设其必然成立。",
+    "citations": []
+  },
+  {
+    "run": "live-repaired",
+    "section": "related_work",
+    "type": "synthesis",
+    "text": "Transformer的编码器与解码器均由堆叠的自注意力层与前馈层构成，并通过残差连接与层归一化组织各子层。作者还通过改变基础模型配置来考察不同组件对翻译性能的影响。",
+    "citations": [
+      {
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 3,
+          "section": [
+            "3 Model Architecture"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00029"
+        },
+        "quote_sha256": "ceb6081456e63bceb6616578fe27f926c0f1fd1e19bc9e5994b2c3175db22c2b"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 8,
+          "section": [
+            "6 Results",
+            "6.2 Model Variations"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00103"
+        },
+        "quote_sha256": "f878a8524f8524bbfd5dd01bfdddeda9e6de18abdfd84850c7af9cb949cd1648"
+      }
+    ]
+  },
+  {
+    "run": "live-repaired",
+    "section": "related_work",
+    "type": "synthesis",
+    "text": "LoRA将权重更新表示为低秩分解形式，训练时冻结原权重、只更新分解矩阵。作者主要将适配限制在注意力权重上并冻结MLP模块，同时把适配MLP层、LayerNorm层与偏置留作未来工作。",
+    "citations": [
+      {
+        "anchor": {
+          "paper_id": "paper-e9a0d3128767db616085dc0f4e6e455e672e89af823e8ed1282793682787395a",
+          "page_number": 4,
+          "section": [
+            "4 OUR METHOD",
+            "4.1 LOW-RANK-PARAMETRIZED UPDATE MATRICES"
+          ],
+          "chunk_id": "paper-e9a0d3128767db616085dc0f4e6e455e672e89af823e8ed1282793682787395a-p0004-c00047"
+        },
+        "quote_sha256": "48064dad0aa3e1cc329631d322827fb6cc10b575a7df0d4d7f1d853323666ee5"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-e9a0d3128767db616085dc0f4e6e455e672e89af823e8ed1282793682787395a",
+          "page_number": 5,
+          "section": [
+            "4 OUR METHOD",
+            "4.2 APPLYING LORA TO TRANSFORMER"
+          ],
+          "chunk_id": "paper-e9a0d3128767db616085dc0f4e6e455e672e89af823e8ed1282793682787395a-p0005-c00056"
+        },
+        "quote_sha256": "930d4d08fd80aff538a15c8c1dde7513e11b9ab8596ca4a96a9a9bf01c568d7b"
+      }
+    ]
+  },
+  {
+    "run": "live-repaired",
+    "section": "related_work",
+    "type": "synthesis",
+    "text": "在人类反馈流程中，奖励模型以提示与回答为输入输出标量奖励，并依据人类偏好比较进行训练。作者也指出，模型倾向于遵循用户指令，即使这可能带来现实危害。",
+    "citations": [
+      {
+        "anchor": {
+          "paper_id": "paper-c1984bb50a5b90fddb895fdc3a0f72e5bc977148c9f63ef6040cbe7a3e1f0d98",
+          "page_number": 8,
+          "section": [
+            "3 Methods and experimental details",
+            "3.5 Models"
+          ],
+          "chunk_id": "paper-c1984bb50a5b90fddb895fdc3a0f72e5bc977148c9f63ef6040cbe7a3e1f0d98-p0008-c00097"
+        },
+        "quote_sha256": "c638191de434892c92fa057de136b0347a998c7740e687d70c0417c39feb0220"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-c1984bb50a5b90fddb895fdc3a0f72e5bc977148c9f63ef6040cbe7a3e1f0d98",
+          "page_number": 19,
+          "section": [
+            "5 Discussion",
+            "5.3 Limitations"
+          ],
+          "chunk_id": "paper-c1984bb50a5b90fddb895fdc3a0f72e5bc977148c9f63ef6040cbe7a3e1f0d98-p0019-c00225"
+        },
+        "quote_sha256": "aced587c2b8e4f853d258e15b89fb557991d3b02319da18786072089764c7b84"
+      }
+    ]
+  },
+  {
+    "run": "live-repaired",
+    "section": "related_work",
+    "type": "proposal",
+    "text": "本方案拟在相关工作基础上，把架构、适配与反馈三个层面分别映射为可操作的实验变量，并明确哪些结论来自已有研究、哪些需要在科研问答数据上重新检验。",
+    "citations": []
+  },
+  {
+    "run": "live-repaired",
+    "section": "method",
+    "type": "proposal",
+    "text": "拟以Transformer结构搭建或初始化科研问答模型，采用低秩适配进行下游适配，并设计示范数据与偏好比较数据两阶段的人类反馈流程。验证将设置不同适配范围与反馈强度的对照条件，在固定算力预算下比较回答质量、真实性与训练开销，并辅以人工评价；具体指标与阈值将在预实验中确定。",
+    "citations": []
+  },
+  {
+    "run": "live-repaired",
+    "section": "limitations",
+    "type": "proposal",
+    "text": "本方案需回答若干开放问题：低秩适配在科研问答这类专业领域是否仍能保持与全量微调相当的质量；人类反馈在提升真实性的同时，是否会带来性能回退或对提示中不当内容的过度顺从；有限算力下偏好数据的规模是否足以支撑稳定的奖励模型。上述问题均需通过实验检验，方案不预设结论。",
+    "citations": []
+  },
+  {
+    "run": "browser-final",
+    "section": "abstract",
+    "type": "proposal",
+    "text": "本方案拟在有限算力条件下，构建以Transformer为骨干、以低秩适配进行任务适配、并以人类反馈校准回答质量的科研问答系统，并设计分阶段验证流程。方案将明确区分已有文献结论与待检验设想，通过受控对比与人工评价考察各组件在科研问答场景中的作用与边界。",
+    "citations": []
+  },
+  {
+    "run": "browser-final",
+    "section": "introduction",
+    "type": "synthesis",
+    "text": "Transformer以完全基于注意力机制的架构取代循环与卷积，在机器翻译任务上取得更优质量，并显著提升并行性、缩短训练时间。",
+    "citations": [
+      {
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 1,
+          "section": [
+            "Abstract"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00010"
+        },
+        "quote_sha256": "c3abf84dd2eccd0e9456cc2a71301a32795d979e508274daefd619c8c61a4d9e"
+      }
+    ]
+  },
+  {
+    "run": "browser-final",
+    "section": "introduction",
+    "type": "synthesis",
+    "text": "该模型由堆叠的自注意力层与前馈网络构成编码器和解码器，并通过位置编码注入序列顺序信息。",
+    "citations": [
+      {
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 3,
+          "section": [
+            "3 Model Architecture"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00029"
+        },
+        "quote_sha256": "ceb6081456e63bceb6616578fe27f926c0f1fd1e19bc9e5994b2c3175db22c2b"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "page_number": 6,
+          "section": [
+            "3 Model Architecture",
+            "3.5 Positional Encoding"
+          ],
+          "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00068"
+        },
+        "quote_sha256": "5adda638bc117a91be09deff539ffbb1edf104e90b324b349c7391b3dc856e78"
+      }
+    ]
+  },
+  {
+    "run": "browser-final",
+    "section": "introduction",
+    "type": "proposal",
+    "text": "在科研问答这类需要长程依赖与领域知识的任务中，如何以有限算力完成适配并保证回答可靠性，是本研究拟考察的问题。",
+    "citations": []
+  },
+  {
+    "run": "browser-final",
+    "section": "related_work",
+    "type": "synthesis",
+    "text": "LoRA冻结预训练权重，在Transformer各层注入可训练的低秩分解矩阵，从而大幅减少下游任务的可训练参数。",
+    "citations": [
+      {
+        "anchor": {
+          "paper_id": "paper-e9a0d3128767db616085dc0f4e6e455e672e89af823e8ed1282793682787395a",
+          "page_number": 1,
+          "section": [
+            "ABSTRACT"
+          ],
+          "chunk_id": "paper-e9a0d3128767db616085dc0f4e6e455e672e89af823e8ed1282793682787395a-p0001-c00009"
+        },
+        "quote_sha256": "aa0aa055680d821899846184c28f16cafe50a9aea6884f49445ff44be4e39567"
+      }
+    ]
+  },
+  {
+    "run": "browser-final",
+    "section": "related_work",
+    "type": "synthesis",
+    "text": "该工作将权重更新表示为低秩分解形式，训练时仅更新分解矩阵而保持原权重不变，并指出其可与主权重合并而不引入额外推理延迟。",
+    "citations": [
+      {
+        "anchor": {
+          "paper_id": "paper-e9a0d3128767db616085dc0f4e6e455e672e89af823e8ed1282793682787395a",
+          "page_number": 4,
+          "section": [
+            "4 OUR METHOD",
+            "4.1 LOW-RANK-PARAMETRIZED UPDATE MATRICES"
+          ],
+          "chunk_id": "paper-e9a0d3128767db616085dc0f4e6e455e672e89af823e8ed1282793682787395a-p0004-c00047"
+        },
+        "quote_sha256": "48064dad0aa3e1cc329631d322827fb6cc10b575a7df0d4d7f1d853323666ee5"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-e9a0d3128767db616085dc0f4e6e455e672e89af823e8ed1282793682787395a",
+          "page_number": 4,
+          "section": [
+            "4 OUR METHOD",
+            "4.1 LOW-RANK-PARAMETRIZED UPDATE MATRICES"
+          ],
+          "chunk_id": "paper-e9a0d3128767db616085dc0f4e6e455e672e89af823e8ed1282793682787395a-p0004-c00050"
+        },
+        "quote_sha256": "dfd88a6678bf728afa0113e2ef6bde5312cd65cc6cba850c4bd313e13c2ea98c"
+      }
+    ]
+  },
+  {
+    "run": "browser-final",
+    "section": "related_work",
+    "type": "synthesis",
+    "text": "InstructGPT先以示范数据监督微调，再收集输出排序训练奖励模型，并用强化学习进一步优化策略。",
+    "citations": [
+      {
+        "anchor": {
+          "paper_id": "paper-c1984bb50a5b90fddb895fdc3a0f72e5bc977148c9f63ef6040cbe7a3e1f0d98",
+          "page_number": 6,
+          "section": [
+            "3 Methods and experimental details",
+            "3.1 High-level methodology"
+          ],
+          "chunk_id": "paper-c1984bb50a5b90fddb895fdc3a0f72e5bc977148c9f63ef6040cbe7a3e1f0d98-p0006-c00065"
+        },
+        "quote_sha256": "cf2a0ea7618bb8b86abeea1f5cad1de0adc2f6c74c24263f30af6e25d6016148"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-c1984bb50a5b90fddb895fdc3a0f72e5bc977148c9f63ef6040cbe7a3e1f0d98",
+          "page_number": 6,
+          "section": [
+            "3 Methods and experimental details",
+            "3.1 High-level methodology"
+          ],
+          "chunk_id": "paper-c1984bb50a5b90fddb895fdc3a0f72e5bc977148c9f63ef6040cbe7a3e1f0d98-p0006-c00066"
+        },
+        "quote_sha256": "9e957f4002996507668b5e3c60272731366432a161bbdb23fb6a3c9e5ced217f"
+      },
+      {
+        "anchor": {
+          "paper_id": "paper-c1984bb50a5b90fddb895fdc3a0f72e5bc977148c9f63ef6040cbe7a3e1f0d98",
+          "page_number": 6,
+          "section": [
+            "3 Methods and experimental details",
+            "3.1 High-level methodology"
+          ],
+          "chunk_id": "paper-c1984bb50a5b90fddb895fdc3a0f72e5bc977148c9f63ef6040cbe7a3e1f0d98-p0006-c00067"
+        },
+        "quote_sha256": "c11289e10c9e72afe1b9d1f2238578ce2f9b9e61aa249962f860ad0d6ef9493d"
+      }
+    ]
+  },
+  {
+    "run": "browser-final",
+    "section": "related_work",
+    "type": "synthesis",
+    "text": "在人工评价中，较小参数的InstructGPT输出被偏好于更大参数的GPT-3，并在真实性上有所改善，但仍会犯简单错误。",
+    "citations": [
+      {
+        "anchor": {
+          "paper_id": "paper-c1984bb50a5b90fddb895fdc3a0f72e5bc977148c9f63ef6040cbe7a3e1f0d98",
+          "page_number": 1,
+          "section": [
+            "Abstract"
+          ],
+          "chunk_id": "paper-c1984bb50a5b90fddb895fdc3a0f72e5bc977148c9f63ef6040cbe7a3e1f0d98-p0001-c00025"
+        },
+        "quote_sha256": "cb1572fd8ea73499eb2a2896a8becf97ff0e50768c9eb8e3ef43e592bfd946a5"
+      }
+    ]
+  },
+  {
+    "run": "browser-final",
+    "section": "method",
+    "type": "proposal",
+    "text": "拟以Transformer为基座，在冻结主干的前提下用低秩适配注入科研领域知识，再以人类偏好数据训练奖励信号并据此校准回答。验证将分阶段进行：先检验适配后的领域问答表现，再考察人类反馈对真实性与有用性的影响，最后在有限算力预算下比较各配置的取舍，并以人工评价与受控对照作为主要判据。",
+    "citations": []
+  },
+  {
+    "run": "browser-final",
+    "section": "limitations",
+    "type": "proposal",
+    "text": "本方案尚待检验的问题包括：低秩适配在科研问答的细粒度知识上是否足够；人类反馈是否会把标注者偏好而非事实正确性带入系统；以及在有限算力下各阶段验证能否给出稳定结论。方案不预设上述组合必然有效，相关判断均以实验与人工评价结果为准。",
+    "citations": []
+  }
+]

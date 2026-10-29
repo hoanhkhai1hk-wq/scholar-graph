@@ -1,0 +1,27 @@
+\documentclass{ctexart}
+\usepackage{tikz}
+\begin{document}
+\begin{tikzpicture}[every node/.style={draw,rounded corners,align=center,text width=42mm}]
+\node (n0) at (0,0) {输入符号序列};
+\node (n1) at (6,0) {嵌入与位置编码相加};
+\node (n2) at (12,0) {编码器自注意力层};
+\node (n3) at (18,0) {前馈网络子层};
+\node (n4) at (24,0) {编码器堆叠输出};
+\node (n5) at (12,-2) {解码器掩码自注意力};
+\node (n6) at (18,-2) {编码器-解码器注意力};
+\node (n7) at (24,-2) {解码器输出表示};
+\node (n8) at (30,-2) {线性变换与Softmax预测};
+\node (n9) at (36,-2) {自回归输出序列};
+\draw[->] (n0) -- node[above,draw=none] {嵌入转换} (n1);
+\draw[->] (n1) -- node[above,draw=none] {输入编码器} (n2);
+\draw[->] (n2) -- node[above,draw=none] {子层串联} (n3);
+\draw[->] (n3) -- node[above,draw=none] {堆叠形成记忆} (n4);
+\draw[->] (n1) -- node[above,draw=none] {输出嵌入输入解码器} (n5);
+\draw[->] (n4) -- node[above,draw=none] {提供键值记忆} (n6);
+\draw[->] (n5) -- node[above,draw=none] {查询来自解码器} (n6);
+\draw[->] (n6) -- node[above,draw=none] {解码器层输出} (n7);
+\draw[->] (n7) -- node[above,draw=none] {线性投影} (n8);
+\draw[->] (n8) -- node[above,draw=none] {逐词生成} (n9);
+\draw[->] (n9) -- node[above,draw=none] {自回归反馈} (n5);
+\end{tikzpicture}
+\end{document}

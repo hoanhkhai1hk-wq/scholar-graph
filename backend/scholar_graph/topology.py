@@ -47,6 +47,9 @@ def parse_script(script, kind):
     This is format self-check, not a claim to implement arbitrary TeX/DOT/Mermaid.
     Labels and graph equivalence are checked independently after parsing.
     """
+    if kind=='matplotlib':
+        from .topology_matplotlib import parse
+        return parse(script)
     if not isinstance(script, str) or not balanced(script, tex=kind=='tikz'):
         invalid('拓扑脚本括号或引号未配对。')
     lines = script.splitlines()
@@ -120,7 +123,9 @@ def scripts_for(nodes, edges):
         tikz.append(r'\draw[->] (' + left + ') -- node[above,draw=none] {' + latex_escape(label) + '} (' + right + ');')
     dot.append('}')
     tikz += [r'\end{tikzpicture}', r'\end{document}']
-    return {k:'\n'.join(v)+'\n' for k,v in [('dot',dot),('mermaid',mermaid),('tikz',tikz)]}, aliases
+    from .topology_matplotlib import script_for
+    return {**{k:'\n'.join(v)+'\n' for k,v in [('dot',dot),('mermaid',mermaid),('tikz',tikz)]},
+            'matplotlib':script_for(nodes,edges,aliases)}, aliases
 
 
 def generate_topology(repository, body):

@@ -36,7 +36,7 @@ class TopologyRequest(BaseModel):
     paper_ids: list[str] = Field(min_length=1,max_length=20)
     logic: Logic | None = None
     framework: dict | None = None
-    formats: list[Literal['tikz','dot','mermaid']] = Field(default_factory=lambda:['tikz','dot','mermaid'],min_length=1,max_length=3)
+    formats: list[Literal['tikz','dot','mermaid','matplotlib']] = Field(default_factory=lambda:['tikz','dot','mermaid'],min_length=1,max_length=4)
 
     @model_validator(mode='after')
     def one_source(self):

@@ -1,0 +1,5 @@
+locator.selectOption: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('section').filter({ has: getByRole('heading', { name: '数据表格与科研绘图', exact: true }) }).last().getByLabel('图表类型', { exact: true })[22m
+
+    at D:\AI_Workspace\Tasks\scholar-graph\tests\item06\browser_baseline.cjs:6:145

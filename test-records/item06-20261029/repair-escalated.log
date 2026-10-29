@@ -1,0 +1,62 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.15, pytest-9.1.1, pluggy-1.7.0 -- D:\AI_Workspace\Tasks\scholar-graph\backend\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: D:\AI_Workspace\Tasks\scholar-graph
+configfile: pytest.ini
+plugins: anyio-4.15.1, langsmith-0.14.12
+collecting ... collected 51 items
+
+tests/test_item06_writing_artifacts.py::test_explicit_four_formats_preserve_one_graph_and_legacy_default PASSED [  1%]
+tests/test_item06_writing_artifacts.py::test_matplotlib_labels_stay_literal_and_broken_script_is_rejected PASSED [  3%]
+tests/test_item06_writing_artifacts.py::test_every_chart_has_correct_source_values_and_explanatory_captions[table] PASSED [  5%]
+tests/test_item06_writing_artifacts.py::test_every_chart_has_correct_source_values_and_explanatory_captions[line] PASSED [  7%]
+tests/test_item06_writing_artifacts.py::test_every_chart_has_correct_source_values_and_explanatory_captions[bar] PASSED [  9%]
+tests/test_item06_writing_artifacts.py::test_every_chart_has_correct_source_values_and_explanatory_captions[radar3d] PASSED [ 11%]
+tests/test_item06_writing_artifacts.py::test_nonmonotonic_data_not_described_as_growth_and_single_row_is_honest PASSED [ 13%]
+tests/test_item06_writing_artifacts.py::test_unchanged_paragraph_repair_does_not_repeat_forever PASSED [ 15%]
+tests/test_topology.py::test_three_scripts_roundtrip_nodes_edges_and_real_anchors PASSED [ 17%]
+tests/test_topology.py::test_invalid_scripts_never_parse_successfully[balance-tikz] PASSED [ 19%]
+tests/test_topology.py::test_invalid_scripts_never_parse_successfully[balance-dot] PASSED [ 21%]
+tests/test_topology.py::test_invalid_scripts_never_parse_successfully[balance-mermaid] PASSED [ 23%]
+tests/test_topology.py::test_invalid_scripts_never_parse_successfully[keyword-tikz] PASSED [ 25%]
+tests/test_topology.py::test_invalid_scripts_never_parse_successfully[keyword-dot] PASSED [ 27%]
+tests/test_topology.py::test_invalid_scripts_never_parse_successfully[keyword-mermaid] PASSED [ 29%]
+tests/test_topology.py::test_invalid_scripts_never_parse_successfully[endpoint-tikz] PASSED [ 31%]
+tests/test_topology.py::test_invalid_scripts_never_parse_successfully[endpoint-dot] PASSED [ 33%]
+tests/test_topology.py::test_invalid_scripts_never_parse_successfully[endpoint-mermaid] PASSED [ 35%]
+tests/test_topology.py::test_invalid_scripts_never_parse_successfully[statement-tikz] PASSED [ 37%]
+tests/test_topology.py::test_invalid_scripts_never_parse_successfully[statement-dot] PASSED [ 39%]
+tests/test_topology.py::test_invalid_scripts_never_parse_successfully[statement-mermaid] PASSED [ 41%]
+tests/test_topology.py::test_labels_are_escaped_without_changing_graph PASSED [ 43%]
+tests/test_topology.py::test_bad_topology_inputs_return_uniform_validation_error[source] PASSED [ 45%]
+tests/test_topology.py::test_bad_topology_inputs_return_uniform_validation_error[duplicate] PASSED [ 47%]
+tests/test_topology.py::test_bad_topology_inputs_return_uniform_validation_error[edge] PASSED [ 49%]
+tests/test_topology.py::test_bad_topology_inputs_return_uniform_validation_error[formats] PASSED [ 50%]
+tests/test_topology.py::test_bad_topology_inputs_return_uniform_validation_error[both] PASSED [ 52%]
+tests/test_topology.py::test_bad_topology_inputs_return_uniform_validation_error[none] PASSED [ 54%]
+tests/test_topology.py::test_framework_is_supported_without_inventing_causal_edges PASSED [ 56%]
+tests/test_workspace_research.py::test_overview_intent_is_limited_to_broad_summary_questions[\u8fd9\u7bc7\u8bba\u6587\u5173\u4e8e\u4ec0\u4e48\u7684] PASSED [ 58%]
+tests/test_workspace_research.py::test_overview_intent_is_limited_to_broad_summary_questions[\u8fd9\u7bc7\u8bba\u6587\u8bb2\u4ec0\u4e48\uff1f] PASSED [ 60%]
+tests/test_workspace_research.py::test_overview_intent_is_limited_to_broad_summary_questions[\u8fd9\u7bc7\u8bba\u6587\u7684\u4e3b\u8981\u5185\u5bb9\u662f\u4ec0\u4e48] PASSED [ 62%]
+tests/test_workspace_research.py::test_overview_intent_is_limited_to_broad_summary_questions[\u8bf7\u603b\u7ed3\u4e00\u4e0b\u8fd9\u7bc7\u8bba\u6587] PASSED [ 64%]
+tests/test_workspace_research.py::test_overview_intent_is_limited_to_broad_summary_questions[What is this paper about?] PASSED [ 66%]
+tests/test_workspace_research.py::test_specific_or_false_premise_questions_are_not_overview[\u8fd9\u7bc7\u8bba\u6587\u7528\u591a\u5c11\u4e2aGPU\uff1f] PASSED [ 68%]
+tests/test_workspace_research.py::test_specific_or_false_premise_questions_are_not_overview[\u8fd9\u7bc7\u8bba\u6587\u4e3a\u4ec0\u4e48\u6ca1\u6709\u63d0\u5230Transformer\uff1f] PASSED [ 70%]
+tests/test_workspace_research.py::test_specific_or_false_premise_questions_are_not_overview[\u8fd9\u7bc7\u8bba\u6587\u4f5c\u8005\u662f\u8c01\uff1f] PASSED [ 72%]
+tests/test_workspace_research.py::test_specific_or_false_premise_questions_are_not_overview[\u8fd9\u7bc7\u8bba\u6587\u8ba8\u8bba\u4e86\u4ec0\u4e48\u6570\u636e\u96c6\uff1f] PASSED [ 74%]
+tests/test_workspace_research.py::test_overview_uses_only_source_abstract_or_introduction_not_metadata PASSED [ 76%]
+tests/test_workspace_research.py::test_overview_falls_back_to_real_introduction_when_abstract_missing PASSED [ 78%]
+tests/test_workspace_research.py::test_decimal_improvement_has_two_real_source_operands PASSED [ 80%]
+tests/test_workspace_research.py::test_units_and_chinese_gpu_counts_do_not_change_numeric_meaning PASSED [ 82%]
+tests/test_workspace_research.py::test_missing_evidence_is_explicit_refusal_and_unknown_citations_fail PASSED [ 84%]
+tests/test_workspace_research.py::test_overview_evidence_id_attaches_only_checked_original_source PASSED [ 86%]
+tests/test_workspace_research.py::test_empty_retrieval_never_claims_the_entire_paper_lacks_information PASSED [ 88%]
+tests/test_workspace_research.py::test_irrelevant_retrieved_passages_do_not_prove_full_paper_absence PASSED [ 90%]
+tests/test_workspace_research.py::test_zero_evidence_stream_refuses_without_model_calls_or_fake_tokens PASSED [ 92%]
+tests/test_workspace_research.py::test_model_names_and_scales_before_chinese_are_not_spurious_quantities PASSED [ 94%]
+tests/test_workspace_research.py::test_corrective_refusal_can_repeat_false_premise_but_not_affirm_it PASSED [ 96%]
+tests/test_workspace_research.py::test_section_labels_are_source_checked_and_do_not_mask_wrong_values PASSED [ 98%]
+tests/test_workspace_research.py::test_compound_translation_terms_do_not_require_conflicting_substrings PASSED [100%]
+
+- generated xml file: D:\AI_Workspace\Tasks\scholar-graph\data\item06-20261029\repair-escalated.xml -
+============================= 51 passed in 10.84s =============================

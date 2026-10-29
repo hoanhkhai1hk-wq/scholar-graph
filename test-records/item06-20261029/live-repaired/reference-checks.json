@@ -1,0 +1,146 @@
+[
+  {
+    "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+    "title_matches": true,
+    "year_matches": true,
+    "authors_in_order_match_pdf": true,
+    "reference": {
+      "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "title": "Attention Is All You Need",
+      "authors": [
+        "Ashish Vaswani",
+        "Noam Shazeer",
+        "Niki Parmar",
+        "Jakob Uszkoreit",
+        "Llion Jones",
+        "Aidan N. Gomez",
+        "Łukasz Kaiser",
+        "Illia Polosukhin"
+      ],
+      "year": 2017,
+      "doi": null,
+      "arxiv_id": "1706.03762v7",
+      "source": "local-upload"
+    },
+    "canonical": {
+      "title": "Attention Is All You Need",
+      "year": 2017,
+      "authors": [
+        "Ashish Vaswani",
+        "Noam Shazeer",
+        "Niki Parmar",
+        "Jakob Uszkoreit",
+        "Llion Jones",
+        "Aidan N. Gomez",
+        "Łukasz Kaiser",
+        "Illia Polosukhin"
+      ]
+    },
+    "official_url": "https://arxiv.org/abs/1706.03762",
+    "name_note": null
+  },
+  {
+    "paper_id": "paper-c1984bb50a5b90fddb895fdc3a0f72e5bc977148c9f63ef6040cbe7a3e1f0d98",
+    "title_matches": true,
+    "year_matches": true,
+    "authors_in_order_match_pdf": true,
+    "reference": {
+      "paper_id": "paper-c1984bb50a5b90fddb895fdc3a0f72e5bc977148c9f63ef6040cbe7a3e1f0d98",
+      "title": "Training language models to follow instructions with human feedback",
+      "authors": [
+        "Long Ouyang",
+        "Jeff Wu",
+        "Xu Jiang",
+        "Diogo Almeida",
+        "Carroll L. Wainwright",
+        "Pamela Mishkin",
+        "Chong Zhang",
+        "Sandhini Agarwal",
+        "Katarina Slama",
+        "Alex Ray",
+        "John Schulman",
+        "Jacob Hilton",
+        "Fraser Kelton",
+        "Luke Miller",
+        "Maddie Simens",
+        "Amanda Askell",
+        "Peter Welinder",
+        "Paul Christiano",
+        "Jan Leike",
+        "Ryan Lowe"
+      ],
+      "year": 2022,
+      "doi": null,
+      "arxiv_id": "2203.02155v1",
+      "source": "local-upload"
+    },
+    "canonical": {
+      "title": "Training language models to follow instructions with human feedback",
+      "year": 2022,
+      "authors": [
+        "Long Ouyang",
+        "Jeff Wu",
+        "Xu Jiang",
+        "Diogo Almeida",
+        "Carroll L. Wainwright",
+        "Pamela Mishkin",
+        "Chong Zhang",
+        "Sandhini Agarwal",
+        "Katarina Slama",
+        "Alex Ray",
+        "John Schulman",
+        "Jacob Hilton",
+        "Fraser Kelton",
+        "Luke Miller",
+        "Maddie Simens",
+        "Amanda Askell",
+        "Peter Welinder",
+        "Paul Christiano",
+        "Jan Leike",
+        "Ryan Lowe"
+      ]
+    },
+    "official_url": "https://arxiv.org/abs/2203.02155",
+    "name_note": null
+  },
+  {
+    "paper_id": "paper-e9a0d3128767db616085dc0f4e6e455e672e89af823e8ed1282793682787395a",
+    "title_matches": true,
+    "year_matches": true,
+    "authors_in_order_match_pdf": true,
+    "reference": {
+      "paper_id": "paper-e9a0d3128767db616085dc0f4e6e455e672e89af823e8ed1282793682787395a",
+      "title": "LORA: LOW-RANK ADAPTATION OF LARGE LAN-GUAGE MODELS",
+      "authors": [
+        "Edward Hu",
+        "Yelong Shen",
+        "Phillip Wallis",
+        "Zeyuan Allen-Zhu",
+        "Yuanzhi Li",
+        "Shean Wang",
+        "Lu Wang",
+        "Weizhu Chen"
+      ],
+      "year": 2021,
+      "doi": null,
+      "arxiv_id": "2106.09685v2",
+      "source": "local-upload"
+    },
+    "canonical": {
+      "title": "LoRA: Low-Rank Adaptation of Large Language Models",
+      "year": 2021,
+      "authors": [
+        "Edward Hu",
+        "Yelong Shen",
+        "Phillip Wallis",
+        "Zeyuan Allen-Zhu",
+        "Yuanzhi Li",
+        "Shean Wang",
+        "Lu Wang",
+        "Weizhu Chen"
+      ]
+    },
+    "official_url": "https://arxiv.org/abs/2106.09685",
+    "name_note": "PDF author is Edward Hu; arXiv catalog writes Edward J. Hu"
+  }
+]

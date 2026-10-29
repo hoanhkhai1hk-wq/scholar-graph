@@ -1,0 +1,76 @@
+{
+  "cases": [
+    {
+      "case": "outline",
+      "task_id": "128e3f33744c4e089a503ebc5ec09dde",
+      "status": "completed",
+      "seconds": 16.25,
+      "error": null,
+      "model_calls": 2,
+      "reference_count": 3,
+      "all_references_verified": true,
+      "sections": 5
+    },
+    {
+      "case": "topology",
+      "task_id": "6bea7d2d471649e0869c7188bdff264c",
+      "status": "completed",
+      "seconds": 5.516,
+      "error": null,
+      "model_calls": 1,
+      "nodes": 10,
+      "edges": 11,
+      "formats": [
+        "dot",
+        "matplotlib",
+        "mermaid",
+        "tikz"
+      ],
+      "matplotlib_rendered": true,
+      "tikz_compiled": false
+    },
+    {
+      "case": "chinese_upload",
+      "status": "completed",
+      "paper_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110",
+      "seconds": 25.86
+    },
+    {
+      "case": "abstract_en",
+      "task_id": "58355c07357143f98626d8875dd074d6",
+      "status": "completed",
+      "seconds": 3.89,
+      "error": null,
+      "segments": 3,
+      "expected_segments": 3,
+      "model_calls": 1,
+      "numbers_checked": true,
+      "terms_checked": [
+        "encoder",
+        "decoder",
+        "attention",
+        "low-rank adaptation"
+      ],
+      "protected_spans_checked": true
+    },
+    {
+      "case": "full_en",
+      "task_id": "bb29043f69fa441cbce997b4f58ec509",
+      "status": "completed",
+      "seconds": 5.922,
+      "error": null,
+      "segments": 21,
+      "expected_segments": 21,
+      "model_calls": 1,
+      "numbers_checked": true,
+      "terms_checked": [
+        "encoder",
+        "decoder",
+        "attention",
+        "low-rank adaptation"
+      ],
+      "protected_spans_checked": true
+    }
+  ],
+  "passed": true
+}

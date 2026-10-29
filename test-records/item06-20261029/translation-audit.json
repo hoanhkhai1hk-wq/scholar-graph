@@ -1,0 +1,307 @@
+[
+  {
+    "scope": "abstract",
+    "task_id": "58355c07357143f98626d8875dd074d6",
+    "segments": 3,
+    "expected": 3,
+    "metadata": {
+      "provider": "deepseek",
+      "model": "deepseek-chat",
+      "model_calls": [
+        {
+          "provider": "deepseek",
+          "model": "deepseek-chat",
+          "phase": "translate_batch_1_attempt_1",
+          "elapsed_seconds": 1.731296,
+          "prompt_tokens": 661,
+          "completion_tokens": 226,
+          "total_tokens": 887,
+          "http_status": 200,
+          "status": "succeeded",
+          "response_bytes": 1568,
+          "finish_reason": "stop"
+        }
+      ],
+      "terminology": {
+        "自注意力": "self-attention",
+        "多头注意力": "multi-head attention",
+        "注意力": "attention",
+        "编码器": "encoder",
+        "解码器": "decoder",
+        "层归一化": "layer normalization",
+        "位置编码": "positional encoding",
+        "嵌入": "embedding",
+        "前馈": "feed-forward",
+        "循环": "recurrent",
+        "卷积": "convolutional",
+        "序列转导": "sequence transduction",
+        "转导": "transduction",
+        "最先进水平": "state of the art",
+        "低秩适配": "low-rank adaptation",
+        "计算线程": "compute thread",
+        "随机种子": "random seed",
+        "耗时中位数": "median elapsed time",
+        "矩阵维度": "matrix dimension"
+      },
+      "alignment": "one_source_chunk_one_segment",
+      "layout_source": "validated_original_chunks",
+      "cache_hits": 0,
+      "expected_segments": 3,
+      "translated_segments": 3,
+      "complete": true
+    },
+    "checks": [
+      {
+        "chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0001-c00003",
+        "page": 1,
+        "source_sha256": "21c04b2eeeb431f7722c4c144f95567e3bae94de9c743472072c84745d24367a",
+        "translation_sha256": "d21b4a64a2d8656a0fdf7ab2e89a49164ac504686cfa2a3d442e87c209286330",
+        "number_check": true,
+        "protected_characters_retained": true
+      },
+      {
+        "chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0001-c00004",
+        "page": 1,
+        "source_sha256": "b2f7c17e9d49991eaf958eddd67d06aeed62ebbf44c9426613a7d6ef971a6747",
+        "translation_sha256": "fb539bb433b833e3a93c3c699482ad6ba1be83991fb641ac013055b6a920fae3",
+        "number_check": true,
+        "protected_characters_retained": true
+      },
+      {
+        "chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0001-c00005",
+        "page": 1,
+        "source_sha256": "0a2c17192e00e0d2b734d738faf2c794819e883cd5ebfee0e51dbadd0c257dc2",
+        "translation_sha256": "68c8895bd7d27456ad9b7792b27fcaf88b995a368ed4a2eecc8efbb2a3177cda",
+        "number_check": true,
+        "protected_characters_retained": true
+      }
+    ]
+  },
+  {
+    "scope": "full",
+    "task_id": "bb29043f69fa441cbce997b4f58ec509",
+    "segments": 21,
+    "expected": 21,
+    "metadata": {
+      "provider": "deepseek",
+      "model": "deepseek-chat",
+      "model_calls": [
+        {
+          "provider": "deepseek",
+          "model": "deepseek-chat",
+          "phase": "translate_batch_1_attempt_1",
+          "elapsed_seconds": 4.090508,
+          "prompt_tokens": 1439,
+          "completion_tokens": 679,
+          "total_tokens": 2118,
+          "http_status": 200,
+          "status": "succeeded",
+          "response_bytes": 3908,
+          "finish_reason": "stop"
+        }
+      ],
+      "terminology": {
+        "自注意力": "self-attention",
+        "多头注意力": "multi-head attention",
+        "注意力": "attention",
+        "编码器": "encoder",
+        "解码器": "decoder",
+        "层归一化": "layer normalization",
+        "位置编码": "positional encoding",
+        "嵌入": "embedding",
+        "前馈": "feed-forward",
+        "循环": "recurrent",
+        "卷积": "convolutional",
+        "序列转导": "sequence transduction",
+        "转导": "transduction",
+        "最先进水平": "state of the art",
+        "低秩适配": "low-rank adaptation",
+        "人类反馈": "human feedback",
+        "矩阵乘法": "matrix multiplication",
+        "矩阵加法": "matrix addition",
+        "逐元素乘法": "element-wise multiplication",
+        "中位数": "median",
+        "随机种子": "random seed",
+        "计算线程": "compute thread",
+        "预热": "warm-up",
+        "数字回溯": "numerical traceability"
+      },
+      "alignment": "one_source_chunk_one_segment",
+      "layout_source": "validated_original_chunks",
+      "cache_hits": 0,
+      "expected_segments": 21,
+      "translated_segments": 21,
+      "complete": true
+    },
+    "checks": [
+      {
+        "chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0001-c00001",
+        "page": 1,
+        "source_sha256": "6abb75cf4439bdd30f021061adf496459bd385676ab6d9dcefe7a2b42b355f45",
+        "translation_sha256": "3b1c528c94ce3e12f81d188fc2628375ab8672a21d7dfba51ce66f37b9387992",
+        "number_check": true,
+        "protected_characters_retained": true
+      },
+      {
+        "chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0001-c00002",
+        "page": 1,
+        "source_sha256": "f292d6ef940f99125b70c9ce04b98ee0da6c6d84a1142985e446d42468ecd485",
+        "translation_sha256": "354462c06be07b380f3199a571ae38f9f11eebee6554aba9515b41bb5d204bdc",
+        "number_check": true,
+        "protected_characters_retained": true
+      },
+      {
+        "chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0001-c00003",
+        "page": 1,
+        "source_sha256": "21c04b2eeeb431f7722c4c144f95567e3bae94de9c743472072c84745d24367a",
+        "translation_sha256": "d21b4a64a2d8656a0fdf7ab2e89a49164ac504686cfa2a3d442e87c209286330",
+        "number_check": true,
+        "protected_characters_retained": true
+      },
+      {
+        "chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0001-c00004",
+        "page": 1,
+        "source_sha256": "b2f7c17e9d49991eaf958eddd67d06aeed62ebbf44c9426613a7d6ef971a6747",
+        "translation_sha256": "a6b3a44702b10e9333194d82ba62f7f1e5672e29b91c5bbadc5c190bbf89648f",
+        "number_check": true,
+        "protected_characters_retained": true
+      },
+      {
+        "chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0001-c00005",
+        "page": 1,
+        "source_sha256": "0a2c17192e00e0d2b734d738faf2c794819e883cd5ebfee0e51dbadd0c257dc2",
+        "translation_sha256": "58436fb9722cc36b89df2e6833ab42e471b9bdc8c034c23f413b74f4b9c02116",
+        "number_check": true,
+        "protected_characters_retained": true
+      },
+      {
+        "chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0001-c00006",
+        "page": 1,
+        "source_sha256": "76958d09e702c69e16621898d46d11240e5c899ee0969a5dec97552c2e7bd574",
+        "translation_sha256": "c9234967b670c32478644b4236ec8fd2f351225696cacbcd0fad1f1838b95170",
+        "number_check": true,
+        "protected_characters_retained": true
+      },
+      {
+        "chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0001-c00007",
+        "page": 1,
+        "source_sha256": "10d195cfc76f784163da7f1c6d75bba5e595b5f29d87638f6b8888b73a170819",
+        "translation_sha256": "240f977ea8e3957778fa359eaaa9906682d2bdc85a623271fe78ecd19b3dd64f",
+        "number_check": true,
+        "protected_characters_retained": true
+      },
+      {
+        "chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0001-c00008",
+        "page": 1,
+        "source_sha256": "33a1427daf4569bb2e927445b579f1811b176fa41e8fc72b0bed01841b76fb5a",
+        "translation_sha256": "f1f1a266febad123fdf72469fe9c0ebaa24089c60383397ff383a1be970ab0dd",
+        "number_check": true,
+        "protected_characters_retained": true
+      },
+      {
+        "chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0002-c00009",
+        "page": 2,
+        "source_sha256": "2f471209d3a2ce7fbd03b7c9095a3cb316bd3ac232a0a1b2b4bed6626b3376e3",
+        "translation_sha256": "b62930c46e5e2c0bc0dc4520e470a36c5a48b6ca6c49e028f06841ace95838e0",
+        "number_check": true,
+        "protected_characters_retained": true
+      },
+      {
+        "chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0002-c00010",
+        "page": 2,
+        "source_sha256": "19d063bb30a41fd980446a3be9d70c19ce6d84319213b407b22e4657cef13a2d",
+        "translation_sha256": "2045af39ae0ea9131a8a783481093823caa1e2418b47d391af12a10c14c41a37",
+        "number_check": true,
+        "protected_characters_retained": true
+      },
+      {
+        "chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0002-c00011",
+        "page": 2,
+        "source_sha256": "7cedbf353ae4f0ecd1fdf12e683cfb1c4a9b62a356d39906a63d8b8952dd3284",
+        "translation_sha256": "b78c20deec3dc9bdb8005a10f2d1f8351b57d333efd5edcc0a559e8ed1027b28",
+        "number_check": true,
+        "protected_characters_retained": true
+      },
+      {
+        "chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0002-c00012",
+        "page": 2,
+        "source_sha256": "d7fee1020b4159292023b05dc269819d162bc1f8a0ebd25e19f896b567b1b1f9",
+        "translation_sha256": "d7fee1020b4159292023b05dc269819d162bc1f8a0ebd25e19f896b567b1b1f9",
+        "number_check": true,
+        "protected_characters_retained": true
+      },
+      {
+        "chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0002-c00013",
+        "page": 2,
+        "source_sha256": "1e93512ad55d7613da4c1e9ee64b0ae5a17055b088aca6a8caac38a20312c932",
+        "translation_sha256": "1e93512ad55d7613da4c1e9ee64b0ae5a17055b088aca6a8caac38a20312c932",
+        "number_check": true,
+        "protected_characters_retained": true
+      },
+      {
+        "chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0002-c00014",
+        "page": 2,
+        "source_sha256": "88c438f820e456fb313ead29f42fbb9d5ff6ee124f61f1c8b2a4e2aeeae20424",
+        "translation_sha256": "88c438f820e456fb313ead29f42fbb9d5ff6ee124f61f1c8b2a4e2aeeae20424",
+        "number_check": true,
+        "protected_characters_retained": true
+      },
+      {
+        "chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0002-c00015",
+        "page": 2,
+        "source_sha256": "f1b901847390b0ed7e374e7c1e464ec17b46a427c487a5ad6cbd2906405083d5",
+        "translation_sha256": "f1b901847390b0ed7e374e7c1e464ec17b46a427c487a5ad6cbd2906405083d5",
+        "number_check": true,
+        "protected_characters_retained": true
+      },
+      {
+        "chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0002-c00016",
+        "page": 2,
+        "source_sha256": "26a2ead03b78814e65cd2ee2e9c8ddcaa7dcd9f8f73a6aadf3e83618ebbd9367",
+        "translation_sha256": "26a2ead03b78814e65cd2ee2e9c8ddcaa7dcd9f8f73a6aadf3e83618ebbd9367",
+        "number_check": true,
+        "protected_characters_retained": true
+      },
+      {
+        "chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0002-c00017",
+        "page": 2,
+        "source_sha256": "f24825335ad2d76f08158d77c27d7f55ec3a672f506e26234c22bca571f5c6d8",
+        "translation_sha256": "2f0b0ae7371746847dac625599938ee54e3a289e36cbe43e202189d5b9478f5a",
+        "number_check": true,
+        "protected_characters_retained": true
+      },
+      {
+        "chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0002-c00018",
+        "page": 2,
+        "source_sha256": "cfed01675c896b5a4a55e1b1ae6c8bce2d6159e6439f6c3551ef65f69092b1b3",
+        "translation_sha256": "8a2aa05da7bed99414090e4b929a21f651faa4dbfb6cd7dff9d94930a2f2f43a",
+        "number_check": true,
+        "protected_characters_retained": true
+      },
+      {
+        "chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0002-c00019",
+        "page": 2,
+        "source_sha256": "acf8394c7b416c7c663543754b32050069cf226d914eadbcc81cb74364e453d8",
+        "translation_sha256": "acf8394c7b416c7c663543754b32050069cf226d914eadbcc81cb74364e453d8",
+        "number_check": true,
+        "protected_characters_retained": true
+      },
+      {
+        "chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0002-c00020",
+        "page": 2,
+        "source_sha256": "96a1879f8e59046b71254c2cd71543030f5fa57430d29aa272ec2050b1c1b194",
+        "translation_sha256": "8effb63231330fa5314d75f84caf3cb3625e82dd7313232de0b819041f273ca0",
+        "number_check": true,
+        "protected_characters_retained": true
+      },
+      {
+        "chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0002-c00021",
+        "page": 2,
+        "source_sha256": "991da7c88958dc5c9516cc300b398c7a53f4ce76a0300d7993f7d90f4a27b3c0",
+        "translation_sha256": "002fdaa59fb7cd36c4abc68d494826470225d2f7f8e74581666fd64579f52d54",
+        "number_check": true,
+        "protected_characters_retained": true
+      }
+    ]
+  }
+]

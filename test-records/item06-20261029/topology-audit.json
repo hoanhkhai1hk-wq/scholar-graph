@@ -1,0 +1,77 @@
+{
+  "nodes": 10,
+  "edges": 11,
+  "four_formats_same_graph": true,
+  "anchors_checked": true,
+  "native_source_task_id": "6ac8a40fdc084944a30256ef6f89cc43",
+  "final_render_uses_same_model_logic": {
+    "nodes": 10,
+    "edges": 11,
+    "identical_nodes_and_edges_to_native_model_task": true,
+    "model_calls": 0,
+    "matplotlib_render_exit": 0
+  },
+  "renderers": {
+    "dot": {
+      "rendered": true,
+      "node_count": 10,
+      "edge_count": 11,
+      "renderer": "Graphviz via @viz-js/viz WASM"
+    },
+    "mermaid": {
+      "rendered": true,
+      "node_count": 10,
+      "renderer": "Mermaid 12 in native Chrome",
+      "rendered_nodes": [
+        {
+          "id": null,
+          "dom_id": "item06topology-flowchart-n0-0"
+        },
+        {
+          "id": null,
+          "dom_id": "item06topology-flowchart-n1-1"
+        },
+        {
+          "id": null,
+          "dom_id": "item06topology-flowchart-n2-2"
+        },
+        {
+          "id": null,
+          "dom_id": "item06topology-flowchart-n3-3"
+        },
+        {
+          "id": null,
+          "dom_id": "item06topology-flowchart-n4-4"
+        },
+        {
+          "id": null,
+          "dom_id": "item06topology-flowchart-n5-5"
+        },
+        {
+          "id": null,
+          "dom_id": "item06topology-flowchart-n6-6"
+        },
+        {
+          "id": null,
+          "dom_id": "item06topology-flowchart-n7-7"
+        },
+        {
+          "id": null,
+          "dom_id": "item06topology-flowchart-n8-8"
+        },
+        {
+          "id": null,
+          "dom_id": "item06topology-flowchart-n9-9"
+        }
+      ]
+    },
+    "tikz": {
+      "generated": true,
+      "compiled": false,
+      "reason": "User requires code only; no TeX toolchain installed"
+    },
+    "matplotlib": {
+      "rendered": true
+    }
+  }
+}

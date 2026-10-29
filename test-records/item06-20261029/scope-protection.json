@@ -1,0 +1,11 @@
+{
+  "staged_pdf_files": 0,
+  "configured_key_found": false,
+  "pre_existing_unrelated_files_unchanged": 830,
+  "adopted_user_writing_files": [
+    "frontend/components/CsvWorkspace.tsx",
+    "frontend/components/GeneratedWriting.tsx",
+    "frontend/app/writing/page.tsx",
+    "frontend/components/WritingWorkspace.tsx"
+  ]
+}

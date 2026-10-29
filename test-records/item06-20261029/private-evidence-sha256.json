@@ -1,0 +1,12 @@
+{
+  "baseline/outline-task.json": "cec513b3910863e3f5323e4230656330c1c048639053d22f6f10dd7f78fb149d",
+  "live-repaired/outline-task.json": "4186b637127b77553e55f2adc1b2f36c7d55fb2a2825d63a71ca378e181f9355",
+  "live-repaired/topology-task.json": "78c2578790008b0bd4b0aad57d7bbf4feb16aab25a267bbc68a9cc720d0cebd8",
+  "live-repaired/abstract-en-task.json": "f3840d1171bb80c5073728277385f5c9ac6c9fbb1ea5e8daed52e3b10f2540bf",
+  "live-repaired/full-en-task.json": "744cc627842c11629b67aa9cc02cbbcf87f7b0e53cceef85de4e4670458c7af2",
+  "browser-final/outline-task.json": "099536869a3cf68d3a4f358ae98a4a028ed89a2898efee6e3e2f7b4032a0faed",
+  "browser-final/topology-task.json": "befee79fc137c1e889a7d021f9af2d25b951617ea9947de23b16355b80e4784d",
+  "browser-final/trace.zip": "4e86dcd5f2f14a98edf05bfb30356b33dae260aa2e9deefcaeba789ae3f2ea70",
+  "chinese-acceptance.pdf": "0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110",
+  "final-visual/topology-response.json": "b2e2f60083ad761d82f2df30adca08c5ffb6d9ec9092021ffeb86fe7a36715f6"
+}

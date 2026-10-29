@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "D:\AI_Workspace\Tasks\scholar-graph\tests\item06\runtime_audit.py", line 30, in <module>
+    frozen=json.loads((BASE/'frozen-before.json').read_text(encoding='utf8'));assert all(digest(BASE/'records'/p)==sha for p,sha in frozen.items())
+                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

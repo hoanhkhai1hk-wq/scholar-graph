@@ -14,6 +14,8 @@ import type {
 } from "@/lib/types";
 import PaperPicker from "@/components/PaperPicker";
 import ErrorState from "@/components/ErrorState";
+import GeneratedWriting from "./GeneratedWriting";
+import CsvWorkspace from "./CsvWorkspace";
 
 type FrameworkState =
   | { kind: "idle" }
@@ -114,6 +116,9 @@ export default function WritingWorkspace({
 
   return (
     <>
+      <GeneratedWriting papers={papers} />
+      <CsvWorkspace />
+      <details><summary>原文摘录工具（框架与摘录草稿）</summary>
       <section className="sg-section">
         <div className="sg-section__head">
           <h2 className="sg-section__title">综述框架</h2>
@@ -289,6 +294,8 @@ export default function WritingWorkspace({
         ) : null}
       </section>
 
+      </details>
+      <details><summary>兼容版 CSV 绘图工具</summary>
       <section className="sg-section">
         <div className="sg-section__head">
           <h2 className="sg-section__title">CSV 图表</h2>
@@ -443,6 +450,7 @@ export default function WritingWorkspace({
           </>
         ) : null}
       </section>
+      </details>
     </>
   );
 }

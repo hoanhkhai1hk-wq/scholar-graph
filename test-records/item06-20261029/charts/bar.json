@@ -1,0 +1,401 @@
+{
+  "kind": "bar",
+  "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+  "data_table": {
+    "columns": [
+      "dimension",
+      "matmul_ms",
+      "add_ms",
+      "multiply_ms"
+    ],
+    "rows": [
+      {
+        "row_number": 2,
+        "label": "64",
+        "values": {
+          "matmul_ms": 0.0137,
+          "add_ms": 0.0014,
+          "multiply_ms": 0.0014
+        }
+      },
+      {
+        "row_number": 3,
+        "label": "128",
+        "values": {
+          "matmul_ms": 0.071,
+          "add_ms": 0.0037,
+          "multiply_ms": 0.0032
+        }
+      },
+      {
+        "row_number": 4,
+        "label": "256",
+        "values": {
+          "matmul_ms": 0.5585,
+          "add_ms": 0.0326,
+          "multiply_ms": 0.0336
+        }
+      },
+      {
+        "row_number": 5,
+        "label": "512",
+        "values": {
+          "matmul_ms": 7.9187,
+          "add_ms": 0.8168,
+          "multiply_ms": 0.7002
+        }
+      },
+      {
+        "row_number": 6,
+        "label": "1024",
+        "values": {
+          "matmul_ms": 38.9723,
+          "add_ms": 3.1715,
+          "multiply_ms": 2.9862
+        }
+      }
+    ]
+  },
+  "numeric_checks": [
+    {
+      "value": 0.0137,
+      "csv_anchor": {
+        "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+        "row_number": 2,
+        "column_name": "matmul_ms"
+      },
+      "verified": true
+    },
+    {
+      "value": 0.071,
+      "csv_anchor": {
+        "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+        "row_number": 3,
+        "column_name": "matmul_ms"
+      },
+      "verified": true
+    },
+    {
+      "value": 0.5585,
+      "csv_anchor": {
+        "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+        "row_number": 4,
+        "column_name": "matmul_ms"
+      },
+      "verified": true
+    },
+    {
+      "value": 7.9187,
+      "csv_anchor": {
+        "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+        "row_number": 5,
+        "column_name": "matmul_ms"
+      },
+      "verified": true
+    },
+    {
+      "value": 38.9723,
+      "csv_anchor": {
+        "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+        "row_number": 6,
+        "column_name": "matmul_ms"
+      },
+      "verified": true
+    },
+    {
+      "value": 0.0014,
+      "csv_anchor": {
+        "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+        "row_number": 2,
+        "column_name": "add_ms"
+      },
+      "verified": true
+    },
+    {
+      "value": 0.0037,
+      "csv_anchor": {
+        "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+        "row_number": 3,
+        "column_name": "add_ms"
+      },
+      "verified": true
+    },
+    {
+      "value": 0.0326,
+      "csv_anchor": {
+        "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+        "row_number": 4,
+        "column_name": "add_ms"
+      },
+      "verified": true
+    },
+    {
+      "value": 0.8168,
+      "csv_anchor": {
+        "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+        "row_number": 5,
+        "column_name": "add_ms"
+      },
+      "verified": true
+    },
+    {
+      "value": 3.1715,
+      "csv_anchor": {
+        "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+        "row_number": 6,
+        "column_name": "add_ms"
+      },
+      "verified": true
+    },
+    {
+      "value": 0.0014,
+      "csv_anchor": {
+        "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+        "row_number": 2,
+        "column_name": "multiply_ms"
+      },
+      "verified": true
+    },
+    {
+      "value": 0.0032,
+      "csv_anchor": {
+        "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+        "row_number": 3,
+        "column_name": "multiply_ms"
+      },
+      "verified": true
+    },
+    {
+      "value": 0.0336,
+      "csv_anchor": {
+        "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+        "row_number": 4,
+        "column_name": "multiply_ms"
+      },
+      "verified": true
+    },
+    {
+      "value": 0.7002,
+      "csv_anchor": {
+        "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+        "row_number": 5,
+        "column_name": "multiply_ms"
+      },
+      "verified": true
+    },
+    {
+      "value": 2.9862,
+      "csv_anchor": {
+        "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+        "row_number": 6,
+        "column_name": "multiply_ms"
+      },
+      "verified": true
+    }
+  ],
+  "captions": [
+    {
+      "text": "按CSV记录顺序，matmul_ms从0.0137变为38.9723，净变化38.9586；在所给数据中呈单调上升趋势，且相邻记录变化幅度逐步增大，变化正在加快。",
+      "series_name": "matmul_ms",
+      "trend": "increasing",
+      "shape": "accelerating",
+      "csv_anchors": [
+        {
+          "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+          "row_number": 2,
+          "column_name": "matmul_ms"
+        },
+        {
+          "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+          "row_number": 3,
+          "column_name": "matmul_ms"
+        },
+        {
+          "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+          "row_number": 4,
+          "column_name": "matmul_ms"
+        },
+        {
+          "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+          "row_number": 5,
+          "column_name": "matmul_ms"
+        },
+        {
+          "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+          "row_number": 6,
+          "column_name": "matmul_ms"
+        }
+      ],
+      "numeric_facts": {
+        "first": {
+          "text": "0.0137",
+          "anchor": {
+            "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+            "row_number": 2,
+            "column_name": "matmul_ms"
+          }
+        },
+        "last": {
+          "text": "38.9723",
+          "anchor": {
+            "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+            "row_number": 6,
+            "column_name": "matmul_ms"
+          }
+        },
+        "delta": {
+          "value": "38.9586",
+          "operation": "last_minus_first",
+          "source_anchors": [
+            {
+              "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+              "row_number": 6,
+              "column_name": "matmul_ms"
+            },
+            {
+              "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+              "row_number": 2,
+              "column_name": "matmul_ms"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "text": "按CSV记录顺序，add_ms从0.0014变为3.1715，净变化3.1701；在所给数据中呈单调上升趋势，且相邻记录变化幅度逐步增大，变化正在加快。",
+      "series_name": "add_ms",
+      "trend": "increasing",
+      "shape": "accelerating",
+      "csv_anchors": [
+        {
+          "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+          "row_number": 2,
+          "column_name": "add_ms"
+        },
+        {
+          "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+          "row_number": 3,
+          "column_name": "add_ms"
+        },
+        {
+          "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+          "row_number": 4,
+          "column_name": "add_ms"
+        },
+        {
+          "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+          "row_number": 5,
+          "column_name": "add_ms"
+        },
+        {
+          "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+          "row_number": 6,
+          "column_name": "add_ms"
+        }
+      ],
+      "numeric_facts": {
+        "first": {
+          "text": "0.0014",
+          "anchor": {
+            "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+            "row_number": 2,
+            "column_name": "add_ms"
+          }
+        },
+        "last": {
+          "text": "3.1715",
+          "anchor": {
+            "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+            "row_number": 6,
+            "column_name": "add_ms"
+          }
+        },
+        "delta": {
+          "value": "3.1701",
+          "operation": "last_minus_first",
+          "source_anchors": [
+            {
+              "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+              "row_number": 6,
+              "column_name": "add_ms"
+            },
+            {
+              "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+              "row_number": 2,
+              "column_name": "add_ms"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "text": "按CSV记录顺序，multiply_ms从0.0014变为2.9862，净变化2.9848；在所给数据中呈单调上升趋势，且相邻记录变化幅度逐步增大，变化正在加快。",
+      "series_name": "multiply_ms",
+      "trend": "increasing",
+      "shape": "accelerating",
+      "csv_anchors": [
+        {
+          "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+          "row_number": 2,
+          "column_name": "multiply_ms"
+        },
+        {
+          "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+          "row_number": 3,
+          "column_name": "multiply_ms"
+        },
+        {
+          "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+          "row_number": 4,
+          "column_name": "multiply_ms"
+        },
+        {
+          "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+          "row_number": 5,
+          "column_name": "multiply_ms"
+        },
+        {
+          "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+          "row_number": 6,
+          "column_name": "multiply_ms"
+        }
+      ],
+      "numeric_facts": {
+        "first": {
+          "text": "0.0014",
+          "anchor": {
+            "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+            "row_number": 2,
+            "column_name": "multiply_ms"
+          }
+        },
+        "last": {
+          "text": "2.9862",
+          "anchor": {
+            "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+            "row_number": 6,
+            "column_name": "multiply_ms"
+          }
+        },
+        "delta": {
+          "value": "2.9848",
+          "operation": "last_minus_first",
+          "source_anchors": [
+            {
+              "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+              "row_number": 6,
+              "column_name": "multiply_ms"
+            },
+            {
+              "csv_ref": "csv-920c6839f723509793e80e1202fab4443251f2ce422029017750c9f091e58fe9",
+              "row_number": 2,
+              "column_name": "multiply_ms"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption_method": "deterministic_trend_endpoints_and_exact_difference_from_source_cells",
+  "radar_note": null
+}
