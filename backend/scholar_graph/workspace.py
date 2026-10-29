@@ -9,6 +9,7 @@ import sqlite3
 import threading
 import uuid
 from contextlib import contextmanager
+from collections import OrderedDict
 
 from .api_transport import paginate
 from .errors import PipelineError
@@ -38,7 +39,7 @@ class Workspace:
         self.root = repository.root
         self.path = self.root / 'workspace.sqlite3'
         self.lock = threading.RLock()
-        self._bundle_cache = {}
+        self._bundle_cache = OrderedDict()
 
     def bundle(self, paper_id):
         self.metadata(paper_id)
@@ -47,10 +48,17 @@ class Workspace:
         with self.lock:
             cached = self._bundle_cache.get(paper_id)
             if cached is None or cached[0] != signature:
-                cached = (signature, self.repository.paper(paper_id))
-                if len(self._bundle_cache) >= 8:
-                    self._bundle_cache.pop(next(iter(self._bundle_cache)))
-                self._bundle_cache[paper_id] = cached
+                loaded=self.repository.paper(paper_id)
+                size=len(json.dumps(loaded,ensure_ascii=False).encode())
+                cached = (signature,loaded,size)
+                self._bundle_cache.pop(paper_id,None)
+                budget=64*1024*1024
+                if size<=budget:
+                    while self._bundle_cache and (len(self._bundle_cache)>=32 or sum(v[2] for v in self._bundle_cache.values())+size>budget):
+                        self._bundle_cache.popitem(last=False)
+                    self._bundle_cache[paper_id] = cached
+            elif paper_id in self._bundle_cache:
+                self._bundle_cache.move_to_end(paper_id)
             base = cached[1]
         enhanced = self.read('enrichment', paper_id, {})
         corrections = {record['chunk_id']: record for record in self.all('classification') if record['paper_id'] == paper_id}

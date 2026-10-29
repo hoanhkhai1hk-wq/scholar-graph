@@ -1,0 +1,347 @@
+{
+  "papers": [
+    {
+      "filename": "1706.03762v7.pdf",
+      "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "title": "Attention Is All You Need",
+      "year": 2017,
+      "pages": 15,
+      "chunks": 175
+    },
+    {
+      "filename": "N19-1423.pdf",
+      "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+      "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "year": null,
+      "pages": 16,
+      "chunks": 277
+    },
+    {
+      "filename": "language_understanding_paper.pdf",
+      "paper_id": "paper-eb81a65e0856bd38e855e1f1de6ee12e7c3eb92ae05c8270d345a475beb631d0",
+      "title": "Improving Language Understanding by Generative Pre-Training",
+      "year": null,
+      "pages": 12,
+      "chunks": 153
+    },
+    {
+      "filename": "language_models_are_unsupervised_multitask_learners.pdf",
+      "paper_id": "paper-d9d852e2894556e73f53cb22b7c605a9643d6f0b19bf604b429ed6192fa24f4e",
+      "title": "Language Models are Unsupervised Multitask Learners",
+      "year": null,
+      "pages": 24,
+      "chunks": 258
+    },
+    {
+      "filename": "2005.14165v4.pdf",
+      "paper_id": "paper-97fd272f1fdfc18677462d0292f5fbf26ca86b4d1b485c2dba03269b643a0e83",
+      "title": "Language Models are Few-Shot Learners",
+      "year": 2020,
+      "pages": 75,
+      "chunks": 790
+    },
+    {
+      "filename": "1910.10683v4.pdf",
+      "paper_id": "paper-ad07e47cedf437a4156419ce5d3076e08a3e59bbfd6dac7cc53df1009cdcbe7f",
+      "title": "Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer",
+      "year": 2019,
+      "pages": 67,
+      "chunks": 717
+    },
+    {
+      "filename": "2001.08361v1.pdf",
+      "paper_id": "paper-a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494",
+      "title": "Scaling Laws for Neural Language Models",
+      "year": 2020,
+      "pages": 30,
+      "chunks": 453
+    },
+    {
+      "filename": "1910.02054v3.pdf",
+      "paper_id": "paper-c531734c7d9ee647fda9b4f0e1a6abd6d58ad34e862bc945451b09032be3167e",
+      "title": "ZeRO: Memory Optimizations Toward Training Trillion Parameter Models",
+      "year": 2019,
+      "pages": 24,
+      "chunks": 249
+    },
+    {
+      "filename": "2101.03961v3.pdf",
+      "paper_id": "paper-f340f6ace31abf7d0730ef461404279f40d3c890e9cc2daeb7068b3304afdbd6",
+      "title": "Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity",
+      "year": 2021,
+      "pages": 40,
+      "chunks": 354
+    },
+    {
+      "filename": "2106.09685v2.pdf",
+      "paper_id": "paper-e9a0d3128767db616085dc0f4e6e455e672e89af823e8ed1282793682787395a",
+      "title": "LORA: LOW-RANK ADAPTATION OF LARGE LAN-GUAGE MODELS",
+      "year": 2021,
+      "pages": 26,
+      "chunks": 298
+    },
+    {
+      "filename": "2107.03374v2.pdf",
+      "paper_id": "paper-ebae72ea0e8a5eb2ecbccdb985aec6cc1254a7c4d29e6d4de7866db1e66c4855",
+      "title": "Evaluating Large Language Models Trained on Code",
+      "year": 2021,
+      "pages": 35,
+      "chunks": 726
+    },
+    {
+      "filename": "2201.11903v6.pdf",
+      "paper_id": "paper-7d9f878c23b460e4566aa4ec9201b1abfb3b8faefb2b1356e411cb90fef72a12",
+      "title": "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models",
+      "year": 2022,
+      "pages": 43,
+      "chunks": 608
+    },
+    {
+      "filename": "2203.02155v1.pdf",
+      "paper_id": "paper-c1984bb50a5b90fddb895fdc3a0f72e5bc977148c9f63ef6040cbe7a3e1f0d98",
+      "title": "Training language models to follow instructions with human feedback",
+      "year": 2022,
+      "pages": 68,
+      "chunks": 880
+    },
+    {
+      "filename": "2205.14135v2.pdf",
+      "paper_id": "paper-ca7f9fda10b90fc05dd291a3accc85e9c1a4a860b99b31928dab03ed3fcb14e4",
+      "title": "FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness",
+      "year": 2022,
+      "pages": 34,
+      "chunks": 571
+    },
+    {
+      "filename": "2210.02414v2.pdf",
+      "paper_id": "paper-82d5b9634b3d2601b3eb494dcc9e2189132f5d6e479233b91c7ce411dbdfcfa4",
+      "title": "GLM-130B: AN OPEN BILINGUAL PRE-TRAINED MODEL",
+      "year": 2022,
+      "pages": 56,
+      "chunks": 830
+    },
+    {
+      "filename": "333078981_693988129081760_4712707815225756708_n.pdf",
+      "paper_id": "paper-775ff8d09b6e5b06314135d87c194ce3535a821eeaee4be9051b331162c5fefd",
+      "title": "LLaMA: Open and Efficient Foundation Language Models",
+      "year": null,
+      "pages": 27,
+      "chunks": 322
+    },
+    {
+      "filename": "2305.18290v3.pdf",
+      "paper_id": "paper-92cb3a2b71362acda98a789b03d88688fd33cf5fcf13f81d2b1de30ee7d3b67a",
+      "title": "Direct Preference Optimization: Your Language Model is Secretly a Reward Model",
+      "year": 2023,
+      "pages": 27,
+      "chunks": 379
+    },
+    {
+      "filename": "2307.09288v2.pdf",
+      "paper_id": "paper-1df284ce95f783002074bfe8f21d47c646b396ceb1736ea3ec0ea212fc070d91",
+      "title": "Llama 2: Open Foundation and Fine-Tuned Chat Models",
+      "year": 2023,
+      "pages": 77,
+      "chunks": 867
+    },
+    {
+      "filename": "2412.19437v1.pdf",
+      "paper_id": "paper-a67e18a4ca6e2c81abc030239a3ee53705f656b79efab8ce1d6b5ac25630c2a5",
+      "title": "DeepSeek-V3 Technical Report",
+      "year": 2024,
+      "pages": 53,
+      "chunks": 531
+    },
+    {
+      "filename": "2501.12948v2.pdf",
+      "paper_id": "paper-b191b0a365a64b4ab2791d117069ed17a2933d03554a662ced58b37df52018f4",
+      "title": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning",
+      "year": 2025,
+      "pages": 86,
+      "chunks": 1244
+    }
+  ],
+  "http_seconds": [
+    5.094,
+    4.813,
+    4.797
+  ],
+  "nodes": 20,
+  "verified_edges": 303,
+  "unique_verified_pairs": 99,
+  "unverified_edges": 0,
+  "isolated": 0,
+  "ranked": [
+    {
+      "schema_version": "1.2.0",
+      "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "title": "Attention Is All You Need",
+      "year": 2017,
+      "pagerank": 0.25323193633596597,
+      "level": "cornerstone"
+    },
+    {
+      "schema_version": "1.2.0",
+      "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+      "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "year": null,
+      "pagerank": 0.10123983488935762,
+      "level": "cornerstone"
+    },
+    {
+      "schema_version": "1.2.0",
+      "paper_id": "paper-d9d852e2894556e73f53cb22b7c605a9643d6f0b19bf604b429ed6192fa24f4e",
+      "title": "Language Models are Unsupervised Multitask Learners",
+      "year": null,
+      "pagerank": 0.08348738757924434,
+      "level": "cornerstone"
+    },
+    {
+      "schema_version": "1.2.0",
+      "paper_id": "paper-eb81a65e0856bd38e855e1f1de6ee12e7c3eb92ae05c8270d345a475beb631d0",
+      "title": "Improving Language Understanding by Generative Pre-Training",
+      "year": null,
+      "pagerank": 0.08342619447179755,
+      "level": "cornerstone"
+    },
+    {
+      "schema_version": "1.2.0",
+      "paper_id": "paper-97fd272f1fdfc18677462d0292f5fbf26ca86b4d1b485c2dba03269b643a0e83",
+      "title": "Language Models are Few-Shot Learners",
+      "year": 2020,
+      "pagerank": 0.05819311615855543,
+      "level": "cornerstone"
+    },
+    {
+      "schema_version": "1.2.0",
+      "paper_id": "paper-ad07e47cedf437a4156419ce5d3076e08a3e59bbfd6dac7cc53df1009cdcbe7f",
+      "title": "Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer",
+      "year": 2019,
+      "pagerank": 0.057845865635805606,
+      "level": "cornerstone"
+    },
+    {
+      "schema_version": "1.2.0",
+      "paper_id": "paper-a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494",
+      "title": "Scaling Laws for Neural Language Models",
+      "year": 2020,
+      "pagerank": 0.044875520670171164,
+      "level": "derived"
+    },
+    {
+      "schema_version": "1.2.0",
+      "paper_id": "paper-ebae72ea0e8a5eb2ecbccdb985aec6cc1254a7c4d29e6d4de7866db1e66c4855",
+      "title": "Evaluating Large Language Models Trained on Code",
+      "year": 2021,
+      "pagerank": 0.03836841129262319,
+      "level": "derived"
+    },
+    {
+      "schema_version": "1.2.0",
+      "paper_id": "paper-c1984bb50a5b90fddb895fdc3a0f72e5bc977148c9f63ef6040cbe7a3e1f0d98",
+      "title": "Training language models to follow instructions with human feedback",
+      "year": 2022,
+      "pagerank": 0.0328116838949925,
+      "level": "derived"
+    },
+    {
+      "schema_version": "1.2.0",
+      "paper_id": "paper-775ff8d09b6e5b06314135d87c194ce3535a821eeaee4be9051b331162c5fefd",
+      "title": "LLaMA: Open and Efficient Foundation Language Models",
+      "year": null,
+      "pagerank": 0.028111970071958595,
+      "level": "derived"
+    },
+    {
+      "schema_version": "1.2.0",
+      "paper_id": "paper-f340f6ace31abf7d0730ef461404279f40d3c890e9cc2daeb7068b3304afdbd6",
+      "title": "Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity",
+      "year": 2021,
+      "pagerank": 0.02806635098207578,
+      "level": "derived"
+    },
+    {
+      "schema_version": "1.2.0",
+      "paper_id": "paper-7d9f878c23b460e4566aa4ec9201b1abfb3b8faefb2b1356e411cb90fef72a12",
+      "title": "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models",
+      "year": 2022,
+      "pagerank": 0.02565287927842754,
+      "level": "derived"
+    },
+    {
+      "schema_version": "1.2.0",
+      "paper_id": "paper-c531734c7d9ee647fda9b4f0e1a6abd6d58ad34e862bc945451b09032be3167e",
+      "title": "ZeRO: Memory Optimizations Toward Training Trillion Parameter Models",
+      "year": 2019,
+      "pagerank": 0.024501925059354307,
+      "level": "derived"
+    },
+    {
+      "schema_version": "1.2.0",
+      "paper_id": "paper-1df284ce95f783002074bfe8f21d47c646b396ceb1736ea3ec0ea212fc070d91",
+      "title": "Llama 2: Open Foundation and Fine-Tuned Chat Models",
+      "year": 2023,
+      "pagerank": 0.022818646343289922,
+      "level": "derived"
+    },
+    {
+      "schema_version": "1.2.0",
+      "paper_id": "paper-82d5b9634b3d2601b3eb494dcc9e2189132f5d6e479233b91c7ce411dbdfcfa4",
+      "title": "GLM-130B: AN OPEN BILINGUAL PRE-TRAINED MODEL",
+      "year": 2022,
+      "pagerank": 0.020434645890742502,
+      "level": "derived"
+    },
+    {
+      "schema_version": "1.2.0",
+      "paper_id": "paper-ca7f9fda10b90fc05dd291a3accc85e9c1a4a860b99b31928dab03ed3fcb14e4",
+      "title": "FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness",
+      "year": 2022,
+      "pagerank": 0.020434645890742502,
+      "level": "derived"
+    },
+    {
+      "schema_version": "1.2.0",
+      "paper_id": "paper-92cb3a2b71362acda98a789b03d88688fd33cf5fcf13f81d2b1de30ee7d3b67a",
+      "title": "Direct Preference Optimization: Your Language Model is Secretly a Reward Model",
+      "year": 2023,
+      "pagerank": 0.019987135483175062,
+      "level": "derived"
+    },
+    {
+      "schema_version": "1.2.0",
+      "paper_id": "paper-a67e18a4ca6e2c81abc030239a3ee53705f656b79efab8ce1d6b5ac25630c2a5",
+      "title": "DeepSeek-V3 Technical Report",
+      "year": 2024,
+      "pagerank": 0.019987135483175062,
+      "level": "derived"
+    },
+    {
+      "schema_version": "1.2.0",
+      "paper_id": "paper-b191b0a365a64b4ab2791d117069ed17a2933d03554a662ced58b37df52018f4",
+      "title": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning",
+      "year": 2025,
+      "pagerank": 0.018262357294272804,
+      "level": "derived"
+    },
+    {
+      "schema_version": "1.2.0",
+      "paper_id": "paper-e9a0d3128767db616085dc0f4e6e455e672e89af823e8ed1282793682787395a",
+      "title": "LORA: LOW-RANK ADAPTATION OF LARGE LAN-GUAGE MODELS",
+      "year": 2021,
+      "pagerank": 0.018262357294272804,
+      "level": "derived"
+    }
+  ],
+  "independent_linear_solution_max_error": 7.41073868937292e-14,
+  "original_pdf_title_audit": {
+    "eligible_pairs": 98,
+    "verified_found": 98,
+    "missing": []
+  },
+  "evidence_kind_counts": {
+    "body_citation": 295,
+    "bibliography_identity": 8
+  },
+  "full_response_sha256": "7fb9c9a2ccf862991eea20345d38b32c69194bb230dc20a43d5bb0c907f934b7"
+}

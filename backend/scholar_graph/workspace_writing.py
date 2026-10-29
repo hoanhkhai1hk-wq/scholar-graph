@@ -193,7 +193,7 @@ def writing_task(workspace, identity, parameters, runner):
     if parameters['kind'] == 'review':
         from .graph_service import build_graph
         graph = build_graph(bundles, workspace.repository.gate,
-                            year_bases={pid:workspace.paper(pid)['year_source'] for pid in parameters['paper_ids']})
+                            year_bases={pid:workspace.paper(pid)['year_source'] for pid in parameters['paper_ids']},bibliography_fallback=True)
         local_graph = {'nodes': sorted(graph['nodes'], key=lambda n: -n['pagerank']),
                        'edges': graph['edges'], 'scope': 'selected_papers_only_not_global_research_quality'}
         payload['local_citation_analysis'] = local_graph

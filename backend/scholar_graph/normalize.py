@@ -42,7 +42,7 @@ def citation_links(chunks: list[dict], references: list[dict]) -> list[dict]:
     by_number = {ref["number"]: ref for ref in references}
     by_marker = {source['marker']: source['number'] for source in bibliography_sources(chunks) if source.get('marker')}
     links, seen = [], set()
-    match_author_year = author_year_matcher(references)
+    match_author_year = author_year_matcher(references,{s['number']:s['raw'] for s in bibliography_sources(chunks)})
     for chunk in chunks:
         if is_references(chunk):
             continue

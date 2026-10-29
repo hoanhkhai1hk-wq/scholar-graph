@@ -7,11 +7,17 @@ def local_front_matter(bundle):
     meta = dict(bundle['paper_meta']); patch, proofs = {}, {}
     chunks = sorted([c for c in bundle['chunks'] if c['page_number'] == 1 and c['bbox']], key=lambda c: (round(c['bbox'][1]/.012), c['bbox'][0]))
     title = None
-    if not meta['title']:
+    from .reference_identity import title_key
+    abstract_y=min((c['bbox'][1] for c in chunks if c['text'].strip().casefold() in ('abstract','摘要')),default=.32)
+    header=' '.join(c['text'] for c in chunks if c['bbox'][1]<abstract_y)
+    below=' '.join(c['text'] for c in chunks if c['bbox'][1]>abstract_y)
+    misplaced=bool(meta['title'] and title_key(meta['title']) not in title_key(header) and title_key(meta['title']) in title_key(below))
+    if not meta['title'] or misplaced:
         candidates = [c for c in chunks if .03 <= c['bbox'][1] <= .25 and .15 < (c['bbox'][0]+c['bbox'][2])/2 < .85
                       and .25 <= c['bbox'][2]-c['bbox'][0] and 10 <= len(c['text']) <= 180
                       and not re.search(r'@|arxiv|https?://|copyright|proceedings|conference|draft|preprint', c['text'], re.I)
                       and not re.match(r'^\d', c['text'])]
+        candidates=[c for c in candidates if c['bbox'][1]<abstract_y]
         if candidates:
             title = candidates[0]; patch['title'] = meta['title'] = title['text']; proofs['title'] = [title['chunk_id']]
     abstract = next((c for c in chunks if c['text'].strip().casefold() in ('abstract', '摘要')), None)
@@ -42,6 +48,9 @@ def local_front_matter(bundle):
 
 def apply_local_front_matter(workspace, paper_id):
     patch, profiles, proofs = local_front_matter(workspace.bundle(paper_id))
+    # A saved title correction is authoritative, including an explicit null.
+    if 'title' in workspace.read('paper',paper_id,{}).get('metadata',{}):
+        patch.pop('title',None);proofs.pop('title',None)
     if patch:
         workspace.update(paper_id, patch)
         state = workspace.read('paper', paper_id, {})

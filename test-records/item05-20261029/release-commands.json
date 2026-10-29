@@ -1,0 +1,34 @@
+[
+  [
+    "docker",
+    "compose",
+    "-p",
+    "scholar-graph",
+    "-f",
+    "docker-compose.yml",
+    "-f",
+    "docker-compose.override.yml",
+    "-f",
+    "tests/item05/runtime-release.yml",
+    "-f",
+    "tests/item05/main-ports.yml",
+    "up",
+    "-d",
+    "--no-build",
+    "--wait"
+  ],
+  [
+    "docker",
+    "compose",
+    "-p",
+    "scholar-graph-item04",
+    "-f",
+    "tests/item04/compose.yml",
+    "-f",
+    "tests/item05/runtime-release.yml",
+    "up",
+    "-d",
+    "--no-build",
+    "--wait"
+  ]
+]

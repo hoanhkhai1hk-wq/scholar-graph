@@ -1,0 +1,54 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 375B done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/scholar-graph-frontend:qa-usability-20261029
+#2 DONE 0.1s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/8] FROM docker.io/library/scholar-graph-frontend:qa-usability-20261029@sha256:4ed36314872ef0dab7f152fb3736b85a50fc88b0ef8302f1ec6a3960959aff09
+#4 resolve docker.io/library/scholar-graph-frontend:qa-usability-20261029@sha256:4ed36314872ef0dab7f152fb3736b85a50fc88b0ef8302f1ec6a3960959aff09 0.0s done
+#4 DONE 0.1s
+
+#5 [internal] load build context
+#5 transferring context: 6.79MB 0.3s done
+#5 DONE 0.4s
+
+#6 [2/8] WORKDIR /app/frontend
+#6 CACHED
+
+#7 [3/8] COPY --chown=node:node .next/ ./.next/
+#7 CACHED
+
+#8 [4/8] COPY --chown=node:node app/ ./app/
+#8 CACHED
+
+#9 [5/8] COPY --chown=node:node components/ ./components/
+#9 DONE 0.1s
+
+#10 [6/8] COPY --chown=node:node lib/ ./lib/
+#10 DONE 0.1s
+
+#11 [7/8] COPY --chown=node:node public/ ./public/
+#11 DONE 0.1s
+
+#12 [8/8] COPY --chown=node:node next.config.mjs ./next.config.mjs
+#12 DONE 0.1s
+
+#13 exporting to image
+#13 exporting layers
+#13 exporting layers 0.2s done
+#13 exporting manifest sha256:0e98f74d465e9f7f849fc3062f93c1182b9ec98d3188e0abf07591186a3236dc 0.0s done
+#13 exporting config sha256:a098bb18eb02426708b23d115f1b06458b282252ab9f0c652ddc6616c07d665b 0.0s done
+#13 exporting attestation manifest sha256:88d87bb787bc53dabbe181426945670a635be8823b74bba67293703667ef1a45 0.0s done
+#13 exporting manifest list sha256:4f162847d5002749570b0d762d8819f9e1a8441a3a488522ba178012390fab87 0.0s done
+#13 naming to docker.io/library/scholar-graph-frontend:item05-20261029
+#13 naming to docker.io/library/scholar-graph-frontend:item05-20261029 done
+#13 unpacking to docker.io/library/scholar-graph-frontend:item05-20261029 0.1s done
+#13 DONE 0.5s
+{"tag": "scholar-graph-frontend:item05-20261029", "seconds": 2.359, "exit_code": 0, "image_id": "sha256:4f162847d5002749570b0d762d8819f9e1a8441a3a488522ba178012390fab87"}

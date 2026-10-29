@@ -2,7 +2,7 @@
 
 from .errors import PipelineError
 from .validation import chunk_anchor
-from .reference_identity import bibliography_sources, paper_titles, resolve_reference
+from .reference_identity import bibliography_sources, paper_titles, resolve_reference,title_key
 
 DAMPING, TOLERANCE, MAX_ITERATIONS = 0.85, 1e-12, 1000
 
@@ -14,7 +14,7 @@ def target_for(reference, papers):
     return result['target_paper_id'], result['reason']
 
 
-def citation_edges(bundles, gate, *, with_evidence=False, year_bases=None):
+def citation_edges(bundles, gate, *, with_evidence=False, year_bases=None, bibliography_fallback=False):
     for bundle in bundles:
         gate.bundle(bundle)
     papers = [bundle["paper_meta"] for bundle in bundles]
@@ -43,7 +43,7 @@ def citation_edges(bundles, gate, *, with_evidence=False, year_bases=None):
                 continue
             links = [link for link in bundle["citation_links"] if link["ref_id"] == ref["ref_id"]]
             for link in links or [None]:
-                anchor = chunk_anchor(chunks[link["chunk_id"]]) if link else None
+                anchor = chunk_anchor(chunks[link["chunk_id"]]) if link else bibliography[0]['anchor'] if bibliography_fallback and bibliography else None
                 key = (pid, target, link["chunk_id"] if link else None)
                 if key in seen:
                     proofs[seen[key]]['references'].append(resolution)
@@ -58,11 +58,35 @@ def citation_edges(bundles, gate, *, with_evidence=False, year_bases=None):
                 proofs.append({'edge_index': len(edges) - 1, 'from_paper_id': pid, 'to_paper_id': target,
                     'anchor': anchor, 'citation_number': link['citation_number'] if link else None,
                     'body_quote': chunks[link['chunk_id']]['text'] if link else None,
+                    'evidence_kind':'body_citation' if link else 'bibliography_identity' if anchor else 'unlocated',
                     'references': [resolution]})
+    recoveries=0
+    if bibliography_fallback:
+        from .graph_bibliography import title_witnesses
+        for bundle in bundles:
+            pid=bundle['paper_meta']['id']
+            for target,title,quotes,source_year in title_witnesses(bundle,profiles,gate,bundles):
+                pair=(pid,target)
+                if any(e['status']=='verified' and (e['from_paper_id'],e['to_paper_id'])==pair for e in edges):continue
+                target_year=next(p['paper']['year'] for p in profiles if p['paper']['id']==target)
+                conflicts=[r for r in resolutions if r['paper_id']==pid and
+                    (r['reason'] in ('conflicting_identity','ambiguous_identity') or r['reason']=='conflicting_auxiliary' and source_year is not None and target_year is not None and source_year!=target_year) and title==title_key(r['identity'].get('title'))]
+                if conflicts:continue
+                anchor=quotes[0]['anchor'];edge={'schema_version':'1.2.0','from_paper_id':pid,'to_paper_id':target,'anchor':anchor,'status':'verified'}
+                gate.record('GraphEdge',edge)
+                old=next((i for i,e in enumerate(edges) if (e['from_paper_id'],e['to_paper_id'])==pair),None)
+                index=old if old is not None else len(edges)
+                witness={'target_paper_id':target,'method':'exact_title_in_original_bibliography','bibliography':quotes,'normalized_title':title,
+                    'status':'resolved','reference_number':None,'ref_id':None,'reference_year_after_title':source_year}
+                proof={'edge_index':index,'from_paper_id':pid,'to_paper_id':target,'anchor':anchor,'citation_number':None,'body_quote':None,
+                    'evidence_kind':'bibliography_identity','references':[witness]}
+                if old is None:edges.append(edge);proofs.append(proof)
+                else:edges[old]=edge;proofs[old]=proof
+                recoveries+=1
     if with_evidence:
         return edges, unresolved, {'reference_resolutions': resolutions, 'edge_evidence': proofs,
             'reference_count': len(resolutions), 'unresolved_reference_count': len(unresolved),
-            'resolved_reference_count': len(resolutions) - len(unresolved)}
+            'resolved_reference_count': len(resolutions) - len(unresolved),'bibliography_title_recoveries':recoveries}
     return edges, unresolved
 
 

@@ -1,0 +1,12 @@
+{
+  "staged_pdf_files": 0,
+  "configured_key_found": false,
+  "pre_existing_unrelated_files_unchanged": 830,
+  "adopted_pre_existing_related_files": [
+    "frontend/components/FutureDirections.tsx",
+    "frontend/app/graph/page.tsx",
+    "frontend/components/GraphCanvas.tsx",
+    "frontend/components/GraphWorkspace.tsx",
+    "frontend/components/PaperPicker.tsx"
+  ]
+}

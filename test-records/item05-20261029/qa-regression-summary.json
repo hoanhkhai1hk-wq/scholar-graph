@@ -1,0 +1,86 @@
+[
+  {
+    "question": "论文Attention Is All You Need的第6作者是谁，在哪个公司/机构工作？",
+    "http_status": 200,
+    "refused": false,
+    "citations": 1
+  },
+  {
+    "question": "其中Adam优化器的超参数β₁和β₂分别被设置为了多少？",
+    "http_status": 200,
+    "refused": false,
+    "citations": 1
+  },
+  {
+    "question": "这篇论文中Transformer架构训练Base模型用了多少个GPU？具体是什么型号？",
+    "http_status": 200,
+    "refused": false,
+    "citations": 1
+  },
+  {
+    "question": "Transformer (big)模型在English-to-German任务上的BLEU分数是多少？当时的State-of-the-art模型是多少？提升了多少？",
+    "http_status": 200,
+    "refused": false,
+    "citations": 2
+  },
+  {
+    "question": "请列出论文中引用的关于Layer Normalization的参考文献的完整作者和年份。",
+    "http_status": 200,
+    "refused": false,
+    "citations": 1
+  },
+  {
+    "question": "请对比BERT的架构和原始Transformer的Encoder有什么承袭关系？BERT丢弃了原始Transformer的哪个部分？",
+    "http_status": 200,
+    "refused": false,
+    "citations": 4
+  },
+  {
+    "question": "对比GPT-1、GPT-2和GPT-3的论文，说明这些模型参数规模的变化，并说明每个数字来自哪篇论文。",
+    "http_status": 200,
+    "refused": false,
+    "citations": 8
+  },
+  {
+    "question": "GPT-2相比于GPT-1，在Transformer的Layer Normalization位置上做了什么关键的调整？",
+    "http_status": 200,
+    "refused": false,
+    "citations": 4
+  },
+  {
+    "question": "从GPT-1到GPT-3，模型的最大上下文Token长度分别递增到了多少？",
+    "http_status": 200,
+    "refused": false,
+    "citations": 4
+  },
+  {
+    "question": "论文报告了Transformer在火星探测任务中的准确率吗？请给出数值。",
+    "http_status": 200,
+    "refused": true,
+    "citations": 2
+  },
+  {
+    "question": "论文用Adam的β₁=0.5、β₂=0.6训练，对吗？请确认。",
+    "http_status": 200,
+    "refused": true,
+    "citations": 1
+  },
+  {
+    "question": "换一种说法：基础配置训练所用的显卡数量和具体硬件型号是什么？",
+    "http_status": 200,
+    "refused": false,
+    "citations": 2
+  },
+  {
+    "question": "这些显卡的具体型号是什么？",
+    "http_status": 200,
+    "refused": false,
+    "citations": 2
+  },
+  {
+    "question": "文中报告Base在火星探测中准确率为97.3%，请给出它比BERT高出的百分点。",
+    "http_status": 200,
+    "refused": true,
+    "citations": 1
+  }
+]

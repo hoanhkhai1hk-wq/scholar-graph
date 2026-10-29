@@ -1,0 +1,18 @@
+..................................F.......................               [100%]
+================================== FAILURES ===================================
+______ test_ambiguous_author_year_and_wrong_second_author_are_not_linked ______
+
+    def test_ambiguous_author_year_and_wrong_second_author_are_not_linked():
+        _, ref = fixture()
+        ref.update(authors=['Alice Smith', 'Bob Brown'], year=2020)
+        assert author_year_markers('Smith and Brown (2020)', [ref])
+        for text in ['Smith and Jones (2020)', 'Smith (2021)', 'Smith (2020a)']:
+            assert not author_year_markers(text, [ref])
+>       assert not author_year_markers('Smith et al. (2020)', [ref, {**ref, 'ref_id': 'other'}])
+E       AssertionError: assert not [({'schema_version': '1.0.0', 'ref_id': 'ref-demo-001-1', 'paper_id': 'paper-demo-001', 'number': 1, ...}, 'Smith et al. (2020')]
+E        +  where [({'schema_version': '1.0.0', 'ref_id': 'ref-demo-001-1', 'paper_id': 'paper-demo-001', 'number': 1, ...}, 'Smith et al. (2020')] = author_year_markers('Smith et al. (2020)', [{'schema_version': '1.0.0', 'ref_id': 'ref-demo-001-1', 'paper_id': 'paper-demo-001', 'number': 1, ...}, {'schema_version': '1.0.0', 'ref_id': 'other', 'paper_id': 'paper-demo-001', 'number': 1, ...}])
+
+tests\test_reference_identity.py:165: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_reference_identity.py::test_ambiguous_author_year_and_wrong_second_author_are_not_linked
+1 failed, 57 passed in 7.54s

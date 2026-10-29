@@ -54,6 +54,10 @@ def task_routes(workspace, tasks, uploads):
         if not files or len(files) > 20 or any(not hasattr(f, 'read') for f in files):
             await form.close()
             raise PipelineError('VALIDATION_ERROR', '请选择 1–20 个文件。')
+        declared = form.get('file_count')
+        if declared is not None and declared!=str(len(files)):
+            await form.close()
+            raise PipelineError('VALIDATION_ERROR','接收的文件数与所选数量不一致，未开始解析，请重新上传。')
         folder = workspace.root / '.task-inputs' / uuid.uuid4().hex
         folder.mkdir(parents=True)
         parameters = {'files': []}

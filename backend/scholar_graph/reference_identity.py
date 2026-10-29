@@ -37,7 +37,8 @@ def split_sentence(value, *, author_prefix=False):
     # A period after a one-letter initial is not the author/title boundary.
     for match in re.finditer(r'\.\s+', value):
         last = value[:match.start()].split()[-1:]
-        if last and (not author_prefix or len(last[0].strip('.')) > 1):
+        initial=bool(last and re.fullmatch(r'(?:[A-Za-zÀ-ž]\.-?)*[A-Za-zÀ-ž]',last[0].strip('.')))
+        if last and (not author_prefix or not initial):
             return value[:match.start()].strip(), value[match.end():].strip()
     return value.strip().rstrip('.'), ''
 
@@ -49,12 +50,16 @@ def author_list(value):
 
 def parse_reference(raw):
     raw = re.sub(r'\s+', ' ', raw).strip()
+    initials = re.match(r"^((?:(?:[A-ZÀ-ž][\w’'\-]+(?:\s+[a-z][\w\-]+)*,\s*(?:[A-Za-zÀ-ž]\.(?:-?[A-Za-zÀ-ž]\.)*\s*)+)(?:,\s*(?:and\s+)?|\s+and\s+)?)+)\s*(.+)$",raw)
     structured = re.match(r'^(.+?)\s*\(((?:18|19|20)\d{2})\)\.\s*(.+?)\.\s*(.*)$', raw)
     year_first = re.match(r'^(.+?)\.\s+((?:18|19|20)\d{2})[a-z]?\.\s+(.+)$', raw)
     if structured:
         people, date, title, venue = structured.groups()
-        # Preserve the existing parenthesized-author representation.
         names = [people.strip()]
+    elif initials:
+        people,rest=initials.groups();title,venue=split_sentence(rest)
+        years=YEAR.findall(ARXIV.sub('',raw));date=years[-1] if years else None
+        names=[p.strip(' ,') for p in re.split(r',\s*(?=[A-ZÀ-ž][a-z])|\s+and\s+',people) if p.strip(' ,')]
     elif year_first:
         people, date, rest = year_first.groups()
         title, venue = split_sentence(rest)
@@ -65,6 +70,9 @@ def parse_reference(raw):
         years = YEAR.findall(ARXIV.sub('', raw))
         date = years[-1] if years else None
         names = author_list(people) if rest else []
+    identifier=ARXIV.search(title)
+    if identifier and identifier.start()>10:title=title[:identifier.start()].rstrip(' ,')
+    title=re.sub(r',?\s*(?:18|19|20)\d{2}[a-z]?\s*$','',title).strip(' ,')
     venue = re.split(r'\s*(?:doi:|https?://doi\.org/)', venue, flags=re.I)[0].strip(' .')
     return {'authors': names, 'year': int(date) if date else None, 'title': title or None,
             'venue': venue or None, 'doi': doi(raw), 'arxiv_id': arxiv(raw)}
@@ -83,7 +91,8 @@ def bibliography_sources(chunks):
     # An entry begins at a source line/chunk boundary. A table caption after the
     # bibliography can still inherit its section, but its inline "PBMT [15]"
     # must not become a second reference 15 or abort an otherwise valid import.
-    markers = list(re.finditer(r'(?m)^[ \t]*\[(\d+|[A-Za-z][A-Za-z0-9+.-]{0,18}\d[A-Za-z0-9+.-]*)\]\s*', combined))
+    symbolic_marker=r'[A-Za-z][A-Za-z0-9+.-]{0,18}\d[A-Za-z0-9+.-]*'
+    markers = list(re.finditer(r'(?m)(?:^[ \t]*(?=\[\d+\])|(?=\['+symbolic_marker+r'\]))\[(\d+|'+symbolic_marker+r')\]\s*', combined))
     symbolic = any(not match[1].isdigit() for match in markers)
     result = []
     if markers:
@@ -101,7 +110,7 @@ def bibliography_sources(chunks):
             # appendix paragraphs or headings into references.
             parsed = parse_reference(raw)
             author_first = bool(re.match(r'^[^\d\W]', raw) and parsed['authors'] and parsed['title']
-                and parsed['year'] and len(raw) < 5000 and len(' '.join(parsed['authors'])) < 400)
+                and parsed['year'] and len(raw) < 20000 and len(' '.join(parsed['authors'])) < 15000)
             if re.match(r'^[^\d\W].{2,500}?\.\s+(?:18|19|20)\d{2}[a-z]?\.\s+\S', raw) or author_first:
                 result.append({'number': len(result) + 1, 'raw': raw, 'chunks': [chunk]})
             elif result and raw[:1].islower() and len(raw.split()) >= 3:
@@ -122,7 +131,7 @@ def surnames(names):
     return result - {''}
 
 
-def author_year_matcher(references):
+def author_year_matcher(references, sources=None):
     """Compile a document's unique author/year identities once, preserving order."""
     grouped = {}
     for ref in references:
@@ -137,7 +146,25 @@ def author_year_matcher(references):
     patterns = []
     for (surname, year), refs in grouped.items():
         if len(refs) != 1:
-            continue
+            # Duplicate bibliography entries for the exact same work do not
+            # make the cited paper ambiguous. Distinct works remain ambiguous.
+            if (sources and len({r['number'] for r in refs})==len(refs) and refs[0]['title'] and
+                len({title_key(r['title']) for r in refs})==1 and
+                all(title_key(r['title']) in title_key(sources.get(r['number'],'')) for r in refs) and
+                len({arxiv_key(r['arxiv_id']) for r in refs if r['arxiv_id']})<=1 and len({doi(r['doi']) for r in refs if r['doi']})<=1):
+                refs=refs[:1]
+            else:
+                # Different same-author/year works require a literal a/b suffix,
+                # read from the bibliography, rather than a guessed body match.
+                by_suffix={}
+                for ref in refs:
+                    labels=set(re.findall(r'(?<!\d)'+str(year)+r'([a-z])(?=[\s.,;:]|$)',(sources or {}).get(ref['number'],'')))
+                    if len(labels)==1:
+                        by_suffix.setdefault(next(iter(labels)),[]).append(ref)
+                for suffix,suffixed in by_suffix.items():
+                    if len(suffixed)==1:
+                        patterns.append((str(year),re.compile(r'(?<!\w)'+re.escape(surname)+r'(?:\s+et\s+al\.?)?\s*(?:,\s*|\(\s*)'+str(year)+suffix+r'(?!\w)',re.I),suffixed[0]))
+                continue
         # Supports Foo et al. (2017), Foo et al., 2017 and Foo and Bar, 2017.
         people = [part for name in refs[0]['authors'] for part in author_list(name)]
         second = (r'|\s+(?:and|&)\s+' + re.escape(people[1].split()[-1])) if len(people) == 2 else ''

@@ -864,6 +864,8 @@ a:hover {
 }
 
 .sg-graph__canvas {
+  min-width: 0;
+  overflow: hidden;
   height: 460px;
   border: 1px solid var(--sg-border);
   border-radius: var(--sg-radius-md);

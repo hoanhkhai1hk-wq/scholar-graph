@@ -1,0 +1,44 @@
+{
+  "reviewer": "source-based qualitative review by coding assistant; not external human expert labeling",
+  "samples": [
+    {
+      "filename": "1706.03762v7.pdf",
+      "expected": "cornerstone",
+      "basis": "Transformer架构基础；所选后续编码器、生成式预训练及大模型文献明确依赖此架构。预期为局域核心之一，不预设必为第一名。",
+      "schema_version": "1.2.0",
+      "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "title": "Attention Is All You Need",
+      "year": 2017,
+      "pagerank": 0.25323193633596597,
+      "level": "cornerstone",
+      "incoming": 14,
+      "outgoing": 0
+    },
+    {
+      "filename": "2501.12948v2.pdf",
+      "expected": "derived",
+      "basis": "集合中时间较晚的推理对齐研究，预期引用前序工作、尚无本集合更晚论文引用；局域边缘不等于质量低。",
+      "schema_version": "1.2.0",
+      "paper_id": "paper-b191b0a365a64b4ab2791d117069ed17a2933d03554a662ced58b37df52018f4",
+      "title": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning",
+      "year": 2025,
+      "pagerank": 0.018262357294272804,
+      "level": "derived",
+      "incoming": 0,
+      "outgoing": 9
+    },
+    {
+      "filename": "2412.19437v1.pdf",
+      "expected": "derived",
+      "basis": "较新的MoE基础模型技术报告，预期入引较少；R1可能引用该基础模型，仍预期低于局域核心。",
+      "schema_version": "1.2.0",
+      "paper_id": "paper-a67e18a4ca6e2c81abc030239a3ee53705f656b79efab8ce1d6b5ac25630c2a5",
+      "title": "DeepSeek-V3 Technical Report",
+      "year": 2024,
+      "pagerank": 0.019987135483175062,
+      "level": "derived",
+      "incoming": 1,
+      "outgoing": 6
+    }
+  ]
+}

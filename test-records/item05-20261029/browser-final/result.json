@@ -1,0 +1,49 @@
+{
+  "errors": [],
+  "steps": [],
+  "browser": "156.0.8078.49",
+  "graph-first_seconds": 16.704,
+  "graph": {
+    "nodes": 20,
+    "edges": 99,
+    "isolated": 0,
+    "layout_ms": 101.80000019073486
+  },
+  "zoom_controls_work": true,
+  "review": {
+    "seconds": 29.91,
+    "id": "2156de9676764808b57d6edc962238f4",
+    "model_calls": 6,
+    "reference_count": 6
+  },
+  "future": {
+    "seconds": 37.112,
+    "id": "17790f7c8e524f1fa94c981fce51d120",
+    "model_calls": 4,
+    "decisions": [
+      "exclude",
+      "exclude",
+      "uncertain"
+    ]
+  },
+  "graph-refresh_seconds": 17.753,
+  "scope_and_both_results_restored": true,
+  "layout_1440": {
+    "viewport": 1440,
+    "document": 1440
+  },
+  "layout_1366": {
+    "viewport": 1366,
+    "document": 1366
+  },
+  "layout_1024": {
+    "viewport": 1024,
+    "document": 1024
+  },
+  "layout_390": {
+    "viewport": 390,
+    "document": 390
+  },
+  "node_navigation": "http://127.0.0.1:3420/papers/paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+  "passed": true
+}

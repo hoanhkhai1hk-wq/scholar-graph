@@ -1,0 +1,391 @@
+{
+  "task_id": "f5ecef678e2b4b729d99841fa2547278",
+  "task_status": "completed",
+  "sentences": [
+    {
+      "sentence": "本综述仅围绕所选论文集合及其局部引用图谱展开，不试图概括整个领域。",
+      "type": "synthesis",
+      "section": "引言",
+      "citation_evidence": [
+        {
+          "anchor": {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 1,
+            "section": [
+              "Abstract"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00010"
+          },
+          "quote_sha256": "c3abf84dd2eccd0e9456cc2a71301a32795d979e508274daefd619c8c61a4d9e"
+        },
+        {
+          "anchor": {
+            "paper_id": "paper-97fd272f1fdfc18677462d0292f5fbf26ca86b4d1b485c2dba03269b643a0e83",
+            "page_number": 1,
+            "section": [
+              "Abstract"
+            ],
+            "chunk_id": "paper-97fd272f1fdfc18677462d0292f5fbf26ca86b4d1b485c2dba03269b643a0e83-p0001-c00036"
+          },
+          "quote_sha256": "9a5db7fc0c02379937db4a004c3c14c0271d12ca2222f98d7a95dcf5fad76420"
+        }
+      ],
+      "source_review_note": "范围声明，与20节点局部图谱一致。"
+    },
+    {
+      "sentence": "所选工作涉及序列建模架构、预训练与扩展、指令对齐以及推理能力激发等具体贡献，下文按这些贡献之间的关系组织讨论，并明确区分已有发现与后续研究设想。",
+      "type": "synthesis",
+      "section": "引言",
+      "citation_evidence": [
+        {
+          "anchor": {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 1,
+            "section": [
+              "Abstract"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00010"
+          },
+          "quote_sha256": "c3abf84dd2eccd0e9456cc2a71301a32795d979e508274daefd619c8c61a4d9e"
+        },
+        {
+          "anchor": {
+            "paper_id": "paper-97fd272f1fdfc18677462d0292f5fbf26ca86b4d1b485c2dba03269b643a0e83",
+            "page_number": 1,
+            "section": [
+              "Abstract"
+            ],
+            "chunk_id": "paper-97fd272f1fdfc18677462d0292f5fbf26ca86b4d1b485c2dba03269b643a0e83-p0001-c00036"
+          },
+          "quote_sha256": "9a5db7fc0c02379937db4a004c3c14c0271d12ca2222f98d7a95dcf5fad76420"
+        }
+      ],
+      "source_review_note": "范围内确有Transformer、GPT-3、InstructGPT、DeepSeek-R1；本句为主题归纳。段落直接引文仅覆盖架构与扩展，对齐/推理须结合所选全文核对，属于引文覆盖可继续改善之处。"
+    },
+    {
+      "sentence": "在架构层面，Transformer 以纯注意力结构替代循环与卷积，并在机器翻译任务上报告了质量与可并行性的改进。",
+      "type": "synthesis",
+      "section": "相关工作",
+      "citation_evidence": [
+        {
+          "anchor": {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 1,
+            "section": [
+              "Abstract"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00010"
+          },
+          "quote_sha256": "c3abf84dd2eccd0e9456cc2a71301a32795d979e508274daefd619c8c61a4d9e"
+        },
+        {
+          "anchor": {
+            "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+            "page_number": 1,
+            "section": [
+              "Abstract"
+            ],
+            "chunk_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0001-c00009"
+          },
+          "quote_sha256": "d60780049f57ed9f89bc79bbe913559bf9d9cee62e998c7c947e0a94f14d4b58"
+        }
+      ],
+      "source_review_note": "Attention物理第1页摘要明确纯注意力、去循环/卷积、机器翻译与并行性。"
+    },
+    {
+      "sentence": "BERT 则通过双向预训练表示，使预训练模型仅需增加一个输出层即可适配多种任务。",
+      "type": "synthesis",
+      "section": "相关工作",
+      "citation_evidence": [
+        {
+          "anchor": {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 1,
+            "section": [
+              "Abstract"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00010"
+          },
+          "quote_sha256": "c3abf84dd2eccd0e9456cc2a71301a32795d979e508274daefd619c8c61a4d9e"
+        },
+        {
+          "anchor": {
+            "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+            "page_number": 1,
+            "section": [
+              "Abstract"
+            ],
+            "chunk_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0001-c00009"
+          },
+          "quote_sha256": "d60780049f57ed9f89bc79bbe913559bf9d9cee62e998c7c947e0a94f14d4b58"
+        }
+      ],
+      "source_review_note": "BERT物理第1页摘要明确双向表示及一个额外输出层。"
+    },
+    {
+      "sentence": "这些工作为后续大规模语言模型提供了结构基础。",
+      "type": "synthesis",
+      "section": "相关工作",
+      "citation_evidence": [
+        {
+          "anchor": {
+            "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+            "page_number": 1,
+            "section": [
+              "Abstract"
+            ],
+            "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00010"
+          },
+          "quote_sha256": "c3abf84dd2eccd0e9456cc2a71301a32795d979e508274daefd619c8c61a4d9e"
+        },
+        {
+          "anchor": {
+            "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+            "page_number": 1,
+            "section": [
+              "Abstract"
+            ],
+            "chunk_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0001-c00009"
+          },
+          "quote_sha256": "d60780049f57ed9f89bc79bbe913559bf9d9cee62e998c7c947e0a94f14d4b58"
+        }
+      ],
+      "source_review_note": "属于作者观点归纳；所选后续论文确实引用Transformer/BERT，不视为整个领域因果证明。"
+    },
+    {
+      "sentence": "就方法取向而言，Scaling Laws 关注损失随模型规模、数据规模与训练算力的幂律关系，而 LoRA 关注冻结预训练权重后注入可训练的低秩分解矩阵以降低下游任务的可训练参数。",
+      "type": "synthesis",
+      "section": "比较",
+      "citation_evidence": [
+        {
+          "anchor": {
+            "paper_id": "paper-a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494",
+            "page_number": 1,
+            "section": [
+              "Abstract"
+            ],
+            "chunk_id": "paper-a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494-p0001-c00025"
+          },
+          "quote_sha256": "686dbbc7fd0443523be9e8616153fa58f6ea955572ec1a88b2bfaad85e73307a"
+        },
+        {
+          "anchor": {
+            "paper_id": "paper-e9a0d3128767db616085dc0f4e6e455e672e89af823e8ed1282793682787395a",
+            "page_number": 1,
+            "section": [
+              "ABSTRACT"
+            ],
+            "chunk_id": "paper-e9a0d3128767db616085dc0f4e6e455e672e89af823e8ed1282793682787395a-p0001-c00009"
+          },
+          "quote_sha256": "aa0aa055680d821899846184c28f16cafe50a9aea6884f49445ff44be4e39567"
+        }
+      ],
+      "source_review_note": "Scaling Laws第1页摘要明确三项幂律；LoRA第1页原文明确冻结权重、可训练低秩矩阵和参数减少。未声称统一评测胜负。"
+    },
+    {
+      "sentence": "所选证据多为各论文的摘要与方法片段，难以支撑跨论文的定量比较；局部图谱的节点与边也只反映所选集合内的引用关系。",
+      "type": "proposal",
+      "section": "局限",
+      "citation_evidence": [],
+      "source_review_note": "证据范围/局限说明，标为研究设想，不是已完成跨论文实验。"
+    },
+    {
+      "sentence": "若据此讨论方法优劣，可能忽略未纳入的工作与评测差异。",
+      "type": "proposal",
+      "section": "局限",
+      "citation_evidence": [],
+      "source_review_note": "条件性局限判断，不是实测结论。"
+    },
+    {
+      "sentence": "后续研究可考虑在更完整的文献集合上核对这些关系，并检验不同适配与对齐策略在统一条件下的表现。",
+      "type": "proposal",
+      "section": "局限",
+      "citation_evidence": [],
+      "source_review_note": "明确未来设想，没有宣称已完成统一对比实验。"
+    },
+    {
+      "sentence": "综上，所选论文分别从架构、预训练表示、扩展规律与参数高效适配等角度提出具体贡献，但这些贡献之间的关系仍需在更广的证据范围内检验。",
+      "type": "proposal",
+      "section": "结论",
+      "citation_evidence": [],
+      "source_review_note": "前文贡献的概括，类型为研究设想；不新增论文或定量结论。"
+    },
+    {
+      "sentence": "后续工作可在明确限定文献集合的前提下，系统比较这些方法在相同任务与评测下的表现，并报告其适用边界。",
+      "type": "proposal",
+      "section": "结论",
+      "citation_evidence": [],
+      "source_review_note": "明确未来设想，没有宣称研究新颖性已证明。"
+    }
+  ],
+  "sentence_count": 11,
+  "citation_instances": 6,
+  "reference_count": 5,
+  "references": [
+    {
+      "paper_id": "paper-97fd272f1fdfc18677462d0292f5fbf26ca86b4d1b485c2dba03269b643a0e83",
+      "title": "Language Models are Few-Shot Learners",
+      "authors": [
+        "Tom B. Brown",
+        "Benjamin Mann",
+        "Nick Ryder",
+        "Melanie Subbiah",
+        "Jared Kaplan",
+        "Prafulla Dhariwal",
+        "Arvind Neelakantan",
+        "Pranav Shyam",
+        "Girish Sastry",
+        "Amanda Askell",
+        "Sandhini Agarwal",
+        "Ariel Herbert-Voss",
+        "Gretchen Krueger",
+        "Tom Henighan",
+        "Rewon Child",
+        "Aditya Ramesh",
+        "Daniel M. Ziegler",
+        "Jeffrey Wu",
+        "Clemens Winter",
+        "Christopher Hesse",
+        "Mark Chen",
+        "Eric Sigler",
+        "Mateusz Litwin",
+        "Scott Gray",
+        "Benjamin Chess",
+        "Jack Clark",
+        "Christopher Berner",
+        "Sam McCandlish",
+        "Alec Radford",
+        "Ilya Sutskever",
+        "Dario Amodei"
+      ],
+      "year": 2020,
+      "doi": null,
+      "arxiv_id": "2005.14165v4",
+      "source": "local-upload"
+    },
+    {
+      "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+      "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "authors": [
+        "Jacob Devlin",
+        "Ming-Wei Chang",
+        "Kenton Lee",
+        "Kristina Toutanova"
+      ],
+      "year": null,
+      "doi": null,
+      "arxiv_id": null,
+      "source": "local-upload"
+    },
+    {
+      "paper_id": "paper-a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494",
+      "title": "Scaling Laws for Neural Language Models",
+      "authors": [
+        "Jared Kaplan",
+        "Sam McCandlish",
+        "Tom B. Brown",
+        "Tom Henighan",
+        "Scott Gray",
+        "Alec Radford",
+        "Jeffrey Wu",
+        "Dario Amodei"
+      ],
+      "year": 2020,
+      "doi": null,
+      "arxiv_id": "2001.08361v1",
+      "source": "local-upload"
+    },
+    {
+      "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "title": "Attention Is All You Need",
+      "authors": [
+        "Ashish Vaswani",
+        "Noam Shazeer",
+        "Niki Parmar",
+        "Jakob Uszkoreit",
+        "Llion Jones",
+        "Aidan N. Gomez",
+        "Łukasz Kaiser",
+        "Illia Polosukhin"
+      ],
+      "year": 2017,
+      "doi": null,
+      "arxiv_id": "1706.03762v7",
+      "source": "local-upload"
+    },
+    {
+      "paper_id": "paper-e9a0d3128767db616085dc0f4e6e455e672e89af823e8ed1282793682787395a",
+      "title": "LORA: LOW-RANK ADAPTATION OF LARGE LAN-GUAGE MODELS",
+      "authors": [
+        "Edward Hu",
+        "Yelong Shen",
+        "Phillip Wallis",
+        "Zeyuan Allen-Zhu",
+        "Yuanzhi Li",
+        "Shean Wang",
+        "Lu Wang",
+        "Weizhu Chen"
+      ],
+      "year": 2021,
+      "doi": null,
+      "arxiv_id": "2106.09685v2",
+      "source": "local-upload"
+    }
+  ],
+  "outside_selected_set": 0,
+  "model_calls": [
+    {
+      "provider": "deepseek",
+      "model": "deepseek-chat",
+      "phase": "workspace_review_1",
+      "elapsed_seconds": 4.869416,
+      "prompt_tokens": 107553,
+      "completion_tokens": 567,
+      "total_tokens": 108120,
+      "http_status": 200,
+      "status": "succeeded",
+      "response_bytes": 3161,
+      "finish_reason": "stop"
+    },
+    {
+      "provider": "deepseek",
+      "model": "deepseek-chat",
+      "phase": "writing_semantic_review",
+      "elapsed_seconds": 5.168779,
+      "prompt_tokens": 74730,
+      "completion_tokens": 464,
+      "total_tokens": 75194,
+      "http_status": 200,
+      "status": "succeeded",
+      "response_bytes": 2517,
+      "finish_reason": "stop"
+    },
+    {
+      "provider": "deepseek",
+      "model": "deepseek-chat",
+      "phase": "writing_paragraph_repair",
+      "elapsed_seconds": 1.481679,
+      "prompt_tokens": 22909,
+      "completion_tokens": 90,
+      "total_tokens": 22999,
+      "http_status": 200,
+      "status": "succeeded",
+      "response_bytes": 842,
+      "finish_reason": "stop"
+    },
+    {
+      "provider": "deepseek",
+      "model": "deepseek-chat",
+      "phase": "writing_semantic_review",
+      "elapsed_seconds": 3.712865,
+      "prompt_tokens": 74676,
+      "completion_tokens": 388,
+      "total_tokens": 75064,
+      "http_status": 200,
+      "status": "succeeded",
+      "response_bytes": 2239,
+      "finish_reason": "stop"
+    }
+  ],
+  "reviewer": "coding assistant inspected actual source quotes; not an independent human expert"
+}

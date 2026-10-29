@@ -1,0 +1,3 @@
+{"event":"review","seconds":29.91,"id":"2156de9676764808b57d6edc962238f4","model_calls":6}
+{"event":"future","seconds":37.112,"id":"17790f7c8e524f1fa94c981fce51d120","model_calls":4}
+{"passed":true,"graph":{"nodes":20,"edges":99,"isolated":0,"layout_ms":101.80000019073486},"restored":true,"review":{"seconds":29.91,"id":"2156de9676764808b57d6edc962238f4","model_calls":6,"reference_count":6},"future":{"seconds":37.112,"id":"17790f7c8e524f1fa94c981fce51d120","model_calls":4,"decisions":["exclude","exclude","uncertain"]}}

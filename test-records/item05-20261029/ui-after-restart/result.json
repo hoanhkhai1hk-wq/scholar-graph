@@ -1,0 +1,44 @@
+{
+  "errors": [],
+  "reused_real_task_ids": {
+    "review": "f5ecef678e2b4b729d99841fa2547278",
+    "future": "86b806a20cff40f79e95866d0c5dc3a4"
+  },
+  "viewports": [
+    {
+      "viewport": 1440,
+      "document": 1440,
+      "height": 900,
+      "all_node_centres_visible": true
+    },
+    {
+      "viewport": 1366,
+      "document": 1366,
+      "height": 768,
+      "all_node_centres_visible": true
+    },
+    {
+      "viewport": 1024,
+      "document": 1024,
+      "height": 768,
+      "all_node_centres_visible": true
+    },
+    {
+      "viewport": 390,
+      "document": 390,
+      "height": 844,
+      "all_node_centres_visible": true
+    }
+  ],
+  "graph_seconds": 22.484,
+  "canvas": {
+    "nodes": 20,
+    "edges": 99,
+    "layout_ms": 80.39999985694885
+  },
+  "number_mapping_and_hover": true,
+  "partial_search_warning_visible": 3,
+  "full_diagnostics_edges": 303,
+  "edge_anchor_navigation": "http://127.0.0.1:3420/read/paper-1df284ce95f783002074bfe8f21d47c646b396ceb1736ea3ec0ea212fc070d91?page=3&chunk=paper-1df284ce95f783002074bfe8f21d47c646b396ceb1736ea3ec0ea212fc070d91-p0003-c00018",
+  "passed": true
+}

@@ -1,0 +1,265 @@
+{
+  "task_id": "86b806a20cff40f79e95866d0c5dc3a4",
+  "status": "completed",
+  "created_at": "2026-10-29T03:44:13.719210+00:00",
+  "finished_at": "2026-10-29T03:49:59.054274+00:00",
+  "failed_count": 0,
+  "source_evidence_counts": {
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697": 2,
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4": 3,
+    "paper-eb81a65e0856bd38e855e1f1de6ee12e7c3eb92ae05c8270d345a475beb631d0": 1,
+    "paper-d9d852e2894556e73f53cb22b7c605a9643d6f0b19bf604b429ed6192fa24f4e": 1,
+    "paper-97fd272f1fdfc18677462d0292f5fbf26ca86b4d1b485c2dba03269b643a0e83": 3,
+    "paper-ad07e47cedf437a4156419ce5d3076e08a3e59bbfd6dac7cc53df1009cdcbe7f": 3,
+    "paper-a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494": 3,
+    "paper-c531734c7d9ee647fda9b4f0e1a6abd6d58ad34e862bc945451b09032be3167e": 2,
+    "paper-f340f6ace31abf7d0730ef461404279f40d3c890e9cc2daeb7068b3304afdbd6": 3,
+    "paper-e9a0d3128767db616085dc0f4e6e455e672e89af823e8ed1282793682787395a": 3,
+    "paper-ebae72ea0e8a5eb2ecbccdb985aec6cc1254a7c4d29e6d4de7866db1e66c4855": 3,
+    "paper-7d9f878c23b460e4566aa4ec9201b1abfb3b8faefb2b1356e411cb90fef72a12": 3,
+    "paper-c1984bb50a5b90fddb895fdc3a0f72e5bc977148c9f63ef6040cbe7a3e1f0d98": 3,
+    "paper-ca7f9fda10b90fc05dd291a3accc85e9c1a4a860b99b31928dab03ed3fcb14e4": 3,
+    "paper-82d5b9634b3d2601b3eb494dcc9e2189132f5d6e479233b91c7ce411dbdfcfa4": 3,
+    "paper-775ff8d09b6e5b06314135d87c194ce3535a821eeaee4be9051b331162c5fefd": 2,
+    "paper-92cb3a2b71362acda98a789b03d88688fd33cf5fcf13f81d2b1de30ee7d3b67a": 3,
+    "paper-1df284ce95f783002074bfe8f21d47c646b396ceb1736ea3ec0ea212fc070d91": 3,
+    "paper-a67e18a4ca6e2c81abc030239a3ee53705f656b79efab8ce1d6b5ac25630c2a5": 3,
+    "paper-b191b0a365a64b4ab2791d117069ed17a2933d03554a662ced58b37df52018f4": 3
+  },
+  "model_calls": [
+    {
+      "provider": "deepseek",
+      "model": "deepseek-chat",
+      "phase": "future_extract",
+      "elapsed_seconds": 1.796547,
+      "prompt_tokens": 14900,
+      "completion_tokens": 280,
+      "total_tokens": 15180,
+      "http_status": 200,
+      "status": "succeeded",
+      "response_bytes": 1987,
+      "finish_reason": "stop"
+    },
+    {
+      "provider": "deepseek",
+      "model": "deepseek-chat",
+      "phase": "future_compare",
+      "elapsed_seconds": 3.847818,
+      "prompt_tokens": 17840,
+      "completion_tokens": 430,
+      "total_tokens": 18270,
+      "http_status": 200,
+      "status": "succeeded",
+      "response_bytes": 2105,
+      "finish_reason": "stop"
+    },
+    {
+      "provider": "deepseek",
+      "model": "deepseek-chat",
+      "phase": "future_compare",
+      "elapsed_seconds": 3.165355,
+      "prompt_tokens": 22027,
+      "completion_tokens": 399,
+      "total_tokens": 22426,
+      "http_status": 200,
+      "status": "succeeded",
+      "response_bytes": 2208,
+      "finish_reason": "stop"
+    },
+    {
+      "provider": "deepseek",
+      "model": "deepseek-chat",
+      "phase": "future_compare",
+      "elapsed_seconds": 3.324201,
+      "prompt_tokens": 11510,
+      "completion_tokens": 439,
+      "total_tokens": 11949,
+      "http_status": 200,
+      "status": "succeeded",
+      "response_bytes": 1950,
+      "finish_reason": "stop"
+    }
+  ],
+  "directions": [
+    {
+      "topic": "将自注意力限制在输入序列中以各输出位置为中心的局部邻域，以提升超长序列任务的计算效率",
+      "decision": "exclude",
+      "source_year": 2017,
+      "date_check": {
+        "source_year": 2017,
+        "matched_years": [
+          2022,
+          2020,
+          2021
+        ],
+        "strictly_later": true
+      },
+      "searches": [
+        {
+          "query": "all:\"restricted\" AND all:\"self-attention\" AND all:\"neighborhood\"",
+          "sort": "submittedDate descending",
+          "limit": 5,
+          "error": {
+            "error_code": "UPSTREAM_ERROR",
+            "message": "arXiv 暂时限制请求频率，请稍后重试；未编造下载或检索结果。",
+            "details": {
+              "retry_after_seconds": 30
+            }
+          },
+          "seconds": 34.186
+        },
+        {
+          "query": "all:\"local\" AND all:\"attention\" AND all:\"long\" AND all:\"sequences\"",
+          "sort": "submittedDate descending",
+          "limit": 5,
+          "error": {
+            "error_code": "UPSTREAM_ERROR",
+            "message": "arXiv 暂时限制请求频率，请稍后重试；未编造下载或检索结果。",
+            "details": {
+              "retry_after_seconds": 30
+            }
+          },
+          "seconds": 38.006
+        }
+      ],
+      "search_errors": [
+        {
+          "error_code": "UPSTREAM_ERROR",
+          "message": "arXiv 暂时限制请求频率，请稍后重试；未编造下载或检索结果。",
+          "details": {
+            "retry_after_seconds": 30
+          }
+        },
+        {
+          "error_code": "UPSTREAM_ERROR",
+          "message": "arXiv 暂时限制请求频率，请稍后重试；未编造下载或检索结果。",
+          "details": {
+            "retry_after_seconds": 30
+          }
+        }
+      ],
+      "error": {
+        "error_code": "PARTIAL_SEARCH",
+        "message": "部分公开检索失败；仅依据已取得的库内原文和公开结果核查，检索覆盖不完整。"
+      },
+      "candidate_count": 15
+    },
+    {
+      "topic": "将Transformer扩展到文本以外的输入输出模态（如图像、音频、视频），并研究局部受限注意力机制以高效处理大输入输出",
+      "decision": "exclude",
+      "source_year": 2017,
+      "date_check": {
+        "source_year": 2017,
+        "matched_years": [
+          2020,
+          2026,
+          2026,
+          2020,
+          2025
+        ],
+        "strictly_later": true
+      },
+      "searches": [
+        {
+          "query": "all:\"Transformer\" AND all:\"non-text\" AND all:\"modalities\"",
+          "sort": "submittedDate descending",
+          "limit": 5,
+          "returned_ids": [
+            "arxiv-2605.24869v1",
+            "arxiv-2602.09843v3",
+            "arxiv-2512.23903v2",
+            "arxiv-2505.14329v2",
+            "arxiv-2002.10695v1"
+          ],
+          "seconds": 16.994
+        },
+        {
+          "query": "all:\"attention\" AND all:\"models\" AND all:\"images\" AND all:\"audio\" AND all:\"video\"",
+          "sort": "submittedDate descending",
+          "limit": 5,
+          "error": {
+            "error_code": "UPSTREAM_ERROR",
+            "message": "arXiv 公共接口连接失败，未编造记录。",
+            "details": null
+          },
+          "seconds": 61.016
+        }
+      ],
+      "search_errors": [
+        {
+          "error_code": "UPSTREAM_ERROR",
+          "message": "arXiv 公共接口连接失败，未编造记录。",
+          "details": null
+        }
+      ],
+      "error": {
+        "error_code": "PARTIAL_SEARCH",
+        "message": "部分公开检索失败；仅依据已取得的库内原文和公开结果核查，检索覆盖不完整。"
+      },
+      "candidate_count": 20
+    },
+    {
+      "topic": "研究在传统微调设置下评估GPT-3",
+      "decision": "exclude",
+      "source_year": 2020,
+      "date_check": {
+        "source_year": 2020,
+        "matched_years": [
+          2021,
+          2022,
+          2021
+        ],
+        "strictly_later": true
+      },
+      "searches": [
+        {
+          "query": "all:\"GPT-3\" AND all:\"fine-tuning\" AND all:\"evaluation\"",
+          "sort": "submittedDate descending",
+          "limit": 5,
+          "error": {
+            "error_code": "UPSTREAM_ERROR",
+            "message": "arXiv 暂时限制请求频率，请稍后重试；未编造下载或检索结果。",
+            "details": {
+              "retry_after_seconds": 30
+            }
+          },
+          "seconds": 64.281
+        },
+        {
+          "query": "all:\"fine-tune\" AND all:\"GPT-3\" AND all:\"benchmarks\"",
+          "sort": "submittedDate descending",
+          "limit": 5,
+          "error": {
+            "error_code": "UPSTREAM_ERROR",
+            "message": "arXiv 暂时限制请求频率，请稍后重试；未编造下载或检索结果。",
+            "details": {
+              "retry_after_seconds": 30
+            }
+          },
+          "seconds": 98.014
+        }
+      ],
+      "search_errors": [
+        {
+          "error_code": "UPSTREAM_ERROR",
+          "message": "arXiv 暂时限制请求频率，请稍后重试；未编造下载或检索结果。",
+          "details": {
+            "retry_after_seconds": 30
+          }
+        },
+        {
+          "error_code": "UPSTREAM_ERROR",
+          "message": "arXiv 暂时限制请求频率，请稍后重试；未编造下载或检索结果。",
+          "details": {
+            "retry_after_seconds": 30
+          }
+        }
+      ],
+      "error": {
+        "error_code": "PARTIAL_SEARCH",
+        "message": "部分公开检索失败；仅依据已取得的库内原文和公开结果核查，检索覆盖不完整。"
+      },
+      "candidate_count": 11
+    }
+  ]
+}

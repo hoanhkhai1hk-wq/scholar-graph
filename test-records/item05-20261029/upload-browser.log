@@ -1,0 +1,8 @@
+{"event":"twenty-uploaded-once","task":"9e8c64d5553147a7be91266fa2d6b841","status":202}
+{"event":"progress","seconds":1.055,"status":"queued","progress":{"completed_units":0,"total_units":null,"label":"等待处理"}}
+{"event":"progress","seconds":3.108,"status":"running","progress":{"completed_units":0,"total_units":4,"label":"正在解析 1706.03762v7.pdf；可取消，已完成页面将保留"}}
+{"event":"progress","seconds":25.721,"status":"running","progress":{"completed_units":1,"total_units":4,"label":"正在解析 N19-1423.pdf；可取消，已完成页面将保留"}}
+{"event":"progress","seconds":38.15,"status":"running","progress":{"completed_units":2,"total_units":4,"label":"正在解析 language_understanding_paper.pdf；可取消，已完成页面将保留"}}
+{"event":"progress","seconds":46.396,"status":"running","progress":{"completed_units":3,"total_units":4,"label":"正在解析 language_models_are_unsupervised_multitask_learners.pdf；可取消，已完成页面将保留"}}
+{"event":"progress","seconds":60.742,"status":"completed","progress":{"completed_units":4,"total_units":4,"label":"已处理 4 / 4 个文件"}}
+{"error":"Expected values to be strictly equal:\n\n4 !== 20\n"}

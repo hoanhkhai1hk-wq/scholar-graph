@@ -19,8 +19,7 @@ export default async function GraphPage() {
         <Diagnostics summary="技术信息（接口路径与算法口径）">GET /api/v1/graph</Diagnostics>
         <h1 className="sg-title">局域引用图谱</h1>
         <p className="sg-lede">
-          只读本地已落盘记录：节点按 paper_id 排序，分层按 PageRank 降序；
-          无锚点的边原样标 unverified，不画成已核验边；未来方向的已排除与保留分开列。
+          从一组真实文献中找出引用关系、核心节点与衍生研究，逐条查看原文依据，并继续生成综述。
         </p>
         <p className="sg-back">
           <a href="/">← 返回论文库</a>

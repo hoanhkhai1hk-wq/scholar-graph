@@ -19,7 +19,7 @@ export default function UploadWorkspace() {
   async function upload() {
     if (!files.length || uploading) return;
     setUploading(true); setError("");
-    try { const body = new FormData(); files.forEach(file => body.append("files", file)); const task = await workspaceRequest<WorkspaceTask>("/uploads", { method: "POST", body }); remember(task.id); setFiles([]); }
+    try { const body = new FormData(); body.append("file_count",String(files.length)); files.forEach(file => body.append("files", file)); const task = await workspaceRequest<WorkspaceTask>("/uploads", { method: "POST", body }); remember(task.id); setFiles([]); }
     catch (cause) { setError(cause instanceof Error ? cause.message : "文件上传失败，请重试。"); }
     finally { setUploading(false); }
   }

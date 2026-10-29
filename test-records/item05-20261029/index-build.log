@@ -1,0 +1,9 @@
+
+> scholar-graph-frontend@0.1.0 build
+> npm run sync-pdf-worker && next build
+
+
+> scholar-graph-frontend@0.1.0 sync-pdf-worker
+> node scripts/copy-pdf-worker.mjs
+
+[pdf.worker] 未找到源文件，请先 npm install： D:\AI_Workspace\Tasks\scholar-graph\data\item05-20261029\index-checkout\frontend\node_modules\pdfjs-dist\build\pdf.worker.min.mjs

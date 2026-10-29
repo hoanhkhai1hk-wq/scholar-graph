@@ -1,0 +1,72 @@
+{
+  "task_id": "c47202057d854e3787f75aee125af208",
+  "status": "completed",
+  "timing": {
+    "seconds": 44.203,
+    "kind": "future",
+    "status": "completed"
+  },
+  "source_papers": 20,
+  "model_calls": [
+    {
+      "provider": "deepseek",
+      "model": "deepseek-chat",
+      "phase": "future_extract",
+      "elapsed_seconds": 2.283525,
+      "prompt_tokens": 14900,
+      "completion_tokens": 276,
+      "total_tokens": 15176,
+      "http_status": 200,
+      "status": "succeeded",
+      "response_bytes": 1973,
+      "finish_reason": "stop"
+    },
+    {
+      "provider": "deepseek",
+      "model": "deepseek-chat",
+      "phase": "future_compare",
+      "elapsed_seconds": 3.259741,
+      "prompt_tokens": 21667,
+      "completion_tokens": 338,
+      "total_tokens": 22005,
+      "http_status": 200,
+      "status": "succeeded",
+      "response_bytes": 2134,
+      "finish_reason": "stop"
+    },
+    {
+      "provider": "deepseek",
+      "model": "deepseek-chat",
+      "phase": "future_compare",
+      "elapsed_seconds": 4.079597,
+      "prompt_tokens": 23800,
+      "completion_tokens": 559,
+      "total_tokens": 24359,
+      "http_status": 200,
+      "status": "succeeded",
+      "response_bytes": 2736,
+      "finish_reason": "stop"
+    },
+    {
+      "provider": "deepseek",
+      "model": "deepseek-chat",
+      "phase": "future_compare",
+      "elapsed_seconds": 3.956454,
+      "prompt_tokens": 16345,
+      "completion_tokens": 535,
+      "total_tokens": 16880,
+      "http_status": 200,
+      "status": "succeeded",
+      "response_bytes": 2408,
+      "finish_reason": "stop"
+    }
+  ],
+  "queries": 6,
+  "search_errors": 0,
+  "bibliography_passages": 0,
+  "decisions": [
+    "exclude",
+    "exclude",
+    "exclude"
+  ]
+}

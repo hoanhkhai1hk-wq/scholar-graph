@@ -1,0 +1,4 @@
+# Preserve the separate host Python service currently occupying port 8000.
+services:
+  backend:
+    ports: !override ["127.0.0.1:8030:8000"]

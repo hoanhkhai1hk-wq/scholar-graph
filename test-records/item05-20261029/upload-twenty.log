@@ -1,0 +1,47 @@
+{"event":"twenty-uploaded-once","task":"30f649dd2360447c8bf3bef98fccb005","status":202}
+{"event":"progress","seconds":1.965,"status":"queued","progress":{"completed_units":0,"total_units":null,"label":"等待处理"}}
+{"event":"progress","seconds":4.024,"status":"running","progress":{"completed_units":0,"total_units":20,"label":"正在解析 1706.03762v7.pdf；可取消，已完成页面将保留"}}
+{"event":"progress","seconds":14.358,"status":"running","progress":{"completed_units":1,"total_units":20,"label":"正在解析 N19-1423.pdf；可取消，已完成页面将保留"}}
+{"event":"progress","seconds":24.736,"status":"running","progress":{"completed_units":2,"total_units":20,"label":"正在解析 language_understanding_paper.pdf；可取消，已完成页面将保留"}}
+{"event":"progress","seconds":30.957,"status":"running","progress":{"completed_units":3,"total_units":20,"label":"正在解析 language_models_are_unsupervised_multitask_learners.pdf；可取消，已完成页面将保留"}}
+{"event":"progress","seconds":43.325,"status":"running","progress":{"completed_units":4,"total_units":20,"label":"正在解析 2005.14165v4.pdf；可取消，已完成页面将保留"}}
+{"event":"progress","seconds":53.622,"status":"running","progress":{"completed_units":4,"total_units":20,"label":"2005.14165v4.pdf：已解析 32 / 75 页；检查点已保存"}}
+{"event":"progress","seconds":59.805,"status":"running","progress":{"completed_units":4,"total_units":20,"label":"2005.14165v4.pdf：已解析 75 / 75 页；检查点已保存"}}
+{"event":"progress","seconds":70.156,"status":"running","progress":{"completed_units":5,"total_units":20,"label":"正在解析 1910.10683v4.pdf；可取消，已完成页面将保留"}}
+{"event":"progress","seconds":80.387,"status":"running","progress":{"completed_units":5,"total_units":20,"label":"1910.10683v4.pdf：已解析 32 / 67 页；检查点已保存"}}
+{"event":"progress","seconds":84.495,"status":"running","progress":{"completed_units":5,"total_units":20,"label":"1910.10683v4.pdf：已解析 67 / 67 页；检查点已保存"}}
+{"event":"progress","seconds":92.83,"status":"running","progress":{"completed_units":6,"total_units":20,"label":"正在解析 2001.08361v1.pdf；可取消，已完成页面将保留"}}
+{"event":"progress","seconds":109.526,"status":"running","progress":{"completed_units":7,"total_units":20,"label":"正在解析 1910.02054v3.pdf；可取消，已完成页面将保留"}}
+{"event":"progress","seconds":119.83,"status":"running","progress":{"completed_units":8,"total_units":20,"label":"正在解析 2101.03961v3.pdf；可取消，已完成页面将保留"}}
+{"event":"progress","seconds":128.022,"status":"running","progress":{"completed_units":8,"total_units":20,"label":"2101.03961v3.pdf：已解析 32 / 40 页；检查点已保存"}}
+{"event":"progress","seconds":130.084,"status":"running","progress":{"completed_units":8,"total_units":20,"label":"2101.03961v3.pdf：已解析 40 / 40 页；检查点已保存"}}
+{"event":"progress","seconds":134.315,"status":"running","progress":{"completed_units":9,"total_units":20,"label":"正在解析 2106.09685v2.pdf；可取消，已完成页面将保留"}}
+{"event":"progress","seconds":155.156,"status":"running","progress":{"completed_units":10,"total_units":20,"label":"正在解析 2107.03374v2.pdf；可取消，已完成页面将保留"}}
+{"event":"progress","seconds":167.461,"status":"running","progress":{"completed_units":10,"total_units":20,"label":"2107.03374v2.pdf：已解析 35 / 35 页；检查点已保存"}}
+{"event":"progress","seconds":175.7,"status":"running","progress":{"completed_units":11,"total_units":20,"label":"正在解析 2201.11903v6.pdf；可取消，已完成页面将保留"}}
+{"event":"progress","seconds":183.911,"status":"running","progress":{"completed_units":11,"total_units":20,"label":"2201.11903v6.pdf：已解析 32 / 43 页；检查点已保存"}}
+{"event":"progress","seconds":185.967,"status":"running","progress":{"completed_units":11,"total_units":20,"label":"2201.11903v6.pdf：已解析 43 / 43 页；检查点已保存"}}
+{"event":"progress","seconds":192.158,"status":"running","progress":{"completed_units":12,"total_units":20,"label":"正在解析 2203.02155v1.pdf；可取消，已完成页面将保留"}}
+{"event":"progress","seconds":202.399,"status":"running","progress":{"completed_units":12,"total_units":20,"label":"2203.02155v1.pdf：已解析 32 / 68 页；检查点已保存"}}
+{"event":"progress","seconds":206.52,"status":"running","progress":{"completed_units":12,"total_units":20,"label":"2203.02155v1.pdf：已解析 68 / 68 页；检查点已保存"}}
+{"event":"progress","seconds":214.762,"status":"running","progress":{"completed_units":13,"total_units":20,"label":"正在解析 2205.14135v2.pdf；可取消，已完成页面将保留"}}
+{"event":"progress","seconds":223.017,"status":"running","progress":{"completed_units":13,"total_units":20,"label":"2205.14135v2.pdf：已解析 32 / 34 页；检查点已保存"}}
+{"event":"progress","seconds":225.066,"status":"running","progress":{"completed_units":13,"total_units":20,"label":"2205.14135v2.pdf：已解析 34 / 34 页；检查点已保存"}}
+{"event":"progress","seconds":233.336,"status":"running","progress":{"completed_units":14,"total_units":20,"label":"正在解析 2210.02414v2.pdf；可取消，已完成页面将保留"}}
+{"event":"progress","seconds":245.593,"status":"running","progress":{"completed_units":14,"total_units":20,"label":"2210.02414v2.pdf：已解析 32 / 56 页；检查点已保存"}}
+{"event":"progress","seconds":247.771,"status":"running","progress":{"completed_units":14,"total_units":20,"label":"2210.02414v2.pdf：已解析 56 / 56 页；检查点已保存"}}
+{"event":"progress","seconds":258.265,"status":"running","progress":{"completed_units":15,"total_units":20,"label":"正在解析 333078981_693988129081760_4712707815225756708_n.pdf；可取消，已完成页面将保留"}}
+{"event":"progress","seconds":274.828,"status":"running","progress":{"completed_units":16,"total_units":20,"label":"正在解析 2305.18290v3.pdf；可取消，已完成页面将保留"}}
+{"event":"progress","seconds":289.253,"status":"running","progress":{"completed_units":17,"total_units":20,"label":"正在解析 2307.09288v2.pdf；可取消，已完成页面将保留"}}
+{"event":"progress","seconds":303.611,"status":"running","progress":{"completed_units":17,"total_units":20,"label":"2307.09288v2.pdf：已解析 32 / 77 页；检查点已保存"}}
+{"event":"progress","seconds":311.774,"status":"running","progress":{"completed_units":17,"total_units":20,"label":"2307.09288v2.pdf：已解析 64 / 77 页；检查点已保存"}}
+{"event":"progress","seconds":313.846,"status":"running","progress":{"completed_units":17,"total_units":20,"label":"2307.09288v2.pdf：已解析 77 / 77 页；检查点已保存"}}
+{"event":"progress","seconds":326.306,"status":"running","progress":{"completed_units":18,"total_units":20,"label":"正在解析 2412.19437v1.pdf；可取消，已完成页面将保留"}}
+{"event":"progress","seconds":336.588,"status":"running","progress":{"completed_units":18,"total_units":20,"label":"2412.19437v1.pdf：已解析 32 / 53 页；检查点已保存"}}
+{"event":"progress","seconds":338.662,"status":"running","progress":{"completed_units":18,"total_units":20,"label":"2412.19437v1.pdf：已解析 53 / 53 页；检查点已保存"}}
+{"event":"progress","seconds":349.023,"status":"running","progress":{"completed_units":19,"total_units":20,"label":"正在解析 2501.12948v2.pdf；可取消，已完成页面将保留"}}
+{"event":"progress","seconds":359.363,"status":"running","progress":{"completed_units":19,"total_units":20,"label":"2501.12948v2.pdf：已解析 32 / 86 页；检查点已保存"}}
+{"event":"progress","seconds":367.617,"status":"running","progress":{"completed_units":19,"total_units":20,"label":"2501.12948v2.pdf：已解析 64 / 86 页；检查点已保存"}}
+{"event":"progress","seconds":369.664,"status":"running","progress":{"completed_units":19,"total_units":20,"label":"2501.12948v2.pdf：已解析 86 / 86 页；检查点已保存"}}
+{"event":"progress","seconds":382.155,"status":"completed","progress":{"completed_units":20,"total_units":20,"label":"已处理 20 / 20 个文件"}}
+{"event":"completed","seconds":382.155,"succeeded":20,"requests":1}

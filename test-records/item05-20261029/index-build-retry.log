@@ -1,0 +1,52 @@
+
+> scholar-graph-frontend@0.1.0 build
+> npm run sync-pdf-worker && next build
+
+
+> scholar-graph-frontend@0.1.0 sync-pdf-worker
+> node scripts/copy-pdf-worker.mjs
+
+[pdf.worker] 已复制 -> public/pdf.worker.min.mjs
+   ▲ Next.js 15.5.28
+   - Experiments (use with caution):
+     · middlewareClientMaxBodySize: 104857600
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 7.0s
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/7) ...
+   Generating static pages (1/7) 
+   Generating static pages (3/7) 
+   Generating static pages (5/7) 
+ ✓ Generating static pages (7/7)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                 Size  First Load JS
+┌ ƒ /                                    4.38 kB         112 kB
+├ ○ /_not-found                            990 B         103 kB
+├ ƒ /api/backend/[...path]                 143 B         102 kB
+├ ƒ /api/review/login                      143 B         102 kB
+├ ƒ /api/workspace/[...path]               143 B         102 kB
+├ ƒ /graph                                142 kB         253 kB
+├ ○ /icon.svg                                0 B            0 B
+├ ○ /login                                  1 kB         103 kB
+├ ƒ /papers/[id]                         2.44 kB         108 kB
+├ ƒ /qa                                    163 B         113 kB
+├ ƒ /read/[id]                           83.7 kB         200 kB
+├ ƒ /retrieval                           9.84 kB         121 kB
+├ ○ /settings                            2.08 kB         113 kB
+├ ƒ /upload                              1.67 kB         113 kB
+└ ƒ /writing                             4.76 kB         107 kB
++ First Load JS shared by all             102 kB
+  ├ chunks/395-0625f58465d6f8a6.js         46 kB
+  ├ chunks/96e575d4-3612013e49b83198.js  54.2 kB
+  └ other shared chunks (total)          2.04 kB
+
+
+ƒ Middleware                             34.8 kB
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

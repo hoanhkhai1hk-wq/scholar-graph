@@ -1,0 +1,27 @@
+{
+  "task_id": "4b6f719f6856489085ee1a318afa6e71",
+  "status": "failed",
+  "created_at": "2026-10-29T03:39:42.479359+00:00",
+  "finished_at": "2026-10-29T03:43:27.957630+00:00",
+  "failed_count": 3,
+  "failed": [
+    {
+      "filename": "探索除二元比较协议外其他人类偏好数据收集方案用于奖励建模",
+      "error_code": "UPSTREAM_ERROR",
+      "message": "arXiv 公共接口连接失败，未编造记录。",
+      "details": null
+    },
+    {
+      "filename": "分析将大模型拒绝采样数据蒸馏到小模型的效果",
+      "error_code": "UPSTREAM_ERROR",
+      "message": "arXiv 公共接口连接失败，未编造记录。",
+      "details": null
+    },
+    {
+      "filename": "研究RLHF迭代微调中能力遗忘的原因与缓解方法",
+      "error_code": "UPSTREAM_ERROR",
+      "message": "arXiv 公共接口连接失败，未编造记录。",
+      "details": null
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 375B 0.0s done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/scholar-graph-frontend:qa-usability-20261029
+#2 DONE 0.1s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.1s
+
+#4 [internal] load build context
+#4 ...
+
+#5 [1/8] FROM docker.io/library/scholar-graph-frontend:qa-usability-20261029@sha256:4ed36314872ef0dab7f152fb3736b85a50fc88b0ef8302f1ec6a3960959aff09
+#5 resolve docker.io/library/scholar-graph-frontend:qa-usability-20261029@sha256:4ed36314872ef0dab7f152fb3736b85a50fc88b0ef8302f1ec6a3960959aff09 0.1s done
+#5 DONE 0.1s
+
+#4 [internal] load build context
+#4 transferring context: 6.79MB 0.3s done
+#4 DONE 0.3s
+
+#6 [2/8] WORKDIR /app/frontend
+#6 CACHED
+
+#7 [3/8] COPY --chown=node:node .next/ ./.next/
+#7 DONE 0.3s
+
+#8 [4/8] COPY --chown=node:node app/ ./app/
+#8 DONE 0.1s
+
+#9 [5/8] COPY --chown=node:node components/ ./components/
+#9 DONE 0.1s
+
+#10 [6/8] COPY --chown=node:node lib/ ./lib/
+#10 DONE 0.1s
+
+#11 [7/8] COPY --chown=node:node public/ ./public/
+#11 DONE 0.1s
+
+#12 [8/8] COPY --chown=node:node next.config.mjs ./next.config.mjs
+#12 DONE 0.1s
+
+#13 exporting to image
+#13 exporting layers
+#13 exporting layers 0.4s done
+#13 exporting manifest sha256:436ea9158e3ef7301b0d80af4c252fe79e5e4dc4cc8da65be4d65766740404d3 0.0s done
+#13 exporting config sha256:c37cd8d92f203a8fe0d7fd88640599531a3a2c8c5b771230f50df1200f0b648e 0.0s done
+#13 exporting attestation manifest sha256:d482fe95f0bb66c34b85b58ef3917f0066248ec6650a1584c27fff6fe9c2eb70 0.0s done
+#13 exporting manifest list sha256:b02789758a00d9bfa8effa8a59ba81ba4fed971680e10a55cb1c9faaa3609237
+#13 exporting manifest list sha256:b02789758a00d9bfa8effa8a59ba81ba4fed971680e10a55cb1c9faaa3609237 0.0s done
+#13 naming to docker.io/library/scholar-graph-frontend:item05-20261029 done
+#13 unpacking to docker.io/library/scholar-graph-frontend:item05-20261029
+#13 unpacking to docker.io/library/scholar-graph-frontend:item05-20261029 0.2s done
+#13 DONE 0.8s
+{"tag": "scholar-graph-frontend:item05-20261029", "seconds": 3.64, "exit_code": 0, "image_id": "sha256:b02789758a00d9bfa8effa8a59ba81ba4fed971680e10a55cb1c9faaa3609237"}

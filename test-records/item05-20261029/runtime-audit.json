@@ -1,0 +1,186 @@
+{
+  "deployments": [
+    {
+      "project": "scholar-graph",
+      "backend_port": 8030,
+      "expected_papers": 0,
+      "services": {
+        "backend": {
+          "health": "healthy",
+          "oom_killed": false,
+          "image_id": "sha256:15f13a5f69706029ccf29f9496ba8b4bb56c637bcfea1ed223a2e37199c30641",
+          "restart": "unless-stopped",
+          "source_sha256": {
+            "citation_graph.py": "1ee2cde6a549141e5d6cea7c97d88540533c8916f9d1d2bd7752ee666cb493ea",
+            "front_matter.py": "3f8e25aa9e96a918f941e1579b3e64d2bcd18314d89ae27ccfeb588d17382111",
+            "graph_service.py": "92f9034f5712ee96c15924d363d6cff9c200562c1c93a8c2dacf3a967d4df8f3",
+            "normalize.py": "3ca69d508b5b0e99a7c9c33a805f3017cf257158b313abbe98fd04d15bb6fb42",
+            "reference_identity.py": "ffc899ac63beeec5010912dcfc2458d356123005f4b3b4e143cc2f0520f40503",
+            "workspace.py": "339ae506a61a464cac75ef7a89c5afe3b945d419dfef41f55b2df6db4f0be539",
+            "workspace_future.py": "acb2c49f818a1e452447c7f9a7c244a6f4537e249e1e9688f328cd8abd932952",
+            "workspace_routes.py": "bf4687bde19f043c0304c2a6588def97d66b4df25c0c0157115071e7c6ec0efd",
+            "workspace_task_routes.py": "3bde6af79b18e263691450410b40d05f7a250340a3600f4957e1e60c174ba7f2",
+            "workspace_writing.py": "af383279ec2f1accdbd316d7e376e28d08d17816789ddfa3adff7fd6a1d30cf0",
+            "future_evidence.py": "398a0502873dc87a40cfd6f79118f22a4d86234b9b9f5dfa7bd51f4b30becd71",
+            "graph_preparation.py": "eebf25af583d68fe71f06b38e40b20b953f77975bb8ed46fadba3808cd83645d",
+            "graph_bibliography.py": "9be68139f11c5a3e4603b539a9c924d14e712695167b0b14d123cdaed1d2c5fa"
+          }
+        },
+        "frontend": {
+          "health": "healthy",
+          "oom_killed": false,
+          "image_id": "sha256:4f162847d5002749570b0d762d8819f9e1a8441a3a488522ba178012390fab87",
+          "restart": "unless-stopped",
+          "source_sha256": {
+            "app/api/workspace/[...path]/route.ts": "77d1d1c7b3db8bb3be20cc0ef46dbeb51f0d0f1df43a90a29af60f6ce8fea74c",
+            "app/globals.css": "e27d0faa6c250690eb273bbdc2c3ad63246361de0e00a85ed0ed1c56fe0fbbf2",
+            "app/graph/page.tsx": "ddd95519c4ad96baf3b265be2e753ed3dac7c2199bb6e2b34981d5d3f728fef1",
+            "components/GraphCanvas.tsx": "af9e142b6b7debc9d7f61355a32bcad31c1d8a0ca6515e9a09f5f69c0fddc2b2",
+            "components/GraphWorkspace.tsx": "ae7e1880a828efa85f10ca81f8e87a0fa4893b2af7cbdc3fcaf92d2b825de45e",
+            "components/UploadWorkspace.tsx": "e5aa4f1b9b2e1a603487a1d4acdcce01bf9fa3607143fb9b3f067d3e78e4a0d9",
+            "components/PaperPicker.tsx": "74fae7ad25ae7e4ae9df71387a1d7f190944aa7c92e1c86c4d880945aa819b37",
+            "components/GraphResearch.tsx": "dedbb9c91de2134ea9fbac9acabfc572707437e875d938992c83d956daa0cab7",
+            "components/GraphDiagnostics.tsx": "21a15c5f14822fb60e23de2c2b2d53610d2140ba208fa3a0b54c3c39b4138d14",
+            "components/FutureDirections.tsx": "ebef9f72d961cefc82c88312a4faff758103bde83a1e2e7727df606ff453623c",
+            "lib/server-transport.ts": "a7f1808e068c8a15aa4eca464c0c42d98882fac1ba8b641325f880d7854bb364",
+            "next.config.mjs": "f48704f6a47917dc34a962f9889d11b02d2991e50da6e981eaa241a2db7b9bef",
+            ".next/BUILD_ID": "0c3de71edaf2e7698a9f36f344c2c9a7bd858fd8bb9847c53b7972a16dfb5622"
+          }
+        }
+      },
+      "backend_dns": "172.21.0.2      backend",
+      "paper_count": 0,
+      "system_http_status": 200
+    },
+    {
+      "project": "scholar-graph-item04",
+      "backend_port": 8100,
+      "expected_papers": 37,
+      "services": {
+        "backend": {
+          "health": "healthy",
+          "oom_killed": false,
+          "image_id": "sha256:15f13a5f69706029ccf29f9496ba8b4bb56c637bcfea1ed223a2e37199c30641",
+          "restart": "unless-stopped",
+          "source_sha256": {
+            "citation_graph.py": "1ee2cde6a549141e5d6cea7c97d88540533c8916f9d1d2bd7752ee666cb493ea",
+            "front_matter.py": "3f8e25aa9e96a918f941e1579b3e64d2bcd18314d89ae27ccfeb588d17382111",
+            "graph_service.py": "92f9034f5712ee96c15924d363d6cff9c200562c1c93a8c2dacf3a967d4df8f3",
+            "normalize.py": "3ca69d508b5b0e99a7c9c33a805f3017cf257158b313abbe98fd04d15bb6fb42",
+            "reference_identity.py": "ffc899ac63beeec5010912dcfc2458d356123005f4b3b4e143cc2f0520f40503",
+            "workspace.py": "339ae506a61a464cac75ef7a89c5afe3b945d419dfef41f55b2df6db4f0be539",
+            "workspace_future.py": "acb2c49f818a1e452447c7f9a7c244a6f4537e249e1e9688f328cd8abd932952",
+            "workspace_routes.py": "bf4687bde19f043c0304c2a6588def97d66b4df25c0c0157115071e7c6ec0efd",
+            "workspace_task_routes.py": "3bde6af79b18e263691450410b40d05f7a250340a3600f4957e1e60c174ba7f2",
+            "workspace_writing.py": "af383279ec2f1accdbd316d7e376e28d08d17816789ddfa3adff7fd6a1d30cf0",
+            "future_evidence.py": "398a0502873dc87a40cfd6f79118f22a4d86234b9b9f5dfa7bd51f4b30becd71",
+            "graph_preparation.py": "eebf25af583d68fe71f06b38e40b20b953f77975bb8ed46fadba3808cd83645d",
+            "graph_bibliography.py": "9be68139f11c5a3e4603b539a9c924d14e712695167b0b14d123cdaed1d2c5fa"
+          }
+        },
+        "frontend": {
+          "health": "healthy",
+          "oom_killed": false,
+          "image_id": "sha256:4f162847d5002749570b0d762d8819f9e1a8441a3a488522ba178012390fab87",
+          "restart": "unless-stopped",
+          "source_sha256": {
+            "app/api/workspace/[...path]/route.ts": "77d1d1c7b3db8bb3be20cc0ef46dbeb51f0d0f1df43a90a29af60f6ce8fea74c",
+            "app/globals.css": "e27d0faa6c250690eb273bbdc2c3ad63246361de0e00a85ed0ed1c56fe0fbbf2",
+            "app/graph/page.tsx": "ddd95519c4ad96baf3b265be2e753ed3dac7c2199bb6e2b34981d5d3f728fef1",
+            "components/GraphCanvas.tsx": "af9e142b6b7debc9d7f61355a32bcad31c1d8a0ca6515e9a09f5f69c0fddc2b2",
+            "components/GraphWorkspace.tsx": "ae7e1880a828efa85f10ca81f8e87a0fa4893b2af7cbdc3fcaf92d2b825de45e",
+            "components/UploadWorkspace.tsx": "e5aa4f1b9b2e1a603487a1d4acdcce01bf9fa3607143fb9b3f067d3e78e4a0d9",
+            "components/PaperPicker.tsx": "74fae7ad25ae7e4ae9df71387a1d7f190944aa7c92e1c86c4d880945aa819b37",
+            "components/GraphResearch.tsx": "dedbb9c91de2134ea9fbac9acabfc572707437e875d938992c83d956daa0cab7",
+            "components/GraphDiagnostics.tsx": "21a15c5f14822fb60e23de2c2b2d53610d2140ba208fa3a0b54c3c39b4138d14",
+            "components/FutureDirections.tsx": "ebef9f72d961cefc82c88312a4faff758103bde83a1e2e7727df606ff453623c",
+            "lib/server-transport.ts": "a7f1808e068c8a15aa4eca464c0c42d98882fac1ba8b641325f880d7854bb364",
+            "next.config.mjs": "f48704f6a47917dc34a962f9889d11b02d2991e50da6e981eaa241a2db7b9bef",
+            ".next/BUILD_ID": "0c3de71edaf2e7698a9f36f344c2c9a7bd858fd8bb9847c53b7972a16dfb5622"
+          }
+        }
+      },
+      "backend_dns": "172.25.0.2      backend",
+      "paper_count": 37,
+      "system_http_status": 200
+    },
+    {
+      "project": "scholar-graph-item05",
+      "backend_port": 8120,
+      "expected_papers": 20,
+      "services": {
+        "backend": {
+          "health": "healthy",
+          "oom_killed": false,
+          "image_id": "sha256:15f13a5f69706029ccf29f9496ba8b4bb56c637bcfea1ed223a2e37199c30641",
+          "restart": "unless-stopped",
+          "source_sha256": {
+            "citation_graph.py": "1ee2cde6a549141e5d6cea7c97d88540533c8916f9d1d2bd7752ee666cb493ea",
+            "front_matter.py": "3f8e25aa9e96a918f941e1579b3e64d2bcd18314d89ae27ccfeb588d17382111",
+            "graph_service.py": "92f9034f5712ee96c15924d363d6cff9c200562c1c93a8c2dacf3a967d4df8f3",
+            "normalize.py": "3ca69d508b5b0e99a7c9c33a805f3017cf257158b313abbe98fd04d15bb6fb42",
+            "reference_identity.py": "ffc899ac63beeec5010912dcfc2458d356123005f4b3b4e143cc2f0520f40503",
+            "workspace.py": "339ae506a61a464cac75ef7a89c5afe3b945d419dfef41f55b2df6db4f0be539",
+            "workspace_future.py": "acb2c49f818a1e452447c7f9a7c244a6f4537e249e1e9688f328cd8abd932952",
+            "workspace_routes.py": "bf4687bde19f043c0304c2a6588def97d66b4df25c0c0157115071e7c6ec0efd",
+            "workspace_task_routes.py": "3bde6af79b18e263691450410b40d05f7a250340a3600f4957e1e60c174ba7f2",
+            "workspace_writing.py": "af383279ec2f1accdbd316d7e376e28d08d17816789ddfa3adff7fd6a1d30cf0",
+            "future_evidence.py": "398a0502873dc87a40cfd6f79118f22a4d86234b9b9f5dfa7bd51f4b30becd71",
+            "graph_preparation.py": "eebf25af583d68fe71f06b38e40b20b953f77975bb8ed46fadba3808cd83645d",
+            "graph_bibliography.py": "9be68139f11c5a3e4603b539a9c924d14e712695167b0b14d123cdaed1d2c5fa"
+          }
+        },
+        "frontend": {
+          "health": "healthy",
+          "oom_killed": false,
+          "image_id": "sha256:4f162847d5002749570b0d762d8819f9e1a8441a3a488522ba178012390fab87",
+          "restart": "unless-stopped",
+          "source_sha256": {
+            "app/api/workspace/[...path]/route.ts": "77d1d1c7b3db8bb3be20cc0ef46dbeb51f0d0f1df43a90a29af60f6ce8fea74c",
+            "app/globals.css": "e27d0faa6c250690eb273bbdc2c3ad63246361de0e00a85ed0ed1c56fe0fbbf2",
+            "app/graph/page.tsx": "ddd95519c4ad96baf3b265be2e753ed3dac7c2199bb6e2b34981d5d3f728fef1",
+            "components/GraphCanvas.tsx": "af9e142b6b7debc9d7f61355a32bcad31c1d8a0ca6515e9a09f5f69c0fddc2b2",
+            "components/GraphWorkspace.tsx": "ae7e1880a828efa85f10ca81f8e87a0fa4893b2af7cbdc3fcaf92d2b825de45e",
+            "components/UploadWorkspace.tsx": "e5aa4f1b9b2e1a603487a1d4acdcce01bf9fa3607143fb9b3f067d3e78e4a0d9",
+            "components/PaperPicker.tsx": "74fae7ad25ae7e4ae9df71387a1d7f190944aa7c92e1c86c4d880945aa819b37",
+            "components/GraphResearch.tsx": "dedbb9c91de2134ea9fbac9acabfc572707437e875d938992c83d956daa0cab7",
+            "components/GraphDiagnostics.tsx": "21a15c5f14822fb60e23de2c2b2d53610d2140ba208fa3a0b54c3c39b4138d14",
+            "components/FutureDirections.tsx": "ebef9f72d961cefc82c88312a4faff758103bde83a1e2e7727df606ff453623c",
+            "lib/server-transport.ts": "a7f1808e068c8a15aa4eca464c0c42d98882fac1ba8b641325f880d7854bb364",
+            "next.config.mjs": "f48704f6a47917dc34a962f9889d11b02d2991e50da6e981eaa241a2db7b9bef",
+            ".next/BUILD_ID": "0c3de71edaf2e7698a9f36f344c2c9a7bd858fd8bb9847c53b7972a16dfb5622"
+          }
+        }
+      },
+      "backend_dns": "172.26.0.2      backend",
+      "paper_count": 20,
+      "system_http_status": 200
+    }
+  ],
+  "original_pdfs_unchanged": 41,
+  "frozen_records_and_retained_pdfs_unchanged": 100,
+  "memory_sample_not_peak": [
+    {
+      "BlockIO": "0B / 0B",
+      "CPUPerc": "118.80%",
+      "Container": "scholar-graph-item05-backend-1",
+      "ID": "c16734ead5f5",
+      "MemPerc": "3.37%",
+      "MemUsage": "138MiB / 4GiB",
+      "Name": "scholar-graph-item05-backend-1",
+      "NetIO": "10.4kB / 375kB",
+      "PIDs": "5"
+    },
+    {
+      "BlockIO": "1.44MB / 4.1kB",
+      "CPUPerc": "0.03%",
+      "Container": "scholar-graph-item05-frontend-1",
+      "ID": "83de8153f985",
+      "MemPerc": "9.20%",
+      "MemUsage": "94.23MiB / 1GiB",
+      "Name": "scholar-graph-item05-frontend-1",
+      "NetIO": "358kB / 328kB",
+      "PIDs": "23"
+    }
+  ]
+}

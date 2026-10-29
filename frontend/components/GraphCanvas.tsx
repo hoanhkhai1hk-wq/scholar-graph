@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import cytoscape, { type Core, type ElementDefinition } from "cytoscape";
 import type { GraphView } from "@/lib/types";
@@ -29,25 +29,27 @@ export default function GraphCanvas({ graph }: { graph: GraphView }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const instanceRef = useRef<Core | null>(null);
   const router = useRouter();
+  const [hoverTitle,setHoverTitle]=useState("");
 
   const verifiedEdges = graph.edges.filter((edge) => edge.status === "verified");
+  const verifiedPairCount = new Set(verifiedEdges.map(edge => `${edge.from_paper_id}:${edge.to_paper_id}`)).size;
   const unverifiedCount = graph.edges.length - verifiedEdges.length;
   const isolatedCount = graph.layers.isolated.length;
 
   useEffect(() => {
     if (!containerRef.current) return;
+    const started=performance.now();
 
     const elements: ElementDefinition[] = [];
 
-    for (const node of graph.nodes) {
+    for (const [index,node] of graph.nodes.entries()) {
       const level = node.level;
       const isCornerstone = level === "cornerstone";
       elements.push({
         data: {
           id: node.paper_id,
-          label:
-            (node.title ?? "（标题未提取）").slice(0, 28) +
-            ((node.title ?? "").length > 28 ? "…" : ""),
+          label: String(index+1).padStart(2,"0"),
+          fullTitle: node.title ?? "（标题未提取）",
           level,
           pagerank: node.pagerank,
           paperId: node.paper_id,
@@ -56,11 +58,15 @@ export default function GraphCanvas({ graph }: { graph: GraphView }) {
     }
 
     // 只画已核验边，引用方向为 引用方 → 被引方
+    const addedPairs = new Set<string>();
     for (const edge of graph.edges) {
       if (edge.status !== "verified") continue;
+      const pair = `${edge.from_paper_id}->${edge.to_paper_id}`;
+      if (addedPairs.has(pair)) continue;
+      addedPairs.add(pair);
       elements.push({
         data: {
-          id: `${edge.from_paper_id}->${edge.to_paper_id}`,
+          id: pair,
           source: edge.from_paper_id,
           target: edge.to_paper_id,
         },
@@ -80,12 +86,10 @@ export default function GraphCanvas({ graph }: { graph: GraphView }) {
             "border-color": COLOR.nodeBorder,
             label: "data(label)",
             "font-size": 11,
-            color: "data(level)",
+            color: "#ffffff",
             "text-valign": "center",
-            "text-halign": "right",
-            "text-margin-x": 6,
-            "text-outline-width": 2,
-            "text-outline-color": COLOR.canvas,
+            "text-halign": "center",
+            "text-outline-width": 0,
             width: 30,
             height: 30,
           },
@@ -111,7 +115,8 @@ export default function GraphCanvas({ graph }: { graph: GraphView }) {
         {
           selector: "edge",
           style: {
-            width: 2,
+            width: 1.2,
+            opacity: 0.45,
             "line-color": COLOR.edge,
             "target-arrow-color": COLOR.edge,
             "target-arrow-shape": "triangle",
@@ -138,10 +143,25 @@ export default function GraphCanvas({ graph }: { graph: GraphView }) {
         router.push(`/papers/${paperId}`);
       }
     });
+    cy.on("mouseover", "node", event=>setHoverTitle(`${event.target.data('label')} · ${event.target.data('fullTitle')}`));
+    cy.on("mouseout", "node", ()=>setHoverTitle(""));
 
     instanceRef.current = cy;
+    const host=containerRef.current;
+    host.dataset.nodeCount=String(cy.nodes().length);host.dataset.edgeCount=String(cy.edges().length);
+    host.dataset.layoutMs=String(performance.now()-started);
+    host.setAttribute('aria-label',`引用网络画布：${cy.nodes().length}个节点，${cy.edges().length}条关系`);
+    let width=host.clientWidth,height=host.clientHeight,frame=0;
+    const resize=new ResizeObserver(()=>{
+      if(host.clientWidth===width&&host.clientHeight===height)return;
+      width=host.clientWidth;height=host.clientHeight;
+      cancelAnimationFrame(frame);
+      frame=requestAnimationFrame(()=>{cy.resize();cy.fit(undefined,40);});
+    });
+    resize.observe(host);
 
     return () => {
+      resize.disconnect();cancelAnimationFrame(frame);
       cy.destroy();
       instanceRef.current = null;
     };
@@ -174,19 +194,20 @@ export default function GraphCanvas({ graph }: { graph: GraphView }) {
       </div>
 
       <div className="sg-graph__canvas" ref={containerRef} />
+      <p className="sg-mono" style={{minHeight:"2.8em",margin:"8px 0"}} aria-live="polite">{hoverTitle||"悬停节点查看论文全名；编号与下方论文表对应，点击节点可进入详情。"}</p>
 
       <div className="sg-graph__legend">
         <span className="sg-legend-item">
           <i className="sg-swatch sg-swatch--cornerstone" />
-          基石 cornerstone
+          本地核心
         </span>
         <span className="sg-legend-item">
           <i className="sg-swatch sg-swatch--derived" />
-          衍生 derived
+          衍生节点
         </span>
         <span className="sg-legend-item">
           <i className="sg-swatch sg-swatch--isolated" />
-          孤立 isolated
+          尚无已匹配关系
         </span>
         <span className="sg-legend-item">
           <i className="sg-swatch sg-swatch--edge" />
@@ -195,7 +216,7 @@ export default function GraphCanvas({ graph }: { graph: GraphView }) {
       </div>
 
       <p className="sg-mono">
-        画布只画 {verifiedEdges.length} 条已核验（verified）边
+        画布显示 {verifiedPairCount} 条论文间引用关系，对应 {verifiedEdges.length} 处已核对原文证据
         {unverifiedCount > 0
           ? `；另有 ${unverifiedCount} 条无锚点边未画入画布，避免被误读为已核验，数量与明细见下方附表`
           : "，没有未核验边"}

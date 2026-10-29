@@ -1,0 +1,22 @@
+[
+  {
+    "compact": false,
+    "seconds": 16.453,
+    "response_bytes": 3295803
+  },
+  {
+    "compact": true,
+    "seconds": 8.625,
+    "response_bytes": 495002
+  },
+  {
+    "compact": true,
+    "seconds": 8.703,
+    "response_bytes": 495002
+  },
+  {
+    "compact": true,
+    "seconds": 9.219,
+    "response_bytes": 495002
+  }
+]

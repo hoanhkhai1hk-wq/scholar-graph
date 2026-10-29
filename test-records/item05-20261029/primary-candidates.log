@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "D:\AI_Workspace\Tasks\scholar-graph\tests\item05\check_primary_candidates.py", line 5, in <module>
+    from scholar_graph.app import create_app
+ModuleNotFoundError: No module named 'scholar_graph.app'

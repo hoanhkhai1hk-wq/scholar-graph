@@ -1,0 +1,21 @@
+{
+  "errors": [],
+  "steps": [],
+  "browser": "156.0.8078.49",
+  "graph-first_seconds": 11.501,
+  "graph": {
+    "nodes": 20,
+    "edges": 99,
+    "isolated": 0,
+    "layout_ms": 103.40000009536743
+  },
+  "zoom_controls_work": true,
+  "review": {
+    "seconds": 21.318,
+    "id": "f5ecef678e2b4b729d99841fa2547278",
+    "model_calls": 4,
+    "reference_count": 5
+  },
+  "passed": false,
+  "failure": "AssertionError [ERR_ASSERTION]: null\n+ actual - expected\n\n+ 'failed'\n- 'completed'\n\n    at generate (D:\\AI_Workspace\\Tasks\\scholar-graph\\tests\\item05\\browser_acceptance.cjs:36:10)\n    at async D:\\AI_Workspace\\Tasks\\scholar-graph\\tests\\item05\\browser_acceptance.cjs:53:16"
+}

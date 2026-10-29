@@ -12,12 +12,16 @@ export default function PaperPicker({
   onChange,
   multiple = false,
   label = "选择论文",
+  disabled = false,
+  maxSelections = 100,
 }: {
   papers: PaperMeta[];
   selected: string[];
   onChange: (ids: string[]) => void;
   multiple?: boolean;
   label?: string;
+  disabled?: boolean;
+  maxSelections?: number;
 }) {
   const [keyword, setKeyword] = useState("");
 
@@ -52,8 +56,10 @@ export default function PaperPicker({
         <input
           className="sg-input"
           type="search"
-          placeholder="按标题或 id 过滤"
+          placeholder="搜索论文标题"
+          aria-label={`${label}：搜索论文`}
           value={keyword}
+          disabled={disabled}
           onChange={(event) => setKeyword(event.target.value)}
         />
       </div>
@@ -70,7 +76,9 @@ export default function PaperPicker({
                   <input
                     type={multiple ? "checkbox" : "radio"}
                     name="paper-picker"
+                    value={paper.id}
                     checked={checked}
+                    disabled={disabled || multiple && !checked && selected.length >= maxSelections}
                     onChange={() => toggle(paper.id)}
                   />
                   <span className="sg-picker__title">
@@ -80,7 +88,7 @@ export default function PaperPicker({
                     {paper.year ?? "—"} · {paper.version ?? "—"} ·{" "}
                     {paper.page_count ?? "—"} 页
                   </span>
-                  <span className="sg-mono">{paper.id}</span>
+
                 </label>
               </li>
             );

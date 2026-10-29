@@ -1,0 +1,11 @@
+{
+  "from_paper_id": "paper-f340f6ace31abf7d0730ef461404279f40d3c890e9cc2daeb7068b3304afdbd6",
+  "to_paper_id": "paper-c531734c7d9ee647fda9b4f0e1a6abd6d58ad34e862bc945451b09032be3167e",
+  "original_source_file": "2101.03961v3.pdf",
+  "target_file": "1910.02054v3.pdf",
+  "shared_arxiv_id": "1910.02054",
+  "original_pdf_physical_pages": [
+    38
+  ],
+  "reason": "The bibliography and target titles differ in singular/plural form; arXiv identity agrees. This pair is outside the exact-full-title audit."
+}

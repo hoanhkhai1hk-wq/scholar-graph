@@ -81,12 +81,29 @@ def workspace_routes(workspace):
                title: str | None = None, archived: bool = False, year: int | None = None, source: str | None = None):
         return workspace.papers(page=page, page_size=page_size, title=title, archived=archived, year=year, source=source)
 
+    class GraphSelection(BaseModel):
+        paper_ids:list[str]=Field(min_length=1,max_length=100)
+        compact:bool=False
+
+    @router.post('/graph/rebuild')
+    def rebuild_graph(body:GraphSelection):
+        from .graph_preparation import prepare_graph
+        prepare_graph(workspace,body.paper_ids)
+        value=build_graph([workspace.bundle(pid) for pid in body.paper_ids],workspace.repository.gate,
+            year_bases={pid:workspace.paper(pid)['year_source'] for pid in body.paper_ids},bibliography_fallback=True)
+        if body.compact:
+            value['diagnostics']={**value['diagnostics'],'reference_resolutions':[],
+                'edge_evidence':[{'edge_index':r['edge_index'],'evidence_kind':r.get('evidence_kind','body_citation')} for r in value['diagnostics']['edge_evidence']],
+                'evidence_scope':'summary_only_full_quotes_available_from_get_graph'}
+        from starlette.responses import JSONResponse
+        return JSONResponse(value)
+
     @router.get('/graph')
     def graph(paper_ids: list[str] = Query(..., min_length=1, max_length=100)):
         if len(set(paper_ids)) != len(paper_ids):
             raise PipelineError('VALIDATION_ERROR', '请选择不同的论文。')
         return build_graph([workspace.bundle(pid) for pid in paper_ids], workspace.repository.gate,
-                           year_bases={pid:workspace.paper(pid)['year_source'] for pid in paper_ids})
+                           year_bases={pid:workspace.paper(pid)['year_source'] for pid in paper_ids},bibliography_fallback=True)
 
     @router.get('/papers/{paper_id}')
     def paper(paper_id: str):
