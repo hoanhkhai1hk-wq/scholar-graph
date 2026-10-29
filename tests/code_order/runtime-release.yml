@@ -1,0 +1,5 @@
+services:
+  backend:
+    image: scholar-graph-backend:code-order-20261029
+  frontend:
+    image: scholar-graph-frontend:code-order-20261029

@@ -238,7 +238,7 @@ export default function ReaderPane({
             {chunk.section_path.length > 0 ? (
               <p className="sg-mono">{chunk.section_path.join(" / ")}</p>
             ) : null}
-            <p className="sg-prose">
+            <p className="sg-prose sg-source-text">
               {renderText(chunk.text, number => jumpToReference(number, chunk.chunk_id))}
             </p>
           </article>

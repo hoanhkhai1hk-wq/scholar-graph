@@ -26,6 +26,7 @@ from .semantic_dedup import semantic_from_environment
 from .storage import write_json
 from .atomic_io import windows_retry
 from .parse_provenance import save as save_provenance,latest as latest_provenance
+from .code_layout import repair_pdf_code
 
 
 class Pipeline:
@@ -120,6 +121,8 @@ class Pipeline:
                         job.move("ocr", "扫描页 OCR 完成", progress=70)
                     job.move("indexing", "生成契约记录与锚点索引", progress=80)
                     bundle = normalize(native, ocr, paper, ocr_pages)
+                bundle['chunks'], code_changes = repair_pdf_code(bundle['chunks'], snapshot)
+                self.last_parse_metadata['code_layout_repairs'] = code_changes
                 if self.metadata_enricher is not None:
                     original = bundle["paper_meta"]
                     enriched = self.metadata_enricher(dict(original))

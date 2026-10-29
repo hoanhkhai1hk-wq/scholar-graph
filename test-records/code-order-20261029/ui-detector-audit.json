@@ -1,0 +1,85 @@
+{
+  "existing_findings": [
+    {
+      "antipattern": "side-tab",
+      "name": "Side-tab accent border",
+      "description": "Thick colored border on one side of a card — the most recognizable tell of AI-generated UIs. Use a subtler accent or remove it entirely.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "D:\\AI_Workspace\\Tasks\\scholar-graph\\frontend\\app\\globals.css",
+      "line": 224,
+      "snippet": "border-left: 3px solid var(--sg-border-strong)"
+    },
+    {
+      "antipattern": "side-tab",
+      "name": "Side-tab accent border",
+      "description": "Thick colored border on one side of a card — the most recognizable tell of AI-generated UIs. Use a subtler accent or remove it entirely.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "D:\\AI_Workspace\\Tasks\\scholar-graph\\frontend\\app\\globals.css",
+      "line": 403,
+      "snippet": "border-left: 3px solid var(--sg-error)"
+    },
+    {
+      "antipattern": "side-tab",
+      "name": "Side-tab accent border",
+      "description": "Thick colored border on one side of a card — the most recognizable tell of AI-generated UIs. Use a subtler accent or remove it entirely.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "D:\\AI_Workspace\\Tasks\\scholar-graph\\frontend\\app\\globals.css",
+      "line": 646,
+      "snippet": "border-left: 3px solid var(--sg-accent)"
+    },
+    {
+      "antipattern": "side-tab",
+      "name": "Side-tab accent border",
+      "description": "Thick colored border on one side of a card — the most recognizable tell of AI-generated UIs. Use a subtler accent or remove it entirely.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "D:\\AI_Workspace\\Tasks\\scholar-graph\\frontend\\app\\globals.css",
+      "line": 837,
+      "snippet": "border-left: 3px solid var(--sg-primary)"
+    },
+    {
+      "antipattern": "side-tab",
+      "name": "Side-tab accent border",
+      "description": "Thick colored border on one side of a card — the most recognizable tell of AI-generated UIs. Use a subtler accent or remove it entirely.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "D:\\AI_Workspace\\Tasks\\scholar-graph\\frontend\\app\\globals.css",
+      "line": 973,
+      "snippet": "border-left: 3px solid var(--sg-error)"
+    },
+    {
+      "antipattern": "side-tab",
+      "name": "Side-tab accent border",
+      "description": "Thick colored border on one side of a card — the most recognizable tell of AI-generated UIs. Use a subtler accent or remove it entirely.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "D:\\AI_Workspace\\Tasks\\scholar-graph\\frontend\\app\\globals.css",
+      "line": 982,
+      "snippet": "border-left: 3px solid var(--sg-warning)"
+    },
+    {
+      "antipattern": "side-tab",
+      "name": "Side-tab accent border",
+      "description": "Thick colored border on one side of a card — the most recognizable tell of AI-generated UIs. Use a subtler accent or remove it entirely.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "D:\\AI_Workspace\\Tasks\\scholar-graph\\frontend\\app\\globals.css",
+      "line": 1024,
+      "snippet": "border-left: 3px solid var(--sg-border-strong)"
+    },
+    {
+      "antipattern": "side-tab",
+      "name": "Side-tab accent border",
+      "description": "Thick colored border on one side of a card — the most recognizable tell of AI-generated UIs. Use a subtler accent or remove it entirely.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "D:\\AI_Workspace\\Tasks\\scholar-graph\\frontend\\app\\globals.css",
+      "line": 1210,
+      "snippet": "border-left: 3px solid var(--sg-accent)"
+    }
+  ],
+  "new_findings": []
+}

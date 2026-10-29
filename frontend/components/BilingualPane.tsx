@@ -141,7 +141,7 @@ export default function BilingualPane({
               <header className="sg-mono">
                 第 {segment.page_number} 页
               </header>
-              <p className="sg-prose">{segment.source_text}</p>
+              <p className="sg-prose sg-source-text">{segment.source_text}</p>
               <AnchorTag anchor={{ paper_id: segment.paper_id, chunk_id: segment.source_chunk_id, page_number: segment.page_number, section: segment.section_path }} />
             </article>
           ))}
@@ -172,7 +172,7 @@ export default function BilingualPane({
                 <header className="sg-mono">
                   第 {segment.page_number} 页
                 </header>
-                <p className="sg-prose">{segment.translated_text}</p>
+                <p className="sg-prose sg-source-text">{segment.translated_text}</p>
               </article>
             ))
           )}

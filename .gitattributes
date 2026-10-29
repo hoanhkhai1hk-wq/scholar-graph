@@ -9,3 +9,4 @@ test-records/item04-20261028/** -text -whitespace
 test-records/qa-usability-20261028/** -text -whitespace
 test-records/item05-20261029/** -text -whitespace
 test-records/item06-20261029/** -text -whitespace
+test-records/code-order-20261029/** -text -whitespace

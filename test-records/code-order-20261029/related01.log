@@ -1,0 +1,33 @@
+........................................................................ [ 17%]
+........................................................................ [ 34%]
+........................................................................ [ 51%]
+........................................................................ [ 69%]
+........................................................................ [ 86%]
+...............F..................s......................                [100%]
+================================== FAILURES ===================================
+_ test_full_reverse_translation_requires_completed_full_source_not_abstract_or_partial _
+
+    def test_full_reverse_translation_requires_completed_full_source_not_abstract_or_partial():
+        value={'status':'completed','result':{'translation':{'paper_id':'p','target':'zh','scope':'full',
+                'metadata':{'complete':True},'segments':[{'source_chunk_id':'a'},{'source_chunk_id':'b'}]}}}
+>       assert validated_chinese_task(value,'p','full',['a','b'])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_item03_navigation.py:41: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+backend\scholar_graph\workspace_translation.py:54: in validated_chinese_task
+    if (any('```' in s['source_text'] or '~~~' in s['source_text'] for s in translation['segments'])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+.0 = <list_iterator object at 0x000001ADB5BF6980>
+
+>   if (any('```' in s['source_text'] or '~~~' in s['source_text'] for s in translation['segments'])
+                     ^^^^^^^^^^^^^^^^
+            and translation['metadata'].get('code_layout_version') != CODE_LAYOUT_VERSION):
+E           KeyError: 'source_text'
+
+backend\scholar_graph\workspace_translation.py:54: KeyError
+=========================== short test summary info ===========================
+FAILED tests/test_item03_navigation.py::test_full_reverse_translation_requires_completed_full_source_not_abstract_or_partial
+1 failed, 415 passed, 1 skipped in 76.80s (0:01:16)

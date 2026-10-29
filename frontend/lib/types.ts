@@ -445,6 +445,7 @@ export interface TranslateSegment {
 }
 
 export interface TranslateMetadata {
+  code_layout_version?: string;
   provider: string;
   model: string;
   elapsed_seconds: number | null;

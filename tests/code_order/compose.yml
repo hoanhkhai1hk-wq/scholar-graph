@@ -1,0 +1,44 @@
+services:
+  backend:
+    image: scholar-graph-backend:code-order-20261029
+    restart: unless-stopped
+    ports: ["127.0.0.1:8160:8000"]
+    environment:
+      SCHOLAR_GRAPH_DATA_DIR: /app/data/records
+      DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY:?Use local environment}
+      DEEPSEEK_MODEL: ${DEEPSEEK_MODEL:?Use local model}
+      SCHOLAR_GRAPH_QA_MODE: deepseek
+      SCHOLAR_GRAPH_WORKSPACE_RETRIEVAL: lexical
+      SCHOLAR_GRAPH_QA_RETRIEVAL_MODE: lexical
+      SCHOLAR_GRAPH_TRACKING_ENABLED: "false"
+      SCHOLAR_GRAPH_DEDUP_MODE: "off"
+      SCHOLAR_GRAPH_GROBID_ENABLED: "true"
+      GROBID_URL: http://host.docker.internal:8070
+      SG_DATA_CLASS: acceptance
+      SCHOLAR_GRAPH_FONT: /app/fonts/cjk.ttc
+    volumes:
+      - ../../data/code-order-20261029/records:/app/data/records
+      - ${SG_CJK_FONT_PATH:-C:/Windows/Fonts/msyh.ttc}:/app/fonts/cjk.ttc:ro
+    cpus: 4.0
+    mem_limit: 4g
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; assert urllib.request.urlopen('http://127.0.0.1:8000/api/v2/system', timeout=5).status==200"]
+      interval: 5s
+      timeout: 8s
+      retries: 15
+  frontend:
+    image: scholar-graph-frontend:code-order-20261029
+    restart: unless-stopped
+    ports: ["127.0.0.1:3460:3000"]
+    environment:
+      SG_BACKEND_URL: http://backend:8000
+      NEXT_TELEMETRY_DISABLED: "1"
+    depends_on:
+      backend:
+        condition: service_healthy
+    mem_limit: 1g
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/api/workspace/system').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 5s
+      timeout: 8s
+      retries: 15

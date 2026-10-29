@@ -8,6 +8,7 @@ FAST_FILES = frozenset({
     'test_grobid_default_path.py',
     'test_qa_two_stage.py', 'test_compare_sse.py',
     'test_api_comparison.py',
+    'test_code_layout.py',
 })
 
 

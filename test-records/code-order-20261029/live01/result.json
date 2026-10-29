@@ -1,0 +1,88 @@
+{
+  "source": "same unchanged authored acceptance PDF; not a published paper",
+  "cases": [
+    {
+      "case": "fresh_upload_chinese-acceptance",
+      "source_sha256": "0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110",
+      "seconds": 10.219,
+      "paper_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110",
+      "pages": 2,
+      "chunks": 21,
+      "all_pages_readable": true,
+      "source_code_checks": {
+        "exact_source_match": true,
+        "python_ast_valid": true,
+        "forward_2": 3,
+        "four_space_indent": true,
+        "html_inside_code": false,
+        "code_sha256": "d7d3ed64893c444a6ab4698dc668b64b413a635c49fe5773920333402c6b8cbe"
+      }
+    },
+    {
+      "case": "fresh_upload_1706.03762v1",
+      "source_sha256": "0a9bff1be3575cf9fe26a4a3d3a9175bc791ecec90de8b9deba4cff75d2b9476",
+      "seconds": 30.703,
+      "paper_id": "paper-0a9bff1be3575cf9fe26a4a3d3a9175bc791ecec90de8b9deba4cff75d2b9476",
+      "pages": 15,
+      "chunks": 162,
+      "all_pages_readable": true,
+      "multicolumn_order_changed_by_code_fix": false,
+      "reference_count": 36
+    },
+    {
+      "case": "native-en",
+      "task_id": "8f729604a7b742d7bed5e4920bec15c3",
+      "seconds": 3.191,
+      "timing_basis": "sum_actual_provider_call_seconds",
+      "segments": 21,
+      "model_calls": 1,
+      "cache_hits": 0,
+      "all_anchor_and_number_checks": true,
+      "code": {
+        "exact_source_match": true,
+        "python_ast_valid": true,
+        "forward_2": 3,
+        "four_space_indent": true,
+        "html_inside_code": false,
+        "code_sha256": "d7d3ed64893c444a6ab4698dc668b64b413a635c49fe5773920333402c6b8cbe"
+      }
+    },
+    {
+      "case": "native-zh",
+      "task_id": "c0c2f8fcfead4b3da9e7c0ce2174b9b1",
+      "seconds": 1.498,
+      "timing_basis": "sum_actual_provider_call_seconds",
+      "segments": 21,
+      "model_calls": 1,
+      "cache_hits": 0,
+      "all_anchor_and_number_checks": true,
+      "code": {
+        "exact_source_match": true,
+        "python_ast_valid": true,
+        "forward_2": 3,
+        "four_space_indent": true,
+        "html_inside_code": false,
+        "code_sha256": "d7d3ed64893c444a6ab4698dc668b64b413a635c49fe5773920333402c6b8cbe"
+      }
+    },
+    {
+      "case": "prior-zh-to-en",
+      "task_id": "90f4a14f910d4fc28fbc82ac946c6180",
+      "seconds": 3.399,
+      "timing_basis": "sum_actual_provider_call_seconds",
+      "segments": 21,
+      "model_calls": 1,
+      "cache_hits": 0,
+      "all_anchor_and_number_checks": true,
+      "code": {
+        "exact_source_match": true,
+        "python_ast_valid": true,
+        "forward_2": 3,
+        "four_space_indent": true,
+        "html_inside_code": false,
+        "code_sha256": "d7d3ed64893c444a6ab4698dc668b64b413a635c49fe5773920333402c6b8cbe"
+      }
+    }
+  ],
+  "passed": true
+}

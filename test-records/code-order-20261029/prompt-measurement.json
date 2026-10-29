@@ -1,0 +1,21 @@
+{
+  "evidence_type": "protocol_mock_only_not_live_model",
+  "before_commit": "b930bbd257824e960cf829560d77dd58fd06bbdf",
+  "before": {
+    "code_only_prompt_items": 4,
+    "code_only_prompt_chars": 64,
+    "mock_requests": 2,
+    "mock_result": "validation_rejected",
+    "mock_rejection": {
+      "reason": "译文出现源文片段没有的代码或结构标记",
+      "source_chunk_id": null
+    }
+  },
+  "after": {
+    "code_only_prompt_items": 0,
+    "code_only_prompt_chars": 0,
+    "mock_requests": 0,
+    "mock_result": "completed",
+    "mock_rejection": null
+  }
+}

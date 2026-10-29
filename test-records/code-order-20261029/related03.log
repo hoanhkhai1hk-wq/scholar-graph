@@ -1,0 +1,179 @@
+........................................................................ [ 17%]
+........................................................................ [ 34%]
+........................................................................ [ 51%]
+........................................................................ [ 68%]
+........................................................................ [ 86%]
+..................................F.......................               [100%]
+================================== FAILURES ===================================
+______________________ test_actual_paddleocr_scanned_pdf ______________________
+
+tmp_path = WindowsPath('D:/AI_Workspace/Tasks/scholar-graph/data/code-order-20261029/related03-temp/test_actual_paddleocr_scanned_0')
+
+    @pytest.mark.ocr
+    def test_actual_paddleocr_scanned_pdf(tmp_path):
+        pipeline = Pipeline(tmp_path / "output")
+>       bundle = pipeline.parse(make_pdf(tmp_path / "scan.pdf", scan=True))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_parsing.py:119: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+backend\scholar_graph\pipeline.py:94: in parse
+    bundle = parse_batches(self, snapshot, paper, ocr_pages)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+pipeline = <scholar_graph.pipeline.Pipeline object at 0x0000029B6F935310>
+snapshot = WindowsPath('D:/AI_Workspace/Tasks/scholar-graph/data/code-order-20261029/related03-temp/test_actual_paddleocr_scanned_0/output/.scratch/parse-6mgubjzp/source.pdf')
+paper = {'schema_version': '1.0.0', 'id': 'paper-476755d212bd7614b5d7fc55bb7d472ff83bedccab7e3e1cfefcd9058e4b1c38', 'title': 'Synthetic Scanned Page', 'authors': ['Synthetic OCR Fixture'], ...}
+ocr_pages = [0]
+
+    def parse_batches(pipeline, snapshot, paper, ocr_pages):
+        store, gate, job, engines, limits = pipeline.store, pipeline.gate, pipeline.last_job, pipeline.engines, pipeline.limits
+        partial = store.root / 'partial' / paper['id']
+        checkpoint = partial / 'progress.json'
+        completed, chunks, failures, batches, index_seconds = set(), [], [], 0, 0.0
+        if checkpoint.exists():
+            previous = json.loads(checkpoint.read_text(encoding='utf-8'))
+            completed = set(previous['completed_pages'])
+        if list(partial.glob('batch-*')):
+            chunks = store.partial(paper['id'])['chunks']
+            completed.update(c['page_number'] for c in chunks)
+            batches = len(list(partial.glob('batch-*')))
+        index = ChunkIndex(store.root, paper['id'])
+        if chunks:
+            index.append(chunks, reset=True)  # Repair a crash between durable batch and index/checkpoint.
+        started = time.monotonic()
+        metrics = {'parser': 'MinerU text batches + PaddleOCR page fallback', 'limits': vars(limits),
+                   'completed_pages': sorted(completed), 'failed_pages': [], 'empty_pages': [],
+                   'batches': [], 'published_chunks': len(chunks), 'indexing_seconds': 0.0,
+                   'resumed_pages': len(completed)}
+        pipeline.last_metrics = metrics
+        if ocr_pages:
+            job.move('ocr', '逐页OCR；完成页即时校验发布', progress=10)
+    
+        def persist():
+            partial.mkdir(parents=True, exist_ok=True)
+            metrics.update(completed_pages=sorted(completed), failed_pages=failures,
+                           published_chunks=len(chunks), indexing_seconds=round(index_seconds, 6))
+            if getattr(engines, '_session_enabled', False):
+                metrics['engine_session'] = dict(engines.session_metrics)
+            temporary = checkpoint.with_suffix('.tmp')
+            write_json(temporary, metrics)
+            windows_retry(lambda: os.replace(temporary, checkpoint))
+            if callable(getattr(pipeline, 'on_page_progress', None)):
+                pipeline.on_page_progress(len(completed), paper['page_count'])
+    
+        def publish(pages, mode):
+            nonlocal batches, index_seconds
+            begin = time.monotonic()
+            preceding = [c for c in chunks if c['page_number'] <= min(p['page_idx'] for p in pages)]
+            preceding.sort(key=lambda c: (c['page_number'], c['chunk_id']))
+            bundle = normalize({'pages': pages}, None, paper, [], start_index=len(chunks),
+                               section_path=preceding[-1]['section_path'] if preceding else [], include_references=False)
+            if bundle['chunks']:
+                gate.bundle(bundle)
+                batches += 1
+                store.partial_batch(bundle, batches)
+                index.append(bundle['chunks'])
+                chunks.extend(bundle['chunks'])
+            index_seconds += time.monotonic() - begin
+            physical = [page['page_idx'] + 1 for page in pages]
+            completed.update(physical)
+            metrics['empty_pages'].extend(page['page_idx'] + 1 for page in pages if not any(
+                block_text(b.get('content')).strip() for b in page.get('blocks', [])))
+            metrics['batches'].append({'mode': mode, 'pages': physical, 'chunks': len(bundle['chunks']),
+                                       'cumulative_chunks': len(chunks)})
+            persist()
+            progress = min(75, 10 + 65 * (len(completed) + len(failures)) // paper['page_count'])
+            job.move(job.current['status'], f'已处理{len(completed)}/{paper["page_count"]}页，已发布{len(chunks)}个Chunk；失败页{[f["page_number"] for f in failures]}', progress=progress)
+    
+        def timeout(seconds):
+            remaining = limits.total_timeout - (time.monotonic() - started)
+            if remaining <= 0:
+                raise PipelineError('OCR_FAILED', '达到整篇解析时限。')
+            return min(seconds, remaining)
+    
+        def ocr_one(page_index):
+            if callable(getattr(pipeline, 'cancel_requested', None)) and pipeline.cancel_requested():
+                persist()
+                raise PipelineError('PARSE_FAILED', '已停止解析；已完成页和原始输入保留，重试将从检查点恢复。')
+            if job.current['status'] == 'parsing':
+                job.move('ocr', 'MinerU批次未完成，逐页PaddleOCR兜底')
+            try:
+                value = engines.ocr(snapshot, [page_index], timeout=timeout(limits.page_timeout))
+                if isinstance(value.get('ocr_metadata'), dict):
+                    metrics['ocr_metadata'] = value['ocr_metadata']
+                pages = value.get('pages')
+                if (not isinstance(pages, list) or len(pages) != 1 or not isinstance(pages[0], dict)
+                        or type(pages[0].get('page_idx')) is not int or pages[0]['page_idx'] != page_index or not any(
+                        block_text(b.get('content')).strip() for b in pages[0].get('blocks', []))):
+                    raise PipelineError('OCR_FAILED', '页面未返回可验证OCR文本。')
+            except PipelineError as error:
+                failures.append({'page_number': page_index + 1, 'error_code': error.code, 'message': error.message})
+                persist()
+            else:
+                publish(pages, 'paddleocr')
+    
+        document = pdfium.PdfDocument(snapshot)
+        try:
+            cursor = 0
+            while cursor < paper['page_count']:
+                if callable(getattr(pipeline, 'cancel_requested', None)) and pipeline.cancel_requested():
+                    persist()
+                    raise PipelineError('PARSE_FAILED', '已停止解析；已完成页和原始输入保留，重试将从检查点恢复。')
+                if cursor + 1 in completed:
+                    cursor += 1
+                    continue
+                if time.monotonic() - started >= limits.total_timeout:
+                    failures.extend({'page_number': n + 1, 'error_code': 'PARSE_FAILED', 'message': '达到整篇解析时限，未处理此页。'}
+                                    for n in range(cursor, paper['page_count']) if n + 1 not in completed)
+                    persist()
+                    break
+                if cursor in ocr_pages:
+                    ocr_one(cursor)
+                    cursor += 1
+                    continue
+                group = []
+                while cursor < paper['page_count'] and len(group) < limits.text_batch_pages and cursor not in ocr_pages:
+                    if cursor + 1 not in completed:
+                        group.append(cursor)
+                    cursor += 1
+                if not group:
+                    continue
+                batch_path = snapshot.parent / 'text-batch.pdf'
+                part = pdfium.PdfDocument.new()
+                try:
+                    part.import_pages(document, group)
+                    part.save(batch_path)
+                finally:
+                    part.close()
+                try:
+                    native = engines.text(batch_path, timeout=timeout(limits.batch_timeout))
+                    pages = native['pages']
+                    indices = [p.get('page_idx') for p in pages]
+                    if (native.get('schema') != 'docvortex.middle' or native.get('is_full_document') is not True
+                            or any(type(n) is not int for n in indices) or sorted(indices) != list(range(len(group)))):
+                        raise PipelineError('PARSE_FAILED', 'MinerU批次物理页覆盖不完整。')
+                    for page in pages:
+                        page['page_idx'] = group[page['page_idx']]
+                except PipelineError:
+                    for n in group:
+                        ocr_one(n)
+                else:
+                    publish(pages, 'mineru')
+        finally:
+            document.close()
+        persist()
+        if failures:
+            failed_pages = [row['page_number'] for row in failures]
+>           raise PipelineError('OCR_FAILED' if any(p - 1 in ocr_pages for p in failed_pages) else 'PARSE_FAILED',
+                                f'解析未完成；失败物理页：{failed_pages}。已保留{len(chunks)}个合规Chunk。',
+                                details={'paper_id': paper['id'], 'failed_pages': ','.join(map(str, failed_pages)),
+                                         'page_errors': '; '.join(f'{f["page_number"]}:{f["error_code"]}:{f["message"]}' for f in failures),
+                                         'published_chunks': len(chunks), 'chunks_url': f'/api/v1/papers/{paper["id"]}/chunks'})
+E           scholar_graph.errors.PipelineError: 解析未完成；失败物理页：[1]。已保留0个合规Chunk。
+
+backend\scholar_graph\batching.py:179: PipelineError
+=========================== short test summary info ===========================
+FAILED tests/test_parsing.py::test_actual_paddleocr_scanned_pdf - scholar_gra...
+1 failed, 417 passed in 170.00s (0:02:50)

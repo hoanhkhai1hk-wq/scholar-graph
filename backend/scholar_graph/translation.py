@@ -69,7 +69,7 @@ def select_chunks(bundle, scope, section_path=None, chunk_ids=None):
     return selected
 
 
-def protect(text, *, formula=False, numbers=True):
+def protect(text, *, formula=False, numbers=True, code_range=None):
     """Return opaque placeholders for code, LaTeX, markup, URLs and numbers."""
     prefix = '__SGKEEP_' + uuid.uuid4().hex[:12] + '_'
     while prefix in text:
@@ -82,6 +82,9 @@ def protect(text, *, formula=False, numbers=True):
         return key
     if formula:
         return save(text), spans
+    if code_range is not None:
+        begin, end = code_range
+        text = text[:begin] + save(text[begin:end]) + text[end:]
     # HTML code/math bodies are opaque too; protecting only their tags would
     # leave comments and string literals exposed to translation.
     text = re.sub(r'(?is)<(pre|code|math)\b[^>]*>.*?</\1\s*>', save, text)
@@ -247,8 +250,19 @@ def render_markdown(bundle, segments):
     title = bundle['paper_meta']['title']
     if title and not any(s['source_text'] == title for s in segments):
         parts.append('# ' + title)
+    from .code_layout import code_ranges, join_code
+    protected = code_ranges(bundle['chunks'])
+    pending_code, pending_anchors = [], []
+    def flush_code():
+        if pending_code:
+            parts.extend(pending_anchors)
+            parts.append(join_code(pending_code))
+            pending_code.clear()
+            pending_anchors.clear()
     for segment in segments:
         chunk = source[segment['source_chunk_id']]
+        if chunk['chunk_id'] not in protected:
+            flush_code()
         path = chunk['section_path']
         common = 0
         for a, b in zip(previous, path):
@@ -259,6 +273,14 @@ def render_markdown(bundle, segments):
         for depth in range(common, len(path)):
             if not (heading and depth == len(path) - 1):
                 parts.append('#' * min(depth + 2, 6) + ' ' + path[depth])
+        if chunk['chunk_id'] in protected:
+            pending_anchors.append(f'<a id="{chunk["chunk_id"]}"></a>')
+            pending_code.append(segment['translated_text'])
+            # Keep link targets outside executable code across chunk boundaries.
+            if re.search(r'(?m)^[ \t]*(?:`{3,}|~{3,})[ \t]*$', segment['translated_text']):
+                flush_code()
+            previous = path
+            continue
         parts.append(f'<a id="{chunk["chunk_id"]}"></a>')
         if heading:
             parts.append('#' * min(len(path) + 1, 6) + ' ' + segment['translated_text'])
@@ -267,6 +289,7 @@ def render_markdown(bundle, segments):
         else:
             parts.append(segment['translated_text'])
         previous = path
+    flush_code()
     return '\n\n'.join(parts) + '\n'
 
 
@@ -306,7 +329,7 @@ terms, propose source/target pairs supported by the actual input and output.
 No other fields, commentary or Markdown fences outside JSON.'''
 
 
-def chinese_source(bundle,selected,value):
+def chinese_source(bundle,selected,value,code_spans=None):
     """Verify client-supplied prior zh response against immutable original Chunks.
 
     Source provenance is client-supplied, not a cryptographic attestation. The
@@ -323,7 +346,8 @@ def chinese_source(bundle,selected,value):
                 any(segment[k]!=original[k] for k in ('paper_id','page_number','section_path','type')) or
                 not segment['translated_text'].strip()):
             invalid('中文译文的源Chunk、原文、锚点或唯一性校验失败。')
-        _,protected=protect(original['text'],formula=original['type']=='formula',numbers=False)
+        _,protected=protect(original['text'],formula=original['type']=='formula',numbers=False,
+                            code_range=(code_spans or {}).get(identity))
         if any(span not in segment['translated_text'] for span in protected.values()):
             invalid('中文源响应丢失原文代码、公式或结构标记。')
         source[identity]=segment['translated_text']
@@ -337,13 +361,16 @@ def chinese_source(bundle,selected,value):
 
 
 class Translator:
-    def __init__(self, repository, client=None, glossary=None):
+    def __init__(self, repository, client=None, glossary=None, code_spans=None):
         self.repository, self.client = repository, client
         self.glossary = glossary
+        self.code_spans = code_spans
 
     def translate(self, paper_id, *, scope, target='zh', section_path=None, chunk_ids=None,source_translation=None):
         started = time.monotonic()
         bundle = self.repository.paper(paper_id)
+        from .code_layout import code_ranges
+        code_spans = self.code_spans if self.code_spans is not None else code_ranges(bundle['chunks'])
         selected = select_chunks(bundle, scope, section_path, chunk_ids)
         source_digest=None
         source_input=None
@@ -351,7 +378,7 @@ class Translator:
             if scope not in ('abstract','full'):
                 invalid('中→英本单仅支持abstract与full。')
             if source_translation is not None:
-                selected,source_digest=chinese_source(bundle,selected,source_translation)
+                selected,source_digest=chinese_source(bundle,selected,source_translation,code_spans)
                 source_input='client_prior_zh_response_validated_against_original_chunks'
             elif any(re.search(r'[\u3400-\u9fff]',protect(c['text'],formula=c['type']=='formula',numbers=False)[0]) for c in selected):
                 source_digest=hashlib.sha256(json.dumps([(c['chunk_id'],c['text']) for c in selected],ensure_ascii=False,separators=(',',':')).encode()).hexdigest()
@@ -374,7 +401,8 @@ class Translator:
             self.repository.gate.record('Chunk', chunk)
             if chunk['paper_id'] != paper_id:
                 invalid('原文Chunk归属不一致。')
-            masked, spans = protect(chunk['text'], formula=chunk['type'] == 'formula', numbers=False)
+            masked, spans = protect(chunk['text'], formula=chunk['type'] == 'formula', numbers=False,
+                                    code_range=code_spans.get(chunk['chunk_id']))
             record = {'chunk': chunk, 'parts': []}
             prepared.append(record)
             for part in re.split(r'(__SGKEEP_[a-f0-9]{12}_\d+__)', masked):

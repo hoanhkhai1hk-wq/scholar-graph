@@ -1,0 +1,14 @@
+{
+  "exact_source_match": true,
+  "python_ast_valid": true,
+  "forward_2": 3,
+  "four_space_indent": true,
+  "html_inside_code": false,
+  "code_sha256": "d7d3ed64893c444a6ab4698dc668b64b413a635c49fe5773920333402c6b8cbe",
+  "task_id": "08ccaf13220d4cc1a25a966eecdcff64",
+  "segments": 21,
+  "model_calls": 1,
+  "cache_hits": 0,
+  "task_wall_seconds": 5.828,
+  "source": "existing pre-fix frozen record, repaired effective view"
+}

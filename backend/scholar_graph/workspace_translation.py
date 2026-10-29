@@ -14,6 +14,7 @@ from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from .errors import PipelineError
 from .translation import Translator, select_chunks, render_markdown, check_terms
+from .code_layout import VERSION as CODE_LAYOUT_VERSION, code_ranges
 
 
 class TranslationTaskRequest(BaseModel):
@@ -50,13 +51,20 @@ def validated_chinese_task(task, paper_id, scope, full_chunk_ids):
     if scope == 'full' and (translation['scope'] != 'full' or
             [s['source_chunk_id'] for s in translation['segments']] != list(full_chunk_ids)):
         raise PipelineError('VALIDATION_ERROR', '当前中文来源不是完整全文；摘要或部分译文不能用于全文中译英。请先完成中文全文翻译。')
+    if (any('```' in s.get('source_text', '') or '~~~' in s.get('source_text', '') for s in translation['segments'])
+            and translation['metadata'].get('code_layout_version') != CODE_LAYOUT_VERSION):
+        raise PipelineError('VALIDATION_ERROR', '中文来源包含旧版代码布局，请先重新生成中文译文，再进行中译英。')
     return translation
 
 
 def translation_task(workspace, identity, parameters, runner):
     paper_id = parameters['paper_id']
     snapshot = workspace.read('translation_source', parameters.get('source_snapshot_id', ''))
-    bundle = snapshot['bundle'] if snapshot else {**workspace.repository.paper(paper_id), 'paper_meta': workspace.paper(paper_id)['paper']}
+    if (snapshot and snapshot.get('code_layout_version') != CODE_LAYOUT_VERSION
+            and any('```' in c['text'] or '~~~' in c['text'] for c in snapshot['bundle']['chunks'])):
+        raise PipelineError('VALIDATION_ERROR', '历史任务的代码布局需要重新校验，请在阅读器中重新开始翻译；原任务与结果已保留。')
+    bundle = snapshot['bundle'] if snapshot else workspace.bundle(paper_id)
+    code_spans = snapshot.get('code_spans', code_ranges(bundle['chunks'])) if snapshot else code_ranges(bundle['chunks'])
     selected = selected_chunks(bundle, parameters)
     if not selected:
         raise PipelineError('VALIDATION_ERROR', '该范围没有可翻译的正文。')
@@ -64,7 +72,7 @@ def translation_task(workspace, identity, parameters, runner):
     if parameters.get('chinese_task_id'):
         task = workspace.read('task', parameters['chinese_task_id'])
         chinese = validated_chinese_task(task, paper_id, parameters['scope'],
-                     [c['chunk_id'] for c in workspace.repository.paper(paper_id)['chunks']])
+                     [c['chunk_id'] for c in bundle['chunks']])
     batches, current, size = [], [], 0
     for chunk in selected:
         if current and size + len(chunk['text']) > 8000:
@@ -84,7 +92,7 @@ def translation_task(workspace, identity, parameters, runner):
         runner.progress(identity, len(segments) + sum(f['chunk_count'] for f in failures), len(selected), f"正在翻译第 {batch[0]['page_number']}–{batch[-1]['page_number']} 页；已校验结果会保存")
         # The cache key includes all provenance-bearing input, never only a title.
         chinese_input = {**chinese, 'segments': [s for s in chinese['segments'] if s['source_chunk_id'] in {c['chunk_id'] for c in batch}]} if chinese else None
-        digest = hashlib.sha256(json.dumps([paper_id, parameters['target'], batch, chinese_input['segments'] if chinese_input else None, glossary], ensure_ascii=False, sort_keys=True).encode()).hexdigest()
+        digest = hashlib.sha256(json.dumps([CODE_LAYOUT_VERSION, paper_id, parameters['target'], batch, chinese_input['segments'] if chinese_input else None, glossary, code_spans], ensure_ascii=False, sort_keys=True).encode()).hexdigest()
         response = workspace.read('translation_batch', digest)
         try:
             if response is None:
@@ -92,7 +100,7 @@ def translation_task(workspace, identity, parameters, runner):
                     gate = workspace.repository.gate
                     def paper(self, _):
                         return {**bundle, 'chunks': batch}
-                response = Translator(BatchRepository(), glossary=glossary).translate(paper_id, scope='full', target=parameters['target'], source_translation=chinese_input)
+                response = Translator(BatchRepository(), glossary=glossary, code_spans=code_spans).translate(paper_id, scope='full', target=parameters['target'], source_translation=chinese_input)
                 calls.extend(response['metadata']['model_calls'])
             else:
                 cache_hits += 1
@@ -111,6 +119,7 @@ def translation_task(workspace, identity, parameters, runner):
                   'metadata': {'provider': 'deepseek', 'model': response['metadata']['model'] if response else None,
                     'model_calls': list(calls), 'terminology': dict(glossary), 'alignment': 'one_source_chunk_one_segment',
                     'layout_source': 'validated_original_chunks', 'cache_hits': cache_hits,
+                    'code_layout_version': CODE_LAYOUT_VERSION,
                     'expected_segments': len(selected), 'translated_segments': coverage, 'complete': coverage == len(selected)}},
                   'failed': list(failures), 'failed_count': len(failures), 'succeeded_count': coverage}
         runner.update(identity, result=result)
@@ -127,16 +136,19 @@ def translation_task_routes(workspace, tasks):
     @router.post('/papers/{paper_id}/translation-tasks', status_code=202)
     def translate(paper_id: str, body: TranslationTaskRequest):
         bundle = workspace.bundle(paper_id)
+        full_code_spans = code_ranges(bundle['chunks'])
         if body.target == 'en' and body.chinese_task_id:
             prior = workspace.read('task', body.chinese_task_id)
             validated_chinese_task(prior, paper_id, body.scope,
-                [c['chunk_id'] for c in workspace.repository.paper(paper_id)['chunks']])
+                [c['chunk_id'] for c in bundle['chunks']])
             snapshot = workspace.read('translation_source', prior.get('parameters', {}).get('source_snapshot_id', ''))
-            bundle = snapshot['bundle'] if snapshot else {**workspace.repository.paper(paper_id), 'paper_meta': workspace.paper(paper_id)['paper']}
+            bundle = snapshot['bundle'] if snapshot else workspace.bundle(paper_id)
+            full_code_spans = snapshot.get('code_spans', code_ranges(bundle['chunks'])) if snapshot else code_ranges(bundle['chunks'])
         selected = selected_chunks(bundle, body.model_dump())
         snapshot_id = uuid.uuid4().hex
         workspace.put('translation_source', snapshot_id, {'paper_id': paper_id,
-                      'bundle': {**bundle, 'chunks': selected}}, 'translation_source_snapshotted')
+                      'bundle': {**bundle, 'chunks': selected}, 'code_spans': full_code_spans,
+                      'code_layout_version': CODE_LAYOUT_VERSION}, 'translation_source_snapshotted')
         return tasks.submit('translation', {'paper_id': paper_id, **body.model_dump(), 'source_snapshot_id': snapshot_id})
 
     return router

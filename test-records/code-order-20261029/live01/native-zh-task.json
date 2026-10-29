@@ -1,0 +1,301 @@
+{
+  "id": "c0c2f8fcfead4b3da9e7c0ce2174b9b1",
+  "kind": "translation",
+  "status": "completed",
+  "created_at": "2026-10-29T07:48:37.115896+00:00",
+  "started_at": "2026-10-29T07:48:37.234532+00:00",
+  "finished_at": "2026-10-29T07:48:39.279309+00:00",
+  "cancel_requested": false,
+  "progress": {
+    "completed_units": 21,
+    "total_units": 21,
+    "label": "已校验 21 / 21 个原文段落"
+  },
+  "result": {
+    "translation": {
+      "paper_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110",
+      "scope": "full",
+      "target": "zh",
+      "segments": [
+        {
+          "source_chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0001-c00001",
+          "source_text": "矩阵运算计时与科研文稿溯源测试",
+          "translated_text": "矩阵运算计时与科研文稿溯源测试",
+          "paper_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110",
+          "page_number": 1,
+          "section_path": [],
+          "type": "text"
+        },
+        {
+          "source_chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0001-c00002",
+          "source_text": "人工编写的验收文稿；不是已发表论文或模型精度报告。",
+          "translated_text": "人工编写的验收文稿；不是已发表论文或模型精度报告。",
+          "paper_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110",
+          "page_number": 1,
+          "section_path": [],
+          "type": "text"
+        },
+        {
+          "source_chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0001-c00003",
+          "source_text": "摘要",
+          "translated_text": "摘要",
+          "paper_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110",
+          "page_number": 1,
+          "section_path": [
+            "摘要"
+          ],
+          "type": "text"
+        },
+        {
+          "source_chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0001-c00004",
+          "source_text": "本文记录一次本机矩阵运算计时实验，用于验证科研文稿的中译英、术语一致性与数字回溯。矩阵维度为64、128、256、512、1024，每项操作重复7次，取耗时中位数，单位为毫秒。",
+          "translated_text": "本文记录一次本机矩阵运算计时实验，用于验证科研文稿的中译英、术语一致性与数字回溯。矩阵维度为64、128、256、512、1024，每项操作重复7次，取耗时中位数，单位为毫秒。",
+          "paper_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110",
+          "page_number": 1,
+          "section_path": [
+            "摘要"
+          ],
+          "type": "text"
+        },
+        {
+          "source_chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0001-c00005",
+          "source_text": "实验配置请求1个计算线程，实际线程数未独立测量，随机种子为20261029。本文同时使用编码器、解码器、注意力机制与低秩适配等术语作为翻译检查内容，不宣称运行了这些模型。",
+          "translated_text": "实验配置请求1个计算线程，实际线程数未独立测量，随机种子为20261029。本文同时使用编码器、解码器、注意力机制与低秩适配等术语作为翻译检查内容，不宣称运行了这些模型。",
+          "paper_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110",
+          "page_number": 1,
+          "section_path": [
+            "摘要"
+          ],
+          "type": "text"
+        },
+        {
+          "source_chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0001-c00006",
+          "source_text": "1 引言",
+          "translated_text": "1 引言",
+          "paper_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110",
+          "page_number": 1,
+          "section_path": [
+            "1 引言"
+          ],
+          "type": "text"
+        },
+        {
+          "source_chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0001-c00007",
+          "source_text": "科学翻译需要保留原文位置、术语和数字。注意力机制可以连接编码器与解码器；低秩适配和人类反馈是本次写作测试使用的领域词汇，本计时实验不评价其性能。",
+          "translated_text": "科学翻译需要保留原文位置、术语和数字。注意力机制可以连接编码器与解码器；低秩适配和人类反馈是本次写作测试使用的领域词汇，本计时实验不评价其性能。",
+          "paper_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110",
+          "page_number": 1,
+          "section_path": [
+            "1 引言"
+          ],
+          "type": "text"
+        },
+        {
+          "source_chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0001-c00008",
+          "source_text": "研究结论与系统验收必须分开。本稿只证明这一输入的翻译和绘图处理情况，不能代替独立研究评估。",
+          "translated_text": "研究结论与系统验收必须分开。本稿只证明这一输入的翻译和绘图处理情况，不能代替独立研究评估。",
+          "paper_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110",
+          "page_number": 1,
+          "section_path": [
+            "1 引言"
+          ],
+          "type": "text"
+        },
+        {
+          "source_chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0002-c00009",
+          "source_text": "2 方法",
+          "translated_text": "2 方法",
+          "paper_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110",
+          "page_number": 2,
+          "section_path": [
+            "2 方法"
+          ],
+          "type": "text"
+        },
+        {
+          "source_chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0002-c00010",
+          "source_text": "计时使用实际运行的NumPy运算，包括矩阵乘法、矩阵加法和逐元素乘法。每个维度先预热，再重复7次。输入由固定种子产生；报告保留每次原始计时和汇总中位数。",
+          "translated_text": "计时使用实际运行的NumPy运算，包括矩阵乘法、矩阵加法和逐元素乘法。每个维度先预热，再重复7次。输入由固定种子产生；报告保留每次原始计时和汇总中位数。",
+          "paper_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110",
+          "page_number": 2,
+          "section_path": [
+            "2 方法"
+          ],
+          "type": "text"
+        },
+        {
+          "source_chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0002-c00011",
+          "source_text": "以下公式与代码用于检查翻译保护规则，必须保留原样:",
+          "translated_text": "以下公式与代码用于检查翻译保护规则，必须保留原样:",
+          "paper_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110",
+          "page_number": 2,
+          "section_path": [
+            "2 方法"
+          ],
+          "type": "text"
+        },
+        {
+          "source_chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0002-c00012",
+          "source_text": "$f(x) = x^2 + 1$\n```python",
+          "translated_text": "$f(x) = x^2 + 1$\n```python",
+          "paper_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110",
+          "page_number": 2,
+          "section_path": [
+            "2 方法"
+          ],
+          "type": "text"
+        },
+        {
+          "source_chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0002-c00013",
+          "source_text": "\ndef forward(x):",
+          "translated_text": "\ndef forward(x):",
+          "paper_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110",
+          "page_number": 2,
+          "section_path": [
+            "def forward(x):"
+          ],
+          "type": "text"
+        },
+        {
+          "source_chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0002-c00014",
+          "source_text": "\n    # Keep this English comment.",
+          "translated_text": "\n    # Keep this English comment.",
+          "paper_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110",
+          "page_number": 2,
+          "section_path": [
+            "def forward(x):"
+          ],
+          "type": "text"
+        },
+        {
+          "source_chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0002-c00016",
+          "source_text": "\n    return x + 1",
+          "translated_text": "\n    return x + 1",
+          "paper_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110",
+          "page_number": 2,
+          "section_path": [
+            "return x + 1"
+          ],
+          "type": "text"
+        },
+        {
+          "source_chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0002-c00015",
+          "source_text": "\n```",
+          "translated_text": "\n```",
+          "paper_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110",
+          "page_number": 2,
+          "section_path": [
+            "```"
+          ],
+          "type": "text"
+        },
+        {
+          "source_chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0002-c00017",
+          "source_text": "3 结果",
+          "translated_text": "3 结果",
+          "paper_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110",
+          "page_number": 2,
+          "section_path": [
+            "3 结果"
+          ],
+          "type": "text"
+        },
+        {
+          "source_chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0002-c00018",
+          "source_text": "下表来自本项真实本机计时，数值是毫秒。行序表示矩阵维度递增，不等于时间序列，不据此推断因果。",
+          "translated_text": "下表来自本项真实本机计时，数值是毫秒。行序表示矩阵维度递增，不等于时间序列，不据此推断因果。",
+          "paper_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110",
+          "page_number": 2,
+          "section_path": [
+            "3 结果"
+          ],
+          "type": "text"
+        },
+        {
+          "source_chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0002-c00019",
+          "source_text": "<table><tbody><tr><td>dimension</td><td>matmul_ms</td><td>add_ms</td><td>multiply_ms</td></tr><tr><td>64</td><td>0.0137</td><td>0.0014</td><td>0.0014</td></tr><tr><td>128</td><td>0.071</td><td>0.0037</td><td>0.0032</td></tr><tr><td>256</td><td>0.5585</td><td>0.0326</td><td>0.0336</td></tr><tr><td>512</td><td>7.9187</td><td>0.8168</td><td>0.7002</td></tr><tr><td>1024</td><td>38.9723</td><td>3.1715</td><td>2.9862</td></tr></tbody></table>",
+          "translated_text": "<table><tbody><tr><td>维度</td><td>矩阵乘法毫秒</td><td>加法毫秒</td><td>乘法毫秒</td></tr><tr><td>64</td><td>0.0137</td><td>0.0014</td><td>0.0014</td></tr><tr><td>128</td><td>0.071</td><td>0.0037</td><td>0.0032</td></tr><tr><td>256</td><td>0.5585</td><td>0.0326</td><td>0.0336</td></tr><tr><td>512</td><td>7.9187</td><td>0.8168</td><td>0.7002</td></tr><tr><td>1024</td><td>38.9723</td><td>3.1715</td><td>2.9862</td></tr></tbody></table>",
+          "paper_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110",
+          "page_number": 2,
+          "section_path": [
+            "3 结果"
+          ],
+          "type": "table"
+        },
+        {
+          "source_chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0002-c00020",
+          "source_text": "4 局限与结论",
+          "translated_text": "4 局限与结论",
+          "paper_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110",
+          "page_number": 2,
+          "section_path": [
+            "4 局限与结论"
+          ],
+          "type": "text"
+        },
+        {
+          "source_chunk_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0002-c00021",
+          "source_text": "处理器、内存、调度和计时误差都可能影响结果。本稿没有把耗时当作模型准确率，也没有依据图形外观预测未来结果。翻译后应逐段核对全部数字、术语、公式和代码。",
+          "translated_text": "处理器、内存、调度和计时误差都可能影响结果。本稿没有把耗时当作模型准确率，也没有依据图形外观预测未来结果。翻译后应逐段核对全部数字、术语、公式和代码。",
+          "paper_id": "paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110",
+          "page_number": 2,
+          "section_path": [
+            "4 局限与结论"
+          ],
+          "type": "text"
+        }
+      ],
+      "markdown": "<a id=\"paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0001-c00001\"></a>\n\n# 矩阵运算计时与科研文稿溯源测试\n\n<a id=\"paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0001-c00002\"></a>\n\n人工编写的验收文稿；不是已发表论文或模型精度报告。\n\n<a id=\"paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0001-c00003\"></a>\n\n## 摘要\n\n<a id=\"paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0001-c00004\"></a>\n\n本文记录一次本机矩阵运算计时实验，用于验证科研文稿的中译英、术语一致性与数字回溯。矩阵维度为64、128、256、512、1024，每项操作重复7次，取耗时中位数，单位为毫秒。\n\n<a id=\"paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0001-c00005\"></a>\n\n实验配置请求1个计算线程，实际线程数未独立测量，随机种子为20261029。本文同时使用编码器、解码器、注意力机制与低秩适配等术语作为翻译检查内容，不宣称运行了这些模型。\n\n<a id=\"paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0001-c00006\"></a>\n\n## 1 引言\n\n<a id=\"paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0001-c00007\"></a>\n\n科学翻译需要保留原文位置、术语和数字。注意力机制可以连接编码器与解码器；低秩适配和人类反馈是本次写作测试使用的领域词汇，本计时实验不评价其性能。\n\n<a id=\"paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0001-c00008\"></a>\n\n研究结论与系统验收必须分开。本稿只证明这一输入的翻译和绘图处理情况，不能代替独立研究评估。\n\n<a id=\"paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0002-c00009\"></a>\n\n## 2 方法\n\n<a id=\"paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0002-c00010\"></a>\n\n计时使用实际运行的NumPy运算，包括矩阵乘法、矩阵加法和逐元素乘法。每个维度先预热，再重复7次。输入由固定种子产生；报告保留每次原始计时和汇总中位数。\n\n<a id=\"paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0002-c00011\"></a>\n\n以下公式与代码用于检查翻译保护规则，必须保留原样:\n\n<a id=\"paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0002-c00012\"></a>\n\n<a id=\"paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0002-c00013\"></a>\n\n<a id=\"paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0002-c00014\"></a>\n\n<a id=\"paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0002-c00016\"></a>\n\n<a id=\"paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0002-c00015\"></a>\n\n$f(x) = x^2 + 1$\n```python\ndef forward(x):\n    # Keep this English comment.\n    return x + 1\n```\n\n<a id=\"paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0002-c00017\"></a>\n\n## 3 结果\n\n<a id=\"paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0002-c00018\"></a>\n\n下表来自本项真实本机计时，数值是毫秒。行序表示矩阵维度递增，不等于时间序列，不据此推断因果。\n\n<a id=\"paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0002-c00019\"></a>\n\n<table><tbody><tr><td>维度</td><td>矩阵乘法毫秒</td><td>加法毫秒</td><td>乘法毫秒</td></tr><tr><td>64</td><td>0.0137</td><td>0.0014</td><td>0.0014</td></tr><tr><td>128</td><td>0.071</td><td>0.0037</td><td>0.0032</td></tr><tr><td>256</td><td>0.5585</td><td>0.0326</td><td>0.0336</td></tr><tr><td>512</td><td>7.9187</td><td>0.8168</td><td>0.7002</td></tr><tr><td>1024</td><td>38.9723</td><td>3.1715</td><td>2.9862</td></tr></tbody></table>\n\n<a id=\"paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0002-c00020\"></a>\n\n## 4 局限与结论\n\n<a id=\"paper-0776f0af6f06613433bef8112cc493177534bcf42a91636c9739e789f76ec110-p0002-c00021\"></a>\n\n处理器、内存、调度和计时误差都可能影响结果。本稿没有把耗时当作模型准确率，也没有依据图形外观预测未来结果。翻译后应逐段核对全部数字、术语、公式和代码。\n",
+      "metadata": {
+        "provider": "deepseek",
+        "model": "deepseek-chat",
+        "model_calls": [
+          {
+            "provider": "deepseek",
+            "model": "deepseek-chat",
+            "phase": "translate_batch_1_attempt_1",
+            "elapsed_seconds": 1.498223,
+            "prompt_tokens": 736,
+            "completion_tokens": 144,
+            "total_tokens": 880,
+            "http_status": 200,
+            "status": "succeeded",
+            "response_bytes": 1090,
+            "finish_reason": "stop"
+          }
+        ],
+        "terminology": {
+          "Transformer": "Transformer",
+          "self-attention": "自注意力",
+          "multi-head attention": "多头注意力",
+          "attention": "注意力",
+          "encoder": "编码器",
+          "decoder": "解码器",
+          "layer normalization": "层归一化",
+          "positional encoding": "位置编码",
+          "embedding": "嵌入",
+          "embeddings": "嵌入",
+          "feed-forward": "前馈",
+          "recurrent": "循环",
+          "convolutional": "卷积",
+          "sequence transduction": "序列转导",
+          "transduction": "转导",
+          "state of the art": "最先进水平",
+          "state-of-the-art": "最先进水平",
+          "dimension": "维度"
+        },
+        "alignment": "one_source_chunk_one_segment",
+        "layout_source": "validated_original_chunks",
+        "cache_hits": 0,
+        "code_layout_version": "pdf-fenced-code-v1",
+        "expected_segments": 21,
+        "translated_segments": 21,
+        "complete": true
+      }
+    },
+    "failed": [],
+    "failed_count": 0,
+    "succeeded_count": 21
+  },
+  "error": null
+}

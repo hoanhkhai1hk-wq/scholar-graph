@@ -1,5 +1,6 @@
 """Version-two workspace state, separate from immutable publication records."""
 import copy
+import hashlib
 from datetime import datetime, timezone
 import json
 import os
@@ -49,6 +50,7 @@ class Workspace:
             cached = self._bundle_cache.get(paper_id)
             if cached is None or cached[0] != signature:
                 loaded=self.repository.paper(paper_id)
+                loaded=self._source_code_view(paper_id, loaded)
                 size=len(json.dumps(loaded,ensure_ascii=False).encode())
                 cached = (signature,loaded,size)
                 self._bundle_cache.pop(paper_id,None)
@@ -88,6 +90,26 @@ class Workspace:
                 'chunks': chunks,
                 'reference_entries': enhanced.get('references', base['reference_entries']),
                 'citation_links': enhanced.get('citation_links', base['citation_links'])}
+
+    def _source_code_view(self, paper_id, bundle):
+        """Repair an effective view with an audited sidecar, never frozen files."""
+        from .code_layout import VERSION, repair_pdf_code
+        if not any('```' in c['text'] or '~~~' in c['text'] for c in bundle['chunks']):
+            return bundle
+        digest = hashlib.sha256(json.dumps(bundle['chunks'], sort_keys=True).encode()).hexdigest()
+        prior = self.read('code_layout', paper_id, {})
+        if prior.get('version') == VERSION and prior.get('base_digest') == digest:
+            return {**bundle, 'chunks': prior['chunks']}
+        try:
+            path = PdfFiles(self.root).locate(paper_id)
+        except PipelineError:
+            # Legacy libraries may not retain originals. Never guess source text.
+            return bundle
+        chunks, changes = repair_pdf_code(bundle['chunks'], path)
+        self.put('code_layout', paper_id, {'version': VERSION, 'base_digest': digest,
+                 'source_sha256': bundle['paper_meta']['file_hash'], 'chunks': chunks,
+                 'changes': changes}, 'source_code_layout_verified')
+        return {**bundle, 'chunks': chunks}
 
     @contextmanager
     def connect(self):

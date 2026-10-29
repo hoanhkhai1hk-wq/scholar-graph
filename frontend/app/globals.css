@@ -295,6 +295,12 @@ a:hover {
 }
 
 /* 论文正文内容区：衬线体 */
+.sg-source-text {
+  white-space: pre-wrap;
+  tab-size: 4;
+  overflow-wrap: anywhere;
+}
+
 .sg-prose {
   font-family: var(--sg-font-serif);
   font-size: 15px;

@@ -45,6 +45,8 @@ export default function TranslatePanel({ paperId, chunks, pageCount = 1 }: { pap
     finally { setBusy(false); }
   }
   const pages = [...new Set(response?.segments.map(segment => segment.page_number) ?? [])];
+  const outdatedCode = Boolean(response && response.metadata.code_layout_version !== "pdf-fenced-code-v1"
+    && response.segments.some(segment => /```|~~~/.test(segment.source_text)));
   return <div className="sg-translate">
     <h2 className="sg-section__title">双语阅读与翻译</h2><p className="sg-lede">译文逐段对应原文，保留公式和代码。任务可停止、刷新查看和重试；文字选区及悬停翻译在“原版式”中使用。</p>
     <div className="sg-form"><label className="sg-field">翻译方向<select className="sg-input" value={target} onChange={event => { setTarget(event.target.value); if (event.target.value === "en" && !["abstract", "full"].includes(scope)) setScope("abstract"); }}><option value="zh">英译中</option><option value="en">中译英</option></select></label>
@@ -56,6 +58,6 @@ export default function TranslatePanel({ paperId, chunks, pageCount = 1 }: { pap
     <button className="sg-btn" disabled={busy || scope === "section" && !section || scope === "selection" && !selected.length} title={scope === "section" && !section ? "请先选择章节" : scope === "selection" && !selected.length ? "请先勾选段落" : undefined} onClick={() => void run()}>{busy ? "正在创建任务…" : "开始翻译"}</button>
     {error ? <p role="alert" className="sg-error">{error}</p> : null}
     {taskId ? <TaskMonitor taskId={taskId} onTaskChange={remember} onResult={result} /> : null}
-    {response ? <><h3>已校验译文 · 共 {response.segments.length} 段</h3><p>两栏均可滚动，点击段落可对齐另一栏。</p><label className="sg-field">译文页<select className="sg-input" value={resultPage} onChange={event => setResultPage(Number(event.target.value))}>{pages.map(p => <option key={p} value={p}>第 {p} 页</option>)}</select></label><BilingualPane segments={response.segments.filter(s => s.page_number === resultPage)} markdown={null} markdownMode={false} target={response.target} /><button className="sg-btn sg-btn--ghost" onClick={exportTranslation}>导出译文</button>{response.markdown ? <details><summary>查看全文排版译文</summary><MarkdownView markdown={response.markdown} /></details> : null}</> : null}
+    {response ? <><h3>{outdatedCode ? "历史译文待重新校验" : "已校验译文"} · 共 {response.segments.length} 段</h3>{outdatedCode ? <p role="alert" className="sg-error">这份历史译文尚未校验代码顺序与缩进，请选择原来的翻译方向和范围，点击“开始翻译”重新生成后导出。</p> : null}<p>两栏均可滚动，点击段落可对齐另一栏。</p><label className="sg-field">译文页<select className="sg-input" value={resultPage} onChange={event => setResultPage(Number(event.target.value))}>{pages.map(p => <option key={p} value={p}>第 {p} 页</option>)}</select></label><BilingualPane segments={response.segments.filter(s => s.page_number === resultPage)} markdown={null} markdownMode={false} target={response.target} /><button className="sg-btn sg-btn--ghost" disabled={outdatedCode} title={outdatedCode ? "重新生成并校验后即可导出" : undefined} onClick={exportTranslation}>导出译文</button>{response.markdown ? <details><summary>查看全文排版译文</summary><MarkdownView markdown={response.markdown} /></details> : null}</> : null}
   </div>;
 }

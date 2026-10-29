@@ -1,0 +1,25 @@
+{
+  "checks": {
+    "fast02": {
+      "tests": "200",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "time": "26.652"
+    },
+    "related04": {
+      "tests": "418",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "time": "79.903"
+    }
+  },
+  "production_build_id": "PdaFPw-5aVQtuV0y6VI2I",
+  "production_build_verified_in_running_containers": true,
+  "ui_existing_detector_findings": 8,
+  "ui_new_detector_findings": 0,
+  "real_provider_runs": 4,
+  "browser_provider_calls": 0,
+  "browser_cache_hits": 1
+}

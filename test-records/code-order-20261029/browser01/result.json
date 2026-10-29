@@ -1,0 +1,30 @@
+{
+  "page_errors": [],
+  "checks": [
+    "stored_source_visible_with_four_space_indent",
+    "real_task_completed",
+    "markdown_rendered_without_code_anchors",
+    "download_matches_source_code",
+    "verified_task_survives_refresh",
+    "actual_historical_translation_flagged_and_export_disabled"
+  ],
+  "ui_model_calls": 0,
+  "ui_cache_hits": 1,
+  "viewport_1440": {
+    "viewport": 1440,
+    "width": 1440
+  },
+  "viewport_1366": {
+    "viewport": 1366,
+    "width": 1366
+  },
+  "viewport_1024": {
+    "viewport": 1024,
+    "width": 1024
+  },
+  "viewport_390": {
+    "viewport": 390,
+    "width": 390
+  },
+  "passed": true
+}
