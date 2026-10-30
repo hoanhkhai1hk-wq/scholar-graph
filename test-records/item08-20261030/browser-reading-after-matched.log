@@ -1,0 +1,5 @@
+page.waitForFunction: Timeout 30000ms exceeded.
+    at D:\AI_Workspace\Tasks\scholar-graph\tests\item08\reading_browser.cjs:8:249 {
+  log: [],
+  name: 'TimeoutError'
+}

@@ -1,5 +1,6 @@
 services:
   backend:
+    image: ${SCHOLAR_GRAPH_BACKEND_IMAGE:-scholar-graph-backend:local}
     build:
       context: .
       dockerfile: Dockerfile
@@ -10,7 +11,7 @@ services:
     init: true
     restart: unless-stopped
     ports:
-      - "127.0.0.1:8000:8000"
+      - "127.0.0.1:${SCHOLAR_GRAPH_BACKEND_PORT:-8000}:8000"
     environment:
       SCHOLAR_GRAPH_DATA_DIR: /app/data/records
       SCHOLAR_GRAPH_QA_MODE: extractive
@@ -18,7 +19,9 @@ services:
       SCHOLAR_GRAPH_OCR_CACHE_DIR: /app/data/paddle-models
       SCHOLAR_GRAPH_RETRIEVAL_MODE: bge_m3_hybrid
       SCHOLAR_GRAPH_QA_RETRIEVAL_MODE: hybrid
-      SCHOLAR_GRAPH_TRACKING_ENABLED: "true"
+      SCHOLAR_GRAPH_TRACKING_ENABLED: ${SCHOLAR_GRAPH_TRACKING_ENABLED:-true}
+      SCHOLAR_GRAPH_QA_RERANKER: rrf
+      SCHOLAR_GRAPH_VECTOR_RESIDENT: ${SCHOLAR_GRAPH_VECTOR_RESIDENT:-true}
       SCHOLAR_GRAPH_TRACKING_INTERVAL_SECONDS: "86400"
       SCHOLAR_GRAPH_TRACKING_INITIAL_DELAY_SECONDS: "15"
     volumes:
@@ -31,6 +34,7 @@ services:
       retries: 8
 
   frontend:
+    image: ${SCHOLAR_GRAPH_FRONTEND_IMAGE:-scholar-graph-frontend:local}
     build:
       context: .
       dockerfile: Dockerfile
@@ -41,7 +45,7 @@ services:
     init: true
     restart: unless-stopped
     ports:
-      - "127.0.0.1:3000:3000"
+      - "127.0.0.1:${SCHOLAR_GRAPH_FRONTEND_PORT:-3000}:3000"
     environment:
       NEXT_PUBLIC_API_BASE_URL: http://backend:8000
       NEXT_TELEMETRY_DISABLED: "1"

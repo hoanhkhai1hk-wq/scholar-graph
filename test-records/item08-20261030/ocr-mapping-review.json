@@ -1,0 +1,136 @@
+{
+  "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+  "method": "Independent PaddleOCR all15 physical pages. Match normalized character3-gram Dice scores to every frozen OCR page; not merely compare API page labels.",
+  "pages": [
+    {
+      "physical_page": 1,
+      "matched_frozen_page": 1,
+      "score": 1.0,
+      "runner_up_score": 0.501524,
+      "ocr_blocks": 57,
+      "passed": true
+    },
+    {
+      "physical_page": 2,
+      "matched_frozen_page": 2,
+      "score": 1.0,
+      "runner_up_score": 0.521703,
+      "ocr_blocks": 57,
+      "passed": true
+    },
+    {
+      "physical_page": 3,
+      "matched_frozen_page": 3,
+      "score": 1.0,
+      "runner_up_score": 0.453633,
+      "ocr_blocks": 63,
+      "passed": true
+    },
+    {
+      "physical_page": 4,
+      "matched_frozen_page": 4,
+      "score": 1.0,
+      "runner_up_score": 0.502816,
+      "ocr_blocks": 67,
+      "passed": true
+    },
+    {
+      "physical_page": 5,
+      "matched_frozen_page": 5,
+      "score": 1.0,
+      "runner_up_score": 0.518551,
+      "ocr_blocks": 48,
+      "passed": true
+    },
+    {
+      "physical_page": 6,
+      "matched_frozen_page": 6,
+      "score": 1.0,
+      "runner_up_score": 0.521703,
+      "ocr_blocks": 67,
+      "passed": true
+    },
+    {
+      "physical_page": 7,
+      "matched_frozen_page": 7,
+      "score": 1.0,
+      "runner_up_score": 0.48179,
+      "ocr_blocks": 52,
+      "passed": true
+    },
+    {
+      "physical_page": 8,
+      "matched_frozen_page": 8,
+      "score": 1.0,
+      "runner_up_score": 0.461538,
+      "ocr_blocks": 100,
+      "passed": true
+    },
+    {
+      "physical_page": 9,
+      "matched_frozen_page": 9,
+      "score": 1.0,
+      "runner_up_score": 0.419866,
+      "ocr_blocks": 182,
+      "passed": true
+    },
+    {
+      "physical_page": 10,
+      "matched_frozen_page": 10,
+      "score": 1.0,
+      "runner_up_score": 0.473012,
+      "ocr_blocks": 57,
+      "passed": true
+    },
+    {
+      "physical_page": 11,
+      "matched_frozen_page": 11,
+      "score": 1.0,
+      "runner_up_score": 0.443563,
+      "ocr_blocks": 57,
+      "passed": true
+    },
+    {
+      "physical_page": 12,
+      "matched_frozen_page": 12,
+      "score": 1.0,
+      "runner_up_score": 0.24624,
+      "ocr_blocks": 11,
+      "passed": true
+    },
+    {
+      "physical_page": 13,
+      "matched_frozen_page": 13,
+      "score": 0.666667,
+      "runner_up_score": 0.246998,
+      "ocr_blocks": 58,
+      "passed": true
+    },
+    {
+      "physical_page": 14,
+      "matched_frozen_page": 14,
+      "score": 0.358862,
+      "runner_up_score": 0.169851,
+      "ocr_blocks": 79,
+      "passed": false
+    },
+    {
+      "physical_page": 15,
+      "matched_frozen_page": 15,
+      "score": 0.35443,
+      "runner_up_score": 0.23913,
+      "ocr_blocks": 87,
+      "passed": false
+    }
+  ],
+  "seconds": 626.935257,
+  "mismatched_pages": 2,
+  "mapping_passed": true,
+  "mapping_correct_pages": 15,
+  "text_similarity_gate_passed": false,
+  "low_similarity_pages": [
+    14,
+    15
+  ],
+  "note": "原始0.6字符3-gram相似度门限在图表页14、15未过；物理页匹配15/15正确，两项分别记录。相似度不是OCR准确率，不降低门限冒充内容完全一致。页13–15含竖排/倒置图表词，OCR有误字；仅承诺页级定位。原失败报告保留。"
+}

@@ -1,0 +1,10 @@
+locator.waitFor: Timeout 120000ms exceeded.
+Call log:
+  - waiting for locator('[data-page="1"][data-rendered=true]') to be visible
+
+    at D:\AI_Workspace\Tasks\scholar-graph\tests\item08\reading_browser.cjs:7:224 {
+  log: [
+    `  - waiting for locator('[data-page="1"][data-rendered=true]') to be visible`
+  ],
+  name: 'TimeoutError'
+}

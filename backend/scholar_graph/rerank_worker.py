@@ -22,10 +22,13 @@ def local_environment():
 
 
 class ResidentReranker:
+    mode = 'reranker'
+    error_prefix = 'LOCAL_RERANKER'
+    inference_timeout = 'MEASURED_CPU_BUDGET_EXCEEDED'
     def __init__(self, python, model_path):
         self.started = time.perf_counter()
         self.process = subprocess.Popen([str(python), str(Path(__file__).with_name('vector_worker.py')),
-            '--reranker-server', str(model_path)], stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+            '--' + self.mode + '-server', str(model_path)], stdin=subprocess.PIPE, stdout=subprocess.PIPE,
             stderr=subprocess.DEVNULL, text=True, encoding='utf-8', env=local_environment(),
             creationflags=subprocess.CREATE_NO_WINDOW if os.name == 'nt' else 0)
         self.ready, self.lock, self.results = threading.Event(), threading.Lock(), queue.Queue(maxsize=1)
@@ -45,10 +48,16 @@ class ResidentReranker:
             pass
         finally:
             self.ready.set()
+            # Wake a waiting caller when a child exits mid-inference. Do not let
+            # it wait the entire inference budget for an impossible reply.
+            try:
+                self.results.put_nowait({'worker_error': 'WORKER_EXITED'})
+            except queue.Full:
+                pass
 
     def prepare(self, timeout=90):
         if not self.ready.wait(timeout) or not self.startup or self.process.poll() is not None:
-            raise WorkerUnavailable('LOCAL_RERANKER_STARTUP_FAILED')
+            raise WorkerUnavailable(self.error_prefix + '_STARTUP_FAILED')
         return dict(self.startup)
 
     def score(self, payload, budget):
@@ -56,14 +65,14 @@ class ResidentReranker:
         cold = not self.ready.is_set()
         # Lock contention and cold loading count toward the same per-request budget.
         if not self.lock.acquire(timeout=max(0, budget)):
-            raise WorkerUnavailable('LOCAL_RERANKER_BUSY')
+            raise WorkerUnavailable(self.error_prefix + '_BUSY')
         try:
             remaining = lambda: max(0, budget - (time.perf_counter() - started))
             if not self.ready.wait(remaining()):
                 # The worker may finish warming in the background; no query was submitted.
-                raise WorkerUnavailable('LOCAL_RERANKER_COLD_START_BUDGET_EXCEEDED')
+                raise WorkerUnavailable(self.error_prefix + '_COLD_START_BUDGET_EXCEEDED')
             if not self.startup or self.process.poll() is not None:
-                raise WorkerUnavailable('LOCAL_RERANKER_STARTUP_FAILED')
+                raise WorkerUnavailable(self.error_prefix + '_STARTUP_FAILED')
             self.process.stdin.write(json.dumps(payload, ensure_ascii=True, allow_nan=False) + '\n')
             self.process.stdin.flush()
             try:
@@ -71,7 +80,7 @@ class ResidentReranker:
             except queue.Empty:
                 # Kill an overdue inference so its stale reply cannot serve the next request.
                 self.close()
-                raise WorkerUnavailable('MEASURED_CPU_BUDGET_EXCEEDED') from None
+                raise WorkerUnavailable(self.inference_timeout) from None
             return output, {'cold_start': cold, 'startup': dict(self.startup)}
         finally:
             self.lock.release()
@@ -89,18 +98,32 @@ class ResidentReranker:
                 pipe.close()
 
 
+class ResidentVector(ResidentReranker):
+    mode = 'vector'
+    error_prefix = 'LOCAL_VECTOR'
+    inference_timeout = 'LOCAL_VECTOR_TIMEOUT'
+
+
 _workers, _lock = {}, threading.Lock()
 
 
-def resident_worker(python, model_path):
-    key = (str(Path(python).absolute()), str(Path(model_path).resolve()))
+def _worker(python, model_path, factory):
+    key = (factory.mode, str(Path(python).absolute()), str(Path(model_path).resolve()))
     with _lock:
         worker = _workers.get(key)
         if worker is None or worker.process.poll() is not None:
             if worker is not None:
                 worker.close()
-            worker = _workers[key] = ResidentReranker(python, model_path)
+            worker = _workers[key] = factory(python, model_path)
         return worker
+
+
+def resident_worker(python, model_path):
+    return _worker(python, model_path, ResidentReranker)
+
+
+def resident_vector_worker(python, model_path):
+    return _worker(python, model_path, ResidentVector)
 
 
 @atexit.register

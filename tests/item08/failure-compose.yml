@@ -1,0 +1,32 @@
+services:
+  backend:
+    image: scholar-graph-backend:item08-20261030
+    command: ["python", "-m", "uvicorn", "telemetry_app:app", "--host", "0.0.0.0", "--port", "8000", "--no-access-log"]
+    ports: ["127.0.0.1:8210:8000"]
+    environment:
+      PYTHONPATH: /app/backend:/item08
+      SCHOLAR_GRAPH_DATA_DIR: /app/data/records
+      SCHOLAR_GRAPH_TRACKING_ENABLED: "false"
+      SCHOLAR_GRAPH_QA_MODE: deepseek
+      SG_DATA_CLASS: acceptance
+      DEEPSEEK_API_KEY: fault-injection-only
+      DEEPSEEK_MODEL: fault-model
+      SG_ITEM08_VALIDATION_FAULT: "true"
+      HTTPS_PROXY: http://127.0.0.1:9
+      HTTP_PROXY: http://127.0.0.1:9
+      ALL_PROXY: http://127.0.0.1:9
+      NO_PROXY: localhost,127.0.0.1,backend
+    volumes:
+      - ../../data/item08-20261029/failure-records:/app/data/records
+      - ./:/item08:ro
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; assert urllib.request.urlopen('http://127.0.0.1:8000/api/v2/system',timeout=5).status==200"]
+      interval: 3s
+      retries: 20
+  frontend:
+    image: ${SG_ITEM08_FAILURE_FRONTEND_IMAGE:-scholar-graph-frontend:celadon-20261029}
+    ports: ["127.0.0.1:3530:3000"]
+    environment:
+      SG_BACKEND_URL: http://backend:8000
+    depends_on:
+      backend: {condition: service_healthy}

@@ -1,0 +1,61 @@
+{
+  "pages": [
+    {
+      "route": "/",
+      "status": 200,
+      "title": "论文库"
+    },
+    {
+      "route": "/qa",
+      "status": 200,
+      "title": "问答与跨篇对比"
+    },
+    {
+      "route": "/graph",
+      "status": 200,
+      "title": "局域引用图谱"
+    },
+    {
+      "route": "/retrieval",
+      "status": 200,
+      "title": "发现与追踪"
+    },
+    {
+      "route": "/writing",
+      "status": 200,
+      "title": "写作工作台"
+    },
+    {
+      "route": "/upload",
+      "status": 200,
+      "title": "上传论文"
+    },
+    {
+      "route": "/papers/paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "status": 200,
+      "title": "Attention Is All You Need"
+    },
+    {
+      "route": "/read/paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "status": 200,
+      "title": "Attention Is All You Need"
+    },
+    {
+      "route": "/settings",
+      "status": 200,
+      "title": "设置与服务状态"
+    }
+  ],
+  "errors": [],
+  "emptyLibrary": {
+    "count": 0,
+    "guidance": true
+  },
+  "assistant": {
+    "question": "这篇论文主要讲什么？",
+    "answer": "依据原文回答\n\n该论文针对当时主流的序列转换模型依赖复杂的循环或卷积神经网络、并通过注意力机制连接编码器与解码器这一问题，提出了一种全新的简单网络架构 Transformer，它完全基于注意力机制，摒弃了循环和卷积。\n\n查看本段原文依据（1）\n\n主要发现是：在两项机器翻译任务上的实验表明，该模型质量更优、更易并行化且训练时间显著更少，并能很好地泛化到其他任务。\n\n查看本段原文依据（1）\n诊断与核对范围",
+    "visibleSourceAnchor": true,
+    "locatedInCurrentReader": true
+  },
+  "passed": true
+}

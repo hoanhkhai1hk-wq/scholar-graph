@@ -1,0 +1,27 @@
+{
+  "cases": [
+    {
+      "scope": "abstract",
+      "status": "completed",
+      "segments": 1,
+      "cache_hits": 1,
+      "ui_ms": 3406,
+      "export_bytes": 992,
+      "export_sha256": "0214d964690346dc86029c5d261954965eb361ddee70e1b0c04d1db287be0965",
+      "export_enabled": true
+    },
+    {
+      "scope": "full",
+      "status": "completed",
+      "segments": 175,
+      "cache_hits": 6,
+      "ui_ms": 3001,
+      "export_bytes": 54803,
+      "export_sha256": "c6f3aaaf2dab74b22f1b605da5541ae6227df6a486661959d0b2227c70119d8f",
+      "export_enabled": true
+    }
+  ],
+  "errors": [],
+  "note": "UI may reuse the batches genuinely generated on fresh Compose. Real model calls are separately in default-stack.json.",
+  "passed": true
+}

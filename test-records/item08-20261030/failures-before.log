@@ -1,0 +1,10 @@
+translation failed 1.495
+tracking failed 10.552
+Traceback (most recent call last):
+  File "D:\AI_Workspace\Tasks\scholar-graph\tests\item08\failure_probe.py", line 24, in <module>
+    started=time.perf_counter();r=c.post(path,json=body);r.raise_for_status();task=wait(c,r.json()['id']);report['tasks'][name]=task
+                                                         ^^^^^^^^^^^^^^^^^^^^
+  File "D:\AI_Workspace\Tasks\scholar-graph\backend\.venv\Lib\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '404 Not Found' for url 'http://127.0.0.1:8210/api/v2/acquisition/title-tasks'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404

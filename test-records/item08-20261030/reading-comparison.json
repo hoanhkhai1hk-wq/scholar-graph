@@ -1,0 +1,38 @@
+{
+  "first_render_before_ms": [
+    8417,
+    4362,
+    4783
+  ],
+  "first_render_after_ms": [
+    4479,
+    3754,
+    3640
+  ],
+  "before_first_reading_requests": 2,
+  "before_first_pdf_requests": 4,
+  "before_first_pdf_response_bytes": 11072800,
+  "after_first_reading_requests": 1,
+  "after_first_pdf_requests": 4,
+  "after_first_pdf_response_bytes": 1045792,
+  "jump_300_before_ms": [
+    24265,
+    25387,
+    14022
+  ],
+  "jump_300_after_ms": [
+    2576,
+    2655,
+    2378
+  ],
+  "jump_541_before_ms": [
+    2871,
+    1977,
+    3263
+  ],
+  "jump_541_after_ms": [
+    1362,
+    1372,
+    1355
+  ]
+}

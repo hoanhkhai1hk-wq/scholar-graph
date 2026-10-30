@@ -1,0 +1,8 @@
+# Copy to docker-compose.override.yml only when it does not already exist.
+# Keep real credentials in the ignored local .env; never replace refs with values.
+services:
+  backend:
+    environment:
+      DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY:?Configure the local .env file}
+      DEEPSEEK_MODEL: ${DEEPSEEK_MODEL:?Configure the local .env file}
+      SCHOLAR_GRAPH_QA_MODE: deepseek

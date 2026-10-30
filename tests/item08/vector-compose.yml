@@ -1,0 +1,7 @@
+services:
+  backend:
+    environment:
+      SCHOLAR_GRAPH_QA_RERANKER: rrf
+      SCHOLAR_GRAPH_VECTOR_RESIDENT: "true"
+    volumes:
+      - ../../data/module-four-models/bge-m3:/app/data/module-four-models/bge-m3:ro

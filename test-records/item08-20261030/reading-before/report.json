@@ -1,0 +1,62 @@
+{
+  "paper_id": "paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32",
+  "page_count": 541,
+  "samples": [
+    {
+      "name": "cold_navigation",
+      "physical_page": 1,
+      "navigation": true,
+      "ms": 1514.874,
+      "bytes": 1368128,
+      "chunks": 9,
+      "outline": 527,
+      "total_chunks": 6859
+    },
+    {
+      "name": "warm_navigation",
+      "physical_page": 1,
+      "navigation": true,
+      "ms": 471.042,
+      "bytes": 1368128,
+      "chunks": 9,
+      "outline": 527,
+      "total_chunks": 6859
+    },
+    {
+      "name": "jump_300",
+      "physical_page": 300,
+      "navigation": false,
+      "ms": 285.722,
+      "bytes": 10448,
+      "chunks": 16,
+      "outline": 0,
+      "total_chunks": 6859
+    },
+    {
+      "name": "jump_541",
+      "physical_page": 541,
+      "navigation": false,
+      "ms": 265.999,
+      "bytes": 11690,
+      "chunks": 27,
+      "outline": 0,
+      "total_chunks": 6859
+    },
+    {
+      "name": "repeat_300",
+      "physical_page": 300,
+      "navigation": false,
+      "ms": 253.892,
+      "bytes": 10448,
+      "chunks": 16,
+      "outline": 0,
+      "total_chunks": 6859
+    }
+  ],
+  "legacy": {
+    "requests": 69,
+    "chunks": 6859,
+    "bytes": 4227569,
+    "elapsed_ms": 12751.913
+  }
+}

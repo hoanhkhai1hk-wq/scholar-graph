@@ -1,0 +1,93 @@
+{
+  "preservation": {
+    "pdfs": {
+      "count": 41,
+      "changed": [],
+      "expected_changed": []
+    },
+    "source_records": {
+      "count": 336,
+      "changed": [],
+      "expected_changed": []
+    },
+    "files": {
+      "count": 834,
+      "changed": [
+        "README.md"
+      ],
+      "expected_changed": [
+        "README.md"
+      ]
+    },
+    "readme_prefix_preserved": true
+  },
+  "runtime": [
+    {
+      "project": "scholar-graph",
+      "services": {
+        "backend": {
+          "health": "healthy",
+          "image": "sha256:9a1f4b04b768e7034a0d4425c8129840db667b2c3d1ce776fd60f261076bcb38",
+          "oom_killed": false,
+          "memory_limit": 0,
+          "nano_cpus": 0,
+          "source_hashes": {
+            "workspace.py": "cc57e84c4f9f60365aa90a0849d73d6ef82e61db16c87a4a05a3383026dbb220",
+            "qa_retrieval.py": "509f3333dfaee816a62b0c7c9aabc892d32296a58feceb465d6ae21f80b2d7bb",
+            "rerank_worker.py": "bed48b9f231d1e373ac06554f44813daac49143dd4c636d1cf88212b30bd18e2",
+            "vector_worker.py": "1748ea6330a10f0620882cca50f957cbf8b56de580f00fd3e667bca816d93eb7",
+            "vector_search.py": "e5de379d2a78fd51a6391c4f99dfba4cc4071c3e59ebf24224539841ca88bbe4"
+          },
+          "model_configuration": [
+            "KEY_SET",
+            "MODEL_SET"
+          ]
+        },
+        "frontend": {
+          "health": "healthy",
+          "image": "sha256:b8f2fc8721f6ebb38075c44a5626d08989e2f9fbc1752e75fd6d9c0d81875c2f",
+          "oom_killed": false,
+          "memory_limit": 0,
+          "nano_cpus": 0,
+          "build_id": "0d2Ic4_PBTMgUyDA7e1-w",
+          "dns": "172.21.0.2      backend"
+        }
+      },
+      "paper_count": 0
+    },
+    {
+      "project": "scholar-graph-item08",
+      "services": {
+        "backend": {
+          "health": "healthy",
+          "image": "sha256:9a1f4b04b768e7034a0d4425c8129840db667b2c3d1ce776fd60f261076bcb38",
+          "oom_killed": false,
+          "memory_limit": 3221225472,
+          "nano_cpus": 1250000000,
+          "source_hashes": {
+            "workspace.py": "cc57e84c4f9f60365aa90a0849d73d6ef82e61db16c87a4a05a3383026dbb220",
+            "qa_retrieval.py": "509f3333dfaee816a62b0c7c9aabc892d32296a58feceb465d6ae21f80b2d7bb",
+            "rerank_worker.py": "bed48b9f231d1e373ac06554f44813daac49143dd4c636d1cf88212b30bd18e2",
+            "vector_worker.py": "1748ea6330a10f0620882cca50f957cbf8b56de580f00fd3e667bca816d93eb7",
+            "vector_search.py": "e5de379d2a78fd51a6391c4f99dfba4cc4071c3e59ebf24224539841ca88bbe4"
+          },
+          "model_configuration": [
+            "KEY_SET",
+            "MODEL_SET"
+          ]
+        },
+        "frontend": {
+          "health": "healthy",
+          "image": "sha256:b8f2fc8721f6ebb38075c44a5626d08989e2f9fbc1752e75fd6d9c0d81875c2f",
+          "oom_killed": false,
+          "memory_limit": 1073741824,
+          "nano_cpus": 750000000,
+          "build_id": "0d2Ic4_PBTMgUyDA7e1-w",
+          "dns": "172.30.0.2      backend"
+        }
+      },
+      "paper_count": 23
+    }
+  ],
+  "passed": true
+}

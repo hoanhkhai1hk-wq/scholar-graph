@@ -1,0 +1,232 @@
+{
+  "faults": {
+    "translation": "Test-only httpx transport returns empty translations; dummy key, no actual model invocation",
+    "arxiv": "Actual outbound TCP connection refused at local proxy127.0.0.1:9; no candidate response mocked"
+  },
+  "tasks": {
+    "translation": {
+      "id": "c9551184ee4f4f3ab4d65b36e42eacc0",
+      "kind": "translation",
+      "status": "failed",
+      "created_at": "2026-10-29T17:39:23.080887+00:00",
+      "started_at": "2026-10-29T17:39:23.215114+00:00",
+      "finished_at": "2026-10-29T17:39:23.951007+00:00",
+      "cancel_requested": false,
+      "progress": {
+        "completed_units": 1,
+        "total_units": 1,
+        "label": "已校验 0 / 1 个原文段落"
+      },
+      "result": {
+        "translation": {
+          "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "scope": "abstract",
+          "target": "zh",
+          "segments": [],
+          "markdown": null,
+          "metadata": {
+            "provider": "deepseek",
+            "model": null,
+            "model_calls": [],
+            "terminology": {},
+            "alignment": "one_source_chunk_one_segment",
+            "layout_source": "validated_original_chunks",
+            "cache_hits": 0,
+            "code_layout_version": "pdf-fenced-code-v1",
+            "expected_segments": 1,
+            "translated_segments": 0,
+            "complete": false
+          }
+        },
+        "failed": [
+          {
+            "filename": "第 1–1 页",
+            "chunk_count": 1,
+            "error_code": "UPSTREAM_ERROR",
+            "message": "翻译结果校验失败，未返回不完整译文。",
+            "details": {
+              "reason": "段落缺失、重复、重排或为空",
+              "source_chunk_id": null
+            }
+          }
+        ],
+        "failed_count": 1,
+        "succeeded_count": 0
+      },
+      "error": null
+    },
+    "tracking": {
+      "id": "2642e45554b9439ba36c4a77fd0b4a4d",
+      "kind": "tracking",
+      "status": "failed",
+      "created_at": "2026-10-29T17:39:24.095806+00:00",
+      "started_at": "2026-10-29T17:39:24.210298+00:00",
+      "finished_at": "2026-10-29T17:39:34.188389+00:00",
+      "cancel_requested": false,
+      "progress": {
+        "completed_units": 1,
+        "total_units": 1,
+        "label": "本次论文发现已结束，真实候选、重复和失败已记录"
+      },
+      "result": {
+        "tracking": {
+          "run_id": "607e97e437cd4711b76678a7997f97d9",
+          "started_at": "2026-10-29T17:39:24.475102+00:00",
+          "finished_at": "2026-10-29T17:39:34.012424+00:00",
+          "status": "failed",
+          "duration_seconds": 9.537315,
+          "candidate_count": 0,
+          "candidates": [],
+          "queries": [
+            {
+              "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+              "query": "all:\"attention\"",
+              "kind": "topic",
+              "terms": [
+                "attention"
+              ],
+              "anchor": null,
+              "returned_count": 0,
+              "error": {
+                "error_code": "UPSTREAM_ERROR",
+                "message": "arXiv 公共接口连接失败，未编造记录。",
+                "details": null
+              }
+            },
+            {
+              "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+              "query": "ti:\"Neural machine translation by jointly learning to align and translate\"",
+              "kind": "citation",
+              "reference": {
+                "schema_version": "1.0.0",
+                "ref_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-ref-2",
+                "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                "number": 2,
+                "authors": [
+                  "Dzmitry Bahdanau",
+                  "Kyunghyun Cho",
+                  "Yoshua Bengio"
+                ],
+                "year": 2014,
+                "title": "Neural machine translation by jointly learning to align and translate",
+                "venue": "Neural machine translation by jointly learning to align and translate",
+                "doi": null,
+                "arxiv_id": "1409.0473"
+              },
+              "terms": [
+                "align",
+                "jointly",
+                "learning",
+                "machine",
+                "neural",
+                "translate",
+                "translation"
+              ],
+              "reference_title_excerpt": "Neural machine translation by jointly learning to align and translate",
+              "reference_anchor": null,
+              "anchor": {
+                "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+                "page_number": 2,
+                "section": [
+                  "1 Introduction"
+                ],
+                "chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00016"
+              },
+              "returned_count": 0,
+              "error": {
+                "error_code": "UPSTREAM_ERROR",
+                "message": "arXiv 公共接口连接失败，未编造记录。",
+                "details": null
+              }
+            }
+          ],
+          "imported_count": 0,
+          "duplicate_count": 0,
+          "failed_count": 0,
+          "errors": [
+            {
+              "query": "all:\"attention\"",
+              "error_code": "UPSTREAM_ERROR",
+              "message": "arXiv 公共接口连接失败，未编造记录。",
+              "details": null
+            },
+            {
+              "query": "ti:\"Neural machine translation by jointly learning to align and translate\"",
+              "error_code": "UPSTREAM_ERROR",
+              "message": "arXiv 公共接口连接失败，未编造记录。",
+              "details": null
+            }
+          ],
+          "cleanup": {
+            "papers_scanned": 1,
+            "papers_changed": 0,
+            "links_before": 69,
+            "links_after": 69,
+            "removed_count": 0,
+            "changes": [],
+            "mode": "read_only_analysis",
+            "unique_links": 69
+          },
+          "interval_seconds": 86400,
+          "dedup_record_count": 0,
+          "query_failed_count": 2,
+          "query_succeeded_count": 0,
+          "discovered_count": 0,
+          "polling_method": "arxiv_atom_api",
+          "import_budget_basis": "new_download_attempts",
+          "paper_ids": [
+            "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+          ]
+        },
+        "succeeded_count": 0,
+        "failed_count": 2
+      },
+      "error": null
+    },
+    "fetch": {
+      "id": "8e1c1ed5ba9246678ef7264a7949b00d",
+      "kind": "acquisition",
+      "status": "failed",
+      "created_at": "2026-10-29T17:39:34.407462+00:00",
+      "started_at": "2026-10-29T17:39:34.623727+00:00",
+      "finished_at": "2026-10-29T17:39:40.189447+00:00",
+      "cancel_requested": false,
+      "progress": {
+        "completed_units": 1,
+        "total_units": 1,
+        "label": "已处理 1 / 1 项"
+      },
+      "result": {
+        "succeeded": [],
+        "failed": [
+          {
+            "filename": "Rethinking the Inception Architecture for Computer Vision",
+            "error_code": "UPSTREAM_ERROR",
+            "message": "arXiv 公共接口连接失败，未编造记录。",
+            "details": null
+          }
+        ],
+        "items": [
+          {
+            "name": "Rethinking the Inception Architecture for Computer Vision",
+            "succeeded": false,
+            "metadata": null,
+            "paper": null,
+            "initial_parse_status": null,
+            "parse_status": null,
+            "error": {
+              "error_code": "UPSTREAM_ERROR",
+              "message": "arXiv 公共接口连接失败，未编造记录。",
+              "details": null
+            }
+          }
+        ],
+        "succeeded_count": 0,
+        "failed_count": 1,
+        "duplicate_count": 0
+      },
+      "error": null
+    }
+  },
+  "passed": true
+}

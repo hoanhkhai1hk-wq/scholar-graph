@@ -1,0 +1,5 @@
+services:
+  backend:
+    image: scholar-graph-backend:item08-20261030
+  frontend:
+    image: scholar-graph-frontend:item08-20261030

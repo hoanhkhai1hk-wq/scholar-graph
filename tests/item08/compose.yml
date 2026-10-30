@@ -1,0 +1,46 @@
+services:
+  backend:
+    image: scholar-graph-backend:code-order-20261029
+    restart: unless-stopped
+    ports: ["127.0.0.1:8200:8000"]
+    cpus: 1.25
+    mem_limit: 3g
+    command: ["python", "-m", "uvicorn", "telemetry_app:app", "--host", "0.0.0.0", "--port", "8000", "--no-access-log"]
+    environment:
+      PYTHONPATH: /app/backend:/item08
+      SCHOLAR_GRAPH_DATA_DIR: /app/data/records
+      DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY:?Set in local .env}
+      DEEPSEEK_MODEL: ${DEEPSEEK_MODEL:?Set in local .env}
+      SCHOLAR_GRAPH_QA_MODE: deepseek
+      SCHOLAR_GRAPH_WORKSPACE_RETRIEVAL: hybrid
+      SCHOLAR_GRAPH_QA_RETRIEVAL_MODE: hybrid
+      SCHOLAR_GRAPH_RETRIEVAL_MODE: bge_m3_hybrid
+      SCHOLAR_GRAPH_TRACKING_ENABLED: "false"
+      SCHOLAR_GRAPH_DEDUP_MODE: "off"
+      SCHOLAR_GRAPH_GROBID_ENABLED: "true"
+      GROBID_URL: http://host.docker.internal:8070
+      SG_DATA_CLASS: acceptance
+    volumes:
+      - ../../data/item08-20261029/records:/app/data/records
+      - ./:/item08:ro
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; assert urllib.request.urlopen('http://127.0.0.1:8000/api/v2/system',timeout=5).status==200"]
+      interval: 5s
+      timeout: 8s
+      retries: 15
+  frontend:
+    image: scholar-graph-frontend:celadon-20261029
+    restart: unless-stopped
+    ports: ["127.0.0.1:3520:3000"]
+    cpus: 0.75
+    mem_limit: 1g
+    environment:
+      SG_BACKEND_URL: http://backend:8000
+      NEXT_PUBLIC_API_BASE_URL: http://backend:8000
+    depends_on:
+      backend: {condition: service_healthy}
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/api/workspace/system').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 5s
+      timeout: 8s
+      retries: 15

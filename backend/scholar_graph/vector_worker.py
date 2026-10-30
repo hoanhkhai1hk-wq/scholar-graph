@@ -13,7 +13,7 @@ from pathlib import Path
 WORKER_STARTED = time.perf_counter()
 
 
-def hybrid_search(payload):
+def hybrid_search(payload, loaded=None):
     import torch
     import chromadb
     from FlagEmbedding import BGEM3FlagModel
@@ -21,11 +21,11 @@ def hybrid_search(payload):
     torch.set_num_threads(2)
     model_path = Path(payload["model_path"]).resolve()
     load_started = time.perf_counter()
-    model = BGEM3FlagModel(str(model_path), devices="cpu", use_fp16=False,
+    model = loaded or BGEM3FlagModel(str(model_path), devices="cpu", use_fp16=False,
                           batch_size=1, return_dense=True, return_sparse=True,
                           query_max_length=512, passage_max_length=512)
-    model_load_seconds = time.perf_counter() - load_started
-    startup_to_model_ready_seconds = time.perf_counter() - WORKER_STARTED
+    model_load_seconds = time.perf_counter() - load_started if loaded is None else 0.0
+    startup_to_model_ready_seconds = time.perf_counter() - WORKER_STARTED if loaded is None else 0.0
     index_started = time.perf_counter()
     client = chromadb.PersistentClient(path=payload["index_path"])
     collection = client.get_or_create_collection("bge-m3-chunks-v1", metadata={"hnsw:space": "cosine"})
@@ -121,6 +121,26 @@ def reranker_server(model_path):
         print(json.dumps(result, allow_nan=False), flush=True)
 
 
+def vector_server(model_path):
+    started = time.perf_counter()
+    with redirect_stdout(sys.stderr):
+        import torch
+        from FlagEmbedding import BGEM3FlagModel
+        torch.set_num_threads(2)
+        loaded = BGEM3FlagModel(str(Path(model_path).resolve()), devices='cpu', use_fp16=False,
+            batch_size=1, return_dense=True, return_sparse=True,
+            query_max_length=512, passage_max_length=512)
+    print(json.dumps({'ready': True, 'startup_seconds': time.perf_counter() - started,
+                      'worker_mode': 'resident_vector'}), flush=True)
+    for line in sys.stdin:
+        payload = json.loads(line)
+        if Path(payload['model_path']).resolve() != Path(model_path).resolve():
+            raise ValueError('resident model mismatch')
+        with redirect_stdout(sys.stderr):
+            result = hybrid_search(payload, loaded)
+        print(json.dumps(result, allow_nan=False), flush=True)
+
+
 def paper_embeddings(payload):
     import torch
     from FlagEmbedding import BGEM3FlagModel
@@ -141,6 +161,9 @@ if __name__ == "__main__":
     try:
         if len(sys.argv) == 3 and sys.argv[1] == '--reranker-server':
             reranker_server(sys.argv[2])
+            sys.exit(0)
+        if len(sys.argv) == 3 and sys.argv[1] == '--vector-server':
+            vector_server(sys.argv[2])
             sys.exit(0)
         payload = json.loads(sys.stdin.read())
         with redirect_stdout(sys.stderr):

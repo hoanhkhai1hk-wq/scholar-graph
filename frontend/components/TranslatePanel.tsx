@@ -29,7 +29,7 @@ export default function TranslatePanel({ paperId, chunks, pageCount = 1 }: { pap
     if (translation) { setResponse(translation); setResultPage(translation.segments[0]?.page_number ?? 1); }
   }, []);
   function remember(id: string) { setTaskId(id); localStorage.setItem(key, id); }
-  function exportTranslation() { if (!response) return; const text = response.markdown ?? response.segments.map(s => s.translated_text).join("\n\n"); const url = URL.createObjectURL(new Blob([text], { type: "text/markdown;charset=utf-8" })); const a = document.createElement("a"); a.href = url; a.download = "论文译文.md"; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000); }
+  function exportTranslation() { if (!response || incomplete || outdatedCode) return; const text = response.markdown ?? response.segments.map(s => s.translated_text).join("\n\n"); const url = URL.createObjectURL(new Blob([text], { type: "text/markdown;charset=utf-8" })); const a = document.createElement("a"); a.href = url; a.download = "论文译文.md"; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000); }
   async function run() {
     setBusy(true); setError(""); setResponse(null);
     try {
@@ -45,6 +45,7 @@ export default function TranslatePanel({ paperId, chunks, pageCount = 1 }: { pap
     finally { setBusy(false); }
   }
   const pages = [...new Set(response?.segments.map(segment => segment.page_number) ?? [])];
+  const incomplete = Boolean(response && (response.metadata.complete === false || response.segments.length === 0 || typeof response.metadata.expected_segments === "number" && response.segments.length !== response.metadata.expected_segments));
   const outdatedCode = Boolean(response && response.metadata.code_layout_version !== "pdf-fenced-code-v1"
     && response.segments.some(segment => /```|~~~/.test(segment.source_text)));
   return <div className="sg-translate">
@@ -58,6 +59,6 @@ export default function TranslatePanel({ paperId, chunks, pageCount = 1 }: { pap
     <button className="sg-btn" disabled={busy || scope === "section" && !section || scope === "selection" && !selected.length} title={scope === "section" && !section ? "请先选择章节" : scope === "selection" && !selected.length ? "请先勾选段落" : undefined} onClick={() => void run()}>{busy ? "正在创建任务…" : "开始翻译"}</button>
     {error ? <p role="alert" className="sg-error">{error}</p> : null}
     {taskId ? <TaskMonitor taskId={taskId} onTaskChange={remember} onResult={result} /> : null}
-    {response ? <><h3>{outdatedCode ? "历史译文待重新校验" : "已校验译文"} · 共 {response.segments.length} 段</h3>{outdatedCode ? <p role="alert" className="sg-error">这份历史译文尚未校验代码顺序与缩进，请选择原来的翻译方向和范围，点击“开始翻译”重新生成后导出。</p> : null}<p>两栏均可滚动，点击段落可对齐另一栏。</p><label className="sg-field">译文页<select className="sg-input" value={resultPage} onChange={event => setResultPage(Number(event.target.value))}>{pages.map(p => <option key={p} value={p}>第 {p} 页</option>)}</select></label><BilingualPane segments={response.segments.filter(s => s.page_number === resultPage)} markdown={null} markdownMode={false} target={response.target} /><button className="sg-btn sg-btn--ghost" disabled={outdatedCode} title={outdatedCode ? "重新生成并校验后即可导出" : undefined} onClick={exportTranslation}>导出译文</button>{response.markdown ? <details><summary>查看全文排版译文</summary><MarkdownView markdown={response.markdown} /></details> : null}</> : null}
+    {response ? <><h3>{incomplete ? "译文尚未完成" : outdatedCode ? "历史译文待重新校验" : "已校验译文"} · 已校验 {response.segments.length} 段</h3>{incomplete ? <p role="alert" className="sg-error">部分原文段落尚未通过校验，当前内容不是完整译文。已校验部分保留，请查看失败原因并重试任务；完成前不能导出。</p> : null}{outdatedCode ? <p role="alert" className="sg-error">这份历史译文尚未校验代码顺序与缩进，请选择原来的翻译方向和范围，点击“开始翻译”重新生成后导出。</p> : null}<p>两栏均可滚动，点击段落可对齐另一栏。</p><label className="sg-field">译文页<select className="sg-input" value={resultPage} onChange={event => setResultPage(Number(event.target.value))}>{pages.map(p => <option key={p} value={p}>第 {p} 页</option>)}</select></label><BilingualPane segments={response.segments.filter(s => s.page_number === resultPage)} markdown={null} markdownMode={false} target={response.target} /><button className="sg-btn sg-btn--ghost" disabled={outdatedCode || incomplete} title={incomplete ? "全部段落通过校验后才可导出" : outdatedCode ? "重新生成并校验后即可导出" : undefined} onClick={exportTranslation}>导出译文</button>{response.markdown ? <details><summary>查看全文排版译文</summary><MarkdownView markdown={response.markdown} /></details> : null}</> : null}
   </div>;
 }

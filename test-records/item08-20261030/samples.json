@@ -1,0 +1,34 @@
+[
+  {
+    "schema_version": "1.0.0",
+    "id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+    "title": null,
+    "authors": [],
+    "institutions": [],
+    "abstract": null,
+    "year": null,
+    "source": "local-upload",
+    "arxiv_id": null,
+    "doi": null,
+    "version": null,
+    "file_hash": "64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+    "page_count": 15,
+    "has_text_layer": false
+  },
+  {
+    "schema_version": "1.0.0",
+    "id": "paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32",
+    "title": null,
+    "authors": [],
+    "institutions": [],
+    "abstract": null,
+    "year": null,
+    "source": "local-upload",
+    "arxiv_id": null,
+    "doi": null,
+    "version": null,
+    "file_hash": "f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32",
+    "page_count": 541,
+    "has_text_layer": true
+  }
+]

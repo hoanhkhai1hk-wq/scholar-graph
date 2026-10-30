@@ -445,6 +445,10 @@ export interface TranslateSegment {
 }
 
 export interface TranslateMetadata {
+  /** v2 task coverage; absent on the preserved v1 synchronous response. */
+  complete?: boolean;
+  expected_segments?: number;
+  translated_segments?: number;
   code_layout_version?: string;
   provider: string;
   model: string;

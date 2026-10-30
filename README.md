@@ -147,3 +147,23 @@ docker compose -p scholar-graph-official -f docker-compose.yml -f services/docke
 .dockerignore排除pdf/、所有PDF、.env及其变体、.git、data/、venv、node_modules、.next、__pycache__和旧测试报告。构建使用显式COPY，无Key构建参数或环境透传；后端镜像包含自行安装的Node/TypeScript，供既有真实代理回归测试使用。GROBID、BGE-M3独立模型服务不在本轮两服务中，默认检索为词法。
 
 本轮实际结果与干净克隆证明以[Docker验收报告](tests/reports/docker-reproduction-acceptance.md)为准；只有配置校验不能宣称换机复现通过。旧快速开始/限制中的“未运行官方用例、未接模型”为历史文案；宿主机后续官方修复和真模型实测见tests/reports/内对应新报告，容器结果独立登记。
+
+## 第8项：部署配置与演示前预热（2026-10-30）
+
+部署步骤、模型配置、端口与卷说明见[部署指南](docs/deployment-guide.md)。本轮实测与残留边界见[test-records/第8项报告](test-records/item08-20261030/README.md)。
+
+1. 不存在本地 `.env` 时从 `.env.example` 复制；不存在 `docker-compose.override.yml` 时从 `deploy/compose.provider.example.yml` 复制。已有文件应合并，不能覆盖自己的配置。
+2. 仅在本地 `.env` 填写真实 `DEEPSEEK_API_KEY` 与 `DEEPSEEK_MODEL`；override保留变量引用。凭据不入库，也不输出完整Compose展开配置。
+3. 首次 `docker compose build`，再 `docker compose up -d --wait`；必须确认前后端healthy、前端能解析backend。
+4. 修改Key或模型后用 `docker compose up -d --wait backend` 重新载入；检查只输出 `KEY_SET`／`KEY_MISSING`，再实跑摘要与全文翻译，不能把“变量存在”当作模型可用。
+5. 演示前，对实际选择的论文运行 `scripts/warm_demo.py`。重启后需重新预热；脚本会记录真实首增量与校验后完成耗时，不会伪造流式内容。
+
+```powershell
+docker compose config -q
+docker compose up -d --wait backend
+docker compose exec -T frontend getent hosts backend
+docker compose exec -T backend python -c "import os; print('KEY_SET' if os.environ.get('DEEPSEEK_API_KEY') else 'KEY_MISSING')"
+backend/.venv/Scripts/python.exe scripts/warm_demo.py --base-url http://127.0.0.1:8030 --paper-titles "Attention Is All You Need" "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding" --question "BERT与Transformer Encoder是什么承袭关系？" --output data/demo-warmup.json
+```
+
+上例8030为本机主后端；全新安装默认8000。没有模型配置时翻译如实失败。向量不可用时明确标记词法回落；要强制验证hybrid预热可加 `--require-vector`。当前精排未上线，使用RRF；FlagEmbedding及模型许可待核。在线演示地址仍待实际部署。

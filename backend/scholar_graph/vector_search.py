@@ -9,15 +9,17 @@ import time
 from pathlib import Path
 
 from .retrieval import VectorUnavailable, fuse_ranks
+from .rerank_worker import resident_vector_worker, WorkerUnavailable
 
 MODEL_REVISION = "5617a9f61b028005a4858fdac845db406aefb181"
 
 
 class BgeChromaSearch:
-    def __init__(self, python, model_path, index_path, *, timeout=240, revision=MODEL_REVISION):
+    def __init__(self, python, model_path, index_path, *, timeout=240, revision=MODEL_REVISION, resident=False):
         self.python = Path(python).resolve()
         self.model_path, self.index_path = Path(model_path).resolve(), Path(index_path).resolve()
         self.timeout, self.revision = timeout, revision
+        self.resident = resident
         self.lock, self.last_evidence = threading.Lock(), None
 
     def search(self, chunks, question):
@@ -34,12 +36,16 @@ class BgeChromaSearch:
         try:
             started = time.perf_counter()
             with self.lock:
-                result = subprocess.run([str(self.python), str(worker)], input=json.dumps(payload),
+                if self.resident:
+                    evidence, residency = resident_vector_worker(self.python, self.model_path).score(payload, self.timeout)
+                    evidence['residency'] = residency
+                else:
+                    result = subprocess.run([str(self.python), str(worker)], input=json.dumps(payload),
                                         capture_output=True, text=True, encoding="utf-8", env=env,
                                         timeout=self.timeout, creationflags=subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0)
-            if result.returncode:
-                raise VectorUnavailable
-            evidence = json.loads(result.stdout)
+                    if result.returncode:
+                        raise VectorUnavailable
+                    evidence = json.loads(result.stdout)
             if isinstance(evidence, dict):
                 evidence["worker_seconds"] = time.perf_counter() - started
             ids = {chunk["chunk_id"] for chunk in chunks}
@@ -52,7 +58,7 @@ class BgeChromaSearch:
                 raise VectorUnavailable
             self.last_evidence = evidence
             return fuse_ranks(evidence["dense"], evidence["sparse"])
-        except (OSError, subprocess.TimeoutExpired, ValueError, KeyError, TypeError):
+        except (OSError, subprocess.TimeoutExpired, ValueError, KeyError, TypeError, WorkerUnavailable):
             raise VectorUnavailable from None
 
 
@@ -61,4 +67,4 @@ def vector_from_environment(root):
         return None
     return BgeChromaSearch(os.environ.get("SCHOLAR_GRAPH_VECTOR_PYTHON", "missing-vector-python"),
                           os.environ.get("SCHOLAR_GRAPH_BGE_M3_PATH", "missing-bge-m3-model"),
-                          Path(root) / "chroma-bge-m3")
+                          Path(root) / "chroma-bge-m3", resident=os.environ.get('SCHOLAR_GRAPH_VECTOR_RESIDENT') == 'true')

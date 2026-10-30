@@ -1,0 +1,272 @@
+{
+  "paper_id": "paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32",
+  "errors": [],
+  "samples": [
+    {
+      "attempt": 0,
+      "first_render_ms": 8417,
+      "initial_api_requests": [
+        {
+          "method": "GET",
+          "path": "/api/v2/papers/paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32/reading",
+          "status": 200,
+          "bytes": 1368128,
+          "ms": 2692.997
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/papers/paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32/file",
+          "status": 200,
+          "bytes": 10878976,
+          "ms": 1141.583
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/papers/paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32/file",
+          "status": 206,
+          "bytes": 65536,
+          "ms": 361.944
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/papers/paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32/file",
+          "status": 206,
+          "bytes": 62752,
+          "ms": 276.426
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/papers/paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32/file",
+          "status": 206,
+          "bytes": 65536,
+          "ms": 320.663
+        },
+        {
+          "method": "GET",
+          "path": "/api/v2/papers/paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32/reading",
+          "status": 200,
+          "bytes": 5023,
+          "ms": 266.494
+        }
+      ],
+      "jumps": [
+        {
+          "page": 300,
+          "rendered_ms": 24265
+        },
+        {
+          "page": 541,
+          "rendered_ms": 2871
+        }
+      ]
+    },
+    {
+      "attempt": 1,
+      "first_render_ms": 4362,
+      "initial_api_requests": [
+        {
+          "method": "GET",
+          "path": "/api/v2/papers/paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32/reading",
+          "status": 200,
+          "bytes": 11930,
+          "ms": 1276.074
+        },
+        {
+          "method": "GET",
+          "path": "/api/v2/papers/paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32/reading",
+          "status": 200,
+          "bytes": 5839,
+          "ms": 1285.087
+        },
+        {
+          "method": "GET",
+          "path": "/api/v2/papers/paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32/reading",
+          "status": 200,
+          "bytes": 10502,
+          "ms": 1432.319
+        },
+        {
+          "method": "GET",
+          "path": "/api/v2/papers/paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32/reading",
+          "status": 200,
+          "bytes": 7401,
+          "ms": 959.51
+        },
+        {
+          "method": "GET",
+          "path": "/api/v2/papers/paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32/reading",
+          "status": 200,
+          "bytes": 5963,
+          "ms": 1129.142
+        },
+        {
+          "method": "GET",
+          "path": "/api/v2/papers/paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32/reading",
+          "status": 200,
+          "bytes": 8030,
+          "ms": 1536.789
+        },
+        {
+          "method": "GET",
+          "path": "/api/v2/papers/paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32/reading",
+          "status": 200,
+          "bytes": 10483,
+          "ms": 925.425
+        },
+        {
+          "method": "GET",
+          "path": "/api/v2/papers/paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32/reading",
+          "status": 200,
+          "bytes": 1368128,
+          "ms": 1256.489
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/papers/paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32/file",
+          "status": 200,
+          "bytes": 393216,
+          "ms": 468.579
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/papers/paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32/file",
+          "status": 206,
+          "bytes": 65536,
+          "ms": 249.058
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/papers/paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32/file",
+          "status": 206,
+          "bytes": 62752,
+          "ms": 227.239
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/papers/paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32/file",
+          "status": 206,
+          "bytes": 65536,
+          "ms": 356.419
+        },
+        {
+          "method": "GET",
+          "path": "/api/v2/papers/paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32/reading",
+          "status": 200,
+          "bytes": 5023,
+          "ms": 274.903
+        }
+      ],
+      "jumps": [
+        {
+          "page": 300,
+          "rendered_ms": 25387
+        },
+        {
+          "page": 541,
+          "rendered_ms": 1977
+        }
+      ]
+    },
+    {
+      "attempt": 2,
+      "first_render_ms": 4783,
+      "initial_api_requests": [
+        {
+          "method": "GET",
+          "path": "/api/v1/papers/paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32/file",
+          "status": 206,
+          "bytes": 65536,
+          "ms": 769.189
+        },
+        {
+          "method": "GET",
+          "path": "/api/v2/papers/paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32/reading",
+          "status": 200,
+          "bytes": 11070,
+          "ms": 1132.774
+        },
+        {
+          "method": "GET",
+          "path": "/api/v2/papers/paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32/reading",
+          "status": 200,
+          "bytes": 11690,
+          "ms": 1380.239
+        },
+        {
+          "method": "GET",
+          "path": "/api/v2/papers/paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32/reading",
+          "status": 200,
+          "bytes": 10448,
+          "ms": 1465.229
+        },
+        {
+          "method": "GET",
+          "path": "/api/v2/papers/paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32/reading",
+          "status": 200,
+          "bytes": 8238,
+          "ms": 1411.116
+        },
+        {
+          "method": "GET",
+          "path": "/api/v2/papers/paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32/reading",
+          "status": 200,
+          "bytes": 11690,
+          "ms": 1533.231
+        },
+        {
+          "method": "GET",
+          "path": "/api/v2/papers/paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32/reading",
+          "status": 200,
+          "bytes": 1368128,
+          "ms": 1428.922
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/papers/paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32/file",
+          "status": 200,
+          "bytes": 327680,
+          "ms": 257.493
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/papers/paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32/file",
+          "status": 206,
+          "bytes": 65536,
+          "ms": 419.382
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/papers/paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32/file",
+          "status": 206,
+          "bytes": 62752,
+          "ms": 264.99
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/papers/paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32/file",
+          "status": 206,
+          "bytes": 65536,
+          "ms": 261.369
+        },
+        {
+          "method": "GET",
+          "path": "/api/v2/papers/paper-f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32/reading",
+          "status": 200,
+          "bytes": 5023,
+          "ms": 260.487
+        }
+      ],
+      "jumps": [
+        {
+          "page": 300,
+          "rendered_ms": 14022
+        },
+        {
+          "page": 541,
+          "rendered_ms": 3263
+        }
+      ]
+    }
+  ],
+  "passed": true
+}

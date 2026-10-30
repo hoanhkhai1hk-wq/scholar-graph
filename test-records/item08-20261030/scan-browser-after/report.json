@@ -1,0 +1,27 @@
+{
+  "pages": [
+    {
+      "physical_page": 1,
+      "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0001-c00001",
+      "note": "扫描件已定位到第 1 页（页级定位）；原件没有可核查的段落文字坐标。",
+      "paragraph_highlights": 0,
+      "ms": 7901
+    },
+    {
+      "physical_page": 3,
+      "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0003-c00115",
+      "note": "扫描件已定位到第 3 页（页级定位）；原件没有可核查的段落文字坐标。",
+      "paragraph_highlights": 0,
+      "ms": 5729
+    },
+    {
+      "physical_page": 15,
+      "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0015-c00926",
+      "note": "扫描件已定位到第 15 页（页级定位）；原件没有可核查的段落文字坐标。",
+      "paragraph_highlights": 0,
+      "ms": 5338
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

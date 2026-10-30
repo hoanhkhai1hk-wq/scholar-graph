@@ -132,6 +132,7 @@ class QAHybridRetriever:
                     vector_recalled=len(vector), union_recalled=len(ordered_ids), rerank=rerank_info,
                     ranking_method="reranked" if reranked is not None else "rrf",
                     vector_timing=raw.get("timing", {}), worker_seconds=raw.get("worker_seconds"),
+                    vector_residency=raw.get("residency"),
                     indexed_chunks=raw.get("indexed_chunks"), updated_chunks=raw.get("updated_chunks"),
                     model_revision=raw.get("revision"), versions=raw.get("versions"),
                     fusion={"method": "equal_weight_rrf", "k": 60, "route_limit": 24,
@@ -169,6 +170,7 @@ def qa_retriever(repository):
     python = os.environ.get("SCHOLAR_GRAPH_VECTOR_PYTHON", str(root / "data/module-four-runtime/.venv/Scripts/python.exe"))
     model = os.environ.get("SCHOLAR_GRAPH_BGE_M3_PATH", str(root / "data/module-four-models/bge-m3"))
     vector = None if os.environ.get("SCHOLAR_GRAPH_QA_RETRIEVAL_MODE", "hybrid") == "lexical" else BgeChromaSearch(
-        python, model, repository.root / "chroma-qa-bge-m3", timeout=600)
+        python, model, repository.root / "chroma-qa-bge-m3", timeout=600,
+        resident=os.environ.get('SCHOLAR_GRAPH_VECTOR_RESIDENT') == 'true')
     reranker = LocalReranker(repository.root, python, os.environ.get("SCHOLAR_GRAPH_RERANKER_PATH", str(root / "data/module-four-models/bge-reranker-large")), resident=True)
     return QAHybridRetriever(repository, vector, reranker)

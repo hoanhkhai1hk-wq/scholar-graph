@@ -41,11 +41,13 @@ class Workspace:
         self.path = self.root / 'workspace.sqlite3'
         self.lock = threading.RLock()
         self._bundle_cache = OrderedDict()
+        self._reading_cache = OrderedDict()
 
     def bundle(self, paper_id):
         self.metadata(paper_id)
         directory = self.root / 'papers' / paper_id
-        signature = tuple((p.name, p.stat().st_mtime_ns, p.stat().st_size) for p in sorted(directory.glob('*.json')))
+        source = directory.glob('*.json') if directory.is_dir() else (self.root / 'partial' / paper_id).glob('batch-*/*.json')
+        signature = tuple((str(p.relative_to(self.root)), p.stat().st_mtime_ns, p.stat().st_size) for p in sorted(source))
         with self.lock:
             cached = self._bundle_cache.get(paper_id)
             if cached is None or cached[0] != signature:
@@ -244,16 +246,47 @@ class Workspace:
                            'selection': self.read('version_choice', new_id), 'history': history})
         return groups
 
-    def reading(self, paper_id, physical_page=1, include_navigation=True):
-        bundle = self.bundle(paper_id)
-        if physical_page > bundle['paper_meta']['page_count']:
-            raise PipelineError('VALIDATION_ERROR', '页码超过原文范围。')
-        if not include_navigation:
-            return {'paper':self.paper(paper_id)['paper'],'outline':[],'bibliography_locations':{},
-                    'chunks':[c for c in bundle['chunks'] if c['page_number']==physical_page],
-                    'references':[],'citation_links':[],'page_number':physical_page,'total_chunks':len(bundle['chunks'])}
+    def _reading_signature(self, paper_id):
+        # Frozen publications plus the effective, editable sidecars determine the
+        # reader. Merely appending a chat/task must not invalidate a whole book.
+        self.metadata(paper_id)
+        directory = self.root / 'papers' / paper_id
+        source = directory.glob('*.json') if directory.is_dir() else (self.root / 'partial' / paper_id).glob('batch-*/*.json')
+        files = tuple((str(p.relative_to(self.root)), p.stat().st_mtime_ns, p.stat().st_size) for p in sorted(source))
+        with self.lock, self.connect() as db:
+            rows = db.execute("""SELECT kind,id,value FROM records WHERE
+                (kind IN ('paper','enrichment','code_layout') AND id=?) OR
+                (kind IN ('classification','layout_page') AND json_extract(value,'$.paper_id')=?)
+                ORDER BY kind,id""", (paper_id, paper_id)).fetchall()
+        return files, hashlib.sha256(json.dumps(rows, ensure_ascii=False).encode()).hexdigest()
+
+    def _reading_material(self, paper_id):
+        signature = self._reading_signature(paper_id)
+        with self.lock:
+            hit = self._reading_cache.get(paper_id)
+            if hit and hit['signature'] == signature:
+                self._reading_cache.move_to_end(paper_id)
+                return hit
+            bundle = self.bundle(paper_id)
+            pages = {}
+            for chunk in bundle['chunks']:
+                pages.setdefault(chunk['page_number'], []).append(chunk)
+            item = {'signature': signature, 'bundle': bundle, 'pages': pages,
+                    'navigation': None, 'bytes': len(json.dumps(bundle, ensure_ascii=False).encode())}
+            # Bound retained material; oversized books still work without being
+            # pinned in RAM. Never alter the published records to make a cache.
+            self._reading_cache.pop(paper_id, None)
+            budget = 32 * 1024 * 1024
+            if item['bytes'] <= budget and self._reading_signature(paper_id) == signature:
+                while self._reading_cache and (len(self._reading_cache) >= 8 or
+                        sum(v['bytes'] for v in self._reading_cache.values()) + item['bytes'] > budget):
+                    self._reading_cache.popitem(last=False)
+                self._reading_cache[paper_id] = item
+            return item
+
+    def _reading_navigation(self, bundle):
         outline, seen = [], set()
-        metadata = self.paper(paper_id)['paper']
+        metadata = bundle['paper_meta']
         person_or_institution = {re.sub(r'\W+', '', value).casefold() for value in metadata['authors'] + metadata['institutions']}
         for chunk in bundle['chunks']:
             path = tuple(part for part in chunk['section_path'] if heading_candidate(part) and re.sub(r'\W+', '', part).casefold() not in person_or_institution)
@@ -263,9 +296,22 @@ class Workspace:
                                 'chunk_id': chunk['chunk_id'], 'text': chunk['text'][:120]})
         bibliography = {str(entry['number']): {'page_number': entry['chunks'][0]['page_number'],
                          'chunk_id': entry['chunks'][0]['chunk_id'], 'text': entry['raw'][:400]} for entry in bibliography_sources(bundle['chunks'])}
-        return {'paper': self.paper(paper_id)['paper'], 'outline': outline, 'bibliography_locations': bibliography,
-                'chunks': [c for c in bundle['chunks'] if c['page_number'] == physical_page],
-                'references': bundle['reference_entries'], 'citation_links': bundle['citation_links'],
+        return {'outline': outline, 'bibliography_locations': bibliography,
+                'references': bundle['reference_entries'], 'citation_links': bundle['citation_links']}
+
+    def reading(self, paper_id, physical_page=1, include_navigation=True):
+        material = self._reading_material(paper_id)
+        bundle = material['bundle']
+        if physical_page > bundle['paper_meta']['page_count']:
+            raise PipelineError('VALIDATION_ERROR', '页码超过原文范围。')
+        navigation = {'outline': [], 'bibliography_locations': {}, 'references': [], 'citation_links': []}
+        if include_navigation:
+            with self.lock:
+                if material['navigation'] is None:
+                    material['navigation'] = self._reading_navigation(bundle)
+                navigation = material['navigation']
+        return {'paper': bundle['paper_meta'], **navigation,
+                'chunks': material['pages'].get(physical_page, []),
                 'page_number': physical_page, 'total_chunks': len(bundle['chunks'])}
 
     def session(self, paper_ids):

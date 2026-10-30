@@ -44,6 +44,9 @@ interface Highlight {
 }
 
 const SCALE = 1.4;
+// Amortize proxy/storage validation on long books without downloading the book
+// up front. Four adjacent 64 KiB blocks travel together; lazy loading stays on.
+const PDF_RANGE_CHUNK_BYTES = 256 * 1024;
 /** 未量到真实高度前的占位比例（A4 附近），量到后替换 */
 const DEFAULT_RATIO = 1.32;
 
@@ -125,6 +128,7 @@ export default function LayoutViewer({
   hoverTranslation = false,
   bibliographyLocations = {},
   outlineChunks,
+  hasTextLayer,
 }: {
   paperId: string;
   chunks: Chunk[];
@@ -135,6 +139,7 @@ export default function LayoutViewer({
   hoverTranslation?: boolean;
   bibliographyLocations?: Record<string, { page_number: number; chunk_id: string; text: string }>;
   outlineChunks?: Chunk[];
+  hasTextLayer?: boolean | null;
 }) {
   const [status, setStatus] = useState<"loading" | "ok" | "error">("loading");
   const [message, setMessage] = useState<string | null>(null);
@@ -201,7 +206,7 @@ export default function LayoutViewer({
         pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
 
         if (cancelled) return;
-        const task = pdfjs.getDocument({ url: `/api/backend/papers/${paperId}/file`, rangeChunkSize: 65536, disableAutoFetch: true, disableStream: true });
+        const task = pdfjs.getDocument({ url: `/api/backend/papers/${paperId}/file`, rangeChunkSize: PDF_RANGE_CHUNK_BYTES, disableAutoFetch: true, disableStream: true });
         const doc = (await task.promise) as unknown as PdfDoc;
         if (cancelled) { await doc.destroy(); return; }
         docRef.current = doc;
@@ -418,7 +423,9 @@ export default function LayoutViewer({
       const chunk = await response.json() as Chunk;
       await locateAndJump(chunk.page_number, [snippetOf(chunk.text)], "答案证据");
     }).catch(() => { void locateAndJump(page, [], "指定页"); });
-    else if (page > 1) void locateAndJump(page, [], "上次阅读位置");
+    // Explicit page=1 also needs a real scroll: browsers can restore the old
+    // nested book scroll offset when the same reader URL is opened again.
+    else void locateAndJump(page, [], params.has("page") ? "指定页" : "上次阅读位置");
   }, [status, numPages, paperId]);
 
   useEffect(() => {
@@ -463,8 +470,11 @@ export default function LayoutViewer({
     if (!element) return;
     const go = () => {
       const container = element.closest<HTMLElement>("[data-document-scroll]");
-      if (container) container.scrollTo({ top: restoreTop ?? element.getBoundingClientRect().top - container.getBoundingClientRect().top + container.scrollTop + (offsetY || 0) - 64, behavior: "auto" });
-      else window.scrollTo({ top: Math.max(0, element.getBoundingClientRect().top + window.scrollY + (offsetY || 0) - 90), behavior: "auto" });
+      // "auto" inherits CSS smooth scrolling. Crossing hundreds of pages then
+      // rendered intermediate pages and shifted the final target. A source
+      // lookup must land directly on its physical page, including the last one.
+      if (container) container.scrollTo({ top: restoreTop ?? element.getBoundingClientRect().top - container.getBoundingClientRect().top + container.scrollTop + (offsetY || 0) - 64, behavior: "instant" });
+      else window.scrollTo({ top: Math.max(0, element.getBoundingClientRect().top + window.scrollY + (offsetY || 0) - 90), behavior: "instant" });
     };
     go();
     requestAnimationFrame(() => {
@@ -568,6 +578,11 @@ export default function LayoutViewer({
         renderedRef.current.add(page); await renderPage(page, element);
       }
     }
+    if (!queries.length || hasTextLayer === false) {
+      setLocateNote(hasTextLayer === false ? `扫描件已定位到第 ${page} 页（页级定位）；原件没有可核查的段落文字坐标。` : `已定位到第 ${page} 页（页级定位）。`);
+      scrollToPageOffset(page, 0, restoreTop);
+      return false;
+    }
     const hit = await locateInPage(page, queries);
     if (hit) {
       setHighlight({ page, ...hit });
@@ -654,9 +669,9 @@ export default function LayoutViewer({
   return (
     <div className="sg-layout">
       <aside id="paper-outline" className="sg-layout__nav" aria-label="本篇目录与参考文献">
-        <h3 className="sg-qa__sub">标题树（段落级定位）</h3>
+        <h3 className="sg-qa__sub">{hasTextLayer === false ? "标题树（页级定位）" : "标题树（段落级定位）"}</h3>
         <p className="sg-mono">
-          点标题会在 PDF 文本层搜索该段文字并高亮；搜不到时退回页首并写明。
+          {hasTextLayer === false ? "本文件为扫描件，仅支持物理页定位；OCR 文字没有原版式中的段落坐标。" : "点标题会在 PDF 文本层搜索该段文字并高亮；搜不到时退回页首并写明。"}
         </p>
         <ul className="sg-nav-list">
           {tree.map((node) => (
@@ -799,8 +814,9 @@ export default function LayoutViewer({
 
         <details className="sg-diag"><summary>原文显示与定位说明</summary><p className="sg-mono">
           以上为文件端点返回的 PDF 原件逐页渲染（pdf.js），单栏/双栏以原件为准；
-          不是解析后的 Markdown，也不重新排版。定位为段落级：在文本层搜到该段文字后滚动
-          并高亮；搜不到时退回页首并如实写明。字符级坐标定位未实现。
+          不是解析后的 Markdown，也不重新排版。
+          {hasTextLayer === false ? "本扫描件只提供物理页定位；OCR 段落未映射到原版式坐标。" : "有文字层时先搜索段落并高亮；未命中时退回页首并如实写明。"}
+          字符级坐标定位未实现。
         </p></details>
       </div>
     </div>

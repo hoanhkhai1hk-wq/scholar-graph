@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "D:\AI_Workspace\Tasks\scholar-graph\tests\item08\default_stack.py", line 26, in <module>
+    dns=subprocess.check_output(['docker','exec',env['COMPOSE_PROJECT_NAME']+'-frontend-1','getent','hosts','backend'],text=True).strip();assert dns.startswith('172.');report['dns']=dns
+                                                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

@@ -1,0 +1,12 @@
+AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+
+  assert.ok(row.incompleteVisible&&row.visibleValidationCause)
+
+    at D:\AI_Workspace\Tasks\scholar-graph\tests\item08\failure_browser.cjs:13:32 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
