@@ -1,0 +1,26 @@
+{
+  "pdfs": {
+    "count": 41,
+    "changed": [],
+    "authorized_changes": []
+  },
+  "source_records": {
+    "count": 336,
+    "changed": [],
+    "authorized_changes": []
+  },
+  "files": {
+    "count": 834,
+    "changed": [
+      ".env.example",
+      ".gitignore",
+      "README.md"
+    ],
+    "authorized_changes": [
+      ".env.example",
+      ".gitignore",
+      "README.md"
+    ]
+  },
+  "passed": true
+}

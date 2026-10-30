@@ -1,0 +1,2 @@
+# Optional technical-document build dependency; backend[ocr,test] supplies PDF tools.
+markdown-it-py==4.2.0

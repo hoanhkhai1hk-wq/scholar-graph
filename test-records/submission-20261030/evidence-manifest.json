@@ -1,0 +1,74 @@
+{
+  "config-check.json": {
+    "bytes": 441,
+    "sha256": "c7049ac1c827f2802260dedff63787a895e08ba8d0e8d02093a1df4386796e6a"
+  },
+  "document-build.json": {
+    "bytes": 176,
+    "sha256": "d6bbccbc3e294ffc5aa9fb6b9c580b7fac5a7d72f781cde0b6af0ea7c9f44213"
+  },
+  "document-check.json": {
+    "bytes": 4241,
+    "sha256": "719dda82173713eb1224b91fa5af7cbf068a967a292f85f961dcb554d5b647be"
+  },
+  "fast.log": {
+    "bytes": 281,
+    "sha256": "70811bd0c52493f80032ff6d1bed12eab33efa892fc4752798fc4ce6f8eb7242"
+  },
+  "fast.xml": {
+    "bytes": 27090,
+    "sha256": "f9d7ebc5a110d699aa48ff08278ace081090ea7950fe610ddf9629975e7084c9"
+  },
+  "link-check.json": {
+    "bytes": 185,
+    "sha256": "96bb5b7bf0de94e40c8e177accf3f8a646261dc39e23aac8b36caedb2287fc13"
+  },
+  "preservation.json": {
+    "bytes": 434,
+    "sha256": "e7011b0bfb9da5e7142a76197f59a2389b67ffb1dd99e3dccb01bc5e950daf05"
+  },
+  "public-history-sync.txt": {
+    "bytes": 159,
+    "sha256": "37e589af8575a12e169b95b07cc37e9dedf33684ae940338feb4426506ee2447"
+  },
+  "related.log": {
+    "bytes": 102,
+    "sha256": "47eed0e7c7dd6daee86ae896aaf3839999d8a5f84f332b482088a08c455ef921"
+  },
+  "related.xml": {
+    "bytes": 7327,
+    "sha256": "75da50a5588a5fc724c948c9a23950ee5bb15c5c009db8187483e8e0607d6b77"
+  },
+  "repository-before.json": {
+    "bytes": 1773,
+    "sha256": "3e41b3cbd51aa11876d3ff98d0f4d6c4b90e026ce2fde764ca1c8a4e1fb0cf2f"
+  },
+  "secret-before.json": {
+    "bytes": 413,
+    "sha256": "f912ed3143b4269be8bc6d8599d702f6ad6d55f6514672b31a7c7604e1406fb4"
+  },
+  "secret-final.json": {
+    "bytes": 413,
+    "sha256": "97bafd9225aab14922505b899fd29f9ccfa21ad745e7c8950d403bf29fc31349"
+  },
+  "technical-page-01.png": {
+    "bytes": 127219,
+    "sha256": "185eb975120c9952c0086ac14fdbffb3346930479d4154f1e290f63bd7f2cfb9"
+  },
+  "technical-page-02.png": {
+    "bytes": 267334,
+    "sha256": "8d0e9cd81672ca4fb2f3fb69e6e228536c7ade80bf21120e94499b732f9c5c49"
+  },
+  "technical-page-09.png": {
+    "bytes": 194417,
+    "sha256": "034a7a7eb181fd06b13cba00612602edb71799aecff604a0f35441fc050b79b2"
+  },
+  "technical-page-13.png": {
+    "bytes": 178627,
+    "sha256": "4a39ca8c299be7f8805fe730d54573e8bb8c74dd2402a75677aa4b4ada2193e4"
+  },
+  "technical-page-14.png": {
+    "bytes": 210910,
+    "sha256": "3b95f6a0cc36f16df359a04e9e60fbd566be945053cffee30d9735e8a33df1ec"
+  }
+}

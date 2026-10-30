@@ -1,0 +1,24 @@
+{
+  "defaultBranchRef": {
+    "name": "main"
+  },
+  "isPrivate": false,
+  "nameWithOwner": "hoanhkhai1hk-wq/scholar-graph",
+  "url": "https://github.com/hoanhkhai1hk-wq/scholar-graph",
+  "visibility": "PUBLIC",
+  "local_head_before": "efae8c0479fd278ff3479c8ce7cbea49abedea40",
+  "remote_before": "c6af2c62642305e9fbf888b21c6a767a7cd65772",
+  "item_commits": [
+    "efae8c0479fd278ff3479c8ce7cbea49abedea40 第8项 修复后通过：长书跳页、真实预热与部署故障提示；保留OCR文字差异",
+    "6e74f81c9442820c3d0165a1e6c70e457427af3f feat(ui): 第7项青瓷书页工作台修复后通过验收",
+    "c6298371bf626367cb686d293c396a6023419acf fix(item06): 代码阅读顺序与译文导出修复后通过",
+    "b930bbd257824e960cf829560d77dd58fd06bbdf 第6项 修复后通过指定验收；记录原文代码顺序未通过",
+    "7fb88e5e3413ce8f68d2adec196ccecae492892f 第5项 修复后通过：20篇引用图谱、真实综述与时间过滤验收",
+    "e2003d9e018ec612eab8fc19cbd6ef027c4b72d5 问答专项：中文检索、跨篇关系与阅读助手修复后通过",
+    "0af76c61cc938a0c1acd5439389964720cdc74f6 第4项 未通过：修复获取追踪推荐，8条参考全文未取得",
+    "81b9e0d6b16fa336a522107d9f2d1f17f17fd876 第3项 修复后通过：引用往返高亮、真实翻译范围与双向同步滚动",
+    "e7cc25e4df4f05f697b289a9f478ea8e78457f6b 第2项 修复后通过：真模型逐题复测、无BGE跨篇修复及预算内精排",
+    "d28430e21b4070d37b4277a8a1bb9cc649cfd6ef 第1项 未通过：修复文件管理和解析，保留公式自动准确性缺口",
+    "830cc28865dee9b12ca116b65baca93191812cc8 第0步：本机运行基线修复后通过，记录增量构建与实测证据"
+  ]
+}

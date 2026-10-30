@@ -69,6 +69,7 @@ COPY --from=vector-runtime /opt/vector-venv /opt/vector-venv
 COPY --from=frontend-dependencies /usr/local/bin/node /usr/local/bin/node
 COPY --from=frontend-build /app/frontend ./frontend/
 COPY tests/ ./tests/
+COPY scripts/warm_demo.py ./scripts/warm_demo.py
 COPY Dockerfile docker-compose.yml .dockerignore README.md ./
 COPY services/docker-compose.acceptance.yml ./services/docker-compose.acceptance.yml
 RUN useradd --uid 1000 --create-home --home-dir /home/scholar scholar \

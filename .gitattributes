@@ -16,3 +16,6 @@ test-records/ui-celadon-20261029/** -text -whitespace
 
 # Preserve item08 command, JSON and browser evidence.
 test-records/item08-20261030/** -text -whitespace
+
+# Preserve submission audit evidence exactly.
+test-records/submission-20261030/** -text -whitespace

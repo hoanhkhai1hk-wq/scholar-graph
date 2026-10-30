@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "documents": 6,
+  "local_links": 26,
+  "missing_or_untracked": [],
+  "note": "Directories verified by tracked descendants; paths normalized before lookup."
+}

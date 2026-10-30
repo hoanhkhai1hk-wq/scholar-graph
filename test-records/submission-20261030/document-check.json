@@ -1,0 +1,203 @@
+{
+  "passed": true,
+  "pages": 14,
+  "limit": 30,
+  "pdf_bytes": 856652,
+  "pdf_sha256": "f0c7d001122fcde44bf096e4651bc30bc6484f293a83283ca61ebbf2719bee31",
+  "claims": [
+    {
+      "id": "M01",
+      "source_matches": true,
+      "markdown_matches": true,
+      "pdf_matches": true
+    },
+    {
+      "id": "M02",
+      "source_matches": true,
+      "markdown_matches": true,
+      "pdf_matches": true
+    },
+    {
+      "id": "M03",
+      "source_matches": true,
+      "markdown_matches": true,
+      "pdf_matches": true
+    },
+    {
+      "id": "M04",
+      "source_matches": true,
+      "markdown_matches": true,
+      "pdf_matches": true
+    },
+    {
+      "id": "M05",
+      "source_matches": true,
+      "markdown_matches": true,
+      "pdf_matches": true
+    },
+    {
+      "id": "M06",
+      "source_matches": true,
+      "markdown_matches": true,
+      "pdf_matches": true
+    },
+    {
+      "id": "M07",
+      "source_matches": true,
+      "markdown_matches": true,
+      "pdf_matches": true
+    },
+    {
+      "id": "M08",
+      "source_matches": true,
+      "markdown_matches": true,
+      "pdf_matches": true
+    },
+    {
+      "id": "M09",
+      "source_matches": true,
+      "markdown_matches": true,
+      "pdf_matches": true
+    },
+    {
+      "id": "M10",
+      "source_matches": true,
+      "markdown_matches": true,
+      "pdf_matches": true
+    },
+    {
+      "id": "M11",
+      "source_matches": true,
+      "markdown_matches": true,
+      "pdf_matches": true
+    },
+    {
+      "id": "M12",
+      "source_matches": true,
+      "markdown_matches": true,
+      "pdf_matches": true
+    },
+    {
+      "id": "M13",
+      "source_matches": true,
+      "markdown_matches": true,
+      "pdf_matches": true
+    },
+    {
+      "id": "M14",
+      "source_matches": true,
+      "markdown_matches": true,
+      "pdf_matches": true
+    },
+    {
+      "id": "M15",
+      "source_matches": true,
+      "markdown_matches": true,
+      "pdf_matches": true
+    },
+    {
+      "id": "M16",
+      "source_matches": true,
+      "markdown_matches": true,
+      "pdf_matches": true
+    },
+    {
+      "id": "M17",
+      "source_matches": true,
+      "markdown_matches": true,
+      "pdf_matches": true
+    },
+    {
+      "id": "M18",
+      "source_matches": true,
+      "markdown_matches": true,
+      "pdf_matches": true
+    },
+    {
+      "id": "M19",
+      "source_matches": true,
+      "markdown_matches": true,
+      "pdf_matches": true
+    },
+    {
+      "id": "M20",
+      "source_matches": true,
+      "markdown_matches": true,
+      "pdf_matches": true
+    }
+  ],
+  "physical_bounds": [
+    {
+      "page": 1,
+      "chars": 498,
+      "out_of_page_characters": 0
+    },
+    {
+      "page": 2,
+      "chars": 670,
+      "out_of_page_characters": 0
+    },
+    {
+      "page": 3,
+      "chars": 1037,
+      "out_of_page_characters": 0
+    },
+    {
+      "page": 4,
+      "chars": 1012,
+      "out_of_page_characters": 0
+    },
+    {
+      "page": 5,
+      "chars": 942,
+      "out_of_page_characters": 0
+    },
+    {
+      "page": 6,
+      "chars": 743,
+      "out_of_page_characters": 0
+    },
+    {
+      "page": 7,
+      "chars": 970,
+      "out_of_page_characters": 0
+    },
+    {
+      "page": 8,
+      "chars": 750,
+      "out_of_page_characters": 0
+    },
+    {
+      "page": 9,
+      "chars": 795,
+      "out_of_page_characters": 0
+    },
+    {
+      "page": 10,
+      "chars": 862,
+      "out_of_page_characters": 0
+    },
+    {
+      "page": 11,
+      "chars": 863,
+      "out_of_page_characters": 0
+    },
+    {
+      "page": 12,
+      "chars": 753,
+      "out_of_page_characters": 0
+    },
+    {
+      "page": 13,
+      "chars": 835,
+      "out_of_page_characters": 0
+    },
+    {
+      "page": 14,
+      "chars": 1073,
+      "out_of_page_characters": 0
+    }
+  ],
+  "visual_review": "All rendered pages reviewed in contact sheet; pages 2,13,14 inspected at full resolution; score table complete and no orphan final page.",
+  "note": "Bounds and text checks supplement, not replace, visual review of rendered pages."
+}

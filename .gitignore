@@ -27,3 +27,8 @@ venv/
 .DS_Store
 Thumbs.db
 /pdf/
+frontend/.next*/
+*.tsbuildinfo
+
+# Local provider wiring; publish only deploy/compose.provider.example.yml.
+/docker-compose.override.yml

@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "published_template_config_valid": true,
+  "empty_key_allowed_to_start": true,
+  "key_missing": true,
+  "model_set": true,
+  "ranking": "rrf",
+  "workspace_retrieval": "lexical",
+  "host_ports": [
+    3000,
+    8000
+  ],
+  "warm_script_in_dockerfile": true,
+  "note": "Compose configuration check, not a clean network rebuild or model success. Missing-key HTTP behavior separately covered by API tests."
+}

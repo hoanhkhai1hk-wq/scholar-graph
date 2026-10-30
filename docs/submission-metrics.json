@@ -1,0 +1,166 @@
+{
+  "date": "2026-10-30",
+  "scope": "本轮技术文档采用的实测数字；配置、版本与评分权重另注明来源，不以旧文档反证自身。",
+  "claims": [
+    {
+      "id": "M01",
+      "label": "长书覆盖",
+      "display": "541页 / 6859 Chunk",
+      "source": "test-records/item08-20261030/reading-after/report.json",
+      "report": "test-records/第8项报告.md",
+      "derivation": "page_count、samples[0].total_chunks"
+    },
+    {
+      "id": "M02",
+      "label": "长书首屏",
+      "display": "4.783→3.754秒",
+      "source": "test-records/item08-20261030/reading-comparison.json",
+      "report": "test-records/第8项报告.md",
+      "derivation": "各3轮毫秒中位数/1000；同机浏览器"
+    },
+    {
+      "id": "M03",
+      "label": "跳第300页",
+      "display": "24.265→2.576秒",
+      "source": "test-records/item08-20261030/reading-comparison.json",
+      "report": "test-records/第8项报告.md",
+      "derivation": "各3轮毫秒中位数/1000；同机浏览器"
+    },
+    {
+      "id": "M04",
+      "label": "跳第541页",
+      "display": "2.871→1.362秒",
+      "source": "test-records/item08-20261030/reading-comparison.json",
+      "report": "test-records/第8项报告.md",
+      "derivation": "各3轮毫秒中位数/1000；同机浏览器"
+    },
+    {
+      "id": "M05",
+      "label": "API单次冷读（退步保留）",
+      "display": "1514.874→2017.087毫秒",
+      "source": "test-records/item08-20261030/reading-before/report.json、test-records/item08-20261030/reading-after/report.json",
+      "report": "test-records/第8项报告.md",
+      "derivation": "samples[0].ms；非3轮统计"
+    },
+    {
+      "id": "M06",
+      "label": "全冷→已预热首内容增量",
+      "display": "563.427076→8.526629秒",
+      "source": "test-records/item08-20261030/stream-cold/report.json、test-records/item08-20261030/resident-warm/report.json",
+      "report": "test-records/第8项报告.md",
+      "derivation": "first_delta_seconds；真实模型、不同表述、hybrid+RRF"
+    },
+    {
+      "id": "M07",
+      "label": "重启后首次CLI预热",
+      "display": "首增量37.889150秒 / 完成45.404005秒",
+      "source": "test-records/item08-20261030/cli-warm-final.json",
+      "report": "test-records/第8项报告.md",
+      "derivation": "first_delta_seconds、seconds；不是已预热请求"
+    },
+    {
+      "id": "M08",
+      "label": "本次扫描件冻结样本",
+      "display": "15页 / 989 OCR Chunk",
+      "source": "test-records/item08-20261030/scan-mapping.json",
+      "report": "test-records/第8项报告.md",
+      "derivation": "pdf_pages、ocr_chunks；为第1项优化前989块版本"
+    },
+    {
+      "id": "M09",
+      "label": "OCR物理页匹配与额外文本门限",
+      "display": "15/15页匹配；13/15页过相似度门限",
+      "source": "test-records/item08-20261030/ocr-mapping-review.json",
+      "report": "test-records/第8项报告.md",
+      "derivation": "按15条逐页结果；非字符准确率"
+    },
+    {
+      "id": "M10",
+      "label": "新库真实翻译 abstract",
+      "display": "1/1段 / 2.815362秒 / 缓存0",
+      "source": "test-records/item08-20261030/default-stack.json",
+      "report": "test-records/第8项报告.md",
+      "derivation": "model_tests；真实DeepSeek，完整性非逐字质量评级"
+    },
+    {
+      "id": "M11",
+      "label": "新库真实翻译 full",
+      "display": "175/175段 / 59.067831秒 / 缓存0",
+      "source": "test-records/item08-20261030/default-stack.json",
+      "report": "test-records/第8项报告.md",
+      "derivation": "model_tests；真实DeepSeek，完整性非逐字质量评级"
+    },
+    {
+      "id": "M12",
+      "label": "所选图谱",
+      "display": "20节点 / 99关系 / 303依据 / 0孤立",
+      "source": "test-records/item05-20261029/graph-summary.json",
+      "report": "test-records/第5项报告.md",
+      "derivation": "不同有向关系与依据位置分别计数"
+    },
+    {
+      "id": "M13",
+      "label": "快速回归",
+      "display": "200通过 / 0跳过",
+      "source": "test-records/item08-20261030/fast-final.xml",
+      "report": "test-records/第8项报告.md",
+      "derivation": "JUnit tests - skipped，failure/error均为0；快速层另有未选用项"
+    },
+    {
+      "id": "M14",
+      "label": "相关全量回归",
+      "display": "430通过 / 0跳过",
+      "source": "test-records/item08-20261030/related-resumed.xml",
+      "report": "test-records/第8项报告.md",
+      "derivation": "JUnit tests - skipped，failure/error均为0；快速层另有未选用项"
+    },
+    {
+      "id": "M15",
+      "label": "问答固定题集",
+      "display": "官方9/9；总固定题集14/14",
+      "source": "test-records/第2项报告.md",
+      "report": "test-records/第2项报告.md",
+      "derivation": "报告原文断言：最终部署批次 `answers-final`：14/14通过，其中官方9/9"
+    },
+    {
+      "id": "M16",
+      "label": "参考文献获取",
+      "display": "40条中32取得 / 8未取得",
+      "source": "test-records/第4项报告.md",
+      "report": "test-records/第4项报告.md",
+      "derivation": "报告原文断言：40条官方参考文献已逐项实测，32条取得，8条仍未取得"
+    },
+    {
+      "id": "M17",
+      "label": "长书首次解析前后",
+      "display": "1225.453→226.625秒",
+      "source": "test-records/第1项报告.md",
+      "report": "test-records/第1项报告.md",
+      "derivation": "报告原文断言：1225.453秒降至226.625秒"
+    },
+    {
+      "id": "M18",
+      "label": "扫描件前次优化样本",
+      "display": "15页 / 1042 Chunk / 326.485秒",
+      "source": "test-records/第1项报告.md",
+      "report": "test-records/第1项报告.md",
+      "derivation": "报告原文断言：326.485秒；1042块"
+    },
+    {
+      "id": "M19",
+      "label": "中译英原生中文全文",
+      "display": "2页 / 21/21 Chunk / 5.922秒",
+      "source": "test-records/第6项报告.md",
+      "report": "test-records/第6项报告.md",
+      "derivation": "报告原文断言：21/21分块，覆盖2页|5.922秒"
+    },
+    {
+      "id": "M20",
+      "label": "写作参考文献核对",
+      "display": "两次生成6条记录 / 3篇唯一论文",
+      "source": "test-records/第6项报告.md",
+      "report": "test-records/第6项报告.md",
+      "derivation": "报告原文断言：共6条参考文献记录、3篇唯一论文"
+    }
+  ]
+}
