@@ -399,7 +399,13 @@ export interface TrackingRun {
   duration_seconds: number | null;
   candidate_count: number;
   candidates: unknown[];
-  queries: unknown[];
+  queries: { query?: string; returned_count?: number; error?: TrackingError | null }[];
+  query_total_count?: number;
+  query_failed_count?: number;
+  query_succeeded_count?: number;
+  discovered_count?: number;
+  phase?: string;
+  max_imports?: number;
   imported_count: number;
   duplicate_count: number;
   failed_count: number;

@@ -1,0 +1,1 @@
+{"succeeded": false, "seconds": 20.74, "error": {"error_code": "UPSTREAM_ERROR", "message": "arXiv 请求等待超时，尚未取得结果；请稍后重试。", "details": {"reason": "UPSTREAM_TIMEOUT", "exception_type": "ReadTimeout", "host": "export.arxiv.org", "attempts": 2, "timeout_seconds": 10}}}

@@ -1,0 +1,12 @@
+[
+  {
+    "scope": "host_system_proxy",
+    "error_type": "ReadTimeout",
+    "seconds": 8.41
+  },
+  {
+    "scope": "container_system_proxy",
+    "error_type": "ReadTimeout",
+    "seconds": 8.32
+  }
+]

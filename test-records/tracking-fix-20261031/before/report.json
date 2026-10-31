@@ -1,0 +1,15 @@
+{
+  "cases": [
+    {
+      "kind": "real_saved_run",
+      "width": 1440,
+      "run_status": "partial",
+      "query_failures": 9,
+      "shows_no_new": true,
+      "body_width": 1440,
+      "text": "arXiv 定期追踪\nGET /retrieval/tracking/status · POST /retrieval/tracking/run\n立即运行一次追踪\n刷新状态\n\n调度：backend_interval · 启用 true · 活动 true · 间隔 86400 秒 · 已自动运行 1 次\n\n去重日志 34 条 · 默认间隔 86400 秒\n\n最近一次运行\npartial（部分成功）\nrun_id 7dc11c77\n耗时 859.554593 秒\n候选 3\n新增 0\n重复 0\n失败 0\n\n2026-10-31T03:37:38.137314+00:00 → 2026-10-31T03:51:57.614708+00:00\n\n失败原因（后端原文）：\n\nUPSTREAM_ERROR：arXiv 公共接口连接失败，未编造记录。\nUPSTREAM_ERROR：arXiv 公共接口连接失败，未编造记录。\nUPSTREAM_ERROR：arXiv 公共接口连接失败，未编造记录。\nUPSTREAM_ERROR：arXiv 公共接口连接失败，未编造记录。\nUPSTREAM_ERROR：arXiv 公共接口连接失败，未编造记录。\nUPSTREAM_ERROR：arXiv 公共接口连接失败，未编造记录。\nUPSTREAM_ERROR：arXiv 公共接口连接失败，未编造记录。\nUPSTREAM_ERROR：arXiv 公共接口连接失败，未编造记录。\nUPSTREAM_ERROR：arXiv 公共接口连接失败，未编造记录。\n\n查询 10 条（真实公开 arXiv Atom 查询）\n\n本次没有新增论文\n\n候选已找到但没有入库：max_imports 设为 0 时只追踪候选不入库；也可能候选与库内已有论文重复。提高 max_imports 才会真正下载入库。\n\ncandidate_count=3 · duplicate_count=0 · imported_count=0"
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

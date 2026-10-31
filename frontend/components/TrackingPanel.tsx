@@ -2,147 +2,100 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { fetchTrackingStatus, runTracking } from "@/lib/api";
-import type { TrackingRun, TrackingStatus } from "@/lib/types";
+import type { TrackingStatus } from "@/lib/types";
 import ErrorState from "./ErrorState";
 import EmptyState from "./EmptyState";
+import AsyncStatus from "./AsyncStatus";
+import { trackingErrorGroups } from "@/lib/tracking";
 
-function statusTag(status: string | null) {
-  if (!status) return <span className="sg-tag sg-tag--muted">尚未运行</span>;
-  if (status === "completed")
-    return <span className="sg-tag sg-tag--success">completed</span>;
-  if (status === "partial")
-    return <span className="sg-tag sg-tag--warning">partial（部分成功）</span>;
-  return <span className="sg-tag sg-tag--error">{status}</span>;
+const LABELS: Record<string, string> = {
+  running: "正在追踪", completed: "追踪已完成", partial: "部分完成",
+  failed: "追踪失败", interrupted: "追踪已中断",
+};
+function statusTag(value: string) {
+  const tone = value === "completed" ? "success" : value === "running" ? "muted" :
+    value === "partial" || value === "interrupted" ? "warning" : "error";
+  return <span className={`sg-tag sg-tag--${tone}`}>{LABELS[value] ?? "状态待核对"}</span>;
+}
+function timestamp(value: string | null) {
+  return value ? new Date(value).toLocaleString("zh-CN") : "尚未结束";
 }
 
-/**
- * 追踪运行状态面板：把「最近一次运行、新增数、失败原因」摆在页面上。
- * 失败原因原样展示后端三字段错误，不改写、不省略。
- */
 export default function TrackingPanel({ paperIds }: { paperIds: string[] }) {
   const [status, setStatus] = useState<TrackingStatus | null>(null);
   const [error, setError] = useState<unknown>(null);
-  const [running, setRunning] = useState(false);
-  const [lastRun, setLastRun] = useState<TrackingRun | null>(null);
-
+  const [submitting, setSubmitting] = useState(false);
+  const [now, setNow] = useState(Date.now());
   const load = useCallback(async () => {
-    try {
-      const value = await fetchTrackingStatus();
-      setStatus(value);
-      setError(null);
-    } catch (cause) {
-      setError(cause);
-    }
+    try { setStatus(await fetchTrackingStatus()); setError(null); }
+    catch (cause) { setError(cause); }
+    setNow(Date.now());
   }, []);
-
   useEffect(() => {
-    void load();
+    let disposed = false;
+    let timer: ReturnType<typeof setTimeout>;
+    async function poll() {
+      if (!document.hidden) await load();
+      if (!disposed) timer = setTimeout(poll, 5000);
+    }
+    void poll();
+    return () => { disposed = true; clearTimeout(timer); };
   }, [load]);
 
   async function trigger() {
-    setRunning(true);
+    setSubmitting(true); setError(null);
     try {
-      const run = await runTracking({
-        paper_ids: paperIds.slice(0, 5),
-        max_candidates: 3,
-        max_imports: 0,
-        force: true,
-      });
-      setLastRun(run);
+      // This preserved compatibility action discovers candidates only. The main
+      // acquisition panel offers an asynchronous task that can also import them.
+      await runTracking({ paper_ids: paperIds.slice(0, 5), max_candidates: 3, max_imports: 0, force: true });
       await load();
-    } catch (cause) {
-      setError(cause);
-    } finally {
-      setRunning(false);
-    }
+    } catch (cause) { setError(cause); }
+    finally { setSubmitting(false); }
   }
 
-  const run = lastRun ?? status?.latest_run ?? null;
-  const scheduler = status?.scheduler_details ?? null;
+  const run = status?.latest_run ?? null, scheduler = status?.scheduler_details;
+  const inProgress = run?.status === "running";
+  const queryFailures = run?.query_failed_count ?? run?.queries.filter(q => q.error).length ?? 0;
+  const groups = trackingErrorGroups(run?.errors ?? []);
+  const noNew = run?.status === "completed" && run.imported_count === 0 && run.failed_count === 0 &&
+    queryFailures === 0 && run.errors.length === 0;
+  const elapsed = run?.duration_seconds ?? (run?.started_at ? Math.max(0, Math.floor((now - Date.parse(run.started_at)) / 1000)) : null);
+  const phase = run?.phase === "importing" ? "正在下载与解析候选论文" : "正在查询公开论文，结果尚未最终确认";
 
-  return (
-    <div>
-      <div className="sg-form">
-        <button
-          className="sg-btn"
-          type="button"
-          disabled={running}
-          onClick={trigger}
-        >
-          {running ? "正在追踪…" : "立即运行一次追踪"}
-        </button>
-        <button className="sg-btn sg-btn--ghost" type="button" onClick={load}>
-          刷新状态
-        </button>
-      </div>
-
-      {scheduler ? (
-        <p className="sg-mono">
-          调度：{scheduler.mechanism} · 启用 {String(scheduler.enabled)} · 活动{" "}
-          {String(scheduler.active)} · 间隔 {scheduler.interval_seconds ?? "—"} 秒 ·
-          已自动运行 {scheduler.run_count ?? 0} 次
-        </p>
-      ) : null}
-      <p className="sg-mono">
-        去重日志 {status?.dedup_records?.length ?? 0} 条 · 默认间隔{" "}
-        {status?.default_interval_seconds ?? "—"} 秒
-      </p>
-
-      {run ? (
-        <div className="sg-kv">
-          <div className="sg-stream__done">
-            <span className="sg-tag sg-tag--muted">最近一次运行</span>
-            {statusTag(run.status)}
-            <span className="sg-mono">run_id {run.run_id.slice(0, 8)}</span>
-            <span className="sg-mono">
-              耗时 {run.duration_seconds ?? "—"} 秒
-            </span>
-            <span className="sg-mono">候选 {run.candidate_count}</span>
-            <span className="sg-mono">新增 {run.imported_count}</span>
-            <span className="sg-mono">重复 {run.duplicate_count}</span>
-            <span className="sg-mono">失败 {run.failed_count}</span>
-          </div>
-          <p className="sg-mono">
-            {run.started_at ?? "—"} → {run.finished_at ?? "—"}
-          </p>
-
-          {run.errors.length > 0 ? (
-            <div>
-              <p className="sg-mono">失败原因（后端原文）：</p>
-              {run.errors.map((item, index) => (
-                <pre className="sg-synthesis" key={index}>
-                  {`${item.error_code}：${item.message}`}
-                </pre>
-              ))}
-            </div>
-          ) : (
-            <p className="sg-mono">本次没有记录到失败原因。</p>
-          )}
-
-          {run.queries.length > 0 ? (
-            <p className="sg-mono">
-              查询 {run.queries.length} 条（真实公开 arXiv Atom 查询）
-            </p>
-          ) : null}
-        </div>
-      ) : (
-        <EmptyState
-          variant="tracking"
-          title="还没有运行记录"
-          hint="点「立即运行一次追踪」，系统会按库内论文的标题主题词与真实引用关系去公开 arXiv Atom 查询候选。种子取不到时会明确失败，不会凭空造候选。"
-          aside="latest_run=null"
-        />
-      )}
-
-      {run && run.imported_count === 0 ? (
-        <EmptyState
-          title="本次没有新增论文"
-          hint="候选已找到但没有入库：max_imports 设为 0 时只追踪候选不入库；也可能候选与库内已有论文重复。提高 max_imports 才会真正下载入库。"
-          aside={`candidate_count=${run.candidate_count} · duplicate_count=${run.duplicate_count} · imported_count=0`}
-        />
-      ) : null}
-
-      {error ? <ErrorState title="追踪状态取数失败" error={error} /> : null}
+  return <section aria-label="arXiv追踪运行状态">
+    <div className="sg-form">
+      <button className="sg-btn" disabled={submitting || inProgress || !paperIds.length}
+        title={!paperIds.length ? "请先上传论文" : inProgress ? "已有追踪任务正在运行，请等待本次结束" : undefined}
+        onClick={() => void trigger()}>{submitting || inProgress ? "正在追踪…" : "立即运行一次追踪"}</button>
+      <button className="sg-btn sg-btn--ghost" onClick={() => void load()}>刷新状态</button>
     </div>
-  );
+    <p>此处手动操作只发现候选，不下载入库；需要获取全文时使用上方“自动获取与追踪计划”。状态每五秒自动刷新。</p>
+    {scheduler ? <p>自动调度{scheduler.enabled ? "已启用" : "已关闭"} · {scheduler.active ? "调度器运行中" : "调度器未运行"} · 已自动执行 {scheduler.run_count ?? 0} 次</p> : null}
+    {run ? <>
+      <p>最近一次运行：{statusTag(run.status)}{elapsed !== null ? ` · 已用时 ${elapsed} 秒` : ""}</p>
+      {inProgress ? <p role="status">{phase}；查询失败会单独计数，不代表全部查询均失败。</p> : null}
+      <dl className="sg-kv">
+        <dt>执行查询</dt><dd>{run.queries.length}{run.query_total_count ? ` / ${run.query_total_count}` : ""} 条</dd>
+        <dt>查询失败</dt><dd>{queryFailures} 条</dd>
+        <dt>发现候选</dt><dd>{run.discovered_count ?? run.candidate_count} 篇</dd>
+        <dt>新增与重复</dt><dd>新增 {run.imported_count} 篇 · 重复 {run.duplicate_count} 篇</dd>
+        <dt>下载或解析失败</dt><dd>{run.failed_count} 篇</dd>
+        <dt>开始时间</dt><dd>{timestamp(run.started_at)}</dd>
+        <dt>结束时间</dt><dd>{timestamp(run.finished_at)}</dd>
+      </dl>
+      {groups.length ? <div className="sg-error" role="alert">
+        <p>本次有查询或获取未完成。已完成的结果会保留，失败项可稍后重试。</p>
+        {groups.map(({message, count}) => <p key={message}>{message}{count > 1 ? `（共 ${count} 条）` : ""}</p>)}
+      </div> : null}
+      <details><summary>诊断信息与逐条原始结果</summary><pre className="sg-synthesis">{JSON.stringify({
+        run_id: run.run_id, status: run.status, phase: run.phase,
+        scheduler, queries: run.queries, errors: run.errors,
+        dedup_record_count: status?.dedup_records.length,
+      }, null, 2)}</pre></details>
+      {noNew ? <EmptyState variant="tracking" title="本次没有新增论文"
+        hint={run.max_imports === 0 ? "本次查询已完成，仅发现候选，未要求下载入库。需要全文时可使用上方获取入口。" : "本次查询已完成；可以查看候选与重复记录，或调整追踪主题。"} /> : null}
+    </> : !status && !error ? <AsyncStatus label="正在读取追踪记录…" rows={2} /> : null}
+    {status && !run ? <EmptyState variant="tracking" title="还没有运行记录" hint="先运行一次追踪，或在上方选择主题并保存自动发现计划。" /> : null}
+    {error ? <ErrorState title="追踪请求或状态读取失败" error={error} /> : null}
+  </section>;
 }

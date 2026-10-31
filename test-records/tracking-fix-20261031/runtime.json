@@ -1,0 +1,58 @@
+{
+  "checked_at": "2026-10-31T04:06:47.921872+00:00",
+  "http": {
+    "http://127.0.0.1:3400/retrieval": 200,
+    "http://127.0.0.1:8100/api/v2/system": 200
+  },
+  "backend_health": "healthy",
+  "frontend_healthcheck": "not_configured",
+  "backend_dns": "172.25.0.2      backend",
+  "backend_configuration": {
+    "KEY_SET": true,
+    "MODEL_SET": true
+  },
+  "backend_sources_match": {
+    "arxiv_fetch.py": true,
+    "tracking.py": true
+  },
+  "frontend_build_matches": true,
+  "preexisting_upload_edit_unchanged": true,
+  "screenshot_original_run": {
+    "run_id": "7dc11c77e40e45988738c5e642aac467",
+    "status": "partial",
+    "phase": null,
+    "started_at": "2026-10-31T03:37:38.137314+00:00",
+    "finished_at": "2026-10-31T03:51:57.614708+00:00",
+    "duration_seconds": 859.554593,
+    "query_total_count": null,
+    "query_succeeded_count": 1,
+    "query_failed_count": 9,
+    "discovered_count": 3,
+    "candidate_count": 3,
+    "imported_count": 0,
+    "duplicate_count": 0,
+    "failed_count": 0,
+    "max_imports": null,
+    "queries": 10,
+    "error_count": 9
+  },
+  "latest_run_at_audit_time": {
+    "run_id": "720a10c3d76747aba8df61fc173f1deb",
+    "status": "completed",
+    "phase": "finished",
+    "started_at": "2026-10-31T04:04:02.334014+00:00",
+    "finished_at": "2026-10-31T04:04:15.185532+00:00",
+    "duration_seconds": 12.851523,
+    "query_total_count": 2,
+    "query_succeeded_count": 2,
+    "query_failed_count": 0,
+    "discovered_count": 4,
+    "candidate_count": 3,
+    "imported_count": 0,
+    "duplicate_count": 3,
+    "failed_count": 0,
+    "max_imports": 1,
+    "queries": 2,
+    "error_count": 0
+  }
+}

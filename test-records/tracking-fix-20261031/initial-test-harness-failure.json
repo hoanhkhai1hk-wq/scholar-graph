@@ -1,0 +1,8 @@
+{
+  "scope": "first attempt, default sandbox temporary path",
+  "tests": 72,
+  "errors": 56,
+  "failures": 0,
+  "skipped": 0,
+  "resolution": "workspace --basetemp and authorized execution, see related02.xml"
+}

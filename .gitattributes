@@ -19,3 +19,6 @@ test-records/item08-20261030/** -text -whitespace
 
 # Preserve submission audit evidence exactly.
 test-records/submission-20261030/** -text -whitespace
+
+# Preserve tracking runtime, browser and command evidence verbatim.
+test-records/tracking-fix-20261031/** -text -whitespace

@@ -95,6 +95,7 @@ class TrackingService:
                    "cleanup": None, "interval_seconds": interval_seconds, "dedup_record_count": 0,
                    "query_failed_count": 0, "query_succeeded_count": 0, "discovered_count": 0,
                    "polling_method": "arxiv_atom_api", "import_budget_basis": "new_download_attempts"}
+            run.update(phase="preparing", query_total_count=0, max_imports=max_imports)
             start = time.monotonic()
             self.state.run(run)
             try:
@@ -107,6 +108,8 @@ class TrackingService:
                 queries = seed_queries(self.repository, ids)
                 if not queries:
                     raise PipelineError("VALIDATION_ERROR", "库内元数据与真实 Chunk 中未找到可核验的主题或引用种子，未执行空追踪冒充完成。")
+                run.update(phase="querying", query_total_count=len(queries))
+                self.state.run(run)
                 for query in queries:
                     entry = {**query, "returned_count": 0, "error": None}
                     run["queries"].append(entry)
@@ -130,6 +133,7 @@ class TrackingService:
                         run['query_failed_count'] += 1
                         entry["error"] = error.envelope()
                         run["errors"].append({"query": query["query"], **error.envelope()})
+                    run['discovered_count'] = len(candidates)
                     self.state.run(run)
                 local_arxiv = {base_identity(p['arxiv_id']) for p in self.repository.papers() if p['arxiv_id']}
                 run['discovered_count'] = len(candidates)
@@ -137,6 +141,8 @@ class TrackingService:
                 # candidates merely because a citation query returned them first.
                 run["candidates"] = sorted(candidates.values(), key=lambda c: base_identity(c['arxiv_id']) in local_arxiv)[:max_candidates]
                 run["candidate_count"] = len(run["candidates"])
+                run['phase'] = 'importing' if max_imports else 'finishing'
+                self.state.run(run)
                 attempts = 0
                 for candidate in run["candidates"]:
                     known = base_identity(candidate['arxiv_id']) in local_arxiv
@@ -168,7 +174,7 @@ class TrackingService:
                 run["errors"].append(PipelineError("INTERNAL_ERROR", "追踪运行未完成，未编造候选或入库结果。").envelope())
                 run["status"] = "failed"
             finally:
-                run.update(finished_at=utc_now(), duration_seconds=round(time.monotonic() - start, 6),
+                run.update(phase="finished", finished_at=utc_now(), duration_seconds=round(time.monotonic() - start, 6),
                            dedup_record_count=len(self.state.duplicates()))
                 self.state.run(run)
             return run

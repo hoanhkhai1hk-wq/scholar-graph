@@ -1,0 +1,35 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 281B 0.0s done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/scholar-graph-backend:item08-20261030
+#2 DONE 0.1s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.1s
+
+#4 [internal] load build context
+#4 transferring context: 630.78kB 0.1s done
+#4 DONE 0.2s
+
+#5 [backend 1/2] FROM docker.io/library/scholar-graph-backend:item08-20261030@sha256:9a1f4b04b768e7034a0d4425c8129840db667b2c3d1ce776fd60f261076bcb38
+#5 resolve docker.io/library/scholar-graph-backend:item08-20261030@sha256:9a1f4b04b768e7034a0d4425c8129840db667b2c3d1ce776fd60f261076bcb38 0.1s done
+#5 DONE 0.8s
+
+#6 [backend 2/2] COPY --chown=scholar:scholar backend/scholar_graph/ /app/backend/scholar_graph/
+#6 DONE 0.3s
+
+#7 exporting to image
+#7 exporting layers
+#7 exporting layers 0.2s done
+#7 exporting manifest sha256:eb2759417057ea04da2cef9bc733c6b5d5327d41a5a0a940aac08c15d9f1645b 0.0s done
+#7 exporting config sha256:39da73bce1c87d64ffdeef55cf7bd8dbca103834d227ab8f0e32c8a48d12e090 0.0s done
+#7 exporting attestation manifest sha256:b3e1c9a5fe6e4f9e1da56973c466e1b40c52743603a747bc56c128bc31adc9e1 0.0s done
+#7 exporting manifest list sha256:74234a386aff3a7d8beb72436f110846d727796c575ab4e0b6cd216951e33a5d
+#7 exporting manifest list sha256:74234a386aff3a7d8beb72436f110846d727796c575ab4e0b6cd216951e33a5d 0.0s done
+#7 naming to docker.io/library/scholar-graph-backend:tracking-fix-20261031 done
+#7 unpacking to docker.io/library/scholar-graph-backend:tracking-fix-20261031 0.1s done
+#7 DONE 0.5s

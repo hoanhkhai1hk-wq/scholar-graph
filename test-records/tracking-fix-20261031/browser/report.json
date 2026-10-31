@@ -1,0 +1,55 @@
+{
+  "cases": [
+    {
+      "kind": "real_saved_run",
+      "width": 1440,
+      "run_status": "completed",
+      "query_failures": 0,
+      "shows_no_new": true,
+      "body_width": 1440,
+      "text": "立即运行一次追踪\n刷新状态\n\n此处手动操作只发现候选，不下载入库；需要获取全文时使用上方“自动获取与追踪计划”。状态每五秒自动刷新。\n\n自动调度已启用 · 调度器运行中 · 已自动执行 1 次\n\n最近一次运行：追踪已完成 · 已用时 12.851523 秒\n\n执行查询\n2 / 2 条\n查询失败\n0 条\n发现候选\n4 篇\n新增与重复\n新增 0 篇 · 重复 3 篇\n下载或解析失败\n0 篇\n开始时间\n2026/10/31 12:04:02\n结束时间\n2026/10/31 12:04:15\n诊断信息与逐条原始结果\n\n本次没有新增论文\n\n本次查询已完成；可以查看候选与重复记录，或调整追踪主题。",
+      "rendered_query_failures": 0,
+      "running": false,
+      "main_grouped_alerts": 0
+    },
+    {
+      "kind": "real_saved_run",
+      "width": 390,
+      "run_status": "completed",
+      "query_failures": 0,
+      "shows_no_new": true,
+      "body_width": 390,
+      "text": "立即运行一次追踪\n刷新状态\n\n此处手动操作只发现候选，不下载入库；需要获取全文时使用上方“自动获取与追踪计划”。状态每五秒自动刷新。\n\n自动调度已启用 · 调度器运行中 · 已自动执行 1 次\n\n最近一次运行：追踪已完成 · 已用时 12.851523 秒\n\n执行查询\n2 / 2 条\n查询失败\n0 条\n发现候选\n4 篇\n新增与重复\n新增 0 篇 · 重复 3 篇\n下载或解析失败\n0 篇\n开始时间\n2026/10/31 12:04:02\n结束时间\n2026/10/31 12:04:15\n诊断信息与逐条原始结果\n\n本次没有新增论文\n\n本次查询已完成；可以查看候选与重复记录，或调整追踪主题。",
+      "rendered_query_failures": 0,
+      "running": false,
+      "main_grouped_alerts": 0
+    },
+    {
+      "kind": "UI_state_simulation_only",
+      "status": "running",
+      "no_new": false
+    },
+    {
+      "kind": "UI_state_simulation_only",
+      "status": "failed",
+      "no_new": false
+    },
+    {
+      "kind": "UI_state_simulation_only",
+      "status": "partial",
+      "no_new": false
+    },
+    {
+      "kind": "UI_state_simulation_only",
+      "status": "completed",
+      "no_new": true
+    },
+    {
+      "kind": "UI_poll_simulation_only",
+      "automatic_transition": "running -> failed",
+      "status_reads": 3
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

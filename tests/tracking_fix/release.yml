@@ -1,0 +1,5 @@
+services:
+  backend:
+    image: scholar-graph-backend:tracking-fix-20261031
+  frontend:
+    image: scholar-graph-frontend:tracking-fix-20261031

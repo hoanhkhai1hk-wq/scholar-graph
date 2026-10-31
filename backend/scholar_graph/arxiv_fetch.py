@@ -88,7 +88,7 @@ class ArxivClient:
         self.gate, self.transport, self.interval = gate, transport, interval
         self._lock, self._last_request = threading.Lock(), 0.0
 
-    def _bytes(self, url, *, params=None, maximum):
+    def _bytes(self, url, *, params=None, maximum, timeout=30):
         # Fixed public hosts; no arbitrary URLs, API keys, credentials, or implicit redirects.
         throttled = 0
         transient_retries = 0
@@ -103,7 +103,7 @@ class ArxivClient:
                 if self.transport is None:
                     type(self)._public_last_request = self._last_request
                 try:
-                    with httpx.Client(transport=self.transport, timeout=30, follow_redirects=False) as client:
+                    with httpx.Client(transport=self.transport, timeout=httpx.Timeout(timeout, connect=min(5, timeout)), follow_redirects=False) as client:
                         with client.stream("GET", url, params=params, headers={"User-Agent": "ScholarGraph/0.1 public research API client"}) as response:
                             if response.is_redirect:
                                 url = str(response.url.join(response.headers["location"]))
@@ -132,11 +132,18 @@ class ArxivClient:
                             return b"".join(blocks)
                 except PipelineError:
                     raise
-                except Exception:
+                except Exception as error:
                     if self.transport is None and transient_retries < 1:
                         transient_retries += 1
                         continue
-                    raise PipelineError("UPSTREAM_ERROR", "arXiv 公共接口连接失败，未编造记录。") from None
+                    timed_out = isinstance(error, httpx.TimeoutException)
+                    message = ("arXiv 请求等待超时，尚未取得结果；请稍后重试。" if timed_out else
+                               "后端暂时无法连接 arXiv，请检查网络后重试。")
+                    raise PipelineError("UPSTREAM_ERROR", message, details={
+                        "reason": "UPSTREAM_TIMEOUT" if timed_out else "UPSTREAM_CONNECTION_FAILED",
+                        "exception_type": type(error).__name__, "host": parsed.hostname,
+                        "attempts": transient_retries + 1, "timeout_seconds": timeout,
+                    }) from None
         raise PipelineError("UPSTREAM_ERROR", "arXiv 重定向次数超限。")
 
     def metadata(self, title=None, reference=None):
@@ -180,7 +187,7 @@ class ArxivClient:
         if not isinstance(query, str) or not 1 <= len(query) <= 1500 or not 1 <= limit <= 20:
             raise PipelineError("VALIDATION_ERROR", "arXiv 追踪查询或候选上限不合法。")
         raw = self._bytes("https://export.arxiv.org/api/query", params={"search_query": query,
-            "start": 0, "max_results": limit, "sortBy": "submittedDate", "sortOrder": "descending"}, maximum=2 * 1024 * 1024)
+            "start": 0, "max_results": limit, "sortBy": "submittedDate", "sortOrder": "descending"}, maximum=2 * 1024 * 1024, timeout=10)
         try:
             root = ET.fromstring(raw)
             if root.tag != ATOM + "feed":

@@ -1,0 +1,1 @@
+{"container_direct": [{"query": {"id_list": "1706.03762"}, "http_status": 200, "seconds": 0.763, "bytes": 2965, "is_atom": true}, {"query": {"search_query": "ti:\"A neural probabilistic language model\"", "max_results": 1}, "error_type": "ReadTimeout", "cause_type": "ReadTimeout", "seconds": 8.25}], "dns_addresses": ["198.18.0.169"]}
