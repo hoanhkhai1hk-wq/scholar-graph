@@ -478,7 +478,14 @@ export default function LayoutViewer({
       // "auto" inherits CSS smooth scrolling. Crossing hundreds of pages then
       // rendered intermediate pages and shifted the final target. A source
       // lookup must land directly on its physical page, including the last one.
-      if (container) container.scrollTo({ top: restoreTop ?? element.getBoundingClientRect().top - container.getBoundingClientRect().top + container.scrollTop + (offsetY || 0) - 64, behavior: "instant" });
+      if (container) {
+        // The sticky toolbar can wrap when citations or narrow layouts need
+        // extra rows. Keep the evidence below its actual height.
+        const toolbar = element.closest(".sg-layout__main")?.querySelector(".sg-layout__bar");
+        const clearance = (toolbar?.getBoundingClientRect().height ?? 0) + 16;
+        const target = offsetY ? element.querySelector(".sg-pdfpage__stage") ?? element : element;
+        container.scrollTo({ top: restoreTop ?? target.getBoundingClientRect().top - container.getBoundingClientRect().top + container.scrollTop + (offsetY || 0) - clearance, behavior: "instant" });
+      }
       else window.scrollTo({ top: Math.max(0, element.getBoundingClientRect().top + window.scrollY + (offsetY || 0) - 90), behavior: "instant" });
     };
     go();
