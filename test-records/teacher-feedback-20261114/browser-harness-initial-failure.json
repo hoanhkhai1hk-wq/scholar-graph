@@ -1,0 +1,10 @@
+{
+  "errors": [
+    {
+      "case": "native",
+      "legacy": false,
+      "error": "process is not defined"
+    }
+  ],
+  "body": ""
+}

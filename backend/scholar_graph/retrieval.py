@@ -5,6 +5,8 @@ import math
 from .errors import PipelineError
 from .qa_evidence import terms, numbers
 from .validation import chunk_anchor
+from .evidence_location import evidence_location
+from .rank_fusion import contribution_fusion
 
 
 def load_bundles(repository, paper_ids=None):
@@ -34,14 +36,12 @@ def lexical_ranking(chunks, question):
     return sorted(result, key=lambda item: (-item[1], item[0]))
 
 
-def fuse_ranks(dense, sparse, k=60):
-    """Equal-weight reciprocal rank fusion; zero sparse matches contribute nothing."""
+def fuse_ranks(dense, sparse, k=60, *, explain=False):
+    """Fuse actual dense/sparse recall; nonpositive sparse matches contribute nothing."""
     dense_order = sorted(dense, key=lambda cid: (-dense[cid], cid))
     sparse_order = sorted((cid for cid in sparse if sparse[cid] > 0), key=lambda cid: (-sparse[cid], cid))
-    scores = {cid: 0.5 * (k + 1) / (k + rank) for rank, cid in enumerate(dense_order, 1)}
-    for rank, cid in enumerate(sparse_order, 1):
-        scores[cid] = scores.get(cid, 0) + 0.5 * (k + 1) / (k + rank)
-    return sorted(scores.items(), key=lambda item: (-item[1], item[0]))
+    ranked, trace = contribution_fusion({"dense": dense_order, "sparse": sparse_order}, k=k)
+    return (ranked, trace) if explain else ranked
 
 
 class SearchService:
@@ -75,7 +75,14 @@ class SearchService:
             anchor = chunk_anchor(chunk)
             self.repository.gate.record("Chunk", chunk)
             self.repository.gate.anchor(anchor, bundles)
-            items.append({"chunk": chunk, "anchor": anchor, "relevance": score, "retrieval_method": method})
+            item = {"chunk": chunk, "anchor": anchor, "relevance": score, "retrieval_method": method,
+                    "location": evidence_location(chunk)}
+            fusion = getattr(self.vector, "last_evidence", None) if method == "bge_m3_hybrid" else None
+            if isinstance(fusion, dict) and "fusion" in fusion:
+                trace = fusion["fusion"]
+                item["fusion"] = {"method": trace["method"], "k": trace["k"],
+                                  "routes": trace["routes"], **trace["hits"][cid]}
+            items.append(item)
         reason = "OK" if items else "EMPTY_CORPUS" if not chunks else "NO_MATCHING_CHUNKS"
         return items, {"method": method, "vector_status": vector_status, "reason": reason}
 

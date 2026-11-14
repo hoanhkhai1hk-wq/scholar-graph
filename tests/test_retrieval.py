@@ -32,7 +32,7 @@ def test_no_results_and_empty_corpus_are_explicit(repository, tmp_path):
 def test_dense_and_sparse_rank_fusion_has_known_order():
     ranked = fuse_ranks({"a": .9, "b": .8, "c": .1}, {"a": 0, "b": 5, "c": 2})
     assert [cid for cid, score in ranked] == ["b", "c", "a"]
-    assert dict(ranked)["b"] == pytest.approx(.5 * 61 / 62 + .5)
+    assert dict(ranked)["b"] == pytest.approx(.65 * 61 / 62 + .35)
 
 
 def test_vector_failure_is_labelled_lexical_fallback(repository):

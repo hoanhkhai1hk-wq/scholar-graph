@@ -2,9 +2,10 @@
 const fs=require('node:fs'),path=require('node:path'),{spawnSync}=require('node:child_process');
 const {pathToFileURL}=require('node:url');
 const {chromium}=require('../frontend/node_modules/playwright');
-const root=path.resolve(__dirname,'..'),base=path.join(root,'data/submission-20261030');fs.mkdirSync(base,{recursive:true});
+const root=path.resolve(__dirname,'..'),base=process.env.SG_DOC_BUILD_DIR || path.join(root,'data/submission-20261030');fs.mkdirSync(base,{recursive:true});
 const python=process.env.SG_DOC_PYTHON || (process.platform==='win32'?path.join(root,'backend/.venv/Scripts/python.exe'):path.join(root,'backend/.venv/bin/python'));
 const source=fs.readFileSync(path.join(root,'docs/technical-document.md'),'utf8');
+const revision=(source.match(/\|版本日期\|(\d{4}-\d{2}-\d{2})/) || [null,'2026-10-30'])[1];
 const conversion=spawnSync(python,['-c',"import sys;from markdown_it import MarkdownIt;print(MarkdownIt('commonmark').enable('table').render(sys.stdin.read()))"],{input:source,encoding:'utf8',cwd:root});
 if(conversion.status!==0)throw Error(conversion.stderr || 'Markdown conversion failed');
 let content=conversion.stdout.replaceAll('<!-- pagebreak -->','<div class="page-break"></div>');
@@ -16,5 +17,5 @@ fs.writeFileSync(path.join(base,'technical-document.html'),html);
 (async()=>{const options={headless:true};if(process.env.SG_CHROME_PATH)options.executablePath=process.env.SG_CHROME_PATH;else if(process.platform==='win32')options.executablePath='C:/Program Files/Google/Chrome/Application/chrome.exe';else options.channel='chrome';
 const browser=await chromium.launch(options),p=await browser.newPage();const errors=[];p.on('pageerror',e=>errors.push(e.message));
 await p.goto(pathToFileURL(path.join(base,'technical-document.html')).href);await p.evaluate(()=>document.fonts.ready);const images=await p.locator('img').evaluateAll(nodes=>nodes.map(n=>({src:n.getAttribute('src'),loaded:n.complete&&n.naturalWidth>0})));if(images.some(n=>!n.loaded))throw Error('Document image did not load');
-await p.pdf({path:path.join(root,'docs/technical-document.pdf'),format:'A4',printBackground:true,preferCSSPageSize:true,displayHeaderFooter:true,headerTemplate:'<span></span>',footerTemplate:'<div style="width:100%;padding:0 18mm;font:8px Arial;color:#5c736d;display:flex;justify-content:space-between"><span>研枢 ScholarGraph · 2026-10-30 · 技术说明</span><span><span class="pageNumber"></span> / <span class="totalPages"></span></span></div>'});
+await p.pdf({path:path.join(root,'docs/technical-document.pdf'),format:'A4',printBackground:true,preferCSSPageSize:true,displayHeaderFooter:true,headerTemplate:'<span></span>',footerTemplate:`<div style="width:100%;padding:0 18mm;font:8px Arial;color:#5c736d;display:flex;justify-content:space-between"><span>研枢 ScholarGraph · ${revision} · 技术说明</span><span><span class="pageNumber"></span> / <span class="totalPages"></span></span></div>`});
 fs.writeFileSync(path.join(base,'document-build.json'),JSON.stringify({passed:!errors.length,errors,images,source_chars:source.length},null,2));await browser.close();if(errors.length)process.exitCode=1;console.log(JSON.stringify({passed:!errors.length,images:images.length}));})().catch(e=>{console.error(e);process.exitCode=1});

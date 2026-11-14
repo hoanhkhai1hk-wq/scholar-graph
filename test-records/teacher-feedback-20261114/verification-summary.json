@@ -1,0 +1,48 @@
+{
+  "date": "2026-11-14",
+  "baseline_fast": {
+    "tests": 200,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "final_fast": {
+    "tests": 223,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "targeted": {
+    "tests": 143,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "full": {
+    "tests": 848,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 7
+  },
+  "real_vector": {
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "browser_checks": 12,
+  "browser_passed": true,
+  "fixed_questions": 6,
+  "paper_recall_cases": 7,
+  "recall_comparison_passed": true,
+  "production_build": {
+    "passed": true,
+    "command": "SG_BUILD_DIR=.next-teacher-feedback npm run build"
+  },
+  "technical_pdf": {
+    "passed": true,
+    "pages": 14,
+    "sha256": "b3804ac0b0efb5a1463be35ac417603ea8f3591d526d892a57631252da4ac96c"
+  },
+  "scope": "Local source changes and isolated acceptance only; no new teacher score, no deployed-service replacement or Git push."
+}

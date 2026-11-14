@@ -1,5 +1,7 @@
 "use client";
 
+import AnchorTag from "./AnchorTag";
+
 import { useState } from "react";
 import {
   fetchArxiv,
@@ -220,9 +222,16 @@ export default function RetrievalWorkspace({
                       <td className="sg-num">{hit.relevance}</td>
                       <td>
                         <span className="sg-tag">{hit.retrieval_method}</span>
+                        {hit.fusion ? <details><summary>排序依据</summary>
+                          {Object.entries(hit.fusion.routes).map(([route, info]) => <p key={route}>
+                            {route === "dense" ? "语义召回" : "词项召回"}：权重 {(info.weight * 100).toFixed(1)}%，
+                            召回 {info.recalled} 段，其中独有 {info.unique} 段；本段排名 {hit.fusion!.ranks[route] ?? "未召回"}，
+                            得分贡献 {hit.fusion!.contributions[route].toFixed(4)}。
+                          </p>)}<p>权重按本次召回的共享折扣排名贡献计算，相关度不表示答案准确率。</p>
+                        </details> : null}
                       </td>
                       <td className="sg-mono">
-                        p.{hit.anchor.page_number} · {hit.anchor.chunk_id}
+                        <AnchorTag anchor={hit.anchor} location={hit.location} />
                       </td>
                       <td>
                         <p className="sg-prose">{hit.chunk.text}</p>

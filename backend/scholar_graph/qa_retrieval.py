@@ -14,6 +14,7 @@ from .grounded_model import evidence_candidates, evidence_from_chunks
 from .qa_evidence import retrieve as extractive_retrieve
 from .retrieval import VectorUnavailable
 from .storage import write_json
+from .rank_fusion import contribution_fusion
 from .vector_search import BgeChromaSearch
 from .rerank_worker import resident_worker, local_environment, WorkerUnavailable
 
@@ -110,10 +111,8 @@ class QAHybridRetriever:
                 vector = sorted(dense, key=lambda cid: (-dense[cid], cid))[:24]
                 if not vector:
                     raise VectorUnavailable("EMPTY_DENSE_RESULTS")
-                scores = {cid: .5 * 61 / (60 + n) for n, cid in enumerate(vector, 1)}
-                for n, cid in enumerate(lexical, 1):
-                    scores[cid] = scores.get(cid, 0) + .5 * 61 / (60 + n)
-                ordered_ids = sorted(scores, key=lambda cid: (-scores[cid], cid))
+                ranked, fusion = contribution_fusion({"dense": vector, "lexical": lexical})
+                ordered_ids = [cid for cid, _ in ranked]
                 by_id = {c["chunk_id"]: c for c in bundle["chunks"]}
                 # Expensive cross-encoding is restricted to the RRF top ten. The
                 # remaining recall stays below that prefix for source coverage.
@@ -135,8 +134,28 @@ class QAHybridRetriever:
                     vector_residency=raw.get("residency"),
                     indexed_chunks=raw.get("indexed_chunks"), updated_chunks=raw.get("updated_chunks"),
                     model_revision=raw.get("revision"), versions=raw.get("versions"),
-                    fusion={"method": "equal_weight_rrf", "k": 60, "route_limit": 24,
+                    fusion={key: value for key, value in fusion.items() if key != "hits"} | {
+                            "route_limit": 24,
                             "lexical_expansion": "existing_grounded_model_aliases", "bge_sparse_scores_used": False})
+                # Keep full rank accounting out of HTTP headers and model prompts.
+                # The trace contains IDs/scores only, never queries, quotes or keys.
+                trace_id = uuid4().hex
+                directory = self.repository.root / "qa-retrieval" / "fusion"
+                temporary = directory / (trace_id + ".tmp")
+                try:
+                    directory.mkdir(parents=True, exist_ok=True)
+                    write_json(temporary, {"paper_id": info["paper_id"], **fusion,
+                        "final_order": ordered_ids, "ranking_method": info["ranking_method"],
+                        "rerank": rerank_info})
+                    windows_retry(lambda: os.replace(temporary, directory / (trace_id + ".json")))
+                    info["fusion"].update(trace_id=trace_id, recording_status="SAVED")
+                except OSError:
+                    info["fusion"]["recording_status"] = "UNAVAILABLE"
+                finally:
+                    try:
+                        temporary.unlink(missing_ok=True)
+                    except OSError:
+                        pass  # Audit cleanup must not turn valid recall into a fallback.
             except (VectorUnavailable, KeyError, TypeError, ValueError, OSError):
                 info.update(vector_status="UNAVAILABLE", reason="LOCAL_VECTOR_UNAVAILABLE")
                 candidates = legacy[:limit]

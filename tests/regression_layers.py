@@ -9,6 +9,7 @@ FAST_FILES = frozenset({
     'test_qa_two_stage.py', 'test_compare_sse.py',
     'test_api_comparison.py',
     'test_code_layout.py',
+    'test_evidence_location.py', 'test_rank_fusion.py',
 })
 
 

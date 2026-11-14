@@ -22,3 +22,7 @@ test-records/submission-20261030/** -text -whitespace
 
 # Preserve tracking runtime, browser and command evidence verbatim.
 test-records/tracking-fix-20261031/** -text -whitespace
+
+# Preserve teacher-feedback verification and selected video-review evidence.
+test-records/teacher-feedback-20261114/** -text -whitespace
+test-records/video-review-20261114/** -text -whitespace

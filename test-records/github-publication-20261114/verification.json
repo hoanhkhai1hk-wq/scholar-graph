@@ -1,0 +1,18 @@
+{
+  "date": "2026-11-14",
+  "validated_source": "Exact staged index exported before documentation-only additions",
+  "fast": {
+    "tests": 223,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "production_build_passed": true,
+  "credentials_scan_passed": true,
+  "docker_engine_running_at_check": false,
+  "docker_updated": false,
+  "preexisting_unstaged_changes_excluded": [
+    "frontend/components/UploadForm.tsx",
+    "frontend/tsconfig.json"
+  ]
+}

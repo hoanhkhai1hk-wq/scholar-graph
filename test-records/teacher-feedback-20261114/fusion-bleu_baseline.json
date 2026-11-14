@@ -1,0 +1,467 @@
+{
+  "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+  "method": "contribution_weighted_rrf",
+  "k": 60,
+  "weight_rule": "shared_discounted_rank_mass",
+  "active_weight_bounds": [
+    0.35,
+    0.65
+  ],
+  "routes": {
+    "dense": {
+      "recalled": 24,
+      "unique": 12,
+      "shared": 12,
+      "credit_mass": 14.901208220401958,
+      "weight": 0.4963463521565188
+    },
+    "lexical": {
+      "recalled": 24,
+      "unique": 12,
+      "shared": 12,
+      "credit_mass": 15.120586350383935,
+      "weight": 0.5036536478434812
+    }
+  },
+  "hits": {
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00003": {
+      "ranks": {
+        "dense": null,
+        "lexical": 10
+      },
+      "contributions": {
+        "dense": 0.0,
+        "lexical": 0.4388981788350336
+      },
+      "score": 0.4388981788350336
+    },
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00010": {
+      "ranks": {
+        "dense": 5,
+        "lexical": 3
+      },
+      "contributions": {
+        "dense": 0.4658019612545791,
+        "lexical": 0.4876646431500374
+      },
+      "score": 0.9534666044046165
+    },
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00019": {
+      "ranks": {
+        "dense": 8,
+        "lexical": 23
+      },
+      "contributions": {
+        "dense": 0.4452518747286418,
+        "lexical": 0.37015509058376334
+      },
+      "score": 0.8154069653124052
+    },
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00021": {
+      "ranks": {
+        "dense": 19,
+        "lexical": null
+      },
+      "contributions": {
+        "dense": 0.38325477824743853,
+        "lexical": 0.0
+      },
+      "score": 0.38325477824743853
+    },
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00024": {
+      "ranks": {
+        "dense": null,
+        "lexical": 20
+      },
+      "contributions": {
+        "dense": 0.0,
+        "lexical": 0.38403590648065444
+      },
+      "score": 0.38403590648065444
+    },
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00025": {
+      "ranks": {
+        "dense": 17,
+        "lexical": 5
+      },
+      "contributions": {
+        "dense": 0.39320944781230704,
+        "lexical": 0.47265957720695934
+      },
+      "score": 0.8658690250192664
+    },
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00028": {
+      "ranks": {
+        "dense": 9,
+        "lexical": 1
+      },
+      "contributions": {
+        "dense": 0.43879894900793687,
+        "lexical": 0.5036536478434812
+      },
+      "score": 0.9424525968514181
+    },
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00029": {
+      "ranks": {
+        "dense": null,
+        "lexical": 7
+      },
+      "contributions": {
+        "dense": 0.0,
+        "lexical": 0.4585503360963038
+      },
+      "score": 0.4585503360963038
+    },
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00030": {
+      "ranks": {
+        "dense": null,
+        "lexical": 4
+      },
+      "contributions": {
+        "dense": 0.0,
+        "lexical": 0.48004488310081805
+      },
+      "score": 0.48004488310081805
+    },
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00055": {
+      "ranks": {
+        "dense": 24,
+        "lexical": null
+      },
+      "contributions": {
+        "dense": 0.36044199382794817,
+        "lexical": 0.0
+      },
+      "score": 0.36044199382794817
+    },
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00056": {
+      "ranks": {
+        "dense": null,
+        "lexical": 22
+      },
+      "contributions": {
+        "dense": 0.0,
+        "lexical": 0.37466917705429703
+      },
+      "score": 0.37466917705429703
+    },
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00057": {
+      "ranks": {
+        "dense": null,
+        "lexical": 19
+      },
+      "contributions": {
+        "dense": 0.0,
+        "lexical": 0.3888971204867387
+      },
+      "score": 0.3888971204867387
+    },
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00061": {
+      "ranks": {
+        "dense": null,
+        "lexical": 18
+      },
+      "contributions": {
+        "dense": 0.0,
+        "lexical": 0.39388298100579944
+      },
+      "score": 0.39388298100579944
+    },
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00073": {
+      "ranks": {
+        "dense": null,
+        "lexical": 24
+      },
+      "contributions": {
+        "dense": 0.0,
+        "lexical": 0.36574848236252805
+      },
+      "score": 0.36574848236252805
+    },
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00084": {
+      "ranks": {
+        "dense": 16,
+        "lexical": null
+      },
+      "contributions": {
+        "dense": 0.39838325633615324,
+        "lexical": 0.0
+      },
+      "score": 0.39838325633615324
+    },
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00086": {
+      "ranks": {
+        "dense": 14,
+        "lexical": null
+      },
+      "contributions": {
+        "dense": 0.40915037137226545,
+        "lexical": 0.0
+      },
+      "score": 0.40915037137226545
+    },
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00093": {
+      "ranks": {
+        "dense": 3,
+        "lexical": 12
+      },
+      "contributions": {
+        "dense": 0.4805893251039309,
+        "lexical": 0.4267065627562827
+      },
+      "score": 0.9072958878602135
+    },
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00094": {
+      "ranks": {
+        "dense": null,
+        "lexical": 21
+      },
+      "contributions": {
+        "dense": 0.0,
+        "lexical": 0.3792947224500291
+      },
+      "score": 0.3792947224500291
+    },
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00095": {
+      "ranks": {
+        "dense": 22,
+        "lexical": null
+      },
+      "contributions": {
+        "dense": 0.3692332619700932,
+        "lexical": 0.0
+      },
+      "score": 0.3692332619700932
+    },
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00096": {
+      "ranks": {
+        "dense": null,
+        "lexical": 6
+      },
+      "contributions": {
+        "dense": 0.0,
+        "lexical": 0.46549806846139935
+      },
+      "score": 0.46549806846139935
+    },
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00097": {
+      "ranks": {
+        "dense": 18,
+        "lexical": null
+      },
+      "contributions": {
+        "dense": 0.3881683010454826,
+        "lexical": 0.0
+      },
+      "score": 0.3881683010454826
+    },
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00098": {
+      "ranks": {
+        "dense": 1,
+        "lexical": 2
+      },
+      "contributions": {
+        "dense": 0.4963463521565188,
+        "lexical": 0.4955302019105219
+      },
+      "score": 0.9918765540670407
+    },
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00099": {
+      "ranks": {
+        "dense": 2,
+        "lexical": 8
+      },
+      "contributions": {
+        "dense": 0.4883407658314136,
+        "lexical": 0.45180694880076994
+      },
+      "score": 0.9401477146321835
+    },
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00101": {
+      "ranks": {
+        "dense": 20,
+        "lexical": null
+      },
+      "contributions": {
+        "dense": 0.37846409351934557,
+        "lexical": 0.0
+      },
+      "score": 0.37846409351934557
+    },
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00102": {
+      "ranks": {
+        "dense": 21,
+        "lexical": null
+      },
+      "contributions": {
+        "dense": 0.37379169730305734,
+        "lexical": 0.0
+      },
+      "score": 0.37379169730305734
+    },
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00103": {
+      "ranks": {
+        "dense": 4,
+        "lexical": 14
+      },
+      "contributions": {
+        "dense": 0.47308011689918195,
+        "lexical": 0.41517395295205883
+      },
+      "score": 0.8882540698512408
+    },
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00106": {
+      "ranks": {
+        "dense": 6,
+        "lexical": 15
+      },
+      "contributions": {
+        "dense": 0.4587443557810249,
+        "lexical": 0.40963830024603143
+      },
+      "score": 0.8683826560270563
+    },
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00108": {
+      "ranks": {
+        "dense": null,
+        "lexical": 16
+      },
+      "contributions": {
+        "dense": 0.0,
+        "lexical": 0.4042483226112152
+      },
+      "score": 0.4042483226112152
+    },
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00110": {
+      "ranks": {
+        "dense": null,
+        "lexical": 11
+      },
+      "contributions": {
+        "dense": 0.0,
+        "lexical": 0.4327165143443994
+      },
+      "score": 0.4327165143443994
+    },
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00111": {
+      "ranks": {
+        "dense": 12,
+        "lexical": 9
+      },
+      "contributions": {
+        "dense": 0.4205156594659395,
+        "lexical": 0.44525902200655587
+      },
+      "score": 0.8657746814724954
+    },
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00112": {
+      "ranks": {
+        "dense": 15,
+        "lexical": null
+      },
+      "contributions": {
+        "dense": 0.4036950330873019,
+        "lexical": 0.0
+      },
+      "score": 0.4036950330873019
+    },
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00113": {
+      "ranks": {
+        "dense": 10,
+        "lexical": null
+      },
+      "contributions": {
+        "dense": 0.43253039259353776,
+        "lexical": 0.0
+      },
+      "score": 0.43253039259353776
+    },
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00115": {
+      "ranks": {
+        "dense": 11,
+        "lexical": 17
+      },
+      "contributions": {
+        "dense": 0.4264384152330654,
+        "lexical": 0.39899834439548515
+      },
+      "score": 0.8254367596285506
+    },
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00118": {
+      "ranks": {
+        "dense": 13,
+        "lexical": null
+      },
+      "contributions": {
+        "dense": 0.4147551709801047,
+        "lexical": 0.0
+      },
+      "score": 0.4147551709801047
+    },
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00120": {
+      "ranks": {
+        "dense": 23,
+        "lexical": null
+      },
+      "contributions": {
+        "dense": 0.3647846684523813,
+        "lexical": 0.0
+      },
+      "score": 0.3647846684523813
+    },
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00121": {
+      "ranks": {
+        "dense": 7,
+        "lexical": 13
+      },
+      "contributions": {
+        "dense": 0.451897425097726,
+        "lexical": 0.42086126737605967
+      },
+      "score": 0.8727586924737857
+    }
+  },
+  "final_order": [
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00098",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00010",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00028",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00099",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00093",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00103",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00121",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00106",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00025",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00111",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00115",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00019",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00030",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00096",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00029",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00003",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00110",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00113",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00118",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00086",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00108",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0009-c00112",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00084",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00061",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00057",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00097",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00024",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0002-c00021",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00094",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00101",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00056",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00102",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00095",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0006-c00073",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00120",
+    "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0005-c00055"
+  ],
+  "ranking_method": "rrf",
+  "rerank": {
+    "method": "rrf",
+    "reason": "NOT_CONFIGURED"
+  }
+}

@@ -1,0 +1,212 @@
+{
+  "passed": true,
+  "pages": 14,
+  "limit": 30,
+  "pdf_bytes": 861668,
+  "pdf_sha256": "b3804ac0b0efb5a1463be35ac417603ea8f3591d526d892a57631252da4ac96c",
+  "claims": [
+    {
+      "id": "M01",
+      "source_matches": true,
+      "markdown_matches": true,
+      "pdf_matches": true
+    },
+    {
+      "id": "M02",
+      "source_matches": true,
+      "markdown_matches": true,
+      "pdf_matches": true
+    },
+    {
+      "id": "M03",
+      "source_matches": true,
+      "markdown_matches": true,
+      "pdf_matches": true
+    },
+    {
+      "id": "M04",
+      "source_matches": true,
+      "markdown_matches": true,
+      "pdf_matches": true
+    },
+    {
+      "id": "M05",
+      "source_matches": true,
+      "markdown_matches": true,
+      "pdf_matches": true
+    },
+    {
+      "id": "M06",
+      "source_matches": true,
+      "markdown_matches": true,
+      "pdf_matches": true
+    },
+    {
+      "id": "M07",
+      "source_matches": true,
+      "markdown_matches": true,
+      "pdf_matches": true
+    },
+    {
+      "id": "M08",
+      "source_matches": true,
+      "markdown_matches": true,
+      "pdf_matches": true
+    },
+    {
+      "id": "M09",
+      "source_matches": true,
+      "markdown_matches": true,
+      "pdf_matches": true
+    },
+    {
+      "id": "M10",
+      "source_matches": true,
+      "markdown_matches": true,
+      "pdf_matches": true
+    },
+    {
+      "id": "M11",
+      "source_matches": true,
+      "markdown_matches": true,
+      "pdf_matches": true
+    },
+    {
+      "id": "M12",
+      "source_matches": true,
+      "markdown_matches": true,
+      "pdf_matches": true
+    },
+    {
+      "id": "M13",
+      "source_matches": true,
+      "markdown_matches": true,
+      "pdf_matches": true
+    },
+    {
+      "id": "M14",
+      "source_matches": true,
+      "markdown_matches": true,
+      "pdf_matches": true
+    },
+    {
+      "id": "M15",
+      "source_matches": true,
+      "markdown_matches": true,
+      "pdf_matches": true
+    },
+    {
+      "id": "M16",
+      "source_matches": true,
+      "markdown_matches": true,
+      "pdf_matches": true
+    },
+    {
+      "id": "M17",
+      "source_matches": true,
+      "markdown_matches": true,
+      "pdf_matches": true
+    },
+    {
+      "id": "M18",
+      "source_matches": true,
+      "markdown_matches": true,
+      "pdf_matches": true
+    },
+    {
+      "id": "M19",
+      "source_matches": true,
+      "markdown_matches": true,
+      "pdf_matches": true
+    },
+    {
+      "id": "M20",
+      "source_matches": true,
+      "markdown_matches": true,
+      "pdf_matches": true
+    }
+  ],
+  "physical_bounds": [
+    {
+      "page": 1,
+      "chars": 502,
+      "out_of_page_characters": 0
+    },
+    {
+      "page": 2,
+      "chars": 670,
+      "out_of_page_characters": 0
+    },
+    {
+      "page": 3,
+      "chars": 1055,
+      "out_of_page_characters": 0
+    },
+    {
+      "page": 4,
+      "chars": 1012,
+      "out_of_page_characters": 0
+    },
+    {
+      "page": 5,
+      "chars": 1023,
+      "out_of_page_characters": 0
+    },
+    {
+      "page": 6,
+      "chars": 824,
+      "out_of_page_characters": 0
+    },
+    {
+      "page": 7,
+      "chars": 970,
+      "out_of_page_characters": 0
+    },
+    {
+      "page": 8,
+      "chars": 750,
+      "out_of_page_characters": 0
+    },
+    {
+      "page": 9,
+      "chars": 795,
+      "out_of_page_characters": 0
+    },
+    {
+      "page": 10,
+      "chars": 862,
+      "out_of_page_characters": 0
+    },
+    {
+      "page": 11,
+      "chars": 863,
+      "out_of_page_characters": 0
+    },
+    {
+      "page": 12,
+      "chars": 768,
+      "out_of_page_characters": 0
+    },
+    {
+      "page": 13,
+      "chars": 835,
+      "out_of_page_characters": 0
+    },
+    {
+      "page": 14,
+      "chars": 1073,
+      "out_of_page_characters": 0
+    }
+  ],
+  "visual_review": {
+    "status": "completed",
+    "all_pages_contact_sheet_reviewed": true,
+    "detailed_pages_reviewed": [
+      5,
+      6,
+      12
+    ],
+    "findings": []
+  },
+  "note": "Bounds and text checks supplement, not replace, visual review of rendered pages."
+}

@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { Chunk, CitationLink, ReferenceEntry } from "@/lib/types";
 import AsyncStatus from "./AsyncStatus";
+import { regionFromBox } from "@/lib/evidence-location";
 
 type TextItem = { str: string; transform: number[]; width: number; height: number };
 
@@ -113,8 +114,8 @@ function buildTree(chunks: Chunk[]): TreeNode[] {
  * 版式原文阅读器（pdf.js）。
  *
  * 定位精度口径：
- * 1. 优先**段落级定位**：在 PDF 文本层搜到该段文字，滚过去并高亮命中区间；
- * 2. 文本层搜不到（扫描件、文字转曲、chunk 与 PDF 文本不一致）时退回**页级定位**
+ * 1. 优先使用解析时保存的段落坐标，原生文字和 OCR 共用归一化坐标高亮；
+ * 2. 无坐标时搜索 PDF 文本层，仍无法定位则退回**页级定位**
  *    并在界面写明，不假装定位到段落；
  * 3. 字符级坐标定位做不到，未实现，也不声称能定位到某一行或某个字。
  */
@@ -164,6 +165,7 @@ export default function LayoutViewer({
   const hoverTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const citationOrigin = useRef<Map<string, { page: number; top: number }>>(new Map());
   const [jumpInput, setJumpInput] = useState("");
+  const locateSequence = useRef(0);
 
   const tree = useMemo(() => buildTree(outlineChunks ?? chunks), [outlineChunks, chunks]);
   const chunkById = useMemo(() => {
@@ -228,6 +230,7 @@ export default function LayoutViewer({
 
     return () => {
       cancelled = true;
+      locateSequence.current += 1;
       void docRef.current?.destroy();
       docRef.current = null;
       renderedRef.current.clear();
@@ -407,7 +410,7 @@ export default function LayoutViewer({
         element.style.minHeight = `${Math.round(element.clientWidth * ratio) + 60}px`;
         if (canvas && canvas.width && layer) layer.style.transform = `scale(${canvas.clientWidth / canvas.width})`;
       });
-      setHighlight(null);
+      // Highlights use page-normalized coordinates and stay aligned on resize.
     });
     observer.observe(host); return () => observer.disconnect();
   }, [status, numPages]);
@@ -421,7 +424,7 @@ export default function LayoutViewer({
     if (chunkId) void fetch(`/api/workspace/papers/${paperId}/evidence/${encodeURIComponent(chunkId)}`).then(async response => {
       if (!response.ok) throw new Error("证据段落未找到，已定位到指定页。");
       const chunk = await response.json() as Chunk;
-      await locateAndJump(chunk.page_number, [snippetOf(chunk.text)], "答案证据");
+      await locateAndJump(chunk.page_number, [snippetOf(chunk.text)], "答案证据", undefined, chunk.bbox);
     }).catch(() => { void locateAndJump(page, [], "指定页"); });
     // Explicit page=1 also needs a real scroll: browsers can restore the old
     // nested book scroll offset when the same reader URL is opened again.
@@ -440,7 +443,7 @@ export default function LayoutViewer({
       void fetch(`/api/workspace/papers/${paperId}/evidence/${encodeURIComponent(anchor.chunk_id)}`).then(async response => {
         if (!response.ok) throw new Error();
         const chunk = await response.json() as Chunk;
-        await locateAndJump(chunk.page_number, [snippetOf(chunk.text)], "答案证据");
+        await locateAndJump(chunk.page_number, [snippetOf(chunk.text)], "答案证据", undefined, chunk.bbox);
       }).catch(() => { void locateAndJump(anchor.page_number, [], "证据页"); });
     };
     window.addEventListener("sg:locate", locate);
@@ -468,7 +471,9 @@ export default function LayoutViewer({
   function scrollToPageOffset(page: number, offsetY: number, restoreTop?: number) {
     const element = pageRefs.current.get(page);
     if (!element) return;
+    const sequence = locateSequence.current;
     const go = () => {
+      if (sequence !== locateSequence.current) return;
       const container = element.closest<HTMLElement>("[data-document-scroll]");
       // "auto" inherits CSS smooth scrolling. Crossing hundreds of pages then
       // rendered intermediate pages and shifted the final target. A source
@@ -486,7 +491,7 @@ export default function LayoutViewer({
     setCurrentPage(page);
   }
 
-  /** 在页面文本层里搜候选串，返回命中区间（已换算到画布 CSS 坐标） */
+  /** 文本层回退也转换为归一化区域，随画布缩放保持对齐。 */
   async function locateInPage(
     page: number,
     queries: string[],
@@ -552,17 +557,15 @@ export default function LayoutViewer({
     await pdfPage.cleanup();
 
     if (!Number.isFinite(minX)) return null;
-    const canvas = host.querySelector("canvas");
-    const ratio = canvas && canvas.width ? canvas.clientWidth / canvas.width : 1;
-    return {
-      x: minX * ratio,
-      y: minY * ratio,
-      w: Math.max(24, (maxX - minX) * ratio),
-      h: Math.max(14, (maxY - minY) * ratio),
-    };
+    return regionFromBox([
+      Math.max(0, minX / viewport.width), Math.max(0, minY / viewport.height),
+      Math.min(1, Math.max(maxX, minX + 24) / viewport.width),
+      Math.min(1, Math.max(maxY, minY + 14) / viewport.height),
+    ]);
   }
 
-  async function locateAndJump(page: number, queries: string[], label: string, restoreTop?: number) {
+  async function locateAndJump(page: number, queries: string[], label: string, restoreTop?: number, bbox?: number[] | null) {
+    const sequence = ++locateSequence.current;
     setLocateNote(null);
     setHighlight(null);
     const element = pageRefs.current.get(page);
@@ -578,16 +581,25 @@ export default function LayoutViewer({
         renderedRef.current.add(page); await renderPage(page, element);
       }
     }
+    if (sequence !== locateSequence.current) return false;
+    const region = regionFromBox(bbox);
+    if (region) {
+      setHighlight({ page, ...region });
+      setLocateNote(`段落级定位：第 ${page} 页「${label}」，已按解析坐标滚动并高亮。`);
+      scrollToPageOffset(page, region.y * (element?.querySelector("canvas")?.clientHeight ?? 0), restoreTop);
+      return true;
+    }
     if (!queries.length || hasTextLayer === false) {
-      setLocateNote(hasTextLayer === false ? `扫描件已定位到第 ${page} 页（页级定位）；原件没有可核查的段落文字坐标。` : `已定位到第 ${page} 页（页级定位）。`);
+      setLocateNote(hasTextLayer === false ? `扫描件已定位到第 ${page} 页（页级定位）；该段没有保存可用的解析坐标。` : `已定位到第 ${page} 页（页级定位）。`);
       scrollToPageOffset(page, 0, restoreTop);
       return false;
     }
     const hit = await locateInPage(page, queries);
+    if (sequence !== locateSequence.current) return false;
     if (hit) {
       setHighlight({ page, ...hit });
       setLocateNote(`段落级定位：第 ${page} 页文本层命中「${label}」，已滚动并高亮。`);
-      scrollToPageOffset(page, hit.y, restoreTop);
+      scrollToPageOffset(page, hit.y * (element?.querySelector("canvas")?.clientHeight ?? 0), restoreTop);
     } else {
       setLocateNote(
         `段落级定位未命中：第 ${page} 页文本层没找到「${label}」，已退回页首（页级定位）。`,
@@ -607,7 +619,7 @@ export default function LayoutViewer({
       } catch { /* An exact citation marker can still locate the reference. */ }
     }
     const ref = references.find(item => item.ref_id === refId);
-    return [`[${ref?.number ?? ""}]`, chunk ? snippetOf(chunk.text) : ""];
+    return { queries: [`[${ref?.number ?? ""}]`, chunk ? snippetOf(chunk.text) : ""], bbox: chunk?.bbox };
   }
 
   async function jumpToCitation(refId: string) {
@@ -620,16 +632,18 @@ export default function LayoutViewer({
     }
     const origin = citationOrigin.current.get(refId);
     if (origin) {
-      const queries = await citationQueries(refId, origin.page);
-      const hit = await locateAndJump(origin.page, queries, `文献 [${ref?.number}] 的引用处`, origin.top);
-      setLocateNote(`已返回第 ${origin.page} 页刚才的引用位置；${hit ? "原文已重新高亮" : "文本未命中，仅恢复页和阅读位置"}。`);
+      const { queries, bbox } = await citationQueries(refId, origin.page);
+      const hit = await locateAndJump(origin.page, queries, `文献 [${ref?.number}] 的引用处`, origin.top, bbox);
+      setLocateNote(`已返回第 ${origin.page} 页刚才的引用位置；${hit ? "原文已重新高亮" : "段落未定位，仅恢复页和阅读位置"}。`);
       return;
     }
     const link = entries[0];
+    const { queries, bbox } = await citationQueries(refId, link.page_number);
     void locateAndJump(
       link.page_number,
-      await citationQueries(refId, link.page_number),
+      queries,
       `文献 [${ref?.number ?? "?"}] 的引用处`,
+      undefined, bbox,
     );
   }
 
@@ -640,7 +654,12 @@ export default function LayoutViewer({
     const reference = references.find(item => item.ref_id === refId);
     const location = reference ? bibliographyLocations[String(reference.number)] : undefined;
     if (location) {
-      void locateAndJump(location.page_number, [snippetOf(location.text)], `参考文献 [${reference?.number}]`);
+      void fetch(`/api/workspace/papers/${paperId}/evidence/${encodeURIComponent(location.chunk_id)}`)
+        .then(async response => {
+          if (!response.ok) throw new Error();
+          const chunk = await response.json() as Chunk;
+          await locateAndJump(chunk.page_number, [snippetOf(location.text)], `参考文献 [${reference?.number}]`, undefined, chunk.bbox);
+        }).catch(() => { void locateAndJump(location.page_number, [snippetOf(location.text)], `参考文献 [${reference?.number}]`); });
       return;
     }
     const element = refItemRefs.current.get(refId);
@@ -669,9 +688,9 @@ export default function LayoutViewer({
   return (
     <div className="sg-layout">
       <aside id="paper-outline" className="sg-layout__nav" aria-label="本篇目录与参考文献">
-        <h3 className="sg-qa__sub">{hasTextLayer === false ? "标题树（页级定位）" : "标题树（段落级定位）"}</h3>
+        <h3 className="sg-qa__sub">标题树与原文定位</h3>
         <p className="sg-mono">
-          {hasTextLayer === false ? "本文件为扫描件，仅支持物理页定位；OCR 文字没有原版式中的段落坐标。" : "点标题会在 PDF 文本层搜索该段文字并高亮；搜不到时退回页首并写明。"}
+          点击答案引用可按解析坐标高亮原文；缺少坐标时搜索文字层，仍未命中则定位到物理页。
         </p>
         <ul className="sg-nav-list">
           {tree.map((node) => (
@@ -800,10 +819,10 @@ export default function LayoutViewer({
                   <span
                     className="sg-pdfpage__hit"
                     style={{
-                      left: `${highlight.x}px`,
-                      top: `${highlight.y}px`,
-                      width: `${highlight.w}px`,
-                      height: `${highlight.h}px`,
+                      left: `${highlight.x * 100}%`,
+                      top: `${highlight.y * 100}%`,
+                      width: `${highlight.w * 100}%`,
+                      height: `${highlight.h * 100}%`,
                     }}
                   />
                 ) : null}
@@ -815,7 +834,7 @@ export default function LayoutViewer({
         <details className="sg-diag"><summary>原文显示与定位说明</summary><p className="sg-mono">
           以上为文件端点返回的 PDF 原件逐页渲染（pdf.js），单栏/双栏以原件为准；
           不是解析后的 Markdown，也不重新排版。
-          {hasTextLayer === false ? "本扫描件只提供物理页定位；OCR 段落未映射到原版式坐标。" : "有文字层时先搜索段落并高亮；未命中时退回页首并如实写明。"}
+          原生文字与扫描件均优先使用解析时保存的段落坐标高亮；无坐标时搜索文字层，仍未命中则退回物理页并说明。
           字符级坐标定位未实现。
         </p></details>
       </div>

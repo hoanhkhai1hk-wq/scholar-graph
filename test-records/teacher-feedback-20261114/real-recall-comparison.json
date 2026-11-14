@@ -1,0 +1,359 @@
+{
+  "scope": "Six fixed questions (seven paper-level retrieval cases) over real local BGE-M3 recalls; no generated answers or teacher-score claim",
+  "cases": [
+    {
+      "case": "sixth_author",
+      "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "expected_chunk_ids": [
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00004"
+      ],
+      "baseline_ranks": {
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00004": 4
+      },
+      "adaptive_ranks": {
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0001-c00004": 4
+      },
+      "baseline_recall_at_8": 1.0,
+      "adaptive_recall_at_8": 1.0,
+      "baseline_recall_at_24": 1.0,
+      "adaptive_recall_at_24": 1.0,
+      "fusion": {
+        "method": "contribution_weighted_rrf",
+        "k": 60,
+        "weight_rule": "shared_discounted_rank_mass",
+        "active_weight_bounds": [
+          0.35,
+          0.65
+        ],
+        "routes": {
+          "dense": {
+            "recalled": 24,
+            "unique": 12,
+            "shared": 12,
+            "credit_mass": 15.173218908620346,
+            "weight": 0.49675570654185
+          },
+          "lexical": {
+            "recalled": 24,
+            "unique": 12,
+            "shared": 12,
+            "credit_mass": 15.371410390654859,
+            "weight": 0.50324429345815
+          }
+        },
+        "route_limit": 24,
+        "lexical_expansion": "existing_grounded_model_aliases",
+        "bge_sparse_scores_used": false,
+        "trace_id": "8bdf8d4214a44a60aabb4fea5a2e06b0",
+        "recording_status": "SAVED"
+      },
+      "trace_file": "fusion-sixth_author.json",
+      "real_vector_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+      "passed": true
+    },
+    {
+      "case": "adam",
+      "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "expected_chunk_ids": [
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00088"
+      ],
+      "baseline_ranks": {
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00088": 2
+      },
+      "adaptive_ranks": {
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00088": 2
+      },
+      "baseline_recall_at_8": 1.0,
+      "adaptive_recall_at_8": 1.0,
+      "baseline_recall_at_24": 1.0,
+      "adaptive_recall_at_24": 1.0,
+      "fusion": {
+        "method": "contribution_weighted_rrf",
+        "k": 60,
+        "weight_rule": "shared_discounted_rank_mass",
+        "active_weight_bounds": [
+          0.35,
+          0.65
+        ],
+        "routes": {
+          "dense": {
+            "recalled": 24,
+            "unique": 18,
+            "shared": 6,
+            "credit_mass": 17.82880309230145,
+            "weight": 0.5021428641405771
+          },
+          "lexical": {
+            "recalled": 24,
+            "unique": 18,
+            "shared": 6,
+            "credit_mass": 17.676636426022963,
+            "weight": 0.49785713585942293
+          }
+        },
+        "route_limit": 24,
+        "lexical_expansion": "existing_grounded_model_aliases",
+        "bge_sparse_scores_used": false,
+        "trace_id": "a967d94b141742e6a82263ceb4a8a4a2",
+        "recording_status": "SAVED"
+      },
+      "trace_file": "fusion-adam.json",
+      "real_vector_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+      "passed": true
+    },
+    {
+      "case": "base_gpu",
+      "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "expected_chunk_ids": [
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00086"
+      ],
+      "baseline_ranks": {
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00086": 4
+      },
+      "adaptive_ranks": {
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00086": 4
+      },
+      "baseline_recall_at_8": 1.0,
+      "adaptive_recall_at_8": 1.0,
+      "baseline_recall_at_24": 1.0,
+      "adaptive_recall_at_24": 1.0,
+      "fusion": {
+        "method": "contribution_weighted_rrf",
+        "k": 60,
+        "weight_rule": "shared_discounted_rank_mass",
+        "active_weight_bounds": [
+          0.35,
+          0.65
+        ],
+        "routes": {
+          "dense": {
+            "recalled": 24,
+            "unique": 10,
+            "shared": 14,
+            "credit_mass": 14.306139621716033,
+            "weight": 0.497969791493004
+          },
+          "lexical": {
+            "recalled": 24,
+            "unique": 10,
+            "shared": 14,
+            "credit_mass": 14.42279106065252,
+            "weight": 0.502030208506996
+          }
+        },
+        "route_limit": 24,
+        "lexical_expansion": "existing_grounded_model_aliases",
+        "bge_sparse_scores_used": false,
+        "trace_id": "0a83810fb85f422f9e877f4a9dfce04a",
+        "recording_status": "SAVED"
+      },
+      "trace_file": "fusion-base_gpu.json",
+      "real_vector_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+      "passed": true
+    },
+    {
+      "case": "bleu_baseline",
+      "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "expected_chunk_ids": [
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00093",
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00098"
+      ],
+      "baseline_ranks": {
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00093": 5,
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00098": 1
+      },
+      "adaptive_ranks": {
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00093": 5,
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0008-c00098": 1
+      },
+      "baseline_recall_at_8": 1.0,
+      "adaptive_recall_at_8": 1.0,
+      "baseline_recall_at_24": 1.0,
+      "adaptive_recall_at_24": 1.0,
+      "fusion": {
+        "method": "contribution_weighted_rrf",
+        "k": 60,
+        "weight_rule": "shared_discounted_rank_mass",
+        "active_weight_bounds": [
+          0.35,
+          0.65
+        ],
+        "routes": {
+          "dense": {
+            "recalled": 24,
+            "unique": 12,
+            "shared": 12,
+            "credit_mass": 14.901208220401958,
+            "weight": 0.4963463521565188
+          },
+          "lexical": {
+            "recalled": 24,
+            "unique": 12,
+            "shared": 12,
+            "credit_mass": 15.120586350383935,
+            "weight": 0.5036536478434812
+          }
+        },
+        "route_limit": 24,
+        "lexical_expansion": "existing_grounded_model_aliases",
+        "bge_sparse_scores_used": false,
+        "trace_id": "0365d695c1474a50baab5385fbcf59ae",
+        "recording_status": "SAVED"
+      },
+      "trace_file": "fusion-bleu_baseline.json",
+      "real_vector_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+      "passed": true
+    },
+    {
+      "case": "layer_norm_reference",
+      "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "expected_chunk_ids": [
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00127"
+      ],
+      "baseline_ranks": {
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00127": 15
+      },
+      "adaptive_ranks": {
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00127": 15
+      },
+      "baseline_recall_at_8": 0.0,
+      "adaptive_recall_at_8": 0.0,
+      "baseline_recall_at_24": 1.0,
+      "adaptive_recall_at_24": 1.0,
+      "fusion": {
+        "method": "contribution_weighted_rrf",
+        "k": 60,
+        "weight_rule": "shared_discounted_rank_mass",
+        "active_weight_bounds": [
+          0.35,
+          0.65
+        ],
+        "routes": {
+          "dense": {
+            "recalled": 24,
+            "unique": 20,
+            "shared": 4,
+            "credit_mass": 18.489992970708883,
+            "weight": 0.49545311833452166
+          },
+          "lexical": {
+            "recalled": 24,
+            "unique": 20,
+            "shared": 4,
+            "credit_mass": 18.829366392420095,
+            "weight": 0.5045468816654783
+          }
+        },
+        "route_limit": 24,
+        "lexical_expansion": "existing_grounded_model_aliases",
+        "bge_sparse_scores_used": false,
+        "trace_id": "a91201aa337544b8b45ec00fc1f1838c",
+        "recording_status": "SAVED"
+      },
+      "trace_file": "fusion-layer_norm_reference.json",
+      "real_vector_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+      "passed": true
+    },
+    {
+      "case": "architecture_attention",
+      "paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "expected_chunk_ids": [
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00029"
+      ],
+      "baseline_ranks": {
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00029": 1
+      },
+      "adaptive_ranks": {
+        "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0003-c00029": 1
+      },
+      "baseline_recall_at_8": 1.0,
+      "adaptive_recall_at_8": 1.0,
+      "baseline_recall_at_24": 1.0,
+      "adaptive_recall_at_24": 1.0,
+      "fusion": {
+        "method": "contribution_weighted_rrf",
+        "k": 60,
+        "weight_rule": "shared_discounted_rank_mass",
+        "active_weight_bounds": [
+          0.35,
+          0.65
+        ],
+        "routes": {
+          "dense": {
+            "recalled": 24,
+            "unique": 14,
+            "shared": 10,
+            "credit_mass": 16.044491386331156,
+            "weight": 0.4979489221188673
+          },
+          "lexical": {
+            "recalled": 24,
+            "unique": 14,
+            "shared": 10,
+            "credit_mass": 16.176667599331058,
+            "weight": 0.5020510778811327
+          }
+        },
+        "route_limit": 24,
+        "lexical_expansion": "existing_grounded_model_aliases",
+        "bge_sparse_scores_used": false,
+        "trace_id": "63cac9a15b8b4fa3960153960d6c4595",
+        "recording_status": "SAVED"
+      },
+      "trace_file": "fusion-architecture_attention.json",
+      "real_vector_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+      "passed": true
+    },
+    {
+      "case": "architecture_bert",
+      "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+      "expected_chunk_ids": [
+        "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0003-c00040"
+      ],
+      "baseline_ranks": {
+        "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0003-c00040": 4
+      },
+      "adaptive_ranks": {
+        "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0003-c00040": 4
+      },
+      "baseline_recall_at_8": 1.0,
+      "adaptive_recall_at_8": 1.0,
+      "baseline_recall_at_24": 1.0,
+      "adaptive_recall_at_24": 1.0,
+      "fusion": {
+        "method": "contribution_weighted_rrf",
+        "k": 60,
+        "weight_rule": "shared_discounted_rank_mass",
+        "active_weight_bounds": [
+          0.35,
+          0.65
+        ],
+        "routes": {
+          "dense": {
+            "recalled": 24,
+            "unique": 10,
+            "shared": 14,
+            "credit_mass": 14.24480444704845,
+            "weight": 0.499478513864569
+          },
+          "lexical": {
+            "recalled": 24,
+            "unique": 10,
+            "shared": 14,
+            "credit_mass": 14.274549342233575,
+            "weight": 0.500521486135431
+          }
+        },
+        "route_limit": 24,
+        "lexical_expansion": "existing_grounded_model_aliases",
+        "bge_sparse_scores_used": false,
+        "trace_id": "81350e1a692f4b089e51fe5d628382ce",
+        "recording_status": "SAVED"
+      },
+      "trace_file": "fusion-architecture_bert.json",
+      "real_vector_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+      "passed": true
+    }
+  ],
+  "passed": true
+}

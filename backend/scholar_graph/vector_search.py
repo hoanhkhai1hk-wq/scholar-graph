@@ -56,8 +56,9 @@ class BgeChromaSearch:
             values = [*evidence["dense"].values(), *evidence["sparse"].values()]
             if any(type(value) not in (int, float) or not math.isfinite(value) for value in values):
                 raise VectorUnavailable
+            ranked, evidence["fusion"] = fuse_ranks(evidence["dense"], evidence["sparse"], explain=True)
             self.last_evidence = evidence
-            return fuse_ranks(evidence["dense"], evidence["sparse"])
+            return ranked
         except (OSError, subprocess.TimeoutExpired, ValueError, KeyError, TypeError, WorkerUnavailable):
             raise VectorUnavailable from None
 

@@ -1,0 +1,443 @@
+{
+  "paper_id": "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4",
+  "method": "contribution_weighted_rrf",
+  "k": 60,
+  "weight_rule": "shared_discounted_rank_mass",
+  "active_weight_bounds": [
+    0.35,
+    0.65
+  ],
+  "routes": {
+    "dense": {
+      "recalled": 24,
+      "unique": 10,
+      "shared": 14,
+      "credit_mass": 14.24480444704845,
+      "weight": 0.499478513864569
+    },
+    "lexical": {
+      "recalled": 24,
+      "unique": 10,
+      "shared": 14,
+      "credit_mass": 14.274549342233575,
+      "weight": 0.500521486135431
+    }
+  },
+  "hits": {
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0001-c00001": {
+      "ranks": {
+        "dense": 2,
+        "lexical": 1
+      },
+      "contributions": {
+        "dense": 0.4914224088022372,
+        "lexical": 0.500521486135431
+      },
+      "score": 0.9919438949376682
+    },
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0001-c00009": {
+      "ranks": {
+        "dense": 1,
+        "lexical": 5
+      },
+      "contributions": {
+        "dense": 0.499478513864569,
+        "lexical": 0.4697201639117122
+      },
+      "score": 0.9691986777762811
+    },
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0001-c00013": {
+      "ranks": {
+        "dense": null,
+        "lexical": 23
+      },
+      "contributions": {
+        "dense": 0.0,
+        "lexical": 0.36785314041278666
+      },
+      "score": 0.36785314041278666
+    },
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0001-c00014": {
+      "ranks": {
+        "dense": 18,
+        "lexical": 14
+      },
+      "contributions": {
+        "dense": 0.39061781212485525,
+        "lexical": 0.4125920358683958
+      },
+      "score": 0.803209847993251
+    },
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0001-c00015": {
+      "ranks": {
+        "dense": 7,
+        "lexical": 7
+      },
+      "contributions": {
+        "dense": 0.454749094712518,
+        "lexical": 0.4556986664815118
+      },
+      "score": 0.9104477611940298
+    },
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0002-c00018": {
+      "ranks": {
+        "dense": null,
+        "lexical": 11
+      },
+      "contributions": {
+        "dense": 0.0,
+        "lexical": 0.43002550217269425
+      },
+      "score": 0.43002550217269425
+    },
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0002-c00019": {
+      "ranks": {
+        "dense": 10,
+        "lexical": 12
+      },
+      "contributions": {
+        "dense": 0.43525984779626725,
+        "lexical": 0.4240529257536291
+      },
+      "score": 0.8593127735498963
+    },
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0002-c00020": {
+      "ranks": {
+        "dense": 14,
+        "lexical": null
+      },
+      "contributions": {
+        "dense": 0.41173228845592846,
+        "lexical": 0.0
+      },
+      "score": 0.41173228845592846
+    },
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0003-c00038": {
+      "ranks": {
+        "dense": 24,
+        "lexical": 20
+      },
+      "contributions": {
+        "dense": 0.36271653983022273,
+        "lexical": 0.38164763317826617
+      },
+      "score": 0.7443641730084889
+    },
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0003-c00039": {
+      "ranks": {
+        "dense": 16,
+        "lexical": null
+      },
+      "contributions": {
+        "dense": 0.40089722823340407,
+        "lexical": 0.0
+      },
+      "score": 0.40089722823340407
+    },
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0003-c00040": {
+      "ranks": {
+        "dense": 4,
+        "lexical": 6
+      },
+      "contributions": {
+        "dense": 0.4760654585271673,
+        "lexical": 0.4626031917312317
+      },
+      "score": 0.938668650258399
+    },
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0003-c00041": {
+      "ranks": {
+        "dense": 6,
+        "lexical": 19
+      },
+      "contributions": {
+        "dense": 0.46163923251119254,
+        "lexical": 0.3864786158767252
+      },
+      "score": 0.8481178483879177
+    },
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0004-c00050": {
+      "ranks": {
+        "dense": null,
+        "lexical": 10
+      },
+      "contributions": {
+        "dense": 0.0,
+        "lexical": 0.4361687236323042
+      },
+      "score": 0.4361687236323042
+    },
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0004-c00051": {
+      "ranks": {
+        "dense": 12,
+        "lexical": null
+      },
+      "contributions": {
+        "dense": 0.42316929646859314,
+        "lexical": 0.0
+      },
+      "score": 0.42316929646859314
+    },
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0004-c00056": {
+      "ranks": {
+        "dense": 17,
+        "lexical": 4
+      },
+      "contributions": {
+        "dense": 0.3956907707238793,
+        "lexical": 0.4770595414728327
+      },
+      "score": 0.872750312196712
+    },
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0005-c00061": {
+      "ranks": {
+        "dense": 21,
+        "lexical": null
+      },
+      "contributions": {
+        "dense": 0.3761504857498606,
+        "lexical": 0.0
+      },
+      "score": 0.3761504857498606
+    },
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0005-c00064": {
+      "ranks": {
+        "dense": 3,
+        "lexical": null
+      },
+      "contributions": {
+        "dense": 0.4836220531069636,
+        "lexical": 0.0
+      },
+      "score": 0.4836220531069636
+    },
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0005-c00065": {
+      "ranks": {
+        "dense": 20,
+        "lexical": null
+      },
+      "contributions": {
+        "dense": 0.38085236682173385,
+        "lexical": 0.0
+      },
+      "score": 0.38085236682173385
+    },
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0006-c00078": {
+      "ranks": {
+        "dense": null,
+        "lexical": 21
+      },
+      "contributions": {
+        "dense": 0.0,
+        "lexical": 0.37693593400322584
+      },
+      "score": 0.37693593400322584
+    },
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0006-c00079": {
+      "ranks": {
+        "dense": 23,
+        "lexical": null
+      },
+      "contributions": {
+        "dense": 0.3670866186233579,
+        "lexical": 0.0
+      },
+      "score": 0.3670866186233579
+    },
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0008-c00110": {
+      "ranks": {
+        "dense": 9,
+        "lexical": 18
+      },
+      "contributions": {
+        "dense": 0.44156796153244504,
+        "lexical": 0.3914334699264268
+      },
+      "score": 0.8330014314588718
+    },
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0008-c00119": {
+      "ranks": {
+        "dense": null,
+        "lexical": 13
+      },
+      "contributions": {
+        "dense": 0.0,
+        "lexical": 0.4182439815652232
+      },
+      "score": 0.4182439815652232
+    },
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0009-c00124": {
+      "ranks": {
+        "dense": 13,
+        "lexical": 15
+      },
+      "contributions": {
+        "dense": 0.4173724567909412,
+        "lexical": 0.4070908087234839
+      },
+      "score": 0.8244632655144251
+    },
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0009-c00130": {
+      "ranks": {
+        "dense": 15,
+        "lexical": null
+      },
+      "contributions": {
+        "dense": 0.40624252460984944,
+        "lexical": 0.0
+      },
+      "score": 0.40624252460984944
+    },
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0009-c00132": {
+      "ranks": {
+        "dense": 19,
+        "lexical": 16
+      },
+      "contributions": {
+        "dense": 0.385673282857452,
+        "lexical": 0.40173435071396435
+      },
+      "score": 0.7874076335714164
+    },
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0010-c00147": {
+      "ranks": {
+        "dense": null,
+        "lexical": 17
+      },
+      "contributions": {
+        "dense": 0.0,
+        "lexical": 0.3965170214839129
+      },
+      "score": 0.3965170214839129
+    },
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0011-c00175": {
+      "ranks": {
+        "dense": null,
+        "lexical": 24
+      },
+      "contributions": {
+        "dense": 0.0,
+        "lexical": 0.3634739363602535
+      },
+      "score": 0.3634739363602535
+    },
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0011-c00181": {
+      "ranks": {
+        "dense": null,
+        "lexical": 3
+      },
+      "contributions": {
+        "dense": 0.0,
+        "lexical": 0.48463191514700465
+      },
+      "score": 0.48463191514700465
+    },
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0012-c00194": {
+      "ranks": {
+        "dense": 5,
+        "lexical": 2
+      },
+      "contributions": {
+        "dense": 0.4687413745498263,
+        "lexical": 0.49244855893969824
+      },
+      "score": 0.9611899334895245
+    },
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0012-c00209": {
+      "ranks": {
+        "dense": null,
+        "lexical": 9
+      },
+      "contributions": {
+        "dense": 0.0,
+        "lexical": 0.4424900094820477
+      },
+      "score": 0.4424900094820477
+    },
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0013-c00212": {
+      "ranks": {
+        "dense": 8,
+        "lexical": 8
+      },
+      "contributions": {
+        "dense": 0.4480616080255692,
+        "lexical": 0.44899721550384253
+      },
+      "score": 0.8970588235294117
+    },
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0014-c00237": {
+      "ranks": {
+        "dense": 11,
+        "lexical": null
+      },
+      "contributions": {
+        "dense": 0.4291294274047705,
+        "lexical": 0.0
+      },
+      "score": 0.4291294274047705
+    },
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0014-c00239": {
+      "ranks": {
+        "dense": 22,
+        "lexical": null
+      },
+      "contributions": {
+        "dense": 0.3715632847041306,
+        "lexical": 0.0
+      },
+      "score": 0.3715632847041306
+    },
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0016-c00266": {
+      "ranks": {
+        "dense": null,
+        "lexical": 22
+      },
+      "contributions": {
+        "dense": 0.0,
+        "lexical": 0.37233915432025966
+      },
+      "score": 0.37233915432025966
+    }
+  },
+  "final_order": [
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0001-c00001",
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0001-c00009",
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0012-c00194",
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0003-c00040",
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0001-c00015",
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0013-c00212",
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0004-c00056",
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0002-c00019",
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0003-c00041",
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0008-c00110",
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0009-c00124",
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0001-c00014",
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0009-c00132",
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0003-c00038",
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0011-c00181",
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0005-c00064",
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0012-c00209",
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0004-c00050",
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0002-c00018",
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0014-c00237",
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0004-c00051",
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0008-c00119",
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0002-c00020",
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0009-c00130",
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0003-c00039",
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0010-c00147",
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0005-c00065",
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0006-c00078",
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0005-c00061",
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0016-c00266",
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0014-c00239",
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0001-c00013",
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0006-c00079",
+    "paper-987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4-p0011-c00175"
+  ],
+  "ranking_method": "rrf",
+  "rerank": {
+    "method": "rrf",
+    "reason": "NOT_CONFIGURED"
+  }
+}

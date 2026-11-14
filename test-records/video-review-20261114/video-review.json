@@ -1,0 +1,68 @@
+{
+  "source": "https://www.bilibili.com/video/BV1VNxr63EQU/",
+  "review_date": "2026-11-14",
+  "duration_seconds": 624,
+  "source_dimensions": [
+    1728,
+    1080
+  ],
+  "scope": "Playback metadata and screenshot sampling of actual video; no complete audio transcript or frame-accurate audio edit performed.",
+  "recommended_original_time_windows": [
+    {
+      "start": 228,
+      "end": 230,
+      "purpose": "scan citation region highlight",
+      "new_clip_budget_seconds": [
+        20,
+        30
+      ]
+    },
+    {
+      "start": 318,
+      "end": 322,
+      "purpose": "QA recall contribution explanation",
+      "new_clip_budget_seconds": [
+        15,
+        20
+      ]
+    }
+  ],
+  "alternative_original_time_window": {
+    "start": 402,
+    "end": 404,
+    "purpose": "local retrieval explanation at discovery page transition"
+  },
+  "video_edited": false,
+  "uploaded": false,
+  "reviewed_frame_count": 48,
+  "selected_published_frames": [
+    {
+      "seconds": 228,
+      "path": "frames/frame-0228.png"
+    },
+    {
+      "seconds": 230,
+      "path": "frames/frame-0230.png"
+    },
+    {
+      "seconds": 318,
+      "path": "frames/frame-0318.png"
+    },
+    {
+      "seconds": 322,
+      "path": "frames/frame-0322.png"
+    },
+    {
+      "seconds": 324,
+      "path": "frames/frame-0324.png"
+    },
+    {
+      "seconds": 402,
+      "path": "frames/frame-0402.png"
+    },
+    {
+      "seconds": 404,
+      "path": "frames/frame-0404.png"
+    }
+  ]
+}

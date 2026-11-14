@@ -83,6 +83,12 @@ export interface Anchor {
   chunk_id: string;
 }
 
+export interface EvidenceLocation {
+  bbox: number[] | null;
+  coordinate_system: "page-normalized-top-left";
+  precision: "paragraph" | "page";
+}
+
 export interface DedupEvidence {
   anchor: Anchor;
   reason: string;
@@ -218,6 +224,15 @@ export interface SearchHit {
   anchor: Anchor;
   relevance: number;
   retrieval_method: string;
+  location?: EvidenceLocation;
+  fusion?: {
+    method: string;
+    k: number;
+    routes: Record<string, { recalled: number; unique: number; shared: number; credit_mass: number; weight: number }>;
+    ranks: Record<string, number | null>;
+    contributions: Record<string, number>;
+    score: number;
+  };
 }
 
 /** 检索响应头原样回显，不得把词法说成向量 */

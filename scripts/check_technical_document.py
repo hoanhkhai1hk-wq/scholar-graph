@@ -1,6 +1,7 @@
 """Verify source-backed claims, required disclosures, PDF pages and page bounds."""
 import hashlib
 import json
+import os
 from pathlib import Path
 import sys
 from pypdf import PdfReader
@@ -11,7 +12,7 @@ from sync_submission_metrics import collect
 ROOT=Path(__file__).resolve().parents[1]
 
 if __name__=='__main__':
-    base=ROOT/'data/submission-20261030';out=base/'technical-pages';out.mkdir(exist_ok=True)
+    base=Path(os.environ.get('SG_DOC_BUILD_DIR', ROOT/'data/submission-20261030'));out=base/'technical-pages';out.mkdir(parents=True,exist_ok=True)
     md=(ROOT/'docs/technical-document.md').read_text(encoding='utf8');claims=collect()
     registry=json.loads((ROOT/'docs/submission-metrics.json').read_text(encoding='utf8'))['claims']
     assert claims==registry,'Measured values changed: update the registry and document in a small patch'

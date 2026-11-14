@@ -1,0 +1,66 @@
+{
+  "purpose": "Shooting plan material verification; offline actual BGE-M3 retrieval, no frontend or external model generation run.",
+  "scan": {
+    "path": "pdf/1706.03762v1_img.pdf",
+    "paper_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d",
+    "page_count": 15,
+    "has_text_layer": false,
+    "question": "这篇论文的编码器（Encoder）由多少层组成？请给出原文依据。",
+    "expected_value": 6,
+    "chunk_id": "paper-64094fe169dd4ff454f579e9f197298df1c118c24b71b1f1ca8bb218c9e4801d-p0002-c00104",
+    "page_number": 2,
+    "quote": "Encoder: The encoder is composed of a stack of N = 6 identical layers. Each layer has two",
+    "bbox": [
+      0.17483660130718953,
+      0.7570977917981072,
+      0.8243464052287581,
+      0.7703470031545742
+    ]
+  },
+  "native_paper_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+  "search_cases": [
+    {
+      "query": "Adam optimizer",
+      "routes": {
+        "dense": {
+          "recalled": 175,
+          "unique": 171,
+          "shared": 4,
+          "credit_mass": 80.99683198547002,
+          "weight": 0.65
+        },
+        "sparse": {
+          "recalled": 4,
+          "unique": 0,
+          "shared": 4,
+          "credit_mass": 1.952624967997952,
+          "weight": 0.35
+        }
+      },
+      "first_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0007-c00088",
+      "score": 0.989516129032258
+    },
+    {
+      "query": "Transformer model attention training",
+      "routes": {
+        "dense": {
+          "recalled": 175,
+          "unique": 104,
+          "shared": 71,
+          "credit_mass": 62.05611604167916,
+          "weight": 0.65
+        },
+        "sparse": {
+          "recalled": 71,
+          "unique": 0,
+          "shared": 71,
+          "credit_mass": 23.678812649565188,
+          "weight": 0.35
+        }
+      },
+      "first_chunk_id": "paper-bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697-p0010-c00120",
+      "score": 0.9737199180747567
+    }
+  ],
+  "frontend_recording_ready_verified": false
+}

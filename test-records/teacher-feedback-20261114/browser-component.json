@@ -1,0 +1,109 @@
+{
+  "scope": "Actual LayoutViewer and AnchorTag compiled in isolated browser fixture; real parser/OCR/PDF bytes; v2 proxy and legacy-null responses supplied by test harness. Full Next.js server not started.",
+  "checks": [
+    {
+      "case": "native",
+      "width": 1440,
+      "region": [
+        0.09799693056731583,
+        0.2799918229672408,
+        0.4999867696867062,
+        0.2959881433024991
+      ],
+      "mode": "parser-coordinates",
+      "passed": true
+    },
+    {
+      "case": "native",
+      "width": 390,
+      "region": [
+        0.09796697443181818,
+        0.2799725651577503,
+        0.49995561079545453,
+        0.2959533607681756
+      ],
+      "mode": "parser-coordinates",
+      "passed": true
+    },
+    {
+      "case": "native",
+      "mode": "citation-click",
+      "passed": true
+    },
+    {
+      "case": "native",
+      "mode": "bibliography-jump",
+      "passed": true
+    },
+    {
+      "case": "native",
+      "mode": "citation-return",
+      "passed": true
+    },
+    {
+      "case": "scan",
+      "width": 1440,
+      "region": [
+        0.09639606265876376,
+        0.18875657995604844,
+        0.5375608594411516,
+        0.2140031686001942
+      ],
+      "mode": "parser-coordinates",
+      "passed": true
+    },
+    {
+      "case": "scan",
+      "width": 390,
+      "region": [
+        0.09636896306818182,
+        0.1887517146776406,
+        0.5375088778409091,
+        0.2139917695473251
+      ],
+      "mode": "parser-coordinates",
+      "passed": true
+    },
+    {
+      "case": "scan",
+      "mode": "citation-click",
+      "passed": true
+    },
+    {
+      "case": "native-legacy",
+      "width": 1440,
+      "region": [
+        0.09803662150719729,
+        0.27903102161803034,
+        0.4996427815410669,
+        0.2970818214340471
+      ],
+      "mode": "text-fallback",
+      "passed": true
+    },
+    {
+      "case": "native-legacy",
+      "width": 390,
+      "region": [
+        0.09801136363636363,
+        0.27901234567901234,
+        0.4996004971590909,
+        0.29705075445816187
+      ],
+      "mode": "text-fallback",
+      "passed": true
+    },
+    {
+      "case": "native-legacy",
+      "mode": "citation-click",
+      "passed": true
+    },
+    {
+      "case": "scan-legacy",
+      "mode": "page-fallback",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

@@ -4,6 +4,7 @@ import math
 import re
 
 from .validation import chunk_anchor
+from .evidence_location import evidence_location
 
 FACETS = {
     "samples": ("samples", "sample size", "sample", "样本", "数据规模"),
@@ -83,7 +84,8 @@ def retrieve(bundle, question, limit=8):
             if requested and not requested.issubset(facets(sentence)):
                 continue
             score = len(overlap) / math.sqrt(max(len(tokens), 1))
-            candidates.append({"anchor": chunk_anchor(chunk), "quote": sentence, "score": score})
+            candidates.append({"anchor": chunk_anchor(chunk), "quote": sentence, "score": score,
+                               "location": evidence_location(chunk)})
     candidates.sort(key=lambda item: (-item["score"], item["anchor"]["page_number"], item["anchor"]["chunk_id"], item["quote"]))
     unique = []
     seen = set()

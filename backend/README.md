@@ -124,7 +124,7 @@ backend/.venv/Scripts/python.exe tests/run_module_five_smoke.py --output-root da
 
 POST /api/v1/retrieval/search 接收 `{question,paper_ids?,page?,page_size?,min_relevance?}`，返回固定六字段分页壳，每项含原样 Chunk、真实四字段 anchor、relevance 和 retrieval_method。默认词法 IDF 加权余弦；模式/向量状态/空结果原因在 X-ScholarGraph-* 响应头。页大小超过100按100计，越界页保持 total 且空 items。模块二 QA 仍是原词法取证，本次没有替换 QA 的检索器或联调真实生成模型。
 
-**向量已实装并本地跑通。** Chroma 1.5.9、FlagEmbedding 1.4.2、torch 2.14.1+cpu、transformers 5.20.2；模型 BAAI/bge-m3 快照5617a9f61b028005a4858fdac845db406aefb181。实际验证4个自制 Chunk 的1024维 dense和模型 sparse权重，持久索引后子集检索复用已有向量。稠密余弦与稀疏权重点积各排序，再按等权RRF（k=60）融合，具体公式见 API 草案。CPU float32、batch1、2线程、512token截断；每次请求独立worker加载模型，实测约15–20秒，不作吞吐量或真实语料精度承诺。索引增量按原文/元数据/模型快照指纹更新，输出仅来自本次指定的真实 Chunk 集合。
+**向量已实装并本地跑通。** Chroma 1.5.9、FlagEmbedding 1.4.2、torch 2.14.1+cpu、transformers 5.20.2；模型 BAAI/bge-m3 快照5617a9f61b028005a4858fdac845db406aefb181。实际验证4个自制 Chunk 的1024维 dense和模型 sparse权重，持久索引后子集检索复用已有向量。稠密余弦与稀疏权重点积各排序，再按召回贡献加权RRF（k=60）融合；2026-11-14改用共享折扣排名贡献计算权重，逐路权重和逐段贡献可复算，见教师评价整改报告。CPU float32、batch1、2线程、512token截断；每次请求独立worker加载模型，实测约15–20秒，不作吞吐量或真实语料精度承诺。索引增量按原文/元数据/模型快照指纹更新，输出仅来自本次指定的真实 Chunk 集合。
 
 安装到 D盘被忽略的隔离环境，不影响解析/OCR依赖；约2.2GB模型下载不需要Key。先安装backend，再执行：
 
@@ -481,7 +481,7 @@ SQLite缓存保存模型快照、文本指纹和向量，命中时复用；不�
 
 本地环境沿用SCHOLAR_GRAPH_VECTOR_PYTHON、SCHOLAR_GRAPH_BGE_M3_PATH（D盘默认路径同前节）；其他部署尤其Linux须指定实际Python和模型目录。QA片段索引单独位于数据目录chroma-qa-bge-m3，复用Chroma 1.5.9和固定快照BGE-M3，CPU、512 token、batch=1、2线程；每个worker仍独立加载模型，600秒上限包含首次建索引。向量子进程不继承API_KEY/TOKEN/SECRET/PASSWORD，离线运行；需要Key的是deepseek回答/规划，向量检索及无Key摘录模式不需要Key。
 
-每篇论文双路召回：BGE-M3 dense余弦取前24个真实Chunk，词法路复用原IDF排序、领域别名扩展及首页作者布局覆盖，取前24个不同Chunk。并集最多48块，使用等权RRF排序：各路第r名贡献`0.5*61/(60+r)`，未召回的路贡献0。原检索页仍使用自己的BGE dense/sparse融合；QA不把BGE sparse当作这次词法路，元数据明确bge_sparse_scores_used=false。全部结果受用户论文集合约束，不把其他索引旧行返回作证据。
+每篇论文双路召回：BGE-M3 dense余弦取前24个真实Chunk，词法路复用原IDF排序、领域别名扩展及首页作者布局覆盖，取前24个不同Chunk。并集最多48块，使用召回贡献加权RRF排序：各路第r名贡献`weight*61/(60+r)`。各路累计`61/(60+r)/support_count`作为贡献累计值，其中support_count为召回该块的路数；累计值归一化为权重，双路均有效时限制为35%–65%，空路权重为0。元数据记录召回数、独有/共有数、贡献累计值与权重；`qa-retrieval/fusion/<trace_id>.json`原子保存逐块排名、得分分解和精排后顺序；写入失败明确记录，不影响有效向量召回。此权重衡量本次召回贡献，不是答案正确率。原检索页仍使用自己的BGE dense/sparse融合；QA不把BGE sparse当作这次词法路，元数据明确bge_sparse_scores_used=false。全部结果受用户论文集合约束，不把其他索引旧行返回作证据。
 
 优先尝试本地bge-reranker-large，固定快照55611d7bca2a7133960a6d3b71e083071bbfc312。可用`data/module-four-runtime/.venv/Scripts/python.exe backend/download_bge_reranker.py`公开下载一次；运行时只读本地模型，不自动联网。SCHOLAR_GRAPH_RERANKER_PATH覆盖本地目录，SCHOLAR_GRAPH_QA_RERANKER=auto（默认）或rrf（明确指定融合）。当前默认路径改为RRF粗排前10块做cross-encoder精排，其余召回尾部仍保留在精排前缀之后，首页作者布局规则保持。旧36候选的reranker-policy.json不再决定新策略。
 
